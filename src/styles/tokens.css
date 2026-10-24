@@ -1,0 +1,44 @@
+/* Daybreak (light, default) and Dusk (night) share hues so switching feels like the same brand at a different hour.
+   Cool = selection / hover. Warm = money actions (Checkout, totals) and warnings only. */
+:root {
+  --bg: #eef2fa;
+  --bg2: #e1e7f4;
+  --panel: rgba(255, 255, 255, 0.78);
+  --solid: #ffffff;
+  --line: #d6deee;
+  --grid: #bfcbe8;
+  --grid2: #dae1f1;
+  --muted: #5b6788;
+  --ink: #262c40;
+  --cool: #7d93e8;
+  --on-cool: #262c40;
+  --warm: #ee9a55;
+  --on-warm: #262c40;
+  --ok: #2f8a66;
+  --shadow: rgba(38, 44, 64, 0.1);
+
+  --f-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --f-ui: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --r: 14px;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #1c2030;
+  --bg2: #141726;
+  --panel: rgba(39, 44, 62, 0.8);
+  --solid: #272c3e;
+  --line: #363d55;
+  --grid: #3a4366;
+  --grid2: #272d47;
+  --muted: #9ba1bc;
+  --ink: #e7e5f2;
+  --cool: #9aa8f0;
+  --on-cool: #1c2030;
+  --warm: #f2b880;
+  --on-warm: #1c2030;
+  --ok: #7ccba8;
+  --shadow: rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
