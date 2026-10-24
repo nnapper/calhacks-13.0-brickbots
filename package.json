@@ -19,8 +19,8 @@
     "part:add": "node --env-file=.env scripts/add-part.mjs"
   },
   "dependencies": {
-    "@react-three/drei": "^10.7.0",
-    "@react-three/fiber": "^9.4.0",
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
     "convex": "^1.48.0",
     "occt-import-js": "0.0.23",
     "react": "^19.2.0",
