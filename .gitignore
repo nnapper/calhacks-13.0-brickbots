@@ -9,3 +9,4 @@ public/vendor/
 __pycache__/
 .convex/
 data/*.log
+public/generated/

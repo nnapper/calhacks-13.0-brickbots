@@ -1,6 +1,6 @@
 # BuildFlow
 
-CAD assembly workspace with STEP/GLB import, geometry-based attachment nodes, Bitdeer recommendations, approved-node snapping, and Convex persistence. Product discovery and image-to-3D remain separate integrations.
+CAD assembly workspace with STEP/GLB import, geometry-based attachment nodes, Bitdeer node and cross-part mate-pair recommendations, approved-node snapping, and Convex persistence. Product discovery and image-to-3D remain separate integrations.
 
 ## Run
 
@@ -66,8 +66,12 @@ optionally set `BITDEER_MODEL` to an available chat model. Never use a `VITE_` p
 1. Import STEP/GLB or select a reference model.
 2. Choose **Find geometry nodes**. STEP uses OpenCascade analytic planes and bore
    openings. GLB proposes triangle-based surface points, with lower confidence.
-3. Choose **Recommend with Bitdeer**. The server sends measured candidate metadata
-   to Model Studio; returned IDs are validated. AI cannot invent coordinates or approve nodes.
+3. Choose **Recommend with Bitdeer**, or just keep working: once two or more analyzed
+   parts share the workspace, the server also asks Bitdeer in the background to propose
+   cross-part mate pairs. Every returned pair is revalidated against local type and
+   diameter rules, the paired nodes are flagged in the inspector, and **Connect using**
+   on a flagged node joins its suggested counterpart in one click. AI cannot invent
+   coordinates or approve nodes.
 4. Click a node, then a compatible node on another part to approve that pair and
    connect them exactly, including rotation and depth. The first node turns blue;
    Escape cancels. Alternatively, review individual nodes and select **Accept for snapping**. Accepted nodes are green;

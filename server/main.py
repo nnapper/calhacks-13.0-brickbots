@@ -2,7 +2,7 @@
 from fastapi import FastAPI, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pathlib import Path
-import tempfile, hashlib, math
+import tempfile, hashlib, math, json, re, subprocess
 from OCP.STEPControl import STEPControl_Reader
 from OCP.IFSelect import IFSelect_RetDone
 from OCP.TopExp import TopExp_Explorer
@@ -112,3 +112,23 @@ def analyze(file: UploadFile):
     if not data or len(data)>30*1024*1024:raise HTTPException(413,'Choose a non-empty STEP under 30 MB')
     try:return extract_candidates(data)
     except Exception as exc:raise HTTPException(422,str(exc)[:200])
+
+@app.post('/generate')
+def generate_model(payload: dict):
+    sku=payload.get('sku')
+    if not isinstance(sku,str) or not re.fullmatch(r'[a-z0-9-]+',sku):raise HTTPException(400,'A catalog SKU is required')
+    root=Path(__file__).resolve().parents[1]
+    run=subprocess.run([
+        'node','--env-file-if-exists=.env.local','scripts/generate-model.mjs',sku
+    ],cwd=root,capture_output=True,text=True,timeout=180)
+    if run.returncode != 0:
+        raise HTTPException(500,(run.stderr or run.stdout or 'Generation failed').strip()[-800:])
+    try:
+        manifest=json.loads((root/'public/generated'/sku/'manifest.json').read_text())
+    except Exception as exc:raise HTTPException(500,f'Generation produced no manifest: {exc}')
+    return {
+        'sku':sku,
+        'name':manifest['product']['name'],
+        'stepUrl':f'/generated/{sku}/model.step',
+        'manifest':manifest,
+    }

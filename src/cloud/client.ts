@@ -19,3 +19,4 @@ export async function saveWorkspace(parts:PartInstance[],mates:Mate[],sources:Ma
  return await cloud.mutation(api.data.save,{secret,expectedRevision:revision,snapshot});
 }
 export async function suggestNodes(model:LoadedModel){if(!cloud)throw new Error('Convex is not configured');return cloud.action(api.bitdeer.suggest,{secret:workspaceSecret(),name:model.asset.name,revision:model.geometryRevision!,candidates:model.connectors as Connector[]});}
+export async function suggestPairings(parts:PartInstance[]){if(!cloud)throw new Error('Convex is not configured');return cloud.action(api.bitdeer.suggestPairs,{secret:workspaceSecret(),parts:parts.filter(p=>p.model.connectors?.length&&p.model.geometryRevision).map(p=>({partId:p.id,name:p.model.asset.name,nodes:p.model.connectors!}))});}

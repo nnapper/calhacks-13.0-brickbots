@@ -6,7 +6,7 @@ import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import { findSnap, compatible, worldBox, localBox, type PartInstance, type Snap, type Mate } from '../assembly/snapping';
 import { playSnapSound } from '../assembly/clickSound';
 export type View = 'Perspective' | 'Front' | 'Top' | 'Side';
-export type ViewerBridge = { chooseNode:(partId:string,nodeId:string)=>void; dropPoint: (x: number, y: number) => [number, number, number] | undefined };
+export type ViewerBridge = { chooseNode:(partId:string,nodeId:string)=>void; armed:()=>boolean; dropPoint: (x: number, y: number) => [number, number, number] | undefined };
 type Props = { mates?: Mate[]; parts: PartInstance[]; selectedId: string | null; view: View; reset: number; wireframe: boolean; snapEnabled: boolean; onConnect:(fromId:string,fromNode:string,toId:string,toNode:string)=>void; onNodeMessage:(message:string)=>void; onSelect: (id: string | null) => void; onMove: (id: string, position: [number, number, number], snap: Snap | null, quaternion?: [number, number, number, number]) => void; onPreview: (snap: Snap | null) => void; bridge: React.RefObject<ViewerBridge | null> };
 // Brief green glow where two parts click together. It expands and fades out completely.
 function SnapGlow({ point, radius, since }: { point: [number, number, number]; radius: number; since: number }) {
@@ -73,7 +73,7 @@ function Scene(props: Props) {
     parts.forEach(p => p.model.object.traverse(o => { if (o instanceof THREE.Mesh) (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => { if ('wireframe' in m) m.wireframe = wireframe; }); })); invalidate();
   }, [parts, wireframe, invalidate]);
   useEffect(() => {
-    bridge.current = { chooseNode:(partId,nodeId)=>{const part=parts.find(p=>p.id===partId);if(part)chooseNode(part,nodeId);}, dropPoint: (x, y) => {
+    bridge.current = { chooseNode:(partId,nodeId)=>{const part=parts.find(p=>p.id===partId);if(part)chooseNode(part,nodeId);}, armed:()=>!!armed, dropPoint: (x, y) => {
       const rect = gl.domElement.getBoundingClientRect(); const ray = new THREE.Raycaster();
       ray.setFromCamera(new THREE.Vector2((x - rect.left) / rect.width * 2 - 1, -(y - rect.top) / rect.height * 2 + 1), camera);
       const point = ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), new THREE.Vector3());

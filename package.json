@@ -17,7 +17,8 @@
     "enrich:images": "node scripts/enrich.mjs images",
     "prices:refresh": "node --env-file=.env scripts/apify-prices.mjs",
     "part:add": "node --env-file=.env scripts/add-part.mjs",
-    "nodes:image": "node --env-file=.env scripts/image-nodes.mjs"
+    "nodes:image": "node --env-file=.env scripts/image-nodes.mjs",
+    "model:generate": "node --env-file-if-exists=.env.local scripts/generate-model.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
