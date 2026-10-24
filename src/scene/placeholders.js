@@ -6,6 +6,7 @@
 import * as THREE from "three";
 
 export function kindOf(p) {
+  if (p.custom) return "custom";
   const n = p.name;
   if (/Controller|Commander|Programmer|Driver|Sensor/.test(n)) return "board";
   if (/Wheel|Flywheel/.test(n)) return "wheel";
@@ -106,6 +107,12 @@ const BUILDERS = {
     axis.add(mesh(cyl(0.06, 0.07, 12), ALU()));
     axis.rotation.x = Math.PI / 2;
     g.add(axis);
+  },
+  // an uploaded STL, drawn as-is and scaled to fit the build space (see lib/custom.js)
+  custom(g, p) {
+    const m = mesh(p.geometry, mat("#E8A869", 0.35, 0.45));
+    m.scale.setScalar(p.sceneScale);
+    g.add(m);
   },
   bit(g) {
     g.add(mesh(box(0.2, 0.08, 0.2), ALU()));

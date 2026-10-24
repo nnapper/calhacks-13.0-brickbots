@@ -1,6 +1,8 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { CSS2DRenderer } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 import { makePart, assignTargets } from "./placeholders.js";
+import { MeasureGuide } from "./MeasureGuide.js";
 
 const cssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 const ONE = new THREE.Vector3(1, 1, 1);
@@ -51,6 +53,13 @@ export class BuildScene {
     this.robot = new THREE.Group();
     this.scene.add(this.robot);
 
+    this.measure = new MeasureGuide();
+    this.measureOn = false;
+    this.scene.add(this.measure.group);
+    this.labelRenderer = new CSS2DRenderer();
+    this.labelRenderer.domElement.className = "scene-labels";
+    this.robotBox = new THREE.Box3();
+
     this.resizeObserver = new ResizeObserver(() => this.resize());
     this.bindPicking();
     this.applyTheme();
@@ -61,6 +70,7 @@ export class BuildScene {
   mount(el) {
     this.container = el;
     el.prepend(this.renderer.domElement);
+    this.renderer.domElement.after(this.labelRenderer.domElement);
     this.resizeObserver.disconnect();
     this.resizeObserver.observe(el);
     this.resize();
@@ -77,6 +87,7 @@ export class BuildScene {
     const el = this.container;
     if (!el || !el.clientWidth || !el.clientHeight) return;
     this.renderer.setSize(el.clientWidth, el.clientHeight, false);
+    this.labelRenderer.setSize(el.clientWidth, el.clientHeight);
     this.camera.aspect = el.clientWidth / el.clientHeight;
     this.camera.updateProjectionMatrix();
   }
@@ -90,7 +101,15 @@ export class BuildScene {
     this.scene.fog = new THREE.Fog(new THREE.Color(cssVar("--bg")), 7, 15);
     this.ground.material.opacity = dark ? 0.38 : 0.16;
     this.rim.color.set(cssVar("--cool"));
+    this.measure.setColors(cssVar("--muted"), cssVar("--cool"));
     this.setGlow(this.glowSku);
+  }
+
+  // Shows the ruler and dimension lines in the build view; unit is "mm" or "in".
+  setMeasure(on, unit) {
+    this.measureOn = on;
+    this.measure.setUnit(unit);
+    if (!on) this.measure.hide();
   }
 
   // build: { sku: qty } in insertion order; parts: sku -> part
@@ -209,8 +228,15 @@ export class BuildScene {
       }
     }
 
+    if (this.measureOn && this.mode === "build" && !this.sim) {
+      this.measure.update(this.robotBox.setFromObject(this.robot));
+    } else if (this.measure.group.visible) {
+      this.measure.hide();
+    }
+
     this.controls.update();
     this.renderer.render(this.scene, this.camera);
+    this.labelRenderer.render(this.scene, this.camera);
     for (const fn of this.frameListeners) fn();
   }
 

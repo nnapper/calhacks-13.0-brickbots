@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { BY_SKU, shortName } from "./lib/catalog.js";
+import { loadSavedCad, removeCad } from "./lib/custom.js";
 import { planBuild } from "./lib/planner.js";
 import { buildCheck, buildReducer, buildTotals } from "./lib/build.js";
 import { getScene } from "./scene/sceneInstance.js";
@@ -11,7 +12,8 @@ import PartsPanel from "./components/PartsPanel.jsx";
 import BuildPanel from "./components/BuildPanel.jsx";
 import Receipt from "./components/Receipt.jsx";
 import Balloons from "./components/Balloons.jsx";
-import { PlayIcon } from "./components/Icons.jsx";
+import { PlayIcon, RulerIcon } from "./components/Icons.jsx";
+import { LENGTH_UNITS, formatSize } from "./lib/units.js";
 
 const DROP_STAGGER_MS = 170;
 
@@ -25,22 +27,30 @@ export default function App() {
   const [selected, setSelected] = useState(null);
   const [hovered, setHovered] = useState(null);
   const [receiptOpen, setReceiptOpen] = useState(false);
+  const [liveVersion, setLiveVersion] = useState(0); // bumped when live prices replace catalog prices
   const [partsOpen, setPartsOpen] = useState(true);
   const [bomOpen, setBomOpen] = useState(true);
   const [simulating, setSimulating] = useState(false);
   const [dragOver, setDragOver] = useState(false);
   const [toast, setToast] = useState({ text: "", visible: false });
+  const [measureOn, setMeasureOn] = useState(true);
+  const [unit, setUnit] = useState("mm");
 
   const animateNext = useRef(false);
   const timers = useRef([]);
   const toastTimer = useRef(null);
 
-  const totals = useMemo(() => buildTotals(build), [build]);
+  const totals = useMemo(() => buildTotals(build), [build, liveVersion]);
   const check = useMemo(() => buildCheck(totals), [totals]);
   const focus = hovered ?? selected;
   const focusCallout = useMemo(
-    () => (focus && build[focus] ? [{ sku: focus, label: shortName(BY_SKU[focus].name), dx: 70, dy: -80 }] : []),
-    [build, focus]
+    () => {
+      if (!focus || !build[focus]) return [];
+      const part = BY_SKU[focus];
+      const size = formatSize(part, unit);
+      return [{ sku: focus, label: `${shortName(part.name)} · ${size ?? "size not listed"}`, dx: 70, dy: -80 }];
+    },
+    [build, focus, unit]
   );
 
   const showToast = useCallback((text) => {
@@ -61,6 +71,9 @@ export default function App() {
   useEffect(() => {
     getScene().applyTheme();
   }, [theme]);
+  useEffect(() => {
+    getScene().setMeasure(measureOn, unit);
+  }, [measureOn, unit]);
 
   const assemble = useCallback(
     (text) => {
@@ -106,6 +119,18 @@ export default function App() {
   };
 
   const closeReceipt = useCallback(() => setReceiptOpen(false), []);
+  const onLive = useCallback(() => setLiveVersion((v) => v + 1), []); // catalog changed: live prices or uploaded CAD
+
+  useEffect(() => {
+    loadSavedCad().then((parts) => parts.length && onLive());
+  }, [onLive]);
+
+  const removeCustom = async (sku) => {
+    dispatch({ type: "add", sku, delta: -(build[sku] ?? 0) });
+    if (selected === sku) setSelected(null);
+    await removeCad(sku);
+    onLive();
+  };
 
   return (
     <div className="app" data-view={view}>
@@ -144,13 +169,28 @@ export default function App() {
             <Stage mode="build" />
             <Balloons items={focusCallout} />
             <div className="hint">Drag to orbit · scroll to zoom · drop parts here</div>
-            <button className="simbtn" type="button" onClick={simulate} disabled={simulating || !totals.count}>
-              <PlayIcon />
-              {simulating ? "Driving…" : "Simulate drive"}
-            </button>
+            <div className="stagebar">
+              <button className="pillbtn" type="button" onClick={simulate} disabled={simulating || !totals.count}>
+                <PlayIcon />
+                {simulating ? "Driving…" : "Simulate drive"}
+              </button>
+              <div className="measurectl" role="group" aria-label="Measurement guide">
+                <button className="pillbtn" type="button" aria-pressed={measureOn} onClick={() => setMeasureOn((on) => !on)}>
+                  <RulerIcon />
+                  Measure
+                </button>
+                {measureOn && (
+                  <div className="unitswitch">
+                    {LENGTH_UNITS.map((u) => (
+                      <button key={u} type="button" aria-pressed={unit === u} onClick={() => setUnit(u)}>{u}</button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
           </section>
 
-          <PartsPanel onAdd={addPart} collapsed={!partsOpen} onToggle={() => setPartsOpen((o) => !o)} />
+          <PartsPanel onAdd={addPart} onLive={onLive} onRemoveCustom={removeCustom} version={liveVersion} unit={unit} collapsed={!partsOpen} onToggle={() => setPartsOpen((o) => !o)} />
           <BuildPanel
             build={build}
             totals={totals}
@@ -166,7 +206,7 @@ export default function App() {
         </section>
       )}
 
-      <Receipt open={receiptOpen} build={build} buildName={prompt} onClose={closeReceipt} onToast={showToast} />
+      <Receipt open={receiptOpen} build={build} buildName={prompt} onClose={closeReceipt} onToast={showToast} onLive={onLive} />
       <div className={`toast${toast.visible ? " show" : ""}`} role="status">{toast.text}</div>
     </div>
   );
