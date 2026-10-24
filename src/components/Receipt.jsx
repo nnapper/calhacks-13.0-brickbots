@@ -1,14 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { BY_SKU, PRICES_CHECKED, bestOfferIndex, money, shortName } from "../lib/catalog.js";
 import { bomOrder } from "../lib/build.js";
+import { useLive } from "../hooks/useLive.js";
 import { CloseIcon } from "./Icons.jsx";
 
 const STOCK = { true: "In stock", false: "Out of stock", null: "Stock unknown" };
 
 // Where-to-buy receipt: every part in the build with each seller's price, defaulting to the best offer.
-export default function Receipt({ open, build, buildName, onClose, onToast }) {
+export default function Receipt({ open, build, buildName, onClose, onToast, onLive }) {
   const [choice, setChoice] = useState({}); // sku -> index into part.offers
   const closeRef = useRef(null);
+  const [live, refreshLive] = useLive(onLive);
 
   useEffect(() => {
     if (!open) return;
@@ -26,12 +28,13 @@ export default function Receipt({ open, build, buildName, onClose, onToast }) {
         const chosen = choice[sku] ?? best;
         return { sku, qty, part, best, chosen, offer: part.offers[chosen] };
       }),
-    [build, choice]
+    [build, choice, live]
   );
 
   const total = lines.reduce((s, l) => s + l.offer.priceUsd * l.qty, 0);
+  const customLines = lines.filter((l) => l.part.custom);
   const stores = Object.values(
-    lines.reduce((acc, l) => {
+    lines.filter((l) => !l.part.custom).reduce((acc, l) => {
       const s = (acc[l.offer.store] ??= { store: l.offer.store, items: 0, subtotal: 0, lines: [] });
       s.items += l.qty;
       s.subtotal += l.offer.priceUsd * l.qty;
@@ -47,8 +50,11 @@ export default function Receipt({ open, build, buildName, onClose, onToast }) {
       ...stores.flatMap((s) => [
         "",
         `${s.store} (${s.items} items, ${money(s.subtotal)})`,
-        ...s.lines.map((l) => `  ${l.qty}x ${shortName(l.part.name)} [${l.sku}] ${money(l.offer.price, l.offer.currency)} each  ${l.offer.url}`),
+        ...s.lines.map((l) => `  ${l.qty}x ${shortName(l.part.name)} [${l.sku}] ${money(l.offer.price, l.offer.currency)} each  ${l.offer.url ?? "custom CAD part"}`),
       ]),
+      ...(customLines.length
+        ? ["", "Your own CAD parts (not sold, no price)", ...customLines.map((l) => `  ${l.qty}x ${l.part.name}`)]
+        : []),
       "",
       `Total ${money(total)} before shipping and tax`,
     ].join("\n");
@@ -83,7 +89,7 @@ export default function Receipt({ open, build, buildName, onClose, onToast }) {
                   <span className="no">{n + 1}</span>
                   <span className="rn" title={l.part.name}>{shortName(l.part.name)}</span>
                   <span className="qty">×{l.qty}</span>
-                  <span className="amt">{money(l.offer.priceUsd * l.qty)}</span>
+                  <span className="amt">{l.part.custom ? "×" : money(l.offer.priceUsd * l.qty)}</span>
                 </div>
                 <ul className="offers">
                   {l.part.offers.map((o, j) => {
@@ -103,10 +109,16 @@ export default function Receipt({ open, build, buildName, onClose, onToast }) {
                           {o.suspect && <span className="tag warn">Price looks off</span>}
                         </label>
                         <span className="each">
-                          {money(o.price, o.currency)}
-                          {o.currency !== "USD" && <small>≈ {money(o.priceUsd)}</small>}
+                          {l.part.custom ? (
+                            "×"
+                          ) : (
+                            <>
+                              {money(o.price, o.currency)}
+                              {o.currency !== "USD" && <small>≈ {money(o.priceUsd)}</small>}
+                            </>
+                          )}
                         </span>
-                        <a href={o.url} target="_blank" rel="noreferrer">Buy ↗</a>
+                        {o.url ? <a href={o.url} target="_blank" rel="noreferrer">Buy ↗</a> : <span className="mono">Make it</span>}
                       </li>
                     );
                   })}
@@ -131,8 +143,17 @@ export default function Receipt({ open, build, buildName, onClose, onToast }) {
 
         <div className="df">
           <div className="sum big"><span>Total</span><b>{money(total)}</b></div>
-          <p className="fine">Before shipping and tax, which each store adds at its own checkout. Foreign prices are converted to USD.</p>
+          {live.text && <p className="fine" role="status">{live.text}</p>}
+          <p className="fine">Before shipping and tax, which each store adds at its own checkout. Foreign prices are converted to USD.{customLines.length > 0 && " × marks your own CAD parts, which aren't priced or included in the total."}</p>
           <div className="dactions">
+            <button
+              className="ghost"
+              type="button"
+              disabled={live.busy || !lines.some((l) => !l.part.custom)}
+              onClick={() => refreshLive(lines.filter((l) => !l.part.custom).map((l) => l.sku), { force: true }).then(() => setChoice({}))}
+            >
+              {live.busy ? "Checking…" : "Refresh live prices"}
+            </button>
             {!allBest && (
               <button className="ghost" type="button" onClick={() => setChoice({})}>Use best prices</button>
             )}

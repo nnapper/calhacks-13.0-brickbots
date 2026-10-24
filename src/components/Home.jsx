@@ -28,15 +28,11 @@ export default function Home({ build, onStart }) {
   return (
     <section className="home">
       <div className="copy">
-        <div className="eyebrow">
-          <i />
-          {PARTS.length} real robot parts, real prices
-        </div>
         <h1>
-          Describe a robot. <em>Get every part</em> to build it.
+          Building blocks for <em>real robots.</em>
         </h1>
         <p className="lede">
-          BrickBots assembles your idea in 3D from real, in-stock parts, adds up the cost, and shows you where to buy each one.
+          Snap together parts that are guaranteed to fit. BrickBots tracks your total as you build and finds the best price for every piece, all in one place.
         </p>
         <form
           className="ask"

@@ -48,8 +48,8 @@ export default function BuildPanel({ build, totals, check, selected, onSelect, o
                     >
                       {p.img ? <img src={p.img} alt="" /> : <span className="noimg" />}
                       <div className="rn" title={p.name}>{shortName(p.name)}</div>
-                      <div className="lp">{money(p.price * qty)}</div>
-                      <div className="rd">{detailName(p.name) || `${money(p.price)} each`}</div>
+                      <div className="lp">{p.custom ? "×" : money(p.price * qty)}</div>
+                      <div className="rd">{detailName(p.name) || (p.custom ? "your CAD, no price" : `${money(p.price)} each`)}</div>
                       <div className="step" onClick={(e) => e.stopPropagation()}>
                         <button type="button" aria-label="Remove one" onClick={() => onAdd(sku, -1)}>−</button>
                         <span>{qty}</span>

@@ -9,6 +9,8 @@
     "catalog:discover": "node --env-file=.env scripts/catalog.mjs discover",
     "catalog:scrape": "node --env-file=.env scripts/catalog.mjs scrape",
     "enrich:dims": "node scripts/enrich.mjs dims",
+    "cad:dims": "node scripts/cad-dims.mjs",
+    "catalog:update": "npm run catalog:scrape && npm run enrich:images && npm run enrich:dims && npm run cad:dims && npm run prices:refresh",
     "enrich:images": "node scripts/enrich.mjs images",
     "prices:refresh": "node --env-file=.env scripts/apify-prices.mjs",
     "part:add": "node --env-file=.env scripts/add-part.mjs"
@@ -20,6 +22,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.3",
+    "fflate": "^0.8.2",
+    "occt-import-js": "^0.0.22",
     "vite": "^5.4.10"
   }
 }

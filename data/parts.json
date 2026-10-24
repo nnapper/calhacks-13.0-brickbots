@@ -81,7 +81,13 @@
         "price_usd": 54.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      131.2,
+      37.5,
+      37.4
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/5203-2402-0001.zip"
   },
   "https://www.gobilda.com/5203-series-yellow-jacket-planetary-gear-motor-71-2-1-ratio-24mm-length-8mm-rex-shaft-84-rpm-3-3-5v-encoder/": {
     "retailer": "goBILDA",
@@ -165,7 +171,13 @@
         "price_usd": 54.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      148.8,
+      37.5,
+      37.4
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/5203-2402-0071.zip"
   },
   "https://www.gobilda.com/5204-series-yellow-jacket-planetary-gear-motor-19-2-1-ratio-80mm-length-8mm-rex-shaft-312-rpm-3-3-5v-encoder/": {
     "retailer": "goBILDA",
@@ -247,7 +259,13 @@
         "price_usd": 56.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      196.1,
+      37.5,
+      37.4
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/5204-8002-0019.zip"
   },
   "https://www.gobilda.com/5202-series-yellow-jacket-planetary-gear-motor-3-7-1-ratio-24mm-length-6mm-d-shaft-1620-rpm-36mm-gearbox-3-3-5v-encoder/": {
     "retailer": "goBILDA",
@@ -333,7 +351,13 @@
         "price_usd": 54.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      133.2,
+      37.5,
+      37.4
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/5202-2402-0003.zip"
   },
   "https://www.gobilda.com/1105-series-round-end-pattern-plate-2-hole-56mm-length/": {
     "retailer": "goBILDA",
@@ -403,7 +427,13 @@
         "price_usd": 2.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      55.8,
+      32,
+      2.5
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1105-0002-0056.zip"
   },
   "https://www.gobilda.com/1105-series-round-end-pattern-plate-6-hole-152mm-length/": {
     "retailer": "goBILDA",
@@ -478,7 +508,13 @@
         "price_usd": 4.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      151.8,
+      32,
+      2.5
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1105-0006-0152.zip"
   },
   "https://www.gobilda.com/1116-series-grid-plate-3-x-5-hole-24-x-40mm/": {
     "retailer": "goBILDA",
@@ -550,7 +586,13 @@
         "price_usd": 1.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      40,
+      24,
+      2.5
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1116-0024-0040.zip"
   },
   "https://www.gobilda.com/1126-series-steel-flat-bracket-1-1-2-pack/": {
     "retailer": "goBILDA",
@@ -625,7 +667,13 @@
         "price_usd": 2.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      56,
+      14,
+      2.5
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1126-0001-0001.zip"
   },
   "https://www.gobilda.com/1140-series-aluminum-baseplate-6mm-thickness-144mm-diameter/": {
     "retailer": "goBILDA",
@@ -698,7 +746,13 @@
         "price_usd": 15.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      144,
+      144,
+      6
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1140-0006-0144.zip"
   },
   "https://www.gobilda.com/2902-series-hinge-5-hole-38mm-length/": {
     "retailer": "goBILDA",
@@ -772,7 +826,13 @@
         "price_usd": 7.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      38,
+      23,
+      7
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/2902-0005-0038.zip"
   },
   "https://www.gobilda.com/plastic-hinge-block-25-pack/": {
     "retailer": "goBILDA",
@@ -845,7 +905,13 @@
         "price_usd": 9.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      15.9,
+      8,
+      8
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/2902-0025-0001.zip"
   },
   "https://www.gobilda.com/grid-link-for-8mm-pitch-steel-chain-6-pack/": {
     "retailer": "goBILDA",
@@ -921,7 +987,13 @@
         "price_usd": 7.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      23.9,
+      14.9,
+      8.4
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3308-0008-0003.zip"
   },
   "https://www.gobilda.com/2mm-pitch-gt2-timing-belt-pulley-starter-pack-8mm-rex-bore/": {
     "retailer": "goBILDA",
@@ -996,7 +1068,13 @@
         "price_usd": 239.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      14.5,
+      11,
+      10
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3201-0013-0001.zip"
   },
   "https://www.gobilda.com/5000-series-12vdc-motor-with-8mm-rex-pinion-shaft/": {
     "retailer": "goBILDA",
@@ -1083,7 +1161,13 @@
         "price_usd": 29.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      114,
+      42.8,
+      42.8
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/5000-0002-4008.zip"
   },
   "https://www.gobilda.com/5303-series-saturn-planetary-gear-motor-50-9-1-ratio-24mm-length-8mm-rex-shaft-360-rpm-3-3-5v-encoder/": {
     "retailer": "goBILDA",
@@ -1179,7 +1263,13 @@
         "price_usd": 59.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      161.3,
+      38.5,
+      38.3
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/5303-2402-0051.zip"
   },
   "https://www.gobilda.com/5103-series-planetary-gearbox-3-7-1-ratio-24mm-length-8mm-rex-shaft/": {
     "retailer": "goBILDA",
@@ -1253,7 +1343,8 @@
         "price_usd": 34.99,
         "suspect": false
       }
-    ]
+    ],
+    "cad_missing": true
   },
   "https://www.gobilda.com/1x5a-motor-controller-6-24v-input-9a-burst/": {
     "retailer": "goBILDA",
@@ -1342,7 +1433,13 @@
         "price_usd": 29.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      133.5,
+      128.2,
+      11.4
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3105-0101-0005.zip"
   },
   "https://www.gobilda.com/1400-series-1-side-2-post-clamping-mount-36mm-bore/": {
     "retailer": "goBILDA",
@@ -1416,7 +1513,13 @@
         "price_usd": 8.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      46.2,
+      45,
+      8
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1400-0032-0036.zip"
   },
   "https://www.gobilda.com/1201-series-quad-block-pattern-mount-43-5/": {
     "retailer": "goBILDA",
@@ -1489,7 +1592,13 @@
         "price_usd": 6.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      45.5,
+      43,
+      12
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1201-0043-0005.zip"
   },
   "https://www.gobilda.com/axon-max-servo-mk2/": {
     "retailer": "goBILDA",
@@ -1595,7 +1704,13 @@
         "price_usd": 99.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      54,
+      42.9,
+      20
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/2004-0025-0002.zip"
   },
   "https://www.gobilda.com/axon-max-1-3-2-overdrive-kit/": {
     "retailer": "goBILDA",
@@ -1676,7 +1791,13 @@
         "price_usd": 49.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      85,
+      73.6,
+      42
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3221-0016-0003.zip"
   },
   "https://www.gobilda.com/1800-series-servo-pattern-plate-for-standard-size-servos/": {
     "retailer": "goBILDA",
@@ -1753,7 +1874,13 @@
         "price_usd": 5.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      109.2,
+      40,
+      3
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1800-0040-0001.zip"
   },
   "https://www.gobilda.com/compact-servoblock-27mm-width-for-standard-size-h25t-spline-servo-hub-shaft/": {
     "retailer": "goBILDA",
@@ -1834,7 +1961,13 @@
         "price_usd": 29.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      59.7,
+      32,
+      30.3
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3217-2701-2501.zip"
   },
   "https://www.gobilda.com/1900-series-single-servo-arm-25-tooth-spline-32mm-length/": {
     "retailer": "goBILDA",
@@ -1909,7 +2042,13 @@
         "price_usd": 4.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      41,
+      10,
+      7.8
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1900-0025-0104.zip"
   },
   "https://www.gobilda.com/2305-series-brass-mod-0-8-servo-gear-25-tooth-spline-24-tooth/": {
     "retailer": "goBILDA",
@@ -1986,7 +2125,13 @@
         "price_usd": 10.49,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      20.8,
+      20.8,
+      6
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/2305-0025-0024.zip"
   },
   "https://www.gobilda.com/gripforce-mecanum-wheel-roller-pack-40a-durometer-4-rollers/": {
     "retailer": "goBILDA",
@@ -2053,7 +2198,8 @@
         "price_usd": 14.99,
         "suspect": false
       }
-    ]
+    ],
+    "cad_missing": true
   },
   "https://www.gobilda.com/servo-commander/": {
     "retailer": "goBILDA",
@@ -2133,7 +2279,13 @@
         "price_usd": 29.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      42.5,
+      40,
+      32.1
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3109-0004-0002.zip"
   },
   "https://www.gobilda.com/zinc-plated-steel-socket-head-screw-m3-x-0-5mm-6mm-length-6-pack/": {
     "retailer": "goBILDA",
@@ -2207,7 +2359,13 @@
         "price_usd": 2.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      9,
+      5.5,
+      5.5
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/2800-0003-0006.zip"
   },
   "https://www.gobilda.com/3624-series-omni-wheel-8mm-rex-bore-32mm-diameter-50a-durometer/": {
     "retailer": "goBILDA",
@@ -2279,7 +2437,13 @@
         "price_usd": 14.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      32,
+      32,
+      14.4
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3624-4008-0032.zip"
   },
   "https://www.gobilda.com/gripforce-gecko-wheel-8mm-rex-bore-32mm-diameter-30a-durometer/": {
     "retailer": "goBILDA",
@@ -2353,7 +2517,13 @@
         "price_usd": 6.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      32,
+      31.9,
+      16
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3613-4008-0032.zip"
   },
   "https://www.gobilda.com/hogback-traction-wheel-72mm-diameter-50a-durometer/": {
     "retailer": "goBILDA",
@@ -2426,7 +2596,13 @@
         "price_usd": 8.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      72,
+      71.7,
+      24
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3626-0014-0072.zip"
   },
   "https://www.gobilda.com/3601-series-rhino-wheel-14mm-bore-72mm-diameter/": {
     "retailer": "goBILDA",
@@ -2501,7 +2677,13 @@
         "price_usd": 7.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      72,
+      71.5,
+      32
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3601-0014-0072.zip"
   },
   "https://www.gobilda.com/steel-flywheel-60mm-diameter-115g-551-g-cm/": {
     "retailer": "goBILDA",
@@ -2574,7 +2756,13 @@
         "price_usd": 12.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      59.9,
+      59.8,
+      6
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3628-0014-0060.zip"
   },
   "https://www.gobilda.com/wasteland-wheel-144mm-diameter-52mm-width/": {
     "retailer": "goBILDA",
@@ -2649,7 +2837,13 @@
         "price_usd": 24.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      144,
+      144,
+      52
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3616-0014-0144.zip"
   },
   "https://www.gobilda.com/3607-series-disc-wheel-14mm-bore-48mm-diameter-black-2-pack/": {
     "retailer": "goBILDA",
@@ -2721,7 +2915,13 @@
         "price_usd": 3.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      47.9,
+      47.9,
+      5.7
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3607-0014-0048.zip"
   },
   "https://www.gobilda.com/v-wheel-standoff-kit-24mm-center-height/": {
     "retailer": "goBILDA",
@@ -2794,7 +2994,13 @@
         "price_usd": 16.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      42,
+      42,
+      33
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3205-0001-0002.zip"
   },
   "https://www.gobilda.com/3615-series-boot-wheel-8mm-rex-bore-48mm-diameter-30a-durometer/": {
     "retailer": "goBILDA",
@@ -2868,7 +3074,13 @@
         "price_usd": 4.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      48,
+      46.1,
+      8
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3615-4008-0048.zip"
   },
   "https://www.gobilda.com/swivel-caster-wheel-m8-x-1-25mm-male-stud/": {
     "retailer": "goBILDA",
@@ -2943,7 +3155,13 @@
         "price_usd": 7.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      80.5,
+      63.3,
+      33.3
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3621-0001-0001.zip"
   },
   "https://www.gobilda.com/2405-series-track-idler-wheel-14mm-bore-54mm-diameter-2-pack/": {
     "retailer": "goBILDA",
@@ -3017,7 +3235,13 @@
         "price_usd": 5.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      54,
+      53.6,
+      8
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/2405-0014-0054.zip"
   },
   "https://www.gobilda.com/2303-series-steel-mod-0-8-pinion-gear-8mm-rex-bore-20-tooth/": {
     "retailer": "goBILDA",
@@ -3092,7 +3316,13 @@
         "price_usd": 10.59,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      17.6,
+      17.6,
+      14
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/2303-4008-0020.zip"
   },
   "https://www.gobilda.com/2302-series-aluminum-mod-0-8-hub-mount-gear-14mm-bore-48-tooth/": {
     "retailer": "goBILDA",
@@ -3168,7 +3398,13 @@
         "price_usd": 9.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      40,
+      40,
+      6
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/2302-0014-0048.zip"
   },
   "https://www.gobilda.com/2-1-ratio-bevel-gear-set-8mm-rex-bore-pinion-gear/": {
     "retailer": "goBILDA",
@@ -3247,7 +3483,13 @@
         "price_usd": 31.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      52,
+      41.9,
+      25.5
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3204-0002-0002.zip"
   },
   "https://www.gobilda.com/acetal-mod-0-8-gear-rack-131-tooth-41-hole/": {
     "retailer": "goBILDA",
@@ -3322,7 +3564,13 @@
         "price_usd": 7.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      328,
+      11.2,
+      4
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/2311-0001-0131.zip"
   },
   "https://www.gobilda.com/worm-gear-set-28-1-ratio-8mm-rex-bore-worm/": {
     "retailer": "goBILDA",
@@ -3398,7 +3646,13 @@
         "price_usd": 34.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      51.1,
+      39.2,
+      15
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3204-0001-0002.zip"
   },
   "https://www.gobilda.com/1101-series-u-beam-1-hole-8mm-length/": {
     "retailer": "goBILDA",
@@ -3472,7 +3726,13 @@
         "price_usd": 1.29,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      12,
+      12,
+      8
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1101-0001-0008.zip"
   },
   "https://www.gobilda.com/1103-series-l-beam-1-hole-8mm-length-2-pack/": {
     "retailer": "goBILDA",
@@ -3544,7 +3804,13 @@
         "price_usd": 2.09,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      12,
+      12,
+      8
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1103-0001-0008.zip"
   },
   "https://www.gobilda.com/1102-series-flat-beam-2-hole-16mm-length-2-pack/": {
     "retailer": "goBILDA",
@@ -3619,7 +3885,13 @@
         "price_usd": 2.29,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      15.9,
+      8,
+      4
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1102-0002-0016.zip"
   },
   "https://www.gobilda.com/1106-series-square-beam-2-hole-16mm-length/": {
     "retailer": "goBILDA",
@@ -3692,7 +3964,13 @@
         "price_usd": 2.59,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      16,
+      8,
+      8
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1106-0002-0016.zip"
   },
   "https://www.gobilda.com/1121-series-low-side-u-channel-1-hole-48mm-length/": {
     "retailer": "goBILDA",
@@ -3767,7 +4045,13 @@
         "price_usd": 3.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      48,
+      48,
+      12
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1121-0001-0048.zip"
   },
   "https://www.gobilda.com/1120-series-u-channel-1-hole-48mm-length/": {
     "retailer": "goBILDA",
@@ -3840,7 +4124,13 @@
         "price_usd": 4.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      48,
+      48,
+      48
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1120-0001-0048.zip"
   },
   "https://www.gobilda.com/1143-series-mini-low-side-u-channel-1-hole-48mm-length/": {
     "retailer": "goBILDA",
@@ -3913,7 +4203,13 @@
         "price_usd": 2.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      48,
+      32,
+      12
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1143-0001-0048.zip"
   },
   "https://www.gobilda.com/1122-series-rail-channel-1-hole-48mm-length/": {
     "retailer": "goBILDA",
@@ -3987,7 +4283,13 @@
         "price_usd": 4.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      71.9,
+      48,
+      12
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1122-0001-0048.zip"
   },
   "https://www.gobilda.com/1108-series-flat-pattern-bracket-1-1/": {
     "retailer": "goBILDA",
@@ -4062,7 +4364,13 @@
         "price_usd": 2.49,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      55.9,
+      40,
+      2.5
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1108-0001-0001.zip"
   },
   "https://www.gobilda.com/threaded-steel-l-bracket-5-hole-4-pack/": {
     "retailer": "goBILDA",
@@ -4140,7 +4448,13 @@
         "price_usd": 7.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      40,
+      12,
+      12
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1147-0001-0005.zip"
   },
   "https://www.gobilda.com/1205-series-dual-block-mount-1-5-2-pack/": {
     "retailer": "goBILDA",
@@ -4214,7 +4528,13 @@
         "price_usd": 6.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      43,
+      12,
+      9.5
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1205-0001-0005.zip"
   },
   "https://www.gobilda.com/1221-series-2-side-2-post-pattern-mount-32-1/": {
     "retailer": "goBILDA",
@@ -4290,7 +4610,13 @@
         "price_usd": 6.49,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      38,
+      32,
+      8.5
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1221-0032-0001.zip"
   },
   "https://www.gobilda.com/1200-series-1-side-2-post-pattern-mount-24-1/": {
     "retailer": "goBILDA",
@@ -4364,7 +4690,13 @@
         "price_usd": 6.49,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      40,
+      31.8,
+      8
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1200-0024-0001.zip"
   },
   "https://www.gobilda.com/1202-series-angle-pattern-mount-1-3/": {
     "retailer": "goBILDA",
@@ -4439,7 +4771,13 @@
         "price_usd": 8.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      40,
+      40,
+      32
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1202-0001-0003.zip"
   },
   "https://www.gobilda.com/1204-series-gusseted-angle-mount-1-1-2-pack/": {
     "retailer": "goBILDA",
@@ -4513,7 +4851,13 @@
         "price_usd": 4.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      15,
+      15,
+      14
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1204-0001-0001.zip"
   },
   "https://www.gobilda.com/1116-series-grid-plate-7-x-7-hole-56-x-56mm/": {
     "retailer": "goBILDA",
@@ -4586,7 +4930,13 @@
         "price_usd": 2.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      56,
+      56,
+      2.5
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1116-0056-0056.zip"
   },
   "https://www.gobilda.com/1123-series-pattern-plate-1-x-3-hole-43-x-96mm/": {
     "retailer": "goBILDA",
@@ -4658,7 +5008,13 @@
         "price_usd": 3.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      96,
+      43,
+      2.5
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1123-0043-0096.zip"
   },
   "https://www.gobilda.com/1108-series-flat-pattern-bracket-2-1/": {
     "retailer": "goBILDA",
@@ -4733,7 +5089,13 @@
         "price_usd": 2.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      81.8,
+      53.9,
+      2.5
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1108-0002-0001.zip"
   },
   "https://www.gobilda.com/plastic-hinge-2-pack/": {
     "retailer": "goBILDA",
@@ -4806,7 +5168,13 @@
         "price_usd": 4.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      34,
+      23.9,
+      8
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/2902-0003-0001.zip"
   },
   "https://www.gobilda.com/1203-series-block-mount-1-1-4-pack/": {
     "retailer": "goBILDA",
@@ -4879,7 +5247,13 @@
         "price_usd": 5.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      11,
+      9.5,
+      6
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1203-0001-0001.zip"
   },
   "https://www.gobilda.com/8mm-pitch-acetal-hub-mount-sprocket-14mm-bore-18-tooth/": {
     "retailer": "goBILDA",
@@ -4953,7 +5327,13 @@
         "price_usd": 2.39,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      49.2,
+      48.7,
+      2.4
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3311-0014-0018.zip"
   },
   "https://www.gobilda.com/5mm-pitch-htd-timing-belt-pulley-starter-pack-8mm-rex-bore/": {
     "retailer": "goBILDA",
@@ -5030,7 +5410,13 @@
         "price_usd": 209.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      18,
+      7,
+      6.9
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3201-0012-0001.zip"
   },
   "https://www.gobilda.com/5303-series-saturn-planetary-gear-motor-99-5-1-ratio-24mm-length-8mm-rex-shaft-180-rpm-3-3-5v-encoder/": {
     "retailer": "goBILDA",
@@ -5124,7 +5510,13 @@
         "price_usd": 59.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      161.3,
+      38.5,
+      38.3
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/5303-2402-0100.zip"
   },
   "https://www.gobilda.com/5000-series-12vdc-motor/": {
     "retailer": "goBILDA",
@@ -5206,7 +5598,8 @@
         "price_usd": 19.99,
         "suspect": false
       }
-    ]
+    ],
+    "cad_missing": true
   },
   "https://www.gobilda.com/5103-series-planetary-gearbox-13-7-1-ratio-24mm-length-8mm-rex-shaft/": {
     "retailer": "goBILDA",
@@ -5279,7 +5672,8 @@
         "price_usd": 34.99,
         "suspect": false
       }
-    ]
+    ],
+    "cad_missing": true
   },
   "https://www.gobilda.com/1x20a-motor-controller/": {
     "retailer": "goBILDA",
@@ -5365,7 +5759,13 @@
         "price_usd": 39.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      63,
+      40,
+      12
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3105-0101-0020.zip"
   },
   "https://www.gobilda.com/1305-series-thru-hole-clamping-hub-32mm-bore/": {
     "retailer": "goBILDA",
@@ -5438,7 +5838,13 @@
         "price_usd": 6.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      47.1,
+      40,
+      8
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1305-0032-0032.zip"
   },
   "https://www.gobilda.com/1201-series-quad-block-pattern-mount-24-1/": {
     "retailer": "goBILDA",
@@ -5512,7 +5918,13 @@
         "price_usd": 6.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      43,
+      24,
+      12
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1201-0024-0001.zip"
   },
   "https://www.gobilda.com/2000-series-dual-mode-servo-25-3-speed/": {
     "retailer": "goBILDA",
@@ -5615,7 +6027,13 @@
         "price_usd": 36.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      54.3,
+      44.1,
+      20.2
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/2000-0025-0003.zip"
   },
   "https://www.gobilda.com/shark-3-servo-gearbox-0-42-sec-60-24-rpm-1416-oz-in-torque-840-rotation/?sku=3216-0001-0003": {
     "retailer": "goBILDA",
@@ -5710,7 +6128,13 @@
         "price_usd": 289.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      106.3,
+      73.6,
+      50.6
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3216-0001-0003.zip"
   },
   "https://www.gobilda.com/servoblock-standard-size-25-tooth-spline-hub-shaft/": {
     "retailer": "goBILDA",
@@ -5782,7 +6206,13 @@
         "price_usd": 34.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      63,
+      54.2,
+      43
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3202-0001-2501.zip"
   },
   "https://www.gobilda.com/1802-series-servo-frame-43mm-width-for-standard-size-servos/": {
     "retailer": "goBILDA",
@@ -5858,7 +6288,13 @@
         "price_usd": 7.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      73,
+      55.1,
+      22.7
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1802-0043-0001.zip"
   },
   "https://www.gobilda.com/plastic-servo-hub-h25t-spline-32mm-diameter/": {
     "retailer": "goBILDA",
@@ -5934,7 +6370,13 @@
         "price_usd": 1.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      31.9,
+      31.8,
+      8
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/1921-0025-0032.zip"
   },
   "https://www.gobilda.com/2305-series-brass-mod-0-8-servo-gear-25-tooth-spline-12-tooth/": {
     "retailer": "goBILDA",
@@ -6011,7 +6453,13 @@
         "price_usd": 8.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      11.2,
+      11.2,
+      6
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/2305-0025-0012.zip"
   },
   "https://www.gobilda.com/servo-programmer-for-2000-series-dual-mode-servo/": {
     "retailer": "goBILDA",
@@ -6096,7 +6544,8 @@
         "price_usd": 12.99,
         "suspect": false
       }
-    ]
+    ],
+    "cad_missing": true
   },
   "https://www.gobilda.com/gripforce-mecanum-wheel-roller-pack-40a/": {
     "retailer": "goBILDA",
@@ -6164,7 +6613,8 @@
         "price_usd": 49.99,
         "suspect": false
       }
-    ]
+    ],
+    "cad_missing": true
   },
   "https://www.gobilda.com/servo-gear-set-for-2000-series-torque-servo-v3-0/": {
     "retailer": "goBILDA",
@@ -6229,7 +6679,8 @@
         "price_usd": 11.99,
         "suspect": false
       }
-    ]
+    ],
+    "cad_missing": true
   },
   "https://www.gobilda.com/48mm-omni-wheel-8mm-rex-bore-50a-durometer/": {
     "retailer": "goBILDA",
@@ -6304,7 +6755,13 @@
         "price_usd": 16.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      47.8,
+      47.8,
+      18
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3624-4008-0048.zip"
   },
   "https://www.gobilda.com/gripforce-gecko-wheel-14mm-bore-72mm-diameter-30a-durometer/": {
     "retailer": "goBILDA",
@@ -6379,7 +6836,13 @@
         "price_usd": 8.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      72,
+      72,
+      24
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3613-0014-0072.zip"
   },
   "https://www.gobilda.com/hogback-traction-wheel-96mm-diameter-50a-durometer/": {
     "retailer": "goBILDA",
@@ -6451,7 +6914,13 @@
         "price_usd": 9.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      96,
+      95.8,
+      24
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3626-0014-0096.zip"
   },
   "https://www.gobilda.com/3601-series-rhino-wheel-14mm-bore-96mm-diameter/": {
     "retailer": "goBILDA",
@@ -6523,7 +6992,13 @@
         "price_usd": 8.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      96,
+      95.3,
+      32
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3601-0014-0096.zip"
   },
   "https://www.gobilda.com/steel-flywheel-82mm-diameter-152g-1651-g-cm/": {
     "retailer": "goBILDA",
@@ -6595,7 +7070,13 @@
         "price_usd": 15.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      82,
+      82,
+      6
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3628-0032-0082.zip"
   },
   "https://www.gobilda.com/wasteland-wheel-192mm-diameter-72mm-width/": {
     "retailer": "goBILDA",
@@ -6669,7 +7150,13 @@
         "price_usd": 39.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      192,
+      192,
+      72
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3616-0014-0192.zip"
   },
   "https://www.gobilda.com/3607-series-disc-wheel-14mm-bore-72mm-diameter-black-2-pack/": {
     "retailer": "goBILDA",
@@ -6741,7 +7228,13 @@
         "price_usd": 4.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      71.8,
+      71.8,
+      5.7
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3607-0014-0072.zip"
   },
   "https://www.gobilda.com/v-wheel-standoff-kit-13mm-center-height/": {
     "retailer": "goBILDA",
@@ -6812,7 +7305,13 @@
         "price_usd": 16.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      42,
+      42,
+      22
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3205-0001-0003.zip"
   },
   "https://www.gobilda.com/intake-roller-wheel-8mm-rex-16mm-diameter-16mm-width-30a-durometer-8-pack/": {
     "retailer": "goBILDA",
@@ -6884,7 +7383,13 @@
         "price_usd": 12.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      17,
+      16.9,
+      16
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3618-4008-0016.zip"
   },
   "https://www.gobilda.com/idler-wheel-kit-for-2400-series-tracks-1-1-2-pack/": {
     "retailer": "goBILDA",
@@ -6956,7 +7461,13 @@
         "price_usd": 13.99,
         "suspect": false
       }
-    ]
+    ],
+    "bbox_mm": [
+      54,
+      53.6,
+      24
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/2407-0001-0001.zip"
   },
   "generic:drv8833": {
     "retailer": null,
