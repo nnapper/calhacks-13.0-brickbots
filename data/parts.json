@@ -7541,7 +7541,8 @@
         "price_usd": 10.95,
         "suspect": false
       }
-    ]
+    ],
+    "needs_dimensions": true
   },
   "generic:tt-motor": {
     "retailer": null,
@@ -7592,7 +7593,8 @@
         "price_usd": 3.48,
         "suspect": false
       }
-    ]
+    ],
+    "needs_dimensions": true
   },
   "generic:hc-sr04": {
     "retailer": null,
@@ -7667,6 +7669,138 @@
         "price_usd": 1,
         "suspect": true
       }
-    ]
+    ],
+    "needs_dimensions": true
+  },
+  "https://www.gobilda.com/3601-series-rhino-wheel-32mm-bore-96mm-diameter/": {
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/3601-series-rhino-wheel-32mm-bore-96mm-diameter/",
+    "category": "3601-series-rhino-wheel-32mm-bore-96mm-diameter",
+    "name": "3601 Series Rhino Wheel (32mm Bore, 96mm Diameter)",
+    "sku": "3601-0032-0096",
+    "description": "These wheels have an overall diameter of 96mm and a width of 32mm. The offset center gives you 8mm from mounting surface to edge on one side and 16mm on the other which allows you to change your track-width by flipping the wheel.",
+    "in_stock": true,
+    "prices": [
+      {
+        "price": 8.99,
+        "currency": "USD",
+        "min_qty": 1
+      }
+    ],
+    "dimensions_mm": {
+      "length": 96,
+      "width": 32,
+      "height": null,
+      "diameter": 96,
+      "shaft_diameter": null,
+      "bore_diameter": 32
+    },
+    "weight_g": 128,
+    "specs": [
+      "Material | Plastic with Rubber Tread",
+      "Durometer | 70 Shore A",
+      "Offset center: 8mm from mounting surface to edge on one side and 16mm on the other"
+    ],
+    "images": [
+      {
+        "url": "https://cdn11.bigcommerce.com/s-x56mtydx1w/images/stencil/2314w/products/580/3590/3601-0032-0096__29965__86065.1701991946.jpg?c=1",
+        "alt": "3601-0032-0096 - 3601 Series Rhino Wheel (32mm Bore, 96mm Diameter)",
+        "width": 1280,
+        "height": 1280,
+        "local": "/parts/3601-0032-0096-0.webp"
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-x56mtydx1w/images/stencil/2314w/products/580/3587/3601-0032-0096-Schematic__66229__74823.1701991945.png?c=1",
+        "alt": "3601-0032-0096 Schematic",
+        "width": 1280,
+        "height": 1280,
+        "local": "/parts/3601-0032-0096-1.webp"
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-x56mtydx1w/images/stencil/2314w/products/580/3589/product-insight-368__05317__12912.1701991946.jpg?c=1",
+        "alt": "Product Insight #368",
+        "width": 1227,
+        "height": 1280,
+        "local": "/parts/3601-0032-0096-2.webp"
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-x56mtydx1w/images/stencil/320w/products/913/15289/1305-0032-0025__02935__03781__07121.1759506834.jpg?c=1",
+        "alt": "Thru-Hole Clamping Hubs (32mm Pattern)",
+        "width": 320,
+        "height": 320,
+        "local": "/parts/3601-0032-0096-3.jpg"
+      }
+    ],
+    "scraped_at": "2026-10-24T22:26:49.118Z",
+    "bbox_mm": [
+      96,
+      95.3,
+      32
+    ],
+    "cad_url": "https://www.gobilda.com/content/step_files/3601-0032-0096.zip"
+  },
+  "https://www.gobilda.com/gripforce-mecanum-wheel-roller-pack-30a/": {
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/gripforce-mecanum-wheel-roller-pack-30a/",
+    "category": "gripforce-mecanum-wheel-roller-pack-30a",
+    "name": "GripForce™ Mecanum Wheel Roller Pack (30A)",
+    "sku": "3611-0030-0104",
+    "description": "30A GripForce™ rollers for GripForce™ Mecanum Wheels. Pack contains 44 rollers, with spare hardware included for roller replacement. Compatible with 104mm diameter GripForce™ Mecanum Wheels only.",
+    "in_stock": true,
+    "prices": [
+      {
+        "price": 49.99,
+        "currency": "USD",
+        "min_qty": 1
+      }
+    ],
+    "dimensions_mm": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "diameter": null,
+      "shaft_diameter": null,
+      "bore_diameter": null
+    },
+    "weight_g": 343,
+    "specs": [
+      "30A durometer",
+      "44 rollers",
+      "Compatible with 104mm diameter GripForce™ Mecanum Wheels only",
+      "Pack contents: 44 rollers, 1 roller pin, 2 bearings, 12 E-clips, 12 shims"
+    ],
+    "images": [
+      {
+        "url": "https://cdn11.bigcommerce.com/s-x56mtydx1w/images/stencil/2314w/products/2428/15251/3611-0030-0104-Product-Insight-1__10360__59489.1758916708.png?c=1",
+        "alt": "3611-0030-0104 Product Insight #1",
+        "width": 2002,
+        "height": 1563,
+        "local": "/parts/3611-0030-0104-0.webp"
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-x56mtydx1w/images/stencil/2314w/products/2428/15252/Ang1__17894__45224.1758916709.jpg?c=1",
+        "alt": "GripForce™ Mecanum Wheel Roller Pack (30A)",
+        "width": 2314,
+        "height": 1302,
+        "local": "/parts/3611-0030-0104-1.webp"
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-x56mtydx1w/products/2428/images/16727/30A-Pack-bin-not-included__05880.1779488042.386.513.jpg?c=1",
+        "alt": null,
+        "width": 386,
+        "height": 386,
+        "local": "/parts/3611-0030-0104-2.jpg"
+      },
+      {
+        "url": "https://cdn11.bigcommerce.com/s-x56mtydx1w/images/stencil/318x318/products/2233/13277/Main__71373__72621.1750685717.jpg?c=1",
+        "alt": "GripForce™ Mecanum Wheel Set (Ø104mm, 40A Durometer Rollers)",
+        "width": 318,
+        "height": 318,
+        "local": "/parts/3611-0030-0104-3.jpg"
+      }
+    ],
+    "scraped_at": "2026-10-24T22:33:33.642Z",
+    "needs_dimensions": true,
+    "cad_missing": true
   }
 }

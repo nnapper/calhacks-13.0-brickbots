@@ -41,8 +41,13 @@ function groupOf(category) {
 
 // goBILDA lists spec-sheet diagrams ("Product Insight", "Schematic") alongside product photos; prefer the photo.
 function pickImage(images) {
-  const local = images.filter((i) => i.local);
-  return (local.find((i) => !/Insight|Schematic/i.test(i.alt ?? "")) ?? local[0])?.local ?? null;
+  // parts just fetched from goBILDA have no saved copy yet, so fall back to the seller's image
+  const have = images.filter((i) => i.local || i.url);
+  const best = have.find((i) => i.local && !/Insight|Schematic/i.test(i.alt ?? ""))
+    ?? have.find((i) => i.local)
+    ?? have.find((i) => !/Insight|Schematic/i.test(i.alt ?? ""))
+    ?? have[0];
+  return best ? (best.local ?? best.url) : null;
 }
 
 const STORE_NAMES = {
@@ -102,24 +107,28 @@ function partDims(d, group, bbox) {
   return null;
 }
 
-export const PARTS = Object.values(raw)
-  .map((p) => ({ p, offers: normalizeOffers(p) }))
-  .filter(({ offers }) => offers.length)
-  .map(({ p, offers }) => ({
+// One parts.json entry -> the shape the app uses, or null when it has no price yet.
+function buildPart(p) {
+  const offers = normalizeOffers(p);
+  if (!offers.length) return null;
+  const group = groupOf(p.category);
+  return withSearchText({
     sku: p.sku,
     name: p.name,
     category: p.category,
-    group: groupOf(p.category),
+    group,
     offers,
     price: offers[bestOfferIndex(offers)].priceUsd,
     inStock: offers.some((o) => o.inStock !== false),
     weightG: p.weight_g ?? 0,
-    dims: partDims(p.dimensions_mm, groupOf(p.category), p.bbox_mm),
+    dims: partDims(p.dimensions_mm, group, p.bbox_mm),
     img: pickImage(p.images ?? []),
     specs: (p.specs ?? []).filter((s) => s.includes(" | ")).map((s) => s.split(" | ")),
     url: p.url ?? offers[0].url,
-  }))
-  .map(withSearchText);
+  });
+}
+
+export const PARTS = Object.values(raw).map(buildPart).filter(Boolean);
 
 export const BY_SKU = Object.fromEntries(PARTS.map((p) => [p.sku, p]));
 
@@ -128,6 +137,23 @@ export function registerCustomPart(part) {
   const p = withSearchText(part);
   PARTS.push(p);
   BY_SKU[p.sku] = p;
+}
+// A part fetched from goBILDA during the session (see hooks/useLookup.js). Returns it, or null if it has no price.
+export function registerScrapedPart(rawPart) {
+  if (BY_SKU[rawPart.sku]) return BY_SKU[rawPart.sku];
+  const part = buildPart(rawPart);
+  if (!part) return null;
+  // before any uploaded CAD parts, so the catalog stays one block
+  const firstCustom = PARTS.findIndex((p) => p.custom);
+  PARTS.splice(firstCustom < 0 ? PARTS.length : firstCustom, 0, part);
+  BY_SKU[part.sku] = part;
+  return part;
+}
+// The same part once its photos are saved and its sizes measured; updates it in place so cards and the 3D scene follow.
+export function updateScrapedPart(rawPart) {
+  const part = BY_SKU[rawPart.sku];
+  const fresh = buildPart(rawPart);
+  if (part && fresh) Object.assign(part, { dims: fresh.dims, img: fresh.img });
 }
 export function unregisterCustomPart(sku) {
   const i = PARTS.findIndex((p) => p.sku === sku);
@@ -176,6 +202,20 @@ function withinOneEdit(a, b) {
     else { i++; j++; }
   }
   return edits + (a.length - i) + (b.length - j) <= 1;
+}
+
+// Fixes typos before a paid lookup: a word the catalog has never seen is swapped for a catalog word one letter away.
+export function correctQuery(query) {
+  return query
+    .trim()
+    .split(/\s+/)
+    .map((w) => {
+      const lw = w.toLowerCase();
+      if (lw.length < 4 || PARTS.some((p) => p.hay.includes(lw))) return w;
+      for (const p of PARTS) for (const t of p.tokens) if (withinOneEdit(t, lw)) return t;
+      return w;
+    })
+    .join(" ");
 }
 
 // Score of one query word against one part, or 0 for no match. SKU and name hits beat spec hits; a one-letter typo still finds the part.
