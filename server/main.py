@@ -46,6 +46,21 @@ def extract_candidates(data: bytes):
         if diameter is not None:item['diameterM']=diameter/1000
         if area is not None:item['areaM2']=area/1e6
         candidates.append(item)
+    def cylinder_key(cyl):
+        axis=list(cyl.Axis().Direction().Coord()); origin=list(cyl.Location().Coord())
+        flip=-1 if next((x for x in axis if abs(x)>1e-9),1)<0 else 1; axis=[flip*x for x in axis]
+        along=sum(o*a for o,a in zip(origin,axis)); offset=[o-along*a for o,a in zip(origin,axis)]
+        return (*(round(a,6) for a in axis),*(round(o,4) for o in offset),round(cyl.Radius(),4))
+    # STEP exporters often split one bore into several cylindrical faces, so judge enclosure by total angle per bore.
+    spans={}
+    pre=TopExp_Explorer(shape,TopAbs_FACE)
+    while pre.More():
+        f=TopoDS.Face_s(pre.Current()); sf=BRepAdaptor_Surface(f)
+        if sf.GetType()==GeomAbs_Cylinder:
+            a0,a1,b0,b1=BRepTools.UVBounds_s(f)
+            if all(math.isfinite(x) for x in [a0,a1,b0,b1]):
+                k=cylinder_key(sf.Cylinder()); spans[k]=spans.get(k,0)+(a1-a0)
+        pre.Next()
     explorer=TopExp_Explorer(shape,TopAbs_FACE)
     while explorer.More():
         face_index+=1
@@ -65,7 +80,7 @@ def extract_candidates(data: bytes):
                         normal=list(surf.Plane().Axis().Direction().Coord())
                         if face.Orientation()==TopAbs_REVERSED: normal=[-x for x in normal]
                         add('surface',point.Coord(),normal,f'Point lies inside analytic planar face {face_index}; proposed mounting surface, requires review.',area=area)
-            elif kind==GeomAbs_Cylinder and u1-u0>math.pi:
+            elif kind==GeomAbs_Cylinder and spans.get(cylinder_key(surf.Cylinder()),0)>=2*math.pi-1e-3:
                 cyl=surf.Cylinder();radius=cyl.Radius();axis=list(cyl.Axis().Direction().Coord());origin=list(cyl.Location().Coord())
                 midpoint=surf.Value((u0+u1)/2,(v0+v1)/2); center=[origin[i]+axis[i]*(v0+v1)/2 for i in range(3)]
                 radial=[(midpoint.Coord()[i]-center[i])/radius for i in range(3)]

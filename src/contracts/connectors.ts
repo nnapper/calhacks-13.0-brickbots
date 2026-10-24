@@ -3,7 +3,7 @@ const vec=z.tuple([z.number().finite(),z.number().finite(),z.number().finite()])
 export const connectorSchema=z.object({
  id:z.string(),geometryRevision:z.string(),kind:z.enum(['surface','hole']),position:vec,normal:vec,tangent:vec,
  label:z.string().max(120),reason:z.string().max(600),review:z.enum(['suggested','accepted','rejected']),
- method:z.enum(['step_analytic','mesh_planar']),diameterM:z.number().positive().optional(),areaM2:z.number().positive().optional(),
+ method:z.enum(['step_analytic','mesh_planar','name_grid','image_drawing','image_photo']),diameterM:z.number().positive().optional(),areaM2:z.number().positive().optional(),
  aiSelected:z.boolean().optional(),aiReason:z.string().max(600).optional(),
 });
 export type Connector=z.infer<typeof connectorSchema>;
