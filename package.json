@@ -10,6 +10,7 @@
     "catalog:scrape": "node --env-file=.env scripts/catalog.mjs scrape",
     "enrich:dims": "node scripts/enrich.mjs dims",
     "cad:dims": "node scripts/cad-dims.mjs",
+    "catalog:update": "npm run catalog:scrape && npm run enrich:images && npm run enrich:dims && npm run cad:dims && npm run prices:refresh",
     "enrich:images": "node scripts/enrich.mjs images",
     "prices:refresh": "node --env-file=.env scripts/apify-prices.mjs",
     "part:add": "node --env-file=.env scripts/add-part.mjs"
