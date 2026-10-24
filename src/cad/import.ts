@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import type { Connector } from '../contracts/connectors';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { STLLoader } from 'three/addons/loaders/STLLoader.js';
 import { cadToGroup, disposeModel, inspectBounds } from './geometry';
 import { modelAssetSchema, type ModelAsset } from '../contracts/models';
 import type { ImportResponse } from './types';
@@ -8,10 +9,21 @@ export type LoadedModel = { object: THREE.Group; asset: ModelAsset; original: Fi
 export const MAX_FILE_BYTES = 30 * 1024 * 1024;
 export function validateFile(file: Pick<File, 'name' | 'size'>) {
   const format = file.name.split('.').pop()?.toLowerCase();
-  if (format !== 'step' && format !== 'stp' && format !== 'glb') throw new Error('Choose a STEP (.step/.stp) or GLB file. Export native CAD files to STEP first.');
+  if (format !== 'step' && format !== 'stp' && format !== 'stl' && format !== 'glb') throw new Error('Choose a STEP (.step/.stp), STL (.stl), or GLB file. Export native CAD files to STEP first.');
   if (!file.size) throw new Error('This file is empty.');
   if (file.size > MAX_FILE_BYTES) throw new Error('This model exceeds the 30 MB import limit. Export a simplified model.');
   return format;
+}
+function importStl(buffer: ArrayBuffer): THREE.Group {
+  let geometry: THREE.BufferGeometry;
+  try { geometry = new STLLoader().parse(buffer); }
+  catch (error) { throw new Error(`STL could not be loaded. ${error instanceof Error ? error.message : ''}`); }
+  if (!geometry.attributes.position?.count) throw new Error('This STL file contains no readable triangle geometry.');
+  const group = new THREE.Group();
+  group.add(new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: 0xc9d2d8, metalness: 0.1, roughness: 0.75 })));
+  // Most CAD STL files are millimeters, but the format has no units field.
+  group.scale.setScalar(.001);
+  return group;
 }
 async function importStep(buffer: ArrayBuffer, signal: AbortSignal): Promise<THREE.Group> {
   return new Promise((resolve, reject) => {
@@ -45,7 +57,8 @@ export async function loadModel(file: File, signal: AbortSignal, fixture = false
     });
     try { object = (await new GLTFLoader(manager).parseAsync(buffer, '')).scene; }
     catch (error) { throw new Error(`GLB could not be loaded. Use an uncompressed, self-contained export. ${error instanceof Error ? error.message : ''}`); }
-  } else object = await importStep(buffer, signal);
+  } else if (format === 'stl') object = importStl(buffer);
+  else object = await importStep(buffer, signal);
   try {
     signal.throwIfAborted();
     const { box } = inspectBounds(object);
@@ -53,10 +66,10 @@ export async function loadModel(file: File, signal: AbortSignal, fixture = false
     object.traverse(o => { if (o instanceof THREE.Mesh) triangles += (o.geometry.index?.count ?? o.geometry.attributes.position.count) / 3; });
     if (triangles > 1_000_000) throw new Error('Model exceeds one million triangles. Export a lighter preview.');
     const asset = modelAssetSchema.parse({ schemaVersion: 1, id: crypto.randomUUID(), revision: 1, name: file.name, originalFormat: format,
-      sourceKind: fixture ? 'test_fixture' : 'uploaded_cad', sourceUnits: format === 'glb' ? 'meter' : null,
-      canonicalUnits: 'meter', sourceToCanonicalTransform: format === 'glb' ? new THREE.Matrix4().toArray() : null,
-      conversion: { engine: format === 'glb' ? 'GLTFLoader' : 'occt-import-js@0.0.23', outputUnits: 'meter', ...(format === 'glb' ? {} : { linearDeflectionM: 0.00002 }) },
-      bounds: { min: box.min.toArray(), max: box.max.toArray() }, scaleStatus: 'format_defined',
+      sourceKind: fixture ? 'test_fixture' : 'uploaded_cad', sourceUnits: format === 'stl' ? 'millimeter' : format === 'glb' ? 'meter' : null,
+      canonicalUnits: 'meter', sourceToCanonicalTransform: format === 'stl' ? new THREE.Matrix4().makeScale(.001, .001, .001).toArray() : format === 'glb' ? new THREE.Matrix4().toArray() : null,
+      conversion: { engine: format === 'stl' ? 'STLLoader@0.180.0' : format === 'glb' ? 'GLTFLoader' : 'occt-import-js@0.0.23', outputUnits: 'meter', ...(format === 'step' || format === 'stp' ? { linearDeflectionM: 0.00002 } : {}) },
+      bounds: { min: box.min.toArray(), max: box.max.toArray() }, scaleStatus: format === 'stl' ? 'unknown' : 'format_defined',
     });
     // STEP units and placements are resolved inside OCCT. The wrapper does not expose
     // a single raw-source transform; null explicitly records that instead of inventing one.

@@ -13,7 +13,7 @@ export const productSchema = z.object({
 export type Product = z.infer<typeof productSchema>;
 export const modelAssetSchema = z.object({
   schemaVersion: z.literal(1), id: z.string(), productId: z.string().optional(), revision: z.number().int().positive(),
-  name: z.string(), originalFormat: z.enum(['step', 'stp', 'glb']), originalFileId: z.string().optional(), previewFileId: z.string().optional(),
+  name: z.string(), originalFormat: z.enum(['step', 'stp', 'stl', 'glb']), originalFileId: z.string().optional(), previewFileId: z.string().optional(),
   sourceKind: z.enum(['uploaded_cad', 'manufacturer_cad', 'generated_image', 'test_fixture']),
   sourceUnits: unitsSchema.nullable(), canonicalUnits: z.literal('meter'),
   sourceToCanonicalTransform: z.array(z.number().finite()).length(16).nullable(),

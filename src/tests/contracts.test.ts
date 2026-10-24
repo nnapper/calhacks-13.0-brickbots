@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import catalog from '../../data/parts.json';
 import { generationJobSchema, normalizeDiscovery } from '../contracts/models';
-import { validateFile } from '../cad/import';
+import { disposeModel, inspectBounds } from '../cad/geometry';
+import { loadModel, validateFile } from '../cad/import';
 describe('discovery contract', () => {
   it('accepts every existing catalog record without asserting dimension accuracy', () => {
     const products = Object.values(catalog).map(normalizeDiscovery);
@@ -22,8 +23,21 @@ describe('discovery contract', () => {
   });
 });
 describe('file validation', () => {
-  it('accepts STEP/STP/GLB case-insensitively', () => { for (const name of ['part.STEP','part.stp','part.glb']) expect(validateFile({name,size:100})).toBeTruthy(); });
+  it('accepts STEP/STP/STL/GLB case-insensitively', () => { for (const name of ['part.STEP','part.stp','part.stl','part.glb']) expect(validateFile({name,size:100})).toBeTruthy(); });
   it('rejects native CAD, empty and oversized files', () => {
     for (const file of [{name:'part.sldprt',size:1},{name:'part.step',size:0},{name:'part.step',size:31*1024*1024}]) expect(() => validateFile(file)).toThrow();
+  });
+  it('loads a binary STL with millimeters converted to meters', async () => {
+    const buffer = new ArrayBuffer(134);
+    const data = new DataView(buffer);
+    for (const [index, value] of [...'Binary STL test'].entries()) data.setUint8(index, value.charCodeAt(0));
+    data.setUint32(80, 1, true);
+    [0, 0, 1, 0, 0, 0, 10, 0, 0, 0, 20, 0].forEach((value, index) => data.setFloat32(84 + index * 4, value, true));
+    const model = await loadModel(new File([buffer], 'part.stl'), new AbortController().signal);
+    expect(model.asset.originalFormat).toBe('stl');
+    expect(model.asset.sourceUnits).toBe('millimeter');
+    expect(model.asset.scaleStatus).toBe('unknown');
+    expect(inspectBounds(model.object).size.toArray()).toEqual([.01, .02, 0]);
+    disposeModel(model.object);
   });
 });

@@ -20,7 +20,7 @@ function catalogGridNodes(model: LoadedModel, geometryRevision: string): Connect
   try { return saved ? estimateToConnectors(saved.estimate, model.asset.bounds, geometryRevision) : []; } catch { return []; }
 }
 export async function analyzeGeometry(model:LoadedModel):Promise<{geometryRevision:string;candidates:Connector[];engine:string}> {
- if(model.asset.originalFormat!=='glb'){
+ if(model.asset.originalFormat==='step'||model.asset.originalFormat==='stp'){
   const body=new FormData();body.append('file',model.original);
   const response=await fetch('/geometry/analyze',{method:'POST',body,signal:AbortSignal.timeout(60000)});
   if(!response.ok){const data=await response.json().catch(()=>({}));throw new Error(data.detail??'CAD analysis service is unavailable. Start npm run geometry.');}
