@@ -1,0 +1,13 @@
+{
+  "name": "brickbots",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "catalog:discover": "node --env-file=.env scripts/catalog.mjs discover",
+    "catalog:scrape": "node --env-file=.env scripts/catalog.mjs scrape",
+    "enrich:dims": "node scripts/enrich.mjs dims",
+    "enrich:images": "node scripts/enrich.mjs images",
+    "prices:refresh": "node --env-file=.env scripts/apify-prices.mjs",
+    "part:add": "node --env-file=.env scripts/add-part.mjs"
+  }
+}
