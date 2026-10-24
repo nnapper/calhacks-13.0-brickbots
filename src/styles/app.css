@@ -228,3 +228,37 @@ h1 em { font-style: normal; background: linear-gradient(100deg, var(--cool), var
 .livebtn:disabled { opacity: 0.6; }
 .unitsel { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 2px 6px; font-size: 12px; color: var(--ink); }
 .rm { position: absolute; top: 10px; right: 10px; z-index: 1; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--muted); padding: 2px 8px; font-size: 11px; line-height: 1.4; }
+
+/* parts panel tabs: catalog vs. the viewer's own uploaded CAD */
+/* tabs = where you are (raised segment); chips = filters (pills); link buttons = actions */
+.ptabs { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; padding: 3px; border-radius: 10px; background: color-mix(in srgb, var(--ink) 7%, transparent); }
+.ptabs button { border: 0; background: none; border-radius: 8px; padding: 7px 8px; font-size: 13px; font-weight: 600; color: var(--muted); display: flex; align-items: center; justify-content: center; gap: 6px; }
+.ptabs button[aria-selected="true"] { background: var(--solid); color: var(--ink); box-shadow: 0 1px 3px var(--shadow), 0 0 0 1px var(--line); }
+.liverow { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; color: var(--muted); }
+.linkbtn { display: inline-flex; align-items: center; gap: 6px; border: 0; background: none; padding: 2px 0; font-size: 12.5px; font-weight: 600; color: var(--cool); }
+.linkbtn svg { width: 14px; height: 14px; }
+.linkbtn:hover:not(:disabled) { text-decoration: underline; text-underline-offset: 3px; }
+.linkbtn:disabled { color: var(--muted); cursor: default; }
+[data-theme="light"] .linkbtn:not(:disabled) { color: color-mix(in srgb, var(--cool) 70%, var(--ink)); }
+.pcount { font-family: var(--f-mono); font-size: 11px; font-weight: 500; min-width: 18px; padding: 0 5px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 12%, transparent); }
+.dropzone { display: grid; justify-items: center; gap: 4px; text-align: center; padding: 16px 12px; border: 1.5px dashed var(--line); border-radius: 12px; background: var(--solid); color: var(--muted); font-size: 12px; transition: border-color 0.15s, background-color 0.15s; }
+.dropzone svg { width: 22px; height: 22px; color: var(--cool); }
+.dropzone b { font-size: 14px; color: var(--ink); }
+.dropzone:hover, .dropzone.over { border-color: var(--cool); background: color-mix(in srgb, var(--cool) 10%, var(--solid)); }
+.dropzone:disabled { opacity: 0.7; cursor: progress; }
+.unitrow { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--muted); }
+.cadmsg { margin: 0; font-size: 12px; color: var(--muted); }
+
+/* parts goBILDA sells that the catalog doesn't have yet */
+.lookup { display: grid; gap: 6px; padding: 10px 2px 4px; }
+.lookhead { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.lookmsg { margin: 0; font-size: 12.5px; color: var(--muted); }
+.lookmsg.err { color: var(--bad, #e5484d); }
+.hit { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; background: var(--solid); }
+.hitinfo { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.hitname { font-size: 12.5px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hitmeta { font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hitprice { font-family: var(--f-mono); font-size: 12px; }
+.hitadd { border: 1px solid var(--cool); background: none; color: var(--cool); border-radius: 999px; padding: 3px 12px; font-size: 12px; font-weight: 600; }
+.hitadd:hover:not(:disabled) { background: var(--cool); color: var(--on-cool); }
+.hitadd:disabled { opacity: 0.6; cursor: default; }
