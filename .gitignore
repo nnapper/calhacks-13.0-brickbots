@@ -10,3 +10,5 @@ __pycache__/
 .convex/
 data/*.log
 public/generated/
+data/live-cache.json
+data/step/

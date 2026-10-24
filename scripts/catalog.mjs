@@ -7,10 +7,11 @@
 // scrape   -> data/parts.json          (resumable; already-scraped URLs are skipped)
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 
 const API = "https://api.context.dev/v1";
-const HOST = "www.gobilda.com";
-const SKU = /^(\d{4}-\d{4}-\d{4})\b/;
+export const HOST = "www.gobilda.com";
+export const SKU = /^(\d{4}-\d{4}-\d{4})\b/;
 const SEEDS = [
   "motors", "servos", "wheels-tires", "gears", "channel", "beams", "grid-plates",
   "pattern-plates", "brackets", "baseplates", "mounts", "shafting-tubing-1",
@@ -43,7 +44,7 @@ async function api(path, init) {
 }
 
 // plan allows 2 concurrent requests; back off and retry when rate limited
-async function scrape(body, tries = 4) {
+export async function scrape(body, tries = 4) {
   for (let n = 1; ; n++) {
     try {
       return await api("/web/scrape", { method: "POST", body: JSON.stringify(body) });
@@ -144,7 +145,7 @@ async function discover() {
 // ---------- scrape ----------
 
 const dim = (d) => ({ type: ["number", "null"], description: d });
-const schema = {
+export const schema = {
   type: "object",
   properties: {
     name: { type: "string" },
@@ -180,6 +181,57 @@ const schema = {
   },
 };
 
+// One goBILDA product page -> a parts.json entry (plus the credits it cost).
+export async function scrapeProduct(url, meta) {
+  const out = await scrape({
+    url,
+    formats: { json: true, images: true },
+    jsonParams: {
+      schema,
+      instructions:
+        "Extract specs for this robotics part. Convert all lengths to millimetres. Use null for anything not on the page.",
+    },
+    imageParams: { enrich: ["dimensions"], dedupe: "visual" },
+    sharedParams: { mainContentOnly: true },
+  });
+  const images = (out.images?.data ?? [])
+    .filter((i) => (i.width ?? 0) >= 300 && i.url.includes("/products/"))
+    .sort((a, b) => (b.width ?? 0) * (b.height ?? 0) - (a.width ?? 0) * (a.height ?? 0))
+    .slice(0, 4)
+    .map(({ url, alt, width, height }) => ({ url, alt, width, height }));
+  const part = {
+    retailer: "goBILDA",
+    url,
+    category: meta.category,
+    ...out.json?.data,
+    sku: out.json?.data?.sku ?? meta.sku,
+    images,
+    scraped_at: new Date().toISOString(),
+  };
+  return { part, cost: out.key_metadata?.credits_consumed ?? 0 };
+}
+
+// Searches goBILDA's own site for parts matching free text. Returns [{ url, sku, listing, listed_price }].
+export async function searchSite(query) {
+  const out = await scrape({
+    url: `https://${HOST}/search.php?search_query=${encodeURIComponent(query)}`,
+    formats: { parse: true },
+    parseParams: { type: "prebuilt", parser: "links" },
+    sharedParams: { mainContentOnly: true },
+  });
+  const seen = new Set();
+  const hits = [];
+  for (const l of out.parsed?.data?.links ?? []) {
+    const text = l.text?.trim();
+    const m = text?.match(SKU);
+    if (!m || seen.has(l.url)) continue;
+    seen.add(l.url);
+    const price = text.match(/\$([\d,]+\.\d\d)/);
+    hits.push({ url: l.url, sku: m[1], listing: text, listed_price: price ? Number(price[1].replace(",", "")) : null });
+  }
+  return hits;
+}
+
 async function scrapeParts() {
   const limit = opt("limit", Infinity);
   const maxCredits = opt("max-credits", 450);
@@ -199,33 +251,9 @@ async function scrapeParts() {
   await pool(todo, 2, async ([url, meta]) => {
     if (stop) return;
     try {
-      const out = await scrape({
-        url,
-        formats: { json: true, images: true },
-        jsonParams: {
-          schema,
-          instructions:
-            "Extract specs for this robotics part. Convert all lengths to millimetres. Use null for anything not on the page.",
-        },
-        imageParams: { enrich: ["dimensions"], dedupe: "visual" },
-        sharedParams: { mainContentOnly: true },
-      });
-      const cost = out.key_metadata?.credits_consumed ?? 0;
+      const { part, cost } = await scrapeProduct(url, meta);
       spent += cost;
-      const images = (out.images?.data ?? [])
-        .filter((i) => (i.width ?? 0) >= 300 && i.url.includes("/products/"))
-        .sort((a, b) => (b.width ?? 0) * (b.height ?? 0) - (a.width ?? 0) * (a.height ?? 0))
-        .slice(0, 4)
-        .map(({ url, alt, width, height }) => ({ url, alt, width, height }));
-      parts[url] = {
-        retailer: "goBILDA",
-        url,
-        category: meta.category,
-        ...out.json?.data,
-        sku: out.json?.data?.sku ?? meta.sku,
-        images,
-        scraped_at: new Date().toISOString(),
-      };
+      parts[url] = part;
       await writeFile("data/parts.json", JSON.stringify(parts, null, 2));
       console.log(`ok  ${cost}cr  ${parts[url].name ?? url}`);
       if (spent >= maxCredits) {
@@ -239,6 +267,8 @@ async function scrapeParts() {
   console.log(`\nspent ${spent} credits, ${Object.keys(parts).length} parts in data/parts.json`);
 }
 
-if (cmd === "discover") await discover();
-else if (cmd === "scrape") await scrapeParts();
-else console.error("Usage: catalog.mjs discover|scrape [options]");
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  if (cmd === "discover") await discover();
+  else if (cmd === "scrape") await scrapeParts();
+  else console.error("Usage: catalog.mjs discover|scrape [options]");
+}

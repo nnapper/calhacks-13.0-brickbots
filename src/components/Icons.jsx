@@ -32,6 +32,26 @@ export const CheckIcon = () => (
     <path d="M5 12.5 10 17 19 7" />
   </svg>
 );
+export const RefreshIcon = () => (
+  <svg {...base}>
+    <path d="M20 11a8 8 0 0 0-14.3-4.9L4 8" />
+    <path d="M4 3v5h5" />
+    <path d="M4 13a8 8 0 0 0 14.3 4.9L20 16" />
+    <path d="M20 21v-5h-5" />
+  </svg>
+);
+export const UploadIcon = () => (
+  <svg {...base}>
+    <path d="M12 15V4M7 9l5-5 5 5" />
+    <path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" />
+  </svg>
+);
+export const RulerIcon = () => (
+  <svg {...base}>
+    <rect x="2.5" y="8" width="19" height="8" rx="1.5" />
+    <path d="M6.5 8v3M10.5 8v4.5M14.5 8v3M18.5 8v4.5" />
+  </svg>
+);
 export const PlayIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M7 4v16l13-8z" />

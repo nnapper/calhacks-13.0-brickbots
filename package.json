@@ -14,6 +14,8 @@
     "catalog:discover": "node --env-file=.env scripts/catalog.mjs discover",
     "catalog:scrape": "node --env-file=.env scripts/catalog.mjs scrape",
     "enrich:dims": "node scripts/enrich.mjs dims",
+    "cad:dims": "node scripts/cad-dims.mjs",
+    "catalog:update": "npm run catalog:scrape && npm run enrich:images && npm run enrich:dims && npm run cad:dims && npm run prices:refresh",
     "enrich:images": "node scripts/enrich.mjs images",
     "prices:refresh": "node --env-file=.env scripts/apify-prices.mjs",
     "part:add": "node --env-file=.env scripts/add-part.mjs",
@@ -36,6 +38,7 @@
     "@types/react-dom": "^19.2.0",
     "@types/three": "^0.180.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "fflate": "^0.8.2",
     "typescript": "^5.9.0",
     "vite": "^7.1.0",
     "vitest": "^5.0.5"
