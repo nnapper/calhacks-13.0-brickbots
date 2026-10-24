@@ -3,11 +3,23 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "catalog:discover": "node --env-file=.env scripts/catalog.mjs discover",
     "catalog:scrape": "node --env-file=.env scripts/catalog.mjs scrape",
     "enrich:dims": "node scripts/enrich.mjs dims",
     "enrich:images": "node scripts/enrich.mjs images",
     "prices:refresh": "node --env-file=.env scripts/apify-prices.mjs",
     "part:add": "node --env-file=.env scripts/add-part.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "vite": "^5.4.10"
   }
 }
