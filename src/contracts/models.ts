@@ -42,7 +42,10 @@ const discoverySchema = z.object({
   cadSources: productSchema.shape.cadSources.optional(), scraped_at: z.string().optional(), actorRunId: z.string().optional(),
 });
 export function normalizeDiscovery(input: unknown): Product {
-  const p = discoverySchema.parse(input);
+  // Generic catalog products are shared across retailers; the offer supplies provenance.
+  const generic = z.object({generic:z.literal(true),sku:z.string(),name:z.string(),category:z.string(),offers:z.array(z.object({url:z.url()})).min(1)}).safeParse(input);
+  const source = generic.success ? {...generic.data,retailer:'generic',url:generic.data.offers[0].url,images:[]} : input;
+  const p = discoverySchema.parse(source);
   const canonicalUrl = new URL(p.url); canonicalUrl.hash = ''; canonicalUrl.search = '';
   const id = p.sku ? `${p.retailer.toLowerCase()}:${p.sku}` : canonicalUrl.href.replace(/\/$/, '');
   return productSchema.parse({ schemaVersion: 1, id, retailer: p.retailer, sku: p.sku ?? null, name: p.name, category: p.category,

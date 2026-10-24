@@ -8,3 +8,4 @@ public/vendor/
 .venv/
 __pycache__/
 .convex/
+data/*.log

@@ -88,3 +88,14 @@ Surface pairing does not establish compatibility; hole diameters are compared wi
 are inferred. Image-to-3D and the teammate-owned Apify ingestion remain separate work.
 
 Checks: `npm test`, `npm run build`, `.venv/bin/python -m unittest server.test_geometry`.
+
+## Merged catalog experience
+
+The default `/` remains the CAD workspace and now includes the main-branch product
+catalog search. `/catalog.html` preserves the teammate's complete robot planner,
+placeholder assembly animation, seller comparison and receipt flow. Both entry
+points build together. Catalog photos and category-based placeholder geometry are
+not manufacturer CAD; importing STEP/GLB remains the accurate assembly path.
+The catalog and exchange-rate data are preserved from main, including generic
+multi-seller products. The `catalog:*`, `enrich:*`, `prices:refresh`, and `part:add`
+commands are retained; their credentials remain in ignored environment files.

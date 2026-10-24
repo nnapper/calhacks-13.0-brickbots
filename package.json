@@ -10,7 +10,13 @@
     "preview": "vite preview --host 127.0.0.1",
     "postinstall": "node scripts/prepare-cad.mjs",
     "geometry": ".venv/bin/python -m uvicorn server.main:app --host 127.0.0.1 --port 8001",
-    "backend": "convex dev"
+    "backend": "convex dev",
+    "catalog:discover": "node --env-file=.env scripts/catalog.mjs discover",
+    "catalog:scrape": "node --env-file=.env scripts/catalog.mjs scrape",
+    "enrich:dims": "node scripts/enrich.mjs dims",
+    "enrich:images": "node scripts/enrich.mjs images",
+    "prices:refresh": "node --env-file=.env scripts/apify-prices.mjs",
+    "part:add": "node --env-file=.env scripts/add-part.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.0",

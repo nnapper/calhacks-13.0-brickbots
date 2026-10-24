@@ -1,3 +1,3 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-export default defineConfig({ plugins: [react()], server: { proxy: { '/geometry': { target: 'http://127.0.0.1:8001', rewrite: path => path.replace(/^\/geometry/, '') } } }, worker: { format: 'es' } });
+export default defineConfig({ plugins: [react()], build: { rollupOptions: { input: {workspace: 'index.html', catalog: 'catalog.html'} } }, server: { proxy: { '/geometry': { target: 'http://127.0.0.1:8001', rewrite: path => path.replace(/^\/geometry/, '') } } }, worker: { format: 'es' } });

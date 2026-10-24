@@ -5,13 +5,13 @@ import { validateFile } from '../cad/import';
 describe('discovery contract', () => {
   it('accepts every existing catalog record without asserting dimension accuracy', () => {
     const products = Object.values(catalog).map(normalizeDiscovery);
-    expect(products).toHaveLength(91);
-    expect(new Set(products.map(p => p.id)).size).toBe(91);
+    expect(products).toHaveLength(Object.keys(catalog).length);
+    expect(new Set(products.map(p => p.id)).size).toBe(Object.keys(catalog).length);
     expect(products.flatMap(p => p.dimensions).every(d => d.verification === 'unverified')).toBe(true);
     expect(products.some(p => !p.dimensions.length)).toBe(true);
   });
   it('maps the proposed Apify payload to the same identity and preserves source evidence', () => {
-    const source = Object.values(catalog)[0];
+    const source = Object.values(catalog).find((p):p is Extract<typeof p,{url:string}> => 'url' in p)!;
     const result = normalizeDiscovery({ ...source, actorRunId: 'sample-run', cadSources: [{url:'https://example.com/part.step',format:'step',sourceUrl:source.url}] });
     expect(result.id).toBe(normalizeDiscovery(source).id);
     expect(result.actorRunId).toBe('sample-run'); expect(result.cadSources).toHaveLength(1);
