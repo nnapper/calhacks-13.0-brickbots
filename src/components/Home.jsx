@@ -28,10 +28,6 @@ export default function Home({ build, onStart }) {
   return (
     <section className="home">
       <div className="copy">
-        <div className="eyebrow">
-          <i />
-          {PARTS.length} real robot parts, real prices
-        </div>
         <h1>
           Describe a robot. <em>Get every part</em> to build it.
         </h1>

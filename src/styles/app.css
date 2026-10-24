@@ -35,8 +35,6 @@ h1, h2, h3 { margin: 0; }
 /* ---------- home ---------- */
 .home { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: center; gap: 32px; padding: 20px 16px 0; max-width: 1320px; width: 100%; margin: 0 auto; }
 .copy { display: grid; gap: 22px; padding-left: clamp(0px, 3vw, 40px); max-width: 600px; }
-.eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.06em; color: var(--muted); display: flex; align-items: center; gap: 8px; }
-.eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 20%, transparent); }
 h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(36px, 4.8vw, 62px); line-height: 1.02; letter-spacing: -0.035em; text-wrap: balance; }
 h1 em { font-style: normal; background: linear-gradient(100deg, var(--cool), var(--warm)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .lede { margin: 0; font-size: 17px; color: var(--muted); max-width: 46ch; }
