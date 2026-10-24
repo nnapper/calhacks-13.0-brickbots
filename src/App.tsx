@@ -18,12 +18,17 @@ const fixtures = [
   { name: 'Precision plate', file: 'plate.step', subtitle: '100 × 60 × 6 mm · four Ø8 mm holes', tag: 'STEP', icon: '▱' },
   { name: 'Two-body assembly', file: 'assembly.step', subtitle: 'Offset + 90° rotation · placement check', tag: 'STEP', icon: '▧' },
   { name: 'GLB reference', file: 'reference.glb', subtitle: '100 × 60 × 6 mm · meter-scale mesh', tag: 'GLB', icon: '◇' },
+  { name: 'Grid plate 3×5', file: 'grid-plate-3x5.step', subtitle: '40 × 24 × 2.5 mm · 15 Ø4 holes, 8 mm grid', tag: 'BUILD', icon: '▦' },
+  { name: 'Grid plate 4×4', file: 'grid-plate-4x4.step', subtitle: '32 × 32 × 2.5 mm · 16 Ø4 holes, 8 mm grid', tag: 'BUILD', icon: '▦' },
+  { name: 'Flat beam 1×7', file: 'flat-beam-1x7.step', subtitle: '64 × 8 × 2.5 mm · 7 Ø4 holes, 8 mm grid', tag: 'BUILD', icon: '▬' },
+  { name: 'Wall block', file: 'wall-block.step', subtitle: '48 × 24 × 4 mm · solid, connects face to face', tag: 'BUILD', icon: '▮' },
+  { name: 'L-bracket', file: 'l-bracket.step', subtitle: '24 × 26.5 × 24 mm · 15 Ø4 holes on two legs', tag: 'BUILD', icon: '∟' },
 ];
 export default function App() {
   const [parts, setParts] = useState<PartInstance[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [mates, setMates] = useState<Mate[]>([]);
-  const [snapEnabled, setSnapEnabled] = useState(true);
+  const snapEnabled = true;
   const [preview, setPreview] = useState<Snap | null>(null);
   const [notice, setNotice] = useState('Drag a library model into the workspace.');
   const [library, setLibrary] = useState<{key:string; name:string; file:File}[]>([]);
@@ -84,7 +89,7 @@ export default function App() {
   function place(source: LoadedModel, drop?: [number,number,number]) {
     const existing = live.current.parts;
     const instance: PartInstance = { id: crypto.randomUUID(), model: {...source, object:clone(source.object) as LoadedModel['object']}, position: addPosition(source,existing,drop) };
-    const snap = snapEnabled && drop ? findSnap(instance,instance.position,existing) : null;
+    const snap = snapEnabled && drop ? findSnap(instance,instance.position,existing,undefined,0) : null;
     if(snap) {instance.position = snap.position;instance.quaternion=snap.quaternion;}
     instance.model.object.position.set(...instance.position);
     checkpoint(); setParts([...existing,instance]); setSelectedId(instance.id);
@@ -101,9 +106,20 @@ export default function App() {
       const sourceKey = key ?? next.asset.id;
       cache.current.set(sourceKey,next);
       if(!fixture) setLibrary(l => [...l,{key:sourceKey,name:file.name,file}]);
+      await findNodes(next);
       place(next,drop);
     } catch (e) { if (!abort.signal.aborted) setError(e instanceof Error ? e.message : 'Import failed.'); }
     finally { if (controller.current === abort) { setBusy(''); controller.current = null; } }
+  }
+  // Every STEP part gets its hole and face nodes on import and they are live immediately.
+  async function findNodes(source: LoadedModel) {
+    if (source.asset.originalFormat === 'glb') return;
+    setBusy(`Finding attachment nodes for ${source.asset.name}`);
+    try {
+      const result = await analyzeGeometry(source);
+      source.connectors = result.candidates.map(n => ({ ...n, review: 'accepted' as const }));
+      source.geometryRevision = result.geometryRevision;
+    } catch (e) { setNotice('Could not find attachment nodes: ' + (e instanceof Error ? e.message : 'analysis unavailable') + ' Start npm run geometry.'); }
   }
   async function demo(key: string, drop?: [number,number,number]) {
     controller.current?.abort(); controller.current = null; setBusy(''); setError('');
@@ -116,10 +132,10 @@ export default function App() {
       await open(new File([await response.arrayBuffer()], key), true, abort, drop,key);
     } catch (e) { if (!abort.signal.aborted) { setError(e instanceof Error ? e.message : 'Could not load reference'); setBusy(''); } }
   }
-  function move(id:string, position:[number,number,number], snap:Snap|null) {
-    checkpoint(); setParts(p => p.map(item => item.id === id ? {...item,position,quaternion:snap?.quaternion??item.quaternion} : item));
+  function move(id:string, position:[number,number,number], snap:Snap|null, quaternion?:[number,number,number,number]) {
+    checkpoint(); setParts(p => p.map(item => item.id === id ? {...item,position,quaternion:snap?.quaternion??quaternion??item.quaternion} : item));
     setMates(m => [...m.filter(c => c.movingId !== id && c.targetId !== id), ...(snap ? [{movingId:id,targetId:snap.targetId,movingNodeId:snap.movingNodeId,targetNodeId:snap.targetNodeId}] : [])]);
-    setNotice(snap ? 'Snapped · attachment nodes aligned' : 'Part moved · drag near an accepted node to snap');
+    setNotice(snap ? 'Clicked in' : 'Part moved · drag it near another part to click it in');
   }
   function connectNodes(fromId:string,fromNode:string,toId:string,toNode:string) {
     const from=parts.find(p=>p.id===fromId),to=parts.find(p=>p.id===toId);
@@ -145,13 +161,13 @@ export default function App() {
       <section className={`stage ${dragging ? 'dragging' : ''}`} aria-label="3D model workspace" onDragOver={e => { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; setDragging(true); }} onDragLeave={e => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setDragging(false); }} onDrop={e => { e.preventDefault(); setDragging(false); const point = bridge.current?.dropPoint(e.clientX,e.clientY); const key = e.dataTransfer.getData('application/x-buildflow-model'); if(key) void demo(key,point); else if (e.dataTransfer.files[0]) void open(e.dataTransfer.files[0],false,undefined,point); }}>
         <div className="starfield"/>
         <div className="stage-heading"><div className="eyebrow">DESIGN BEFORE YOU BUILD</div><h1>Your next build,<br/>in perspective.</h1><p>Bring your hardware into view.</p></div>
-        <div className="canvas"><ViewerBoundary><Viewer parts={parts} selectedId={selectedId} view={view} reset={reset} wireframe={wireframe} snapEnabled={snapEnabled} onSelect={setSelectedId} onConnect={connectNodes} onNodeMessage={setNotice} onMove={move} onPreview={setPreview} bridge={bridge}/></ViewerBoundary></div>
-        <div className="assembly-tools"><button aria-pressed={snapEnabled} className={snapEnabled ? 'active' : ''} onClick={() => setSnapEnabled(v => !v)}>⊞ Snap {snapEnabled ? 'on' : 'off'}</button><button disabled={!model || !!busy} onClick={() => model && place(model)}>＋ Duplicate</button><button disabled={!model || !!busy} onClick={remove}>Remove</button><button disabled={!history.length || !!busy} onClick={undo}>↶ Undo</button><span className={preview ? 'snap-message ready' : 'snap-message'} role="status">{preview ? 'Release to snap · nodes aligned' : notice}</span></div>
+        <div className="canvas"><ViewerBoundary><Viewer parts={parts} selectedId={selectedId} view={view} reset={reset} wireframe={wireframe} snapEnabled={snapEnabled} mates={mates} onSelect={setSelectedId} onConnect={connectNodes} onNodeMessage={setNotice} onMove={move} onPreview={setPreview} bridge={bridge}/></ViewerBoundary></div>
+        <div className="assembly-tools"><button disabled={!model || !!busy} onClick={() => model && place(model)}>＋ Duplicate</button><button disabled={!model || !!busy} onClick={remove}>Remove</button><button disabled={!history.length || !!busy} onClick={undo}>↶ Undo</button><span className={preview ? 'snap-message ready' : 'snap-message'} role="status">{preview ? 'Nodes aligned' : notice}</span></div>
         <div className="viewbar" aria-label="Camera views">{(['Perspective', 'Front', 'Top', 'Side'] as View[]).map(v => <button key={v} className={view === v ? 'active' : ''} onClick={() => { setView(v); setReset(r => r + 1); }}>{v}</button>)}<span/><button title="Fit model in view" onClick={() => setReset(r => r + 1)}>↺ Reset</button><button aria-pressed={wireframe} onClick={() => setWireframe(v => !v)} className={wireframe ? 'active' : ''}>Wireframe</button></div>
         {!parts.length && !busy && <div className="empty-prompt"><span className="empty-icon">↥</span><strong>A space for your hardware.</strong><p>Drop a STEP or GLB model here<br/>or drag in a model from the library.</p><button className="primary" onClick={() => input.current?.click()}>Upload model <span>↗</span></button></div>}
         {busy && <div className="import-status" role="status"><span className="spinner"/><strong>{busy}</strong><small>Preparing geometry · original scale preserved</small><button onClick={() => { controller.current?.abort(); controller.current = null; setBusy(''); }}>Cancel import</button></div>}
         {dragging && <div className="drop-overlay">Drop to add a part</div>}
-        <div className="stage-bottom"><span><i className="status-dot"/>{parts.length ? `${parts.length} parts · ${mates.length} snaps` : 'Ready to assemble'}</span><span>Drag part to move <b>·</b> Drag background to orbit <b>·</b> Shift bypasses snap</span></div>
+        <div className="stage-bottom"><span><i className="status-dot"/>{parts.length ? `${parts.length} parts · ${mates.length} snaps` : 'Ready to assemble'}</span><span>Drag a part to move it <b>·</b> Click a part then <b>R</b> to rotate (A/D turn, W/S tip) <b>·</b> Shift skips snapping</span></div>
       </section>
       <aside>
         <div className="cloud-controls"><button disabled={!ready||!!operation||!!busy} onClick={()=>void save()}>Save workspace</button><button disabled={!!operation||!!busy} onClick={()=>void restore()}>Reload saved</button></div>{operation&&<p role="status">{operation}…</p>}<CatalogBrowser/><div className="panel-heading"><div><div className="eyebrow">YOUR WORKBENCH</div><h2>Model library</h2></div><span className="count">{fixtures.length + library.length}</span></div>

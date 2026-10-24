@@ -6,7 +6,7 @@ import tempfile, hashlib, math
 from OCP.STEPControl import STEPControl_Reader
 from OCP.IFSelect import IFSelect_RetDone
 from OCP.TopExp import TopExp_Explorer
-from OCP.TopAbs import TopAbs_FACE, TopAbs_REVERSED, TopAbs_IN
+from OCP.TopAbs import TopAbs_FACE, TopAbs_REVERSED, TopAbs_IN, TopAbs_ON
 from OCP.TopoDS import TopoDS
 from OCP.BRepAdaptor import BRepAdaptor_Surface
 from OCP.BRepTools import BRepTools
@@ -17,6 +17,7 @@ from OCP.GProp import GProp_GProps
 from OCP.GeomAbs import GeomAbs_Plane, GeomAbs_Cylinder
 from OCP.gp import gp_Pnt, gp_Pnt2d
 
+MIN_FACE_AREA_MM2=20
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=['http://127.0.0.1:5173','http://localhost:5173'], allow_methods=['GET','POST'], allow_headers=['*'])
 
@@ -61,6 +62,7 @@ def extract_candidates(data: bytes):
             if all(math.isfinite(x) for x in [a0,a1,b0,b1]):
                 k=cylinder_key(sf.Cylinder()); spans[k]=spans.get(k,0)+(a1-a0)
         pre.Next()
+    faces=[]
     explorer=TopExp_Explorer(shape,TopAbs_FACE)
     while explorer.More():
         face_index+=1
@@ -70,16 +72,10 @@ def extract_candidates(data: bytes):
         if all(math.isfinite(x) for x in [u0,u1,v0,v1]):
             if kind==GeomAbs_Plane:
                 props=GProp_GProps();BRepGProp.SurfaceProperties_s(face,props);area=props.Mass()
-                if area>=4:
-                    point=None
-                    for a,b in [(0.5,0.5),(.25,.5),(.75,.5),(.5,.25),(.5,.75),(.25,.25),(.75,.75)]:
-                        u=u0+(u1-u0)*a;v=v0+(v1-v0)*b
-                        if BRepClass_FaceClassifier(face,gp_Pnt2d(u,v),1e-6).State()==TopAbs_IN:
-                            point=surf.Value(u,v);break
-                    if point:
-                        normal=list(surf.Plane().Axis().Direction().Coord())
-                        if face.Orientation()==TopAbs_REVERSED: normal=[-x for x in normal]
-                        add('surface',point.Coord(),normal,f'Point lies inside analytic planar face {face_index}; proposed mounting surface, requires review.',area=area)
+                if area>=MIN_FACE_AREA_MM2:
+                    normal=list(surf.Plane().Axis().Direction().Coord())
+                    if face.Orientation()==TopAbs_REVERSED: normal=[-x for x in normal]
+                    faces.append((area,face_index,face,surf,normal,(u0,u1,v0,v1)))
             elif kind==GeomAbs_Cylinder and spans.get(cylinder_key(surf.Cylinder()),0)>=2*math.pi-1e-3:
                 cyl=surf.Cylinder();radius=cyl.Radius();axis=list(cyl.Axis().Direction().Coord());origin=list(cyl.Location().Coord())
                 midpoint=surf.Value((u0+u1)/2,(v0+v1)/2); center=[origin[i]+axis[i]*(v0+v1)/2 for i in range(3)]
@@ -95,6 +91,16 @@ def extract_candidates(data: bytes):
                         if BRepClass3d_SolidClassifier(shape,beyond,1e-6).State()!=TopAbs_IN:
                             add('hole',point,normal,f'Analytic internal cylinder on face {face_index}; open axis endpoint. Fastener and through-hole status require review.',diameter=2*radius)
         explorer.Next()
+    # Click points on flat faces, largest faces first and in three passes (centers, then corners, then edge midpoints)
+    # so every face gets coverage before the 64-node budget runs out. Points off the face (holes, rounded ends) are skipped.
+    faces.sort(key=lambda f:-f[0])
+    for label,fractions in [('center',[(.5,.5)]),('corner',[(0,0),(1,0),(0,1),(1,1)]),('edge midpoint',[(.5,0),(.5,1),(0,.5),(1,.5)])]:
+        for area,index,face,surf,normal,(u0,u1,v0,v1) in faces:
+            for fu,fv in fractions:
+                if len(candidates)>=64: break
+                u=u0+(u1-u0)*fu;v=v0+(v1-v0)*fv
+                if BRepClass_FaceClassifier(face,gp_Pnt2d(u,v),1e-6).State() not in (TopAbs_IN,TopAbs_ON): continue
+                add('surface',surf.Value(u,v).Coord(),normal,f'Face {index} {label} click point on an analytic planar face; requires review.',area=area)
     # Prefer actual bore candidates and larger surfaces; keep payload bounded.
     candidates.sort(key=lambda n:(n['kind']!='hole',-n.get('areaM2',0)))
     return {'geometryRevision':digest,'candidates':candidates[:64],'engine':'OpenCascade 7.9','units':'meter'}

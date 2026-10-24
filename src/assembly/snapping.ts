@@ -57,13 +57,33 @@ export function alignConnectors(moving:PartInstance,a:Connector,target:PartInsta
  const position=point.clone().sub(new THREE.Vector3(...a.position).applyQuaternion(q));
  return {targetId:target.id,position:position.toArray(),point:point.toArray(),quaternion:q.toArray(),movingNodeId:a.id,targetNodeId:b.id,axis:0,side:1,distance:0};
 }
-export function findSnap(moving:PartInstance,position:[number,number,number],parts:PartInstance[],threshold?:number):Snap|null {
+// A mate fixes the hole axis and position but not the spin about it. Pick the 30° step about that axis closest to
+// how the part is already oriented, so a part the user turned stays turned when it clicks in.
+function keepRoll(moving:PartInstance,a:Connector,target:PartInstance,b:Connector,snap:Snap):Snap {
+ const axis=new THREE.Vector3(...b.normal).applyQuaternion(new THREE.Quaternion(...(target.quaternion??[0,0,0,1]))).normalize();
+ const aligned=new THREE.Quaternion(...snap.quaternion!),current=new THREE.Quaternion(...(moving.quaternion??[0,0,0,1]));
+ let best=aligned,bestScore=-1;
+ for(let k=0;k<12;k++){const candidate=new THREE.Quaternion().setFromAxisAngle(axis,k*Math.PI/6).multiply(aligned);const score=Math.abs(candidate.dot(current));if(score>bestScore+1e-9){best=candidate;bestScore=score;}}
+ const position=new THREE.Vector3(...snap.point).sub(new THREE.Vector3(...a.position).applyQuaternion(best));
+ return {...snap,quaternion:best.toArray(),position:position.toArray()};
+}
+const FACE_PENALTY=1.6;
+const TURN_COST_M=.004;
+export function findSnap(moving:PartInstance,position:[number,number,number],parts:PartInstance[],threshold?:number,floorY?:number):Snap|null {
  const q=new THREE.Quaternion(...(moving.quaternion??[0,0,0,1]));const limit=threshold??THREE.MathUtils.clamp(localBox(moving).getSize(new THREE.Vector3()).length()*.15,.003,.02);
- let best:Snap|null=null;
+ let best:Snap|null=null,bestScore=Infinity;
  for(const a of moving.model.connectors??[]){if(a.geometryRevision!==moving.model.geometryRevision||a.review!=='accepted')continue;const from=new THREE.Vector3(...a.position).applyQuaternion(q).add(new THREE.Vector3(...position));
   for(const target of parts){if(target.id===moving.id)continue;for(const b of target.model.connectors??[]){if(b.geometryRevision!==target.model.geometryRevision||!compatible(a,b))continue;
    const to=new THREE.Vector3(...b.position).applyQuaternion(new THREE.Quaternion(...(target.quaternion??[0,0,0,1]))).add(new THREE.Vector3(...target.position));const distance=from.distanceTo(to);
-   if(distance<=limit&&(!best||distance<best.distance)){best={...alignConnectors(moving,a,target,b),distance};}
+   if(distance>limit)continue;
+   const candidate={...keepRoll(moving,a,target,b,alignConnectors(moving,a,target,b)),distance};
+   // A mate that would push the part below the build surface is not a valid placement.
+   if(floorY!==undefined&&worldBox({...moving,quaternion:candidate.quaternion},candidate.position).min.y<floorY-1e-6)continue;
+   // Face points are looser than holes, and a corner touches three faces, so prefer a hole that fits and the pairing that turns the part least.
+   const turn=new THREE.Quaternion(...candidate.quaternion!).angleTo(q);
+   const score=distance*(a.kind==='surface'?FACE_PENALTY:1)+turn*TURN_COST_M;
+   if(score>=bestScore)continue;
+   best=candidate;bestScore=score;
   }}
  }return best;
 }
