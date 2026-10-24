@@ -1,0 +1,20 @@
+{
+  "sku": "1126-0001-0001",
+  "sha256": "f91076d234210c9738d0136f9e3cca9d9b04db57519a9849c1ab1f29455cdc72",
+  "boundsMm": {
+    "min": [
+      -27.999999999999996,
+      0,
+      -7.0000000000000036
+    ],
+    "max": [
+      28.000000000000004,
+      2.5,
+      7.0000000000000036
+    ]
+  },
+  "maxBoundsErrorMm": 3.469446951953614e-15,
+  "cylinderTrianglesChecked": 1176,
+  "maxCylinderChordErrorMm": 0.0013985904232073978,
+  "passed": true
+}

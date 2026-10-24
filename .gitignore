@@ -2,3 +2,9 @@
 .env.*
 !.env.example
 node_modules/
+dist/
+*.tsbuildinfo
+public/vendor/
+.venv/
+__pycache__/
+.convex/

@@ -1,0 +1,93 @@
+"""Local analytic STEP connector candidate service. Originals never leave this service."""
+from fastapi import FastAPI, UploadFile, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pathlib import Path
+import tempfile, hashlib, math
+from OCP.STEPControl import STEPControl_Reader
+from OCP.IFSelect import IFSelect_RetDone
+from OCP.TopExp import TopExp_Explorer
+from OCP.TopAbs import TopAbs_FACE, TopAbs_REVERSED, TopAbs_IN
+from OCP.TopoDS import TopoDS
+from OCP.BRepAdaptor import BRepAdaptor_Surface
+from OCP.BRepTools import BRepTools
+from OCP.BRepClass import BRepClass_FaceClassifier
+from OCP.BRepClass3d import BRepClass3d_SolidClassifier
+from OCP.BRepGProp import BRepGProp
+from OCP.GProp import GProp_GProps
+from OCP.GeomAbs import GeomAbs_Plane, GeomAbs_Cylinder
+from OCP.gp import gp_Pnt, gp_Pnt2d
+
+app = FastAPI()
+app.add_middleware(CORSMiddleware, allow_origins=['http://127.0.0.1:5173','http://localhost:5173'], allow_methods=['GET','POST'], allow_headers=['*'])
+
+@app.get('/health')
+def health(): return {'ready': True, 'engine': 'OpenCascade 7.9'}
+
+def tangent(normal):
+    ref = [1,0,0] if abs(normal[0]) < .85 else [0,1,0]
+    dot = sum(a*b for a,b in zip(ref,normal)); t=[a-dot*b for a,b in zip(ref,normal)]
+    length=math.sqrt(sum(x*x for x in t)); return [x/length for x in t]
+
+def extract_candidates(data: bytes):
+    digest=hashlib.sha256(data).hexdigest()
+    with tempfile.TemporaryDirectory() as folder:
+        path=Path(folder)/'model.step'; path.write_bytes(data)
+        reader=STEPControl_Reader()
+        if reader.ReadFile(str(path)) != IFSelect_RetDone: raise ValueError('STEP could not be read')
+        reader.TransferRoots(); shape=reader.OneShape()
+    candidates=[]; seen=set(); face_index=0
+    def add(kind, point, normal, evidence, diameter=None, area=None):
+        pos=[v/1000 for v in point]
+        key=(kind,*(round(v,7) for v in pos),*(round(v,5) for v in normal))
+        if key in seen: return
+        seen.add(key)
+        item={'id':f'n{len(candidates)+1}', 'geometryRevision':digest,'kind':kind,'position':pos,'normal':normal,'tangent':tangent(normal),
+              'label': ('Hole opening' if kind=='hole' else 'Planar surface')+f' {len(candidates)+1}', 'reason':evidence,'review':'suggested','method':'step_analytic'}
+        if diameter is not None:item['diameterM']=diameter/1000
+        if area is not None:item['areaM2']=area/1e6
+        candidates.append(item)
+    explorer=TopExp_Explorer(shape,TopAbs_FACE)
+    while explorer.More():
+        face_index+=1
+        if face_index>20000: raise ValueError('Model has too many faces for interactive analysis')
+        face=TopoDS.Face_s(explorer.Current()); surf=BRepAdaptor_Surface(face); kind=surf.GetType()
+        u0,u1,v0,v1=BRepTools.UVBounds_s(face)
+        if all(math.isfinite(x) for x in [u0,u1,v0,v1]):
+            if kind==GeomAbs_Plane:
+                props=GProp_GProps();BRepGProp.SurfaceProperties_s(face,props);area=props.Mass()
+                if area>=4:
+                    point=None
+                    for a,b in [(0.5,0.5),(.25,.5),(.75,.5),(.5,.25),(.5,.75),(.25,.25),(.75,.75)]:
+                        u=u0+(u1-u0)*a;v=v0+(v1-v0)*b
+                        if BRepClass_FaceClassifier(face,gp_Pnt2d(u,v),1e-6).State()==TopAbs_IN:
+                            point=surf.Value(u,v);break
+                    if point:
+                        normal=list(surf.Plane().Axis().Direction().Coord())
+                        if face.Orientation()==TopAbs_REVERSED: normal=[-x for x in normal]
+                        add('surface',point.Coord(),normal,f'Point lies inside analytic planar face {face_index}; proposed mounting surface, requires review.',area=area)
+            elif kind==GeomAbs_Cylinder and u1-u0>math.pi:
+                cyl=surf.Cylinder();radius=cyl.Radius();axis=list(cyl.Axis().Direction().Coord());origin=list(cyl.Location().Coord())
+                midpoint=surf.Value((u0+u1)/2,(v0+v1)/2); center=[origin[i]+axis[i]*(v0+v1)/2 for i in range(3)]
+                radial=[(midpoint.Coord()[i]-center[i])/radius for i in range(3)]
+                eps=max(.001,min(.05,radius*.01))
+                inner=gp_Pnt(*[center[i]+radial[i]*(radius-eps) for i in range(3)])
+                outer=gp_Pnt(*[center[i]+radial[i]*(radius+eps) for i in range(3)])
+                cavity=BRepClass3d_SolidClassifier(shape,inner,1e-6).State()!=TopAbs_IN and BRepClass3d_SolidClassifier(shape,outer,1e-6).State()==TopAbs_IN
+                if cavity:
+                    for v,sign in [(v0,-1),(v1,1)]:
+                        point=[origin[i]+axis[i]*v for i in range(3)];normal=[sign*x for x in axis]
+                        beyond=gp_Pnt(*[point[i]+normal[i]*eps for i in range(3)])
+                        if BRepClass3d_SolidClassifier(shape,beyond,1e-6).State()!=TopAbs_IN:
+                            add('hole',point,normal,f'Analytic internal cylinder on face {face_index}; open axis endpoint. Fastener and through-hole status require review.',diameter=2*radius)
+        explorer.Next()
+    # Prefer actual bore candidates and larger surfaces; keep payload bounded.
+    candidates.sort(key=lambda n:(n['kind']!='hole',-n.get('areaM2',0)))
+    return {'geometryRevision':digest,'candidates':candidates[:64],'engine':'OpenCascade 7.9','units':'meter'}
+
+@app.post('/analyze')
+def analyze(file: UploadFile):
+    if not (file.filename or '').lower().endswith(('.step','.stp')):raise HTTPException(400,'Analytic analysis requires STEP/STP')
+    data=file.file.read(30*1024*1024+1)
+    if not data or len(data)>30*1024*1024:raise HTTPException(413,'Choose a non-empty STEP under 30 MB')
+    try:return extract_candidates(data)
+    except Exception as exc:raise HTTPException(422,str(exc)[:200])
