@@ -1,11 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { money } from "../lib/catalog.js";
 import { MoonIcon, SunIcon } from "./Icons.jsx";
 
-export default function TopBar({ view, prompt, onPrompt, onHome, totals, onCart, theme, onToggleTheme }) {
-  const [draft, setDraft] = useState(prompt);
-  useEffect(() => setDraft(prompt), [prompt]);
+export default function TopBar({ view, onHome, totals, onCart, theme, onToggleTheme, onAiSearch, aiBusy, aiHistory }) {
+  const [draft, setDraft] = useState("");
+  const [open, setOpen] = useState(false);
   const dark = theme === "dark";
+  const submit = () => {
+    const text = draft.trim();
+    if (!text || aiBusy) return;
+    setOpen(false);
+    setDraft("");
+    onAiSearch(text);
+  };
 
   return (
     <header className="top">
@@ -14,15 +21,27 @@ export default function TopBar({ view, prompt, onPrompt, onHome, totals, onCart,
         BrickBots
       </button>
       {view === "build" ? (
-        <form
-          className="topprompt"
-          onSubmit={(e) => {
-            e.preventDefault();
-            onPrompt(draft);
-          }}
-        >
-          <input value={draft} onChange={(e) => setDraft(e.target.value)} aria-label="Describe your robot" autoComplete="off" />
-        </form>
+        <div className="topprompt">
+          <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
+            <input value={draft} disabled={aiBusy} placeholder="Type here for help" aria-label="Ask the AI helper" autoComplete="off"
+              onChange={(e) => { setDraft(e.target.value); setOpen(true); }}
+              onFocus={() => setOpen(true)}
+              onBlur={() => setTimeout(() => setOpen(false), 120)} />
+          </form>
+          {aiBusy && <span className="ai-busy-dot" aria-label="AI is working" />}
+          {open && !!(aiHistory?.length) && (
+            <div className="ai-recent" onMouseDown={(e) => e.preventDefault()}>
+              <div className="ai-recent-head">Recent</div>
+              {aiHistory.map((item, i) => (
+                <button key={i} type="button" onClick={() => { setOpen(false); setDraft(""); onAiSearch(item.query); }}>
+                  <strong>{item.query}</strong>
+                  <span className={item.ok ? "ok" : "bad"}>{item.output.split("\n")[0].slice(0, 110)}{(item.output.length > 110 || item.output.includes("\n")) ? "…" : ""}</span>
+                  {item.detail && <small>{item.detail.slice(0, 140)}</small>}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       ) : (
         <div className="spacer" />
       )}

@@ -77,9 +77,9 @@
 .cad-snap-message.ready { color: #dcf5c8; border-color: #9dce79; background: rgba(41, 61, 35, .92); }
 .cad-empty-prompt {
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -30%);
+  transform: translate(-50%, -50%);
   width: 300px;
   z-index: 2;
   text-align: center;
@@ -105,6 +105,12 @@
   border: 1px solid #3a4554;
   border-radius: 10px;
   font-size: 12px;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+.cad-import-status.dragging {
+  cursor: grabbing;
 }
 .cad-import-status small { color: #939fad; }
 .cad-import-status button, .cad-error button { background: transparent; border: 1px solid #49515b; color: #d5dbe3; border-radius: 4px; padding: 7px 12px; font-size: 10px; }

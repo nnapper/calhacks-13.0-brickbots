@@ -20,3 +20,15 @@ export async function saveWorkspace(parts:PartInstance[],mates:Mate[],sources:Ma
 }
 export async function suggestNodes(model:LoadedModel){if(!cloud)throw new Error('Convex is not configured');return cloud.action(api.bitdeer.suggest,{secret:workspaceSecret(),name:model.asset.name,revision:model.geometryRevision!,candidates:model.connectors as Connector[]});}
 export async function suggestPairings(parts:PartInstance[]){if(!cloud)throw new Error('Convex is not configured');return cloud.action(api.bitdeer.suggestPairs,{secret:workspaceSecret(),parts:parts.filter(p=>p.model.connectors?.length&&p.model.geometryRevision).map(p=>({partId:p.id,name:p.model.asset.name,nodes:p.model.connectors!}))});}
+export async function askAssistant(message:string,history:{role:'user'|'model';text:string}[],parts:{id:string;name:string;scale:number}[],catalog:{sku:string;name:string}[]){if(!cloud)throw new Error('Convex is not configured');return cloud.action(api.gemini.assistant,{secret:workspaceSecret(),message,history,parts,catalog});}
+export async function askPlanner(goal:string,parts:{id:string;name:string;scale:number}[],catalog:{sku:string;name:string;price?:number;dims?:string;weightG?:number;category?:string}[]){if(!cloud)throw new Error('Convex is not configured');return cloud.action(api.anthropic.plan,{secret:workspaceSecret(),goal,parts,catalog});}
+export async function askArrangement(input:{goal:string;summary:string;parts:{id:string;name:string;sizeMm:{x:number;y:number;z:number}}[];previous?:unknown;issues?:string}){
+  if(!cloud)throw new Error('Convex is not configured');
+  return cloud.action(api.gemini.arrange,{...input,secret:workspaceSecret()});
+}
+export async function verifyArrangement(input:{goal:string;summary:string;arrangement:unknown;parts:{id:string;name:string;sizeMm:{x:number;y:number;z:number}}[]}){
+  if(!cloud)throw new Error('Convex is not configured');
+  return cloud.action(api.anthropic.verify,{...input,secret:workspaceSecret()});
+}
+
+export async function verifyPlan(goal:string,plan:unknown){if(!cloud)throw new Error("Convex is not configured");return cloud.action(api.anthropic.verifyPlan,{secret:workspaceSecret(),goal,plan});}

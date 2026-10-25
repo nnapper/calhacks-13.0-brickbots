@@ -24,6 +24,9 @@ export default function App() {
   const [designsHost, setDesignsHost] = useState(null);
   const [partsOpen, setPartsOpen] = useState(true);
   const [bomOpen, setBomOpen] = useState(true);
+  const [aiBusy, setAiBusy] = useState(false);
+  const [aiHistory, setAiHistory] = useState(() => { try { return JSON.parse(localStorage.getItem("buildflow.aiHistory") ?? "[]"); } catch { return []; } });
+  const [pendingGoal, setPendingGoal] = useState(null);
   const [toast, setToast] = useState({ text: "", visible: false });
   const [unit, setUnit] = useState("mm");
   const [measureOn, setMeasureOn] = useState(true);
@@ -70,6 +73,26 @@ export default function App() {
   }, []);
 
   const assemble = useCallback((text)=>{showToast('Choose catalog parts or import models to build your design. Metrics follow the actual workspace.');},[showToast]);
+  const recordAi = useCallback((entry) => {
+    setAiHistory((h) => {
+      const next = [entry, ...h.filter((x) => x.query !== entry.query)].slice(0, 3);
+      try { localStorage.setItem("buildflow.aiHistory", JSON.stringify(next)); } catch { /* private mode */ }
+      return next;
+    });
+  }, []);
+  const runGoal = useCallback(async (text) => {
+    if (aiBusy) return;
+    setAiBusy(true);
+    try {
+      const result = await cadActions.current?.run?.(text);
+      if (result) recordAi({ query: text, ok: !!result.ok, output: result.output, detail: result.detail });
+      else recordAi({ query: text, ok: false, output: "More Context Required", detail: "Open the build workspace first." });
+      showToast(result?.ok ? `Built from plan · ${result.output.split("\n").length} sections` : "More Context Required");
+    } catch (e) {
+      recordAi({ query: text, ok: false, output: "More Context Required", detail: e instanceof Error ? e.message : String(e) });
+      showToast("More Context Required");
+    } finally { setAiBusy(false); }
+  }, [aiBusy, recordAi, showToast]);
 
   const start = (text) => {
     setPrompt(text);
@@ -112,16 +135,14 @@ export default function App() {
     <div className="app" data-view={view}>
       <TopBar
         view={view}
-        prompt={prompt}
-        onPrompt={(text) => {
-          setPrompt(text);
-          assemble(text);
-        }}
         onHome={() => setView("home")}
         totals={totals}
         onCart={() => setReceiptOpen(true)}
         theme={theme}
         onToggleTheme={toggleTheme}
+        onAiSearch={(text) => { if (view !== "build") { setPrompt(text); setView("build"); setPendingGoal(text); } else void runGoal(text); }}
+        aiBusy={aiBusy}
+        aiHistory={aiHistory}
       />
 
       {view === "home" ? (
@@ -129,7 +150,7 @@ export default function App() {
       ) : (
         <section className="build">
           <section className="stagewrap">
-            <CadWorkspace unit={unit} onUnit={setUnit} measure={measureOn} onMeasure={setMeasureOn} designsHost={designsHost} onWorkspaceChange={setWorkspace} actionsRef={cadActions} />
+            <CadWorkspace unit={unit} onUnit={setUnit} measure={measureOn} onMeasure={setMeasureOn} designsHost={designsHost} onWorkspaceChange={setWorkspace} actionsRef={cadActions} pendingGoal={pendingGoal} onPendingGoalConsumed={() => setPendingGoal(null)} />
           </section>
 
           <PartsPanel designsHostRef={setDesignsHost} onAdd={addPart} onLive={onLive} onRemoveCustom={removeCustom} version={liveVersion} unit={unit} collapsed={!partsOpen} onToggle={() => setPartsOpen((o) => !o)} />

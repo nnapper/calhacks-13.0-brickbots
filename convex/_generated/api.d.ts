@@ -8,8 +8,11 @@
  * @module
  */
 
+import type * as anthropic from "../anthropic.js";
 import type * as bitdeer from "../bitdeer.js";
 import type * as data from "../data.js";
+import type * as gemini from "../gemini.js";
+import type * as modelJson from "../modelJson.js";
 
 import type {
   ApiFromModules,
@@ -18,8 +21,11 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  anthropic: typeof anthropic;
   bitdeer: typeof bitdeer;
   data: typeof data;
+  gemini: typeof gemini;
+  modelJson: typeof modelJson;
 }>;
 
 /**
