@@ -282,3 +282,7 @@ dd { margin: 0; color: #d4dbe3; text-align: right; }
 .cad-measure { pointer-events: auto; display: flex; align-items: center; gap: 6px; transition: opacity .24s ease; }
 .cad-measure .pillbtn { padding: 6px 14px; font-size: 12px; }
 .cad-dim { display: block; white-space: nowrap; padding: 2px 7px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); color: var(--ink); font: 500 11px var(--f-mono); backdrop-filter: blur(6px); }
+
+/* Drag-box selection rectangle. */
+.cad-viewer { position: absolute; inset: 0; }
+.cad-marquee { position: absolute; z-index: 3; border: 1px solid var(--cool); background: color-mix(in srgb, var(--cool) 18%, transparent); border-radius: 3px; pointer-events: none; }

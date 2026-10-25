@@ -15,7 +15,7 @@ function groupRows(rows) {
   return [...map.values()];
 }
 
-export default function WorkspacePanel({health, checking, lookupError, metrics, selectedId, onSelect, onRemove, onAdjust, onWhereToBuy, collapsed, onToggle}) {
+export default function WorkspacePanel({health, checking, lookupError, metrics, selectedId, selectedIds = [], onSelect, onRemove, onAdjust, onWhereToBuy, collapsed, onToggle}) {
   const groups = groupRows(metrics.rows);
   const byCategory = {};
   for (const g of groups) (byCategory[g.product?.group ?? 'custom'] ??= []).push(g);
@@ -30,7 +30,7 @@ export default function WorkspacePanel({health, checking, lookupError, metrics, 
       {groups.length ? GROUP_ORDER.filter(c => byCategory[c]).map(c => <div key={c}>
         <div className="gl">{GROUP_LABELS[c]}</div>
         {byCategory[c].map(g => {
-          const hasSelected = g.ids.includes(selectedId);
+          const hasSelected = g.ids.includes(selectedId) || g.ids.some(id => selectedIds.includes(id));
           const count = g.ids.length;
           const detail = g.product ? detailName(g.product.name) : '';
           return <div key={g.key} className={`row${hasSelected ? ' sel' : ''}`} onClick={() => onSelect(g.ids[(g.ids.indexOf(selectedId) + 1) % count])}>
@@ -39,7 +39,7 @@ export default function WorkspacePanel({health, checking, lookupError, metrics, 
             <div className="lp">{g.price === null ? '—' : money(g.price * count)}</div>
             <div className="rd">{count > 1 && g.price !== null ? `${money(g.price)} each` : detail || `${g.dimensions.map(n => n.toFixed(1)).join(' × ')} mm`}</div>
             <div className="step" onClick={e => e.stopPropagation()}>
-              <button type="button" aria-label={`Remove one ${g.name}`} onClick={() => onRemove(hasSelected ? selectedId : g.ids[count - 1])}>−</button>
+              <button type="button" aria-label={`Remove one ${g.name}`} onClick={() => onRemove((g.ids.includes(selectedId) ? selectedId : g.ids.find(id => selectedIds.includes(id))) ?? g.ids[count - 1])}>−</button>
               <span>{count}</span>
               <button type="button" aria-label={`Add one ${g.name}`} disabled={!g.sku} title={g.sku ? undefined : 'Uploaded models can be duplicated with Copy and Paste'} onClick={() => onAdjust(g.sku, 1)}>+</button>
             </div>
