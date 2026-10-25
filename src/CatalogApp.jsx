@@ -13,6 +13,8 @@ import {workspaceMetrics} from "./lib/workspace-metrics.js";
 import Receipt from "./components/Receipt.jsx";
 import { compose } from "./lib/composer.js";
 import { unbrand } from "./lib/brand.js";
+import { mergeHealth } from "./compatibility/merge.js";
+import { useElasticReport } from "./compatibility/useElasticReport.js";
 
 
 export default function App() {
@@ -65,10 +67,13 @@ export default function App() {
       .catch(() => { batch.forEach((sku) => askedSkus.current.delete(sku)); setLookupError(true); })
       .finally(() => setChecking(false));
   }, [workspace.parts, workspace.mates]);
-  const health = useMemo(
+  const ruleHealth = useMemo(
     () => evaluateBuild(workspace.parts, workspace.mates, BY_SKU, RAW_BY_SKU, online),
     [workspace, online, liveVersion]
   );
+  // Elastic's agent answers the pairs the rules could not settle; the panel shows one combined report.
+  const { report: elasticReport, loading: elasticLoading } = useElasticReport(workspace.parts, workspace.mates, ruleHealth);
+  const health = useMemo(() => mergeHealth(ruleHealth, elasticReport), [ruleHealth, elasticReport]);
   const showToast = useCallback((text) => {
     setToast({ text, visible: true });
     clearTimeout(toastTimer.current);
@@ -182,7 +187,7 @@ export default function App() {
           </section>
 
           <PartsPanel designsHostRef={setDesignsHost} onAdd={addPart} onLive={onLive} onRemoveCustom={removeCustom} version={liveVersion} unit={unit} collapsed={!partsOpen} onToggle={() => setPartsOpen((o) => !o)} />
-          <WorkspacePanel health={health} checking={checking} lookupError={lookupError} metrics={totals} onAdjust={adjustPart} selectedId={workspace.selectedId} selectedIds={workspace.selectedIds} onSelect={id=>cadActions.current?.select(id)} onRemove={id=>cadActions.current?.remove(id)} onWhereToBuy={()=>setReceiptOpen(true)} collapsed={!bomOpen} onToggle={()=>setBomOpen(o=>!o)} />
+          <WorkspacePanel health={health} checking={checking || elasticLoading} lookupError={lookupError} metrics={totals} onAdjust={adjustPart} selectedId={workspace.selectedId} selectedIds={workspace.selectedIds} onSelect={id=>cadActions.current?.select(id)} onRemove={id=>cadActions.current?.remove(id)} onWhereToBuy={()=>setReceiptOpen(true)} collapsed={!bomOpen} onToggle={()=>setBomOpen(o=>!o)} />
         </section>
       )}
 
