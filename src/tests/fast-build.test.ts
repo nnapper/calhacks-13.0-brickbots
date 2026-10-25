@@ -69,4 +69,8 @@ describe('primitive fallback plans', () => {
     expect(plan?.subsystems[0].customBodies).toHaveLength(3);
     expect(plan?.subsystems[0].customBodies[0].widthMm).toBe(30);
   });
+
+  it('keeps a bare box request as one primitive', () => {
+    expect(fallbackPlan('box', []).subsystems[0].customBodies).toHaveLength(1);
+  });
 });
