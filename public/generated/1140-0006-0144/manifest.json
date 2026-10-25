@@ -9,15 +9,16 @@
   "generation": {
     "provider": "anthropic",
     "model": "claude-sonnet-5-5",
-    "analysisConfidence": "low",
-    "codeConfidence": "low",
+    "analysisConfidence": "medium",
+    "dimensionsEstimated": false,
+    "codeConfidence": "medium",
     "warnings": [
-      "The 144 mm diameter and 6 mm thickness come from the product specs and are unverified. The images show many holes, but no hole diameters or coordinates are printed, so the holes array is left empty rather than guessed. The visible features are: a pattern of small through holes and tapped holes, larger counterbored holes, and five keyed hub clusters (one at the center, four near the diagonals). Each cluster has a large central opening with counterbored lobes. Exact sizes and positions need to be taken from the vendor drawing or CAD file. The bounding box is centered on the origin, so the top face is at z=+3 and the bottom face at z=-3.",
-      "The diameter and thickness come from the unverified product specs.",
-      "The hub positions (center plus four at ±36 mm diagonals), bore size, lobe layout and counterbore dimensions are estimated from the image, not taken from a drawing.",
-      "The scattered small through holes, tapped holes and larger counterbored holes are omitted because their sizes and positions cannot be determined.",
-      "The keyed notches and the cross-holes inside the hub bores are omitted.",
-      "Threads are not modeled."
+      "Only the 144 mm diameter and 6 mm thickness are stated. The part is centered on the origin, with its thickness along z. The individual hole diameters and positions are not printed in the images or the product data. Hole diameters, positions, and counterbore depths were left out rather than guessed, so the holes array is empty. The locations visible in the images are the central cutout and the four symmetric cutouts. The source data is marked as unverified, so the CAD hole pattern still needs the vendor's drawing.",
+      "Only the 144 mm diameter and 6 mm thickness are stated, so the model is a plain disc.",
+      "The five quad-lobe counterbored cutouts (one central, four symmetric) are visible but their dimensions and positions are not given, so they are omitted.",
+      "The many small through-holes and larger counterbored holes are visible but their diameters, positions and counterbore depths are not given, so they are omitted.",
+      "The holes array in the analysis is empty. The vendor drawing is needed to add the hole pattern.",
+      "The source dimensions are marked unverified."
     ]
   },
   "geometry": {
@@ -36,27 +37,27 @@
     "warnings": [],
     "files": {
       "model.step": {
-        "bytes": 265392,
-        "sha256": "9cf807ad9b17b2638c217f9d8acbc838774de74edfe4585863beab97dfe7595c"
+        "bytes": 5744,
+        "sha256": "93e45970c6f7a324ec0eb14ccdbc8f8258e5e8d660672a7c481378b866b0f275"
       },
       "model.stl": {
-        "bytes": 720184,
-        "sha256": "f1de75c6605f8b5e5aafb53b2247b95f127194404dd8d3d206c0ef01282be458"
+        "bytes": 16684,
+        "sha256": "7a0173fb4de5935b89bdcd595c82fffb7699138f02b5d8aa52976698868e0eb4"
       },
       "model.glb": {
-        "bytes": 259680,
-        "sha256": "86435e808c3728e8bf8805aab12f8c447fb7aefdb89d48fd2240f213edf5f327"
+        "bytes": 7012,
+        "sha256": "f6eb39ea78cbda1fc414ac6f401f59e6462fe48e2a23d26293a95986b05f4a85"
       }
     }
   },
   "artifacts": {
     "step": "model.step",
     "glb": "model.glb",
-    "stepSha256": "9cf807ad9b17b2638c217f9d8acbc838774de74edfe4585863beab97dfe7595c"
+    "stepSha256": "93e45970c6f7a324ec0eb14ccdbc8f8258e5e8d660672a7c481378b866b0f275"
   },
   "verification": {
     "service": "http://127.0.0.1:8001",
-    "candidateCount": 64
+    "candidateCount": 10
   },
   "status": "prototype_unverified"
 }

@@ -10,13 +10,14 @@
     "provider": "anthropic",
     "model": "claude-sonnet-5-5",
     "analysisConfidence": "low",
+    "dimensionsEstimated": false,
     "codeConfidence": "low",
     "warnings": [
-      "The 80 mm figure in the data is the shaft length, as stated in Product Insight #8 (\"80mm shaft length\"). It is not the motor body length. The 37 mm body diameter and the roughly 100 mm body length (180 mm overall with the shaft) are estimates, not printed dimensions, so overall z is uncertain. No hole sizes or positions are dimensioned, so the holes list is empty. The drawings do show an M4 screw going into the shaft end, but I did not turn it into a hole entry. The shaft is 8 mm across, with a REX (hex-profile) section.",
-      "Body diameter, body length and the split between encoder, motor and gearbox sections are estimated, because the drawing gives no dimensions.",
-      "The 80 mm figure is taken as the shaft length. The roughly 100 mm body length is an assumption.",
-      "The REX shaft is modeled as a plain 8 mm cylinder with no hex profile.",
-      "Omitted for lack of dimensions: the gearbox pilot boss, mounting screw holes on the gearbox face, the shaft-end tapped hole, the encoder wires and connectors, and the yellow jacket detail."
+      "The images print only the 80mm shaft length and the 8mm REX shaft size. The 80mm shaft extends beyond the body envelope above, which excludes it. The 37mm body diameter and 105mm body length are my estimates and are not printed or dimensioned in the drawings. The gearbox screw-hole pattern, channel hole sizes and positions, and body diameter are not dimensioned, so no holes are listed. The shaft's M4 tapped end hole is visible but not sized. Verify the body dimensions against the vendor datasheet before use.",
+      "Body diameter (37 mm) and body length (105 mm) are estimates, not dimensioned in the source.",
+      "The 80 mm length is taken as the shaft length, so the overall part extends past the 105 mm body envelope in +Z and is not centered on Z overall.",
+      "The shaft is modeled as a plain 8 mm cylinder; the REX profile and the tapped M4 end hole are omitted.",
+      "The gearbox screw holes, encoder housing, motor can steps, wires, connectors and the yellow jacket are omitted because they are uncertain or decorative."
     ]
   },
   "geometry": {
@@ -26,40 +27,40 @@
       "xmax": 18.5,
       "ymin": 0,
       "ymax": 37,
-      "zmin": -90,
-      "zmax": 90,
+      "zmin": -52.5,
+      "zmax": 132.5,
       "xlen": 37,
       "ylen": 37,
-      "zlen": 180
+      "zlen": 185
     },
     "warnings": [
-      "Generated geometry is missing a listed dimension 80.000 mm; measured dimensions are [37.0, 37.0, 180.0]",
-      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [37.0, 37.0, 180.0]",
+      "Generated geometry is missing a listed dimension 80.000 mm; measured dimensions are [37.0, 37.0, 185.0]",
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [37.0, 37.0, 185.0]",
       "Generated part is larger than the largest listed dimension."
     ],
     "files": {
       "model.step": {
-        "bytes": 13534,
-        "sha256": "fe2e48602577c149156e641fc8bc9b6b41440b79cbe0c90676bf793b5438cac5"
+        "bytes": 9647,
+        "sha256": "972dc5e794d94159f10b8b4c062c791e2eb2d5c2f9501cc57306209d9dd80704"
       },
       "model.stl": {
-        "bytes": 50284,
-        "sha256": "de88d9c091bc7e961bd3f09d0b2e82918ea7b2656fb7988f6cd38c66ff9322eb"
+        "bytes": 33484,
+        "sha256": "a1f5142105f19c433fd8dc8b452782ce96e2d02cc6474290b8af38a6a97389be"
       },
       "model.glb": {
-        "bytes": 19108,
-        "sha256": "37348d802c75bfe077c89628e5e55339fd1782c5aa319ec9a4903ebca92277a1"
+        "bytes": 13060,
+        "sha256": "0883d1782e99b437b7646d7678f1c522e334e77b7ae4d07335d7aab43c8be791"
       }
     }
   },
   "artifacts": {
     "step": "model.step",
     "glb": "model.glb",
-    "stepSha256": "fe2e48602577c149156e641fc8bc9b6b41440b79cbe0c90676bf793b5438cac5"
+    "stepSha256": "972dc5e794d94159f10b8b4c062c791e2eb2d5c2f9501cc57306209d9dd80704"
   },
   "verification": {
     "service": "http://127.0.0.1:8001",
-    "candidateCount": 18
+    "candidateCount": 14
   },
   "status": "prototype_unverified"
 }

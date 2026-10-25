@@ -1,12 +1,12 @@
 {
-  "shapeSummary": "144 mm diameter, 6 mm thick round plate lying in the XZ plane with its bottom at Y=0 and top at Y=6. It has five keyed hub openings, one at the center and four on the diagonals. Each opening has a 14 mm central bore and four 8 mm counterbored lobes with 4.2 mm through holes. The lobes are counterbored 3 mm deep from the top face.",
-  "confidence": "low",
+  "shapeSummary": "Plain circular aluminum disc, 144 mm in diameter and 6 mm thick. It is centered on X and Z, with the bottom face at Y=0 and the top face at Y=6. No holes or cutouts are modeled.",
+  "confidence": "medium",
   "warnings": [
-    "The diameter and thickness come from the unverified product specs.",
-    "The hub positions (center plus four at ±36 mm diagonals), bore size, lobe layout and counterbore dimensions are estimated from the image, not taken from a drawing.",
-    "The scattered small through holes, tapped holes and larger counterbored holes are omitted because their sizes and positions cannot be determined.",
-    "The keyed notches and the cross-holes inside the hub bores are omitted.",
-    "Threads are not modeled."
+    "Only the 144 mm diameter and 6 mm thickness are stated, so the model is a plain disc.",
+    "The five quad-lobe counterbored cutouts (one central, four symmetric) are visible but their dimensions and positions are not given, so they are omitted.",
+    "The many small through-holes and larger counterbored holes are visible but their diameters, positions and counterbore depths are not given, so they are omitted.",
+    "The holes array in the analysis is empty. The vendor drawing is needed to add the hole pattern.",
+    "The source dimensions are marked unverified."
   ],
-  "cadquery": "t=6\npart=cq.Workplane('XZ').circle(72).extrude(-t)\nhubs=[(0,0),(-36,36),(36,36),(-36,-36),(36,-36)]\nlobes=[]\nfor cx,cz in hubs:\n    for k in range(4):\n        a=math.radians(45+90*k)\n        lobes.append((cx+10*math.cos(a),cz+10*math.sin(a)))\nbores=cq.Workplane('XZ').pushPoints(hubs).circle(7).extrude(-t)\nthru=cq.Workplane('XZ').pushPoints(lobes).circle(2.1).extrude(-t)\ncb=cq.Workplane('XZ').workplane(offset=-3).pushPoints(lobes).circle(4).extrude(-3)\npart=part.cut(bores).cut(thru).cut(cb)"
+  "cadquery": "part = cq.Workplane('XZ').circle(72).extrude(-6)"
 }

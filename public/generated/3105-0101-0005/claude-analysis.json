@@ -1,10 +1,10 @@
 {
   "partType": "other",
-  "summary": "Compact brushed DC motor controller: a flat rectangular PCB body in clear heat-shrink, with a small round spacer/tab at one end that has a 4 mm through hole for mounting. Wire leads and connectors extend from both ends but are excluded from the bounds.",
+  "summary": "Compact single-channel brushed DC motor controller. It is a thin PCB under clear heat-shrink with one 4 mm mounting hole in a small ear at one end. Flying leads (motor bullets, XT30 power, 3-pin signal) are not part of the body bounds.",
   "boundsMm": {
-    "x": 40.3,
+    "x": 40.5,
     "y": 15.5,
-    "z": 6.6
+    "z": 5.6
   },
   "holes": [
     {
@@ -12,9 +12,9 @@
       "diameterMm": 4,
       "positionsMm": [
         [
-          -15.3,
+          -15.2,
           0,
-          -0.5
+          0
         ]
       ],
       "through": true
@@ -23,10 +23,10 @@
   "mountingSurfaces": [
     {
       "axis": "z",
-      "offsetMm": -3.3,
-      "description": "Underside of the round mounting spacer at the tab end, which surrounds the 4 mm through hole and sits flush against a mounting plate."
+      "offsetMm": -2.8,
+      "description": "Underside of the mounting ear/standoff around the 4 mm hole, used to fasten the board flat to a plate."
     }
   ],
-  "confidence": "medium",
-  "notes": "Dimensions come from the printed drawing. Body length is 28.5 mm, body width is 15.5 mm, and the 4 mm hole center is 35.45 mm from the body's far end. The scale is about 8 px/mm. The spacer extends about 4.9 mm beyond the hole center, so I estimated overall length as 35.45 + 4.9 ≈ 40.3 mm. The 5.6 mm label appears to be the spacer height. The body sits slightly above the spacer, so I estimated total thickness at about 6.6 mm. That value and the hole's z position are scaled from the drawing, not printed. The hole looks open in the views, so I recorded it as through. The 150 mm wire leads and the connectors (XT30, 3.5 mm bullets, servo-style signal header) are excluded from the bounds. The box is centered on the part at the origin."
+  "confidence": "low",
+  "notes": "The drawing prints 28.5 mm (board length), 35.45 mm (hole center to the far end of the board), 15.5 mm (width), 5.6 mm (thickness) and a Ø4 mm hole. The 40.5 mm x-bound is my estimate: 35.45 mm plus about 5 mm from the hole center to the ear's outer edge, scaled from the drawing at about 8 px/mm (28.5 mm = 227 px). The hole position is derived the same way, with the box centered at the origin and the hole near the -x end. Heat-shrink tail and wire leads are excluded (leads are 150 mm each). Whether the 5.6 mm thickness covers the ear standoff or only the board is uncertain. Treat the hole as through because the photos show an open bore, but its exact depth is not stated. The z mounting-surface offset assumes the underside sits at -z/2."
 }

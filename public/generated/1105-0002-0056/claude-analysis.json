@@ -1,6 +1,6 @@
 {
   "partType": "flat_plate",
-  "summary": "Flat round-end (stadium-shaped) aluminum pattern plate, 56 mm long, 32 mm wide and 2.5 mm thick. It has two large 14 mm through holes, one centered in each rounded end, and a field of smaller pattern holes between and around them.",
+  "summary": "Flat aluminum round-end (stadium-shaped) pattern plate, 56mm long, 32mm wide and 2.5mm thick. It has two large 14mm through holes along the centerline and a surrounding goBILDA hole pattern, some of it slotted.",
   "boundsMm": {
     "x": 56,
     "y": 32,
@@ -23,20 +23,26 @@
         ]
       ],
       "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [],
+      "through": true
     }
   ],
   "mountingSurfaces": [
     {
       "axis": "z",
       "offsetMm": 1.25,
-      "description": "Top flat face, 56 x 32 mm, for mounting parts and bearings against the pattern holes"
+      "description": "Top flat face of the plate, used for mounting hardware and parts against the hole pattern"
     },
     {
       "axis": "z",
       "offsetMm": -1.25,
-      "description": "Bottom flat face, 56 x 32 mm, for mounting flush against rails, channel or other structure"
+      "description": "Bottom flat face of the plate, used to clamp against rails, channel or other parts"
     }
   ],
   "confidence": "medium",
-  "notes": "Length, width and thickness come from the listed specs, which are flagged as unverified. The 14 mm hole centers at x=±12 mm are inferred, not printed. They assume the 16 mm end radius (half the 32 mm width) and the stated 24 mm across-center spacing. The images show about 14 smaller pattern holes, some slotted, but no printed diameter or position for them, so they are left out of the holes array. The pattern is described as 16 mm goBILDA pattern. Z is centered on the plate midplane."
+  "notes": "Length (56), width (32) and thickness (2.5) are the listed dimensions, and the ends are full semicircles of radius 16. The 14mm hole diameter is listed. The ±12mm spacing of the two large holes is estimated from the images, which also show them centered on the width axis and concentric with the rounded ends. The smaller pattern holes (about 14 visible, some slotted) follow the listed 16mm goBILDA pattern. Their 4mm diameter is assumed from that standard and not stated here, and their positions are left empty because the images give no printed coordinates."
 }

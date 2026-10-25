@@ -1,4 +1,5 @@
 import {validatePlanCount, layoutIssues} from '../assembly/ai-validation';
+import {localCatalogPlan, fallbackPlan, primitiveBodyPlan, shelfArrangement} from '../assembly/fast-build';
 import {Box3,Euler,Quaternion,Vector3} from 'three';
 import {worldBox} from '../assembly/snapping';
 import { createPortal } from 'react-dom';
@@ -33,6 +34,21 @@ const fixtures = [
   { name: 'Wall block', file: 'wall-block.step', subtitle: '48 × 24 × 4 mm · solid, connects face to face', tag: 'BUILD', icon: '▮' },
   { name: 'L-bracket', file: 'l-bracket.step', subtitle: '24 × 26.5 × 24 mm · 15 Ø4 holes on two legs', tag: 'BUILD', icon: '∟' },
 ];
+
+function remainingMs(deadline: number) {
+  return deadline - Date.now();
+}
+
+function subDeadline(deadline: number, milliseconds: number) {
+  return Math.min(deadline, Date.now() + milliseconds);
+}
+
+function raceDeadline<T>(task: Promise<T>, deadline: number): Promise<T | null> {
+  return new Promise(resolve => {
+    const timer = setTimeout(() => resolve(null), Math.max(0, remainingMs(deadline)));
+    task.then(value => { clearTimeout(timer); resolve(value); }).catch(() => { clearTimeout(timer); resolve(null); });
+  });
+}
 
 export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef, pendingGoal, onPendingGoalConsumed, pendingPreset, onPendingPresetConsumed, onGoalResult, unit='mm', onUnit, measure=true, onMeasure}: {designsHost: HTMLElement | null; onWorkspaceChange?: (state: {parts:PartInstance[];mates:Mate[];selectedId:string|null;selectedIds:string[]})=>void; actionsRef?: {current:any}; pendingGoal?: string|null; onPendingGoalConsumed?: () => void; pendingPreset?: any; onPendingPresetConsumed?: () => void; onGoalResult?: (goal: string, result: {ok:boolean;output:string;detail?:string}) => void; unit?: string; onUnit?: (unit: string)=>void; measure?: boolean; onMeasure?: (on: boolean)=>void}) {
   const solidBoxes=useRef(new Set<string>());
@@ -274,10 +290,11 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     return instance.id;
   }
 
-  async function open(file: File, fixture = false, ownController?: AbortController, drop?: [number, number, number], key?: string) {
+  async function open(file: File, fixture = false, ownController?: AbortController, drop?: [number, number, number], key?: string, deadline?: number, analyzeNodes = true) {
     if (!ownController) controller.current?.abort();
     const abort = ownController ?? new AbortController();
     controller.current = abort;
+    const deadlineTimer = deadline ? setTimeout(() => abort.abort(), Math.max(0, remainingMs(deadline))) : null;
     setError('');
     setBusy(`Importing ${file.name}`);
     try {
@@ -288,27 +305,52 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       if (sourceKey.startsWith('placeholder:')) next.asset.productId = sourceKey.slice('placeholder:'.length);
       cache.current.set(sourceKey, next);
       if (!fixture) setLibrary(l => [...l, { key: sourceKey, name: file.name, file, generated: sourceKey.startsWith('generated:') }]);
-      await findNodes(next);
+      if (analyzeNodes) await findNodes(next);
       return place(next, drop);
     } catch (e) {
       if (!abort.signal.aborted) setError(e instanceof Error ? e.message : 'Import failed.');
     } finally {
+      if (deadlineTimer) clearTimeout(deadlineTimer);
       if (controller.current === abort) { setBusy(''); controller.current = null; }
     }
   }
 
-  async function generateProduct(sku: string, drop?: [number, number, number], forceBusy=false):Promise<string|null> {
+  async function generateProduct(sku: string, drop?: [number, number, number], forceBusy=false, deadline?: number, analyzeNodes = true):Promise<string|null> {
     if (busy && !forceBusy) return null;
     const cachedSource = [...cache.current.values()].find(source => source.asset.productId === sku);
     if (cachedSource) { const id=place(cachedSource, drop); setNotice('Generated CAD prototype reused · inspect before assembly'); return id; }
     setError('');
+    // Prebuilt assets are served directly from Vite. The generator endpoint can be slow even for cached models,
+    // so checking this URL first is the difference between a one-second import and a build that misses its deadline.
+    try {
+      const glb = await fetch(`/generated/${sku}/model.glb`, {method: 'HEAD'});
+      if (glb.ok) {
+        setBusy('Loading prebuilt model');
+        const modelResponse = await fetch(`/generated/${sku}/model.glb`);
+        if (!modelResponse.ok) throw new Error('Prebuilt model download failed');
+        const partId=await open(new File([await modelResponse.arrayBuffer()], `${BY_SKU[sku]?.name ?? sku}.glb`), false, new AbortController(), drop, `generated:${sku}`, deadline, analyzeNodes);
+        setNotice('Prebuilt CAD prototype added to model library · inspect before assembly');
+        return partId ?? null;
+      }
+      const prebuilt = await fetch(`/generated/${sku}/model.step`, {method: 'HEAD'});
+      if (prebuilt.ok) {
+        setBusy('Loading prebuilt model');
+        const modelResponse = await fetch(`/generated/${sku}/model.step`);
+        if (!modelResponse.ok) throw new Error('Prebuilt model download failed');
+        const partId=await open(new File([await modelResponse.arrayBuffer()], `${BY_SKU[sku]?.name ?? sku}.step`), false, new AbortController(), drop, `generated:${sku}`, deadline, analyzeNodes);
+        setNotice('Prebuilt CAD prototype added to model library · inspect before assembly');
+        return partId ?? null;
+      }
+    } catch {
+      // Fall through to generation, which handles SKUs that have not been prebuilt.
+    }
     setBusy('Generating');
     try {
       const response = await fetch('/geometry/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sku }),
-        signal: AbortSignal.timeout(180_000),
+        signal: AbortSignal.timeout(Math.max(1, deadline ? remainingMs(deadline) : 180_000)),
       });
       if (!response.ok) {
         const detail = await response.json().catch(() => ({}));
@@ -317,7 +359,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       const result = await response.json();
       const modelResponse = await fetch(result.stepUrl);
       if (!modelResponse.ok) throw new Error('Generated model download failed');
-      const partId=await open(new File([await modelResponse.arrayBuffer()], `${result.name}.step`), false, new AbortController(), drop, `generated:${sku}`);
+      const partId=await open(new File([await modelResponse.arrayBuffer()], `${result.name}.step`), false, new AbortController(), drop, `generated:${sku}`, deadline, analyzeNodes);
       setNotice('Generated CAD prototype added to model library · inspect before assembly');
       return partId ?? null;
     } catch (e) {
@@ -325,7 +367,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       try {
         const product = BY_SKU[sku];
         if (!product) throw e;
-        const partId = await open(await placeholderFile(product), false, new AbortController(), drop, `placeholder:${sku}`);
+        const partId = await open(await placeholderFile(product), false, new AbortController(), drop, `placeholder:${sku}`, deadline);
         setNotice('No 3D model for this part yet · showing a placeholder shape');
         return partId ?? null;
       } catch {
@@ -364,7 +406,8 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
 
   // Replaces the workspace with an example build (Undo brings the previous build back).
   async function loadPreset(preset: any = PRESET) {
-    if (busy) return;
+    // The ref is set synchronously by run(), so it also catches an AI build that has not repainted yet.
+    if (busy || building.current) return;
     setError('');
     setBusy(`Loading example ${preset.name}`);
     try {
@@ -448,24 +491,35 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     setMates(items=>items.filter(m=>m.movingId!==p.id&&m.targetId!==p.id));setPreview(null);
     setNotice(axis?`Rotated ${degrees}° around ${axis.toUpperCase()}`:`Resized to ${nextScale*100}% · proportions locked`);
   }
-  async function generateCustomBody(body:any):Promise<{name:string;partId:string|null}> {
+  async function generateCustomBody(body:any, deadline?:number, analyzeNodes = true):Promise<{name:string;partId:string|null}> {
     let lastError:unknown=null;
     for(let attempt=0;attempt<2;attempt++){
       try{
         setBusy('Generating a custom body');
-        const response=await fetch('/geometry/custom',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(120_000)});
+        const response=await fetch('/geometry/custom',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(Math.max(1, deadline?remainingMs(deadline):120_000))});
         if(!response.ok){const detail=await response.json().catch(()=>({}));throw new Error(detail.detail??`Body generation failed (HTTP ${response.status})`);}
         const result=await response.json();
-        const modelResponse=await fetch(result.stepUrl);
+        const meshFormat=result.stlUrl?'stl':'step';
+        const modelResponse=await fetch(result.stlUrl??result.stepUrl);
         if(!modelResponse.ok)throw new Error('Generated model download failed');
         const bytes=new Uint8Array(await modelResponse.arrayBuffer());
-        // A HTML error page or truncated download would surface as a cryptic parse error; catch it here instead.
-        if(!new TextDecoder().decode(bytes.slice(0,12)).startsWith('ISO-10303'))throw new Error('The generated file did not download correctly.');
-        const partId=await open(new File([bytes],`${result.name}.step`),false,new AbortController(),undefined,`generated:${result.slug}`);
+        // A mesh is the finalized output for a custom primitive; older geometry services still return STEP.
+        if(meshFormat==='step'&&!new TextDecoder().decode(bytes.slice(0,12)).startsWith('ISO-10303'))throw new Error('The generated file did not download correctly.');
+        const partId=await open(new File([bytes],`${result.name}.${meshFormat}`),false,new AbortController(),undefined,`generated:${result.slug}`,deadline,analyzeNodes);
         if(partId&&!(body.holesX>0&&body.holesY>0))solidBoxes.current.add(partId);
+        if(partId&&analyzeNodes) {
+          const source=cache.current.get(`generated:${result.slug}`);
+          if(source?.connectors?.length&&source.geometryRevision) {
+            // Mesh analysis is output-critical; Bitdeer refines connector intent without blocking the result.
+            void suggestNodes(source).then(({result:suggestions}) => {
+              const reviewed=applySuggestions(source.connectors ?? [], suggestions);
+              updateNodes(source, reviewed, source.geometryRevision);
+            }).catch(() => {});
+          }
+        }
         setBusy('');
         return {name:result.name,partId:partId??null};
-      }catch(e){lastError=e;setBusy('');if(attempt===0)await new Promise(r=>setTimeout(r,1200));}
+      }catch(e){lastError=e;setBusy('');if(attempt===0&&(!deadline||remainingMs(deadline)>2000))await new Promise(r=>setTimeout(r,1200));}
     }
     throw lastError;
   }
@@ -490,7 +544,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     add([...all].sort((a,b)=>score(b)-score(a)||a.price-b.price));
     return [...selected.values()].map(toPlannerPart);
   }
-  async function applyPlan(plan:any):Promise<{report:string;executed:number;generated:string[]}> {
+  async function applyPlan(plan:any, deadline?:number, analyzeNodes = true):Promise<{report:string;executed:number;generated:string[]}> {
     const bits:string[][]=(plan.subsystems??[]).map(()=>[]);
     let executed=0;const generated:string[]=[];const jobs:any[]=[];
     (plan.subsystems??[]).forEach((subsystem:any,subsystemIndex:number)=>{
@@ -503,8 +557,8 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
         const key=job.kind==='part'?`part:${job.sku}`:`body:${JSON.stringify(job.body)}`;
         const previous=chains.get(key)??Promise.resolve(null);
         const next=previous.then(async()=>{
-          if(job.kind==='part')return generateProduct(job.sku,undefined,true);
-          return (await generateCustomBody(job.body)).partId;
+          if(job.kind==='part')return generateProduct(job.sku,undefined,true,deadline,analyzeNodes);
+          return (await generateCustomBody(job.body,deadline,analyzeNodes)).partId;
         });
         chains.set(key,next);
         try{return {job,partId:await next,error:null};}
@@ -552,18 +606,24 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     return applied;
   }
   // Gemini proposes the layout; Anthropic must approve it before it reaches the scene. Three reviews is the hard limit.
-  async function arrangeAndVerify(goal:string,planSummary:string,ids:string[]):Promise<{ok:boolean;summary?:string;issues:string[]}> {
+  async function arrangeAndVerify(goal:string,planSummary:string,ids:string[],deadline?:number):Promise<{ok:boolean;summary?:string;issues:string[]}> {
     const parts=arrangementParts(ids);
     if(!parts.length)return {ok:false,issues:['No generated parts were available to arrange.']};
     let previous:unknown=null;
     let issues='';
     for(let review=0;review<3;review++){
       setOperation(review?'Gemini is revising the arrangement':'Gemini is arranging the parts');
-      const proposal=await askArrangement({goal,summary:planSummary,parts,previous:previous??undefined,issues:issues||undefined});
+      const proposal=deadline
+        ? await raceDeadline(askArrangement({goal,summary:planSummary,parts,previous:previous??undefined,issues:issues||undefined}),deadline)
+        : await askArrangement({goal,summary:planSummary,parts,previous:previous??undefined,issues:issues||undefined});
+      if(!proposal){issues='The arrangement AI missed the build deadline.';break;}
       setOperation(`Anthropic review ${review+1} of 3`);
       const invalid=layoutIssues(parts,proposal.arrangement.parts);
       if(invalid.length){issues=invalid.join(' · ');previous=proposal.arrangement;continue;}
-      const verdict=await verifyArrangement({goal,summary:planSummary,arrangement:proposal.arrangement,parts});
+      const verdict=deadline
+        ? await raceDeadline(verifyArrangement({goal,summary:planSummary,arrangement:proposal.arrangement,parts}),deadline)
+        : await verifyArrangement({goal,summary:planSummary,arrangement:proposal.arrangement,parts});
+      if(!verdict){issues='The arrangement reviewer missed the build deadline.';break;}
       if(verdict.approved){
         const applied=applyArrangement(proposal.arrangement.parts);
         if(applied!==parts.length)return {ok:false,issues:['The approved arrangement no longer matched the workspace parts.']};
@@ -579,24 +639,72 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     if(building.current)return {ok:false,output:'A build is already running'};
     building.current=true;
     try{
+      const deadline=Date.now()+30_000;
+      // Convex may be temporarily unreachable. Never let workspace initialization hold the build lock.
+      if(cloud) await raceDeadline(cloud.mutation(api.data.open, {secret: workspaceSecret()}), subDeadline(deadline, 2_000));
       const existingOnly=/\b(arrange|rearrange|organize|position|make|build|form|stack)\b/i.test(goal)&&/\b(existing|these|current|already|workspace)\b/i.test(goal);
       if(existingOnly){
-        const result=await arrangeAndVerify(goal,'Rearrange the existing parts without adding or removing any.',live.current.parts.map(p=>p.id));
-        if(!result.ok)throw new Error(result.issues.join(' · '));
+        const ids=live.current.parts.map(p=>p.id);
+        const result=await arrangeAndVerify(goal,'Rearrange the existing parts without adding or removing any.',ids,deadline);
+        if(!result.ok){
+          const fallback=shelfArrangement(arrangementParts(ids));
+          const applied=applyArrangement(fallback.parts);
+          if(applied!==ids.length)throw new Error(result.issues.join(' · '));
+          return {ok:true,output:`${fallback.summary} The AI arrangement missed its deadline, so this compact fallback was applied.`};
+        }
         return {ok:true,output:result.summary??'Existing parts arranged and reviewed by Anthropic.'};
       }
-      setOperation('Gemini is planning the requested inventory');
-      const plan=await askPlanner(goal,live.current.parts.map(p=>({id:p.id,name:p.model.asset.name,scale:p.scale??1})),planCatalog(goal));
-      const expected=validatePlanCount(goal,plan.plan);
+      const catalog=planCatalog(goal);
+      const primitivePlan=primitiveBodyPlan(goal);
+      let fastPlan=primitivePlan
+        ? {match:{sku:'primitive',name:goal},plan:primitivePlan}
+        : localCatalogPlan(goal,catalog);
+      let deterministic=!!fastPlan;
+      setOperation(fastPlan?'Preparing exact requested parts':'Gemini is planning the requested inventory');
+      let plan=fastPlan
+        ? {plan:fastPlan.plan,model:'local-exact-match'}
+        : await raceDeadline(askPlanner(goal,live.current.parts.map(p=>({id:p.id,name:p.model.asset.name,scale:p.scale??1})),catalog),subDeadline(deadline,15_000));
+      if(!plan) {
+        const fullCatalog=(Object.values(BY_SKU) as any[]).map(toPlannerPart);
+        fastPlan={match:{sku:'fallback',name:goal},plan:fallbackPlan(goal,fullCatalog)};
+        plan={plan:fastPlan.plan,model:'local-fallback'};
+        deterministic=true;
+        setOperation('Preparing a deadline-safe fallback design');
+      }
+      let expected=validatePlanCount(goal,plan.plan);
       if(expected+live.current.parts.length>100)throw new Error('This build would exceed the workspace limit of 100 parts.');
       stagedBuild.current=[];
       setOperation('Anthropic is reviewing while models are prepared');
-      const [review,prepared]=await Promise.all([verifyPlan(goal,plan.plan),applyPlan(plan.plan)]);
+      let review=deterministic
+        ? {approved:true,issues:[],model:deterministic?'local-exact-match':'local-validation'}
+        : await raceDeadline(verifyPlan(goal,plan.plan),subDeadline(deadline,6000));
+      if(!review) {
+        // Verification missed its budget. Use the local count-safe fallback rather than building an unreviewed plan.
+        const fullCatalog=(Object.values(BY_SKU) as any[]).map(toPlannerPart);
+        fastPlan={match:{sku:'fallback',name:goal},plan:fallbackPlan(goal,fullCatalog)};
+        plan={plan:fastPlan.plan,model:'local-fallback'};
+        deterministic=true;
+        expected=validatePlanCount(goal,plan.plan);
+        review={approved:true,issues:[],model:'local-fallback'};
+        setOperation('Preparing a deadline-safe fallback design');
+      }
       if(!review.approved)throw new Error(`Inventory review rejected: ${review.issues.join(' · ')}`);
+      const prepared=await applyPlan(plan.plan,deadline,!deterministic);
       const {report,generated}=prepared;
       if(generated.length!==expected)throw new Error(`Expected ${expected} models but imported ${generated.length}.`);
-      const arrangement=await arrangeAndVerify(goal,plan.plan.summary,generated);
-      if(!arrangement.ok)throw new Error(`Arrangement not approved: ${arrangement.issues.join(' · ')}`);
+      if(fastPlan){
+        const fallback=shelfArrangement(arrangementParts(generated));
+        const applied=applyArrangement(fallback.parts);
+        if(applied!==generated.length)throw new Error('The exact-request arrangement could not be applied.');
+        return {ok:true,output:`${report}\n\nPlaced ${expected} parts in a compact layout.`};
+      }
+      const arrangement=await arrangeAndVerify(goal,plan.plan.summary,generated,deadline);
+      if(!arrangement.ok){
+        const fallback=shelfArrangement(arrangementParts(generated));
+        const applied=applyArrangement(fallback.parts);
+        if(applied!==generated.length)throw new Error(`Arrangement not approved: ${arrangement.issues.join(' · ')}`);
+        return {ok:true,output:`${report}\n\nPlaced ${expected} parts in a compact fallback layout. The reviewed AI arrangement missed its 30-second budget.`};
+      }
       return {ok:true,output:`${report}\n\nPlaced ${expected} parts. Gemini arrangement reviewed by Anthropic: ${arrangement.summary??''}`};
     }catch(e){
       const raw=e instanceof Error?e.message:String(e);
@@ -605,9 +713,18 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     }finally{stagedBuild.current=null;building.current=false;setBusy('');setOperation('');}
   }
 
+  const pendingRun=useRef<string|null>(null);
   // A goal from the home screen or top bar starts a fresh design: wait for the saved workspace to restore, then clear it
   // so the plan is not mixed into an earlier build.
-  useEffect(()=>{if(pendingGoal&&ready){onPendingGoalConsumed?.();checkpoint();live.current={parts:[],mates:[]};setParts([]);setMates([]);setSelectedIds([]);void run(pendingGoal).then(result=>onGoalResult?.(pendingGoal,result));}},[pendingGoal,ready]);
+  useEffect(()=>{
+    if(!pendingGoal||!ready||pendingRun.current===pendingGoal)return;
+    // Strict Mode can invoke this effect twice for the same object before state propagates.
+    pendingRun.current=pendingGoal;
+    setTimeout(()=>{if(pendingRun.current===pendingGoal)pendingRun.current=null;},750);
+    onPendingGoalConsumed?.();
+    checkpoint();live.current={parts:[],mates:[]};setParts([]);setMates([]);setSelectedIds([]);
+    void run(pendingGoal).then(result=>onGoalResult?.(pendingGoal,result));
+  },[pendingGoal,ready]);
   // A design picked or described on the home screen loads once the saved workspace has been restored.
   useEffect(()=>{if(pendingPreset&&ready){onPendingPresetConsumed?.();void loadPreset(pendingPreset);}},[pendingPreset,ready]);
   useEffect(()=>{
