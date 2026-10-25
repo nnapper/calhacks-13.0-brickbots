@@ -12,10 +12,11 @@
     "analysisConfidence": "medium",
     "codeConfidence": "medium",
     "warnings": [
-      "Bounds come from the stated dimensions (56 x 32 x 2.5mm), which are marked unverified. The two 14mm holes are placed at x = ±12mm, assuming each is concentric with a semicircular end of radius 16mm (56/2 - 16 = 12). This matches the 24mm center spacing in the description. The images show about 14 smaller through holes and some slotted ones, arranged in a 16mm goBILDA pattern. Their diameter and exact positions are not stated, so they are left out of the holes list instead of guessed. Product Insight #2 shows the plate fastened across two flush goRAIL pieces with 12mm M4 screws, with T-slots 24mm apart.",
-      "The roughly 14 smaller holes and slotted holes in the 16mm goBILDA pattern are visible in the image. Their diameters and exact positions are not stated, so they are omitted rather than guessed.",
-      "The dimensions are marked unverified in the source data.",
-      "The 14 mm hole positions at X=±12 mm are inferred from the 24 mm center spacing and the 16 mm end radius."
+      "Length, width and thickness come from the listed specs, which are flagged as unverified. The 14 mm hole centers at x=±12 mm are inferred, not printed. They assume the 16 mm end radius (half the 32 mm width) and the stated 24 mm across-center spacing. The images show about 14 smaller pattern holes, some slotted, but no printed diameter or position for them, so they are left out of the holes array. The pattern is described as 16 mm goBILDA pattern. Z is centered on the plate midplane.",
+      "Dimensions come from unverified listing specs.",
+      "The two 14 mm hole centers at X=±12 mm are inferred from the 24 mm across-center spacing, not printed on the part.",
+      "About 14 smaller pattern holes (some slotted) are visible, but their diameters and positions are not given, so they are omitted.",
+      "The plate lies in the XZ plane, with thickness along Y from 0 to 2.5 mm."
     ]
   },
   "geometry": {
@@ -23,34 +24,34 @@
     "boundsMm": {
       "xmin": -28,
       "xmax": 28,
-      "ymin": 0,
-      "ymax": 2.5,
+      "ymin": -1.7763568394002505e-15,
+      "ymax": 2.5000000000000018,
       "zmin": -16,
       "zmax": 16,
       "xlen": 56,
-      "ylen": 2.5,
+      "ylen": 2.5000000000000036,
       "zlen": 32
     },
     "warnings": [],
     "files": {
       "model.step": {
-        "bytes": 25662,
-        "sha256": "21e6adeb5094dbb3187b081e886b1f2f0e677a4c701ac4cf4626f6c1a2c71b8b"
+        "bytes": 26445,
+        "sha256": "abbcc53665ad81261e0d9260fd5f6275c8d1e3a2cb48e861fe0138ea86278950"
       },
       "model.stl": {
         "bytes": 51084,
-        "sha256": "edf951332ac7f74924e8065e26ed3d12e73eb1b99eec642b76340afe062db0c3"
+        "sha256": "11b6f30b7ff9a88330605d062cd8d1af64bff0bdc3b234c9897b55aac8f7a1e7"
       },
       "model.glb": {
-        "bytes": 19352,
-        "sha256": "5ac89c1917703b61ae37df2dc3dd5903f7fd948ea1d34af360ec9dbecaf5371f"
+        "bytes": 19372,
+        "sha256": "f7610806d68b7b849a7fc85d0912e05603ec767f9ca5ba66d175f35561370dae"
       }
     }
   },
   "artifacts": {
     "step": "model.step",
     "glb": "model.glb",
-    "stepSha256": "21e6adeb5094dbb3187b081e886b1f2f0e677a4c701ac4cf4626f6c1a2c71b8b"
+    "stepSha256": "abbcc53665ad81261e0d9260fd5f6275c8d1e3a2cb48e861fe0138ea86278950"
   },
   "verification": {
     "service": "http://127.0.0.1:8001",

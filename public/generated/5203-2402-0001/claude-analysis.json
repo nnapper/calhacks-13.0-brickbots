@@ -1,9 +1,9 @@
 {
   "partType": "motor",
-  "summary": "Brushed DC RS-555 planetary gear motor with a cylindrical body, an 8mm REX output shaft extending 24mm from the gearbox face, and an encoder module at the rear. The long axis is z, centered on the part.",
+  "summary": "Brushed DC planetary gear motor with a cylindrical body, a round gearbox housing at the output end, and an 8mm REX output shaft that projects 24mm. The encoder housing is at the rear. Only the shaft diameter (8mm) and shaft length (24mm) are stated, so the overall body size is an estimate.",
   "boundsMm": {
-    "x": 36,
-    "y": 36,
+    "x": 37,
+    "y": 37,
     "z": 100
   },
   "holes": [],
@@ -11,9 +11,14 @@
     {
       "axis": "z",
       "offsetMm": 26,
-      "description": "Gearbox output face, with the 8mm REX shaft protruding 24mm beyond it toward +z (shaft tip at z=+50). The product images show it mounting against a channel wall."
+      "description": "Output-end face of the gearbox housing, where the 8mm REX shaft exits. The shaft projects 24mm beyond this face to z=+50."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -50,
+      "description": "Rear end face at the encoder cap, with the encoder connector. It is not intended for mounting."
     }
   ],
   "confidence": "low",
-  "notes": "Only the 24mm shaft length and 8mm shaft diameter are stated. The 36mm body diameter and 100mm overall length are estimates, because the supplied specs give no width, height or diameter. No hole sizes or positions are given in the images or specs, so holes is empty. The mounting face offset assumes the 100mm estimate. The flat sides on the jacket are shown in the images but their dimensions are not given."
+  "notes": "The images and specs give no overall length or body diameter. The 37mm diameter and 100mm total length (including the 24mm shaft) are rough estimates and should be checked against the vendor drawing. The shaft axis is along z, centered in x and y. Mounting hole positions on the gearbox face are not legible in the images, so no holes are listed. The images also show flat sides on the motor jacket, but their dimensions are not given."
 }

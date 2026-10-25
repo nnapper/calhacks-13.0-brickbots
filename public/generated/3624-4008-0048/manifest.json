@@ -9,52 +9,53 @@
   "generation": {
     "provider": "anthropic",
     "model": "claude-sonnet-5-5",
-    "analysisConfidence": "low",
-    "codeConfidence": "low",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
     "warnings": [
-      "The 48 mm diameter and 8 mm bore come from the listing, which is marked unverified. The 16 mm hole pattern and the 14 mm recess are also stated in the listing specs. The overall width (about 19 mm) and the 3.5 mm pattern-hole diameter are rough estimates from image proportions, scaled against the 48 mm diameter. They are not stated anywhere. The bore is shown with a hex profile in the images, so the 8 mm figure is treated as the across-flats size. The hole pattern appears in the face view as a 16 mm square, with hole centers at about ±8 mm. Two screws are visible on the hub face at about ±11 mm on x. They are not modeled as holes, and the recess depth is not known. The listing says the wheel has two roller rows, and the side view shows this, with the rows staggered. Roller count and exact roller geometry were not measured.",
-      "The 19 mm width, hub radius, and 3.5 mm pattern-hole diameter are estimated from image proportions, not stated.",
-      "The 14 mm recess depth (2 mm) is a guess.",
-      "The roller count (10 per row) and roller size are approximate. Rollers are modeled as straight cylinders clipped to the 48 mm outer diameter rather than true barrel profiles, and they have no axles.",
-      "The two visible hub screws, the hub's scalloped outline, the hex-bore internal ribs, and the logos are omitted.",
-      "The 8 mm bore is treated as hex across-flats, which is unverified."
+      "The 48mm diameter and 8mm bore come from the listed specs, which are marked unverified. The 16mm hole pattern is stated in the specs and matches the image, where the hole spacing is about one third of the wheel diameter. The axial width of about 18.7mm was estimated from the side-view image scale, because the spec lists no width. The 4mm diameter of the four pattern holes was also estimated from the images (about 3.7mm measured). The bore is hex-shaped, so 8mm is treated as the across-flats size. The two small screws on the hub face (about 11mm from center along x) are not modeled as holes. The 14mm recess is stated in the specs, but its depth is not visible or stated.",
+      "Rollers are simplified as straight cylinders instead of barrel-shaped profiles.",
+      "Roller count (10 per row), roller length and hub diameter are estimated from the image.",
+      "The 14mm recess is omitted because its depth is not visible or stated.",
+      "The two hub screws, the logo and the hub's octagonal outline are not modeled.",
+      "Plastic and rubber are not distinguished, and the roller axles are not modeled.",
+      "The 4mm hole diameter and 18.7mm width are estimates; the dimensions are marked unverified."
     ]
   },
   "geometry": {
     "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
     "boundsMm": {
-      "xmin": -24.000000100000275,
-      "xmax": 24.0000001,
-      "ymin": -1.0000027229405e-7,
-      "ymax": 48.00000010000027,
-      "zmin": -9.5000001,
-      "zmax": 9.5000001,
-      "xlen": 48.00000020000027,
-      "ylen": 48.00000020000054,
-      "zlen": 19.0000002
+      "xmin": -24.215932965770953,
+      "xmax": 24.21593296577095,
+      "ymin": -0.2159329657709514,
+      "ymax": 48.21593296577095,
+      "zmin": -9.3500001,
+      "zmax": 9.3500001,
+      "xlen": 48.43186593154191,
+      "ylen": 48.43186593154191,
+      "zlen": 18.7000002
     },
     "warnings": [
-      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [19.0000002, 48.00000020000027, 48.00000020000054]"
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [18.7000002, 48.43186593154191, 48.43186593154191]"
     ],
     "files": {
       "model.step": {
-        "bytes": 703034,
-        "sha256": "5ef80b00c42761982b31a9e2ec602e9223c78556a0741a679b48c11ec9471deb"
+        "bytes": 586732,
+        "sha256": "6ea0e2673bcb719fed4d8d9bb378f0b14f437fed787c09e611790dc30c7a6b12"
       },
       "model.stl": {
-        "bytes": 406084,
-        "sha256": "d2b19436fde17c988a749a30596051dc622103942b8064ee256d33c4918856e2"
+        "bytes": 431684,
+        "sha256": "eb8bebeb2fef85d2f5a2b098c2ec421b42d9430ca3489336040ac817fa7ef00a"
       },
       "model.glb": {
-        "bytes": 147088,
-        "sha256": "399b6a2e2d9ffefafba56042f0b06b59464038fda70193ee05071691991e0679"
+        "bytes": 156324,
+        "sha256": "66f3533d4b2bd9ab892b624a7f1597675a5524f39e4172286eb006733661f65c"
       }
     }
   },
   "artifacts": {
     "step": "model.step",
     "glb": "model.glb",
-    "stepSha256": "5ef80b00c42761982b31a9e2ec602e9223c78556a0741a679b48c11ec9471deb"
+    "stepSha256": "6ea0e2673bcb719fed4d8d9bb378f0b14f437fed787c09e611790dc30c7a6b12"
   },
   "verification": {
     "service": "http://127.0.0.1:8001",

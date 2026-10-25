@@ -1,10 +1,10 @@
 {
   "partType": "wheel",
-  "summary": "Double-row omni wheel, 48 mm diameter, with a plastic hub and two staggered rows of barrel-shaped rubber rollers around the rim. The center bore is hexagonal with a round recess around it. Four holes sit in a square pattern around the bore on each hub face. The wheel axis is along z.",
+  "summary": "48mm double-row omni wheel with a central hub. Two staggered rings of barrel-shaped rollers sit around the rim. The hub has a hex-style center bore and four small through-holes on a square 16mm pattern. The rotation axis is z, and the wheel is centered at the origin.",
   "boundsMm": {
     "x": 48,
     "y": 48,
-    "z": 19
+    "z": 18.7
   },
   "holes": [
     {
@@ -21,16 +21,11 @@
     },
     {
       "axis": "z",
-      "diameterMm": 3.5,
+      "diameterMm": 4,
       "positionsMm": [
         [
-          -8,
-          -8,
-          0
-        ],
-        [
           8,
-          -8,
+          8,
           0
         ],
         [
@@ -40,7 +35,12 @@
         ],
         [
           8,
-          8,
+          -8,
+          0
+        ],
+        [
+          -8,
+          -8,
           0
         ]
       ],
@@ -50,15 +50,15 @@
   "mountingSurfaces": [
     {
       "axis": "z",
-      "offsetMm": 9.5,
-      "description": "Outer hub face on one side, with the central bore, round recess, and 4-hole 16 mm square pattern. The pattern is used to attach to a hub or pod."
+      "offsetMm": 9.35,
+      "description": "Front hub face with the central bore, the 16mm-pattern hole square and a shallow circular recess around the bore (about 14mm per the spec)."
     },
     {
       "axis": "z",
-      "offsetMm": -9.5,
-      "description": "Opposite hub face, apparently the same as the first. Both faces appear to have the bore, recess, and hole pattern."
+      "offsetMm": -9.35,
+      "description": "Rear hub face, assumed to mirror the front because the wheel is symmetric about its mid-plane; this face is not directly visible."
     }
   ],
-  "confidence": "low",
-  "notes": "The 48 mm diameter and 8 mm bore come from the listing, which is marked unverified. The 16 mm hole pattern and the 14 mm recess are also stated in the listing specs. The overall width (about 19 mm) and the 3.5 mm pattern-hole diameter are rough estimates from image proportions, scaled against the 48 mm diameter. They are not stated anywhere. The bore is shown with a hex profile in the images, so the 8 mm figure is treated as the across-flats size. The hole pattern appears in the face view as a 16 mm square, with hole centers at about ±8 mm. Two screws are visible on the hub face at about ±11 mm on x. They are not modeled as holes, and the recess depth is not known. The listing says the wheel has two roller rows, and the side view shows this, with the rows staggered. Roller count and exact roller geometry were not measured."
+  "confidence": "medium",
+  "notes": "The 48mm diameter and 8mm bore come from the listed specs, which are marked unverified. The 16mm hole pattern is stated in the specs and matches the image, where the hole spacing is about one third of the wheel diameter. The axial width of about 18.7mm was estimated from the side-view image scale, because the spec lists no width. The 4mm diameter of the four pattern holes was also estimated from the images (about 3.7mm measured). The bore is hex-shaped, so 8mm is treated as the across-flats size. The two small screws on the hub face (about 11mm from center along x) are not modeled as holes. The 14mm recess is stated in the specs, but its depth is not visible or stated."
 }

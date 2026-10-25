@@ -1,13 +1,12 @@
 {
-  "shapeSummary": "Round plate, 144 mm diameter and 6 mm thick. The bottom face is at Y=0 and the plate is centered on X and Z. It has one 14 mm through hole at the center.",
+  "shapeSummary": "144 mm diameter, 6 mm thick round plate lying in the XZ plane with its bottom at Y=0 and top at Y=6. It has five keyed hub openings, one at the center and four on the diagonals. Each opening has a 14 mm central bore and four 8 mm counterbored lobes with 4.2 mm through holes. The lobes are counterbored 3 mm deep from the top face.",
   "confidence": "low",
   "warnings": [
-    "The 144 mm diameter and 6 mm thickness come from unverified specs.",
-    "The 14 mm central hole diameter is a rough visual estimate.",
-    "The four outer hub-pattern clusters (large openings with keyhole slots and counterbored lobes) are omitted because their positions and sizes could not be read reliably.",
-    "The many small M4-class through and threaded holes are omitted for the same reason.",
-    "The scattered counterbored holes are omitted because their sizes and positions are uncertain.",
-    "The central cluster's lobed counterbores and keyhole slots are omitted; only the central round opening is modeled."
+    "The diameter and thickness come from the unverified product specs.",
+    "The hub positions (center plus four at ±36 mm diagonals), bore size, lobe layout and counterbore dimensions are estimated from the image, not taken from a drawing.",
+    "The scattered small through holes, tapped holes and larger counterbored holes are omitted because their sizes and positions cannot be determined.",
+    "The keyed notches and the cross-holes inside the hub bores are omitted.",
+    "Threads are not modeled."
   ],
-  "cadquery": "part = cq.Workplane('XZ').circle(72).extrude(-6)\ncenter_hole = cq.Workplane('XZ').circle(7).extrude(-6)\npart = part.cut(center_hole)"
+  "cadquery": "t=6\npart=cq.Workplane('XZ').circle(72).extrude(-t)\nhubs=[(0,0),(-36,36),(36,36),(-36,-36),(36,-36)]\nlobes=[]\nfor cx,cz in hubs:\n    for k in range(4):\n        a=math.radians(45+90*k)\n        lobes.append((cx+10*math.cos(a),cz+10*math.sin(a)))\nbores=cq.Workplane('XZ').pushPoints(hubs).circle(7).extrude(-t)\nthru=cq.Workplane('XZ').pushPoints(lobes).circle(2.1).extrude(-t)\ncb=cq.Workplane('XZ').workplane(offset=-3).pushPoints(lobes).circle(4).extrude(-3)\npart=part.cut(bores).cut(thru).cut(cb)"
 }

@@ -12,12 +12,11 @@
     "analysisConfidence": "low",
     "codeConfidence": "low",
     "warnings": [
-      "The images print no body dimensions. The only stated figures are the 80mm shaft length (Insight #8) and the 8mm REX shaft diameter. The catalog 'length: 80' appears to be the shaft length, not the overall motor length, so z=80 is a placeholder and not a verified body length. The x and y values of 37 are an assumed gearbox diameter and are not printed anywhere. Holes are left empty because no hole diameters or positions are given. The shaft is a protrusion, not a hole. Overall length, body diameter and mounting hole pattern should be checked against the manufacturer drawing before use.",
-      "The drawings give no body dimensions. The 37 mm gearbox diameter, 36 mm motor diameter and the section lengths (16, 28 and 36 mm) are assumed.",
-      "The 80 mm overall length is a placeholder taken from the bounds. The catalog 'length: 80' may actually refer to the shaft.",
-      "The shaft is modeled as a plain 8 mm cylinder. The REX profile, flats and hex are omitted.",
-      "Mounting holes, the encoder cap, the wires and connectors, the gearbox end-face details and the pilot boss are omitted because none are dimensioned.",
-      "Check all dimensions against the manufacturer drawing before use."
+      "The 80 mm figure in the data is the shaft length, as stated in Product Insight #8 (\"80mm shaft length\"). It is not the motor body length. The 37 mm body diameter and the roughly 100 mm body length (180 mm overall with the shaft) are estimates, not printed dimensions, so overall z is uncertain. No hole sizes or positions are dimensioned, so the holes list is empty. The drawings do show an M4 screw going into the shaft end, but I did not turn it into a hole entry. The shaft is 8 mm across, with a REX (hex-profile) section.",
+      "Body diameter, body length and the split between encoder, motor and gearbox sections are estimated, because the drawing gives no dimensions.",
+      "The 80 mm figure is taken as the shaft length. The roughly 100 mm body length is an assumption.",
+      "The REX shaft is modeled as a plain 8 mm cylinder with no hex profile.",
+      "Omitted for lack of dimensions: the gearbox pilot boss, mounting screw holes on the gearbox face, the shaft-end tapped hole, the encoder wires and connectors, and the yellow jacket detail."
     ]
   },
   "geometry": {
@@ -27,34 +26,36 @@
       "xmax": 18.5,
       "ymin": 0,
       "ymax": 37,
-      "zmin": -40,
-      "zmax": 40,
+      "zmin": -90,
+      "zmax": 90,
       "xlen": 37,
       "ylen": 37,
-      "zlen": 80
+      "zlen": 180
     },
     "warnings": [
-      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [37.0, 37.0, 80.0]"
+      "Generated geometry is missing a listed dimension 80.000 mm; measured dimensions are [37.0, 37.0, 180.0]",
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [37.0, 37.0, 180.0]",
+      "Generated part is larger than the largest listed dimension."
     ],
     "files": {
       "model.step": {
-        "bytes": 13526,
-        "sha256": "eea4bada3088287a311fc19887d786f2141da9168f8deeccebff7fa7489804e1"
+        "bytes": 13534,
+        "sha256": "fe2e48602577c149156e641fc8bc9b6b41440b79cbe0c90676bf793b5438cac5"
       },
       "model.stl": {
         "bytes": 50284,
-        "sha256": "4c111d6e999dce98ae9f86e3c1620f76f49b40b7962fef0f2484b8814a26dac7"
+        "sha256": "de88d9c091bc7e961bd3f09d0b2e82918ea7b2656fb7988f6cd38c66ff9322eb"
       },
       "model.glb": {
         "bytes": 19108,
-        "sha256": "4680f698d4a2338bfc32062b815837fb895dfcd1bc5c6a4fba9802d17ab617d5"
+        "sha256": "37348d802c75bfe077c89628e5e55339fd1782c5aa319ec9a4903ebca92277a1"
       }
     }
   },
   "artifacts": {
     "step": "model.step",
     "glb": "model.glb",
-    "stepSha256": "eea4bada3088287a311fc19887d786f2141da9168f8deeccebff7fa7489804e1"
+    "stepSha256": "fe2e48602577c149156e641fc8bc9b6b41440b79cbe0c90676bf793b5438cac5"
   },
   "verification": {
     "service": "http://127.0.0.1:8001",

@@ -1,12 +1,11 @@
 {
-  "shapeSummary": "Simplified cylindrical planetary gear motor with its axis along Z. It has an 8 mm output shaft, a 37 mm diameter gearbox section and a 36 mm diameter motor body. The total length is 80 mm to match the placeholder bounds, and the bottom sits at Y=0 with X and Z centered.",
+  "shapeSummary": "Cylindrical gear motor with its axis along Z and its bottom at Y=0. It has a 36 mm encoder cap (z -90 to -75), a 36 mm motor can (z -75 to -30), and a 37 mm gearbox (z -30 to 10). An 8 mm round output shaft runs from z=10 to z=90 (80 mm).",
   "confidence": "low",
   "warnings": [
-    "The drawings give no body dimensions. The 37 mm gearbox diameter, 36 mm motor diameter and the section lengths (16, 28 and 36 mm) are assumed.",
-    "The 80 mm overall length is a placeholder taken from the bounds. The catalog 'length: 80' may actually refer to the shaft.",
-    "The shaft is modeled as a plain 8 mm cylinder. The REX profile, flats and hex are omitted.",
-    "Mounting holes, the encoder cap, the wires and connectors, the gearbox end-face details and the pilot boss are omitted because none are dimensioned.",
-    "Check all dimensions against the manufacturer drawing before use."
+    "Body diameter, body length and the split between encoder, motor and gearbox sections are estimated, because the drawing gives no dimensions.",
+    "The 80 mm figure is taken as the shaft length. The roughly 100 mm body length is an assumption.",
+    "The REX shaft is modeled as a plain 8 mm cylinder with no hex profile.",
+    "Omitted for lack of dimensions: the gearbox pilot boss, mounting screw holes on the gearbox face, the shaft-end tapped hole, the encoder wires and connectors, and the yellow jacket detail."
   ],
-  "cadquery": "r_g = 18.5\ncy = 18.5\n# Z runs along the motor axis from -40 (output end) to +40\nshaft = cq.Workplane('XY', origin=(0, cy, -40)).circle(4).extrude(16)\ngearbox = cq.Workplane('XY', origin=(0, cy, -24)).circle(r_g).extrude(28)\nmotor = cq.Workplane('XY', origin=(0, cy, 4)).circle(18).extrude(36)\npart = shaft.union(gearbox).union(motor)"
+  "cadquery": "yc = 18.5\n\ndef cyl(z0, h, d):\n    return cq.Workplane('XY').workplane(offset=z0).center(0, yc).circle(d / 2).extrude(h)\n\n# rear encoder cap, motor can, gearbox (axis along Z, centered on the 180 mm overall length)\nencoder = cyl(-90, 15, 36)\nmotor = cyl(-75, 45, 36)\ngearbox = cyl(-30, 40, 37)\n# 8 mm output shaft, 80 mm long from the gearbox face at z=10 to the tip at z=90\nshaft = cyl(10, 80, 8)\n\npart = encoder.union(motor).union(gearbox).union(shaft)"
 }
