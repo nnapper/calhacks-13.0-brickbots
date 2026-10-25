@@ -1,31 +1,31 @@
 {
   "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
   "boundsMm": {
-    "xmin": -24.000000100000275,
-    "xmax": 24.0000001,
-    "ymin": -1.0000027229405e-07,
-    "ymax": 48.00000010000027,
-    "zmin": -9.5000001,
-    "zmax": 9.5000001,
-    "xlen": 48.00000020000027,
-    "ylen": 48.00000020000054,
-    "zlen": 19.0000002
+    "xmin": -24.215932965770953,
+    "xmax": 24.21593296577095,
+    "ymin": -0.2159329657709514,
+    "ymax": 48.21593296577095,
+    "zmin": -9.3500001,
+    "zmax": 9.3500001,
+    "xlen": 48.43186593154191,
+    "ylen": 48.43186593154191,
+    "zlen": 18.7000002
   },
   "warnings": [
-    "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [19.0000002, 48.00000020000027, 48.00000020000054]"
+    "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [18.7000002, 48.43186593154191, 48.43186593154191]"
   ],
   "files": {
     "model.step": {
-      "bytes": 703034,
-      "sha256": "5ef80b00c42761982b31a9e2ec602e9223c78556a0741a679b48c11ec9471deb"
+      "bytes": 586732,
+      "sha256": "6ea0e2673bcb719fed4d8d9bb378f0b14f437fed787c09e611790dc30c7a6b12"
     },
     "model.stl": {
-      "bytes": 406084,
-      "sha256": "d2b19436fde17c988a749a30596051dc622103942b8064ee256d33c4918856e2"
+      "bytes": 431684,
+      "sha256": "eb8bebeb2fef85d2f5a2b098c2ec421b42d9430ca3489336040ac817fa7ef00a"
     },
     "model.glb": {
-      "bytes": 147088,
-      "sha256": "399b6a2e2d9ffefafba56042f0b06b59464038fda70193ee05071691991e0679"
+      "bytes": 156324,
+      "sha256": "66f3533d4b2bd9ab892b624a7f1597675a5524f39e4172286eb006733661f65c"
     }
   }
 }

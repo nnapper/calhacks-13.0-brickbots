@@ -5,27 +5,29 @@
     "xmax": 18.5,
     "ymin": 0.0,
     "ymax": 37.0,
-    "zmin": -40.0,
-    "zmax": 40.0,
+    "zmin": -90.0,
+    "zmax": 90.0,
     "xlen": 37.0,
     "ylen": 37.0,
-    "zlen": 80.0
+    "zlen": 180.0
   },
   "warnings": [
-    "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [37.0, 37.0, 80.0]"
+    "Generated geometry is missing a listed dimension 80.000 mm; measured dimensions are [37.0, 37.0, 180.0]",
+    "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [37.0, 37.0, 180.0]",
+    "Generated part is larger than the largest listed dimension."
   ],
   "files": {
     "model.step": {
-      "bytes": 13526,
-      "sha256": "eea4bada3088287a311fc19887d786f2141da9168f8deeccebff7fa7489804e1"
+      "bytes": 13534,
+      "sha256": "fe2e48602577c149156e641fc8bc9b6b41440b79cbe0c90676bf793b5438cac5"
     },
     "model.stl": {
       "bytes": 50284,
-      "sha256": "4c111d6e999dce98ae9f86e3c1620f76f49b40b7962fef0f2484b8814a26dac7"
+      "sha256": "de88d9c091bc7e961bd3f09d0b2e82918ea7b2656fb7988f6cd38c66ff9322eb"
     },
     "model.glb": {
       "bytes": 19108,
-      "sha256": "4680f698d4a2338bfc32062b815837fb895dfcd1bc5c6a4fba9802d17ab617d5"
+      "sha256": "37348d802c75bfe077c89628e5e55339fd1782c5aa319ec9a4903ebca92277a1"
     }
   }
 }

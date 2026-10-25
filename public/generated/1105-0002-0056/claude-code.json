@@ -1,10 +1,11 @@
 {
-  "shapeSummary": "Flat aluminum stadium-shaped (round-end) plate, 56 x 32 mm and 2.5 mm thick. The plate lies in the XZ plane with its bottom at Y=0 and its thickness along +Y. Two 14 mm through holes sit at X=±12 mm, concentric with the 16 mm end radii.",
+  "shapeSummary": "Stadium-shaped (round-end) flat aluminum plate, 56 mm long (X) by 32 mm wide (Z) by 2.5 mm thick (Y, bottom at Y=0). It has two 14 mm through holes at X=±12 mm. The end radius is 16 mm.",
   "confidence": "medium",
   "warnings": [
-    "The roughly 14 smaller holes and slotted holes in the 16mm goBILDA pattern are visible in the image. Their diameters and exact positions are not stated, so they are omitted rather than guessed.",
-    "The dimensions are marked unverified in the source data.",
-    "The 14 mm hole positions at X=±12 mm are inferred from the 24 mm center spacing and the 16 mm end radius."
+    "Dimensions come from unverified listing specs.",
+    "The two 14 mm hole centers at X=±12 mm are inferred from the 24 mm across-center spacing, not printed on the part.",
+    "About 14 smaller pattern holes (some slotted) are visible, but their diameters and positions are not given, so they are omitted.",
+    "The plate lies in the XZ plane, with thickness along Y from 0 to 2.5 mm."
   ],
-  "cadquery": "plate = cq.Workplane('XZ').slot2D(56, 32).extrude(-2.5)\nbores = cq.Workplane('XZ').pushPoints([(-12, 0), (12, 0)]).circle(7).extrude(-2.5)\npart = plate.cut(bores)"
+  "cadquery": "base = cq.Workplane('XY').slot2D(56, 32).extrude(2.5)\nholes = cq.Workplane('XY').pushPoints([(-12, 0), (12, 0)]).circle(7).extrude(2.5)\nplate = base.cut(holes)\npart = plate.rotate((0, 0, 0), (1, 0, 0), -90)"
 }

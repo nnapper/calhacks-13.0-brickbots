@@ -1,12 +1,13 @@
 {
-  "shapeSummary": "48 mm diameter, 19 mm wide double-row omni wheel with its axis along Z, centered at X=0, Z=0, and spanning Y=0 to 48. It has a 17 mm radius hub, two staggered rows of 10 cylindrical rollers (about 8.8 mm diameter, 9 mm long) around the rim, clipped to the 48 mm outer diameter, and a hex through-bore of 8 mm across flats. Each face has a 14 mm diameter recess, 2 mm deep, and four 3.5 mm through holes on a 16 mm square pattern.",
-  "confidence": "low",
+  "shapeSummary": "48mm double-row omni wheel with axis along Z, centered at X=0 and Z=0, spanning Y=0 to 48. A 32mm diameter, 14mm thick hub carries two staggered rows of 10 cylindrical rollers (9mm diameter, 9mm long, tangentially oriented) at ±4.85mm in Z. Total width is about 18.7mm. A hex center bore (8mm across flats) and four 4mm through-holes on a 16mm square pattern are cut through.",
+  "confidence": "medium",
   "warnings": [
-    "The 19 mm width, hub radius, and 3.5 mm pattern-hole diameter are estimated from image proportions, not stated.",
-    "The 14 mm recess depth (2 mm) is a guess.",
-    "The roller count (10 per row) and roller size are approximate. Rollers are modeled as straight cylinders clipped to the 48 mm outer diameter rather than true barrel profiles, and they have no axles.",
-    "The two visible hub screws, the hub's scalloped outline, the hex-bore internal ribs, and the logos are omitted.",
-    "The 8 mm bore is treated as hex across-flats, which is unverified."
+    "Rollers are simplified as straight cylinders instead of barrel-shaped profiles.",
+    "Roller count (10 per row), roller length and hub diameter are estimated from the image.",
+    "The 14mm recess is omitted because its depth is not visible or stated.",
+    "The two hub screws, the logo and the hub's octagonal outline are not modeled.",
+    "Plastic and rubber are not distinguished, and the roller axles are not modeled.",
+    "The 4mm hole diameter and 18.7mm width are estimates; the dimensions are marked unverified."
   ],
-  "cadquery": "R=24.0\nW=19.0\ncy=24.0\nhub=cq.Workplane('XY').circle(17).extrude(W).translate((0,0,-W/2))\nn=10\nrl=9.0\nrr=4.4\nrc=19.6\nbody=hub\nfor row,zc in enumerate((-5.0,5.0)):\n    for i in range(n):\n        a=2*math.pi*(i+0.5*row)/n\n        px=rc*math.cos(a); py=rc*math.sin(a)\n        tx=-math.sin(a); ty=math.cos(a)\n        start=cq.Vector(px-tx*rl/2,py-ty*rl/2,zc)\n        roller=cq.Solid.makeCylinder(rr,rl,start,cq.Vector(tx,ty,0))\n        body=body.union(cq.Workplane('XY').add(roller))\nclip=cq.Workplane('XY').circle(R).extrude(W).translate((0,0,-W/2))\nbody=body.intersect(clip)\nbore=cq.Workplane('XY').polygon(6,8/math.cos(math.pi/6)).extrude(W).translate((0,0,-W/2))\nbody=body.cut(bore)\nfor s in (1,-1):\n    z0=W/2-2.0 if s>0 else -W/2\n    rec=cq.Workplane('XY').workplane(offset=z0).circle(7).extrude(2.0)\n    body=body.cut(rec)\nholes=cq.Workplane('XY').workplane(offset=-W/2).pushPoints([(-8,-8),(8,-8),(-8,8),(8,8)]).circle(1.75).extrude(W)\nbody=body.cut(holes)\npart=body.translate((0,cy,0))"
+  "cadquery": "hub = cq.Workplane('XY').circle(16).extrude(14).translate((0,0,-7))\nrollers = None\nn = 10\nfor row, zc in enumerate((-4.85, 4.85)):\n    for i in range(n):\n        ang = i * 360.0 / n + row * 180.0 / n\n        r = (cq.Workplane('YZ').circle(4.5).extrude(4.5, both=True)\n             .translate((0, 19.5, zc)).rotate((0,0,0),(0,0,1), ang))\n        rollers = r if rollers is None else rollers.union(r)\nbody = hub.union(rollers)\nbore = cq.Workplane('XY').polygon(6, 8 / math.cos(math.radians(30))).extrude(30).translate((0,0,-15))\nholes = (cq.Workplane('XY').pushPoints([(8,8),(-8,8),(8,-8),(-8,-8)]).circle(2).extrude(30).translate((0,0,-15)))\nbody = body.cut(bore).cut(holes)\npart = body.translate((0, 24, 0))"
 }

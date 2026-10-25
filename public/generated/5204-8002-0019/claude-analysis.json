@@ -1,19 +1,19 @@
 {
   "partType": "motor",
-  "summary": "Cylindrical planetary gear motor with an 8mm REX output shaft that protrudes 80mm from the gearbox end. The drawings show the motor clamped in a quad block mount, passing through a U-channel wall, and carrying a hub and wheel.",
+  "summary": "Cylindrical planetary gear motor with an encoder section at the rear and an 8 mm REX output shaft protruding 80 mm from the gearbox face. Body diameter and body length are not printed in the drawings, so they are estimated.",
   "boundsMm": {
     "x": 37,
     "y": 37,
-    "z": 80
+    "z": 180
   },
   "holes": [],
   "mountingSurfaces": [
     {
       "axis": "z",
-      "offsetMm": 0,
-      "description": "Gearbox output end face, where the 8mm REX shaft exits. Mounting is by a clamp or quad block mount around the gearbox, but no hole pattern is dimensioned."
+      "offsetMm": 10,
+      "description": "Gearbox output face from which the 8 mm REX shaft extends 80 mm in +z. The bounding box is centered on the part, so the shaft tip is at z=+90 and this face is at about z=+10. The shaft passes through a channel wall, and a hub and wheel are fastened on the far side."
     }
   ],
   "confidence": "low",
-  "notes": "The images print no body dimensions. The only stated figures are the 80mm shaft length (Insight #8) and the 8mm REX shaft diameter. The catalog 'length: 80' appears to be the shaft length, not the overall motor length, so z=80 is a placeholder and not a verified body length. The x and y values of 37 are an assumed gearbox diameter and are not printed anywhere. Holes are left empty because no hole diameters or positions are given. The shaft is a protrusion, not a hole. Overall length, body diameter and mounting hole pattern should be checked against the manufacturer drawing before use."
+  "notes": "The 80 mm figure in the data is the shaft length, as stated in Product Insight #8 (\"80mm shaft length\"). It is not the motor body length. The 37 mm body diameter and the roughly 100 mm body length (180 mm overall with the shaft) are estimates, not printed dimensions, so overall z is uncertain. No hole sizes or positions are dimensioned, so the holes list is empty. The drawings do show an M4 screw going into the shaft end, but I did not turn it into a hole entry. The shaft is 8 mm across, with a REX (hex-profile) section."
 }

@@ -12,13 +12,12 @@
     "analysisConfidence": "low",
     "codeConfidence": "low",
     "warnings": [
-      "The 144 mm diameter and 6 mm thickness come from the supplied specs, which are marked unverified. The images show no printed hole dimensions. Only the central large opening is listed, and its 14 mm diameter is a rough visual estimate. The remaining holes are not listed because their sizes and positions could not be read reliably. They include the four outer hub-pattern clusters, the many small M4-class holes, and the counterbored holes. The plate is centered at the origin, with the z-axis normal to its faces.",
-      "The 144 mm diameter and 6 mm thickness come from unverified specs.",
-      "The 14 mm central hole diameter is a rough visual estimate.",
-      "The four outer hub-pattern clusters (large openings with keyhole slots and counterbored lobes) are omitted because their positions and sizes could not be read reliably.",
-      "The many small M4-class through and threaded holes are omitted for the same reason.",
-      "The scattered counterbored holes are omitted because their sizes and positions are uncertain.",
-      "The central cluster's lobed counterbores and keyhole slots are omitted; only the central round opening is modeled."
+      "The 144 mm diameter and 6 mm thickness come from the product specs and are unverified. The images show many holes, but no hole diameters or coordinates are printed, so the holes array is left empty rather than guessed. The visible features are: a pattern of small through holes and tapped holes, larger counterbored holes, and five keyed hub clusters (one at the center, four near the diagonals). Each cluster has a large central opening with counterbored lobes. Exact sizes and positions need to be taken from the vendor drawing or CAD file. The bounding box is centered on the origin, so the top face is at z=+3 and the bottom face at z=-3.",
+      "The diameter and thickness come from the unverified product specs.",
+      "The hub positions (center plus four at ±36 mm diagonals), bore size, lobe layout and counterbore dimensions are estimated from the image, not taken from a drawing.",
+      "The scattered small through holes, tapped holes and larger counterbored holes are omitted because their sizes and positions cannot be determined.",
+      "The keyed notches and the cross-holes inside the hub bores are omitted.",
+      "Threads are not modeled."
     ]
   },
   "geometry": {
@@ -37,27 +36,27 @@
     "warnings": [],
     "files": {
       "model.step": {
-        "bytes": 9401,
-        "sha256": "2b571a09da5d35a4b83cb3d462c5f7b976b159fb8dcce1ec5e45a1f8e03e70d9"
+        "bytes": 265392,
+        "sha256": "9cf807ad9b17b2638c217f9d8acbc838774de74edfe4585863beab97dfe7595c"
       },
       "model.stl": {
-        "bytes": 33684,
-        "sha256": "45dce474e052c46d01d1e69e090780d8631c6c47897abb699ecf4594dd8d3f18"
+        "bytes": 720184,
+        "sha256": "f1de75c6605f8b5e5aafb53b2247b95f127194404dd8d3d206c0ef01282be458"
       },
       "model.glb": {
-        "bytes": 13108,
-        "sha256": "5d1a53c39afe7148753e1709e223f8c9d9a15e364e1abc148a1dd13be5b9b70d"
+        "bytes": 259680,
+        "sha256": "86435e808c3728e8bf8805aab12f8c447fb7aefdb89d48fd2240f213edf5f327"
       }
     }
   },
   "artifacts": {
     "step": "model.step",
     "glb": "model.glb",
-    "stepSha256": "2b571a09da5d35a4b83cb3d462c5f7b976b159fb8dcce1ec5e45a1f8e03e70d9"
+    "stepSha256": "9cf807ad9b17b2638c217f9d8acbc838774de74edfe4585863beab97dfe7595c"
   },
   "verification": {
     "service": "http://127.0.0.1:8001",
-    "candidateCount": 10
+    "candidateCount": 64
   },
   "status": "prototype_unverified"
 }

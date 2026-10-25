@@ -3,27 +3,27 @@
   "boundsMm": {
     "xmin": -28.0,
     "xmax": 28.0,
-    "ymin": 0.0,
-    "ymax": 2.5,
+    "ymin": -1.7763568394002505e-15,
+    "ymax": 2.5000000000000018,
     "zmin": -16.0,
     "zmax": 16.0,
     "xlen": 56.0,
-    "ylen": 2.5,
+    "ylen": 2.5000000000000036,
     "zlen": 32.0
   },
   "warnings": [],
   "files": {
     "model.step": {
-      "bytes": 25662,
-      "sha256": "21e6adeb5094dbb3187b081e886b1f2f0e677a4c701ac4cf4626f6c1a2c71b8b"
+      "bytes": 26445,
+      "sha256": "abbcc53665ad81261e0d9260fd5f6275c8d1e3a2cb48e861fe0138ea86278950"
     },
     "model.stl": {
       "bytes": 51084,
-      "sha256": "edf951332ac7f74924e8065e26ed3d12e73eb1b99eec642b76340afe062db0c3"
+      "sha256": "11b6f30b7ff9a88330605d062cd8d1af64bff0bdc3b234c9897b55aac8f7a1e7"
     },
     "model.glb": {
-      "bytes": 19352,
-      "sha256": "5ac89c1917703b61ae37df2dc3dd5903f7fd948ea1d34af360ec9dbecaf5371f"
+      "bytes": 19372,
+      "sha256": "f7610806d68b7b849a7fc85d0912e05603ec767f9ca5ba66d175f35561370dae"
     }
   }
 }

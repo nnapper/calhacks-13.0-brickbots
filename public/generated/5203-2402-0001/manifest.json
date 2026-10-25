@@ -12,54 +12,54 @@
     "analysisConfidence": "low",
     "codeConfidence": "low",
     "warnings": [
-      "Only the 24mm shaft length and 8mm shaft diameter are stated. The 36mm body diameter and 100mm overall length are estimates, because the supplied specs give no width, height or diameter. No hole sizes or positions are given in the images or specs, so holes is empty. The mounting face offset assumes the 100mm estimate. The flat sides on the jacket are shown in the images but their dimensions are not given.",
-      "Body diameter (36mm) and overall length (100mm) are estimates, because the specs give no body dimensions.",
-      "The output shaft is modeled as a plain 8mm round cylinder. The real 8mm REX profile is not modeled.",
-      "The flat sides on the yellow jacket, the gearbox pilot and mounting holes, the screws, the encoder connector and the wires are omitted because their dimensions are not given.",
-      "The section lengths for cap, can and gearbox are guesses."
+      "The images and specs give no overall length or body diameter. The 37mm diameter and 100mm total length (including the 24mm shaft) are rough estimates and should be checked against the vendor drawing. The shaft axis is along z, centered in x and y. Mounting hole positions on the gearbox face are not legible in the images, so no holes are listed. The images also show flat sides on the motor jacket, but their dimensions are not given.",
+      "Only the shaft diameter (8mm) and shaft length (24mm) are stated. The 37mm body diameter, 100mm overall length and the section lengths are estimates.",
+      "The REX shaft profile is modeled as a plain 8mm round cylinder.",
+      "Mounting holes on the gearbox face, the flat sides on the jacket, the encoder connector, wires, screws and the gearbox pilot boss are omitted because their dimensions are not legible.",
+      "The accessories shown in the image (U-channel, hub, gears, bearings, collar and so on) are not part of the motor and are not modeled."
     ]
   },
   "geometry": {
     "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
     "boundsMm": {
-      "xmin": -18,
-      "xmax": 18,
+      "xmin": -18.5,
+      "xmax": 18.5,
       "ymin": 0,
-      "ymax": 36,
+      "ymax": 37,
       "zmin": -50,
       "zmax": 50,
-      "xlen": 36,
-      "ylen": 36,
+      "xlen": 37,
+      "ylen": 37,
       "zlen": 100
     },
     "warnings": [
-      "Generated geometry is missing a listed dimension 24.000 mm; measured dimensions are [36.0, 36.0, 100.0]",
-      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [36.0, 36.0, 100.0]",
+      "Generated geometry is missing a listed dimension 24.000 mm; measured dimensions are [37.0, 37.0, 100.0]",
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [37.0, 37.0, 100.0]",
       "Generated part is larger than the largest listed dimension."
     ],
     "files": {
       "model.step": {
-        "bytes": 9656,
-        "sha256": "13e9e210048d32234424ca4f3c7d3f77f1441145f0b2bfdf64c33d251829bb1c"
+        "bytes": 17449,
+        "sha256": "6f4cc6d2fdebf972a6a095b77bf8d5cdff92fa08575027a9afbadddb94881043"
       },
       "model.stl": {
-        "bytes": 33484,
-        "sha256": "d3613a335baa5dc1301da6bac0b3cc627d2efcd2d02189c2ad848974ed33c2e3"
+        "bytes": 67084,
+        "sha256": "4b2d4e20e21f932d28509b0fd5f7d225980747d92a361801f92fd52b9ce28f46"
       },
       "model.glb": {
-        "bytes": 13064,
-        "sha256": "6bfdea72a4c0a91151a04cd7e100411a865a75cf9640eec8347ae542bee12d14"
+        "bytes": 25156,
+        "sha256": "7d60decbeb6a6554b23ca1c4e57abbdc50844a45ac2a00fc7f62731623309e4a"
       }
     }
   },
   "artifacts": {
     "step": "model.step",
     "glb": "model.glb",
-    "stepSha256": "13e9e210048d32234424ca4f3c7d3f77f1441145f0b2bfdf64c33d251829bb1c"
+    "stepSha256": "6f4cc6d2fdebf972a6a095b77bf8d5cdff92fa08575027a9afbadddb94881043"
   },
   "verification": {
     "service": "http://127.0.0.1:8001",
-    "candidateCount": 14
+    "candidateCount": 22
   },
   "status": "prototype_unverified"
 }
