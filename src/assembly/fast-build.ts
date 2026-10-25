@@ -141,9 +141,9 @@ export function fallbackPlan(goal: string, catalog: FastCatalogItem[]): any {
 
 // Vague primitive requests must remain primitives. A generic robotics fallback is wrong for "one cube".
 export function primitiveBodyPlan(goal: string): any | null {
-  if (!/\b(cubes?|cuboids?|rectangular prisms?|blocks?|boxes?)\b/.test(goal.toLowerCase())) return null;
+  if (!/\b(cubes?|cuboids?|rectangular prisms?|blocks?|(?:box(?:es)?))\b/.test(goal.toLowerCase())) return null;
   const expected = requestedCount(goal);
-  const explicitCount = /\b(one|a|an)\s+(?:cubes?|cuboids?|rectangular prisms?|blocks?|boxes?)\b/i.test(goal)
+  const explicitCount = /\b(one|a|an)\s+(?:cubes?|cuboids?|rectangular prisms?|blocks?|(?:box(?:es)?))\b/i.test(goal)
     ? 1
     : expected;
   const count = explicitCount ?? 1;

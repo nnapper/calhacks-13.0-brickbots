@@ -1,5 +1,5 @@
 import {validatePlanCount, layoutIssues} from '../assembly/ai-validation';
-import {localCatalogPlan, fallbackPlan, shelfArrangement} from '../assembly/fast-build';
+import {localCatalogPlan, fallbackPlan, primitiveBodyPlan, shelfArrangement} from '../assembly/fast-build';
 import {Box3,Euler,Quaternion,Vector3} from 'three';
 import {worldBox} from '../assembly/snapping';
 import { createPortal } from 'react-dom';
@@ -572,7 +572,8 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     building.current=true;
     try{
       const deadline=Date.now()+30_000;
-      if(cloud) await cloud.mutation(api.data.open, {secret: workspaceSecret()});
+      // Convex may be temporarily unreachable. Never let workspace initialization hold the build lock.
+      if(cloud) await raceDeadline(cloud.mutation(api.data.open, {secret: workspaceSecret()}), subDeadline(deadline, 2_000));
       const existingOnly=/\b(arrange|rearrange|organize|position|make|build|form|stack)\b/i.test(goal)&&/\b(existing|these|current|already|workspace)\b/i.test(goal);
       if(existingOnly){
         const ids=live.current.parts.map(p=>p.id);
@@ -586,7 +587,10 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
         return {ok:true,output:result.summary??'Existing parts arranged and reviewed by Anthropic.'};
       }
       const catalog=planCatalog(goal);
-      let fastPlan=localCatalogPlan(goal,catalog);
+      const primitivePlan=primitiveBodyPlan(goal);
+      let fastPlan=primitivePlan
+        ? {match:{sku:'primitive',name:goal},plan:primitivePlan}
+        : localCatalogPlan(goal,catalog);
       let deterministic=!!fastPlan;
       setOperation(fastPlan?'Preparing exact requested parts':'Gemini is planning the requested inventory');
       let plan=fastPlan
@@ -641,7 +645,15 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     }finally{stagedBuild.current=null;building.current=false;setBusy('');setOperation('');}
   }
 
-  useEffect(()=>{if(pendingGoal){onPendingGoalConsumed?.();void run(pendingGoal);}},[pendingGoal]);
+  const pendingRun=useRef<string|null>(null);
+  useEffect(()=>{
+    if(!pendingGoal||pendingRun.current===pendingGoal)return;
+    // Strict Mode can invoke this effect twice for the same object before state propagates.
+    pendingRun.current=pendingGoal;
+    setTimeout(()=>{if(pendingRun.current===pendingGoal)pendingRun.current=null;},750);
+    onPendingGoalConsumed?.();
+    void run(pendingGoal);
+  },[pendingGoal]);
   useEffect(()=>{
     if(!selectedId)return;
     const done=(e:KeyboardEvent)=>{if(e.key==='Escape')setSelectedId(null);};
