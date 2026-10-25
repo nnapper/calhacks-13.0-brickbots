@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/geometry/:path*", "destination": "https://brickbots-cad-891870539452.us-central1.run.app/:path*" }
+  ]
+}
