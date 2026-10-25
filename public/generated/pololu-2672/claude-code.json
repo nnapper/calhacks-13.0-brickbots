@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Stepped round aluminum hub with its axis along Y and its bottom at Y=0. The large step is 22 mm in diameter and 7 mm tall. The small step is 18 mm in diameter and 5 mm tall, for 12 mm total. It has a 4 mm through bore and three 3 mm blind axial holes on a 5.5 mm radius at 120° spacing. Two 3.3 mm radial set-screw holes at 1.8 mm and 5.2 mm height go from the +X side into the bore. The separate clamp washer and the screws are not modeled.",
+  "confidence": "low",
+  "warnings": [
+    "No dimensions are given in the listing except the 4 mm shaft, so the diameters, step heights and hole positions are visual estimates.",
+    "Only the hub is modeled. The washer and the included screws are separate pieces and were omitted.",
+    "The two radial set-screw holes are placed at different heights on the same side, as they appear in the image. Their exact heights, spacing and angular positions are uncertain.",
+    "Axial hole depth (8 mm) is assumed. Threads are not modeled, and the radial holes use a tap-drill size of 3.3 mm.",
+    "Overall height and the step split (7 mm and 5 mm) are guesses."
+  ],
+  "cadquery": "r = 11\nh = (cq.Workplane('XY').circle(11).extrude(7)\n     .faces('>Z').workplane().circle(9).extrude(5))\n# central 4 mm shaft bore\nh = h.cut(cq.Workplane('XY').circle(2).extrude(12))\n# three axial M3 screw holes on the small step (blind, 8 mm deep)\npts = [(0, 5.5), (-4.76, -2.75), (4.76, -2.75)]\nh = h.cut(cq.Workplane('XY').workplane(offset=4).pushPoints(pts).circle(1.5).extrude(8))\n# two radial set-screw holes in the large step, from +X into the bore\nh = h.cut(cq.Workplane('YZ').pushPoints([(0, 1.8), (0, 5.2)]).circle(1.65).extrude(11))\n# build axis was Z; rotate so the hub axis is Y with bottom at Y=0\npart = h.rotate((0, 0, 0), (1, 0, 0), -90)"
+}

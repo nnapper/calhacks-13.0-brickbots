@@ -1,0 +1,37 @@
+{
+  "partType": "flat_plate",
+  "summary": "Small rectangular green stepper driver carrier PCB, 1.0 in x 1.2 in, with two 47 µF electrolytic capacitors and a QFN driver IC on top. It has a row of 0.1 in pitch through-holes along one long edge, a 4-pin motor/power terminal hole group along the opposite edge, and two larger mounting holes.",
+  "boundsMm": {
+    "x": 25.4,
+    "y": 30.5,
+    "z": 7
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.2,
+      "positionsMm": [
+        [
+          10.7,
+          12.7,
+          0
+        ],
+        [
+          10.7,
+          -12.7,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -3.5,
+      "description": "Flat underside of the PCB, with a smooth face and the two Ø2.2 mm mounting holes near one edge, 25.4 mm apart."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The drawing prints a board width of 1.0 in (25.4 mm), a length of 1.2 in (30.5 mm), a mounting-hole spacing of 1.0 in (25.4 mm) and a mounting-hole diameter of Ø0.086 in (2.18 mm). The overall z height of about 7 mm is an assumption: roughly 1.6 mm of PCB plus about 5.5 mm for the tallest components, the electrolytic capacitors. No height is stated. Mounting-hole x offset is estimated from the mirrored bottom view at about 2 mm from the board edge. The holes are on the motor-terminal side. I read them as 10.7 mm from center in x and at y = ±12.7 mm. The signal pin holes (11 in a row at 2.54 mm pitch), the power/motor terminal holes and the small VBB/GND holes are not listed as holes because their diameters are not given. Z positions are given relative to mid-plane of the PCB, which is itself an assumption."
+}

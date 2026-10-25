@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Single-piece clevis bracket: 40x8x32 mm base plate with two 10 mm thick, 30 mm tall parallel ears (20 mm slot between them), a 10 mm cross pin along X through both ears near the top, and two 6.5 mm vertical through holes in the base between the ears.",
+  "confidence": "low",
+  "warnings": [
+    "Only the 10 mm pin diameter is given; all other dimensions are estimates scaled from the photos.",
+    "Y is up, with the bottom at Y=0. The analysis JSON used Z as up, so its axes were remapped.",
+    "The analysis positions put the pin and a base hole at the same length coordinate. I moved the pin toward one end (Z=-6) and the base holes to Z=2 and 12.",
+    "The pin is modeled as a solid 10 mm cylinder fused to the ears, with no separate hole or clearance. The cotter clip, bolts and nuts are omitted.",
+    "The ear tops are left square because the rounding is uncertain.",
+    "Base hole diameter and spacing are visual estimates."
+  ],
+  "cadquery": "base = cq.Workplane('XY').box(40, 8, 32, centered=(True, False, True))\near_l = cq.Workplane('XY').box(10, 30, 32, centered=(True, False, True)).translate((-15, 0, 0))\near_r = cq.Workplane('XY').box(10, 30, 32, centered=(True, False, True)).translate((15, 0, 0))\nbody = base.union(ear_l).union(ear_r)\nholes = cq.Workplane('XZ').pushPoints([(0, 2), (0, 12)]).circle(3.25).extrude(-10)\nbody = body.cut(holes)\npin = cq.Workplane('YZ').workplane(offset=-22).center(21, -6).circle(5).extrude(44)\npart = body.union(pin)"
+}

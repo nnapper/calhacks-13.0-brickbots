@@ -1,14 +1,14 @@
 {
   "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
   "boundsMm": {
-    "xmin": -4.5,
-    "xmax": 4.5,
-    "ymin": 0.0,
-    "ymax": 5.5,
-    "zmin": -2.75,
-    "zmax": 2.75,
-    "xlen": 9.0,
-    "ylen": 5.5,
+    "xmin": -2.75,
+    "xmax": 2.75,
+    "ymin": -1.6653345369377348e-16,
+    "ymax": 9.0,
+    "zmin": -2.749999999999999,
+    "zmax": 2.750000000000001,
+    "xlen": 5.5,
+    "ylen": 9.0,
     "zlen": 5.5
   },
   "warnings": [
@@ -17,16 +17,16 @@
   ],
   "files": {
     "model.step": {
-      "bytes": 31408,
-      "sha256": "a8dca3e6c673333ad9d13d6b45b441ee536cdda9810ffd408e8247c123935afd"
+      "bytes": 32542,
+      "sha256": "5d2a4c1a4f0ac459644f2aab52451fd014f05b3ab1d2371446510ae8e04d26f7"
     },
     "model.stl": {
       "bytes": 34684,
-      "sha256": "584ff911a0fcf1303a3952c5e0a82bc91f2c209b191e97c61ee449d394fc1558"
+      "sha256": "21cf109efbab7aa1ff71f29fdf5d291be49c8e3ea7f18c4d5061ec46ee29378e"
     },
     "model.glb": {
-      "bytes": 13500,
-      "sha256": "f337d4bb034b16d951c8781aefdc6780027c9c4e63315f7e152c180b5ef44aad"
+      "bytes": 13516,
+      "sha256": "00f2357c4850a68aa8dc50921b0ddd10b14c67fa1113b597ffcf6bba9cdd480e"
     }
   }
 }

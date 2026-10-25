@@ -1,0 +1,8 @@
+barrel = cq.Workplane('XY').center(-6, 6).circle(6).extrude(8, both=True)
+base = cq.Workplane('XY').box(12, 6, 16, centered=(False, False, True)).translate((-12, 0, 0))
+tab_box = cq.Workplane('XY').box(10, 4, 16, centered=(False, False, True)).translate((-6, 0, 0))
+tab_round = cq.Workplane('XZ').center(4, 0).circle(8).extrude(-4)
+part = barrel.union(base).union(tab_box).union(tab_round)
+bore = cq.Workplane('XY').center(-6, 6).circle(2.1).extrude(10, both=True)
+tab_hole = cq.Workplane('XZ').center(4, 0).circle(2.1).extrude(-12)
+part = part.cut(bore).cut(tab_hole)

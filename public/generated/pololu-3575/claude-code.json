@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Simplified Balboa chassis envelope: 70x22x100 mm battery holder block, thin control board on top, two cylindrical motor-body stubs on the sides along X, two elliptical ring ribs standing above the board joined by two cross bars. Overall about 100 x 50 x 115 mm (X x Y x Z), Y up, bottom at Y=0.",
+  "confidence": "low",
+  "warnings": [
+    "All dimensions are estimates; no chassis dimensions provided.",
+    "Board components, gears, bearings, motor clips, fasteners, and wheels omitted.",
+    "Rib shape approximated as elliptical rings; holes in the ribs omitted.",
+    "Motors and wheels are not part of the kit; the motor stubs only approximate the envelope width.",
+    "Orientation follows boundsMm (Y height 50), though the photo shows the robot standing upright."
+  ],
+  "cadquery": "bat = cq.Workplane('XY').box(70, 22, 100, centered=(True, False, True))\nboard = cq.Workplane('XY').workplane(offset=22).box(70, 1.6, 100, centered=(True, False, True))\npart = bat.union(board)\nfor s in (-1, 1):\n    mot = (cq.Workplane('YZ').workplane(offset=35 if s > 0 else -50)\n           .center(11, 0).circle(10).extrude(15))\n    part = part.union(mot)\nfor x0 in (-34, 30):\n    ring = (cq.Workplane('YZ').workplane(offset=x0).center(37, 0)\n            .ellipse(13, 57.5).ellipse(9, 53.5).extrude(4))\n    part = part.union(ring)\nfor z in (-30, 30):\n    bar = cq.Workplane('XY').box(68, 6, 4, centered=(True, False, True)).translate((0, 34, z))\n    part = part.union(bar)\n"
+}

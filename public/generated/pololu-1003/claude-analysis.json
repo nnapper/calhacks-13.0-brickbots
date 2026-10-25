@@ -1,0 +1,24 @@
+{
+  "partType": "other",
+  "summary": "Single cylindrical AA-format NiMH rechargeable cell, modeled as a plain cylinder with its long axis along x. A raised button terminal is visible on one end.",
+  "boundsMm": {
+    "x": 50.5,
+    "y": 14.5,
+    "z": 14.5
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": -25.25,
+      "description": "Flat end face with a small raised button terminal (positive end, as seen in the photo)"
+    },
+    {
+      "axis": "x",
+      "offsetMm": 25.25,
+      "description": "Opposite flat end face (negative terminal, not clearly visible)"
+    }
+  ],
+  "confidence": "low",
+  "notes": "The product text gives no dimensions. Sizes assume the standard AA cell (about 14.5 mm diameter, about 50.5 mm length). The photos show a cylindrical body and a raised button terminal at one end, which is consistent with this. The cell fits the 3-cell holder in the second image, so it is the same standard size. No holes or mounting features are visible or stated, so none are listed. Terminal button height and diameter are not modeled because their sizes are not given. The axis choice (long axis along x) is arbitrary and the bounding box is centered on the part."
+}

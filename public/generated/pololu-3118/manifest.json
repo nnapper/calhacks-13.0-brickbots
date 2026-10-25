@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "A-Star 32U4 Robot Controller SV with Raspberry Pi Bridge (SMT Components Only)",
+    "sku": "pololu-3118",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": false,
+    "codeConfidence": "low",
+    "warnings": [
+      "Length 65 mm and width 56 mm come from the listed specs, which are flagged as unverified. Board thickness (1.6 mm) is an assumed standard value, because height is null in the data. Component heights are not included. The four corner holes are visible in the images. Their 2.75 mm diameter and 58 × 49 mm spacing (3.5 mm from each edge) come from the Raspberry Pi HAT specification, which the product is said to conform to, not from a printed dimension. Hole positions assume the outline is centered at the origin and x runs along the 65 mm side. The images do not show connector or header locations, so none are modeled.",
+      "Board thickness of 1.6 mm is assumed (standard PCB); height is not given in the data.",
+      "Dimensions of 65 × 56 mm are unverified.",
+      "Hole diameter (2.75 mm) and spacing (58 × 49 mm) are taken from the Raspberry Pi HAT spec, not from a printed dimension.",
+      "Corner radius of 3 mm is assumed from the HAT spec.",
+      "SMT components, through-hole pads, buttons, USB connector, switch and LEDs are omitted because their heights and positions are uncertain."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -32.5,
+      "xmax": 32.5,
+      "ymin": 0,
+      "ymax": 1.6,
+      "zmin": -28,
+      "zmax": 28,
+      "xlen": 65,
+      "ylen": 1.6,
+      "zlen": 56
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 51020,
+        "sha256": "1376ead3e1e79f2f21b105863529e7798e9d5a1db383053bd05925afa6f863fb"
+      },
+      "model.stl": {
+        "bytes": 85484,
+        "sha256": "60d56a4d01cf368a51bbf902063ca4f455fd11c29efc9145dfb9a81d4be0cb2d"
+      },
+      "model.glb": {
+        "bytes": 31688,
+        "sha256": "def597f782b8d67bb91332fa7d77c654ce982576bb4d21483f5109b91519a764"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "1376ead3e1e79f2f21b105863529e7798e9d5a1db383053bd05925afa6f863fb"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 54
+  },
+  "status": "prototype_unverified"
+}

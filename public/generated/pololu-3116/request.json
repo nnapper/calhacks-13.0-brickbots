@@ -1,0 +1,10 @@
+{
+  "name": "A-Star 32U4 Robot Controller LV with Raspberry Pi Bridge (SMT Components Only)",
+  "sku": "pololu-3116",
+  "category": "a-star-controllers",
+  "expectedDimensionsMm": [
+    65,
+    56
+  ],
+  "units": "millimeter"
+}

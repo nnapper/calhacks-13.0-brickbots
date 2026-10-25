@@ -1,0 +1,19 @@
+{
+  "partType": "other",
+  "summary": "Miniature SPDT slide switch with a rectangular metal body, a protruding black slider actuator on top, and three straight PCB pins on the bottom at 2.54 mm pitch. Dimensions come from the printed drawing and describe a single switch, not the 3-pack.",
+  "boundsMm": {
+    "x": 8.5,
+    "y": 3.7,
+    "z": 9.5
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -2.25,
+      "description": "Bottom face of the body (z = -1.75 to -2.25 region of the pin side) rests on the PCB or breadboard; three through-hole pins extend downward from it."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Drawing values used: body length 8.5 mm (x), body width 3.7 mm (y), body height 3.5 mm, actuator height 3 mm above the body, so body plus actuator is 6.5 mm. Pins extend about 3 mm below the body, estimated from the side view where the pin length is roughly the body height (the drawing shows 0.3 and 0.5 pin dimensions and a 0.2 standoff, but no explicit pin length). Total z = 3 + 3.5 + about 3 = 9.5 mm; the pin length is the main uncertainty. Pin pitch is 2.5 mm in the drawing and 2.54 mm in the specs. Actuator travel is 2.0 mm, with a 1.5 mm actuator width and a 3.6 mm slot length. The pins sit along the x axis at about -2.54, 0 and +2.54 mm. No mounting holes are present, and the pins are not modeled as holes. The bounding box is centered on the part. Confidence is medium because the body dimensions are printed but the pin length is estimated."
+}

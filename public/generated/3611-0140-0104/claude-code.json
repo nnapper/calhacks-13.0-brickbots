@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Single barrel-shaped mecanum roller, 50 mm long along Z, 24 mm max diameter at the middle, tapering to 20 mm at the ends, with an 8 mm through bore along the axis. Modeled as a revolved profile, centered in X/Z with the bottom at Y=0 (axis at Y=12).",
+  "confidence": "low",
+  "warnings": [
+    "No dimensions are given; all sizes are estimates taken from the supplied boundsMm.",
+    "Only the largest item (one roller) is modeled; the pins, bearings, shims, and e-clips are omitted.",
+    "The studded tread bumps are decorative and omitted.",
+    "The barrel end diameter (20 mm) and the arc profile are visual estimates.",
+    "Any bearing counterbore at the roller ends is omitted because it is uncertain."
+  ],
+  "cadquery": "prof = (cq.Workplane('XZ')\n    .moveTo(4, -25)\n    .lineTo(10, -25)\n    .threePointArc((12, 0), (10, 25))\n    .lineTo(4, 25)\n    .close())\npart = prof.revolve(360, (0, 0, 0), (0, 1, 0)).translate((0, 12, 0))"
+}

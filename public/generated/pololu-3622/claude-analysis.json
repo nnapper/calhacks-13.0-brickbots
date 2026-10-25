@@ -1,0 +1,54 @@
+{
+  "partType": "bracket",
+  "summary": "Single-piece machined clevis-style mounting bracket with a flat base and two parallel upright ears that hold a 10 mm cross pin. The base has two vertical fastener holes.",
+  "boundsMm": {
+    "x": 40,
+    "y": 32,
+    "z": 30
+  },
+  "holes": [
+    {
+      "axis": "x",
+      "diameterMm": 10,
+      "positionsMm": [
+        [
+          0,
+          -4,
+          6
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 6.5,
+      "positionsMm": [
+        [
+          0,
+          -4,
+          -12
+        ],
+        [
+          0,
+          10,
+          -12
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -15,
+      "description": "Flat underside of the base, which seats on the mounting surface and is fastened through the two vertical base holes."
+    },
+    {
+      "axis": "x",
+      "offsetMm": 0,
+      "description": "Clevis slot between the two ears, which receives the actuator end and the 10 mm pin along the x axis."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 10 mm pin diameter is stated; the other dimensions are unverified estimates scaled from that pin in the photos. Base hole size and positions are visual estimates, and the holes are assumed through because nuts are supplied. The pin hole is assumed to match the 10 mm pin. The coordinate origin is at the center of the bounding box, with x across the ears, y along the base length, and z up."
+}

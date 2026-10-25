@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Magnetic Encoder Pair Kit with Side-Entry Connector for Mini Plastic Gearmotor, 12 CPR, 2.7-18V",
+    "sku": "pololu-3547",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "The dimension photo prints 16.5 mm width and 16.5 mm height for the main board, with a 10 mm wide by 5.5 mm tall tab at the bottom. The tab sits inside the 16.5 mm height, so the footprint is 16.5 x 16.5 mm. The z value of 4.5 mm is an assumption from the '4.5 mm?' spec entry: PCB about 1 mm plus the JST connector height, with the disc excluded. The center hole diameter of about 5 mm is estimated from the quarter in the photo (24.26 mm diameter), with the hole about 0.2 times the quarter's diameter. Its position is estimated from the image, about 1.5 mm toward the top edge from board center. The two oblong gold pads at the left and right edges are not counted as holes because they appear to be solder pads, not confirmed through-slots. The magnetic discs are separate parts and are excluded from the bounds. The connector overhang beyond the board edge is not measured.",
+      "Dimensions are estimated from the provided bounds and an unverified '4.5 mm?' spec.",
+      "The board outline split (11 mm body plus 5.5 mm tab) is estimated from the notes.",
+      "The connector is a simplified box with estimated size and position, with no pins or cavity.",
+      "The hole position is estimated at 1.5 mm toward the top from board center.",
+      "The oblong gold pads are not modeled because they may be solder pads rather than through-slots.",
+      "The Hall sensors, passive components, logos and silkscreen are omitted.",
+      "The magnetic discs are separate parts and are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -8.25,
+      "xmax": 8.75,
+      "ymin": 0,
+      "ymax": 16.5,
+      "zmin": -2.25,
+      "zmax": 2.25,
+      "xlen": 17,
+      "ylen": 16.5,
+      "zlen": 4.5
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 52168,
+        "sha256": "7fd39fbc104a5900aa229073fc937fef3ea7bf423c85c4672d3af8feb812d014"
+      },
+      "model.stl": {
+        "bytes": 19484,
+        "sha256": "bfbee3fe4066ee2af33f059d2ba71495bba6c144a7b4694e396f2afd1032f3a1"
+      },
+      "model.glb": {
+        "bytes": 8000,
+        "sha256": "2ebdec89e35df1f1a8e9587504b9b4e7d6ee55435be63fd5ea0d26d47363c2ec"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "7fd39fbc104a5900aa229073fc937fef3ea7bf423c85c4672d3af8feb812d014"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 40
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,69 @@
+{
+  "partType": "block",
+  "summary": "Servo-mounted bearing block that carries the radial load off the servo. A flat servo mounting plate with slotted holes sits under a hub-shaft with a central bore and a ring of alternating holes. Two side flanges, one on each side, each have a large central bore.",
+  "boundsMm": {
+    "x": 43,
+    "y": 63,
+    "z": 49.5
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -16.4,
+          35,
+          0
+        ],
+        [
+          -16.4,
+          25,
+          0
+        ],
+        [
+          16.4,
+          35,
+          0
+        ],
+        [
+          16.4,
+          25,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "x",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          -17,
+          0,
+          0
+        ],
+        [
+          17,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 24.75,
+      "description": "Hub-shaft top face. Printed 32 mm and 16 mm hole spacings and a 24 mm hole-circle dimension show it takes goBILDA parts through its threaded and clearance holes."
+    },
+    {
+      "axis": "y",
+      "offsetMm": 0,
+      "description": "Flat servo mounting plate, 40 mm wide, with slotted Ø4 holes for attaching to a structure."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No scraped dimensions were available, so sizes come from the drawing. Printed values: 40 mm plate width, 43 mm overall width in the bottom view, 49.5 mm overall depth in the bottom view (stated for a goBILDA 2000 Series servo), 32 mm square bolt pattern, 24 mm and 16 mm hub hole spacings, Ø14 bore, Ø16 and Ø32 hub features, and Ø4 slots. The 63 mm plate length was scaled from the front view at about 4.88 px/mm, using the 40 mm width as reference. Slot and flange-bore positions were also estimated from that scaling. The 49.5 mm depth may include the servo envelope, since the drawing says 'using 2000 Series Servo'. The z axis is taken as the hub axis. The hub's own hole pattern, shaft bore and individual hole diameters are not stated, so they are omitted."
+}

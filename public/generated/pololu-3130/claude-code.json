@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Pololu Tic T825-style controller: 35.5x30x1.6 mm PCB with one 2.5 mm mounting hole, a 12-pin header with plastic base along the left edge (pins up to 14 mm), a 6-position screw terminal block block on the right edge (about 11 mm high), a cylindrical electrolytic capacitor, and a micro-USB shell block on the back edge. Bottom of the PCB is at Y=0.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are estimates; the supplied bounds were remapped so Y is vertical (height 14 mm) and the board plan is 37 x 30 mm in X-Z.",
+    "Only the mounting hole at the lower left is modeled; its position and diameter are approximate.",
+    "Header pin count (12), terminal block size, capacitor, and USB connector sizes and positions are estimated.",
+    "Small SMD components, LEDs, the gold heat-sink pad, silkscreen, and logos are omitted.",
+    "Terminal block screw holes and wire openings are omitted because their geometry is uncertain.",
+    "Header pins are modeled as square posts flush with the PCB underside, not as separate protruding legs."
+  ],
+  "cadquery": "def bx(x0,x1,y0,y1,z0,z1):\n    return cq.Workplane('XY').box(x1-x0,y1-y0,z1-z0,centered=False).translate((x0,y0,z0))\n\n# PCB (plan in X-Z, Y up), 1.6 mm thick\npcb = bx(-18.5,17.0,0,1.6,-15,15)\nhole = cq.Workplane('XZ').center(-14.5,-11.5).circle(1.25).extrude(5,both=True)\npcb = pcb.cut(hole)\n\n# 12-pin header along the left edge\nhx = -16.8\nhdr = bx(hx-1.27,hx+1.27,1.6,4.1,-15.24,15.24)\nfor i in range(12):\n    z = (i-5.5)*2.54\n    hdr = hdr.union(bx(hx-0.32,hx+0.32,0,14,z-0.32,z+0.32))\n\n# 6-position screw terminal block along the right edge\nterm = bx(11.0,18.5,1.6,11.0,-10.5,10.5)\n\n# electrolytic capacitor\ncap = cq.Workplane('XZ').center(-4,0).circle(3.25).extrude(-6.0).translate((0,1.6,0))\n\n# micro-USB connector on the back edge\nusb = bx(-3.75,3.75,1.6,4.2,-15.5,-9.9)\n\npart = pcb.union(hdr).union(term).union(cap).union(usb)"
+}

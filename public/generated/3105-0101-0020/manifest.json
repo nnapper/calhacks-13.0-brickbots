@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1x20A Motor Controller (9-30V Input)",
+    "sku": "3105-0101-0020",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1x20a-motor-controller/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are given in the text or drawings. The size is estimated from the photo by comparing the housing with the included 20 mm M4 screws and the mm ruler on the cutting mat. The 48 x 48 x 14 mm body is a rough estimate. The four corner holes are assumed to be M4 clearance (about 4.2 mm) because the kit includes M4 screws. The hole spacing of 40 mm is a guess, assumed to follow the 8 mm pattern. Wires and connectors are excluded from the bounds.",
+      "Overall size is estimated from the photo, and no dimensions were verified.",
+      "The analysis lists the 14 mm thickness along Z. It was mapped to Y so the bottom sits at Y=0 as the rules require, and the hole axes were mapped to Y to match.",
+      "The 40 mm hole spacing and 4.2 mm hole diameter are assumptions based on the M4 hardware in the kit.",
+      "Omitted the wires, connectors (XT30, bullet, servo header), status LED, labels, and the corner and edge chamfers or bevels on the housing.",
+      "Omitted the underside fins or lower housing step, because their dimensions are uncertain."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -24,
+      "xmax": 24,
+      "ymin": 0,
+      "ymax": 14,
+      "zmin": -24,
+      "zmax": 24,
+      "xlen": 48,
+      "ylen": 14,
+      "zlen": 48
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 30043,
+        "sha256": "7f81c332e886ab18f80ac8edc6afeeacdc4e4138f43c533006d088799b049420"
+      },
+      "model.stl": {
+        "bytes": 68684,
+        "sha256": "d246e97f1e45e610bf5640a289f6f91b1a5a6e844073f113ee358d9b822b3d6d"
+      },
+      "model.glb": {
+        "bytes": 25644,
+        "sha256": "3bac86e856aeddfb862d8c1b7f5c2d1d44ef80a53fb269659215fb053816d9a1"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "7f81c332e886ab18f80ac8edc6afeeacdc4e4138f43c533006d088799b049420"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 62
+  },
+  "status": "prototype_unverified"
+}

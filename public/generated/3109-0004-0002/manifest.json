@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Servo Commander",
+    "sku": "3109-0004-0002",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/servo-commander/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions were scraped or stated, so every size is an estimate. The 32 mm hole spacing comes from the specs (goBILDA 32 mm square pattern). The footprint of about 40 x 40 mm assumes the housing extends roughly 4 mm beyond the hole centers, based on the corner ear proportions in the photos. In the first photo the grid is not clearly 8 mm, so the pencil was used as a rough scale: it is about 7 mm wide, so the part's width is roughly 5-6 pencil widths. Height of about 19 mm covers the body plus knob, which is a rough guess. The knob adds a few extra mm above the top face and is not itemized. The hole diameter of 4.2 mm is an assumed clearance for M4 screws; the hex counterbore is not modeled. The bottom plate has visible vent slots and the headers/connector positions are not located precisely, so they are not listed as holes. The rear of the bottom plate shows an unidentified multi-pin connector area that is not included. The coordinate origin is the part center, with z up through the knob.",
+      "All dimensions are estimates; no verified dimensions were provided.",
+      "Body height of 14 mm and knob height of 5 mm are guessed to fit the 19 mm overall bound.",
+      "Hex counterbores omitted (size unknown).",
+      "XT30 connector, headers, corner notches/ears, bottom vent slots and knob pointer/ribs omitted as uncertain or decorative.",
+      "Button and knob positions are approximate.",
+      "Analysis z (height) was mapped to Y per the rules; X/Z footprint is 40 x 40."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -20,
+      "xmax": 20,
+      "ymin": 0,
+      "ymax": 19,
+      "zmin": -20,
+      "zmax": 20,
+      "xlen": 40,
+      "ylen": 19,
+      "zlen": 40
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 49470,
+        "sha256": "ced2dd9f50ddd26b3dda1eb1fdd58e75aa2e568a8a43bf7dbd991bdf3428f0f6"
+      },
+      "model.stl": {
+        "bytes": 152684,
+        "sha256": "b7ed19ea8053873d4b8498c7a099123802ff4af8c18b59e307ba14cd4833d914"
+      },
+      "model.glb": {
+        "bytes": 55884,
+        "sha256": "2f9cf2dd74818c005e70f177a9db35b8bb729ef0a6f05cbc97859608b6922306"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "ced2dd9f50ddd26b3dda1eb1fdd58e75aa2e568a8a43bf7dbd991bdf3428f0f6"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

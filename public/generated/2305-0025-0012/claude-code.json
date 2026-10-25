@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "12-tooth MOD 0.8 involute spur gear (tip dia 11.2 mm, pitch dia 9.6 mm, 20° pressure angle), 8 mm face width, axis along Z centered at X=0/Z=0 with the gear's lowest point at Y=0, and a 5.8 mm through bore.",
+  "confidence": "low",
+  "warnings": [
+    "Face width (8 mm) and bore diameter (5.8 mm) are estimates; no dimensions were provided.",
+    "The internal 25-tooth spline is omitted; the bore is a plain round hole.",
+    "The shallow recess on one face is omitted because its diameter and depth are unknown.",
+    "Tooth root is a straight-sided polygonal approximation with no root fillet, and the involute flank is approximated with 8 segments."
+  ],
+  "cadquery": "m=0.8\nN=12\nrp=m*N/2\nrb=rp*math.cos(math.radians(20))\nrt=rp+m\nrr=rp-1.25*m\ndef inv(a):\n    return math.tan(a)-a\ndef phi(r):\n    return math.pi/(2*N)+inv(math.radians(20))-inv(math.acos(min(1,rb/r)))\nrs=[rb+(rt-rb)*i/8 for i in range(9)]\npts=[]\nfor k in range(N):\n    c=2*math.pi*k/N\n    seq=[(rr,-phi(rb))]+[(r,-phi(r)) for r in rs]+[(r,phi(r)) for r in reversed(rs)]+[(rr,phi(rb))]\n    for r,a in seq:\n        pts.append((r*math.cos(c+a),r*math.sin(c+a)))\ngear=cq.Workplane('XY').polyline(pts).close().extrude(4,both=True)\nbore=cq.Workplane('XY').circle(2.9).extrude(4,both=True)\npart=gear.cut(bore).translate((0,rt,0))"
+}

@@ -1,0 +1,37 @@
+{
+  "partType": "bracket",
+  "summary": "Single Grid-Link for 8mm pitch (05B) steel chain: a chain outer link with two flat tabs bent outward, one on each side, each with one round mounting hole. The tab holes are spaced 16mm apart. Dimensions are estimated for one link, not the 6-pack.",
+  "boundsMm": {
+    "x": 22,
+    "y": 8,
+    "z": 6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4.2,
+      "positionsMm": [
+        [
+          -8,
+          0,
+          -2.5
+        ],
+        [
+          8,
+          0,
+          -2.5
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -2.5,
+      "description": "Flat underside of the two bent tabs. Each tab has one hole, and the holes are 16mm apart, so a part can be bolted flat across both."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The only stated dimension is the 16mm hole spacing, from the specs and the Product Insight #5 text. The 8mm pitch is also stated. The rest is estimated. Hole diameter is about 4.2mm, assuming it passes an M4 screw, and the Product Insight drawings show M4 locknuts and screws going through the holes. Overall length is about 22mm, from 16mm hole spacing plus a tab radius of roughly 3mm at each end. Width of about 8mm assumes it matches the chain's outer plate. Height of about 6mm is a rough guess from the photo: two pin-linked side plates, with tabs bent outward and level with the bottom. The photo shows the tabs bending away from the chain plates, but the exact bend geometry and offset are not measured. Hole positions are centered on the part, with tabs at x = ±8mm. The z values are approximate."
+}

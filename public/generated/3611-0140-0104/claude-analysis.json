@@ -1,0 +1,37 @@
+{
+  "partType": "other",
+  "summary": "Roller replacement pack for 104 mm mecanum wheels. It contains 4 barrel-shaped rubber rollers with a studded tread and a through bore along the long axis. It also contains 4 headed steel roller pins, 8 small flanged-free ball bearings, 4 e-clips and 8 thin shims. The bounding box describes one roller, the largest single item.",
+  "boundsMm": {
+    "x": 24,
+    "y": 24,
+    "z": 50
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 25,
+      "description": "Flat annular roller end face (+Z) that seats against a shim or bearing when assembled on the pin"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -25,
+      "description": "Flat annular roller end face (-Z), the opposite end of the same roller"
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are stated, so every size is an estimate. The roller length (~50 mm) and maximum diameter (~24 mm) are scaled to fit a 104 mm diameter mecanum wheel with about 10 rollers around its rim. The ~8 mm bore is assumed to hold a small bearing (outer diameter about 8 mm). The pin is assumed to be about 4 mm in diameter and slightly longer than the roller, but the pin and hardware sizes are not reflected in the bounding box. The roller is modeled as a symmetric barrel centered on the origin with its axis along Z. The studded tread dimples are not modeled. The full pack laid out on a table would be larger than the single-roller bounds."
+}

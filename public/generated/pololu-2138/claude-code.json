@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "30x30 mm PCB, 1.6 mm thick, with a 25x25 mm square ceramic patch antenna block on top (total height 9 mm, Y up, bottom at Y=0). Four 2.2 mm through holes at the corners (±13.5 mm) along the Y axis.",
+  "confidence": "low",
+  "warnings": [
+    "All dimensions are estimates; none are printed in the source.",
+    "Castellated edge pads, serial pads, LED, antenna feed pin, and underside chip/battery are omitted.",
+    "The antenna's rounded edges and the feed-point dimple are not modeled.",
+    "Corner hole positions and diameter are estimated from photo proportions.",
+    "The analysis axes (Z as thickness) were remapped so that Y is the vertical axis, as the rules require."
+  ],
+  "cadquery": "pcb = cq.Workplane('XY').box(30, 1.6, 30, centered=(True, False, True))\nant = cq.Workplane('XY').workplane(offset=1.6).box(25, 7.4, 25, centered=(True, False, True))\nbody = pcb.union(ant)\npts = [(-13.5, -13.5), (13.5, -13.5), (-13.5, 13.5), (13.5, 13.5)]\nholes = cq.Workplane('XZ', origin=(0, 2, 0)).pushPoints(pts).circle(1.1).extrude(3)\npart = body.cut(holes)"
+}

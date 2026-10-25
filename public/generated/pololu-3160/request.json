@@ -1,0 +1,10 @@
+{
+  "name": "A-Star 328PB Micro",
+  "sku": "pololu-3160",
+  "category": "a-star-controllers",
+  "expectedDimensionsMm": [
+    33.02,
+    17.78
+  ],
+  "units": "millimeter"
+}

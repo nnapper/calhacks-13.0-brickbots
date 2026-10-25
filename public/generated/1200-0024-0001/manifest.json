@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1200 Series 1-Side, 2-Post Pattern Mount (24-1)",
+    "sku": "1200-0024-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1200-series-1-side-2-post-pattern-mount-24-1/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "dimensionsEstimated": true,
+    "codeConfidence": "medium",
+    "warnings": [
+      "Sizes are read from the printed drawing. Overall height is 40 mm, thickness 8 mm, and the legs are 30 mm wide. The 32 mm width comes from the bottom view and equals the round boss diameter (24 mm center height + 16 mm radius = 40 mm). The 18 mm post gap is U-shaped. Coordinates are centered on the bounding box, so the bore center is at y = +4 (24 mm above the bottom at y = -20). The four M4 holes lie on a square with 16 mm sides (radius about 11.3 mm). The four 4 mm slots lie on a 24 mm diagonal pattern, about 8.49 mm off-axis in each direction. The M4 thread depth in the pattern face is not stated, so those holes are marked non-through. The 4 mm slots are drawn as obround and are approximated here as round. The 1 mm deep, 16 mm diameter counterbore around the bore is not listed as a hole.",
+      "Obround 4 mm slots approximated as round 4 mm through holes",
+      "Concave blend fillets between boss and posts and rounded U corners omitted",
+      "U relief depth (~8.5 mm) estimated from drawing, and its arched top simplified to flat",
+      "M4 pattern-face hole depth not stated; 7 mm assumed, modeled as 3.3 mm tap drill without threads",
+      "Counterbore is assumed on the +Z face"
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -16.000000000000004,
+      "xmax": 16.000000000000004,
+      "ymin": 0,
+      "ymax": 40,
+      "zmin": -4,
+      "zmax": 4,
+      "xlen": 32.00000000000001,
+      "ylen": 40,
+      "zlen": 8
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 88210,
+        "sha256": "4df995ab5e48c2c202a3217f89a71fe8c8fc2f5d3e8a964095e330dc443d9198"
+      },
+      "model.stl": {
+        "bytes": 216284,
+        "sha256": "a49088c177931d945f85b460f6d3dfc55756b495ef4c964fbccebd3ba16a002c"
+      },
+      "model.glb": {
+        "bytes": 78756,
+        "sha256": "33c40cc68c72002bcf218ab81e09718fa86ef53d35f2acf2cb87f6c66da82f0f"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "4df995ab5e48c2c202a3217f89a71fe8c8fc2f5d3e8a964095e330dc443d9198"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Plastic Hinge Block - 25 Pack",
+    "sku": "2902-0025-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/plastic-hinge-block-25-pack/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are given in the text, so all sizes are estimates. Assumptions: the part is on the goBILDA 8 mm pattern, so the hole-to-hole spacing is probably 8 mm. The holes are sized for an M4 screw (about 4 mm), as the description says, and probably have slight clearance. In the top-view image the length is about 2:1 against the width, which gives roughly 24 x 12 mm. The barrel height is guessed at about 16 mm from the perspective view. The tab is probably 4-8 mm thick, and the hole positions are approximate. The grooves at 45° and the notches on the rounded end are visible but not modeled. Only the bounding box centering is stated; the part origin is assumed at the center of the box.",
+      "No dimensions were given in the text, so all sizes are estimates from the analysis bounds.",
+      "The hole positions in the analysis were inconsistent, so the hole layout was re-derived from the image: the tab hole and barrel bore axes are perpendicular, 10 mm apart in X.",
+      "Tab thickness (4 mm), barrel radius (6 mm) and base height (6 mm) are guesses.",
+      "The 45° grooves and the notches on the rounded end are omitted.",
+      "No fillets or edge breaks are modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -12,
+      "xmax": 12,
+      "ymin": 0,
+      "ymax": 12,
+      "zmin": -8,
+      "zmax": 8,
+      "xlen": 24,
+      "ylen": 12,
+      "zlen": 16
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 106576,
+        "sha256": "5c81ab81e1eb7c6a1c876a3c3c1129dbd086e1635ef419c6306f9627dae90c34"
+      },
+      "model.stl": {
+        "bytes": 78484,
+        "sha256": "e29fc580954c83274f7a78c6ff3575d47b844bb480a2752cbfd6f3a72736b101"
+      },
+      "model.glb": {
+        "bytes": 29216,
+        "sha256": "3dc500ca789b0d0ce8dfe272285d0ea90c14b4e34c90c19e61d422d09dc7d240"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "5c81ab81e1eb7c6a1c876a3c3c1129dbd086e1635ef419c6306f9627dae90c34"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

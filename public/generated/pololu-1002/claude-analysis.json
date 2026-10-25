@@ -1,0 +1,24 @@
+{
+  "partType": "other",
+  "summary": "Cylindrical AAA NiMH rechargeable battery cell with a small raised button at the positive terminal end. Modeled as a cylinder with its long axis along z.",
+  "boundsMm": {
+    "x": 10.5,
+    "y": 10.5,
+    "z": 44.5
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 22.25,
+      "description": "Positive terminal end face with a small raised button (not measured)"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -22.25,
+      "description": "Flat negative terminal end face (not visible in image)"
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are given in the text or image. The bounds assume the standard AAA (R03) cell size of about 10.5 mm diameter and 44.5 mm length including the button. The button height and diameter are not measured. The cylinder is centered at the origin with its axis along z. The photo shows no holes. The negative end is not visible, so its flatness is inferred from the standard cell format. The 900 mAh NiMH cell is assumed to follow the standard AAA size."
+}

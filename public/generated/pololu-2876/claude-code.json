@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "15.24 x 20.32 mm PCB, 1.6 mm thick, lying in the XZ plane with its bottom at Y=0. It has 16 through-holes of 1 mm diameter in two rows at X=±6.35 on a 2.54 mm pitch. Two simple blocks stand on the top face: a tantalum-style capacitor and the driver IC. Overall height is 3.0 mm. The loose header strip is excluded.",
+  "confidence": "low",
+  "warnings": [
+    "The supplied bounds list Y=20.32 and Z=3, but the rules require Y as the up axis. I put the 20.32 mm board length along Z and the 3 mm thickness along Y.",
+    "Dimensions are unverified. The PCB thickness of 1.6 mm and the hole diameter of 1 mm are assumptions.",
+    "The capacitor and IC are rough blocks with approximate positions and sizes. I included them only so the overall height matches 3 mm.",
+    "The trimmer, small resistors and capacitors, the round marker ring, pads and the loose header strip are omitted.",
+    "The board corners are modelled as square, with no mounting holes."
+  ],
+  "cadquery": "pcb_t = 1.6\npcb = cq.Workplane('XY').box(15.24, pcb_t, 20.32, centered=(True, False, True))\nzs = [-8.89, -6.35, -3.81, -1.27, 1.27, 3.81, 6.35, 8.89]\npts = [(x, z) for x in (-6.35, 6.35) for z in zs]\nholes = cq.Workplane('XZ').pushPoints(pts).circle(0.5).extrude(5, both=True)\npcb = pcb.cut(holes)\ncap = cq.Workplane('XY').box(3.0, 1.4, 2.5, centered=(True, False, True)).translate((-2.5, pcb_t, -8.0))\nic = cq.Workplane('XY').box(3.0, 0.8, 3.0, centered=(True, False, True)).translate((1.0, pcb_t, -1.0))\npart = pcb.union(cap).union(ic)"
+}

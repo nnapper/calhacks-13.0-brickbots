@@ -1,0 +1,37 @@
+{
+  "partType": "other",
+  "summary": "Rectangular blue PCB motor-controller shield for Arduino with stackable female headers along the edges, six large capacitors and a row of screw terminal blocks along one long-side edge. Two mounting holes are visible.",
+  "boundsMm": {
+    "x": 65,
+    "y": 51.3,
+    "z": 12
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3.2,
+      "positionsMm": [
+        [
+          -29.2,
+          23.6,
+          0
+        ],
+        [
+          -21.6,
+          -22.1,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -6,
+      "description": "Flat underside of the PCB, with the two mounting holes. Only a few solder pads and pin ends are visible on this side."
+    }
+  ],
+  "confidence": "low",
+  "notes": "X and Y come from the printed board dimensions in the rear photo: 2.56 in x 2.02 in, which is 65.0 mm x 51.3 mm. Z is an assumption, since no height is stated: about 1.6 mm PCB plus the tallest top parts (terminal blocks and headers) at about 10 to 12 mm. Header pins protruding below the board are not included. Hole positions are scaled from the top and rear photos, with the origin at the board center, x to the right and y up in the top view. Hole diameter is assumed to be about 3.2 mm, the standard Arduino mounting hole size. Only two holes are clearly identifiable, and others may exist. Header and terminal block outlines are not modeled as separate features."
+}

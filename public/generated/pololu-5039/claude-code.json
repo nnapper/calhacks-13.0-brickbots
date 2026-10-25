@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Rectangular 65 x 51.3 mm PCB (1.6 mm thick) with two 3.2 mm mounting holes, four black stackable header strips along the long edges, a 6-position screw terminal block block on the top side, and five electrolytic capacitor cylinders; total height 12 mm in Z.",
+  "confidence": "low",
+  "warnings": [
+    "Axis ambiguity: boundsMm used literally (X=65, Y=51.3 from 0, Z=12 centered), so the PCB lies in the XY plane with thickness along Z, not Y-up.",
+    "Header lengths, positions, and pin counts are approximate.",
+    "Terminal block size and position are estimated; screw heads, wire openings and individual pockets are not modeled.",
+    "Capacitor count (5), diameter, and positions are estimated from the photo.",
+    "Small SMD components, LEDs, pads, protruding header pins and silkscreen are omitted.",
+    "Only the two identified mounting holes are cut; other holes may exist.",
+    "Dimensions are unverified."
+  ],
+  "cadquery": "pcb_t=1.6\nz0=-6\nzt=z0+pcb_t\nW,L=65.0,51.3\n# PCB: X centered, Y from 0..51.3, thickness along Z (-6..-4.4) per supplied boundsMm\npart=cq.Workplane('XY').box(W,L,pcb_t,centered=(True,False,False)).translate((0,0,z0))\n# mounting holes\nholes=[(-29.2,23.6+L/2),(-21.6,-22.1+L/2)]\npart=part.cut(cq.Workplane('XY').workplane(offset=z0).pushPoints(holes).circle(1.6).extrude(pcb_t))\n# stackable headers (2.54 mm wide strips, ~8.5 mm tall)\nhh=8.5\ndef strip(n,x0,y):\n    return cq.Workplane('XY').box(n*2.54,2.54,hh,centered=False).translate((x0,y-1.27,zt))\nfor s in [strip(10,-30,3.0),strip(8,-3.5,3.0),strip(8,-26,L-3.0),strip(10,0.5,L-3.0)]:\n    part=part.union(s)\n# screw terminal blocks (6 positions, 5.08 mm pitch) up to Z=+6\nth=6-zt\ntb=cq.Workplane('XY').box(30.48,8.0,th,centered=False).translate((2.0,L-14.0,zt))\npart=part.union(tb)\n# electrolytic capacitors\ncaps=[(-8,29),(-1,26),(6,23),(12,19),(-1,15)]\ncp=cq.Workplane('XY').workplane(offset=zt).pushPoints(caps).circle(4.0).extrude(9.5)\npart=part.union(cp)"
+}

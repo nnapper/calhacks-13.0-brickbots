@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Mini Plastic Gearmotor Bracket Pair - Wide",
+    "sku": "pololu-2680",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are given in the listing, so all sizes are estimates. Assumptions: the bracket clamps a mini plastic gearmotor with a roughly 22 mm wide by 18 mm tall gearbox, and the wide version is about 14 mm along the motor axis. The tab hole spacing is estimated at about 27 mm. The hole diameter of 3.2 mm is assumed as M3 clearance, since the listing names M3×12 mm screws. The 1.25 mm spacer plate thickness is stated in the text. The bounding box is for one bracket only and excludes the spacer, screws and nuts. Hole positions and the tab layout are read from the photos by eye. Tab height and the hole Z offset are rough guesses.",
+      "No dimensions are given in the listing, so all sizes are estimates.",
+      "The bracket's ribs, the hook or ring tab shapes and the nut traps are omitted because they are uncertain or decorative.",
+      "The tab holes are placed at x=±12.75 rather than the ±13.5 in the analysis, so that the 3.2 mm holes stay inside the 30 mm bounds.",
+      "The analysis lists the hole axis as Z, but the tabs are modeled flat with holes along Y, because Y is the height axis with the bottom at Y=0.",
+      "The tabs are modeled on both sides, but the photo shows a single ring tab and a hook on the other side of each bracket.",
+      "The spacer plate, screws and nuts are separate parts and are excluded."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -15,
+      "xmax": 15,
+      "ymin": 0,
+      "ymax": 14,
+      "zmin": -6,
+      "zmax": 6,
+      "xlen": 30,
+      "ylen": 14,
+      "zlen": 12
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 66593,
+        "sha256": "1ad859f8f989ea1a7e5101d11bf9001d67120c01b113ae5109719fb1cbfa78cf"
+      },
+      "model.stl": {
+        "bytes": 37084,
+        "sha256": "89e6b5ed8a55e71726686f91f0fe048ba762e2275ca3c408695916dfdf40cc12"
+      },
+      "model.glb": {
+        "bytes": 14312,
+        "sha256": "4fb04ebf46961d68fa77e6ed2394b9627110997a4433f97b8395cfb1420a53e1"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "1ad859f8f989ea1a7e5101d11bf9001d67120c01b113ae5109719fb1cbfa78cf"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

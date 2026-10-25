@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "2mm Pitch GT2 Timing Belt & Pulley Starter Pack (8mm REX® Bore)",
+    "sku": "3201-0013-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/2mm-pitch-gt2-timing-belt-pulley-starter-pack-8mm-rex-bore/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are stated. The bounds are a rough estimate for a laid-out kit footprint, taken from the largest items: the coiled belt (about 100-120 mm across when coiled) and the long belt loops (about 150 mm or more when flattened). The z value of 20 mm is based on the pulley thickness (about 15-20 mm). The 8 mm REX bore comes from the product name. Pulley outer diameter is estimated at about 40-50 mm from the 8 mm goBILDA grid and standard hardware sizes. Hole positions and counts are not given, so holes is empty. No mounting surfaces are specified because the kit has multiple loose items. The second image (four aluminum spacers) and third image (a motor) appear to be other products and were ignored for this kit's sizing.",
+      "The product is a multi-piece kit, not one part, so this is a symbolic layout.",
+      "No dimensions are given. Pulley OD (32 mm), thickness (16 mm), belt width (6 mm) and loop sizes are estimates.",
+      "The Z extent is about 16 mm, below the 20 mm estimated bound.",
+      "The REX bore is modeled as a plain 8 mm across-flats hex, which is an assumption.",
+      "Omitted: belt teeth, pulley hub details and flanges, screws, spacers, idlers, pins, hex keys, o-rings, and the second and third reference images.",
+      "Loop sizes are approximate and do not match the individual belt lengths in the kit."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -75,
+      "xmax": 75,
+      "ymin": 0,
+      "ymax": 150,
+      "zmin": -8,
+      "zmax": 8,
+      "xlen": 150,
+      "ylen": 150,
+      "zlen": 16
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 241548,
+        "sha256": "0b7efd1db19cc4bec7115143c7416ef9b344ca481a87179f21abefe304faa9aa"
+      },
+      "model.stl": {
+        "bytes": 250984,
+        "sha256": "5de735c3e966b234f5fae312f15a98622a8e1cd0859503b3315bc51c81c60f62"
+      },
+      "model.glb": {
+        "bytes": 91304,
+        "sha256": "a5f010264019804c136d925b3bbf3af4e4321a5144dd14e5bef0ef6b4f1c89e6"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "0b7efd1db19cc4bec7115143c7416ef9b344ca481a87179f21abefe304faa9aa"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

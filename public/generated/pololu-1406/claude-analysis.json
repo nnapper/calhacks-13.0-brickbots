@@ -1,0 +1,19 @@
+{
+  "partType": "other",
+  "summary": "SPDT rocker switch with a rectangular black bezel flange, a rocker actuator on top, and three solder tab pins on the bottom. The bounds come from the printed dimensions in the drawing.",
+  "boundsMm": {
+    "x": 21.2,
+    "y": 15.1,
+    "z": 25.9
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 7.35,
+      "description": "Underside of the bezel flange (flange 21.2 x 15.1 mm, 2.1 mm thick). It seats against the panel face, and the body passes through a rectangular cutout of about 18.8 x 13 mm. Offset is measured from the bounding-box center, with +z toward the rocker."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The drawing prints bezel 21.2 x 15.1 mm, rocker protrusion 3.5 mm above the bezel, bezel thickness 2.1 mm, body depth 13.2 mm, and 22.4 mm from the bezel top to the pin tips. It also prints a 9.2 mm rocker width, a 4.8 mm tab width, an 18.7 mm pin span, and an 18.8 x 13 mm panel cutout. Assumption: the 22.4 mm dimension starts at the bezel top and excludes the rocker, so total z = 22.4 + 3.5 = 25.9 mm. If it includes the rocker, z would be 22.4. The box is centered on the part, so z runs from -12.95 (pin tips) to +12.95 (rocker top). The side hole on the body and the small holes in the pin tabs are visible, but no diameters are printed. I listed no holes rather than invent sizes. The dimensionsAreUnverified flag in the listing was resolved using the drawing, not scraped data."
+}

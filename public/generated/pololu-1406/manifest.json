@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Rocker Switch: 3-Pin, SPDT, 10A",
+    "sku": "pololu-1406",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "dimensionsEstimated": true,
+    "codeConfidence": "medium",
+    "warnings": [
+      "The drawing prints bezel 21.2 x 15.1 mm, rocker protrusion 3.5 mm above the bezel, bezel thickness 2.1 mm, body depth 13.2 mm, and 22.4 mm from the bezel top to the pin tips. It also prints a 9.2 mm rocker width, a 4.8 mm tab width, an 18.7 mm pin span, and an 18.8 x 13 mm panel cutout. Assumption: the 22.4 mm dimension starts at the bezel top and excludes the rocker, so total z = 22.4 + 3.5 = 25.9 mm. If it includes the rocker, z would be 22.4. The box is centered on the part, so z runs from -12.95 (pin tips) to +12.95 (rocker top). The side hole on the body and the small holes in the pin tabs are visible, but no diameters are printed. I listed no holes rather than invent sizes. The dimensionsAreUnverified flag in the listing was resolved using the drawing, not scraped data.",
+      "Orientation follows boundsMm: the switch axis is Z (25.9 mm) and Y spans 0 to 15.1 mm. The Y=0 bottom is therefore a side face of the bezel, not the pin tips. Rotate the part if a Y-up orientation is wanted.",
+      "The 22.4 mm dimension is assumed to run from the bezel top to the pin tips, excluding the 3.5 mm rocker.",
+      "The body depth is assumed to be 13.2 mm measured from the bezel top, which makes the pins 9.2 mm long.",
+      "The rocker is modeled as a plain box. Its sloped top and the printed marks are omitted.",
+      "The tab pitch of 6.95 mm is derived from the printed 18.7 mm pin span and 4.8 mm tab width. The tab thickness of 0.8 mm is assumed.",
+      "The side hole on the body and the small holes in the tabs are omitted because no diameters are given.",
+      "The small latch features on the body sides are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -10.6,
+      "xmax": 10.6,
+      "ymin": 0,
+      "ymax": 15.1,
+      "zmin": -12.95,
+      "zmax": 12.95,
+      "xlen": 21.2,
+      "ylen": 15.1,
+      "zlen": 25.9
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 86741,
+        "sha256": "dfe6abb1fd79f0f50a11baa923cce0f443639578033d4ec58de66a3580465753"
+      },
+      "model.stl": {
+        "bytes": 4684,
+        "sha256": "5fed79909fbdfdc339a2aad955cb778b7f34e3c3746c218b070dec5c6e5a8c5a"
+      },
+      "model.glb": {
+        "bytes": 2692,
+        "sha256": "d13524c2f8b167fd682b741ba4d4b067c8ae3a54d54a9a0bccbb4cb44779f002"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "dfe6abb1fd79f0f50a11baa923cce0f443639578033d4ec58de66a3580465753"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

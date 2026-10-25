@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1126 Series Steel Flat Bracket (1-1) - 2 Pack",
+    "sku": "1126-0001-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1126-series-steel-flat-bracket-1-1-2-pack/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "high",
+    "dimensionsEstimated": true,
+    "codeConfidence": "high",
+    "warnings": [
+      "Dimensions come from the printed drawing: 56 mm length, 14 mm width, 2.5 mm thickness, seven Ø4 mm holes at 8 mm pitch, and 48 mm between the first and last hole centers. The bounding box is centered at the origin with length along X, width along Y and thickness along Z. The holes sit on the Y centerline, which is the drawing's visual midline and not a printed dimension. The 4 mm end margin is derived as (56-48)/2. The holes are treated as through because the render shows light passing through some of them. A volume check of about 1740 mm³ of steel gives roughly 13.7 g, which matches the stated 14 g each. The goRAIL profile image was not used for sizing, and no other features are assumed.",
+      "Holes are assumed to sit on the plate's width midline (Y=7), which is not a printed dimension.",
+      "Plate edges and corners are modeled sharp, since no fillets or chamfers are visible."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -28,
+      "xmax": 28,
+      "ymin": 0,
+      "ymax": 14,
+      "zmin": -1.25,
+      "zmax": 1.25,
+      "xlen": 56,
+      "ylen": 14,
+      "zlen": 2.5
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 48629,
+        "sha256": "90954a9993d40f083b65aa040adf5d55a1a187b62f949ae46a1ce3d6fef44bf1"
+      },
+      "model.stl": {
+        "bytes": 119684,
+        "sha256": "09061537f01eed82ada51e03e1dcf64bb0ae738fa7b5007f7475e721fed738f3"
+      },
+      "model.glb": {
+        "bytes": 43932,
+        "sha256": "7ca525bdc336ceda7cd6db43eeb9e669bf92b23eaf44e9b5c1fa73b5015749c0"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "90954a9993d40f083b65aa040adf5d55a1a187b62f949ae46a1ce3d6fef44bf1"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

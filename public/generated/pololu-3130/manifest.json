@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Tic T825 USB Multi-Interface Stepper Motor Controller (Connectors Soldered)",
+    "sku": "pololu-3130",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are given in the text, so the sizes are estimates. The Tic T825 is a small Pololu board, and I assumed a PCB of roughly 36 x 30 mm with a 1.6 mm thickness. The bounding box includes the green terminal block (about 10 mm tall) and the electrolytic capacitor. The terminal block adds some overhang on the right edge, so x is set to about 37 mm. The height of about 14 mm is an estimate that includes the header pins and the terminal block. One mounting hole is visible near the lower left corner. Its diameter is assumed to be about 2.5 mm, similar to an M2.5 or #2 screw, and its position is only approximate. I did not infer any other holes. The header pin positions are not given as holes.",
+      "Dimensions are estimates; the supplied bounds were remapped so Y is vertical (height 14 mm) and the board plan is 37 x 30 mm in X-Z.",
+      "Only the mounting hole at the lower left is modeled; its position and diameter are approximate.",
+      "Header pin count (12), terminal block size, capacitor, and USB connector sizes and positions are estimated.",
+      "Small SMD components, LEDs, the gold heat-sink pad, silkscreen, and logos are omitted.",
+      "Terminal block screw holes and wire openings are omitted because their geometry is uncertain.",
+      "Header pins are modeled as square posts flush with the PCB underside, not as separate protruding legs."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -18.5,
+      "xmax": 18.5,
+      "ymin": 0,
+      "ymax": 14,
+      "zmin": -15.5,
+      "zmax": 15.24,
+      "xlen": 37,
+      "ylen": 14,
+      "zlen": 30.740000000000002
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 272860,
+        "sha256": "0b1cfd06eb6fbaae7a18b2d63051c0c90a591d3cb22ca2e7c4b0808f31d3fd17"
+      },
+      "model.stl": {
+        "bytes": 47384,
+        "sha256": "9d31aa5d2e78988cbac7037d181277d7841cc64545f5a8e8e7884926c924b580"
+      },
+      "model.glb": {
+        "bytes": 18044,
+        "sha256": "30a5e7acb4f0c06f822b371267315589f577e3894f3af62cb9c84f2225f45e1b"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "0b1cfd06eb6fbaae7a18b2d63051c0c90a591d3cb22ca2e7c4b0808f31d3fd17"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Triangular gusseted 90-degree angle mount: 15x15 mm right-angle profile with truncated tips and a 45-degree hypotenuse face, extruded 14 mm in Y (Y=0 to 14). Each leg has a 4 mm through hole 8 mm from the corner, centered across the width, with an 8 mm counterbore opening on the angled face.",
+  "confidence": "medium",
+  "warnings": [
+    "Counterbore depths are not dimensioned; floors were set at 3 mm from the center plane (about 4 mm hole length left at the leg face).",
+    "Internal T-slot/section geometry with 2.25 mm walls was omitted.",
+    "Tip truncation size (~3.2 mm) was estimated from drawing proportions.",
+    "Axis assignment and hole orientation are assumed from the analysis JSON; the source dimensions are unverified."
+  ],
+  "cadquery": "pts=[(-7.5,-7.5),(7.5,-7.5),(7.5,-4.3),(-4.3,7.5),(-7.5,7.5)]\nbody=cq.Workplane('XZ').polyline(pts).close().extrude(-14)\ndef cyl(r,h,p,d):\n    return cq.Workplane('XY').add(cq.Solid.makeCylinder(r,h,cq.Vector(*p),cq.Vector(*d)))\npart=body\nfor c in [cyl(2,20,(0.5,7,-8),(0,0,1)),cyl(4,10,(0.5,7,-3),(0,0,1)),cyl(2,20,(-8,7,0.5),(1,0,0)),cyl(4,10,(-3,7,0.5),(1,0,0))]:\n    part=part.cut(c)"
+}

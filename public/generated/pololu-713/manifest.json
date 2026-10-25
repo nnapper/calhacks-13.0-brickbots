@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "TB6612FNG Dual Motor Driver Carrier",
+    "sku": "pololu-713",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "The board footprint comes from the printed dimensions in the third image: 0.6 in wide by 0.8 in long, which is 15.24 mm by 20.32 mm. Hole positions assume a 0.1 in (2.54 mm) pitch, 8 holes per side, and a 0.5 in (12.7 mm) spacing between the rows. The photo suggests a slightly wider spacing, so the 0.5 in value is an assumption. Hole diameter of about 1.0 mm is estimated from standard 0.1 in header holes and is not stated. Total thickness of 3.0 mm is an estimate: about 1.6 mm of PCB plus about 1.4 mm of component height. The holes are centered at an assumed PCB mid-plane of z = -0.7 mm. Two small unplated holes are also visible near the board corners; they are not modeled because their size and position are not given. The header strip that ships with the product is not included in the bounds.",
+      "Dimensions are estimates from the supplied bounds and were not verified.",
+      "The axis convention is ambiguous. The bounds put the 20.32 mm length on Y and the 3 mm thickness on Z, so the board is modeled that way (Y from 0 to 20.32, X and Z centered) rather than lying flat with Y as thickness.",
+      "The two unplated corner holes were omitted because their size and position are uncertain.",
+      "The small passives (capacitors, resistors, SOT part) were omitted because their positions and sizes are uncertain.",
+      "IC body size, orientation and height are approximate, and its leads are not modeled.",
+      "The hole positions given are symmetric about the board center, which differs slightly from the photo, where the rows look wider and offset.",
+      "The included header strip is not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -7.62,
+      "xmax": 7.62,
+      "ymin": 0,
+      "ymax": 20.32,
+      "zmin": -1.5,
+      "zmax": 1.5,
+      "xlen": 15.24,
+      "ylen": 20.32,
+      "zlen": 3
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 107739,
+        "sha256": "4b1b65d0456ec18aeb2b37a4d888c2faa5b6f2ce0ba8a3e7654f87961fc59993"
+      },
+      "model.stl": {
+        "bytes": 273484,
+        "sha256": "132f37581e44946bbe1f9d629b65bd01823d2bfc0638e5cfd1a21d8e4019a2bc"
+      },
+      "model.glb": {
+        "bytes": 99088,
+        "sha256": "f0c0c9b68652b08be47b401ffa2cbce33c2a75150e20c85b3fb6180a5ea0df99"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "4b1b65d0456ec18aeb2b37a4d888c2faa5b6f2ce0ba8a3e7654f87961fc59993"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

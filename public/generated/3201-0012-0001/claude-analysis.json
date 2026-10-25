@@ -1,0 +1,13 @@
+{
+  "partType": "other",
+  "summary": "Multi-piece kit of 5mm pitch HTD timing belts (8 lengths), 8 aluminum timing pulleys, 2 large black hub-mount pulleys, 2 aluminum hub adapters, 2 bearing idlers, 4 smaller idler pulleys, 8 standoffs, shims, screws and 2 hex keys. It is not a single machinable part.",
+  "boundsMm": {
+    "x": 250,
+    "y": 150,
+    "z": 30
+  },
+  "holes": [],
+  "mountingSurfaces": [],
+  "confidence": "low",
+  "notes": "No dimensions were scraped and the text gives none, so the bounds are a rough estimate. Sizing assumptions: the large hub-mount pulleys are about 75-80 mm OD (about 48 teeth at 5 mm pitch) and about 20 mm thick. The belts are about 15 mm wide, and the largest belt extends roughly 140 mm when laid out. The x/y bounds are a notional packed-kit footprint, and z is about the thickness of the largest pulley plus a little margin. The listed 8 mm REX bore and the 6 mm OD standoffs come from the description. Hole patterns in the large pulleys are visible but not dimensioned, so none are listed. The second image (four spacers/bushings) and the third (a goBILDA Yellow Jacket gear motor) do not belong to this kit and were ignored for sizing."
+}

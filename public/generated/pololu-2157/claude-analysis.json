@@ -1,0 +1,52 @@
+{
+  "partType": "flat_plate",
+  "summary": "Square GNSS receiver module. A thin green PCB carries a square ceramic patch antenna on one face and electronic components on the other, with a small side-entry connector and cable on one edge. A mounting hole is visible at each of the four corners.",
+  "boundsMm": {
+    "x": 35,
+    "y": 35,
+    "z": 9
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.5,
+      "positionsMm": [
+        [
+          -16.5,
+          16.5,
+          0
+        ],
+        [
+          16.5,
+          16.5,
+          0
+        ],
+        [
+          -16.5,
+          -16.5,
+          0
+        ],
+        [
+          16.5,
+          -16.5,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -4.5,
+      "description": "Component-side face of the PCB (the face opposite the antenna). Mount it using the four corner holes."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 4.5,
+      "description": "Top face with the square patch antenna, which should face the sky."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are given in the text, so all sizes are estimates. The board is assumed to be about 35 mm square, based on the typical size of the LC20031 module and a 25 mm patch antenna. PCB thickness is assumed to be about 1.6 mm. The antenna, its gray gasket and the connector are assumed to bring the total height to about 9 mm. The corner hole diameter (about 2.5 mm) and a hole spacing of about 33 mm are visual estimates from the photos. The cable and braided sleeve are excluded from the bounds, and the side connector is not modeled."
+}

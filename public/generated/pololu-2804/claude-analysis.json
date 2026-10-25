@@ -1,0 +1,47 @@
+{
+  "partType": "other",
+  "summary": "Assembled RC relay switch module: a rectangular green PCB with a black cube-style relay in the middle, a 3-position screw terminal block along one short edge, and a 5-pin header along the opposite short edge. Four corner mounting holes are visible on the PCB.",
+  "boundsMm": {
+    "x": 31,
+    "y": 23,
+    "z": 19
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3.1,
+      "positionsMm": [
+        [
+          -12.5,
+          -9,
+          0
+        ],
+        [
+          -12.5,
+          9,
+          0
+        ],
+        [
+          12.5,
+          -9,
+          0
+        ],
+        [
+          12.5,
+          9,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -9.5,
+      "description": "Underside of the PCB, flat, usable as the mounting face with the four corner holes"
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions were supplied, so every size is an estimate. The Omron G5LE relay body is about 15.5 x 10.5 x 12.5 mm in its datasheet, and I used that as the scale reference. In the top photo the relay is roughly 250 px long by 345 px wide, which puts the PCB at about 30 x 22 mm, consistent with a small Pololu board. The terminal block is assumed to sit within the PCB length, and the 5-pin header (2.54 mm pitch) is assumed to be on the opposite edge. The board is about 1.6 mm thick. Height z is about 1.6 mm PCB + 12.5 mm relay, plus the extra header and terminal height, so about 19 mm overall, centered on the bounding box. The hole diameter of about 3.1 mm (for M3) and the hole positions are visual estimates. The loose header pieces and jumper shown in the photos are excluded. Internal and hidden parts are not described."
+}

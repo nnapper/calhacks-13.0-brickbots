@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Arduino Uno-format shield: 68.6 x 53.3 x 1.6 mm PCB in the XY plane (thickness along Z, spanning Y 0..53.3) with two 3.2 mm mounting holes, two long stackable header bodies with pins protruding below, four green terminal block bodies along one short edge, and two cylindrical electrolytic capacitors. Overall Z span is about 19 mm.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are unverified; the PCB size is assumed to be the standard Uno footprint.",
+    "The boundsMm axes were followed (Y = 53.3, Z = 19), so the PCB lies in the XY plane with its thickness along Z, even though the rules say the bottom sits at Y=0. The bottom of the part is at Y=0 as the PCB edge.",
+    "Header placement, pin counts, terminal block positions and sizes, and capacitor positions are approximate.",
+    "The mounting hole positions are estimates.",
+    "The ICs, LEDs, SMD parts, test pads and silkscreen are omitted."
+  ],
+  "cadquery": "W,H,T=68.6,53.3,1.6\nyc=H/2\nz0=-3.0\nzt=z0+T\npcb=cq.Workplane('XY').workplane(offset=z0).center(0,yc).rect(W,H).extrude(T)\npcb=pcb.cut(cq.Workplane('XY').workplane(offset=z0-1).pushPoints([(-24,yc-18),(24,yc+18)]).circle(1.6).extrude(T+2))\npart=pcb\nhdr_len=25.4\nhx=-12\nfor dy in (-24.1,24.1):\n    body=cq.Workplane('XY').workplane(offset=zt).center(hx,yc+dy).rect(hdr_len,2.54).extrude(9.5-zt)\n    part=part.union(body)\n    pts=[(hx+(i-4.5)*2.54,yc+dy) for i in range(10)]\n    pins=cq.Workplane('XY').workplane(offset=-9.5).pushPoints(pts).rect(0.64,0.64).extrude(z0+9.5)\n    part=part.union(pins)\nfor i in range(4):\n    tb=cq.Workplane('XY').workplane(offset=zt).center(27,yc+(i-1.5)*5.0).rect(8,5).extrude(10)\n    part=part.union(tb)\nfor cx,cy in ((-14,yc+4),(-8,yc-4)):\n    cap=cq.Workplane('XY').workplane(offset=zt).center(cx,cy).circle(3.15).extrude(7)\n    part=part.union(cap)\n"
+}

@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Cylindrical motor body of 37.5 mm diameter and 75 mm length, with its axis along Z and centered at X=0, Z=0. The bottom sits at Y=0, so the axis is at Y=18.75. A 13 mm boss projects 4.8 mm from the front face. A 1/8 in (3.175 mm) round shaft projects a further 7.44 mm. Four blind 3 mm diameter holes, 3 mm deep, are cut into the front face on a square pattern whose diagonal is 25 mm.",
+  "confidence": "medium",
+  "warnings": [
+    "The 25 mm dimension is read as the diagonal between opposite hole centers (square side about 17.68 mm). This is an assumption.",
+    "The M3 holes are modeled as plain 3 mm blind holes with no threads.",
+    "The shaft flat is omitted, so the shaft is a plain round cylinder.",
+    "The rear encoder module, can-body details, wire leads and connectors are omitted. The rear is modeled as one plain cylinder.",
+    "The front boss is modeled as a plain 13 mm cylinder, and its inner details are omitted."
+  ],
+  "cadquery": "body = cq.Workplane('XY').workplane(offset=-43.62).center(0, 18.75).circle(18.75).extrude(75)\nboss = cq.Workplane('XY').workplane(offset=31.38).center(0, 18.75).circle(6.5).extrude(4.8)\nshaft = cq.Workplane('XY').workplane(offset=36.18).center(0, 18.75).circle(1.5875).extrude(7.44)\nholes = cq.Workplane('XY').workplane(offset=28.38).pushPoints([(8.84, 18.75 + 8.84), (-8.84, 18.75 + 8.84), (8.84, 18.75 - 8.84), (-8.84, 18.75 - 8.84)]).circle(1.5).extrude(3)\npart = body.union(boss).union(shaft).cut(holes)"
+}

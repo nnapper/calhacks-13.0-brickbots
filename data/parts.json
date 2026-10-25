@@ -14174,5 +14174,709 @@
     "source_listing": "https://www.pololu.com/category/76",
     "needs_dimensions": true,
     "context_scraped_at": "2026-10-25T04:16:00.866Z"
+  },
+  "generic:pololu-5724": {
+    "retailer": null,
+    "generic": true,
+    "category": "25d-metal-gearmotors",
+    "name": "24V High-Power (HP) 25D mm Gearmotors",
+    "sku": "pololu-5724",
+    "description": "This gearmotor consists of a high-power, 24 V brushed DC motor combined with a 74.83:1 metal spur gearbox. The gearmotor is cylindrical, with a diameter just under 25 mm, and the D-shaped output shaft is 4 mm in diameter and extends 12.5 mm from the face plate of the gearbox. This gearmotor is also available with an integrated encoder.\n\nKey specifications:\n\nvoltage no-load performance stall extrapolation\n24 V 140 RPM, 80 mA 23 kg⋅cm (320 oz⋅in), 2.7 A",
+    "specs": [
+      "24 V",
+      "stall current: 2.7 A",
+      "typical free-run current: 100 mA",
+      "4 mm diameter D-shaped output shaft",
+      "gearboxes available in a wide range of gear ratios",
+      "diameter just under 25 mm"
+    ],
+    "images": [
+      {
+        "url": "https://a.pololu-files.com/picture/0J9890.600x480.jpg?c6dfea6448bb8ef0cef701de2d59b4d6",
+        "alt": "24V High-Power (HP) 25D mm Gearmotors",
+        "local": "/parts/pololu-5724-0.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J2644.600x480.jpg?d126a93259b960b5871ae3efea0c65de",
+        "alt": "24V High-Power (HP) 25D mm Gearmotors view 1",
+        "local": "/parts/pololu-5724-1.jpg"
+      }
+    ],
+    "offer_urls": [
+      "https://www.pololu.com/category/384/24v-high-power-hp-25d-mm-gearmotors"
+    ],
+    "source_listing": "https://www.pololu.com/category/115",
+    "dimensions_mm": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "diameter": null,
+      "shaft_diameter": 4,
+      "bore_diameter": null
+    },
+    "dimensions_source": "context",
+    "context_scraped_at": "2026-10-25T06:11:50.193Z"
+  },
+  "generic:pololu-2680": {
+    "retailer": null,
+    "generic": true,
+    "category": "motor-brackets",
+    "name": "Pololu Mini Plastic Gearmotor Bracket Pair - Wide",
+    "sku": "pololu-2680",
+    "description": "These wide brackets offer an easy and convenient mounting solution for our mini plastic gearmotors. The white plastic bracket clasps securely around the gearmotor, and the mounting tabs capture the nuts for easy installation. These brackets are sold in pairs, and each bracket comes with two M3 screws, two nuts, and a spacer.",
+    "specs": [
+      "Wide version",
+      "Sold in pairs",
+      "Compatible with mini plastic gearmotors with or without encoders",
+      "Compatible with offset and 90-degree configurations",
+      "Includes four M3×12 mm screws, four M3 nuts, and two 1.25 mm-thick spacer plates"
+    ],
+    "images": [
+      {
+        "url": "https://a.pololu-files.com/picture/0J5951.600x480.jpg?9a61c44d37552508ebab4d48e18f69fe",
+        "alt": "Pololu Mini Plastic Gearmotor Bracket Pair - Wide",
+        "local": "/parts/pololu-2680-0.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J5950.600x480.jpg?9781f8ffe2e867924d1876db2e77da22",
+        "alt": "Pololu Mini Plastic Gearmotor Bracket Pair - Wide view 1",
+        "local": "/parts/pololu-2680-1.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J5952.600x480.jpg?a06b236d1eacf908453e435193e753b7",
+        "alt": "Pololu Mini Plastic Gearmotor Bracket Pair - Wide view 2",
+        "local": "/parts/pololu-2680-2.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J5953.600x480.jpg?4b434158c29ec2538826a747c31bdfef",
+        "alt": "Pololu Mini Plastic Gearmotor Bracket Pair - Wide view 3",
+        "local": "/parts/pololu-2680-3.jpg"
+      }
+    ],
+    "offer_urls": [
+      "https://www.pololu.com/product/2680"
+    ],
+    "source_listing": "https://www.pololu.com/category/138",
+    "context_scraped_at": "2026-10-25T06:11:47.526Z",
+    "needs_dimensions": true
+  },
+  "generic:pololu-3623": {
+    "retailer": null,
+    "generic": true,
+    "category": "motor-brackets",
+    "name": "Mounting Bracket for Glideforce Medium-Duty Linear Actuators - Steel",
+    "sku": "pololu-3623",
+    "description": "This bracket was designed specifically for the Glideforce Medium-Duty (MD) linear actuators. It is made from stamped, zinc-plated steel and has been tested to 560 kgf [1250 lbs or 5600 N] of static load, which is well above the highest static loads the MD actuators are rated for. The mounting pin has a 0.394″ (10 mm) diameter. This bracket is sold individually, and two brackets are required for each linear actuator.",
+    "specs": [
+      "stamped, zinc-plated steel",
+      "tested to 560 kgf [1250 lbs or 5600 N] static load",
+      "mounting pin diameter: 10 mm",
+      "sold individually",
+      "two brackets required per linear actuator",
+      "RoHS 3 compliant"
+    ],
+    "images": [
+      {
+        "url": "https://a.pololu-files.com/picture/0J8315.600x480.jpg?84e6fb4482200bcb3c5cd5b39e95aa1e",
+        "alt": "Mounting Bracket for Glideforce Medium-Duty Linear Actuators - Steel",
+        "local": "/parts/pololu-3623-0.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J8373.600x480.jpg?4642cc3215ed65076362a3ad118d3d86",
+        "alt": "Mounting Bracket for Glideforce Medium-Duty Linear Actuators - Steel view 1",
+        "local": "/parts/pololu-3623-1.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J8374.600x480.jpg?59467c24668901ac66cef15382af2403",
+        "alt": "Mounting Bracket for Glideforce Medium-Duty Linear Actuators - Steel view 2",
+        "local": "/parts/pololu-3623-2.jpg"
+      }
+    ],
+    "offer_urls": [
+      "https://www.pololu.com/product/3623"
+    ],
+    "source_listing": "https://www.pololu.com/category/138",
+    "context_scraped_at": "2026-10-25T06:11:54.066Z",
+    "dimensions_mm": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "diameter": 10,
+      "shaft_diameter": null,
+      "bore_diameter": null
+    },
+    "dimensions_source": "parsed-from-page-text"
+  },
+  "generic:pololu-3622": {
+    "retailer": null,
+    "generic": true,
+    "category": "motor-brackets",
+    "name": "Mounting Bracket for Glideforce Medium-Duty Linear Actuators - Aluminum",
+    "sku": "pololu-3622",
+    "description": "This bracket was designed specifically for the Glideforce Medium-Duty (MD) linear actuators. It is machined out of a single piece of aluminum and has been tested to 560 kgf [1250 lbs or 5600 N] of static load, which is well above the highest static loads the MD actuators are rated for. The mounting pin has a 0.394″ (10 mm) diameter. This bracket is sold individually, and two brackets are required for each linear actuator.",
+    "specs": [
+      "Concentric part number LA-MD-BRACKET",
+      "560 kgf static load",
+      "Machined out of a single piece of aluminum",
+      "Sold individually",
+      "Two brackets are required for each linear actuator"
+    ],
+    "images": [
+      {
+        "url": "https://a.pololu-files.com/picture/0J8314.600x480.jpg?a25050f45a9b33974ffeed607f2dd8db",
+        "alt": "Mounting Bracket for Glideforce Medium-Duty Linear Actuators - Aluminum",
+        "local": "/parts/pololu-3622-0.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J8371.600x480.jpg?ee037cbf888cf8de620adc2e00ed9f4c",
+        "alt": "Mounting Bracket for Glideforce Medium-Duty Linear Actuators - Aluminum view 1",
+        "local": "/parts/pololu-3622-1.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J8372.600x480.jpg?c406a1128bd96ffc14ab0191d662db00",
+        "alt": "Mounting Bracket for Glideforce Medium-Duty Linear Actuators - Aluminum view 2",
+        "local": "/parts/pololu-3622-2.jpg"
+      }
+    ],
+    "offer_urls": [
+      "https://www.pololu.com/product/3622"
+    ],
+    "source_listing": "https://www.pololu.com/category/138",
+    "dimensions_mm": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "diameter": null,
+      "shaft_diameter": null,
+      "bore_diameter": 10
+    },
+    "dimensions_source": "context",
+    "context_scraped_at": "2026-10-25T06:11:55.435Z"
+  },
+  "generic:pololu-3637": {
+    "retailer": null,
+    "generic": true,
+    "category": "motor-brackets",
+    "name": "Mounting Bracket for Glideforce Industrial-Duty Linear Actuators - Steel",
+    "sku": "pololu-3637",
+    "description": "This bracket was designed specifically for the Glideforce Industrial-Duty (ID) linear actuators. It is made from stamped, black powder coated steel and has been tested to 1700 kgf [3800 lbs or 17,000 N] of static load, which is well above the highest static loads the ID actuators are rated for. The mounting pin has a 0.498″ (12.6 mm) diameter. This bracket is sold individually, and two brackets are required for each linear actuator.",
+    "specs": [
+      "Concentric part number LA-ID-BRKT-S-PC",
+      "Stamped, black powder coated steel",
+      "Static load: 1700 kgf [3800 lbs or 17,000 N]",
+      "Sold individually",
+      "Two brackets required for each linear actuator"
+    ],
+    "images": [
+      {
+        "url": "https://a.pololu-files.com/picture/0J8328.600x480.jpg?6cf692b16c05f761b1312e107f8e56cb",
+        "alt": "Mounting Bracket for Glideforce Industrial-Duty Linear Actuators - Steel",
+        "local": "/parts/pololu-3637-0.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J8369.600x480.jpg?70bdbf53698178be39269fa17299d6dc",
+        "alt": "Mounting Bracket for Glideforce Industrial-Duty Linear Actuators - Steel view 1",
+        "local": "/parts/pololu-3637-1.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J8370.600x480.jpg?0af04daeec0432df7ba2ac1c388f5694",
+        "alt": "Mounting Bracket for Glideforce Industrial-Duty Linear Actuators - Steel view 2",
+        "local": "/parts/pololu-3637-2.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J8369.280.jpg?70bdbf53698178be39269fa17299d6dc",
+        "alt": "Mounting Bracket for Glideforce Industrial-Duty Linear Actuators - Steel view 3",
+        "local": "/parts/pololu-3637-3.jpg"
+      }
+    ],
+    "offer_urls": [
+      "https://www.pololu.com/product/3637"
+    ],
+    "source_listing": "https://www.pololu.com/category/138",
+    "dimensions_mm": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "diameter": null,
+      "shaft_diameter": null,
+      "bore_diameter": 12.6
+    },
+    "dimensions_source": "context",
+    "context_scraped_at": "2026-10-25T06:11:59.407Z"
+  },
+  "generic:pololu-1078": {
+    "retailer": null,
+    "generic": true,
+    "category": "mounting-hubs",
+    "name": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, #4-40 Holes (2-Pack)",
+    "sku": "pololu-1078",
+    "description": "These universal aluminum mounting hubs allow you to mount custom wheels and mechanisms to 3 mm diameter motor shafts. The set includes two hubs, two #4-40 set screws for securing the hubs to motor shafts, and one 0.05″ Allen wrench for use with the set screws. Each hub has four threaded mounting holes for #4-40 screws (not included).",
+    "specs": [
+      "2-pack",
+      "for 3 mm diameter motor shafts",
+      "#4-40 holes",
+      "each hub has four threaded mounting holes",
+      "#4-40 set screws included",
+      "0.05″ Allen wrench included"
+    ],
+    "images": [
+      {
+        "url": "https://a.pololu-files.com/picture/0J1103.600x480.jpg?7db91a2dc3cc8350a70604b81e06be32",
+        "alt": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, #4-40 Holes (2-Pack)",
+        "local": "/parts/pololu-1078-0.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J1102.600x480.jpg?6e84283cd0e28d3ffc176863f4bdabae",
+        "alt": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, #4-40 Holes (2-Pack) view 1",
+        "local": "/parts/pololu-1078-1.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J1092.600x480.jpg?f9728619de096d6b350a4e9d3e355cb9",
+        "alt": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, #4-40 Holes (2-Pack) view 2",
+        "local": "/parts/pololu-1078-2.jpg"
+      }
+    ],
+    "offer_urls": [
+      "https://www.pololu.com/product/1078"
+    ],
+    "source_listing": "https://www.pololu.com/category/137",
+    "dimensions_mm": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "diameter": null,
+      "shaft_diameter": 3,
+      "bore_diameter": null
+    },
+    "dimensions_source": "context",
+    "context_scraped_at": "2026-10-25T06:12:01.234Z"
+  },
+  "generic:pololu-1996": {
+    "retailer": null,
+    "generic": true,
+    "category": "mounting-hubs",
+    "name": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, M3 Holes (2-Pack)",
+    "sku": "pololu-1996",
+    "description": "These universal aluminum mounting hubs allow you to mount custom wheels and mechanisms to 3 mm diameter motor shafts. The set includes two hubs, two M3 set screws for securing the hubs to motor shafts, and one 1.5 mm Allen wrench for use with the set screws. Each hub has four threaded mounting holes for M3 screws (not included).",
+    "specs": [
+      "2-Pack",
+      "M3 holes",
+      "four threaded mounting holes for M3 screws",
+      "includes two M3 set screws",
+      "includes one 1.5 mm Allen wrench"
+    ],
+    "images": [
+      {
+        "url": "https://a.pololu-files.com/picture/0J1103.600x480.jpg?7db91a2dc3cc8350a70604b81e06be32",
+        "alt": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, M3 Holes (2-Pack)",
+        "local": "/parts/pololu-1996-0.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J1102.600x480.jpg?6e84283cd0e28d3ffc176863f4bdabae",
+        "alt": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, M3 Holes (2-Pack) view 1",
+        "local": "/parts/pololu-1996-1.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J1092.600x480.jpg?f9728619de096d6b350a4e9d3e355cb9",
+        "alt": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, M3 Holes (2-Pack) view 2",
+        "local": "/parts/pololu-1996-2.jpg"
+      }
+    ],
+    "offer_urls": [
+      "https://www.pololu.com/product/1996"
+    ],
+    "source_listing": "https://www.pololu.com/category/137",
+    "dimensions_mm": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "diameter": null,
+      "shaft_diameter": 3,
+      "bore_diameter": null
+    },
+    "dimensions_source": "context",
+    "context_scraped_at": "2026-10-25T06:12:05.414Z"
+  },
+  "generic:pololu-1079": {
+    "retailer": null,
+    "generic": true,
+    "category": "mounting-hubs",
+    "name": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, #2-56 Holes (2-Pack)",
+    "sku": "pololu-1079",
+    "description": "These universal aluminum mounting hubs allow you to mount custom wheels and mechanisms to 3 mm diameter motor shafts. The set includes two hubs, two #4-40 set screws for securing the hubs to motor shafts, and one 0.05″ Allen wrench for use with the set screws. Each hub has four threaded mounting holes for #2-56 screws (not included).",
+    "specs": [
+      "2-pack",
+      "for 3 mm shafts",
+      "#2-56 threaded mounting holes",
+      "#4-40 set screws included",
+      "0.05″ Allen wrench included",
+      "four threaded mounting holes per hub"
+    ],
+    "images": [
+      {
+        "url": "https://a.pololu-files.com/picture/0J1103.600x480.jpg?7db91a2dc3cc8350a70604b81e06be32",
+        "alt": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, #2-56 Holes (2-Pack)",
+        "local": "/parts/pololu-1079-0.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J1102.600x480.jpg?6e84283cd0e28d3ffc176863f4bdabae",
+        "alt": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, #2-56 Holes (2-Pack) view 1",
+        "local": "/parts/pololu-1079-1.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J1092.600x480.jpg?f9728619de096d6b350a4e9d3e355cb9",
+        "alt": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, #2-56 Holes (2-Pack) view 2",
+        "local": "/parts/pololu-1079-2.jpg"
+      }
+    ],
+    "offer_urls": [
+      "https://www.pololu.com/product/1079"
+    ],
+    "source_listing": "https://www.pololu.com/category/137",
+    "dimensions_mm": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "diameter": null,
+      "shaft_diameter": 3,
+      "bore_diameter": null
+    },
+    "dimensions_source": "context",
+    "context_scraped_at": "2026-10-25T06:12:07.280Z"
+  },
+  "generic:pololu-2682": {
+    "retailer": null,
+    "generic": true,
+    "category": "hex-wheel-adapters",
+    "name": "12mm Hex Wheel Adapter for 3mm Shaft (2-Pack)",
+    "sku": "pololu-2682",
+    "description": "These 17 mm long aluminum adapters convert a 3 mm diameter shaft to a 12 mm hex shaft that is compatible with many common hobby RC wheels. The set includes two adapters, two M4 screws for securing wheels to the adapters, four M3 set screws for securing the adapters to motor shafts, and one 1.5 mm Allen wrench for use with the set screws.",
+    "specs": [
+      "17 mm long",
+      "12 mm hex shaft",
+      "for 3 mm diameter shafts",
+      "compatible with round and D shafts",
+      "aluminum",
+      "2-pack",
+      "includes two adapters, two M4 screws, four M3 set screws, and one 1.5 mm Allen wrench"
+    ],
+    "images": [
+      {
+        "url": "https://a.pololu-files.com/picture/0J6113.600x480.jpg?6663aad5c9fab9215566a44f0e5c4b97",
+        "alt": "12mm Hex Wheel Adapter for 3mm Shaft (2-Pack)",
+        "local": "/parts/pololu-2682-0.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J6100.600x480.jpg?c7f49c6a9bdf7fe33e884ed1c9d4b473",
+        "alt": "12mm Hex Wheel Adapter for 3mm Shaft (2-Pack) view 1",
+        "local": "/parts/pololu-2682-1.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J6116.600x480.jpg?e726e84dfd21fa9aa93f8966d6836de3",
+        "alt": "12mm Hex Wheel Adapter for 3mm Shaft (2-Pack) view 2",
+        "local": "/parts/pololu-2682-2.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J6116.600.jpg?e726e84dfd21fa9aa93f8966d6836de3",
+        "alt": "12mm Hex Wheel Adapter for 3mm Shaft (2-Pack) view 3",
+        "local": "/parts/pololu-2682-3.jpg"
+      }
+    ],
+    "offer_urls": [
+      "https://www.pololu.com/product/2682"
+    ],
+    "source_listing": "https://www.pololu.com/category/166",
+    "dimensions_mm": {
+      "length": 17,
+      "width": null,
+      "height": null,
+      "diameter": null,
+      "shaft_diameter": 3,
+      "bore_diameter": null
+    },
+    "dimensions_source": "context",
+    "context_scraped_at": "2026-10-25T06:12:10.923Z"
+  },
+  "generic:pololu-3160": {
+    "retailer": null,
+    "generic": true,
+    "category": "a-star-controllers",
+    "name": "A-Star 328PB Micro",
+    "sku": "pololu-3160",
+    "description": "The A-Star 328PB Micro is a tiny programmable module featuring the ATmega328PB AVR microcontroller, a backward-compatible replacement for the popular ATmega328P that features more general-purpose I/O and many additional peripherals. This module provides access to all 24 digital input/output pins (of which 9 can be used as PWM outputs and 8 as analog inputs), all on a board measuring only 1.3″ × 0.7″. It ships preloaded with an Arduino-compatible serial bootloader that enables programming through the Arduino IDE via a USB-to-serial adapter, and the ISP pins are accessible for programming with an AVR programmer. This version features a 16 MHz resonator and a 5 V regulator that can be powered from 5.5 V to 15 V supplies.",
+    "specs": [
+      "ATmega328PB AVR microcontroller",
+      "32 KB flash program memory",
+      "2 KB RAM",
+      "24 digital I/O pins",
+      "9 PWM outputs",
+      "8 analog inputs",
+      "0.1″ pin spacing",
+      "5 V and 3.3 V versions available",
+      "16 MHz",
+      "20 MHz",
+      "8 MHz",
+      "12 MHz"
+    ],
+    "images": [
+      {
+        "url": "https://a.pololu-files.com/picture/0J8494.600x480.jpg?dfb6fa22b9d7d1406beaefebebc0a9ef",
+        "alt": "A-Star 328PB Micro",
+        "local": "/parts/pololu-3160-0.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J8492.600x480.jpg?c1a95fd48baf1ab69f335b6c3829642c",
+        "alt": "A-Star 328PB Micro view 1",
+        "local": "/parts/pololu-3160-1.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J8487.600.jpg?f96c03fe3147f6a518b4a3cc08596866",
+        "alt": "A-Star 328PB Micro view 2",
+        "local": "/parts/pololu-3160-2.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J8484.250.jpg?80ae6b0f2cf1ee6e2f675b30add8deb3",
+        "alt": "A-Star 328PB Micro view 3",
+        "local": "/parts/pololu-3160-3.jpg"
+      }
+    ],
+    "offer_urls": [
+      "https://www.pololu.com/category/239/a-star-328pb-micro"
+    ],
+    "source_listing": "https://www.pololu.com/category/149",
+    "dimensions_mm": {
+      "length": 33.02,
+      "width": 17.78,
+      "height": null,
+      "diameter": null,
+      "shaft_diameter": null,
+      "bore_diameter": null
+    },
+    "dimensions_source": "context",
+    "context_scraped_at": "2026-10-25T06:12:15.395Z"
+  },
+  "generic:pololu-3118": {
+    "retailer": null,
+    "generic": true,
+    "category": "a-star-controllers",
+    "name": "A-Star 32U4 Robot Controller SV with Raspberry Pi Bridge (SMT Components Only)",
+    "sku": "pololu-3118",
+    "description": "This programmable module is designed to be the core of a small robot, either as an auxiliary controller atop a Raspberry Pi base or as a complete control solution on its own. Its ATmega32U4 AVR microcontroller comes preloaded with an Arduino-compatible bootloader. On-board hardware includes dual motor drivers that can deliver 1.7 A per channel and an efficient voltage regulator that allows the controller to work with a 5.5 V to 36 V input voltage, along with level shifters that enable it to interface with a Raspberry Pi. This version (item #3118) does not include any through-hole components or connectors, allowing for customized assembly or standalone use.",
+    "specs": [
+      "Dimensions: 65 mm × 56 mm",
+      "5.5 V to 36 V input voltage",
+      "ATmega32U4 AVR microcontroller",
+      "32 KB flash",
+      "2.5 KB SRAM",
+      "1 KB EEPROM",
+      "native full-speed USB",
+      "preloaded Arduino-compatible bootloader",
+      "1.7 A continuous per motor channel",
+      "2.5 A peak per motor channel",
+      "all 26 general-purpose I/O lines broken out",
+      "7 hardware PWM outputs",
+      "12 analog inputs",
+      "3 user-controllable LEDs",
+      "3 user pushbuttons",
+      "reverse-voltage protection",
+      "6-pin ISP header",
+      "conforms to Raspberry Pi HAT specification"
+    ],
+    "images": [
+      {
+        "url": "https://a.pololu-files.com/picture/0J7079.600x480.jpg?38745f5f10394e97d0d7a52cb0493721",
+        "alt": "A-Star 32U4 Robot Controller SV with Raspberry Pi Bridge (SMT Components Only)",
+        "local": "/parts/pololu-3118-0.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J7080.600x480.jpg?dc92d4918338366e8030cc75c59476ab",
+        "alt": "A-Star 32U4 Robot Controller SV with Raspberry Pi Bridge (SMT Components Only) view 1",
+        "local": "/parts/pololu-3118-1.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J7081.600x480.jpg?e2d9917319887e74ad3679ce6266174d",
+        "alt": "A-Star 32U4 Robot Controller SV with Raspberry Pi Bridge (SMT Components Only) view 2",
+        "local": "/parts/pololu-3118-2.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J7082.600x480.jpg?fd9c5a04c375a27b61b7521847d1c085",
+        "alt": "A-Star 32U4 Robot Controller SV with Raspberry Pi Bridge (SMT Components Only) view 3",
+        "local": "/parts/pololu-3118-3.jpg"
+      }
+    ],
+    "offer_urls": [
+      "https://www.pololu.com/product/3118"
+    ],
+    "source_listing": "https://www.pololu.com/category/149",
+    "dimensions_mm": {
+      "length": 65,
+      "width": 56,
+      "height": null,
+      "diameter": null,
+      "shaft_diameter": null,
+      "bore_diameter": null
+    },
+    "dimensions_source": "context",
+    "context_scraped_at": "2026-10-25T06:12:17.864Z"
+  },
+  "generic:pololu-3116": {
+    "retailer": null,
+    "generic": true,
+    "category": "a-star-controllers",
+    "name": "A-Star 32U4 Robot Controller LV with Raspberry Pi Bridge (SMT Components Only)",
+    "sku": "pololu-3116",
+    "description": "This programmable module is designed to be the core of a small robot, either as an auxiliary controller atop a Raspberry Pi base or as a complete control solution on its own. Its ATmega32U4 AVR microcontroller comes preloaded with an Arduino-compatible bootloader. On-board hardware includes dual motor drivers that can deliver 1.8 A per channel and an efficient voltage regulator that allows the controller to work with a 2.7 V to 11 V input voltage, along with level shifters that enable it to interface with a Raspberry Pi. This version (item #3116) does not include any through-hole components or connectors, allowing for customized assembly or standalone use.",
+    "specs": [
+      "2.7 V to 11 V input voltage",
+      "ATmega32U4 AVR microcontroller",
+      "32 KB flash",
+      "2.5 KB SRAM",
+      "1 KB EEPROM",
+      "native full-speed USB",
+      "dual motor drivers (1.8 A per channel)",
+      "5 V switching regulator",
+      "conforms to the Raspberry Pi HAT specification",
+      "no through-hole components or connectors"
+    ],
+    "images": [
+      {
+        "url": "https://a.pololu-files.com/picture/0J6663.600x480.jpg?a4723ea46f9c60c4f868e4606bddcbe8",
+        "alt": "A-Star 32U4 Robot Controller LV with Raspberry Pi Bridge (SMT Components Only)",
+        "local": "/parts/pololu-3116-0.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J6664.600x480.jpg?21d48e6f85a306fb87c8f4dc2bd66510",
+        "alt": "A-Star 32U4 Robot Controller LV with Raspberry Pi Bridge (SMT Components Only) view 1",
+        "local": "/parts/pololu-3116-1.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J6665.600x480.jpg?5d383576838c73d52a975cb3eb01469e",
+        "alt": "A-Star 32U4 Robot Controller LV with Raspberry Pi Bridge (SMT Components Only) view 2",
+        "local": "/parts/pololu-3116-2.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J6668.600x480.jpg?771fe45088dcd7364480e6fc7c22eeb6",
+        "alt": "A-Star 32U4 Robot Controller LV with Raspberry Pi Bridge (SMT Components Only) view 3",
+        "local": "/parts/pololu-3116-3.jpg"
+      }
+    ],
+    "offer_urls": [
+      "https://www.pololu.com/product/3116"
+    ],
+    "source_listing": "https://www.pololu.com/category/149",
+    "dimensions_mm": {
+      "length": 65,
+      "width": 56,
+      "height": null,
+      "diameter": null,
+      "shaft_diameter": null,
+      "bore_diameter": null
+    },
+    "dimensions_source": "context",
+    "context_scraped_at": "2026-10-25T06:12:22.786Z"
+  },
+  "generic:pololu-2672": {
+    "retailer": null,
+    "generic": true,
+    "category": "scooter-wheel-adapters",
+    "name": "Pololu Aluminum Scooter Wheel Adapter for 4mm Shaft",
+    "sku": "pololu-2672",
+    "description": "This two-part aluminum assembly mounts directly to 4 mm diameter motor output shafts like those on our 25D mm gearmotors and allows you to drive most scooter, skateboard, inline skate, and other common wheels that are compatible with popular 608 ball bearings. Two M4 set screws are included for securing the threaded adapter piece to a motor shaft, and three 14 mm M3 screws are included for clamping the wheel between the threaded adapter piece and the washer.",
+    "specs": [
+      "Two-part aluminum assembly",
+      "Includes two M4 set screws",
+      "Includes three 14 mm M3 screws",
+      "Works with standard 608 ball bearings",
+      "Fits motors with 4 mm diameter output shafts",
+      "Low-profile design",
+      "Works with wheels that have as little as 6 mm of space between where the 608 bearings normally fit"
+    ],
+    "images": [
+      {
+        "url": "https://a.pololu-files.com/picture/0J5531.600x480.jpg?55dfe71317e1d2f21cf87d53bfcbdc8d",
+        "alt": "Pololu Aluminum Scooter Wheel Adapter for 4mm Shaft",
+        "local": "/parts/pololu-2672-0.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J5552.600x480.jpg?fa697b669b035430d37a14df7fc5a27e",
+        "alt": "Pololu Aluminum Scooter Wheel Adapter for 4mm Shaft view 1",
+        "local": "/parts/pololu-2672-1.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J6901.600x480.jpg?21a77b69fce485bb5ab7324c2ffb4a0f",
+        "alt": "Pololu Aluminum Scooter Wheel Adapter for 4mm Shaft view 2",
+        "local": "/parts/pololu-2672-2.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J5528.600x480.jpg?80d454f2faa62a480edee3a19cb03fbb",
+        "alt": "Pololu Aluminum Scooter Wheel Adapter for 4mm Shaft view 3",
+        "local": "/parts/pololu-2672-3.jpg"
+      }
+    ],
+    "offer_urls": [
+      "https://www.pololu.com/product/2672"
+    ],
+    "source_listing": "https://www.pololu.com/category/164",
+    "dimensions_mm": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "diameter": null,
+      "shaft_diameter": 4,
+      "bore_diameter": null
+    },
+    "dimensions_source": "context",
+    "context_scraped_at": "2026-10-25T06:12:24.623Z"
+  },
+  "generic:pololu-2673": {
+    "retailer": null,
+    "generic": true,
+    "category": "scooter-wheel-adapters",
+    "name": "Pololu Aluminum Scooter Wheel Adapter for 5mm Shaft",
+    "sku": "pololu-2673",
+    "description": "This two-part aluminum assembly mounts directly to 5 mm diameter motor output shafts like those on many of our stepper motors and allows you to drive most scooter, skateboard, inline skate, and other common wheels that are compatible with popular 608 ball bearings. Two M4 set screws are included for securing the threaded adapter piece to a motor shaft, and three 14 mm M3 screws are included for clamping the wheel between the threaded adapter piece and the washer.",
+    "specs": [
+      "5 mm diameter motor output shafts",
+      "compatible with standard 608 ball bearings",
+      "includes two M4 set screws",
+      "includes three 14 mm M3 screws",
+      "works with wheels with as little as 6 mm of space between where the 608 bearings normally fit"
+    ],
+    "images": [
+      {
+        "url": "https://a.pololu-files.com/picture/0J5536.600x480.jpg?b118ad15e6a22607626641a27c7b8fb3",
+        "alt": "Pololu Aluminum Scooter Wheel Adapter for 5mm Shaft",
+        "local": "/parts/pololu-2673-0.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J5533.600x480.jpg?89bfde6ed4b9896690f5b81f16abcc72",
+        "alt": "Pololu Aluminum Scooter Wheel Adapter for 5mm Shaft view 1",
+        "local": "/parts/pololu-2673-1.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J5554.600x480.jpg?f7d8fb1e672387909b117b2bd615d30a",
+        "alt": "Pololu Aluminum Scooter Wheel Adapter for 5mm Shaft view 2",
+        "local": "/parts/pololu-2673-2.jpg"
+      },
+      {
+        "url": "https://a.pololu-files.com/picture/0J5535.600x480.jpg?45d90400a1e98a9954f59c9b44d37462",
+        "alt": "Pololu Aluminum Scooter Wheel Adapter for 5mm Shaft view 3",
+        "local": "/parts/pololu-2673-3.jpg"
+      }
+    ],
+    "offer_urls": [
+      "https://www.pololu.com/product/2673"
+    ],
+    "source_listing": "https://www.pololu.com/category/164",
+    "dimensions_mm": {
+      "length": null,
+      "width": null,
+      "height": null,
+      "diameter": null,
+      "shaft_diameter": 5,
+      "bore_diameter": null
+    },
+    "dimensions_source": "context",
+    "context_scraped_at": "2026-10-25T06:12:29.099Z"
   }
 }

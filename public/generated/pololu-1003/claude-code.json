@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "AA NiMH cell as a plain cylinder with its long axis along X, 14.5 mm diameter and 49.3 mm body length. A small 5.5 mm diameter, 1.2 mm high button terminal sits at the -X (positive) end, so the overall length is 50.5 mm. The axis is at Y=7.25, so the bottom of the part is at Y=0, and the part is centered in X and Z.",
+  "confidence": "low",
+  "warnings": [
+    "The product page gives no dimensions, so the standard AA size is assumed: 14.5 mm diameter, 50.5 mm overall length.",
+    "The button terminal diameter (5.5 mm) and height (1.2 mm) are estimated from the photo.",
+    "The negative end is modeled as a flat face because its terminal is not clearly visible.",
+    "The long axis along X is an arbitrary choice taken from the analysis.",
+    "The shrink-wrap label, text and end-cap rims are not modeled."
+  ],
+  "cadquery": "body = cq.Workplane('YZ').workplane(offset=-24.05).center(7.25, 0).circle(7.25).extrude(49.3)\nbutton = cq.Workplane('YZ').workplane(offset=-25.25).center(7.25, 0).circle(2.75).extrude(1.3)\npart = body.union(button)"
+}

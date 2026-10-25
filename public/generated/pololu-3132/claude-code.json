@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Rectangular 38.1 x 26.7 x 1.6 mm PCB lying in the XZ plane (bottom at Y=0), with a 6-position screw terminal block on the right edge, a 10-pin header with pins on the left edge, a cylindrical electrolytic capacitor, a micro-USB housing on the back edge, and one 2.3 mm mounting hole at the front-left.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are estimates; height of 12 mm is assumed.",
+    "The analysis bounds are given in Z-up form (x 38.1, y 26.7, z 12). They were remapped to Y-up so that the board depth runs along Z and the 12 mm height along Y, as the rules require.",
+    "Only the front-left mounting hole is clearly visible and is included. The second hole at (16.4, 9.6) was omitted because it is uncertain and would collide with the terminal block.",
+    "Component positions and sizes (terminal block, header, capacitor, USB) are approximated from the photo.",
+    "Small SMD parts, the large pad, castellations, and silkscreen are omitted."
+  ],
+  "cadquery": "pcb = cq.Workplane('XY').box(38.1, 1.6, 26.7, centered=(True, False, True))\nhole = cq.Workplane('XZ').center(-14, 11.4).circle(1.15).extrude(-5)\npcb = pcb.cut(hole.translate((0, -1, 0)))\n# 6-position screw terminal block along +X edge\nterm = cq.Workplane('XY').box(8, 8, 21, centered=(True, False, True)).translate((14.5, 1.6, 2))\n# 10-pin header along -X edge\nhdr = cq.Workplane('XY').box(2.54, 2.5, 25.4, centered=(True, False, True)).translate((-17.3, 1.6, 0)) if False else cq.Workplane('XY').box(2.54, 2.5, 22.86, centered=(True, False, True)).translate((-17.3, 1.6, 2))\npins = (cq.Workplane('XZ').pushPoints([(-17.3, 2 + (i - 4.5) * 2.54) for i in range(10)])\n        .rect(0.64, 0.64).extrude(-8.5).translate((0, 1.6, 0)))\n# electrolytic capacitor\ncap = cq.Workplane('XZ').center(-5, 0).circle(3.15).extrude(-5.5).translate((0, 1.6, 0))\n# micro-USB connector on back edge\nusb = cq.Workplane('XY').box(8, 2.7, 5.5, centered=(True, False, True)).translate((-3, 1.6, -13.35 + 2.75 - 1.0))\npart = pcb.union(term).union(hdr).union(pins).union(cap).union(usb)"
+}

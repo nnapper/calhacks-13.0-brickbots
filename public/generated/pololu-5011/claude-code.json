@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Simplified Zumo 2040 tracked robot: two side track blocks (13 mm wide, 100 mm long, 40 mm thick), a central chassis block between them, a thin PCB plate on top, and a thin front blade plate. The bounding box is 98 (X) × 100 (Y) × 40 (Z), bottom at Y=0, centered in X and Z.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are estimates and are marked unverified. They were taken from boundsMm.",
+    "The bounds put the 100 mm length along Y, but the rules put the part bottom at Y=0. The robot is therefore modeled with its 100 mm length along the Y axis and its 40 mm height along Z, not in its natural upright orientation.",
+    "Omitted as uncertain or decorative: OLED display, connectors, sensors, battery holder detail, track tread, wheels and sprockets, and the USB-C port.",
+    "No holes were cut because none are specified or dimensioned.",
+    "Tracks are modeled as plain rectangular blocks rather than rounded track loops."
+  ],
+  "cadquery": "tw=13.0\ntrack_x=49-tw/2\ntracks=cq.Workplane('XY').pushPoints([(-track_x,50),(track_x,50)]).box(tw,100,40)\nchassis=cq.Workplane('XY').center(0,48).box(72,96,30)\nboard=cq.Workplane('XY').workplane(offset=15).center(0,45).rect(68,80).extrude(3)\nblade=cq.Workplane('XY').center(0,98).box(72,4,24)\npart=tracks.union(chassis).union(board).union(blade)\npart=part.translate((0,0,0))"
+}

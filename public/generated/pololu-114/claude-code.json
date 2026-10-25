@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Simplified Tamiya double gearbox: a 60 x 40 x 23 mm rectangular housing block with its bottom at Y=0. Two 20 mm diameter motor cylinders sit side by side and extend 30 mm beyond the housing, for 70 mm total height along Y. A single 3 mm through-hole runs along X through the housing as the axle bore. The gears, internal cavities, windows, screws and the protruding hex axles are omitted.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are unverified estimates taken from the supplied boundsMm (60 x 70 x 23).",
+    "Y is treated as the 70 mm motor-length axis, as the analysis notes describe, with Y=0 at the bottom of the part. The photo suggests the motors may actually lie parallel to the axle, so the orientation is uncertain.",
+    "The 40 mm housing length and 20 mm motor diameter are guesses.",
+    "The 3 mm axle bore is placed at Y=12 mm, Z=0, a guessed position. The second axle and the real axle offsets are not located.",
+    "The protruding 3 mm hex axles are excluded, because the bounds exclude the axle tips.",
+    "The gear cavities, side windows, screw holes, mounting tabs and motor end details are omitted because they are not dimensioned."
+  ],
+  "cadquery": "housing = cq.Workplane('XY').box(60, 40, 23, centered=(True, False, True))\nmotors = (cq.Workplane('XZ', origin=(0, 40, 0))\n          .pushPoints([(-15, 0), (15, 0)])\n          .circle(10)\n          .extrude(-30))\npart = housing.union(motors)\naxle_hole = cq.Workplane('YZ', origin=(-30, 12, 0)).circle(1.5).extrude(60)\npart = part.cut(axle_hole)"
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Servo Programmer for 2000 Series Dual Mode Servo",
+    "sku": "3102-0001-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/servo-programmer-for-2000-series-dual-mode-servo/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are given in the text and no drawing is visible, so the size is estimated. Assumptions: the board is roughly 48 x 48 mm, about 6 buttons-widths across, with 6 mm tactile switches and 2.54 mm pin-header pitch as scale references. Estimated Z of 14 mm covers the PCB, the backing layer, the tall tactile buttons (about 5 mm) and the header pins standing up above the board. The board shows small mounting holes at the corners, about 2-3 mm in diameter, but their exact positions and diameters cannot be measured, so none are listed. The battery tray (roughly 4-cell AA size) and the 3-wire cable are not included in the bounds. The backing layer thickness is a guess.",
+      "Dimensions are visual estimates; the source gives none.",
+      "Height is placed on Y (14 mm) per the Y=0 bottom rule, while the analysis lists Z as height; X and Z are both 48 mm.",
+      "Corner mounting holes were omitted because their positions and diameters are uncertain.",
+      "The L-shaped notch in the backing pad, the crystal/SMD parts and the battery tray and cable were omitted.",
+      "Header pins are modeled as vertical, which is assumed from the 14 mm height estimate; in the image they may be right-angle.",
+      "Button and header positions are approximate."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -24,
+      "xmax": 24,
+      "ymin": 0,
+      "ymax": 14,
+      "zmin": -24,
+      "zmax": 24,
+      "xlen": 48,
+      "ylen": 14,
+      "zlen": 48
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 237922,
+        "sha256": "4727e2213b2eeb3832369bc8af364f470f8d41b042dd2604df9df5eba86a3fcf"
+      },
+      "model.stl": {
+        "bytes": 45484,
+        "sha256": "5f34fcfcc74553b5c7ff3162139fc06f602065dcb3c83c4aa5157550def15641"
+      },
+      "model.glb": {
+        "bytes": 17388,
+        "sha256": "ccd457c107ccd1587656e987c46356f517559baa7d1ac9a9820c7d65a6a995f1"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "4727e2213b2eeb3832369bc8af364f470f8d41b042dd2604df9df5eba86a3fcf"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

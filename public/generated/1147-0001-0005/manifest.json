@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Threaded Steel L-Bracket (5 Hole) - 4 Pack",
+    "sku": "1147-0001-0005",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/threaded-steel-l-bracket-5-hole-4-pack/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions were given. Stated: 5 holes, 8 mm grid, 32 mm between end holes. Insight #5 says outer vertical faces of brackets on a 32 mm square pattern are 48 mm apart, so each hole row sits about 8 mm from its outer face. Assumed: length 40 mm (4 mm end margin beyond the end holes), legs 16 mm each, sheet thickness about 2 mm, hole diameter 4 mm for M4 (the true tapped size is smaller). Hole positions assume the vertical-leg row is 8 mm above the base. Pencil and grid mat in the photo look consistent with a 40 x 16 x 16 mm part, but they were not measured. The 12.9 g weight was not used for sizing.",
+      "No dimensions were given, so sizes come from the estimated bounds: 40x16x16 mm.",
+      "Thickness of 2 mm is assumed; the 12.9 g weight suggests it may be thinner, but the weight was not used for sizing.",
+      "Holes are tapped in reality; they are modeled as plain 4 mm through holes and the threads are omitted.",
+      "The hole positions in the analysis were inconsistent. I placed them on each leg's centerline, 8 mm from the outer face of the other leg.",
+      "The small inner bend radius visible in the photos is omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -20,
+      "xmax": 20,
+      "ymin": 0,
+      "ymax": 16,
+      "zmin": -8,
+      "zmax": 8,
+      "xlen": 40,
+      "ylen": 16,
+      "zlen": 16
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 59045,
+        "sha256": "e811ed9ae445eae2989d2d2d6f51ff7bd202cd41937cb368052701ae3f407096"
+      },
+      "model.stl": {
+        "bytes": 171084,
+        "sha256": "330d09bad7fe6119217c881c6e5c96e48d1ac0a0a1e581f5c415e5e9513c69d2"
+      },
+      "model.glb": {
+        "bytes": 62364,
+        "sha256": "90c2db18fff4d06e9d311a30b45d1ba272a34248516ceb0e65fc38b584f69868"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "e811ed9ae445eae2989d2d2d6f51ff7bd202cd41937cb368052701ae3f407096"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

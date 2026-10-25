@@ -1,0 +1,37 @@
+{
+  "partType": "flat_plate",
+  "summary": "Half-circle (D-shaped) expansion plate with a straight back edge and small side notches. It has a dense pattern of round holes, slots, and a few hex-shaped cutouts. The underside has a perimeter rim with notches and a few raised standoff bosses near the corners.",
+  "boundsMm": {
+    "x": 160,
+    "y": 85,
+    "z": 10
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Flat top deck of the plate with the hole and slot grid, used for mounting components"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -5,
+      "description": "Underside perimeter rim and corner bosses that sit against the Romi chassis standoffs"
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are given in the text or images. The Romi base plate diameter is about 163 mm, and the description says this plate has the same diameter but is only a half circle, so x is about 160 mm and y is about 85 mm (slightly more than a radius because of the side tabs). Z of about 10 mm is a rough estimate for the thin plate plus the downward rim. Hole diameter and position are placeholders for a typical 3-4 mm mounting hole; the plate has many holes and slots in different sizes, and their exact positions and sizes could not be measured, so only one representative hole is listed. Bosses, hex cutouts, and slots are visible but not dimensioned."
+}

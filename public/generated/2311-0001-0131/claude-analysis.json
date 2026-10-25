@@ -1,0 +1,237 @@
+{
+  "partType": "other",
+  "summary": "Long, narrow acetal MOD 0.8 gear rack with 131 teeth along one long edge and a single row of 41 evenly spaced through holes along its length.",
+  "boundsMm": {
+    "x": 329,
+    "y": 12,
+    "z": 8
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -160,
+          0,
+          0
+        ],
+        [
+          -152,
+          0,
+          0
+        ],
+        [
+          -144,
+          0,
+          0
+        ],
+        [
+          -136,
+          0,
+          0
+        ],
+        [
+          -128,
+          0,
+          0
+        ],
+        [
+          -120,
+          0,
+          0
+        ],
+        [
+          -112,
+          0,
+          0
+        ],
+        [
+          -104,
+          0,
+          0
+        ],
+        [
+          -96,
+          0,
+          0
+        ],
+        [
+          -88,
+          0,
+          0
+        ],
+        [
+          -80,
+          0,
+          0
+        ],
+        [
+          -72,
+          0,
+          0
+        ],
+        [
+          -64,
+          0,
+          0
+        ],
+        [
+          -56,
+          0,
+          0
+        ],
+        [
+          -48,
+          0,
+          0
+        ],
+        [
+          -40,
+          0,
+          0
+        ],
+        [
+          -32,
+          0,
+          0
+        ],
+        [
+          -24,
+          0,
+          0
+        ],
+        [
+          -16,
+          0,
+          0
+        ],
+        [
+          -8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          16,
+          0,
+          0
+        ],
+        [
+          24,
+          0,
+          0
+        ],
+        [
+          32,
+          0,
+          0
+        ],
+        [
+          40,
+          0,
+          0
+        ],
+        [
+          48,
+          0,
+          0
+        ],
+        [
+          56,
+          0,
+          0
+        ],
+        [
+          64,
+          0,
+          0
+        ],
+        [
+          72,
+          0,
+          0
+        ],
+        [
+          80,
+          0,
+          0
+        ],
+        [
+          88,
+          0,
+          0
+        ],
+        [
+          96,
+          0,
+          0
+        ],
+        [
+          104,
+          0,
+          0
+        ],
+        [
+          112,
+          0,
+          0
+        ],
+        [
+          120,
+          0,
+          0
+        ],
+        [
+          128,
+          0,
+          0
+        ],
+        [
+          136,
+          0,
+          0
+        ],
+        [
+          144,
+          0,
+          0
+        ],
+        [
+          152,
+          0,
+          0
+        ],
+        [
+          160,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -4,
+      "description": "Flat underside of the rack, which sits on a goBILDA slide or plate and is fastened through the 4 mm holes on the 8 mm grid."
+    },
+    {
+      "axis": "y",
+      "offsetMm": 6,
+      "description": "Toothed edge (teeth along the length) that meshes with a MOD 0.8 pinion gear; the exact side is not confirmed."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Length: 131 teeth × (π × 0.8 mm = 2.513 mm) ≈ 329 mm. This is consistent with 41 holes at 8 mm pitch (40 × 8 = 320 mm between end holes, plus about 4 mm of margin at each end) and with the 336 mm Viper-Slide it mounts to. Width (about 12 mm, including teeth) and thickness (about 8 mm) are visual estimates from the photos and the assembly drawing and are not stated in the text. The 4 mm hole diameter and the through-hole axis come from the description and the top-face view. Holes are assumed to lie on the centerline (y = 0), though they are probably offset slightly from the toothed edge. The end chamfers and tooth profile are not modeled."
+}

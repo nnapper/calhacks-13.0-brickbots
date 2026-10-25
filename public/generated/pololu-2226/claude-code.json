@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Seven AA-size cylinders (14.5 mm dia, 50 mm long) in a 4+3 staggered two-row layout, with a trapezoidal filler between the rows to form a single wrapped pack about 58 x 27 x 50 mm. The cell axes run along Z and the bottom sits at Y=0. The lead wire and connector are omitted.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are estimated from standard AA cell size, not verified.",
+    "The wire lead and JR connector are omitted because they are outside the bounds and their geometry is uncertain.",
+    "The staggered 4+3 layout gives about 27 mm thickness, slightly under the 29 mm estimate, and the 58 mm width is slightly under 59 mm.",
+    "The wrap seams and the recess at the lead exit are not modeled."
+  ],
+  "cadquery": "d=14.5\nL=50\n# cells axis along Z; X along the 4-cell row; Y is stack thickness (bottom at Y=0)\nrow1=[(-1.5*d+i*d, d/2) for i in range(4)]\nrow2=[(-d+i*d, d/2+d*math.sin(math.pi/3)) for i in range(3)]\npts=row1+row2\npart=None\nfor x,y in pts:\n    c=cq.Workplane('XY').workplane(offset=-L/2).center(x,y).circle(d/2).extrude(L)\n    part=c if part is None else part.union(c)\n# fill the gaps between the cells with a hull-like block so the pack reads as one shrink-wrapped body\nfill=(cq.Workplane('XY').workplane(offset=-L/2)\n      .polyline([(-1.5*d,d/2),(1.5*d,d/2),(d,d/2+d*math.sin(math.pi/3)),(-d,d/2+d*math.sin(math.pi/3))]).close().extrude(L))\npart=part.union(fill)"
+}

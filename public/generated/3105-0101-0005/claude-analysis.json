@@ -1,0 +1,32 @@
+{
+  "partType": "other",
+  "summary": "Compact brushed DC motor controller: a flat rectangular PCB body in clear heat-shrink, with a small round spacer/tab at one end that has a 4 mm through hole for mounting. Wire leads and connectors extend from both ends but are excluded from the bounds.",
+  "boundsMm": {
+    "x": 40.3,
+    "y": 15.5,
+    "z": 6.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -15.3,
+          0,
+          -0.5
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -3.3,
+      "description": "Underside of the round mounting spacer at the tab end, which surrounds the 4 mm through hole and sits flush against a mounting plate."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Dimensions come from the printed drawing. Body length is 28.5 mm, body width is 15.5 mm, and the 4 mm hole center is 35.45 mm from the body's far end. The scale is about 8 px/mm. The spacer extends about 4.9 mm beyond the hole center, so I estimated overall length as 35.45 + 4.9 ≈ 40.3 mm. The 5.6 mm label appears to be the spacer height. The body sits slightly above the spacer, so I estimated total thickness at about 6.6 mm. That value and the hole's z position are scaled from the drawing, not printed. The hole looks open in the views, so I recorded it as through. The 150 mm wire leads and the connectors (XT30, 3.5 mm bullets, servo-style signal header) are excluded from the bounds. The box is centered on the part at the origin."
+}

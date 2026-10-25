@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "16 x 30 x 16 mm block with its long axis along Y and its bottom at Y=0. The two edges at the Y=30 end that run parallel to Z are rounded. A chamfer is cut on the +X edge of the square end at Y=0. An 8 mm hole runs through the thickness along Z, 8 mm from the rounded end (Y=22). An 8 mm blind hole, 16 mm deep, enters the square end face along Y.",
+  "confidence": "low",
+  "warnings": [
+    "No dimensions are given in the listing, so all sizes come from the image analysis estimates and may be off.",
+    "The 6 mm fillet radius is a guess. It may actually be a full 8 mm radius, and it may apply to only one corner.",
+    "The 3 mm chamfer size and its location on the square end are estimated.",
+    "The 8 mm hole diameter may be the thread opening rather than the tap drill size. Threads and countersinks are not modeled.",
+    "The depth of the end-face hole is unknown, so a 16 mm blind hole is assumed.",
+    "The analysis axes are ambiguous, so the long axis was placed along Y following the bounds and hole positions."
+  ],
+  "cadquery": "part = cq.Workplane('XY').box(16, 30, 16, centered=(True, False, True))\npart = part.edges('|Z and >Y').fillet(6)\npart = part.edges('|Z and <Y and >X').chamfer(3)\nthru = cq.Workplane('XY').center(0, 22).circle(4).extrude(10, both=True)\nblind = cq.Workplane('XZ').circle(4).extrude(-16)\npart = part.cut(thru).cut(blind)"
+}

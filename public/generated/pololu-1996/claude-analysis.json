@@ -1,0 +1,76 @@
+{
+  "partType": "other",
+  "summary": "Round aluminum mounting hub, a short disc with a central bore for a 3 mm motor shaft, four axial mounting holes on a bolt circle, and one radial set-screw hole in the rim. The set includes two hubs, but only one hub is modeled.",
+  "boundsMm": {
+    "x": 20,
+    "y": 20,
+    "z": 6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          5,
+          5,
+          0
+        ],
+        [
+          -5,
+          5,
+          0
+        ],
+        [
+          -5,
+          -5,
+          0
+        ],
+        [
+          5,
+          -5,
+          0
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "y",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          10,
+          0
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 3,
+      "description": "Flat outer face with the four mounting holes, for attaching a wheel or mechanism"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -3,
+      "description": "Flat face toward the motor, with the shaft bore"
+    }
+  ],
+  "confidence": "low",
+  "notes": "The listing gives only the 3 mm shaft diameter. Hub diameter (about 20 mm), thickness (about 6 mm), bolt-circle radius (about 7 mm, at 45° positions) and hole sizes are rough estimates from the photos, scaled against the gearmotor. The bore is set to the 3 mm shaft size. The four mounting holes are listed as M3-class holes at 3 mm nominal, not threaded. Their depth is not visible, so through is set to false. The set-screw hole depth is also unknown; it sits on the rim on the +y side. The two set screws and the Allen wrench are separate items and are not part of this model."
+}

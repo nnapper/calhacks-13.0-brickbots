@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, M3 Holes (2-Pack)",
+    "sku": "pololu-1996",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": false,
+    "codeConfidence": "low",
+    "warnings": [
+      "The listing gives only the 3 mm shaft diameter. Hub diameter (about 20 mm), thickness (about 6 mm), bolt-circle radius (about 7 mm, at 45° positions) and hole sizes are rough estimates from the photos, scaled against the gearmotor. The bore is set to the 3 mm shaft size. The four mounting holes are listed as M3-class holes at 3 mm nominal, not threaded. Their depth is not visible, so through is set to false. The set-screw hole depth is also unknown; it sits on the rim on the +y side. The two set screws and the Allen wrench are separate items and are not part of this model.",
+      "Only the 3 mm shaft diameter is given. The 20 mm outer diameter and 6 mm thickness are estimated from the photo.",
+      "The bolt circle (about 7.07 mm radius, holes at 45°) and the 3 mm mounting-hole diameter are estimates. The real holes are M3 threaded, and threads are not modeled.",
+      "The depth of the mounting holes is unknown, so I used a 4 mm blind depth. They may be through holes.",
+      "The set-screw hole diameter and its direction around the rim (+Z here) are assumed.",
+      "Only one hub is modeled. The second hub, the two set screws and the Allen wrench are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -10.0000001,
+      "xmax": 10.0000001,
+      "ymin": -1e-7,
+      "ymax": 6.0000001,
+      "zmin": -10.0000001,
+      "zmax": 10.00000013011139,
+      "xlen": 20.0000002,
+      "ylen": 6.000000200000001,
+      "zlen": 20.00000023011139
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [6.000000200000001, 20.0000002, 20.00000023011139]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 51625,
+        "sha256": "ec361efa7e27ea113c76bff4a77f82448b75cc3f200f3a4117afa080a1b71d0a"
+      },
+      "model.stl": {
+        "bytes": 123084,
+        "sha256": "7bfe2e77e24be36da2f5077e802168fe8ef44d7ea99e2ed16af53f6abfddcc6d"
+      },
+      "model.glb": {
+        "bytes": 45276,
+        "sha256": "08180cda4c3eca4b7ad9bf0ffacd3ed350b22955e3fa7ad5a0a09e2f6a7ae9dd"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "ec361efa7e27ea113c76bff4a77f82448b75cc3f200f3a4117afa080a1b71d0a"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 16
+  },
+  "status": "prototype_unverified"
+}

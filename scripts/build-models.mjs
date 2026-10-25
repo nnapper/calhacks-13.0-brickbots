@@ -5,6 +5,7 @@
 //   npm run models:build -- --limit 5    only attempt the first 5 missing parts
 //   npm run models:build -- --jobs 4     parallel generations (default 3)
 //   npm run models:build -- --list       show what would be built and exit
+//   npm run models:build -- --scraped-only   skip parts with no scraped dimensions (their size is otherwise estimated from specs and photos)
 //
 // Safe to stop and re-run: finished parts are skipped. Needs the geometry service
 // (npm run dev, or npm run geometry) and CLAUDE_API_KEY. Each part costs two Claude calls.
@@ -21,7 +22,7 @@ const parts = Object.values(JSON.parse(await readFile('data/parts.json', 'utf8')
 const hasImages = part => (part.images ?? []).some(image => image.local);
 const hasDims = part => Object.values(part.dimensions_mm ?? {}).some(v => typeof v === 'number' && v > 0);
 const exists = file => access(file).then(() => true, () => false);
-const eligible = parts.filter(part => hasImages(part) && hasDims(part));
+const eligible = parts.filter(part => hasImages(part) && (hasDims(part) || !flag('scraped-only')));
 
 const todo = [];
 for (const part of eligible) {
@@ -43,13 +44,16 @@ function build(sku) {
 }
 
 const failed = [];
-let done = 0;
+let done = 0, spent = 0, tokensIn = 0, tokensOut = 0;
 async function worker() {
   while (queue.length) {
     const part = queue.shift();
     const result = await build(part.sku);
     done += 1;
-    if (result.ok) console.log(`[${done}/${todo.length}] built  ${part.sku}  ${part.name}`);
+    const usage = result.log.match(/^USAGE \S+ (\d+) (\d+) ([\d.]+)/m);
+    if (usage) { tokensIn += Number(usage[1]); tokensOut += Number(usage[2]); spent += Number(usage[3]); }
+    const cost = usage ? `  ~$${usage[3]}` : '';
+    if (result.ok) console.log(`[${done}/${todo.length}] built  ${part.sku}  ${part.name}${cost}`);
     else {
       failed.push(part.sku);
       const reason = result.log.trim().split('\n').filter(Boolean).slice(-2).join(' | ').slice(0, 220);
@@ -77,4 +81,5 @@ for (const dir of await readdir(OUT, {withFileTypes: true})) {
 }
 await writeFile(path.join(OUT, 'index.json'), JSON.stringify(index, null, 2) + '\n');
 console.log(`\nIndex: ${Object.keys(index).length} models ready in ${path.join(OUT, 'index.json')}`);
+console.log(`Claude usage this run: ${tokensIn.toLocaleString()} input + ${tokensOut.toLocaleString()} output tokens ≈ $${spent.toFixed(2)}`);
 if (failed.length) console.log(`Failed (${failed.length}): ${failed.join(', ')} — re-run to retry them`);

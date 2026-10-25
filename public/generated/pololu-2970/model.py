@@ -1,0 +1,6 @@
+pcb = cq.Workplane('XZ').rect(25.4, 30.5).extrude(-1.6)
+holes = cq.Workplane('XZ').pushPoints([(10.7, 12.7), (10.7, -12.7)]).circle(1.1).extrude(-1.6)
+pcb = pcb.cut(holes)
+caps = cq.Workplane('XZ', origin=(0, 1.6, 0)).pushPoints([(-4, -10), (2, -7)]).circle(3.15).extrude(-5.4)
+ic = cq.Workplane('XZ', origin=(0, 1.6, 0)).center(3, 6).rect(5, 5).extrude(-0.9)
+part = pcb.union(caps).union(ic)

@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Single bracket: a U-shaped clamp channel 22 mm wide, 14 mm tall and 12 mm long, open at the bottom. It has 2 mm walls and a 2 mm top bridge. Two flat 3 mm thick mounting tabs extend outward at the base to a 30 mm overall span. Each tab has a 3.2 mm vertical through-hole for an M3 screw. The spacer plate, screws and nuts are not modeled.",
+  "confidence": "low",
+  "warnings": [
+    "No dimensions are given in the listing, so all sizes are estimates.",
+    "The bracket's ribs, the hook or ring tab shapes and the nut traps are omitted because they are uncertain or decorative.",
+    "The tab holes are placed at x=±12.75 rather than the ±13.5 in the analysis, so that the 3.2 mm holes stay inside the 30 mm bounds.",
+    "The analysis lists the hole axis as Z, but the tabs are modeled flat with holes along Y, because Y is the height axis with the bottom at Y=0.",
+    "The tabs are modeled on both sides, but the photo shows a single ring tab and a hook on the other side of each bracket.",
+    "The spacer plate, screws and nuts are separate parts and are excluded."
+  ],
+  "cadquery": "body = cq.Workplane('XY').box(22, 14, 12, centered=(True, False, True))\ncavity = cq.Workplane('XY').box(18, 12, 12, centered=(True, False, True))\nbody = body.cut(cavity)\ntab_r = cq.Workplane('XY').box(4.5, 3, 8, centered=(False, False, True)).translate((10.5, 0, 0))\ntab_l = cq.Workplane('XY').box(4.5, 3, 8, centered=(False, False, True)).translate((-15, 0, 0))\nholes = cq.Workplane('XZ').pushPoints([(12.75, 0), (-12.75, 0)]).circle(1.6).extrude(-5)\npart = body.union(tab_r).union(tab_l).cut(holes)"
+}

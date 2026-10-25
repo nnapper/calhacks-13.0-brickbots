@@ -1,0 +1,103 @@
+{
+  "partType": "other",
+  "summary": "Two-part round shaft-to-wheel adapter. A stepped hub has a central shaft bore, three axial screw holes on its smaller step, and two radial holes in its larger step. A thin round washer with a central hole and three screw holes clamps the wheel against the hub. The overall envelope is estimated, not read from a drawing.",
+  "boundsMm": {
+    "x": 22,
+    "y": 22,
+    "z": 14
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          5.5,
+          0
+        ],
+        [
+          -4.76,
+          -2.75,
+          0
+        ],
+        [
+          4.76,
+          -2.75,
+          0
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "z",
+      "diameterMm": 3.2,
+      "positionsMm": [
+        [
+          0,
+          5.5,
+          6
+        ],
+        [
+          -4.76,
+          -2.75,
+          6
+        ],
+        [
+          4.76,
+          -2.75,
+          6
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "x",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          0,
+          -5.5
+        ],
+        [
+          0,
+          0,
+          -2.5
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 5,
+      "description": "Flat face of the smaller hub step, which seats against the wheel and carries the three clamp-screw holes."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 7,
+      "description": "Outer face of the washer, which clamps the wheel against the hub."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -7,
+      "description": "Flat back face of the larger hub step, on the motor side."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are printed in the images, and the supplied dimensions_mm fields are null, so the overall size and hole positions are rough visual estimates. Only the 4 mm shaft bore comes from the listing. The 3 mm screw-hole size is assumed from the stated M3 screws, and the 4 mm radial hole size from the stated M4 set screws. The washer's central hole is visible, but its diameter is unverified. The hub's three screw holes are shown blind (through: false) because their depth is not visible. The washer holes are listed as through at z=6, but the 3.2 mm size and the position are guesses. Verify all values against a datasheet before using them for CAD."
+}

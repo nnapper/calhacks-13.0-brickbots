@@ -1,0 +1,83 @@
+{
+  "partType": "other",
+  "summary": "Two-part round aluminum shaft adapter for a 5 mm motor shaft. The main piece is a stepped hub with a larger flange and a smaller-diameter nose. A separate flat round washer clamps a wheel against the hub with three screws. The hub has a central bore, three axial holes around the bore, and two radial holes in the flange. The values below describe the hub only. The washer is a separate thin disc of roughly 22 mm diameter and 3 mm thickness.",
+  "boundsMm": {
+    "x": 25,
+    "y": 25,
+    "z": 15
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 5,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          7.5,
+          0,
+          0
+        ],
+        [
+          -3.75,
+          6.5,
+          0
+        ],
+        [
+          -3.75,
+          -6.5,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "x",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          12.5,
+          0,
+          -5
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "y",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          12.5,
+          -5
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 7.5,
+      "description": "Flat end face of the smaller-diameter hub nose. The separate washer clamps a wheel against this face using the three axial holes."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -7.5,
+      "description": "Flat end face of the larger flange, which sits toward the motor. The 5 mm bore opens through it onto the motor shaft."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No drawing or printed dimensions are visible, and the supplied dimensions_mm values are null except the 5 mm shaft diameter, so the other sizes are estimates. The 25 mm flange diameter and 15 mm hub length are estimates scaled from the photos and the stated 608-bearing compatibility. The 608 bearing outer diameter is 22 mm, which suggests the nose and washer are about that size. The 3 mm axial hole diameter is assumed from the stated M3 clamping screws, and the 4 mm radial hole diameter from the stated M4 set screws. The 7.5 mm bolt-circle radius and the z-positions are visual estimates. The photos show the three axial holes spaced evenly around the bore and two radial holes in the flange. I assumed the radial holes are 90° apart, which is not confirmed. The washer has a central opening and three holes matching the hub, but their sizes are not stated."
+}

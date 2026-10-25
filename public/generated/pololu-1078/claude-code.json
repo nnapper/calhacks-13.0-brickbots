@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Round aluminum hub, 12 mm diameter by 4 mm thick, with its axis along Y and its bottom face at Y=0. It has a 3 mm central through bore, four 2.2 mm through holes on a square pattern at ±3.2 mm (bolt circle radius about 4.5 mm), and one radial 2.3 mm set-screw hole on the +Z side at mid-thickness, running from the bore to the outer surface.",
+  "confidence": "low",
+  "warnings": [
+    "Only the 3 mm shaft diameter comes from the listing. The 12 mm outer diameter and 4 mm thickness are estimates scaled from the photos.",
+    "The four mounting holes are modeled as plain 2.2 mm through holes at ±3.2 mm. Their size and bolt-circle position are estimated, and the #4-40 threads are not modeled.",
+    "The set-screw hole size (2.3 mm) and its position at mid-thickness on the +Z side are assumed. The image analysis suggested 3 mm, but 2.3 mm is closer to a #4-40 tap drill.",
+    "The hub axis is placed along Y to satisfy the bottom-at-Y=0 rule, although the image analysis described the axis as Z. The radial hole direction was remapped accordingly.",
+    "The set screws and Allen wrench are separate items and are not modeled."
+  ],
+  "cadquery": "d=12.0\nt=4.0\nbody=cq.Workplane('XZ').circle(d/2).extrude(-t)\nbore=cq.Workplane('XZ').circle(1.5).extrude(-t)\nholes=cq.Workplane('XZ').pushPoints([(3.2,3.2),(-3.2,3.2),(3.2,-3.2),(-3.2,-3.2)]).circle(1.1).extrude(-t)\nset_hole=cq.Workplane('XY').center(0,t/2).circle(1.15).extrude(d/2)\npart=body.cut(bore).cut(holes).cut(set_hole)"
+}

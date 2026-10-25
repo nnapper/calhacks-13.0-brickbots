@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, #2-56 Holes (2-Pack)",
+    "sku": "pololu-1079",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": false,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are printed in the images or listing, and the listing marks its dimensions as unverified. Only the 3 mm shaft/bore size is stated. The outer diameter, thickness, hole diameters, hole spacing and set-screw hole position are rough estimates scaled from the product photos against the 3 mm shaft. The four mounting holes are shown on the face but their depth is not visible, so they are marked not through. The set-screw hole sits on the cylindrical side, and its depth and exact position are estimated. Verify all values against the vendor drawing before using them in CAD.",
+      "The listing gives no dimensions except the 3 mm shaft, so the outer diameter, thickness, hole sizes, hole spacing and set-screw position are estimates scaled from the photos.",
+      "The mounting holes are modeled as plain 2.2 mm blind holes 3 mm deep. Their real depth is not visible and the #2-56 threads are not modeled.",
+      "The set-screw hole is modeled as a plain 2.3 mm hole at mid-height on the +Z side, with no thread. Its exact position and direction are uncertain.",
+      "Only one hub is modeled. The second hub, the set screws and the Allen wrench are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -6.0000001,
+      "xmax": 6.0000001,
+      "ymin": -1e-7,
+      "ymax": 4.5000001,
+      "zmin": -6.0000001,
+      "zmax": 6.000000125052172,
+      "xlen": 12.0000002,
+      "ylen": 4.500000200000001,
+      "zlen": 12.000000225052172
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [4.500000200000001, 12.0000002, 12.000000225052172]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 56364,
+        "sha256": "131cf2c6e2d7dbb024bdc74442c676d320bb851dea786b82a406d667dd8c74c8"
+      },
+      "model.stl": {
+        "bytes": 122684,
+        "sha256": "e07cd11e3ae22e1f07b17242f26da89587831a50433ba1f695f5a0e3e3aa6b11"
+      },
+      "model.glb": {
+        "bytes": 45136,
+        "sha256": "072c24d45e94f2b7f37083152020002feb5635b72c571d558f45fb8a28e58405"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "131cf2c6e2d7dbb024bdc74442c676d320bb851dea786b82a406d667dd8c74c8"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 16
+  },
+  "status": "prototype_unverified"
+}

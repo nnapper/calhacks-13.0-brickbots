@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "A single 20 mm diameter, 6 mm tall aluminum hub disc with its axis along Y and its bottom at Y=0. It has a 3 mm central through bore, four 3 mm blind mounting holes 4 mm deep from the top face at (±5, ±5) in XZ, and one 3 mm radial set-screw hole on the +Z rim at mid-height that runs into the bore. The set screws and Allen wrench are not modeled.",
+  "confidence": "low",
+  "warnings": [
+    "Only the 3 mm shaft diameter is given. The 20 mm outer diameter and 6 mm thickness are estimated from the photo.",
+    "The bolt circle (about 7.07 mm radius, holes at 45°) and the 3 mm mounting-hole diameter are estimates. The real holes are M3 threaded, and threads are not modeled.",
+    "The depth of the mounting holes is unknown, so I used a 4 mm blind depth. They may be through holes.",
+    "The set-screw hole diameter and its direction around the rim (+Z here) are assumed.",
+    "Only one hub is modeled. The second hub, the two set screws and the Allen wrench are omitted."
+  ],
+  "cadquery": "part = cq.Workplane('XZ').circle(10).extrude(-6)\npart = part.cut(cq.Workplane('XZ').circle(1.5).extrude(-6))\nholes = cq.Workplane('XZ', origin=(0, 6, 0)).pushPoints([(5, 5), (-5, 5), (-5, -5), (5, -5)]).circle(1.5).extrude(4)\npart = part.cut(holes)\nsetscrew = cq.Workplane('XY', origin=(0, 3, 0)).circle(1.5).extrude(10)\npart = part.cut(setscrew)"
+}

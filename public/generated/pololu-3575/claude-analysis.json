@@ -1,0 +1,24 @@
+{
+  "partType": "other",
+  "summary": "Balboa 32U4 balancing robot kit without motors or wheels. It includes a control board, a six-AA battery holder, gearbox gears and bearings, motor clips, and plastic frame pieces (curved ribs, cross bars, and fasteners). The bounding box is for the chassis without wheels, centered on the part.",
+  "boundsMm": {
+    "x": 100,
+    "y": 50,
+    "z": 115
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Control board mounts on top of the battery holder; it is the main flat mounting surface for the electronics and any optional add-on board."
+    },
+    {
+      "axis": "x",
+      "offsetMm": 0,
+      "description": "Motor and gearbox positions are on the left and right sides of the battery holder, with the wheel axles along the x axis."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The text gives no chassis dimensions, so every size is an estimate. Wheel diameter (80 mm recommended) comes from the specs and sets the scale in the assembled photo. The board looks slightly wider than the wheel's overall diameter. I estimated the chassis width without wheels as about 100 mm, including the motor bodies. The depth of about 50 mm assumes a six-AA holder lying flat. The height of about 115 mm assumes the frame ribs stand roughly one wheel diameter plus margin above the board. Because the photos show no printed dimensions and no clear hole pattern, I left the holes array empty. The kit contains many parts, so these bounds are a rough envelope for the assembled chassis, not a single part's size."
+}

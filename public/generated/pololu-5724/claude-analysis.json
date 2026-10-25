@@ -1,0 +1,42 @@
+{
+  "partType": "motor",
+  "summary": "Cylindrical brushed DC gearmotor with a metal spur gearbox. The long axis is X. The gearbox end has a flat face plate with a central D-shaped output shaft (4 mm diameter, 12.5 mm long) and small mounting holes around it. The motor can sits at the opposite end.",
+  "boundsMm": {
+    "x": 66.5,
+    "y": 25,
+    "z": 25
+  },
+  "holes": [
+    {
+      "axis": "x",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          20.75,
+          0,
+          8
+        ],
+        [
+          20.75,
+          0,
+          -8
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": 20.75,
+      "description": "Gearbox face plate, normal to the shaft axis. It carries the output shaft and the small mounting holes, and is used to mount the gearmotor to a bracket."
+    },
+    {
+      "axis": "y",
+      "offsetMm": 0,
+      "description": "Cylindrical body about 25 mm in diameter (just under 25 mm), centered on the X axis. It can be clamped with a bracket."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The product data states the shaft (4 mm diameter D-shape, 12.5 mm protrusion) and the body diameter (just under 25 mm). The body length of about 54 mm (total 66.5 mm with shaft) and the mounting-hole diameter and positions are visual estimates, since no drawing or printed dimensions are given. Hole depth is not visible, so the holes are marked as not through. Only two small holes are listed. The face plate appears to have additional small holes and gearbox screw heads, whose layout I could not determine. The bounding box is centered on the origin, with the shaft tip at x=+33.25 and the motor-end at x=-33.25. The images show the encoder-free motor and a variant with an encoder and wire harness, and the encoder is not modeled."
+}

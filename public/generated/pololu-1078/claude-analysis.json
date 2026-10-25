@@ -1,0 +1,76 @@
+{
+  "partType": "other",
+  "summary": "Round aluminum mounting hub for a 3 mm motor shaft. It has a central shaft bore, four small mounting holes spaced evenly on a circle on the flat face, and one radial hole in the cylindrical side for a set screw. Axis of the hub is Z.",
+  "boundsMm": {
+    "x": 12,
+    "y": 12,
+    "z": 4
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 2.2,
+      "positionsMm": [
+        [
+          3.2,
+          3.2,
+          0
+        ],
+        [
+          -3.2,
+          3.2,
+          0
+        ],
+        [
+          3.2,
+          -3.2,
+          0
+        ],
+        [
+          -3.2,
+          -3.2,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "y",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          6,
+          0
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 2,
+      "description": "Outer flat face containing the four mounting holes, for attaching a wheel or mechanism."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -2,
+      "description": "Opposite flat face, which sits toward the gearmotor when the hub is on the shaft."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 3 mm shaft diameter comes from the listing. The overall diameter, thickness, mounting-hole size and bolt-circle position, and set-screw hole size and position are rough estimates from the photos, with no printed dimensions. The hub diameter and thickness were scaled against the motor gearbox in the side view. The four mounting holes appear through in the photos, but this is not confirmed. The radial set-screw hole is shown on the +Y side and is assumed, not verified, to meet the bore. Its 'through: false' means it does not go through the hub's full width. The included set screws and Allen wrench are separate items and are not modeled."
+}

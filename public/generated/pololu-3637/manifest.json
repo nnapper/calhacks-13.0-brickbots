@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Mounting Bracket for Glideforce Industrial-Duty Linear Actuators - Steel",
+    "sku": "pololu-3637",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": false,
+    "codeConfidence": "low",
+    "warnings": [
+      "The only stated dimension is the 12.6 mm (0.498 in) mounting pin diameter, taken as the pin hole diameter. The bounding box, the foot hole diameter and all hole positions are rough estimates from proportions in the photos, not printed values. Coordinates: x is along the pin axis, y is along the actuator axis, z is the bracket height. A second hole in the sloped web appears in the first image, but its size and axis are unclear, so it is not listed. The foot hole axis is approximate because the foot may be slightly inclined. The pin and clip are treated as part of the assembly. Verify against the manufacturer drawing before use.",
+      "Only the 12.6 mm pin diameter is stated; all other dimensions are estimated from image proportions.",
+      "The pin is modeled as a solid cylinder through the flanges, so no separate pin hole is cut.",
+      "The retaining clip is omitted.",
+      "The sloped web and its second hole are omitted because their size and axis are unclear. The foot plate is modeled flat.",
+      "The axis convention follows the supplied bounds (X is the pin axis, Y is 50 mm long, Z is 30 mm). The bottom is at Y=0, and X and Z are centered.",
+      "The foot hole diameter (8 mm) and position are guesses.",
+      "Sheet thickness and bend radii are assumed, with sharp corners."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -17,
+      "xmax": 17,
+      "ymin": 0,
+      "ymax": 50,
+      "zmin": -15,
+      "zmax": 15,
+      "xlen": 34,
+      "ylen": 50,
+      "zlen": 30
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 12.600 mm; measured dimensions are [30.0, 34.0, 50.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 61440,
+        "sha256": "338a3692e0b82b0b08a04fc379bd963016298f3aa417b5f34632e3a8f0b7b8c1"
+      },
+      "model.stl": {
+        "bytes": 36684,
+        "sha256": "62813ab87176fb0273b72b1e36c28b0cab3f88cee18d51fa45b955fcb98970e3"
+      },
+      "model.glb": {
+        "bytes": 14168,
+        "sha256": "3f7540acefe34ecfcca45d4ec4dd2a6728eb4b1469750247b9b3b403b0276be0"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "338a3692e0b82b0b08a04fc379bd963016298f3aa417b5f34632e3a8f0b7b8c1"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

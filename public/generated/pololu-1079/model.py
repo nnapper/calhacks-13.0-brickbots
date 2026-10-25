@@ -1,0 +1,7 @@
+part = cq.Workplane('XZ').circle(6).extrude(-4.5)
+bore = cq.Workplane('XZ').circle(1.5).extrude(-4.5)
+mount = (cq.Workplane('XZ', origin=(0, 4.5, 0))
+         .pushPoints([(3.1, 3.1), (-3.1, 3.1), (3.1, -3.1), (-3.1, -3.1)])
+         .circle(1.1).extrude(3))
+set_screw = cq.Workplane('XY').center(0, 2.25).circle(1.15).extrude(7)
+part = part.cut(bore).cut(mount).cut(set_screw)

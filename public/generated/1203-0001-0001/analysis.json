@@ -1,0 +1,1607 @@
+{
+  "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+  "candidates": [
+    {
+      "id": "n1",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "hole",
+      "position": [
+        0,
+        0.022,
+        0.008
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Hole opening 1",
+      "reason": "Analytic internal cylinder on face 9; open axis endpoint. Fastener and through-hole status require review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "diameterM": 0.008
+    },
+    {
+      "id": "n2",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "hole",
+      "position": [
+        0,
+        0.022,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Hole opening 2",
+      "reason": "Analytic internal cylinder on face 9; open axis endpoint. Fastener and through-hole status require review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "diameterM": 0.008
+    },
+    {
+      "id": "n3",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "hole",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Hole opening 3",
+      "reason": "Analytic internal cylinder on face 11; open axis endpoint. Fastener and through-hole status require review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "diameterM": 0.008
+    },
+    {
+      "id": "n4",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "hole",
+      "position": [
+        0,
+        0.022,
+        -0.008
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Hole opening 4",
+      "reason": "Analytic internal cylinder on face 12; open axis endpoint. Fastener and through-hole status require review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "diameterM": 0.008
+    },
+    {
+      "id": "n5",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "hole",
+      "position": [
+        0,
+        0.022,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Hole opening 5",
+      "reason": "Analytic internal cylinder on face 12; open axis endpoint. Fastener and through-hole status require review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "diameterM": 0.008
+    },
+    {
+      "id": "n6",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0,
+        0.015,
+        0.008
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 6",
+      "reason": "Face 1 center click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00040978318530717964
+    },
+    {
+      "id": "n7",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0,
+        0.015,
+        -0.008
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 7",
+      "reason": "Face 10 center click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00040978318530717964
+    },
+    {
+      "id": "n13",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0,
+        0.008
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 13",
+      "reason": "Face 1 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00040978318530717964
+    },
+    {
+      "id": "n14",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0,
+        -0.008
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 14",
+      "reason": "Face 10 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00040978318530717964
+    },
+    {
+      "id": "n35",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0,
+        0,
+        0.008
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 35",
+      "reason": "Face 1 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00040978318530717964
+    },
+    {
+      "id": "n36",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0,
+        0.03,
+        0.008
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 36",
+      "reason": "Face 1 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00040978318530717964
+    },
+    {
+      "id": "n37",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0.015,
+        0.008
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 37",
+      "reason": "Face 1 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00040978318530717964
+    },
+    {
+      "id": "n38",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.008,
+        0.015,
+        0.008
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 38",
+      "reason": "Face 1 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00040978318530717964
+    },
+    {
+      "id": "n39",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0,
+        0,
+        -0.008
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 39",
+      "reason": "Face 10 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00040978318530717964
+    },
+    {
+      "id": "n40",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0,
+        0.03,
+        -0.008
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 40",
+      "reason": "Face 10 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00040978318530717964
+    },
+    {
+      "id": "n41",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0.015,
+        -0.008
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 41",
+      "reason": "Face 10 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00040978318530717964
+    },
+    {
+      "id": "n42",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.008,
+        0.015,
+        -0.008
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 42",
+      "reason": "Face 10 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00040978318530717964
+    },
+    {
+      "id": "n8",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0.012,
+        0
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 8",
+      "reason": "Face 4 center click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000384
+    },
+    {
+      "id": "n15",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0.024,
+        -0.008
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 15",
+      "reason": "Face 4 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000384
+    },
+    {
+      "id": "n16",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0.024,
+        0.008
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 16",
+      "reason": "Face 4 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000384
+    },
+    {
+      "id": "n17",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0,
+        -0.008
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 17",
+      "reason": "Face 4 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000384
+    },
+    {
+      "id": "n18",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0,
+        0.008
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 18",
+      "reason": "Face 4 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000384
+    },
+    {
+      "id": "n43",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0.024,
+        0
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 43",
+      "reason": "Face 4 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000384
+    },
+    {
+      "id": "n44",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0,
+        0
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 44",
+      "reason": "Face 4 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000384
+    },
+    {
+      "id": "n45",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0.012,
+        -0.008
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 45",
+      "reason": "Face 4 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000384
+    },
+    {
+      "id": "n46",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0.012,
+        0.008
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 46",
+      "reason": "Face 4 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000384
+    },
+    {
+      "id": "n9",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.008,
+        0.0135,
+        0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 9",
+      "reason": "Face 5 center click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000336
+    },
+    {
+      "id": "n19",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.008,
+        0.024,
+        -0.008
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 19",
+      "reason": "Face 5 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000336
+    },
+    {
+      "id": "n20",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.008,
+        0.024,
+        0.008
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 20",
+      "reason": "Face 5 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000336
+    },
+    {
+      "id": "n21",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.008,
+        0.003,
+        -0.008
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 21",
+      "reason": "Face 5 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000336
+    },
+    {
+      "id": "n22",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.008,
+        0.003,
+        0.008
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 22",
+      "reason": "Face 5 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000336
+    },
+    {
+      "id": "n47",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.008,
+        0.024,
+        0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 47",
+      "reason": "Face 5 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000336
+    },
+    {
+      "id": "n48",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.008,
+        0.003,
+        0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 48",
+      "reason": "Face 5 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000336
+    },
+    {
+      "id": "n49",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.008,
+        0.0135,
+        -0.008
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 49",
+      "reason": "Face 5 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000336
+    },
+    {
+      "id": "n50",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.008,
+        0.0135,
+        0.008
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "tangent": [
+        0,
+        1,
+        0
+      ],
+      "label": "Planar surface 50",
+      "reason": "Face 5 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000336
+    },
+    {
+      "id": "n23",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0,
+        -0.008
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 23",
+      "reason": "Face 2 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.0001577345175425633
+    },
+    {
+      "id": "n24",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0,
+        0.008
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 24",
+      "reason": "Face 2 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.0001577345175425633
+    },
+    {
+      "id": "n25",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.005,
+        0,
+        -0.008
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 25",
+      "reason": "Face 2 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.0001577345175425633
+    },
+    {
+      "id": "n26",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.005,
+        0,
+        0.008
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 26",
+      "reason": "Face 2 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.0001577345175425633
+    },
+    {
+      "id": "n51",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.008,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 51",
+      "reason": "Face 2 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.0001577345175425633
+    },
+    {
+      "id": "n52",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.005,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 52",
+      "reason": "Face 2 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.0001577345175425633
+    },
+    {
+      "id": "n53",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.0015,
+        0,
+        -0.008
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 53",
+      "reason": "Face 2 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.0001577345175425633
+    },
+    {
+      "id": "n54",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.0015,
+        0,
+        0.008
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 54",
+      "reason": "Face 2 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.0001577345175425633
+    },
+    {
+      "id": "n10",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.0065,
+        0.0015,
+        0
+      ],
+      "normal": [
+        0.7071067811865476,
+        -0.7071067811865476,
+        5.874127047663241e-19
+      ],
+      "tangent": [
+        0.7071067811865474,
+        0.7071067811865477,
+        -5.874127047663241e-19
+      ],
+      "label": "Planar surface 10",
+      "reason": "Face 3 center click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00006788225099390857
+    },
+    {
+      "id": "n27",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.005,
+        -2.220446049250313e-19,
+        -0.008
+      ],
+      "normal": [
+        0.7071067811865476,
+        -0.7071067811865476,
+        5.874127047663241e-19
+      ],
+      "tangent": [
+        0.7071067811865474,
+        0.7071067811865477,
+        -5.874127047663241e-19
+      ],
+      "label": "Planar surface 27",
+      "reason": "Face 3 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00006788225099390857
+    },
+    {
+      "id": "n28",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.005,
+        -2.220446049250313e-19,
+        0.008
+      ],
+      "normal": [
+        0.7071067811865476,
+        -0.7071067811865476,
+        5.874127047663241e-19
+      ],
+      "tangent": [
+        0.7071067811865474,
+        0.7071067811865477,
+        -5.874127047663241e-19
+      ],
+      "label": "Planar surface 28",
+      "reason": "Face 3 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00006788225099390857
+    },
+    {
+      "id": "n29",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.008,
+        0.003,
+        -0.008
+      ],
+      "normal": [
+        0.7071067811865476,
+        -0.7071067811865476,
+        5.874127047663241e-19
+      ],
+      "tangent": [
+        0.7071067811865474,
+        0.7071067811865477,
+        -5.874127047663241e-19
+      ],
+      "label": "Planar surface 29",
+      "reason": "Face 3 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00006788225099390857
+    },
+    {
+      "id": "n30",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.008,
+        0.003,
+        0.008
+      ],
+      "normal": [
+        0.7071067811865476,
+        -0.7071067811865476,
+        5.874127047663241e-19
+      ],
+      "tangent": [
+        0.7071067811865474,
+        0.7071067811865477,
+        -5.874127047663241e-19
+      ],
+      "label": "Planar surface 30",
+      "reason": "Face 3 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00006788225099390857
+    },
+    {
+      "id": "n55",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.005,
+        -2.220446049250313e-19,
+        0
+      ],
+      "normal": [
+        0.7071067811865476,
+        -0.7071067811865476,
+        5.874127047663241e-19
+      ],
+      "tangent": [
+        0.7071067811865474,
+        0.7071067811865477,
+        -5.874127047663241e-19
+      ],
+      "label": "Planar surface 55",
+      "reason": "Face 3 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00006788225099390857
+    },
+    {
+      "id": "n56",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.008,
+        0.003,
+        0
+      ],
+      "normal": [
+        0.7071067811865476,
+        -0.7071067811865476,
+        5.874127047663241e-19
+      ],
+      "tangent": [
+        0.7071067811865474,
+        0.7071067811865477,
+        -5.874127047663241e-19
+      ],
+      "label": "Planar surface 56",
+      "reason": "Face 3 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00006788225099390857
+    },
+    {
+      "id": "n57",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.0065,
+        0.0015,
+        -0.008
+      ],
+      "normal": [
+        0.7071067811865476,
+        -0.7071067811865476,
+        5.874127047663241e-19
+      ],
+      "tangent": [
+        0.7071067811865474,
+        0.7071067811865477,
+        -5.874127047663241e-19
+      ],
+      "label": "Planar surface 57",
+      "reason": "Face 3 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00006788225099390857
+    },
+    {
+      "id": "n58",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.0065,
+        0.0015,
+        0.008
+      ],
+      "normal": [
+        0.7071067811865476,
+        -0.7071067811865476,
+        5.874127047663241e-19
+      ],
+      "tangent": [
+        0.7071067811865474,
+        0.7071067811865477,
+        -5.874127047663241e-19
+      ],
+      "label": "Planar surface 58",
+      "reason": "Face 3 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00006788225099390857
+    },
+    {
+      "id": "n11",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0,
+        0.03,
+        0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 11",
+      "reason": "Face 8 center click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000064
+    },
+    {
+      "id": "n31",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.002,
+        0.03,
+        -0.008
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 31",
+      "reason": "Face 8 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000064
+    },
+    {
+      "id": "n32",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.002,
+        0.03,
+        0.008
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 32",
+      "reason": "Face 8 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000064
+    },
+    {
+      "id": "n33",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.002,
+        0.03,
+        -0.008
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 33",
+      "reason": "Face 8 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000064
+    },
+    {
+      "id": "n34",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.002,
+        0.03,
+        0.008
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 34",
+      "reason": "Face 8 corner click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000064
+    },
+    {
+      "id": "n59",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.002,
+        0.03,
+        0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 59",
+      "reason": "Face 8 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000064
+    },
+    {
+      "id": "n60",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.002,
+        0.03,
+        0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 60",
+      "reason": "Face 8 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000064
+    },
+    {
+      "id": "n61",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0,
+        0.03,
+        -0.008
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 61",
+      "reason": "Face 8 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000064
+    },
+    {
+      "id": "n62",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0,
+        0.03,
+        0.008
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 62",
+      "reason": "Face 8 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.000064
+    },
+    {
+      "id": "n12",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        1.8769418499896264e-19,
+        0.016,
+        -9.458540003406263e-20
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 12",
+      "reason": "Face 13 center click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00005026548245743669
+    },
+    {
+      "id": "n63",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        -0.004,
+        0.016,
+        -9.458540003406263e-20
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 63",
+      "reason": "Face 13 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00005026548245743669
+    },
+    {
+      "id": "n64",
+      "geometryRevision": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065",
+      "kind": "surface",
+      "position": [
+        0.003999999999999999,
+        0.016,
+        -9.458540003406263e-20
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "tangent": [
+        1,
+        0,
+        0
+      ],
+      "label": "Planar surface 64",
+      "reason": "Face 13 edge midpoint click point on an analytic planar face; requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00005026548245743669
+    }
+  ],
+  "engine": "OpenCascade 7.9",
+  "units": "meter"
+}

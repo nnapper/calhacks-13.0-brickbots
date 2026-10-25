@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "AMIS-30543 Stepper Motor Driver Carrier",
+    "sku": "pololu-2970",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "The drawing prints a board width of 1.0 in (25.4 mm), a length of 1.2 in (30.5 mm), a mounting-hole spacing of 1.0 in (25.4 mm) and a mounting-hole diameter of Ø0.086 in (2.18 mm). The overall z height of about 7 mm is an assumption: roughly 1.6 mm of PCB plus about 5.5 mm for the tallest components, the electrolytic capacitors. No height is stated. Mounting-hole x offset is estimated from the mirrored bottom view at about 2 mm from the board edge. The holes are on the motor-terminal side. I read them as 10.7 mm from center in x and at y = ±12.7 mm. The signal pin holes (11 in a row at 2.54 mm pitch), the power/motor terminal holes and the small VBB/GND holes are not listed as holes because their diameters are not given. Z positions are given relative to mid-plane of the PCB, which is itself an assumption.",
+      "Dimensions are unverified. The analysis lists y=30.5 and z=7, which I mapped to the Y-up frame: board length on Z (30.5 mm) and total height on Y (7 mm).",
+      "PCB thickness (1.6 mm), capacitor height and diameter, and the IC size are assumed.",
+      "Capacitor and IC positions are approximate, estimated from the photo.",
+      "Signal pin holes, motor/power terminal holes, and small VBB/GND holes are omitted because their diameters and positions are not given.",
+      "SMD passives, the small secondary IC, and the markings are omitted.",
+      "Mounting-hole positions come from the estimate in the analysis, and both holes are on one side."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -12.7,
+      "xmax": 12.7,
+      "ymin": 0,
+      "ymax": 7,
+      "zmin": -15.25,
+      "zmax": 15.25,
+      "xlen": 25.4,
+      "ylen": 7,
+      "zlen": 30.5
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 44426,
+        "sha256": "351ac096b9e01fdf74067c8475a37a37bb5c24af7925bfc2344ede72c0c19ca2"
+      },
+      "model.stl": {
+        "bytes": 69084,
+        "sha256": "b147f6264ca73165ba810731632071bc3637e6afbea7741609ddea067bece639"
+      },
+      "model.glb": {
+        "bytes": 25832,
+        "sha256": "38f4fb6de622d6be668ddb7920eb6b66fbbb2719642bd08dafcf3a84e88e12a2"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "351ac096b9e01fdf74067c8475a37a37bb5c24af7925bfc2344ede72c0c19ca2"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

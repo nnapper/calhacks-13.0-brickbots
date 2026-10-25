@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Asymmetric quad block pattern mount: a 43 x 43 mm plate (7.5 mm thick, thickness along Z) with four 10 x 10 mm corner blocks raised to a 15 mm total Z height, a 14 mm central through bore, a 14 mm half-circle notch on the +Y edge, and four 3.5 mm through holes on a 16 mm square pattern. Centered in X and Z, with the bottom at Y=0 and the top at Y=43, following boundsMm.",
+  "confidence": "low",
+  "warnings": [
+    "The source gives no dimensions, so the 43 x 43 x 15 footprint is an estimate. Axes follow boundsMm (Y=43, thickness along Z), which keeps the bottom at Y=0.",
+    "Plate thickness (7.5 mm), block size (10 mm) and block placement are guesses from the image.",
+    "The tapped holes on the block top and side faces are omitted because threads are not modeled.",
+    "The many extra round holes and the slots visible in the image are omitted, since their sizes and positions are uncertain. Only the 14 mm bore and the four 3.5 mm holes from the analysis are cut.",
+    "The notch radius of 7 mm is inferred from the statement that two mounts form a 14 mm hole.",
+    "The small chamfers on the blocks are omitted."
+  ],
+  "cadquery": "plate = cq.Workplane('XY').box(43, 43, 7.5, centered=(True, True, False)).translate((0, 0, -7.5))\nblocks = (cq.Workplane('XY').pushPoints([(16.5, 16.5), (-16.5, 16.5), (16.5, -16.5), (-16.5, -16.5)])\n          .rect(10, 10).extrude(7.5))\nbody = plate.union(blocks)\nbore = cq.Workplane('XY').workplane(offset=-10).circle(7).extrude(20)\nnotch = cq.Workplane('XY').workplane(offset=-10).center(0, 21.5).circle(7).extrude(20)\nholes = (cq.Workplane('XY').workplane(offset=-10)\n         .pushPoints([(8, 8), (-8, 8), (8, -8), (-8, -8)]).circle(1.75).extrude(20))\npart = body.cut(bore).cut(notch).cut(holes).translate((0, 21.5, 0))"
+}

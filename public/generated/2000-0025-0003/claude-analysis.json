@@ -1,0 +1,52 @@
+{
+  "partType": "motor",
+  "summary": "Standard-size hobby servo with a rectangular case, two mounting flanges with slotted holes, and a 25-tooth spline output shaft on top. It is a dual-mode (300° or continuous rotation) speed-geared servo. Overall size is estimated from the standard-size servo form factor.",
+  "boundsMm": {
+    "x": 40.5,
+    "y": 20.2,
+    "z": 36.5
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4.5,
+      "positionsMm": [
+        [
+          -24.5,
+          -5,
+          -4
+        ],
+        [
+          -24.5,
+          5,
+          -4
+        ],
+        [
+          24.5,
+          -5,
+          -4
+        ],
+        [
+          24.5,
+          5,
+          -4
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -4,
+      "description": "Underside of the mounting flanges, flat surface used to bolt the servo to a structure via the four flange holes/slots"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 18.25,
+      "description": "Top of the output shaft: 25-tooth spline for attaching arms, hubs, gears, pulleys or shaft adapters"
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions were scraped and none are printed on the images. Bounds are assumed from the standard-size (roughly 40 x 20 x 38 mm) hobby servo form factor that this 58 g servo appears to match. X is the case length without flanges (about 40 mm), plus a small allowance; the flanges extend further, so the true overall length with flanges may be nearer 54 mm. Y is the case width. Z is the case height plus the protruding spline shaft. Hole positions and diameter are guesses from the flange layout (two slotted holes per flange) and are not measured. The 25T spline shaft diameter is not stated, so no shaft feature is given. The wire lead (300 mm) is excluded from the bounds. The accessory-kit image (arms, hubs, screws, bushings, grommets) is not part of the servo body and is ignored."
+}

@@ -1,0 +1,89 @@
+{
+  "partType": "bracket",
+  "summary": "Threaded steel 90° L-bracket with two equal legs and a row of five holes on an 8 mm pitch in each leg.",
+  "boundsMm": {
+    "x": 40,
+    "y": 16,
+    "z": 16
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -16,
+          0,
+          -7
+        ],
+        [
+          -8,
+          0,
+          -7
+        ],
+        [
+          0,
+          0,
+          -7
+        ],
+        [
+          8,
+          0,
+          -7
+        ],
+        [
+          16,
+          0,
+          -7
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "y",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -16,
+          -7,
+          0
+        ],
+        [
+          -8,
+          -7,
+          0
+        ],
+        [
+          0,
+          -7,
+          0
+        ],
+        [
+          8,
+          -7,
+          0
+        ],
+        [
+          16,
+          -7,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -8,
+      "description": "Underside of the horizontal leg, which sits flat on a U-channel face"
+    },
+    {
+      "axis": "y",
+      "offsetMm": -8,
+      "description": "Outer face of the vertical leg, which mounts flat plates or brackets"
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions were given. Stated: 5 holes, 8 mm grid, 32 mm between end holes. Insight #5 says outer vertical faces of brackets on a 32 mm square pattern are 48 mm apart, so each hole row sits about 8 mm from its outer face. Assumed: length 40 mm (4 mm end margin beyond the end holes), legs 16 mm each, sheet thickness about 2 mm, hole diameter 4 mm for M4 (the true tapped size is smaller). Hole positions assume the vertical-leg row is 8 mm above the base. Pencil and grid mat in the photo look consistent with a 40 x 16 x 16 mm part, but they were not measured. The 12.9 g weight was not used for sizing."
+}

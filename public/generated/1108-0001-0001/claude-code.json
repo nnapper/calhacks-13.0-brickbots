@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Flat 2.5 mm aluminum plate, 40 mm wide and 56 mm tall (Y 0..56), square bottom and a 20 mm radius rounded top centered at Y=36. Central Ø14 mm bore at Y=36, a ring of eight Ø4 mm holes on a 12 mm radius around the bore, and a row of five Ø4 mm holes at Y=4 on an 8 mm pitch (X -16..16).",
+  "confidence": "medium",
+  "warnings": [
+    "Ring holes are drawn as slots elongated radially (about 4 x 4.7 mm); they are modeled as plain Ø4 mm circles.",
+    "Ring hole positions are approximate: placed on a 12 mm radius at 45° steps. The drawing's 16 mm dimension suggests the diagonal holes may be at ±8 mm in Y rather than ±8.49 mm.",
+    "Total height of 56 mm is derived from 4 + 32 + 20 mm, not printed on the drawing.",
+    "The weight and other specs were not used for geometry."
+  ],
+  "cadquery": "t = 2.5\ncy = 36.0\nplate = (cq.Workplane('XY').box(40, cy, t, centered=(True, False, True))\n         .union(cq.Workplane('XY').center(0, cy).circle(20).extrude(t, both=True).intersect(\n             cq.Workplane('XY').box(40, 40, t, centered=(True, False, True)).translate((0, cy, 0)))))\nbore = cq.Workplane('XY').center(0, cy).circle(7).extrude(t, both=True)\nring_pts = [(12 * math.cos(math.radians(a)), cy + 12 * math.sin(math.radians(a))) for a in range(0, 360, 45)]\nring = cq.Workplane('XY').pushPoints(ring_pts).circle(2).extrude(t, both=True)\nbase_pts = [(x, 4) for x in (-16, -8, 0, 8, 16)]\nbase = cq.Workplane('XY').pushPoints(base_pts).circle(2).extrude(t, both=True)\npart = plate.cut(bore).cut(ring).cut(base)"
+}

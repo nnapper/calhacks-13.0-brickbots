@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Plastic Hinge - 2 Pack",
+    "sku": "2902-0003-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/plastic-hinge-2-pack/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are given in the text, so all values are estimates. Assumed sizing: the hardware looks like an M3 socket-head bolt with a nylon-insert nut. The goBILDA 8 mm grid suggests each block is about 8 mm wide, so three blocks stack to about 24 mm along the hinge axis. Knuckle diameter is estimated at about 8 mm, which sets the Z height. Foot hole diameter is estimated at about 4 mm. Foot reach from the axis is estimated at about 14-16 mm, giving a Y span of about 30-32 mm. The bolt head and nut are assumed to sit roughly flush with or slightly beyond the block stack, so X may be a few mm larger than 24. Hole positions are rough guesses. The 6.6 g weight per hinge fits a small plastic part. The 45° grooves on the blocks are visible but not modeled.",
+      "All dimensions are estimates because no dimensions were given.",
+      "The bolt head, nylon-insert nut and bolt shaft are not modeled. Only an empty 3 mm axial bore is cut, so the part stays within the 24 mm X bound.",
+      "The 45° grooves, the small gaps between blocks and the knuckle interlock details are omitted.",
+      "Foot hole positions and foot length are rough guesses."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -12,
+      "xmax": 12,
+      "ymin": -4.440892098500626e-16,
+      "ymax": 32,
+      "zmin": -4,
+      "zmax": 4,
+      "xlen": 24,
+      "ylen": 32,
+      "zlen": 8
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 92873,
+        "sha256": "18cc294a518f33dd7a0f0a429dba345c8072d70978b00505699789a601d29535"
+      },
+      "model.stl": {
+        "bytes": 123884,
+        "sha256": "b7637b37f24ac05063f1b27634f94043becb423f34b2632e6d1d5bc3a6fe86d9"
+      },
+      "model.glb": {
+        "bytes": 45536,
+        "sha256": "26bb66972de724ac2804f833d9f8a0fb5702d33623697ccfc934cb778ce4182d"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "18cc294a518f33dd7a0f0a429dba345c8072d70978b00505699789a601d29535"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,52 @@
+{
+  "partType": "other",
+  "summary": "Standard-size digital servo with a ribbed aluminum case, four-ear mounting flange (one pair of open slots at each end), top-center output spline shaft, and a side-exit cable. Dimensions are estimated; no drawing was provided.",
+  "boundsMm": {
+    "x": 54.5,
+    "y": 20.5,
+    "z": 42
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4.5,
+      "positionsMm": [
+        [
+          -24.75,
+          -5,
+          5
+        ],
+        [
+          -24.75,
+          5,
+          5
+        ],
+        [
+          24.75,
+          -5,
+          5
+        ],
+        [
+          24.75,
+          5,
+          5
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 4,
+      "description": "Underside of the four-ear mounting flange. It sits in the upper part of the case, with the finned lower body extending below it."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 21,
+      "description": "Output spline shaft end, with the shaft protruding from the top face. The shaft is offset toward one end of the case along x."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The listing gives no dimensions, so every size here is assumed. The body length (about 40 mm), width (about 20 mm) and flange span (about 54.5 mm) come from the standard-size servo form factor and the photo proportions. The case height of about 37 mm is a rough estimate from the photos. The shaft adds about 5 mm to give an overall z of about 42 mm. The mounting slots are U-shaped and open toward the ends, so they are modeled as 4.5 mm holes. The 49.5 mm by 10 mm spacing is the standard pattern, and the flange z of about 5 mm is judged from the photos. The shaft is described as H25T spline in the listing, and the shaft diameter is not modeled. The cable (300 mm) and connector are excluded from the bounds. The photos give no usable scale: the first image's mat grid is not goBILDA's 8 mm grid, and its ruler marks are only roughly legible. The pencil in that image is a normal pencil and was not used for sizing."
+}

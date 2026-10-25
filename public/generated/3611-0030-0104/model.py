@@ -1,0 +1,12 @@
+r_end=8.0
+r_max=10.0
+r_bore=4.0
+L=44.0
+profile=(cq.Workplane('XZ')
+    .moveTo(r_bore,-L/2)
+    .lineTo(r_end,-L/2)
+    .threePointArc((r_max,0),(r_end,L/2))
+    .lineTo(r_bore,L/2)
+    .close())
+roller=profile.revolve(360,(0,0,0),(0,1,0))
+part=roller.translate((0,r_max,0))

@@ -1,0 +1,10 @@
+flange = cq.Workplane('XY').circle(12.5).extrude(5)
+nose = cq.Workplane('XY').workplane(offset=5).circle(10).extrude(7)
+body = flange.union(nose)
+body = body.cut(cq.Workplane('XY').circle(2.5).extrude(12))
+pts = [(7.5*math.cos(math.radians(a)), 7.5*math.sin(math.radians(a))) for a in (0, 120, 240)]
+body = body.cut(cq.Workplane('XY').pushPoints(pts).circle(1.25).extrude(12))
+rad_x = cq.Workplane('YZ').center(0, 2.5).circle(1.65).extrude(13)
+rad_y = cq.Workplane('XZ').center(0, 2.5).circle(1.65).extrude(-13)
+body = body.cut(rad_x).cut(rad_y)
+part = body.rotate((0, 0, 0), (1, 0, 0), -90)

@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "SPDT rocker switch with its long axis along Z: a 21.2 x 15.1 x 2.1 mm bezel flange, an 18.8 x 13 mm body below it, a boxy 16 x 9.2 x 3.5 mm rocker on top, and three 4.8 x 0.8 mm solder tabs extending down to the pin tips. Overall size is 21.2 x 15.1 x 25.9 mm, with Z running from -12.95 to +12.95.",
+  "confidence": "medium",
+  "warnings": [
+    "Orientation follows boundsMm: the switch axis is Z (25.9 mm) and Y spans 0 to 15.1 mm. The Y=0 bottom is therefore a side face of the bezel, not the pin tips. Rotate the part if a Y-up orientation is wanted.",
+    "The 22.4 mm dimension is assumed to run from the bezel top to the pin tips, excluding the 3.5 mm rocker.",
+    "The body depth is assumed to be 13.2 mm measured from the bezel top, which makes the pins 9.2 mm long.",
+    "The rocker is modeled as a plain box. Its sloped top and the printed marks are omitted.",
+    "The tab pitch of 6.95 mm is derived from the printed 18.7 mm pin span and 4.8 mm tab width. The tab thickness of 0.8 mm is assumed.",
+    "The side hole on the body and the small holes in the tabs are omitted because no diameters are given.",
+    "The small latch features on the body sides are omitted."
+  ],
+  "cadquery": "flange = cq.Workplane('XY').workplane(offset=7.35).center(0, 7.55).rect(21.2, 15.1).extrude(2.1)\nbody = cq.Workplane('XY').workplane(offset=-3.75).center(0, 7.55).rect(18.8, 13.0).extrude(11.1)\nrocker = cq.Workplane('XY').workplane(offset=9.45).center(0, 7.55).rect(16.0, 9.2).extrude(3.5)\npart = flange.union(body).union(rocker)\nfor x in (-6.95, 0, 6.95):\n    tab = cq.Workplane('XY').workplane(offset=-12.95).center(x, 7.55).rect(4.8, 0.8).extrude(9.2)\n    part = part.union(tab)"
+}

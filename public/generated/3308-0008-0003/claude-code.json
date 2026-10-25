@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Chain outer link with two vertical side plates (10x8x1 mm) at z=±2.5 joined by two 3 mm pins at x=±4 along Z, plus two flat 1 mm thick tabs at the bottom extending outward in ±X. Each tab has one 4.2 mm vertical through-hole, with holes 16 mm apart. Overall size is about 22x8x6 mm.",
+  "confidence": "low",
+  "warnings": [
+    "Only the 16 mm hole spacing and 8 mm pitch are stated; all other dimensions are estimated from the photo.",
+    "Hole diameter of 4.2 mm is assumed from an M4 screw.",
+    "The analysis lists hole axis z, but the photo shows the tabs lying flat with vertical holes. I used a Y-axis hole with Y up, so the holes pass through the tabs.",
+    "Plate outline is simplified to rectangles; rounded plate ends, tab bend radii and pin heads are omitted.",
+    "Pin diameter and plate spacing are guesses."
+  ],
+  "cadquery": "tab_t = 1.0\nplates = None\nfor z in (-2.5, 2.5):\n    p = cq.Workplane('XY').box(10, 8, 1).translate((0, 4, z))\n    plates = p if plates is None else plates.union(p)\npins = (cq.Workplane('XY').cylinder(6, 1.5, direct=(0, 0, 1)).translate((-4, 4, 0))\n        .union(cq.Workplane('XY').cylinder(6, 1.5, direct=(0, 0, 1)).translate((4, 4, 0))))\ntabs = None\nfor x in (-7.5, 7.5):\n    t = cq.Workplane('XY').box(7, tab_t, 6).translate((x, tab_t / 2, 0))\n    tabs = t if tabs is None else tabs.union(t)\npart = plates.union(pins).union(tabs)\nholes = (cq.Workplane('XZ').pushPoints([(-8, 0), (8, 0)]).circle(2.1).extrude(-5))\npart = part.cut(holes)"
+}

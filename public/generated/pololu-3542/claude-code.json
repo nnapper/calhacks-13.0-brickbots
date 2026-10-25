@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Rectangular encoder PCB, 22.5 mm (X) by 18.5 mm (Y) by 1.6 mm thick (Z). Y runs from 0 to 18.5 and the board is centered in X and Z. It has a 4 mm through hole for the motor shaft and a row of six 1 mm pad holes at 2.54 mm pitch near the +Y header edge. The magnetic disc, header pins, and corner slots are not modeled.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are estimated from the description and bounds; none are verified.",
+    "The board is modeled as a plain rectangle. The real outline has a notched or rounded shape.",
+    "The corner solder slots are visible but omitted because their size and position are uncertain.",
+    "The magnetic disc and the male and female header pins are separate parts and are excluded.",
+    "The 4 mm center hole size and position are visual estimates.",
+    "The 1 mm pad hole diameter and positions are assumed.",
+    "Hole positions were shifted by +9.25 mm in Y to put the board bottom at Y=0. The board thickness runs along Z, as in the given bounds."
+  ],
+  "cadquery": "board = cq.Workplane('XY').box(22.5, 18.5, 1.6)\nboard = board.faces('>Z').workplane().pushPoints([(0, -1)]).hole(4)\npads = [(-7.62 + 2.54 * i, 8) for i in range(6)]\nboard = board.faces('>Z').workplane().pushPoints(pads).hole(1)\npart = board.translate((0, 9.25, 0))"
+}

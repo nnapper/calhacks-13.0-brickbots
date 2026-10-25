@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Elongated bridge-shaped bracket 40 x 8 x 8 mm: two 8 mm cube end blocks at x=±16 joined by a 3 mm thick flat bar flush with the bottom. The bar has three 5 mm through holes at x=-8, 0, 8 along Y. Each block has three 4 mm blind holes (6 mm deep, unthreaded) on its top, +Z, and outer X faces.",
+  "confidence": "low",
+  "warnings": [
+    "No dimensions were provided; all sizes are estimates taken from the bounds and the 8 mm grid.",
+    "Bar thickness (3 mm) and bar width (full 8 mm) are guesses from the image.",
+    "Counterbores on the bar holes are not modeled; they are plain 5 mm through holes.",
+    "Block holes are unthreaded 4 mm blind holes with an assumed 6 mm depth.",
+    "Block hole faces (top, +Z, outer X) are assumed. The image may show the third hole on a different face.",
+    "Chamfers on the block edges are omitted."
+  ],
+  "cadquery": "bw=8.0\nbar_t=3.0\npitch=16.0\nblocks=[cq.Workplane('XY').box(bw,bw,bw,centered=(True,False,True)).translate((sx*pitch,0,0)) for sx in (-1,1)]\nbar=cq.Workplane('XY').box(2*pitch,bar_t,bw,centered=(True,False,True))\npart=bar\nfor b in blocks:\n    part=part.union(b)\ndef cyl(d,h,p,v):\n    return cq.Workplane('XY').add(cq.Solid.makeCylinder(d/2,h,cq.Vector(*p),cq.Vector(*v)))\nfor x in (-8,0,8):\n    part=part.cut(cyl(5.0,bar_t+2,(x,-1,0),(0,1,0)))\nfor sx in (-1,1):\n    cx=sx*pitch\n    part=part.cut(cyl(4.0,6,(cx,bw-6,0),(0,1,0)))\n    part=part.cut(cyl(4.0,6,(cx,bw/2,bw/2-6),(0,0,1)))\n    part=part.cut(cyl(4.0,6,(cx+sx*(bw/2-6),bw/2,0),(sx,0,0)))"
+}

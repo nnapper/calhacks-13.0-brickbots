@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Tamiya 70100 Track and Wheel Set",
+    "sku": "pololu-106",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are stated for the assembled unit. Sizing assumptions: (1) The 3 x 100 mm shafts are the only stated lengths, so they set the scale. In the photo they are about as long as the sprue width. (2) The track length of about 180 mm is a guess for one 30-link track laid flat, assuming roughly 8 mm link pitch for the track. In the photo the 30-link strip is slightly longer than the sprue. (3) The wheel diameter of about 30-60 mm and the 60 mm height are visual estimates from the 100 mm shaft. The 3 mm hole is taken from the shaft spec, with the position at the part center as a placeholder. Screw holes, hex shaft bore, and individual wheel hole patterns are not dimensioned and are not listed. The bounds are only a rough envelope. The set is a collection of loose parts, not a single solid.",
+      "The source is a kit of loose parts on sprues, not a single solid. The model is a rough assembled-unit approximation.",
+      "Dimensions are unverified and estimated from the supplied bounds (180 x 60 x 60 mm).",
+      "Track link teeth, sprocket teeth, wheel spokes and recesses, wheel caps, the hex shaft and the tapping screws are omitted.",
+      "The 3 mm hole at the part center from the analysis was not cut, because the axles are modeled solid at the wheel centers (x=±60).",
+      "The track width (20 mm) and wheel size (55 mm) are guesses."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -90,
+      "xmax": 90,
+      "ymin": 0,
+      "ymax": 60,
+      "zmin": -30.000000000000004,
+      "zmax": 30.000000000000004,
+      "xlen": 180,
+      "ylen": 60,
+      "zlen": 60.00000000000001
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 78793,
+        "sha256": "59b7626d4e311a066a5d03f8f0eb79f71aa892f0290703133862a19c854dcedc"
+      },
+      "model.stl": {
+        "bytes": 134084,
+        "sha256": "1e163b9c769bb11c7aab1032924524201f50d22152ecb584ad2903b1cad54838"
+      },
+      "model.glb": {
+        "bytes": 49260,
+        "sha256": "30657136fa55b66f9a58dfa7b8a9107c539b63243128f9b10f1aafb8629f5d43"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "59b7626d4e311a066a5d03f8f0eb79f71aa892f0290703133862a19c854dcedc"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 56
+  },
+  "status": "prototype_unverified"
+}

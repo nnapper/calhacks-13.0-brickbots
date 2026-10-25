@@ -16,6 +16,9 @@ const dryRun = args.includes('--dry-run');
 const skus = args.filter(arg => !arg.startsWith('--'));
 const MODEL = process.env.ANTHROPIC_MODEL ?? 'claude-sonnet-5-5';
 const API_KEY = process.env.ANTHROPIC_API_KEY ?? process.env.CLAUDE_API_KEY;
+// $ per million tokens for the default model (claude-sonnet-5-5); used only to print an estimated cost per part.
+const PRICE_IN = Number(process.env.PRICE_IN_PER_MTOK ?? 2), PRICE_OUT = Number(process.env.PRICE_OUT_PER_MTOK ?? 10);
+const tally = {input: 0, output: 0};
 const GEOMETRY_URL = process.env.BUILDFLOW_GEOMETRY_URL ?? 'http://127.0.0.1:8001';
 
 const analysisPrompt = `You are analyzing one robotics component from product images for a CAD assembly prototype.
@@ -38,6 +41,11 @@ Rules:
 - Do not model logos, labels, threads, fillets that are not visible, or decorative detail.
 - If a feature is uncertain, omit it and record a warning.
 Return ONLY JSON: {"cadquery":string,"shapeSummary":string,"confidence":"low|medium|high","warnings":[string]}`;
+
+// Parts with no scraped dimensions are sized by Claude from the specs text and photos, and flagged as estimates.
+const estimateNote = `
+
+This part has NO scraped dimensions. First estimate its overall bounding box (boundsMm, millimeters) from the specs and description text: look for sizes, hole patterns, pitch, shaft or bore diameters, mounting spacing, and weight. Then use the photos, with any recognizable reference such as the 8 mm goBILDA grid or standard hardware sizes. Do not invent features. Use confidence "low" unless the text states the size, and record the sizing assumptions in notes.`;
 
 function isDrawing(image) { return /schematic|drawing|dimension/i.test(image.alt ?? ''); }
 function isInsight(image) { return /insight/i.test(image.alt ?? ''); }
@@ -74,6 +82,7 @@ async function callClaude(part, images, prompt, context) {
   });
   if (!response.ok) throw new Error(`Claude API failed (HTTP ${response.status}): ${(await response.text()).slice(0, 300)}`);
   const reply = await response.json();
+  tally.input += reply.usage?.input_tokens ?? 0; tally.output += reply.usage?.output_tokens ?? 0;
   const text = reply.content?.find(block => block.type === 'text')?.text ?? '';
   if (!text) throw new Error(`Claude returned no text (stop_reason ${reply.stop_reason})`);
   try { return extractJson(text); }
@@ -123,13 +132,14 @@ for (const sku of skus) {
   const images = chooseImages(part);
   const expected = expectedDimensions(part);
   if (!images.length) throw new Error(`${sku} has no local images`);
-  if (!expected.length) throw new Error(`${sku} has no scraped dimensions`);
+  const estimating = !expected.length;
+  tally.input = 0; tally.output = 0;
 
   const out = path.join('public', 'generated', sku);
   await mkdir(out, {recursive: true});
   const context = JSON.stringify({
     name: part.name, sku: part.sku, category: part.category, description: part.description,
-    specs: part.specs ?? [], dimensions_mm: part.dimensions_mm, sourceUrl: part.url, dimensionsAreUnverified: true,
+    specs: part.specs ?? [], dimensions_mm: part.dimensions_mm, sourceUrl: part.url, dimensionsAreUnverified: true, dimensionsMissing: estimating,
   }, null, 2);
 
   if (dryRun) {
@@ -138,11 +148,11 @@ for (const sku of skus) {
   }
 
   console.log(`${sku}: analyzing ${images.length} product images with ${MODEL}`);
-  const analysis = validateAnalysis(await callClaude(part, images, analysisPrompt, context));
+  const analysis = validateAnalysis(await callClaude(part, images, analysisPrompt + (estimating ? estimateNote : ''), context));
   await writeFile(path.join(out, 'claude-analysis.json'), JSON.stringify(analysis, null, 2) + '\n');
 
   console.log(`${sku}: generating CadQuery from verified dimensions and image analysis`);
-  const codeResult = validateCodeResult(await callClaude(part, images.slice(0, 1), codePrompt, context + `\n\nImage analysis JSON:\n${JSON.stringify(analysis, null, 2)}`));
+  const codeResult = validateCodeResult(await callClaude(part, images.slice(0, 1), codePrompt, context + (estimating ? '\n\nThe overall size in the analysis is an estimate; use boundsMm from it.' : '') + `\n\nImage analysis JSON:\n${JSON.stringify(analysis, null, 2)}`));
   await writeFile(path.join(out, 'claude-code.json'), JSON.stringify(codeResult, null, 2) + '\n');
   await writeFile(path.join(out, 'model.py'), codeResult.cadquery);
 
@@ -166,7 +176,7 @@ for (const sku of skus) {
   const manifest = {
     schemaVersion: 1,
     product: {name: part.name, sku: part.sku, retailer: part.retailer, url: part.url},
-    generation: {provider: 'anthropic', model: MODEL, analysisConfidence: analysis.confidence, codeConfidence: codeResult.confidence, warnings: [...analysis.notes ? [analysis.notes] : [], ...codeResult.warnings]},
+    generation: {provider: 'anthropic', model: MODEL, analysisConfidence: analysis.confidence, dimensionsEstimated: estimating, codeConfidence: codeResult.confidence, warnings: [...analysis.notes ? [analysis.notes] : [], ...codeResult.warnings]},
     geometry: JSON.parse(await readFile(path.join(out, 'render.json'), 'utf8')),
     artifacts: {step: 'model.step', glb: 'model.glb', stepSha256: hash(stepBytes)},
     verification: {service: GEOMETRY_URL, candidateCount: candidates.length},
@@ -174,4 +184,7 @@ for (const sku of skus) {
   };
   await writeFile(path.join(out, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
   console.log(`${sku}: ${candidates.length} snap candidates · confidence ${analysis.confidence}/${codeResult.confidence} · output in ${out}`);
+  const cost = tally.input / 1e6 * PRICE_IN + tally.output / 1e6 * PRICE_OUT;
+  await writeFile(path.join(out, 'usage.json'), JSON.stringify({model: MODEL, inputTokens: tally.input, outputTokens: tally.output, estimatedUsd: Number(cost.toFixed(4))}, null, 2) + '\n');
+  console.log(`USAGE ${sku} ${tally.input} ${tally.output} ${cost.toFixed(4)}`);
 }

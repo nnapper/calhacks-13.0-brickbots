@@ -1,37 +1,29 @@
 {
   "partType": "other",
-  "summary": "Socket head cap screw with a cylindrical head and a hex drive socket in the head top. The head is 5.5 mm in diameter and 3 mm tall. The shank extends 6 mm below the head, so overall length is 9 mm. The screw axis is modeled along X, with the head toward -X.",
+  "summary": "Socket head cap screw with a cylindrical head (5.5 mm diameter, 3 mm tall) and a 6 mm long shank. It has a hex drive socket (2.5 mm) in the head top. The modeled axis is z, with the head at +z and the shank toward -z, centered on the overall 9 mm length.",
   "boundsMm": {
-    "x": 9,
+    "x": 5.5,
     "y": 5.5,
-    "z": 5.5
+    "z": 9
   },
-  "holes": [
-    {
-      "axis": "x",
-      "diameterMm": 2.5,
-      "positionsMm": [
-        [
-          -4.5,
-          0,
-          0
-        ]
-      ],
-      "through": false
-    }
-  ],
+  "holes": [],
   "mountingSurfaces": [
     {
-      "axis": "x",
-      "offsetMm": -1.5,
-      "description": "Underside of the head, which bears against the clamped part. The shank extends from here toward +X."
+      "axis": "z",
+      "offsetMm": 1.5,
+      "description": "Underside of the head (bearing surface), facing -z toward the shank, 3 mm below the head top."
     },
     {
-      "axis": "x",
+      "axis": "z",
+      "offsetMm": 4.5,
+      "description": "Flat top face of the head containing the 2.5 mm hex drive socket."
+    },
+    {
+      "axis": "z",
       "offsetMm": -4.5,
-      "description": "Flat top face of the head, which contains the hex drive socket."
+      "description": "Free end face of the shank, 6 mm below the head underside."
     }
   ],
-  "confidence": "medium",
-  "notes": "The drawing gives a 5.5 mm head diameter, 3 mm head height, 6 mm shank length measured from the underside of the head, and a 2.5 mm hex socket. Total length of 9 mm is head height plus shank length. The 2.5 mm hex socket is across flats, used here as the hole diameter. Socket depth is not stated, so it is modeled as a blind recess. The text spec lists length as 6 mm, which matches the shank length only and excludes the head. The bounding box is centered on the part, with x from -4.5 to 4.5. The shank diameter is not given as a separate dimension and is not modeled. The thread-locker tube in the third image is a separate accessory and is not part of this component."
+  "confidence": "high",
+  "notes": "The drawing gives head diameter 5.5 mm, head height 3 mm, hex socket 2.5 mm and a 6 mm length measured from the head underside to the shank end. Overall length is therefore 3 + 6 = 9 mm. The product data lists only the 6 mm length, which is the shank, not the full part. The hex socket is a non-round recess and its depth is not stated, so it is left out of the holes array. It is a blind recess about 2.5 mm across flats in the head top. The shank diameter is nominally 3 mm, from the M3 designation."
 }

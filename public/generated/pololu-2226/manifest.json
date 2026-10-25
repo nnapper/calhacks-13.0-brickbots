@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "8.4 V NiMH Battery Packs",
+    "sku": "pololu-2226",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are stated and no drawing is visible, so the size is estimated from standard hardware. An AA cell is about 14.5 mm in diameter and 50.5 mm long. Four cells side by side give about 58-59 mm, and two staggered rows give about 29 mm in thickness. The x axis runs along the 4-cell row, y is the stack thickness, and z is the cell length of about 50 mm. The specs list both AA and AAA variants, but the description and photo indicate AA, so AA is assumed. The wire lead and connector are excluded from the bounds. No holes or mounting features are visible, so none are given. The pack is a soft-wrapped body, so the bounds are approximate.",
+      "Dimensions are estimated from standard AA cell size, not verified.",
+      "The wire lead and JR connector are omitted because they are outside the bounds and their geometry is uncertain.",
+      "The staggered 4+3 layout gives about 27 mm thickness, slightly under the 29 mm estimate, and the 58 mm width is slightly under 59 mm.",
+      "The wrap seams and the recess at the lead exit are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -29,
+      "xmax": 29,
+      "ymin": 0,
+      "ymax": 27.05736835487436,
+      "zmin": -25,
+      "zmax": 25,
+      "xlen": 58,
+      "ylen": 27.05736835487436,
+      "zlen": 50
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 31804,
+        "sha256": "e2c5ae781023612576518fcf8065d0ddf9aab190ece60f205d4909762c05a495"
+      },
+      "model.stl": {
+        "bytes": 75484,
+        "sha256": "b589e7281cd86daf596676f309d1f30465e7a6df395f7cb4a1b09e7789013ab9"
+      },
+      "model.glb": {
+        "bytes": 28204,
+        "sha256": "1b537fcb2a24347709efeb293d65846556677c8f4f5c15cd530897ae7b64d318"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "e2c5ae781023612576518fcf8065d0ddf9aab190ece60f205d4909762c05a495"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 4
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Acetal MOD 0.8 Gear Rack (131 Tooth, 41 Hole)",
+    "sku": "2311-0001-0131",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/acetal-mod-0-8-gear-rack-131-tooth-41-hole/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "Length: 131 teeth × (π × 0.8 mm = 2.513 mm) ≈ 329 mm. This is consistent with 41 holes at 8 mm pitch (40 × 8 = 320 mm between end holes, plus about 4 mm of margin at each end) and with the 336 mm Viper-Slide it mounts to. Width (about 12 mm, including teeth) and thickness (about 8 mm) are visual estimates from the photos and the assembly drawing and are not stated in the text. The 4 mm hole diameter and the through-hole axis come from the description and the top-face view. Holes are assumed to lie on the centerline (y = 0), though they are probably offset slightly from the toothed edge. The end chamfers and tooth profile are not modeled.",
+      "Tooth profile is a simplified trapezoid, not a true involute.",
+      "Hole row height (Y=6) is assumed; the analysis put holes at y=0 relative to a different origin.",
+      "Body width, thickness and tooth height are estimates.",
+      "End chamfers are not modeled.",
+      "Tooth phase relative to the ends is assumed."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -164.61945504810515,
+      "xmax": 164.61945504810515,
+      "ymin": 0,
+      "ymax": 12,
+      "zmin": -4,
+      "zmax": 4,
+      "xlen": 329.2389100962103,
+      "ylen": 12,
+      "zlen": 8
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 2324410,
+        "sha256": "03492605ff3952af4a821c88cea475913bace9916f99fe16210515959bbcf56f"
+      },
+      "model.stl": {
+        "bytes": 1146884,
+        "sha256": "0cc6378cc3252042c4a59c7dd4ec30242b0de178e7f484063474ced48ef2f625"
+      },
+      "model.glb": {
+        "bytes": 412916,
+        "sha256": "e1ea84a1064fab312a0edbc077f394b4b900d4f573bffa1850288867fde3c165"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "03492605ff3952af4a821c88cea475913bace9916f99fe16210515959bbcf56f"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

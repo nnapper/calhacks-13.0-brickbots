@@ -1,0 +1,9 @@
+{
+  "name": "Pololu Aluminum Scooter Wheel Adapter for 4mm Shaft",
+  "sku": "pololu-2672",
+  "category": "scooter-wheel-adapters",
+  "expectedDimensionsMm": [
+    4
+  ],
+  "units": "millimeter"
+}
