@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Worm wheel blank only: a 37.5 mm diameter, 10 mm thick disc with its axis along Z. It has a central 8 mm bore and four 4 mm through holes on a 16 mm bolt pattern. It is shifted so its bottom sits at Y=0, with X and Z centered on 0.",
+  "confidence": "low",
+  "warnings": [
+    "Teeth are not modeled. The wheel is a plain disc at the estimated outer diameter.",
+    "The 10 mm thickness is an estimate, not a stated value.",
+    "The 8 mm REX bore is modeled as round rather than hex.",
+    "The 4 mm hole diameter and 8 mm radial positions are assumed from the hub pattern.",
+    "The extra holes visible between the four modeled ones are omitted.",
+    "The 33 mm worm is omitted.",
+    "The listed dimensions are unverified."
+  ],
+  "cadquery": "wheel = cq.Workplane('XY').circle(18.75).extrude(10).translate((0, 0, -5))\nbore = cq.Workplane('XY').circle(4).extrude(10).translate((0, 0, -5))\nholes = (cq.Workplane('XY').pushPoints([(8, 0), (-8, 0), (0, 8), (0, -8)])\n         .circle(2).extrude(10).translate((0, 0, -5)))\npart = wheel.cut(bore).cut(holes).translate((0, 18.75, 0))"
+}

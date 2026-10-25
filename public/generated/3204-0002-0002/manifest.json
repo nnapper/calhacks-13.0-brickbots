@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "2:1 Ratio Bevel Gear Set (8mm REX® Bore Pinion Gear)",
+    "sku": "3204-0002-0002",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/2-1-ratio-bevel-gear-set-8mm-rex-bore-pinion-gear/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The gear axis is along X, with the gear centered on the origin. The 42mm diameter and 6.5mm thickness are scaled from the side-view drawing, whose printed dimensions are 13.5mm, 31mm and 16.5mm, so they are estimates. The 31mm printed dimension runs from the top of the pinion hub to the gear centerline, and 16.5mm runs from the pinion's lower edge to that same line. The 16mm central bore is an estimate; the product data gives no bore diameter and only a 32mm hub clearance diameter. The image shows a ring of smaller holes around the bore, but their diameter and exact positions are not stated, so they are left out. The 14-tooth pinion is about 21mm in diameter and has a clamping hub roughly 13.5mm wide. It has an 8mm REX bore and two clamp screws, and it meshes at 90 degrees with the gear.",
+      "Dimensions (42 mm OD, 6.5 mm thickness, 16 mm bore) are estimates scaled from the image and drawing notes, not verified.",
+      "Teeth are simplified as straight rectangular slots cut through the rim, with no bevel or conical tooth geometry or tooth profile.",
+      "The ring of smaller lightening/mounting holes is omitted because its diameter and positions are uncertain.",
+      "The 14-tooth pinion with its clamp hub, 8 mm REX bore, clamp screws and threads is not modeled.",
+      "The 28-tooth gear is modeled as a single part, so the set is not an assembly."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -3.25,
+      "xmax": 3.250000000000001,
+      "ymin": 0.015243627814022886,
+      "ymax": 41.98475637218598,
+      "zmin": -20.984756372185977,
+      "zmax": 20.984756372185977,
+      "xlen": 6.500000000000001,
+      "ylen": 41.969512744371954,
+      "zlen": 41.969512744371954
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 32.000 mm; measured dimensions are [6.500000000000001, 41.969512744371954, 41.969512744371954]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 469102,
+        "sha256": "eb2267dec9858e5f52ded73d0e798c60dff94de4da8967ff2444490659898398"
+      },
+      "model.stl": {
+        "bytes": 58884,
+        "sha256": "cd6e9cf1d4695b06600025b66ad4357f2eb07817f60c90535af4793c1077097f"
+      },
+      "model.glb": {
+        "bytes": 22204,
+        "sha256": "1817efafb6ba7389d0c346188f43b436ddb3bd128445e0f8d67755bbdd3b6018"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "eb2267dec9858e5f52ded73d0e798c60dff94de4da8967ff2444490659898398"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

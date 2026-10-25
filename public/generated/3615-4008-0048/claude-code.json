@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Six-spoke boot wheel, 48 mm outer diameter and 16 mm thick. The axis is Z and the wheel is centered at X=0, Z=0, with its lowest point at Y=0 (wheel center at Y=24). A 20 mm diameter hub carries six spokes at 60° spacing. Each spoke is 7 mm wide at the root and flares to 13 mm wide at the tip. An 8 mm across-flats hex bore passes through the hub along Z.",
+  "confidence": "low",
+  "warnings": [
+    "The 16 mm thickness is estimated from the 16 mm spacer shown beside the wheels in the exploded views, not from a stated dimension.",
+    "The spoke tip shapes are approximated as flat-ended flares. The curved tip faces and rounded scallop fillets between spokes are not modeled.",
+    "The hex bore is modeled as 8 mm across flats, taking the nominal REX size as the flat-to-flat dimension.",
+    "The hub diameter and spoke widths are visual estimates.",
+    "The logos are omitted, as required."
+  ],
+  "cadquery": "hub = cq.Workplane('XY').circle(10).extrude(8, both=True)\nprofile = [(0,-3.5),(16,-3.5),(18.5,-6.5),(23,-6.5),(23,6.5),(18.5,6.5),(16,3.5),(0,3.5)]\nspoke = cq.Workplane('XY').polyline(profile).close().extrude(8, both=True)\nbody = hub\nfor i in range(6):\n    body = body.union(spoke.rotate((0,0,0),(0,0,1),i*60))\nbore = cq.Workplane('XY').polygon(6, 8/math.cos(math.pi/6)).extrude(10, both=True)\npart = body.cut(bore).translate((0,24,0))"
+}

@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Kit-only model of the servo overdrive gearbox: two 4 mm thick plates, each 85 x 42 mm and tapering to a 32 mm wide end with a 32 mm round boss around the hub axis. The plates are joined by four hex standoffs. A 32 mm diameter output hub sits on the top plate with a 6 mm shaft protruding. Four 4 mm holes on a 16 mm adjacent spacing pass through the hub and top plate. Bottom of the part is at Y=0, Y is the stack height, and X/Z are centered on the plate footprint. The hub axis is at x=26.5.",
+  "confidence": "low",
+  "warnings": [
+    "The servo is not part of the kit, so it is omitted. Overall height is therefore about 53.6 mm, not the 73.6 mm shown in the drawing.",
+    "Plate thickness, plate spacing, standoff positions and size, hub height, and shaft length are estimated from the drawing scale.",
+    "The plate outline is simplified to a rectangle, a narrower rectangle and a circular boss.",
+    "The 4 mm holes are modeled as plain through holes with no threads. They also cut the bottom plate, whereas the drawing shows them only in the hub and top plate.",
+    "The corner fastener holes on the plates are omitted because their diameter is not stated.",
+    "Worm/brass gear, the servo spline interface, the hub's internal cutouts and the shaft bearing are omitted because they are uncertain."
+  ],
+  "cadquery": "def plate(y0, t):\n    a = cq.Workplane('XY').box(42.5, t, 42, centered=False).translate((-42.5, y0, -21))\n    b = cq.Workplane('XY').box(69, t, 32, centered=False).translate((-42.5, y0, -16))\n    c = cq.Workplane('XZ').center(26.5, 0).circle(16).extrude(-t).translate((0, y0, 0))\n    return a.union(b).union(c)\n\nt = 4\ny_top = 27\npart = plate(0, t).union(plate(y_top, t))\n\nfor x, z in [(-38.5, 15), (-38.5, -15), (14, 13), (14, -13)]:\n    so = cq.Workplane('XZ').center(x, z).polygon(6, 6.4).extrude(-(y_top - t)).translate((0, t, 0))\n    part = part.union(so)\n\nhub = cq.Workplane('XZ').center(26.5, 0).circle(16).extrude(-7).translate((0, y_top + t, 0))\nshaft = cq.Workplane('XZ').center(26.5, 0).circle(3).extrude(-(53.6 - (y_top + t))).translate((0, y_top + t, 0))\npart = part.union(hub).union(shaft)\n\npts = [(26.5, 11.3), (26.5, -11.3), (37.8, 0), (15.2, 0)]\nholes = cq.Workplane('XZ').pushPoints(pts).circle(2).extrude(-60)\npart = part.cut(holes)"
+}

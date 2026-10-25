@@ -1,0 +1,307 @@
+{
+  "geometryRevision": "4fc5ca3b1af4475c727221f0b29e3caec102236ab73d7ef936e2402855ed8bb6",
+  "candidates": [
+    {
+      "id": "n5",
+      "geometryRevision": "4fc5ca3b1af4475c727221f0b29e3caec102236ab73d7ef936e2402855ed8bb6",
+      "kind": "surface",
+      "position": [
+        0.0,
+        0.0,
+        -0.003
+      ],
+      "normal": [
+        -0.0,
+        -0.0,
+        -1.0
+      ],
+      "tangent": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "label": "Planar surface 5",
+      "reason": "Point lies inside analytic planar face 5; proposed mounting surface, requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.006
+    },
+    {
+      "id": "n6",
+      "geometryRevision": "4fc5ca3b1af4475c727221f0b29e3caec102236ab73d7ef936e2402855ed8bb6",
+      "kind": "surface",
+      "position": [
+        0.0,
+        0.0,
+        0.003
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "tangent": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "label": "Planar surface 6",
+      "reason": "Point lies inside analytic planar face 6; proposed mounting surface, requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.006
+    },
+    {
+      "id": "n3",
+      "geometryRevision": "4fc5ca3b1af4475c727221f0b29e3caec102236ab73d7ef936e2402855ed8bb6",
+      "kind": "surface",
+      "position": [
+        0.0,
+        -0.03,
+        0.0
+      ],
+      "normal": [
+        -0.0,
+        -1.0,
+        -0.0
+      ],
+      "tangent": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "label": "Planar surface 3",
+      "reason": "Point lies inside analytic planar face 3; proposed mounting surface, requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.0006
+    },
+    {
+      "id": "n4",
+      "geometryRevision": "4fc5ca3b1af4475c727221f0b29e3caec102236ab73d7ef936e2402855ed8bb6",
+      "kind": "surface",
+      "position": [
+        0.0,
+        0.03,
+        0.0
+      ],
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "tangent": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "label": "Planar surface 4",
+      "reason": "Point lies inside analytic planar face 4; proposed mounting surface, requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.0006
+    },
+    {
+      "id": "n9",
+      "geometryRevision": "4fc5ca3b1af4475c727221f0b29e3caec102236ab73d7ef936e2402855ed8bb6",
+      "kind": "surface",
+      "position": [
+        0.085,
+        0.02,
+        0.025
+      ],
+      "normal": [
+        1.0,
+        -1.110223024625e-16,
+        -0.0
+      ],
+      "tangent": [
+        1.110223024625e-16,
+        1.0,
+        0.0
+      ],
+      "label": "Planar surface 9",
+      "reason": "Point lies inside analytic planar face 9; proposed mounting surface, requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.0006
+    },
+    {
+      "id": "n10",
+      "geometryRevision": "4fc5ca3b1af4475c727221f0b29e3caec102236ab73d7ef936e2402855ed8bb6",
+      "kind": "surface",
+      "position": [
+        0.075,
+        0.02,
+        0.025
+      ],
+      "normal": [
+        -1.0,
+        1.110223024625e-16,
+        0.0
+      ],
+      "tangent": [
+        1.110223024625e-16,
+        1.0,
+        0.0
+      ],
+      "label": "Planar surface 10",
+      "reason": "Point lies inside analytic planar face 10; proposed mounting surface, requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.0006
+    },
+    {
+      "id": "n1",
+      "geometryRevision": "4fc5ca3b1af4475c727221f0b29e3caec102236ab73d7ef936e2402855ed8bb6",
+      "kind": "surface",
+      "position": [
+        -0.05,
+        0.0,
+        0.0
+      ],
+      "normal": [
+        -1.0,
+        -0.0,
+        -0.0
+      ],
+      "tangent": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "label": "Planar surface 1",
+      "reason": "Point lies inside analytic planar face 1; proposed mounting surface, requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00036
+    },
+    {
+      "id": "n2",
+      "geometryRevision": "4fc5ca3b1af4475c727221f0b29e3caec102236ab73d7ef936e2402855ed8bb6",
+      "kind": "surface",
+      "position": [
+        0.05,
+        0.0,
+        0.0
+      ],
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "tangent": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "label": "Planar surface 2",
+      "reason": "Point lies inside analytic planar face 2; proposed mounting surface, requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00036
+    },
+    {
+      "id": "n7",
+      "geometryRevision": "4fc5ca3b1af4475c727221f0b29e3caec102236ab73d7ef936e2402855ed8bb6",
+      "kind": "surface",
+      "position": [
+        0.08,
+        0.01,
+        0.025
+      ],
+      "normal": [
+        -1.110223024625e-16,
+        -1.0,
+        -0.0
+      ],
+      "tangent": [
+        1.0,
+        -1.110223024625e-16,
+        0.0
+      ],
+      "label": "Planar surface 7",
+      "reason": "Point lies inside analytic planar face 7; proposed mounting surface, requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.0003
+    },
+    {
+      "id": "n8",
+      "geometryRevision": "4fc5ca3b1af4475c727221f0b29e3caec102236ab73d7ef936e2402855ed8bb6",
+      "kind": "surface",
+      "position": [
+        0.08,
+        0.03,
+        0.025
+      ],
+      "normal": [
+        1.110223024625e-16,
+        1.0,
+        0.0
+      ],
+      "tangent": [
+        1.0,
+        -1.110223024625e-16,
+        0.0
+      ],
+      "label": "Planar surface 8",
+      "reason": "Point lies inside analytic planar face 8; proposed mounting surface, requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.0003
+    },
+    {
+      "id": "n11",
+      "geometryRevision": "4fc5ca3b1af4475c727221f0b29e3caec102236ab73d7ef936e2402855ed8bb6",
+      "kind": "surface",
+      "position": [
+        0.08,
+        0.02,
+        0.01
+      ],
+      "normal": [
+        -0.0,
+        -0.0,
+        -1.0
+      ],
+      "tangent": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "label": "Planar surface 11",
+      "reason": "Point lies inside analytic planar face 11; proposed mounting surface, requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00019999999999999998
+    },
+    {
+      "id": "n12",
+      "geometryRevision": "4fc5ca3b1af4475c727221f0b29e3caec102236ab73d7ef936e2402855ed8bb6",
+      "kind": "surface",
+      "position": [
+        0.08,
+        0.02,
+        0.04
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "tangent": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "label": "Planar surface 12",
+      "reason": "Point lies inside analytic planar face 12; proposed mounting surface, requires review.",
+      "review": "suggested",
+      "method": "step_analytic",
+      "areaM2": 0.00019999999999999998
+    }
+  ],
+  "engine": "OpenCascade 7.9",
+  "units": "meter"
+}

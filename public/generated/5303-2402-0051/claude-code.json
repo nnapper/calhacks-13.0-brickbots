@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "A 36 mm diameter cylindrical motor and gearbox body, 114.5 mm long, with its axis along Z and from Z=-69 to 45.5. An 8 mm diameter, 23.5 mm long output shaft extends in +Z to Z=69. The axis sits at Y=18, so the part's bottom is at Y=0 and X and Z are centered on the overall 138 mm length.",
+  "confidence": "low",
+  "warnings": [
+    "The 114.5 mm body length and 138 mm overall length are estimates from the image proportions, not stated dimensions.",
+    "The listed 24 mm length appears to be the shaft length (23.5 mm), not the body length.",
+    "The body is modeled as one uniform 36 mm cylinder. The motor can, gearbox head, clamp groove, and end-cap details are omitted.",
+    "The REX shaft is a plain 8 mm cylinder, with no REX profile or flats.",
+    "The gearbox face mounting holes and pilot boss are omitted because their pattern is not dimensioned.",
+    "Wires, connectors, the encoder, and the label are not modeled.",
+    "The motor-axis-along-Z orientation comes from the image analysis."
+  ],
+  "cadquery": "body = cq.Workplane('XY').workplane(offset=-69).center(0, 18).circle(18).extrude(114.5)\nshaft = cq.Workplane('XY').workplane(offset=45.5).center(0, 18).circle(4).extrude(23.5)\npart = body.union(shaft)"
+}

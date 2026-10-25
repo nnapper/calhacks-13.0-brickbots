@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "5202 Series Yellow Jacket Planetary Gear Motor (3.7:1 Ratio, 24mm Length 6mm D-Shaft, 1620 RPM, ⌀36mm Gearbox, 3.3 - 5V Encoder)",
+    "sku": "5202-2402-0003",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/5202-series-yellow-jacket-planetary-gear-motor-3-7-1-ratio-24mm-length-6mm-d-shaft-1620-rpm-36mm-gearbox-3-3-5v-encoder/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The only verified dimensions are the 36 mm gearbox diameter and the 6 mm D-shaft diameter. The 24 mm shaft length is taken from the product name. The X bound is a rough guess of about 100 mm body plus the 24 mm shaft, centered on the part. Gearbox mounting hole sizes and positions are not printed in the images or data, so the holes list is empty. The sizes of any wire pass-through holes are not shown either, apart from the 14 mm holes in the channel. The dimensions in the source data are flagged as unverified.",
+      "The overall body length is a placeholder; the source gives no body length, so the 124 mm X extent is assumed.",
+      "The 24 mm shaft length is taken from the product name.",
+      "The split between encoder cap, motor can and gearbox lengths is estimated from the image.",
+      "The D-flat depth is assumed to leave a 5.5 mm across-flats width.",
+      "Gearbox mounting holes, the pilot boss, wires and connectors are omitted because they are not dimensioned.",
+      "The source dimensions are flagged as unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -62,
+      "xmax": 62,
+      "ymin": 0,
+      "ymax": 36,
+      "zmin": -18,
+      "zmax": 18,
+      "xlen": 124,
+      "ylen": 36,
+      "zlen": 36
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 24.000 mm; measured dimensions are [36.0, 36.0, 124.0]",
+      "Generated geometry is missing a listed dimension 6.000 mm; measured dimensions are [36.0, 36.0, 124.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 17485,
+        "sha256": "cb0d4768927fdc854d891e7fd353dd83745e016a42873b04b73558fb9a56e4bd"
+      },
+      "model.stl": {
+        "bytes": 47484,
+        "sha256": "7c8c45aced90c9daa5fb962ec181a4aa7447d7b311d6e38ab3d108335590d1f8"
+      },
+      "model.glb": {
+        "bytes": 18104,
+        "sha256": "ac7db040377c447826e9ae54b8da36a7e4dcde9976e34f9302bdbe122e6d2f77"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "cb0d4768927fdc854d891e7fd353dd83745e016a42873b04b73558fb9a56e4bd"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 25
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Wasteland Wheel (192mm Diameter, 72mm Width)",
+    "sku": "3616-0014-0192",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/wasteland-wheel-192mm-diameter-72mm-width/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 192mm diameter, 72mm width and 14mm center hole come from the supplied listing, which is marked unverified. Pattern hole positions and diameters are visible in the images but not dimensioned, so they are left out of the holes list. The Product Insight drawings show the wheel mounted on a Hyper Hub with a 12mm REX shaft, and they show the wheel can be flipped. The hub recess depth and the exact hub plane offset are not stated.",
+      "Tread lugs omitted; the outer surface is a plain cylinder.",
+      "Spokes and the hub recess are simplified to a solid thin disc, with no lattice spokes.",
+      "Pocket size, count, and depth are estimated from the image.",
+      "Pattern hole diameter (4mm) is assumed; the hub plate position and thickness are not stated.",
+      "Dimensions come from an unverified listing.",
+      "Inner rim radius of 70mm is estimated."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -96,
+      "xmax": 96,
+      "ymin": 0,
+      "ymax": 192,
+      "zmin": -36,
+      "zmax": 36,
+      "xlen": 192,
+      "ylen": 192,
+      "zlen": 72
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 829783,
+        "sha256": "3a228c23615e9f248e8bb63b0e0336f8d10b66ee3b00bb0846038cd58c7de420"
+      },
+      "model.stl": {
+        "bytes": 325684,
+        "sha256": "8d88606234e2a10af222c586402515331bcb3fbb70d1bc0bb2a97417666a5127"
+      },
+      "model.glb": {
+        "bytes": 118044,
+        "sha256": "a68061eddcd7eed20521b916b0bf31236eee0932ecdcbab8e722d568a35ff889"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "3a228c23615e9f248e8bb63b0e0336f8d10b66ee3b00bb0846038cd58c7de420"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Wheel with its axis along Z, 96 mm OD and 32 mm wide. The center is at Y=48, so the bottom sits at Y=0. It is a 96 mm OD ring with a 76 mm ID (10 mm wall) running the full width. An 8 mm thick hub plate spans z=-8 to 0, leaving an 8 mm recess on one side and a 16 mm recess on the other. The plate has a 32 mm central bore and 30 round 4 mm holes on an 8 mm grid.",
+  "confidence": "medium",
+  "warnings": [
+    "The four slotted holes near (0,±24) and (±24,0) are omitted because their slot length is not dimensioned.",
+    "The rubber tread and the plastic rim are modeled as one solid. The tread-to-rim boundary is not separated.",
+    "The 4 mm hole positions were read from the drawing's 8mm grid and may be slightly off.",
+    "The source dimensions are marked unverified."
+  ],
+  "cadquery": "rows={32:[-8,0,8],24:[-16,-8,8,16],16:[-24,-16,16,24],8:[-32,32],0:[-32,32],-8:[-32,-24,24,32],-16:[-24,-16,16,24],-24:[-16,-8,8,16],-32:[-8,0,8]}\npts=[(x,y) for y,xs in rows.items() for x in xs]\nring=cq.Workplane('XY').workplane(offset=-16).circle(48).circle(38).extrude(32)\nplate=cq.Workplane('XY').workplane(offset=-8).circle(38).circle(16).extrude(8)\nholes=cq.Workplane('XY').workplane(offset=-8).pushPoints(pts).circle(2).extrude(8)\npart=ring.union(plate).cut(holes).translate((0,48,0))"
+}

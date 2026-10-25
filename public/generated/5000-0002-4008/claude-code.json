@@ -1,0 +1,15 @@
+{
+  "shapeSummary": "Brushed DC motor modeled with its long axis along Z, centered at X=0 and Z=0, with the bottom at Y=0 and the motor axis at Y=21. It has a 36 mm diameter body, a 30 mm diameter rear encoder cover, a 42x42x4 mm square mount plate with four 4 mm corner holes at ±16 mm, and an 8 mm across-flats hex shaft that protrudes 32 mm from the mount face. The part spans Z -50 to 50.",
+  "confidence": "low",
+  "warnings": [
+    "The only stated dimension is the 32 mm shaft protrusion. All other sizes are visual estimates.",
+    "The 3.175 mm shaft_diameter in the metadata conflicts with the 8mm REX shaft and was ignored.",
+    "The Coke can dimensions are nonsensical and were not used for scale.",
+    "The plate is simplified to a square. The four-point star outline, brass inserts, center bore, M3 face-screw holes and the shaft boss were omitted.",
+    "Lead wires, connectors, labels and the encoder cover details were omitted.",
+    "The shaft is a plain hexagon, not the true round REX profile, and the shaft end tapped hole was omitted.",
+    "Body length and cover length are guesses.",
+    "The Z axis is the long axis (from the analysis) and Y is the vertical axis for the bottom-at-Y=0 rule."
+  ],
+  "cadquery": "plate = (cq.Workplane('XY').workplane(offset=14).rect(42, 42).extrude(4)\n         .faces('>Z').workplane().pushPoints([(16,16),(-16,16),(16,-16),(-16,-16)]).hole(4))\nbody = cq.Workplane('XY').workplane(offset=-30).circle(18).extrude(44)\ncover = cq.Workplane('XY').workplane(offset=-50).circle(15).extrude(20)\nshaft = cq.Workplane('XY').workplane(offset=18).polygon(6, 8/math.cos(math.radians(30))).extrude(32)\npart = body.union(cover).union(plate).union(shaft).translate((0, 21, 0))"
+}

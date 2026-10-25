@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1105 Series Round-End Pattern Plate (6 Hole, 152mm Length)",
+    "sku": "1105-0006-0152",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1105-series-round-end-pattern-plate-6-hole-152mm-length/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Length, width and thickness come from the supplied (unverified) spec. The 14mm hole size is stated in the spec, and the six large holes are visible in the images. The 24mm centre pitch is derived from the geometry: 152 − 32 = 120, and 120 / 5 = 24, which also matches the 24mm slotted-across-center note. The smaller 16mm-pattern holes and slots around each large hole are visible but their diameters and exact coordinates are not stated, so they are left out of the holes list instead of being guessed. The part is centered on the origin, with length along x, width along y and thickness along z.",
+      "The small 16mm-pattern holes and slots around each 14mm hole are visible, but their diameters and coordinates are not stated, so they were omitted.",
+      "Dimensions come from the unverified spec. The 24mm pitch is derived as (152-32)/5.",
+      "Axes follow the prompt rules: thickness along Y with the bottom at Y=0, X and Z centered. This differs from the analysis JSON, which put thickness along Z."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -76,
+      "xmax": 76,
+      "ymin": 0,
+      "ymax": 2.5,
+      "zmin": -16,
+      "zmax": 16,
+      "xlen": 152,
+      "ylen": 2.5,
+      "zlen": 32
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 44439,
+        "sha256": "6d881d2b682efd74a86b310c6434c72ef53bd0f7957b532599dd7d693a30f418"
+      },
+      "model.stl": {
+        "bytes": 119084,
+        "sha256": "d7137189ab4e81401bc547f4742407d658d194dd5fc05df4fb78529cc6f22fc1"
+      },
+      "model.glb": {
+        "bytes": 43740,
+        "sha256": "20e999d37402b8cb295e0da1dc2e58cd71d05610b119597dca5ec08b7f58c1d4"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "6d881d2b682efd74a86b310c6434c72ef53bd0f7957b532599dd7d693a30f418"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 40
+  },
+  "status": "prototype_unverified"
+}

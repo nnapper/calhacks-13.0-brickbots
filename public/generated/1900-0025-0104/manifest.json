@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1900 Series Single Servo Arm (25 Tooth Spline, 32mm Length)",
+    "sku": "1900-0025-0104",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1900-series-single-servo-arm-25-tooth-spline-32mm-length/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Coordinates are centered on the bounding box. The box spans y from -20.5 to 20.5, so the hub center is at y=-15.5. From the drawing: the arm is 8mm wide, the hub is Ø10mm, and the farthest hole center is 32mm from the hub center. The end radius is taken as 4mm and the hub radius as 5mm, which gives y=41. The hub is wider than the arm, so x=10. The 4mm plate is placed on the -z side and the hub projects to +z, with a 7.6mm overall thickness. The hole z-positions use the plate mid-plane at z=-1.8. The Ø7mm recess around the Ø3mm hole is on the plate side. The 3.1mm and 3.5mm dimensions are not clearly tied to a feature, so they are not modeled. The spline bore diameter is not stated and is not modeled.",
+      "The 25-tooth spline is not modeled; the Ø3 mm hole runs straight through the hub in its place.",
+      "The Ø7 mm recess depth of 3.5 mm is inferred from the section view dimension.",
+      "The 3.1 mm dimension is not tied clearly to a feature and is omitted.",
+      "The plate sits on the -Z side, with the hub projecting to +Z.",
+      "The Ø10 mm hub end is modeled as a full circle; the small notch where the hub meets the bar in the right view is omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -5,
+      "xmax": 5,
+      "ymin": 0,
+      "ymax": 41,
+      "zmin": -3.8,
+      "zmax": 3.8,
+      "xlen": 10,
+      "ylen": 41,
+      "zlen": 7.6
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 32.000 mm; measured dimensions are [7.6, 10.0, 41.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 42961,
+        "sha256": "0e024b8226a61493b055ac3c0924f529f58d83ee82c0048b955def3cee82f9ea"
+      },
+      "model.stl": {
+        "bytes": 127384,
+        "sha256": "2569b09bf029a4c1234072ec367582878f68148c0d02c4ea07ddec6c08dd06f2"
+      },
+      "model.glb": {
+        "bytes": 46752,
+        "sha256": "f312fda522dc08b4583f43a0450203ba0e583b111d0d5759461097716b97727b"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "0e024b8226a61493b055ac3c0924f529f58d83ee82c0048b955def3cee82f9ea"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 46
+  },
+  "status": "prototype_unverified"
+}

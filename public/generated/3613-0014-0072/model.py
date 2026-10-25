@@ -1,0 +1,7 @@
+tire = cq.Workplane('XY').circle(36).extrude(15, both=True)
+pk = cq.Workplane('XY').workplane(offset=5).polarArray(27, 0, 360, 16).circle(4).extrude(11)
+pk2 = cq.Workplane('XY').workplane(offset=-16).polarArray(27, 0, 360, 16).circle(4).extrude(11)
+tire = tire.cut(pk).cut(pk2)
+bore = cq.Workplane('XY').circle(7).extrude(20, both=True)
+holes = cq.Workplane('XY').pushPoints([(8, 8), (-8, 8), (-8, -8), (8, -8)]).circle(2).extrude(20, both=True)
+part = tire.cut(bore).cut(holes).translate((0, 36, 0))

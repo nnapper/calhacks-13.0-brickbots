@@ -1,0 +1,32 @@
+{
+  "partType": "other",
+  "summary": "Single standoff-mounted wheel assembly (the kit contains 4 identical units). A 6mm diameter cylindrical standoff is at the bottom. A 10mm diameter, 8mm tall chamfered wheel sits above it, topped by a smaller cylindrical screw head with a 3mm hex drive. The axis runs along z, and the part is modeled as one solid envelope.",
+  "boundsMm": {
+    "x": 10,
+    "y": 10,
+    "z": 22
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          0,
+          -11
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -11,
+      "description": "Flat bottom end face of the 6mm diameter standoff. It has an 8mm deep blind axial hole and is the mounting face against a plate or carriage."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Dimensions are from the printed drawing: wheel diameter 10mm, wheel body height 8mm, 10mm across the wheel including its chamfered edges, standoff diameter 6mm and standoff length 8mm, and a bottom hole 8mm deep. The total height of about 22mm is scaled from the drawing (about 19.25 px/mm), not printed. The screw head projects about 4mm above the wheel, estimated from the drawing, although the screw is labeled 6mm long. The 13mm base-to-center height in the listing does not match any dimension in the drawing, so it was not used. The hole diameter of 4mm is the nominal size from the drawing label. The 3mm hex socket in the screw head is not modeled as a hole because its depth is not given. The third image shows a perforated plate, which is a separate part and was not analyzed. The bounding box is centered at the origin, with z from -11 to 11."
+}

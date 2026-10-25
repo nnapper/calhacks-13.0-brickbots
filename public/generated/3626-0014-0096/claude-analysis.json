@@ -1,0 +1,24 @@
+{
+  "partType": "wheel",
+  "summary": "96mm diameter traction wheel with a rubber tread around a plastic core. One face is open and shows a hub with a central opening, spokes and a ring of mounting holes. The wheel axis is along z and the part is centered at the origin.",
+  "boundsMm": {
+    "x": 96,
+    "y": 96,
+    "z": 24
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 12,
+      "description": "Open outer face with the hub and a pattern of mounting holes. A hub-shaft, flywheel or hub attaches here with screws."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -12,
+      "description": "Opposite flat face, which can be used for bearing support or mating components. This is only loosely visible."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The 96mm diameter comes from the spec and the printed label. Width is not given anywhere, so the 24mm z thickness is a visual estimate from the renders and should be checked. The images show a central opening and several mounting holes, but no hole diameters or positions are printed or stated, so the holes array is empty rather than guessed. The source dimensions are flagged as unverified."
+}

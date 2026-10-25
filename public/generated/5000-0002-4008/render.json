@@ -1,0 +1,32 @@
+{
+  "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+  "boundsMm": {
+    "xmin": -21.0,
+    "xmax": 21.0,
+    "ymin": 0.0,
+    "ymax": 42.0,
+    "zmin": -50.0,
+    "zmax": 50.0,
+    "xlen": 42.0,
+    "ylen": 42.0,
+    "zlen": 100.0
+  },
+  "warnings": [
+    "Generated geometry is missing a listed dimension 3.175 mm; measured dimensions are [42.0, 42.0, 100.0]",
+    "Generated part is larger than the largest listed dimension."
+  ],
+  "files": {
+    "model.step": {
+      "bytes": 64456,
+      "sha256": "66b9dae0ed764f551dfe7fcaeec50f380298f26b6421d92a0a40827250896d7c"
+    },
+    "model.stl": {
+      "bytes": 103484,
+      "sha256": "30febace0495c31ef241855da5bb4cb3644abab6123e80914c8ec0033466f3a5"
+    },
+    "model.glb": {
+      "bytes": 38172,
+      "sha256": "41f26171ac5b2111e004df32a61b1834282c0e72cc8bfbebd988954a24b15a70"
+    }
+  }
+}

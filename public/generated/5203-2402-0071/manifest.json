@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "5203 Series Yellow Jacket Planetary Gear Motor (71.2:1 Ratio, 24mm Length 8mm REX® Shaft, 84 RPM, 3.3 - 5V Encoder)",
+    "sku": "5203-2402-0071",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/5203-series-yellow-jacket-planetary-gear-motor-71-2-1-ratio-24mm-length-8mm-rex-shaft-84-rpm-3-3-5v-encoder/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The images and spec data give only the 8mm shaft diameter and 24mm shaft length. The 37mm body diameter and 142mm overall length (shaft included) are estimates, not printed values, and should be checked against the vendor's dimensional drawing. The mounting hole pattern is not dimensioned or visible well enough to list holes, so the holes array is empty. The jacket has flat sides that give clearance for nearby components, per the product insight, but their dimensions are not given. The encoder cap has a connector on its rear face.",
+      "The 37mm body diameter and 142mm overall length are estimates, not stated values.",
+      "The section lengths (gearbox 40mm, can 52mm, cap 26mm) are estimated from the image.",
+      "The REX output shaft is modeled as a plain 8mm round cylinder; the REX profile is omitted.",
+      "The front face mounting holes (4x M4) are omitted because their pattern and diameters are not dimensioned.",
+      "The flat clearance sides on the head, the encoder connector, wires, screws, and the yellow jacket step are omitted.",
+      "The motor can and jacket are modeled as one diameter."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -71,
+      "xmax": 71,
+      "ymin": 0,
+      "ymax": 37,
+      "zmin": -18.5,
+      "zmax": 18.5,
+      "xlen": 142,
+      "ylen": 37,
+      "zlen": 37
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 24.000 mm; measured dimensions are [37.0, 37.0, 142.0]",
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [37.0, 37.0, 142.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 14112,
+        "sha256": "55399e5ec88a5ef0bd66144e7c2d5c27ce9f347384d8b82025675d0b7af3e351"
+      },
+      "model.stl": {
+        "bytes": 50284,
+        "sha256": "77e0ba634722121f21e0901d3d1b5a9236ccfdb953b558c2fcc46e161a374064"
+      },
+      "model.glb": {
+        "bytes": 19108,
+        "sha256": "0b24103a82fceedf7bed905f3ab27ef723c677bbe65308e3330205c8c7d3856c"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "55399e5ec88a5ef0bd66144e7c2d5c27ce9f347384d8b82025675d0b7af3e351"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 18
+  },
+  "status": "prototype_unverified"
+}

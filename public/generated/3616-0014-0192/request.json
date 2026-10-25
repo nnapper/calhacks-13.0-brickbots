@@ -1,0 +1,11 @@
+{
+  "name": "Wasteland Wheel (192mm Diameter, 72mm Width)",
+  "sku": "3616-0014-0192",
+  "category": "all-terrain-wheels-tires",
+  "sourceUrl": "https://www.gobilda.com/wasteland-wheel-192mm-diameter-72mm-width/",
+  "expectedDimensionsMm": [
+    72,
+    192
+  ],
+  "units": "millimeter"
+}

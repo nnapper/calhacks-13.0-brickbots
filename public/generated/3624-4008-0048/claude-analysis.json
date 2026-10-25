@@ -1,0 +1,64 @@
+{
+  "partType": "wheel",
+  "summary": "Double-row omni wheel, 48 mm diameter, with a plastic hub and two staggered rows of barrel-shaped rubber rollers around the rim. The center bore is hexagonal with a round recess around it. Four holes sit in a square pattern around the bore on each hub face. The wheel axis is along z.",
+  "boundsMm": {
+    "x": 48,
+    "y": 48,
+    "z": 19
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 3.5,
+      "positionsMm": [
+        [
+          -8,
+          -8,
+          0
+        ],
+        [
+          8,
+          -8,
+          0
+        ],
+        [
+          -8,
+          8,
+          0
+        ],
+        [
+          8,
+          8,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 9.5,
+      "description": "Outer hub face on one side, with the central bore, round recess, and 4-hole 16 mm square pattern. The pattern is used to attach to a hub or pod."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -9.5,
+      "description": "Opposite hub face, apparently the same as the first. Both faces appear to have the bore, recess, and hole pattern."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The 48 mm diameter and 8 mm bore come from the listing, which is marked unverified. The 16 mm hole pattern and the 14 mm recess are also stated in the listing specs. The overall width (about 19 mm) and the 3.5 mm pattern-hole diameter are rough estimates from image proportions, scaled against the 48 mm diameter. They are not stated anywhere. The bore is shown with a hex profile in the images, so the 8 mm figure is treated as the across-flats size. The hole pattern appears in the face view as a 16 mm square, with hole centers at about ±8 mm. Two screws are visible on the hub face at about ±11 mm on x. They are not modeled as holes, and the recess depth is not known. The listing says the wheel has two roller rows, and the side view shows this, with the rows staggered. Roller count and exact roller geometry were not measured."
+}

@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "96 mm diameter, 32 mm wide wheel with its axis along Z, centered at X=0, Z=0, and Y=48 so the bottom sits at Y=0. It has a 10 mm thick outer ring (OD 96, ID 76) and an internal 8 mm hub plate at Z -8 to 0. This leaves an 8 mm recess on one side and a 16 mm recess on the other. The plate has a 14 mm through bore and 45 holes of 4 mm diameter on an 8 mm grid.",
+  "confidence": "medium",
+  "warnings": [
+    "The 4 mm hole positions were estimated from the drawing's grid and should be verified.",
+    "The four slots next to the bore were omitted because their dimensions are uncertain.",
+    "The stepped rim, rubber tread profile and the small lip at the plate junction were simplified to a plain ring.",
+    "The Z sign convention is arbitrary: the 8 mm recess is at Z -16 to -8 and the 16 mm recess is at Z 0 to 16."
+  ],
+  "cadquery": "rows = {32:[-8,0,8], 24:[-16,-8,0,8,16], 16:[-24,-16,-8,8,16,24], 8:[-32,-24,-16,-8,8,24,32], 0:[-32,-24,24,32], -8:[-32,-24,-16,-8,8,24,32], -16:[-24,-16,-8,8,16,24], -24:[-16,-8,0,8,16], -32:[-8,0,8]}\npts = [(x, y + 48) for y, xs in rows.items() for x in xs]\nring = cq.Workplane('XY').workplane(offset=-16).center(0, 48).circle(48).circle(38).extrude(32)\nplate = cq.Workplane('XY').workplane(offset=-8).center(0, 48).circle(38).extrude(8)\npart = ring.union(plate)\nbore = cq.Workplane('XY').workplane(offset=-8).center(0, 48).circle(7).extrude(8)\nholes = cq.Workplane('XY').workplane(offset=-8).pushPoints(pts).circle(2).extrude(8)\npart = part.cut(bore).cut(holes)"
+}

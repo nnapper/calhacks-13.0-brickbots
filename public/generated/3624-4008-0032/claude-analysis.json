@@ -1,0 +1,37 @@
+{
+  "partType": "wheel",
+  "summary": "Small omni wheel with a plastic core and two staggered rows of rounded rollers around the rim. A central hex bore passes through the hub along the wheel axis (z). Three countersunk fasteners are visible on the face, spaced around the hub. The wheel is a short cylinder, narrow compared with its diameter.",
+  "boundsMm": {
+    "x": 32,
+    "y": 32,
+    "z": 14
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 7,
+      "description": "Flat hub face on the +z side, around the central hex bore. It is the drive and mounting interface for the shaft."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -7,
+      "description": "Flat hub face on the -z side, around the central hex bore, assumed to mirror the +z face."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The 32 mm diameter and 8 mm bore come from the supplied, unverified product data. The bore is hexagonal, and the 8 mm nominal value is treated as its size. The images show it passing fully through the wheel. Width is not stated anywhere, so the 14 mm z value is a rough estimate from the thickness-to-diameter proportion in the images and should be checked against a datasheet. The fastener head diameters and positions cannot be measured from the images, so they are not listed as holes. The -z face is assumed to match the +z face because it is not visible."
+}

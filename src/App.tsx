@@ -1,0 +1,307 @@
+import { Component, useEffect, useRef, useState, type ReactNode } from 'react';
+import { Quaternion, Vector3 } from 'three';
+import { Viewer, type View, type ViewerBridge } from './components/Viewer';
+import { loadModel, type LoadedModel } from './cad/import';
+import { disposeModel } from './cad/geometry';
+import { clone } from 'three/addons/utils/SkeletonUtils.js';
+import { addPosition, findSnap, alignConnectors, compatible, worldBox, type PartInstance, type Mate, type Snap } from './assembly/snapping';
+import './style.css';
+import {CatalogBrowser} from './components/CatalogBrowser.jsx';
+import {analyzeGeometry} from './cad/analyze';
+import {applySuggestions, type Connector, type PairSuggestion} from './contracts/connectors';
+import {cloud, api, workspaceSecret, saveWorkspace, suggestNodes, suggestPairings} from './cloud/client';
+class ViewerBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  render() { return this.state.failed ? <div className="webgl-error">The viewer could not render this model. Try another file or reload.</div> : this.props.children; }
+}
+const fixtures = [
+  { name: 'Precision plate', file: 'plate.step', subtitle: '100 × 60 × 6 mm · four Ø8 mm holes', tag: 'STEP', icon: '▱' },
+  { name: 'Two-body assembly', file: 'assembly.step', subtitle: 'Offset + 90° rotation · placement check', tag: 'STEP', icon: '▧' },
+  { name: 'GLB reference', file: 'reference.glb', subtitle: '100 × 60 × 6 mm · meter-scale mesh', tag: 'GLB', icon: '◇' },
+  { name: 'Grid plate 3×5', file: 'grid-plate-3x5.step', subtitle: '40 × 24 × 2.5 mm · 15 Ø4 holes, 8 mm grid', tag: 'BUILD', icon: '▦' },
+  { name: 'Grid plate 4×4', file: 'grid-plate-4x4.step', subtitle: '32 × 32 × 2.5 mm · 16 Ø4 holes, 8 mm grid', tag: 'BUILD', icon: '▦' },
+  { name: 'Flat beam 1×7', file: 'flat-beam-1x7.step', subtitle: '64 × 8 × 2.5 mm · 7 Ø4 holes, 8 mm grid', tag: 'BUILD', icon: '▬' },
+  { name: 'Wall block', file: 'wall-block.step', subtitle: '48 × 24 × 4 mm · solid, connects face to face', tag: 'BUILD', icon: '▮' },
+  { name: 'L-bracket', file: 'l-bracket.step', subtitle: '24 × 26.5 × 24 mm · 15 Ø4 holes on two legs', tag: 'BUILD', icon: '∟' },
+];
+export default function App() {
+  const [parts, setParts] = useState<PartInstance[]>([]);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [mates, setMates] = useState<Mate[]>([]);
+  const snapEnabled = true;
+  const [preview, setPreview] = useState<Snap | null>(null);
+  const [notice, setNotice] = useState('Drag a library model into the workspace.');
+  const [library, setLibrary] = useState<{key:string; name:string; file:File; generated?:boolean}[]>([]);
+  const [history, setHistory] = useState<{parts:PartInstance[]; mates:Mate[]}[]>([]);
+  const [busy, setBusy] = useState(''); const [error, setError] = useState('');
+  const [view, setView] = useState<View>('Perspective'); const [reset, setReset] = useState(0);
+  const [wireframe, setWireframe] = useState(false); const [filter, setFilter] = useState('');
+  const [dragging, setDragging] = useState(false);
+  const input = useRef<HTMLInputElement>(null); const controller = useRef<AbortController | null>(null);
+  const cache = useRef(new Map<string, LoadedModel>());
+  const bridge = useRef<ViewerBridge | null>(null);
+  const live = useRef({parts,mates}); live.current = {parts,mates};
+  const pairPartners = useRef(new Map<string,{partId:string;nodeId:string}>());
+  const pairingBusy = useRef(false); const pairingPending = useRef(false);
+  const runPairingRef = useRef<() => void>(() => {});
+  const model = parts.find(p => p.id === selectedId)?.model ?? null;
+  const pairingKey = parts.map(p=>`${p.id}:${p.model.asset.id}:${p.model.geometryRevision??''}:${p.model.connectors?.length??0}`).join('|');
+  const pairingKeyRef = useRef(pairingKey); pairingKeyRef.current = pairingKey;
+  useEffect(() => { runPairingRef.current(); }, [pairingKey]);
+  useEffect(() => () => { controller.current?.abort(); cache.current.forEach(m => disposeModel(m.object)); }, []);
+  const [operation,setOperation]=useState('');
+  const [revision,setRevision]=useState(0);
+  const [cloudStatus,setCloudStatus]=useState('Loading saved workspace…');
+  const [ready,setReady]=useState(false);
+  async function restore(){
+    if(!cloud){setCloudStatus('Local only');setReady(true);return;}
+    setOperation('Loading workspace');
+    try{
+      const secret=workspaceSecret(); await cloud.mutation(api.data.open,{secret});
+      const saved=await cloud.query(api.data.get,{secret});
+      if(saved?.snapshot){
+        const sources=new Map<string,LoadedModel>();const entries=[];
+        for(const record of saved.snapshot.sources){
+          const response=await fetch(record.url);if(!response.ok)throw new Error('Saved model download failed');
+          const file=new File([await response.arrayBuffer()],record.asset.name);
+          const source=await loadModel(file,new AbortController().signal,record.asset.sourceKind==='test_fixture');
+          Object.assign(source,{asset:record.asset,storageId:record.storageId,connectors:record.connectors,geometryRevision:record.geometryRevision});
+          sources.set(record.sourceId,source);cache.current.set(record.sourceId,source);
+          if(record.asset.sourceKind==='test_fixture')cache.current.set(file.name,source);
+          else entries.push({key:record.sourceId,name:file.name,file});
+        }
+        setParts(saved.snapshot.parts.map((p:PartInstance & {sourceId:string})=>({...p,model:{...sources.get(p.sourceId)!,object:clone(sources.get(p.sourceId)!.object) as LoadedModel['object']}})));
+        setMates(saved.snapshot.mates);setLibrary(entries);setSelectedId(null);setHistory([]);
+      }
+      setRevision(saved?.revision??0);setCloudStatus('Convex connected · save to sync');
+    }catch(e){setError(e instanceof Error?e.message:'Restore failed');setCloudStatus('Restore failed');}
+    finally{setReady(true);setOperation('');}
+  }
+  useEffect(()=>{void restore();},[]);
+  async function save(){setOperation('Saving workspace');try{setRevision(await saveWorkspace(parts,mates,cache.current,revision));setCloudStatus('Saved to Convex');}catch(e){setError(String(e));}finally{setOperation('');}}
+  function updateNodes(source:LoadedModel,nodes:Connector[],geometryRevision=source.geometryRevision){
+    for(const cached of cache.current.values())if(cached.asset.id===source.asset.id)Object.assign(cached,{connectors:nodes,geometryRevision});
+    setParts(items=>items.map(p=>p.model.asset.id===source.asset.id?{...p,model:{...p.model,connectors:nodes,geometryRevision}}:p));
+    setMates(items=>items.filter(m=>!parts.some(p=>p.model.asset.id===source.asset.id&&(p.id===m.movingId||p.id===m.targetId))));
+  }
+  async function analyze(){if(!model)return;setOperation('Finding attachment nodes');setError('');try{
+    const source=[...cache.current.values()].find(m=>m.asset.id===model.asset.id)!;
+    const result=await analyzeGeometry(source);updateNodes(source,result.candidates,result.geometryRevision);setNotice('Review the proposed nodes before snapping.');
+  }catch(e){setError(String(e));}finally{setOperation('');}}
+  async function recommend(){if(!model)return;setOperation('Bitdeer is reviewing nodes');setError('');try{
+    const result=await suggestNodes(model);updateNodes(model,applySuggestions(model.connectors??[],result.result));setNotice(`Bitdeer suggestions ready · ${result.model}`);
+  }catch(e){setError(String(e));}finally{setOperation('');}}
+  function checkpoint() { setHistory(h => [...h.slice(-19), live.current]); }
+  function place(source: LoadedModel, drop?: [number,number,number]) {
+    const existing = live.current.parts;
+    const instance: PartInstance = { id: crypto.randomUUID(), model: {...source, object:clone(source.object) as LoadedModel['object']}, position: addPosition(source,existing,drop) };
+    const snap = snapEnabled && drop ? findSnap(instance,instance.position,existing,undefined,0) : null;
+    if(snap) {instance.position = snap.position;instance.quaternion=snap.quaternion;}
+    instance.model.object.position.set(...instance.position);
+    checkpoint(); setParts([...existing,instance]); setSelectedId(instance.id);
+    if(snap) setMates(m => [...m,{movingId:instance.id,targetId:snap.targetId,movingNodeId:snap.movingNodeId,targetNodeId:snap.targetNodeId}]);
+    setNotice(snap ? 'Snapped · attachment nodes aligned' : 'Part added. Drag it near another part to snap.');
+  }
+  async function open(file: File, fixture = false, ownController?: AbortController, drop?: [number,number,number], key?:string) {
+    if (!ownController) controller.current?.abort();
+    const abort = ownController ?? new AbortController(); controller.current = abort;
+    setError(''); setBusy(`Importing ${file.name}`);
+    try {
+      const next = await loadModel(file, abort.signal, fixture);
+      if (abort.signal.aborted) { disposeModel(next.object); return; }
+      const sourceKey = key ?? next.asset.id;
+      if (sourceKey.startsWith('generated:')) next.asset.productId = sourceKey.slice('generated:'.length);
+      cache.current.set(sourceKey,next);
+      if(!fixture) setLibrary(l => [...l,{key:sourceKey,name:file.name,file,generated:sourceKey.startsWith('generated:')}]);
+      await findNodes(next);
+      place(next,drop);
+    } catch (e) { if (!abort.signal.aborted) setError(e instanceof Error ? e.message : 'Import failed.'); }
+    finally { if (controller.current === abort) { setBusy(''); controller.current = null; } }
+  }
+  async function generateProduct(sku:string, drop?: [number,number,number]) {
+    if(busy)return;
+    const cachedSource = [...cache.current.values()].find(source => source.asset.productId === sku);
+    if(cachedSource){place(cachedSource,drop);setNotice('Generated CAD prototype reused · inspect before assembly');return;}
+    setError('');setBusy('Generating');
+    try{
+      const response=await fetch('/geometry/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sku}),signal:AbortSignal.timeout(180_000)});
+      if(!response.ok){const detail=await response.json().catch(()=>({}));throw new Error(detail.detail??`Generation failed (HTTP ${response.status})`);}
+      const result=await response.json();
+      const modelResponse=await fetch(result.stepUrl);
+      if(!modelResponse.ok)throw new Error('Generated model download failed');
+      await open(new File([await modelResponse.arrayBuffer()],`${result.name}.step`),false,new AbortController(),drop,`generated:${sku}`);
+      setNotice('Generated CAD prototype added to model library · inspect before assembly');
+    }catch(e){setError(e instanceof Error?e.message:'Generation failed');setBusy('');}
+  }
+  // Every STEP part gets its hole and face nodes on import and they are live immediately.
+  async function findNodes(source: LoadedModel) {
+    if (source.asset.originalFormat === 'glb') return;
+    setBusy(`Finding attachment nodes for ${source.asset.name}`);
+    try {
+      const result = await analyzeGeometry(source);
+      source.connectors = result.candidates.map(n => ({ ...n, review: 'accepted' as const }));
+      source.geometryRevision = result.geometryRevision;
+    } catch (e) { setNotice('Could not find attachment nodes: ' + (e instanceof Error ? e.message : 'analysis unavailable') + ' Start npm run geometry.'); }
+  }
+  async function demo(key: string, drop?: [number,number,number]) {
+    controller.current?.abort(); controller.current = null; setBusy(''); setError('');
+    const cached = cache.current.get(key); if(cached) { place(cached,drop); return; }
+    if(!fixtures.some(f => f.file === key)) return;
+    const abort = new AbortController(); controller.current = abort; setBusy('Opening reference model');
+    try {
+      const response = await fetch(`/fixtures/${key}`, { signal: abort.signal });
+      if (!response.ok) throw new Error('Reference model unavailable.');
+      await open(new File([await response.arrayBuffer()], key), true, abort, drop,key);
+    } catch (e) { if (!abort.signal.aborted) { setError(e instanceof Error ? e.message : 'Could not load reference'); setBusy(''); } }
+  }
+  function move(id:string, position:[number,number,number], snap:Snap|null, quaternion?:[number,number,number,number]) {
+    checkpoint(); setParts(p => p.map(item => item.id === id ? {...item,position,quaternion:snap?.quaternion??quaternion??item.quaternion} : item));
+    setMates(m => [...m.filter(c => c.movingId !== id && c.targetId !== id), ...(snap ? [{movingId:id,targetId:snap.targetId,movingNodeId:snap.movingNodeId,targetNodeId:snap.targetNodeId}] : [])]);
+    setNotice(snap ? 'Clicked in' : 'Part moved · drag it near another part to click it in');
+  }
+  function connectNodes(fromId:string,fromNode:string,toId:string,toNode:string) {
+    const from=parts.find(p=>p.id===fromId),to=parts.find(p=>p.id===toId);
+    const a=from?.model.connectors?.find(n=>n.id===fromNode),b=to?.model.connectors?.find(n=>n.id===toNode);
+    if(!from||!to||!a||!b||fromId===toId)return;
+    if(a.review==='rejected'||b.review==='rejected'||a.geometryRevision!==from.model.geometryRevision||b.geometryRevision!==to.model.geometryRevision)return;
+    const acceptedA={...a,review:'accepted' as const},acceptedB={...b,review:'accepted' as const};
+    if(!compatible(acceptedA,acceptedB)){setNotice('Choose matching node types and hole diameters.');return;}
+    checkpoint();
+    const snap=alignConnectors(from,acceptedA,to,acceptedB);
+    const reviewed=(source:LoadedModel)=>({...source,connectors:source.connectors?.map(n=>(source.asset.id===from.model.asset.id&&n.id===a.id)||(source.asset.id===to.model.asset.id&&n.id===b.id)?{...n,review:'accepted' as const}:n)});
+    for(const [key,source] of cache.current)cache.current.set(key,reviewed(source));
+    setParts(items=>items.map(p=>({...p,model:reviewed(p.model),...(p.id===fromId?{position:snap.position,quaternion:snap.quaternion}:{})})));
+    setMates(items=>[...items.filter(m=>m.movingId!==fromId&&m.targetId!==fromId),{movingId:fromId,targetId:toId,movingNodeId:a.id,targetNodeId:b.id}]);
+    setSelectedId(fromId);setPreview(null);setNotice(`Connected ${a.id} → ${b.id} · nodes approved and aligned`);
+  }
+  function applyPairSuggestions(pairs:PairSuggestion['pairs']) {
+    const marks=new Map<string,Map<string,string>>();
+    const partners=new Map<string,{partId:string;nodeId:string}>();
+    const mark=(part:PartInstance,node:Connector,counterpart:PartInstance,counterpartNode:Connector,reason:string)=>{
+      let byNode=marks.get(part.model.asset.id);if(!byNode){byNode=new Map();marks.set(part.model.asset.id,byNode);}
+      byNode.set(node.id,`${reason} · pairs with ${counterpart.model.asset.name} ${counterpartNode.id}`.slice(0,600));
+      partners.set(`${part.id}:${node.id}`,{partId:counterpart.id,nodeId:counterpartNode.id});
+    };
+    // Auto-adjust: compatible Bitdeer pairs snap together without any manual node clicking.
+    const working=[...live.current.parts];
+    const movedIds=new Set<string>();
+    const autoMates:{movingId:string;targetId:string;movingNodeId:string;targetNodeId:string}[]=[];
+    for(const pair of pairs){
+      const moving=working.find(p=>p.id===pair.movingPartId),target=working.find(p=>p.id===pair.targetPartId);
+      const a=moving?.model.connectors?.find(n=>n.id===pair.movingNodeId),b=target?.model.connectors?.find(n=>n.id===pair.targetNodeId);
+      if(!moving||!target||!a||!b||a.review==='rejected'||b.review==='rejected'||a.geometryRevision!==moving.model.geometryRevision||b.geometryRevision!==target.model.geometryRevision)continue;
+      if(!compatible({...a,review:'accepted'},{...b,review:'accepted'},moving.scale??1,target.scale??1))continue;
+      mark(moving,a,target,b,pair.reason);mark(target,b,moving,a,pair.reason);
+      const snap=alignConnectors(moving,{...a,review:'accepted'},target,{...b,review:'accepted'});
+      const at=working.findIndex(p=>p.id===moving.id);
+      working[at]={...moving,position:snap.position,quaternion:snap.quaternion};
+      movedIds.add(moving.id);
+      autoMates.push({movingId:moving.id,targetId:target.id,movingNodeId:a.id,targetNodeId:b.id});
+    }
+    pairPartners.current=partners;
+    if(!marks.size)return;
+    const reviewed=(source:LoadedModel)=>{
+      const byNode=marks.get(source.asset.id);if(!byNode)return source;
+      return {...source,connectors:source.connectors?.map(n=>{
+        const reason=byNode.get(n.id);
+        if(reason!==undefined)return {...n,review:'accepted' as const,aiSelected:true,aiReason:reason};
+        if(n.aiSelected||n.aiReason!==undefined){const {aiSelected,aiReason,...rest}=n;return rest as Connector;}
+        return n;
+      })};
+    };
+    for(const [key,source] of cache.current)cache.current.set(key,reviewed(source));
+    if(movedIds.size)checkpoint();
+    setParts(items=>items.map(p=>{
+      const w=working.find(w=>w.id===p.id);
+      return {...p,model:reviewed(p.model),...(w&&movedIds.has(p.id)?{position:w.position,quaternion:w.quaternion}:{})};
+    }));
+    if(movedIds.size){
+      setMates(items=>[...items.filter(m=>!movedIds.has(m.movingId)&&!movedIds.has(m.targetId)),...autoMates]);
+      setNotice(`Bitdeer auto-connected ${autoMates.length} pair${autoMates.length===1?'':'s'} · adjust freely`);
+    }
+  }
+  function runPairing() {
+    if(!cloud)return;
+    const eligible=parts.filter(p=>p.model.connectors?.length&&p.model.geometryRevision);
+    if(eligible.length<2)return;
+    if(pairingBusy.current){pairingPending.current=true;return;}
+    pairingBusy.current=true;
+    const requested=pairingKeyRef.current;
+    void (async()=>{
+      try{
+        const result=await suggestPairings(eligible);
+        if(pairingKeyRef.current===requested)applyPairSuggestions(result.result??[]);
+      }catch{/* Background pairing stays silent when it fails. */}
+      finally{
+        pairingBusy.current=false;
+        if(pairingPending.current){pairingPending.current=false;runPairingRef.current();}
+      }
+    })();
+  }
+  runPairingRef.current = runPairing;
+  function connectFromButton(partId:string,nodeId:string) {
+    const armed=bridge.current?.armed?.()??true;
+    const partner=armed?undefined:pairPartners.current.get(`${partId}:${nodeId}`);
+    const target=partner?live.current.parts.find(p=>p.id===partner.partId&&p.id!==partId):undefined;
+    const node=target?.model.connectors?.find(n=>n.id===partner!.nodeId);
+    if(partner&&target&&node&&node.review!=='rejected'){connectNodes(partId,nodeId,partner.partId,partner.nodeId);return;}
+    bridge.current?.chooseNode(partId,nodeId);
+  }
+  function remove() { if(!selectedId)return; checkpoint(); setParts(p => p.filter(i => i.id !== selectedId)); setMates(m => m.filter(c => c.movingId !== selectedId && c.targetId !== selectedId));setSelectedId(null);setNotice('Part removed'); }
+  function undo() { const last = history.at(-1); if(!last)return;setParts(last.parts);setMates(last.mates);setHistory(h => h.slice(0,-1));setSelectedId(null);setPreview(null);setNotice('Last change undone'); }
+  const clipboard=useRef<PartInstance|null>(null);
+  const selectedPart=parts.find(p=>p.id===selectedId);
+  // Uniform scale keeps the model's proportions exact: one scalar drives every axis.
+  const [scalePercent,setScalePercent]=useState('100');
+  const [turnDegrees,setTurnDegrees]=useState('90');
+  useEffect(()=>{setScalePercent(String((selectedPart?.scale??1)*100));},[selectedId,selectedPart?.scale]);
+  function transform(scale?:number,axis?:'x'|'y'|'z') {
+    const p=live.current.parts.find(p=>p.id===selectedId);if(!p)return;
+    if(scale!==undefined&&(!Number.isFinite(scale)||scale<.001||scale>1000)){setNotice('Enter a scale from 0.1% to 100000%.');return;}
+    const degrees=Number(turnDegrees);if(axis&&!Number.isFinite(degrees)){setNotice('Enter a valid angle.');return;}
+    const q=new Quaternion(...(p.quaternion??[0,0,0,1]));
+    if(axis)q.premultiply(new Quaternion().setFromAxisAngle(new Vector3(axis==='x'?1:0,axis==='y'?1:0,axis==='z'?1:0),degrees*Math.PI/180));
+    const nextScale=scale??p.scale??1;
+    const localCenter=new Vector3(...p.model.asset.bounds.min).add(new Vector3(...p.model.asset.bounds.max)).multiplyScalar(.5);
+    const center=worldBox(p).getCenter(new Vector3());
+    const position=center.sub(localCenter.multiplyScalar(nextScale).applyQuaternion(q)).toArray() as [number,number,number];
+    checkpoint();setParts(items=>items.map(item=>item.id===p.id?{...item,scale:nextScale,quaternion:q.toArray(),position}:item));
+    setMates(items=>items.filter(m=>m.movingId!==p.id&&m.targetId!==p.id));setPreview(null);
+    setNotice(axis?`Rotated ${degrees}° around ${axis.toUpperCase()}`:`Resized to ${nextScale*100}% · proportions locked`);
+  }
+  function copyPart(){const p=live.current.parts.find(p=>p.id===selectedId);if(p){clipboard.current={...p,position:[...p.position],quaternion:[...(p.quaternion??[0,0,0,1]) as [number,number,number,number]]};setNotice('Model copied · Ctrl/Cmd+V to paste');}}
+  function pastePart(){const p=clipboard.current;if(!p)return;const width=worldBox(p).getSize(new Vector3()).x;const instance={...p,id:crypto.randomUUID(),model:{...p.model,object:clone(p.model.object) as LoadedModel['object']},position:[p.position[0]+width+.01,p.position[1],p.position[2]] as [number,number,number]};checkpoint();setParts(items=>[...items,instance]);setSelectedId(instance.id);clipboard.current=instance;setNotice('Model pasted · scale and rotation preserved');}
+  const shortcuts=useRef({copyPart,pastePart});shortcuts.current={copyPart,pastePart};
+  useEffect(()=>{const key=(e:KeyboardEvent)=>{const target=e.target as HTMLElement;if(target.closest('input,textarea,select,[contenteditable="true"]')||!(e.ctrlKey||e.metaKey)||e.altKey||e.repeat)return;if(e.key.toLowerCase()==='c'){if(live.current.parts.length){e.preventDefault();shortcuts.current.copyPart();}}if(e.key.toLowerCase()==='v'&&clipboard.current){e.preventDefault();shortcuts.current.pastePart();}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[]);
+  const dimensions = model ? model.asset.bounds.max.map((v, i) => (v - model.asset.bounds.min[i]) * 1000 * (selectedPart?.scale??1)) : null;
+  return <main aria-busy={!!operation}>
+    <header className="topbar"><a className="brand" href="/" aria-label="BrickBots home"><span className="brand-mark">▧</span> brickbots<span className="brand-dot">.</span></a><span className="project-name">Hardware workspace <span>/</span> Untitled project</span><span className="local-pill"><i/> {cloudStatus}</span></header>
+    <div className="workspace" style={operation?{pointerEvents:'none',opacity:.85}:undefined}>
+      <section className={`stage ${dragging ? 'dragging' : ''}`} aria-label="3D model workspace" onDragOver={e => { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; setDragging(true); }} onDragLeave={e => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setDragging(false); }} onDrop={e => { e.preventDefault(); setDragging(false); const point = bridge.current?.dropPoint(e.clientX,e.clientY); const sku = e.dataTransfer.getData('application/x-buildflow-catalog'); const key = e.dataTransfer.getData('application/x-buildflow-model'); if(sku) void generateProduct(sku,point); else if(key) void demo(key,point); else if (e.dataTransfer.files[0]) void open(e.dataTransfer.files[0],false,undefined,point); }}>
+        <div className="starfield"/>
+        <div className="stage-heading"><div className="eyebrow">DESIGN BEFORE YOU BUILD</div><h1>Your next build,<br/>in perspective.</h1><p>Bring your hardware into view.</p></div>
+        <div className="canvas"><ViewerBoundary><Viewer parts={parts} selectedId={selectedId} view={view} reset={reset} wireframe={wireframe} snapEnabled={snapEnabled} mates={mates} onSelect={setSelectedId} onConnect={connectNodes} onNodeMessage={setNotice} onMove={move} onPreview={setPreview} bridge={bridge}/></ViewerBoundary></div>
+        <div className="assembly-tools"><button disabled={!model || !!busy} onClick={()=>{copyPart();pastePart();}}>＋ Duplicate</button><button disabled={!model || !!busy} onClick={copyPart}>Copy</button><button disabled={!!busy} onClick={pastePart}>Paste</button>{selectedPart&&<div className="assembly-transform"><label>Scale % <input aria-label="Uniform scale percent" type="number" min="0.1" max="100000" step="any" value={scalePercent} onChange={e=>setScalePercent(e.target.value)}/></label><button disabled={!!busy} onClick={()=>transform(Number(scalePercent)/100)}>Apply scale</button><label>Rotate ° <input aria-label="Rotation angle degrees" type="number" value={turnDegrees} onChange={e=>setTurnDegrees(e.target.value)}/></label>{(['x','y','z'] as const).map(axis=><button disabled={!!busy} key={axis} onClick={()=>transform(undefined,axis)}>Rotate {axis.toUpperCase()}</button>)}</div>}<button disabled={!model || !!busy} onClick={remove}>Remove</button><button disabled={!history.length || !!busy} onClick={undo}>↶ Undo</button><span className={preview ? 'snap-message ready' : 'snap-message'} role="status">{preview ? 'Nodes aligned' : notice}</span></div>
+        <div className="viewbar" aria-label="Camera views">{(['Perspective', 'Front', 'Top', 'Side'] as View[]).map(v => <button key={v} className={view === v ? 'active' : ''} onClick={() => { setView(v); setReset(r => r + 1); }}>{v}</button>)}<span/><button title="Fit model in view" onClick={() => setReset(r => r + 1)}>↺ Reset</button><button aria-pressed={wireframe} onClick={() => setWireframe(v => !v)} className={wireframe ? 'active' : ''}>Wireframe</button></div>
+        {!parts.length && !busy && <div className="empty-prompt"><span className="empty-icon">↥</span><strong>A space for your hardware.</strong><p>Drop a STEP, STL, or GLB model here<br/>or drag in a model from the library.</p><button className="primary" onClick={() => input.current?.click()}>Upload model <span>↗</span></button></div>}
+        {busy && <div className="import-status" role="status"><span className="spinner"/><strong>{busy}</strong><small>Preparing geometry · original scale preserved</small><button onClick={() => { controller.current?.abort(); controller.current = null; setBusy(''); }}>Cancel import</button></div>}
+        {dragging && <div className="drop-overlay">Drop to add a part</div>}
+        <div className="stage-bottom"><span><i className="status-dot"/>{parts.length ? `${parts.length} parts · ${mates.length} snaps` : 'Ready to assemble'}</span><span>Drag a part to move it <b>·</b> Click a part then <b>R</b> to rotate (A/D turn, W/S tip) <b>·</b> Ctrl/Cmd+C then V copies the selected part <b>·</b> Shift skips snapping</span></div>
+      </section>
+      <aside>
+        <div className="cloud-controls"><button disabled={!ready||!!operation||!!busy} onClick={()=>void save()}>Save workspace</button><button disabled={!!operation||!!busy} onClick={()=>void restore()}>Reload saved</button></div>{operation&&<p role="status">{operation}…</p>}<CatalogBrowser onGenerate={(sku:string)=>void generateProduct(sku)} onDragEnd={()=>setDragging(false)}/><div className="panel-heading"><div><div className="eyebrow">YOUR WORKBENCH</div><h2>Model library</h2></div><span className="count">{fixtures.length + library.length}</span></div>
+        <label className="search"><span>⌕</span><input aria-label="Search reference models" placeholder="Search models" value={filter} onChange={e => setFilter(e.target.value)}/></label>
+        <button className="upload" onClick={() => input.current?.click()}>＋ Import a model <span>STEP / STL / GLB</span></button>
+        <input ref={input} type="file" accept=".step,.stp,.stl,.glb" hidden onChange={e => { if (e.target.files?.[0]) void open(e.target.files[0]); e.target.value = ''; }}/>
+        {error && <div className="error" role="alert"><strong>Action could not finish</strong><p>{error}</p><button onClick={() => setError('')}>Dismiss</button></div>}
+        <div className="section-label">MODEL SOURCES <span>DRAG TO ADD</span></div>
+        <div className="models">{fixtures.filter(f => `${f.name} ${f.tag}`.toLowerCase().includes(filter.toLowerCase())).map(f => <button className={`model-card ${model?.asset.name === f.file ? 'selected' : ''}`} key={f.file} draggable onDragStart={e => { e.dataTransfer.setData('application/x-buildflow-model',f.file); e.dataTransfer.effectAllowed = 'copy'; }} onDragEnd={() => setDragging(false)} title="Drag into workspace or click to add" onClick={() => void demo(f.file)}><span className="model-thumb">{f.icon}</span><span className="model-card-body"><span className="model-title">{f.name}<small>{f.tag}</small></span><span className="model-subtitle">{f.subtitle}</span></span><span className="model-arrow">↗</span></button>)}{!fixtures.some(f => `${f.name} ${f.tag}`.toLowerCase().includes(filter.toLowerCase())) && <p className="muted">No matching reference models.</p>}</div>
+        {library.filter(item => item.name.toLowerCase().includes(filter.toLowerCase())).map(item => <button key={item.key} className="model-card uploaded-card" draggable onDragStart={e => {e.dataTransfer.setData('application/x-buildflow-model',item.key);e.dataTransfer.effectAllowed='copy';}} onDragEnd={() => setDragging(false)} onClick={() => void demo(item.key)}><span className="model-thumb">{item.generated?'✦':'◇'}</span><span className="model-card-body"><span className="model-title">{item.name}</span><span className="model-subtitle">{item.generated?'Generated · drag or click to reuse':'Uploaded · drag or click to add another'}</span></span><span>＋</span></button>)}
+        {!!parts.length && <div className="assembly-list"><div className="section-label">IN WORKSPACE <span>{parts.length} PARTS</span></div>{parts.map((p,i) => <button className={p.id === selectedId ? 'active' : ''} key={p.id} onClick={() => setSelectedId(p.id)}><span>{String(i+1).padStart(2,'0')}</span>{p.model.asset.name}<small>{mates.some(m => m.movingId===p.id || m.targetId===p.id) ? 'SNAPPED' : 'FREE'}</small></button>)}</div>}
+        {model ? <div className="details"><div className="section-label">MODEL INSPECTOR</div><h3>{model.asset.name}</h3><section className="node-panel"><h4>Attachment nodes</h4><button disabled={!!operation} onClick={()=>void analyze()}>Find geometry nodes</button><button disabled={!!operation||!model.connectors?.length} onClick={()=>void recommend()}>Recommend with Bitdeer</button><p>Click a dot, then a matching dot on another part to approve and connect that pair. Green nodes also snap while dragging. Amber nodes are suggestions.</p>{model.connectors?.map(node=><div className="node-row" key={node.id}><strong>{node.id} · {node.label}</strong><button disabled={node.review==='rejected'} onClick={()=>selectedId&&connectFromButton(selectedId,node.id)}>Connect using {node.id}</button><small>{node.aiSelected?'Bitdeer recommended · ':''}{node.kind}{node.diameterM?` · Ø${(node.diameterM*1000).toFixed(2)} mm`:''}</small><p>{node.aiReason??node.reason}</p><select aria-label={`Review ${node.id}`} value={node.review} onChange={e=>updateNodes(model,model.connectors!.map(n=>n.id===node.id?{...n,review:e.target.value as Connector['review']}:n))}><option value="suggested">Suggested</option><option value="accepted">Accept for snapping</option><option value="rejected">Reject</option></select></div>)}</section><span className="badge">{model.asset.sourceKind === 'test_fixture' ? 'Synthetic reference fixture' : 'Uploaded model'}</span><dl><div><dt>Bounds · X / Y / Z</dt><dd data-testid="bounds">{dimensions?.map(n => n.toFixed(2)).join(' × ')} mm</dd></div><div><dt>Triangles</dt><dd>{model.triangles.toLocaleString()}</dd></div><div><dt>Scene units</dt><dd>Meters</dd></div><div><dt>Scale</dt><dd>{model.asset.originalFormat === 'stl' ? 'Assumed mm' : 'From file format'}</dd></div></dl><p className="detail-note">Snaps align accepted attachment nodes and opposing normals. Hole diameters must match within tolerance. Clearance and mechanical fit still need review. Moving a part detaches its snap.</p><p className="detail-note">{model.asset.originalFormat === 'stl' ? 'STL mesh geometry; millimeter scale is assumed. Dimensions reflect the file, not independent verification.' : model.asset.originalFormat === 'glb' ? 'Mesh geometry. Dimensions reflect the file, not independent verification.' : 'STEP units resolved by OpenCascade. Curved surfaces are meshed at a requested 0.02 mm deflection.'}</p><button className="text-button" onClick={() => { const url = URL.createObjectURL(model.original); const a = document.createElement('a'); a.href = url; a.download = model.original.name; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }}>↓ Download original</button></div> : <div className="getting-started"><span>01 — START WITH GEOMETRY</span><h3>Real scale.<br/>A clearer perspective.</h3><p>Inspect a CAD model from every angle. Reference parts let you check the import pipeline before bringing in your own.</p></div>}
+        <div className="panel-footer"><span className="footer-icon">◇</span><p>Product database connected.<br/>Image-to-3D is a separate next step.</p></div>
+      </aside>
+    </div>
+  </main>;
+}

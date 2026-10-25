@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Cylindrical roller wheel, 16 mm OD by 16 mm wide, with its axis along Y from Y=0 to Y=16 and centered at X=0, Z=0. A hexagonal through-bore, 5 mm across flats, runs along the axis.",
+  "confidence": "medium",
+  "warnings": [
+    "The drawing's 5 mm hex dimension is read as across flats. The listing's 8 mm bore is the REX shaft it stretches over, so it is not modeled.",
+    "The installed OD of about 17 mm is a stretched state and is ignored.",
+    "The axis is placed along Y to satisfy the bottom-at-Y=0 rule, although the image analysis listed the bore axis as Z.",
+    "The hex orientation (flats facing ±X) is taken from the drawing view and may differ from the real part.",
+    "The through bore is inferred from the installed view, where the shaft protrudes from both ends."
+  ],
+  "cadquery": "R = 5 / math.sqrt(3)\npts = [(R * math.cos(math.radians(90 + 60 * i)), R * math.sin(math.radians(90 + 60 * i))) for i in range(6)]\nbody = cq.Workplane('XZ').circle(8).extrude(-16)\nbore = cq.Workplane('XZ').polyline(pts).close().extrude(-16)\npart = body.cut(bore)"
+}

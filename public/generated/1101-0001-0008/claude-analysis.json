@@ -1,0 +1,47 @@
+{
+  "partType": "bracket",
+  "summary": "U-shaped clevis bracket, 12 mm wide and 12 mm tall with an 8 mm length. The base is 1.5 mm thick and each side wall is 2 mm thick. A 4 mm hole passes through both side walls, 8 mm up from the bottom face.",
+  "boundsMm": {
+    "x": 12,
+    "y": 8,
+    "z": 12
+  },
+  "holes": [
+    {
+      "axis": "x",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          0,
+          2
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -6,
+      "description": "Bottom outer face of the base, 8 x 12 mm, 1.5 mm thick"
+    },
+    {
+      "axis": "x",
+      "offsetMm": -6,
+      "description": "Outer face of the left side wall, 8 x 12 mm, 2 mm thick, with the 4 mm hole"
+    },
+    {
+      "axis": "x",
+      "offsetMm": 6,
+      "description": "Outer face of the right side wall, 8 x 12 mm, 2 mm thick, with the 4 mm hole"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -4.5,
+      "description": "Inner channel floor between the walls, 8 x 8 mm"
+    }
+  ],
+  "confidence": "high",
+  "notes": "Dimensions come from the printed drawing: 12 mm width, 12 mm height, 8 mm length, 2 mm walls, 1.5 mm base, Ø4 mm hole centered along the length and 8 mm from the bottom. The box is centered on the origin, with x across the U opening, y along the 8 mm length and z up. The hole is at z = 8 - 6 = +2. The render also shows a hole in the base, but its diameter is not dimensioned and it is not in the drawing views, so it is left out of the holes list. The catalog JSON gives only the 8 mm length and is marked unverified."
+}

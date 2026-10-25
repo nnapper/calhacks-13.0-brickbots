@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Cylindrical planetary gear motor with axis along Z, centered at X=0, Z from -62 to 62, bottom at Y=0 (axis at Y=18). 36 mm gearbox section, slightly smaller motor can at the rear, and an 8 mm round output shaft 23.5 mm long toward +Z from the gearbox face at Z=38.5.",
+  "confidence": "low",
+  "warnings": [
+    "Total body length (about 100.5 mm) is estimated, not stated.",
+    "Gearbox/can split position (Z=-23.5) is estimated.",
+    "Motor can diameter (35 mm) is a guess.",
+    "REX shaft profile simplified to a plain 8 mm round; no flats or grooves modeled.",
+    "Face mounting holes omitted because their pattern is not dimensioned.",
+    "Wires, connectors, encoder, rear can features and labels omitted.",
+    "The listed 'length: 24' was treated as the shaft length, not the body length."
+  ],
+  "cadquery": "gear_len = 62.0\ncan_len = 62.0 - 0.0\nR_g = 18.0\ncy = 18.0\nz_face = 38.5\nz_back = -62.0\nz_split = -23.5\n# gearbox section (36 mm dia)\ngearbox = cq.Workplane('XY').workplane(offset=z_split).center(0, cy).circle(R_g).extrude(z_face - z_split)\n# motor can (RS-560, approx 35 mm dia)\ncan = cq.Workplane('XY').workplane(offset=z_back).center(0, cy).circle(17.5).extrude(z_split - z_back)\n# output shaft 8 mm dia, 23.5 mm long toward +Z\nshaft = cq.Workplane('XY').workplane(offset=z_face).center(0, cy).circle(4.0).extrude(23.5)\npart = gearbox.union(can).union(shaft)"
+}

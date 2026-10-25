@@ -1,0 +1,191 @@
+{
+  "partType": "bracket",
+  "summary": "Low-side U-channel, 48 mm long, with a 48 mm wide by 12 mm tall U profile and 2.5 mm walls. The base has an 8 mm hole grid with a central 14 mm bore. Each upright flange has a row of 5 holes at 8 mm pitch.",
+  "boundsMm": {
+    "x": 48,
+    "y": 48,
+    "z": 12
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          -4.75
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -16,
+          16,
+          -4.75
+        ],
+        [
+          -8,
+          16,
+          -4.75
+        ],
+        [
+          8,
+          16,
+          -4.75
+        ],
+        [
+          16,
+          16,
+          -4.75
+        ],
+        [
+          -16,
+          8,
+          -4.75
+        ],
+        [
+          -8,
+          8,
+          -4.75
+        ],
+        [
+          8,
+          8,
+          -4.75
+        ],
+        [
+          16,
+          8,
+          -4.75
+        ],
+        [
+          -16,
+          -8,
+          -4.75
+        ],
+        [
+          -8,
+          -8,
+          -4.75
+        ],
+        [
+          8,
+          -8,
+          -4.75
+        ],
+        [
+          16,
+          -8,
+          -4.75
+        ],
+        [
+          -16,
+          -16,
+          -4.75
+        ],
+        [
+          -8,
+          -16,
+          -4.75
+        ],
+        [
+          8,
+          -16,
+          -4.75
+        ],
+        [
+          16,
+          -16,
+          -4.75
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "x",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -22.75,
+          -16,
+          2
+        ],
+        [
+          -22.75,
+          -8,
+          2
+        ],
+        [
+          -22.75,
+          0,
+          2
+        ],
+        [
+          -22.75,
+          8,
+          2
+        ],
+        [
+          -22.75,
+          16,
+          2
+        ],
+        [
+          22.75,
+          -16,
+          2
+        ],
+        [
+          22.75,
+          -8,
+          2
+        ],
+        [
+          22.75,
+          0,
+          2
+        ],
+        [
+          22.75,
+          8,
+          2
+        ],
+        [
+          22.75,
+          16,
+          2
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -6,
+      "description": "Outer face of the base plate (48 x 48 mm), which carries the 8 mm hole grid and central 14 mm bore."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -3.5,
+      "description": "Inner face of the base plate, between the flanges (43 mm clear width)."
+    },
+    {
+      "axis": "x",
+      "offsetMm": -24,
+      "description": "Outer face of the left flange (2.5 mm thick, 12 mm tall) with 5 holes at 8 mm pitch."
+    },
+    {
+      "axis": "x",
+      "offsetMm": 24,
+      "description": "Outer face of the right flange (2.5 mm thick, 12 mm tall) with 5 holes at 8 mm pitch."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The bounding box is centered on the part. The y axis runs along the 48 mm length, x across the U width, and z is height with the base bottom at z = -6. Dimensions come from the printed drawing: 48 mm width, 12 mm height, 2.5 mm walls, 43 mm inner width, 8 mm grid, and 4 mm and 14 mm hole diameters. Flange holes are 8 mm above the base's outer face. The drawing also shows 4 slots of about 4 mm width around the central bore (a 24 mm reference circle and a 16 mm diamond pattern). Their exact dimensions are not given, so they are omitted from the hole list. The base holes sit on the 8 mm grid at x = ±8, ±16 and y = ±8, ±16, with z at mid base thickness (-4.75). The name says '1 Hole', but the drawing shows the 5-hole flange pattern. The 14 mm bore is a through hole in the base. The sourced metadata is flagged unverified, so treat positions as approximate."
+}

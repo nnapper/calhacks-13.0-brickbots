@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Flat circular steel flywheel plate, 82 mm OD and about 6.4 mm thick, with the thickness along Y and the bottom at Y=0. It has a 52 mm central opening with four inward lobes on the diagonals. Eight 4.2 mm through holes sit on a 35 mm radius bolt circle. Each lobe has a hex pocket (about 7 mm across flats, 3 mm deep) with a 4.2 mm through hole on a 20 mm radius.",
+  "confidence": "low",
+  "warnings": [
+    "Thickness (6.4 mm) is estimated from the steel mass and not stated; the mass suggests it could be nearer 5-6 mm.",
+    "The central opening profile, lobe size and lobe shape are approximated; the real cutout has more detailed contours.",
+    "Outer holes are placed at 22.5° offsets between the diagonal hex pockets, as seen in the image; the analysis JSON listed them at 0°/45°.",
+    "Hole diameters, bolt-circle radii and hex pocket size and depth are estimated.",
+    "Counterbores or countersinks on the outer holes are omitted because their dimensions are uncertain.",
+    "The engraved ring groove and the goBILDA.com text are not modelled."
+  ],
+  "cadquery": "t = 6.4\nr_out = 35.0\nouter_pts = [(r_out*math.cos(math.radians(22.5+45*k)), r_out*math.sin(math.radians(22.5+45*k))) for k in range(8)]\ninner_pts = [(20*math.cos(math.radians(45+90*k)), 20*math.sin(math.radians(45+90*k))) for k in range(4)]\n\n# base disc (thickness along +Y, bottom at Y=0)\nplate = cq.Workplane('XZ').circle(41).extrude(-t)\n# large central opening\nplate = plate.cut(cq.Workplane('XZ').circle(26).extrude(-t))\n# four inward lobes on the diagonals\nfor a in (45, 135, 225, 315):\n    lobe = (cq.Workplane('XY').box(14, t, 16, centered=(True, False, True))\n            .translate((20, 0, 0)).rotate((0, 0, 0), (0, 1, 0), a))\n    plate = plate.union(lobe)\n# outer mounting holes\nplate = plate.cut(cq.Workplane('XZ').pushPoints(outer_pts).circle(2.1).extrude(-t))\n# inner small through holes\nplate = plate.cut(cq.Workplane('XZ').pushPoints(inner_pts).circle(2.1).extrude(-t))\n# hex pockets from the top face\nplate = plate.cut(cq.Workplane('XZ').workplane(offset=-t).pushPoints(inner_pts).polygon(6, 8).extrude(3))\npart = plate"
+}

@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "U-channel with a 4 mm thick base, 48 mm long along X and 48 mm wide along Z. Two 4 mm thick flanges rise along the long edges to a total height of 16 mm. Each flange has 5 through holes of 4 mm diameter on an 8 mm pitch, and the base has a central 14 mm through hole.",
+  "confidence": "low",
+  "warnings": [
+    "Only the 48 mm length is given. Width (48 mm), height (16 mm) and wall thickness (4 mm) are estimates.",
+    "The flange hole diameter (4 mm) and height (10 mm) are estimated.",
+    "The central hole diameter (14 mm) is estimated.",
+    "The smaller holes around the central hole in the base are visible, but their positions and sizes are uncertain, so they are omitted.",
+    "Countersinks or chamfers on the holes are not modeled."
+  ],
+  "cadquery": "outer = cq.Workplane('XY').box(48, 16, 48, centered=(True, False, True))\ninner = cq.Workplane('XY').box(48, 12, 40, centered=(True, False, True)).translate((0, 4, 0))\npart = outer.cut(inner)\nflange_holes = cq.Workplane('XY').pushPoints([(x, 10) for x in (-16, -8, 0, 8, 16)]).circle(2).extrude(30, both=True)\npart = part.cut(flange_holes)\ncenter_hole = cq.Workplane('XZ').circle(7).extrude(10, both=True)\npart = part.cut(center_hole)"
+}

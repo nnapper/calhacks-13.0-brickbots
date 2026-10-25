@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "20-tooth MOD 0.8 spur pinion (tip dia 17.6 mm, pitch dia 16 mm, trapezoidal approximated teeth, 8 mm long) with a 14 mm dia plain hub (8 mm long), total 16 mm height along Y, bottom at Y=0. 8 mm across-flats hex through-bore along the axis and one radial 3 mm set-screw hole in the hub.",
+  "confidence": "low",
+  "warnings": [
+    "Gear axis placed along Y (bottom at Y=0) per the rules, although the image analysis listed the axis as Z.",
+    "Teeth are simplified trapezoids, not true involute profiles.",
+    "Total length 16 mm, hub diameter 14 mm, and the 8/8 split between teeth and hub are estimated from the image.",
+    "Set-screw hole diameter (3 mm) and position are assumed; only one is visible, though the product text mentions two.",
+    "Hex bore assumed to be 8 mm across flats and through the full length."
+  ],
+  "cadquery": "N=20\nm=0.8\nrp=m*N/2\nrr=rp-1.25*m\nro=rp+m\np=2*math.pi/N\npts=[]\nfor i in range(N):\n    a=i*p\n    for r,d in ((rr,-0.30),(ro,-0.17),(ro,0.17),(rr,0.30)):\n        t=a+d*p\n        pts.append((r*math.cos(t),r*math.sin(t)))\nteeth=cq.Workplane('XY').polyline(pts).close().extrude(8)\nhub=cq.Workplane('XY').workplane(offset=8).circle(7).extrude(8)\nbody=teeth.union(hub)\nbore=cq.Workplane('XY').polygon(6,8/math.cos(math.pi/6)).extrude(16)\nbody=body.cut(bore)\nscrew=cq.Workplane('YZ').workplane(offset=0).center(0,12).circle(1.5).extrude(8)\nbody=body.cut(screw)\npart=body.rotate((0,0,0),(1,0,0),-90)"
+}

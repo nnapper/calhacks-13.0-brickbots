@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1120 Series U-Channel (1 Hole, 48mm Length)",
+    "sku": "1120-0001-0048",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1120-series-u-channel-1-hole-48mm-length/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "X is the channel length (48mm from the SKU), Y is the width, and Z is the height, with the origin at the center of the bounding box. The 48mm width, 43mm inside width and 2.5mm wall thickness are printed in the Insight #2 drawing. The 48mm height is scaled from that drawing (the wall edge sits 24mm past the center line). Hole diameters and positions are not dimensioned in the images, so the holes list is left empty rather than guessed. The 24mm pattern pitch is stated in the drawing text.",
+      "Hole patterns are omitted because their diameters and positions are not dimensioned in the images.",
+      "The 48mm overall height is scaled from the drawing and is unverified.",
+      "The orientation is remapped so the web is the bottom face at Y=0, which differs from the analysis axes.",
+      "Only the 2.5mm wall and web thickness and the 43mm inside width come from the drawing."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -24,
+      "xmax": 24,
+      "ymin": 0,
+      "ymax": 48,
+      "zmin": -24,
+      "zmax": 24,
+      "xlen": 48,
+      "ylen": 48,
+      "zlen": 48
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 30103,
+        "sha256": "caa20ad75e15e0d52b350452f0ce353b9f729a97f16820c1c7de5c42e9886ca8"
+      },
+      "model.stl": {
+        "bytes": 1484,
+        "sha256": "3c56cd32d7aefd6302c057d66238f3f5ad346d519d783867708deb1798cbd5ee"
+      },
+      "model.glb": {
+        "bytes": 1536,
+        "sha256": "4069ade5394b64d78606b0943a15d694f0947b3f3c667eb6bfd20911e7165ce1"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "caa20ad75e15e0d52b350452f0ce353b9f729a97f16820c1c7de5c42e9886ca8"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

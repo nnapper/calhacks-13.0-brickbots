@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Flat 18-tooth 8mm-pitch (05B) sprocket, 49.2mm OD, 46.1mm pitch diameter, 2.4mm thick, with a 14mm through bore and four 4mm through holes on a 16mm square pattern. The disc axis runs along Y, with the bottom face at Y=0 and the top at Y=2.4. It is centered in X and Z.",
+  "confidence": "medium",
+  "warnings": [
+    "Tooth profile is simplified: round 5.4mm roller seats at the pitch radius with a straight flared opening to the OD. It is not a true ANSI/ISO 05B tooth form.",
+    "The four unlabeled slotted holes on the X and Z axes (about 11.3mm radius) are omitted because they are not dimensioned.",
+    "The 24mm dimension is ambiguous and was not used.",
+    "The tooth gaps are phased with one gap on the +X axis, and the drawing's phase may differ.",
+    "The 5.4mm roller seat is assumed, not stated in the drawing."
+  ],
+  "cadquery": "r = 23.05\nt = 2.4\nbody = cq.Workplane('XY').circle(24.6).extrude(t)\ngap = (cq.Workplane('XY').center(r, 0).circle(2.7).extrude(t)\n       .union(cq.Workplane('XY').polyline([(r, -2.7), (26, -4.0), (26, 4.0), (r, 2.7)]).close().extrude(t)))\nfor i in range(18):\n    body = body.cut(gap.rotate((0, 0, 0), (0, 0, 1), i * 20))\nbody = body.cut(cq.Workplane('XY').circle(7).extrude(t))\nbody = body.cut(cq.Workplane('XY').pushPoints([(8, 8), (-8, 8), (-8, -8), (8, -8)]).circle(2).extrude(t))\npart = body.rotate((0, 0, 0), (1, 0, 0), -90)"
+}

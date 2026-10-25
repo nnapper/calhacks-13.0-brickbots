@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Flat rectangular aluminum plate, 43 mm (X) by 96 mm (Z) by an estimated 4 mm thick (Y, bottom at Y=0), centered in X and Z. Three 14 mm through-holes sit on the centerline at 32 mm pitch along the long axis. The small holes and slots are not modeled.",
+  "confidence": "low",
+  "warnings": [
+    "Thickness is not stated, so the 4 mm value is an estimate.",
+    "The 14 mm diameter and 32 mm pitch of the large holes are estimated from image proportions.",
+    "The many small round holes and the slots are omitted because their sizes and positions are not given or measurable.",
+    "The 43 x 96 mm outline comes from unverified supplied data.",
+    "No corner radii or edge fillets are modeled because none are clearly visible."
+  ],
+  "cadquery": "t = 4.0\nplate = cq.Workplane('XY').box(43, t, 96, centered=(True, False, True))\nholes = (cq.Workplane('XZ').pushPoints([(0, -32), (0, 0), (0, 32)]).circle(7.0).extrude(-t))\npart = plate.cut(holes)"
+}

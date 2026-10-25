@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Shark-3 Servo Gearbox (0.42 sec/60°, 24 RPM, 1416 oz-in Torque, 840° Rotation)",
+    "sku": "3216-0001-0003",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/shark-3-servo-gearbox-0-42-sec-60-24-rpm-1416-oz-in-torque-840-rotation/?sku=3216-0001-0003"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are printed in the images, and the supplied dimensions are null and flagged unverified. The only supplied dimension used is the 8 mm shaft size, which I applied to the hex bore. Bounds are estimated from the side-view pixel proportions, assuming the large gear is about 80 mm across, so they are approximate. The gear axis is taken as z. Hole positions on the bracket faces were not extracted; only the central hex bore is listed. The x position of the bore is estimated from its offset relative to the bounding-box center.",
+      "No real dimensions were provided; sizes are estimated from the image and bounds.",
+      "Gear teeth are omitted and the gears are modeled as plain discs.",
+      "Bracket mounting holes, the servo horn, wires and connector are omitted because their positions are uncertain.",
+      "Only one ring of lightening holes is modeled; the real gear has several rings.",
+      "The overall X extent is slightly larger than the estimated 106 mm bounds (about 114 mm)."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -56.5,
+      "xmax": 57.5,
+      "ymin": 0,
+      "ymax": 85,
+      "zmin": -27.5,
+      "zmax": 3.5000000000000013,
+      "xlen": 114,
+      "ylen": 85,
+      "zlen": 31
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [31.0, 85.0, 114.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 127006,
+        "sha256": "037838f7efef4e18891476f3ed3e65a1613905a3ed0698bb065023bad2a383e5"
+      },
+      "model.stl": {
+        "bytes": 272984,
+        "sha256": "a19621c8c41558dc40e36056d9744b36c01a3352a72fa71a4f138e105597e127"
+      },
+      "model.glb": {
+        "bytes": 99036,
+        "sha256": "581834bb9be9a709a1fec8e7b13434c3991984caa15f9566dc00cc50cc656366"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "037838f7efef4e18891476f3ed3e65a1613905a3ed0698bb065023bad2a383e5"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

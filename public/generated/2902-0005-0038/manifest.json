@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "2902 Series Hinge (5 Hole, 38mm Length)",
+    "sku": "2902-0005-0038",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/2902-series-hinge-5-hole-38mm-length/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 38 mm length is stated by the source, and it is marked unverified. It fits 5 holes at 8 mm pitch (32 mm span) plus about 3 mm of edge margin at each end. Width (32 mm) and thickness (8 mm) are visual estimates. The 4 mm hole diameter is inferred from the M4 screws shown in the images. Hole depth is not visible, so 'through' is set to false. The hinge rotates 278 degrees about the barrel axis, which runs along y. Leaf positions at x = ±10 mm are approximate.",
+      "Width (32 mm), thickness (8 mm) and barrel diameter (8 mm) are visual estimates; only the 38 mm length is stated, and it is unverified.",
+      "The leaves are merged with the barrel into one solid. The real hinge has separate leaves, a stainless steel pin and a 278° rotation range, and the knuckle split is not modeled.",
+      "Hole diameter is approximated at 3.4 mm, an M4 tap-drill size inferred from the screws shown. Threads are not modeled, and hole depth is a guess.",
+      "The Y axis is the 38 mm hinge length, following the image analysis. The bottom of the part is at Y=0, with X and Z centered.",
+      "The leaf and barrel profiles are simplified. The stepped knuckles, the end pin and any chamfers are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -16,
+      "xmax": 16,
+      "ymin": 0,
+      "ymax": 38,
+      "zmin": -4,
+      "zmax": 4,
+      "xlen": 32,
+      "ylen": 38,
+      "zlen": 8
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 85950,
+        "sha256": "2f5662a4e21adc1585b8c14dd0d71b38d04a161ca182466398c3bcb01d803f67"
+      },
+      "model.stl": {
+        "bytes": 179084,
+        "sha256": "1d582b9f9d10ca9cebb22010c93c44a0feb06d8b3de13f4efdd31d5e8c96de6c"
+      },
+      "model.glb": {
+        "bytes": 65484,
+        "sha256": "47e6bb881c8b7eea003b50f45fa07c66acb30711010300f3e0f7108dc8e2ce5b"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "2f5662a4e21adc1585b8c14dd0d71b38d04a161ca182466398c3bcb01d803f67"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

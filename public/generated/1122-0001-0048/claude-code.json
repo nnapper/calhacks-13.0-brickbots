@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "48mm long aluminum rail-channel, 72mm wide (Y, 0 to 72) and 16mm high (Z). It has a 4mm thin web in the XY plane, with 8mm x 16mm solid rail bars along both long edges. A 14mm through hole sits at the center of the web. Each rail end has a blind 3.3mm axial hole, 8mm deep.",
+  "confidence": "low",
+  "warnings": [
+    "The web thickness of 4mm and the rail section of 8x16mm are assumed. The real I-shaped profile with paired rails and a running groove is simplified to solid rectangular flanges.",
+    "The 14mm center bore diameter is an assumed nominal value.",
+    "The small grid holes and slots in the web are omitted because their sizes and positions are not legible.",
+    "End holes are placed at z=±4 in the rail centers and are 8mm deep. This differs from the analysis positions at z=±8, which lie outside the 16mm envelope. Hole depth and diameter are assumed.",
+    "Overall dimensions other than the 48mm length are scaled estimates."
+  ],
+  "cadquery": "web = cq.Workplane('XY').box(48, 72, 4, centered=(True, False, True))\nflange = cq.Workplane('XY').box(48, 8, 16, centered=(True, False, True))\npart = web.union(flange).union(flange.translate((0, 64, 0)))\nbore = cq.Workplane('XY').cylinder(20, 7).translate((0, 36, 0))\npart = part.cut(bore)\nfor x0 in (-24, 16):\n    for y in (4, 68):\n        for z in (-4, 4):\n            h = cq.Solid.makeCylinder(1.65, 8, cq.Vector(x0, y, z), cq.Vector(1, 0, 0))\n            part = part.cut(cq.Workplane('XY').add(h))\n"
+}

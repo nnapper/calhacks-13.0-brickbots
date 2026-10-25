@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Stepped round standoff post along +Y with its base at Y=0: 6 mm dia x 19 mm shaft, 10 mm dia x 10 mm roller section with 1 mm chamfers on both ends, and a 7 mm dia x 4 mm cap on top (total height 33 mm). A 4 mm dia x 8 mm deep blind hole is cut into the base face, standing in for the M4 tapped hole.",
+  "confidence": "medium",
+  "warnings": [
+    "Cap diameter (about 7 mm) and cap height (about 4 mm) are estimated from the drawing scale and are not printed on it.",
+    "Chamfer size (1 mm) is estimated from the drawing scale.",
+    "The 3 mm hex drive socket in the cap is omitted because its depth is not shown.",
+    "Threads are not modeled. The M4 base hole is a plain 4 mm nominal-diameter blind hole, 8 mm deep.",
+    "The 4 mm base hole diameter is the nominal M4 size rather than a tap-drill size."
+  ],
+  "cadquery": "shaft = cq.Workplane('XY').circle(3).extrude(19)\nroller = cq.Workplane('XY').workplane(offset=19).circle(5).extrude(10).edges().chamfer(1)\ncap = cq.Workplane('XY').workplane(offset=29).circle(3.5).extrude(4)\nbody = shaft.union(roller).union(cap)\nhole = cq.Workplane('XY').circle(2).extrude(8)\nbody = body.cut(hole)\npart = body.rotate((0, 0, 0), (1, 0, 0), -90)"
+}

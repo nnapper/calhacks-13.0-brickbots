@@ -1,0 +1,47 @@
+{
+  "partType": "bracket",
+  "summary": "L-shaped right-angle bracket with a 12 mm x 12 mm profile, 2.5 mm leg thickness and 8 mm length. The dimensioned drawing shows one 4 mm hole through the vertical leg. Coordinates: x is the horizontal leg direction, y is the 8 mm length, z is the vertical leg direction, and the bounding box is centered on the origin.",
+  "boundsMm": {
+    "x": 12,
+    "y": 8,
+    "z": 12
+  },
+  "holes": [
+    {
+      "axis": "x",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -4.75,
+          0,
+          2
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": -6,
+      "description": "Outer face of the vertical leg, 2.5 mm thick. It carries the 4 mm through hole, which is centered across the 8 mm width and 8 mm up from the bottom face."
+    },
+    {
+      "axis": "x",
+      "offsetMm": -3.5,
+      "description": "Inner face of the vertical leg, which forms the internal corner with the horizontal leg."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -6,
+      "description": "Bottom face of the horizontal leg, 12 mm x 8 mm."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -3.5,
+      "description": "Top face of the horizontal leg, which forms the internal corner with the vertical leg."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The drawing gives 12 mm x 12 mm outer legs, 2.5 mm thickness, 8 mm width, and a 4 mm hole centered across the width and 8 mm above the bottom. The 8 mm length matches the product name. The hole center in x is the midpoint of the 2.5 mm leg (-6 + 1.25). The product render shows a second hole in the horizontal leg, but the dimensioned drawing does not locate or size one, so none is listed. Hole position, thread and any countersink are not specified beyond the 4 mm diameter. Hole depth is assumed through the 2.5 mm leg."
+}

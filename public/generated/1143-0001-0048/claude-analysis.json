@@ -1,0 +1,104 @@
+{
+  "partType": "bracket",
+  "summary": "Mini low-side U-channel in aluminum, 48 mm long. A flat base has a large central hole and smaller surrounding holes. Two short parallel flanges rise from the long edges, each with a row of 5 evenly spaced round holes.",
+  "boundsMm": {
+    "x": 48,
+    "y": 48,
+    "z": 16
+  },
+  "holes": [
+    {
+      "axis": "y",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -16,
+          -24,
+          0
+        ],
+        [
+          -8,
+          -24,
+          0
+        ],
+        [
+          0,
+          -24,
+          0
+        ],
+        [
+          8,
+          -24,
+          0
+        ],
+        [
+          16,
+          -24,
+          0
+        ],
+        [
+          -16,
+          24,
+          0
+        ],
+        [
+          -8,
+          24,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          8,
+          24,
+          0
+        ],
+        [
+          16,
+          24,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          -8
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -8,
+      "description": "Outer face of the base, which sits flat against a mating part."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 8,
+      "description": "Top edges of the two flanges."
+    },
+    {
+      "axis": "y",
+      "offsetMm": -24,
+      "description": "Outer face of the first flange, with a row of 5 holes."
+    },
+    {
+      "axis": "y",
+      "offsetMm": 24,
+      "description": "Outer face of the second flange, with a row of 5 holes."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The metadata lists only the 48 mm length, so the 48 mm width and 16 mm height are estimated from the images, the 16 mm pattern note and the 8 mm hole pitch. The 4 mm and 14 mm hole diameters and the flange hole positions are also estimated. The base also has several smaller holes arranged around the central hole. Their exact positions and sizes are not clear enough to list, so they are left out. Wall thickness is not given and is not modeled."
+}

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1802 Series Servo Frame (43mm Width, for Standard Size Servos)",
+    "sku": "1802-0043-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1802-series-servo-frame-43mm-width-for-standard-size-servos/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 43 mm width comes from the product data, and the source marks it as unverified. Length and thickness are rough estimates from image proportions. Hole counts and positions are approximate readings from the renders. The included hardware (4 screws, 4 washers) is not modeled. The 32 mm and 24 mm hole patterns are mentioned in the description but not confirmed by the images.",
+      "Only the 43 mm width comes from product data, and the source marks it as unverified. The 65 mm length and 12 mm thickness are estimates from the analysis.",
+      "The stepped and offset corner tabs and notches visible in the render are omitted and replaced by a plain rectangular outline.",
+      "The window size (23 x 41 mm) is estimated.",
+      "Hole positions and counts are approximate. The 32 mm and 24 mm hole patterns from the description are not confirmed.",
+      "The extra tapped holes visible on the tab faces and end faces are only partly modeled.",
+      "Threads, the included screws and the included washers are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -21.5,
+      "xmax": 21.5,
+      "ymin": 0,
+      "ymax": 12,
+      "zmin": -32.5,
+      "zmax": 32.5,
+      "xlen": 43,
+      "ylen": 12,
+      "zlen": 65
+    },
+    "warnings": [
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 60440,
+        "sha256": "38e566f4283681c5cb8357b57036782a3b474ec7d1b064c5dba0db9b5a15d1b7"
+      },
+      "model.stl": {
+        "bytes": 136884,
+        "sha256": "6aac82705490db65471cd5702eecde81bd89a1cba1594c0fefcc6e59e18c83fe"
+      },
+      "model.glb": {
+        "bytes": 50168,
+        "sha256": "5e38e37cbbd9d5a801bb9929ef2db5287febc3e11f19eccf349c43e8d530800b"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "38e566f4283681c5cb8357b57036782a3b474ec7d1b064c5dba0db9b5a15d1b7"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

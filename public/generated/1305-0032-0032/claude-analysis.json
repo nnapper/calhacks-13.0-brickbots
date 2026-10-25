@@ -1,0 +1,76 @@
+{
+  "partType": "other",
+  "summary": "Flat clamping hub, a ring with a central 32 mm bore, four lobed mounting ears on a square pattern, and a split clamp block at the top. A cap screw across the slit tightens the clamp. Dimensions are scaled from the drawing views using the 32 mm bore as the reference.",
+  "boundsMm": {
+    "x": 40,
+    "y": 47,
+    "z": 8
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 32,
+      "positionsMm": [
+        [
+          0,
+          -3.6,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -16,
+          12.4,
+          0
+        ],
+        [
+          16,
+          12.4,
+          0
+        ],
+        [
+          -16,
+          -19.6,
+          0
+        ],
+        [
+          16,
+          -19.6,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "x",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          20.4,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 4,
+      "description": "Front flat face of the ring and ears, used for mounting with the four holes on a 32 mm square pattern"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -4,
+      "description": "Rear flat face of the ring and ears, which mirrors the front face"
+    }
+  ],
+  "confidence": "low",
+  "notes": "The scale comes from the 32 mm bore (about 35.8 px/mm in the front views). Hole spacing measures about 32 mm in both directions. The bore center sits about 3.6 mm below the bbox center because the clamp block extends upward. The 8 mm thickness is a visual estimate from the isometric view and is not printed anywhere. The 4 mm mounting hole and 3 mm clamp-screw diameters are also estimates. The product data has no dimensions and is marked unverified. The clamp slit is about 2 mm wide and runs from the bore to the top edge at x=0."
+}

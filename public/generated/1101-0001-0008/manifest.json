@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1101 Series U-Beam (1 Hole, 8mm Length)",
+    "sku": "1101-0001-0008",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1101-series-u-beam-1-hole-8mm-length/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "high",
+    "codeConfidence": "high",
+    "warnings": [
+      "Dimensions come from the printed drawing: 12 mm width, 12 mm height, 8 mm length, 2 mm walls, 1.5 mm base, Ø4 mm hole centered along the length and 8 mm from the bottom. The box is centered on the origin, with x across the U opening, y along the 8 mm length and z up. The hole is at z = 8 - 6 = +2. The render also shows a hole in the base, but its diameter is not dimensioned and it is not in the drawing views, so it is left out of the holes list. The catalog JSON gives only the 8 mm length and is marked unverified.",
+      "The render may show a hole in the base. It is not dimensioned in the drawing, so it was omitted.",
+      "The axes follow the prompt's convention (Y up, bottom at Y=0), which differs from the analysis JSON's Z-up convention."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -6,
+      "xmax": 6,
+      "ymin": 0,
+      "ymax": 12,
+      "zmin": -4,
+      "zmax": 4,
+      "xlen": 12,
+      "ylen": 12,
+      "zlen": 8
+    },
+    "warnings": [
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 37345,
+        "sha256": "46c7af274959db8cf9b17ce5ae79bcb622584e21ceec49168bdf8305db268a44"
+      },
+      "model.stl": {
+        "bytes": 35484,
+        "sha256": "d1b8158368e4030f6b73edd01300751f7890ccbfdf6ec499a8c96c9e37fabb10"
+      },
+      "model.glb": {
+        "bytes": 13736,
+        "sha256": "de269b06d0c188dce573f47ff3592cb5ae523d393f51727b09213fba4bc060b6"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "46c7af274959db8cf9b17ce5ae79bcb622584e21ceec49168bdf8305db268a44"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

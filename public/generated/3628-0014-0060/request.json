@@ -1,0 +1,10 @@
+{
+  "name": "Steel Flywheel (60mm Diameter, 115g, 551 g·cm²)",
+  "sku": "3628-0014-0060",
+  "category": "flywheels",
+  "sourceUrl": "https://www.gobilda.com/steel-flywheel-60mm-diameter-115g-551-g-cm/",
+  "expectedDimensionsMm": [
+    60
+  ],
+  "units": "millimeter"
+}

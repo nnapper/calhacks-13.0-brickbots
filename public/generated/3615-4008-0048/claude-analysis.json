@@ -1,0 +1,37 @@
+{
+  "partType": "wheel",
+  "summary": "Six-spoke intake boot wheel, 48 mm outer diameter, with a central 8mm REX hex bore through the hub. The bore axis is Z. Each spoke ends in a flared, rubber-gripping tip, and the spokes are separated by rounded scallops.",
+  "boundsMm": {
+    "x": 48,
+    "y": 48,
+    "z": 16
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 8,
+      "description": "Flat axial face on the +Z side. Axial location on the shaft is constrained externally, for example by spacers or a collar."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -8,
+      "description": "Flat axial face on the -Z side. It abuts adjacent spacers or wheels in the stacked shaft assembly."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The 48 mm diameter and 8 mm REX bore are stated in the product data and the drawings. The wheel thickness (Z = 16 mm) is not printed anywhere. It is a visual estimate from the 16 mm spacer shown beside the wheels in the exploded views, so treat it as unverified. The bore is a hex (REX) profile, so 8 mm is the nominal size across its flats. The spoke tip geometry is approximate."
+}

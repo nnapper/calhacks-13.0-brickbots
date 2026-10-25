@@ -1,0 +1,37 @@
+{
+  "partType": "wheel",
+  "summary": "Cylindrical silicone intake roller, 16 mm OD by 16 mm wide, with a central hexagonal bore along the axis. The bore is undersized (5 mm across flats uninstalled) and stretches over an 8 mm REX shaft, so the installed OD grows to about 17 mm.",
+  "boundsMm": {
+    "x": 16,
+    "y": 16,
+    "z": 16
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 5,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 8,
+      "description": "Flat circular end face on the +Z side, 16 mm diameter, with the hex bore opening at its center"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -8,
+      "description": "Flat circular end face on the -Z side, 16 mm diameter, with the hex bore opening at its center"
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The drawing prints 16 mm OD, 16 mm width and a 5 mm hex dimension. The 5 mm figure is taken as across flats, and the hole diameter is recorded as 5 mm. The listing's 8 mm bore refers to the REX shaft it stretches over, not the uninstalled hole. The through bore is inferred from the installed view, where the shaft protrudes from both ends. The installed OD of about 17 mm is not used for the base geometry. Bore axis is set to Z and the part is centered at the origin."
+}

@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Rectangular aluminium servo block plate (56 x 12 x 27 mm, bottom at Y=0) with a 14mm-diameter hub-shaft boss rising 8mm from the top face at one end (with a 20mm flange on top), a 16mm through window at the other end for the servo spline/label, four blind tapped-size holes in a 16mm square around the hub, and blind M4-size holes in both long side faces.",
+  "confidence": "low",
+  "warnings": [
+    "Only the 27mm width and 8mm hub rise are stated; length (56), plate height (12), hub flange size (20mm dia, 3mm) are estimated.",
+    "Hub-shaft modeled as a plain stepped cylinder; the spline, center screw, and six-hole hub pattern were omitted.",
+    "Window position and diameter (16mm at x=+14) are estimated from the image.",
+    "Threads omitted; tapped holes modeled as 3.4mm blind holes with estimated depth and positions.",
+    "Servo, bearing internals, servo mounting hardware, and underside/end-face details omitted."
+  ],
+  "cadquery": "L,W,H=56.0,27.0,12.0\nhx=-14.0\ndef pl(x,y,z,n):\n    return cq.Plane(origin=(x,y,z),xDir=(1,0,0),normal=n)\nbody=cq.Workplane('XY').box(L,H,W,centered=(True,False,True))\n# hub-shaft rising 8mm from the face\nboss=cq.Workplane(pl(hx,H,0,(0,1,0))).circle(7).extrude(8)\nflange=cq.Workplane(pl(hx,H+5,0,(0,1,0))).circle(10).extrude(3)\nbody=body.union(boss).union(flange)\n# servo spline clearance window\nwin=cq.Workplane(pl(-hx,-1,0,(0,1,0))).circle(8).extrude(H+2)\nbody=body.cut(win)\n# face tapped holes, 16mm square pattern around hub\nfor dx in (-8,8):\n    for dz in (-8,8):\n        h=cq.Workplane(pl(hx+dx,H-8,dz,(0,1,0))).circle(1.7).extrude(8.01)\n        body=body.cut(h)\n# side tapped holes on both long faces\nfor x in (-20,0):\n    h1=cq.Workplane(pl(x,H/2,W/2,(0,0,-1))).circle(1.7).extrude(8)\n    h2=cq.Workplane(pl(x,H/2,-W/2,(0,0,1))).circle(1.7).extrude(8)\n    body=body.cut(h1).cut(h2)\npart=body"
+}

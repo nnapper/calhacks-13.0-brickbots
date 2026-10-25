@@ -2,7 +2,12 @@
 .env.*
 !.env.example
 node_modules/
-data/*.log
 dist/
+*.tsbuildinfo
+public/vendor/
+.venv/
+__pycache__/
+.convex/
+data/*.log
 data/live-cache.json
 data/step/

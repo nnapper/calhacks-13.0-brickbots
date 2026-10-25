@@ -1,0 +1,9 @@
+{
+  "shapeSummary": "40 x 24 x 2.5 mm rectangular plate, thickness along Y from Y=0 to 2.5, centered in X and Z, with a 5 x 3 grid of 4 mm through holes on an 8 mm pitch (4 mm edge inset).",
+  "confidence": "high",
+  "warnings": [
+    "Hole axis is along Y, matching the thickness direction given the bottom-at-Y=0 convention, rather than the Z axis in the image analysis JSON.",
+    "Plate corners are modeled square, with no fillets, since none are visible."
+  ],
+  "cadquery": "part = (cq.Workplane('XZ').rect(40, 24).extrude(-2.5).faces('>Y').workplane(centerOption='CenterOfBoundBox').rarray(8, 8, 5, 3).hole(4))"
+}

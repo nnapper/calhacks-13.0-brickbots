@@ -1,0 +1,11 @@
+{
+  "name": "1116 Series Grid Plate (3 x 5 Hole, 24 x 40mm)",
+  "sku": "1116-0024-0040",
+  "category": "grid-plates",
+  "sourceUrl": "https://www.gobilda.com/1116-series-grid-plate-3-x-5-hole-24-x-40mm/",
+  "expectedDimensionsMm": [
+    40,
+    24
+  ],
+  "units": "millimeter"
+}

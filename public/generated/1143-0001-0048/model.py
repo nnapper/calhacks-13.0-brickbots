@@ -1,0 +1,7 @@
+outer = cq.Workplane('XY').box(48, 16, 48, centered=(True, False, True))
+inner = cq.Workplane('XY').box(48, 12, 40, centered=(True, False, True)).translate((0, 4, 0))
+part = outer.cut(inner)
+flange_holes = cq.Workplane('XY').pushPoints([(x, 10) for x in (-16, -8, 0, 8, 16)]).circle(2).extrude(30, both=True)
+part = part.cut(flange_holes)
+center_hole = cq.Workplane('XZ').circle(7).extrude(10, both=True)
+part = part.cut(center_hole)

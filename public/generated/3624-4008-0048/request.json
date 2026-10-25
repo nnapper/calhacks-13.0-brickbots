@@ -1,0 +1,11 @@
+{
+  "name": "48mm Omni Wheel (8mm REX® Bore, 50A Durometer)",
+  "sku": "3624-4008-0048",
+  "category": "omni-wheels",
+  "sourceUrl": "https://www.gobilda.com/48mm-omni-wheel-8mm-rex-bore-50a-durometer/",
+  "expectedDimensionsMm": [
+    48,
+    8
+  ],
+  "units": "millimeter"
+}

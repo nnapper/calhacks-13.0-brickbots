@@ -1,0 +1,37 @@
+{
+  "partType": "wheel",
+  "summary": "Round track idler wheel, 54 mm in diameter, with a 14 mm central bore. The face shows a recessed inner hub area and a raised outer rim. Lightening slots, smaller holes and screw bosses are visible on the face, but their sizes and positions are not given.",
+  "boundsMm": {
+    "x": 54,
+    "y": 54,
+    "z": 9
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 4.5,
+      "description": "Front face with the recessed hub area and outer rim, centered on the bore"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -4.5,
+      "description": "Opposite face, with the outer cylindrical rim as the track-contact surface"
+    }
+  ],
+  "confidence": "low",
+  "notes": "The 54 mm diameter and 14 mm bore come from the listed specs, which are marked unverified. The 9 mm thickness is a rough estimate from the product photos, since no thickness is printed or listed. The z axis is the wheel axis. The smaller holes, slots, and bolt-circle bosses are visible, but no dimensions are given, so they are left out of the hole list. The inner hub step depth is also unknown."
+}

@@ -1,0 +1,13 @@
+{
+  "name": "GripForce Gecko™ Wheel (14mm Bore, 72mm Diameter, 30A Durometer)",
+  "sku": "3613-0014-0072",
+  "category": "gripforce-gecko-wheels",
+  "sourceUrl": "https://www.gobilda.com/gripforce-gecko-wheel-14mm-bore-72mm-diameter-30a-durometer/",
+  "expectedDimensionsMm": [
+    72,
+    72,
+    72,
+    14
+  ],
+  "units": "millimeter"
+}

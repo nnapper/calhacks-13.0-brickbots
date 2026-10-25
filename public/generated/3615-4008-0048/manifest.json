@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "3615 Series Boot-Wheel (8mm REX® Bore, 48mm Diameter, 30A Durometer)",
+    "sku": "3615-4008-0048",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/3615-series-boot-wheel-8mm-rex-bore-48mm-diameter-30a-durometer/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 48 mm diameter and 8 mm REX bore are stated in the product data and the drawings. The wheel thickness (Z = 16 mm) is not printed anywhere. It is a visual estimate from the 16 mm spacer shown beside the wheels in the exploded views, so treat it as unverified. The bore is a hex (REX) profile, so 8 mm is the nominal size across its flats. The spoke tip geometry is approximate.",
+      "The 16 mm thickness is estimated from the 16 mm spacer shown beside the wheels in the exploded views, not from a stated dimension.",
+      "The spoke tip shapes are approximated as flat-ended flares. The curved tip faces and rounded scallop fillets between spokes are not modeled.",
+      "The hex bore is modeled as 8 mm across flats, taking the nominal REX size as the flat-to-flat dimension.",
+      "The hub diameter and spoke widths are visual estimates.",
+      "The logos are omitted, as required."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -23,
+      "xmax": 23,
+      "ymin": 0.8314157129579097,
+      "ymax": 47.168584287042094,
+      "zmin": -8,
+      "zmax": 8,
+      "xlen": 46,
+      "ylen": 46.33716857408418,
+      "zlen": 16
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [16.0, 46.0, 46.33716857408418]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 202103,
+        "sha256": "b87a03bc542447fdef53b6fb99e41ace85ebe246b0890c7e1186cb2070439c2c"
+      },
+      "model.stl": {
+        "bytes": 15684,
+        "sha256": "d257cb68b5e584878aa5aae7b85b407c5582655646d4dc50e85231189a8f6b00"
+      },
+      "model.glb": {
+        "bytes": 6648,
+        "sha256": "6ece8fb53771f19eb58a0eeb1ef3ccae3a3a945553040fdaa774df1431630186"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "b87a03bc542447fdef53b6fb99e41ace85ebe246b0890c7e1186cb2070439c2c"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

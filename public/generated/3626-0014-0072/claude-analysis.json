@@ -1,0 +1,37 @@
+{
+  "partType": "wheel",
+  "summary": "72mm diameter traction wheel with a molded rubber tread, an open spoked hub face and a central bore. The axis of rotation is along z.",
+  "boundsMm": {
+    "x": 72,
+    "y": 72,
+    "z": 24
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 12,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 12,
+      "description": "Flat hub face with a bolt-circle pattern of small holes, used to attach a hub or flywheel with screws"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -12,
+      "description": "Opposite hub face, assumed to mirror the first for hub mounting"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 72mm diameter is stated. The 24mm width and the 12mm central bore are visual estimates, not printed values, so verify them against the vendor drawing. The bolt-circle holes are visible, but their diameter and positions are not given, so they are left out. The drawings show the wheel mounted on an 8mm REX shaft through a hub and fastened with M4 screws, which suggests a hub-mounted pattern, but no dimensions are printed."
+}

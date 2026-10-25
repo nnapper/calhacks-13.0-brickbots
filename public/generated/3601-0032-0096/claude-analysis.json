@@ -1,0 +1,194 @@
+{
+  "partType": "wheel",
+  "summary": "Rubber-tread wheel, 96mm diameter and 32mm wide, with a 32mm central bore. The hub plate is offset from center: 16mm from the mounting face to one wheel face and 8mm to the other. The plate has a 4mm hole pattern on an 8mm grid, plus a few slotted holes.",
+  "boundsMm": {
+    "x": 96,
+    "y": 96,
+    "z": 32
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 32,
+      "positionsMm": [
+        [
+          0,
+          0,
+          -4
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -8,
+          32,
+          -4
+        ],
+        [
+          0,
+          32,
+          -4
+        ],
+        [
+          8,
+          32,
+          -4
+        ],
+        [
+          -16,
+          24,
+          -4
+        ],
+        [
+          -8,
+          24,
+          -4
+        ],
+        [
+          8,
+          24,
+          -4
+        ],
+        [
+          16,
+          24,
+          -4
+        ],
+        [
+          -24,
+          16,
+          -4
+        ],
+        [
+          -16,
+          16,
+          -4
+        ],
+        [
+          16,
+          16,
+          -4
+        ],
+        [
+          24,
+          16,
+          -4
+        ],
+        [
+          -32,
+          8,
+          -4
+        ],
+        [
+          32,
+          8,
+          -4
+        ],
+        [
+          -32,
+          0,
+          -4
+        ],
+        [
+          32,
+          0,
+          -4
+        ],
+        [
+          -32,
+          -8,
+          -4
+        ],
+        [
+          -24,
+          -8,
+          -4
+        ],
+        [
+          24,
+          -8,
+          -4
+        ],
+        [
+          32,
+          -8,
+          -4
+        ],
+        [
+          -24,
+          -16,
+          -4
+        ],
+        [
+          -16,
+          -16,
+          -4
+        ],
+        [
+          16,
+          -16,
+          -4
+        ],
+        [
+          24,
+          -16,
+          -4
+        ],
+        [
+          -16,
+          -24,
+          -4
+        ],
+        [
+          -8,
+          -24,
+          -4
+        ],
+        [
+          8,
+          -24,
+          -4
+        ],
+        [
+          16,
+          -24,
+          -4
+        ],
+        [
+          -8,
+          -32,
+          -4
+        ],
+        [
+          0,
+          -32,
+          -4
+        ],
+        [
+          8,
+          -32,
+          -4
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Hub plate mounting face on the deeper recess side, 16mm from the nearer wheel face (z=+16)."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -8,
+      "description": "Opposite face of the 8mm-thick hub plate, 8mm from the other wheel face (z=-16)."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The wheel axis is Z, centered at the origin, so the faces sit at z=-16 and z=+16. The 96mm OD, 32mm width, 32mm bore, 8mm plate thickness and 16mm offset are printed on the drawing. The 76mm dimension is the inner recess diameter. The 4mm hole positions were read from the drawing's 8mm grid and are approximate. The pattern may not be perfectly symmetric, so the hole list should be checked against the source. Four slotted holes, at about (0,24), (0,-24), (-24,0) and (24,0), are not in the round-hole list because their slot length is not dimensioned. Hole z-positions use the plate mid-depth (z=-4). The dimensions in the supplied data are unverified."
+}

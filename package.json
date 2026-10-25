@@ -1,11 +1,17 @@
 {
-  "name": "brickbots",
+  "name": "buildflow",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "dev": "node scripts/dev.mjs",
+    "dev:web": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "test": "vitest run",
+    "preview": "vite preview --host 127.0.0.1",
+    "postinstall": "node scripts/prepare-cad.mjs",
+    "geometry": ".venv/bin/python -m uvicorn server.main:app --host 127.0.0.1 --port 8001",
+    "backend": "convex dev",
     "catalog:discover": "node --env-file=.env scripts/catalog.mjs discover",
     "catalog:scrape": "node --env-file=.env scripts/catalog.mjs scrape",
     "enrich:dims": "node scripts/enrich.mjs dims",
@@ -13,17 +19,30 @@
     "catalog:update": "npm run catalog:scrape && npm run enrich:images && npm run enrich:dims && npm run cad:dims && npm run prices:refresh",
     "enrich:images": "node scripts/enrich.mjs images",
     "prices:refresh": "node --env-file=.env scripts/apify-prices.mjs",
-    "part:add": "node --env-file=.env scripts/add-part.mjs"
+    "part:add": "node --env-file=.env scripts/add-part.mjs",
+    "nodes:image": "node --env-file=.env scripts/image-nodes.mjs",
+    "models:build": "node --env-file-if-exists=.env --env-file-if-exists=.env.local scripts/build-models.mjs",
+    "model:generate": "node --env-file-if-exists=.env.local scripts/generate-model.mjs"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "three": "^0.169.0"
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "convex": "^1.48.0",
+    "occt-import-js": "0.0.23",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "three": "^0.180.0",
+    "zod": "^4.1.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/three": "^0.180.0",
+    "@vitejs/plugin-react": "^5.0.0",
     "fflate": "^0.8.2",
-    "occt-import-js": "^0.0.22",
-    "vite": "^5.4.10"
+    "typescript": "^5.9.0",
+    "vite": "^7.1.0",
+    "vitest": "^5.0.5"
   }
 }

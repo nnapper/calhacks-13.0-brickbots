@@ -1,0 +1,9 @@
+{
+  "shapeSummary": "U-channel clevis, 12 mm wide (X), 12 mm tall (Y, bottom at Y=0) and 8 mm long (Z, centered). The base is 1.5 mm thick and the side walls are 2 mm thick. A single Ø4 mm hole runs along X through both walls, 8 mm above the bottom and centered along the length.",
+  "confidence": "high",
+  "warnings": [
+    "The render may show a hole in the base. It is not dimensioned in the drawing, so it was omitted.",
+    "The axes follow the prompt's convention (Y up, bottom at Y=0), which differs from the analysis JSON's Z-up convention."
+  ],
+  "cadquery": "outer = cq.Workplane('XY').box(12, 12, 8, centered=(True, False, True))\nslot = cq.Workplane('XY').box(8, 11, 8, centered=(True, False, True)).translate((0, 1.5, 0))\nhole = cq.Workplane('YZ').center(8, 0).circle(2).extrude(7, both=True)\npart = outer.cut(slot).cut(hole)"
+}

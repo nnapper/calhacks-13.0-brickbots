@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Intake Roller Wheel (8mm REX®, 16mm Diameter, 16mm Width, 30A Durometer) - 8 Pack",
+    "sku": "3618-4008-0016",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/intake-roller-wheel-8mm-rex-16mm-diameter-16mm-width-30a-durometer-8-pack/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The drawing prints 16 mm OD, 16 mm width and a 5 mm hex dimension. The 5 mm figure is taken as across flats, and the hole diameter is recorded as 5 mm. The listing's 8 mm bore refers to the REX shaft it stretches over, not the uninstalled hole. The through bore is inferred from the installed view, where the shaft protrudes from both ends. The installed OD of about 17 mm is not used for the base geometry. Bore axis is set to Z and the part is centered at the origin.",
+      "The drawing's 5 mm hex dimension is read as across flats. The listing's 8 mm bore is the REX shaft it stretches over, so it is not modeled.",
+      "The installed OD of about 17 mm is a stretched state and is ignored.",
+      "The axis is placed along Y to satisfy the bottom-at-Y=0 rule, although the image analysis listed the bore axis as Z.",
+      "The hex orientation (flats facing ±X) is taken from the drawing view and may differ from the real part.",
+      "The through bore is inferred from the installed view, where the shaft protrudes from both ends."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -8,
+      "xmax": 8,
+      "ymin": 0,
+      "ymax": 16,
+      "zmin": -8,
+      "zmax": 8,
+      "xlen": 16,
+      "ylen": 16,
+      "zlen": 16
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [16.0, 16.0, 16.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 27284,
+        "sha256": "ce6735bc45e1e5df62aa815c2c586ff9512b06d157cab0715d87be3d16ca87bb"
+      },
+      "model.stl": {
+        "bytes": 18084,
+        "sha256": "e7107ac34642faaaf8a4b7b0c8d4414c312d249cdf4ef982ae50fe78cb686325"
+      },
+      "model.glb": {
+        "bytes": 7492,
+        "sha256": "28570ce1105f4f201efdd7c4d5dc73340c59b8291f3349b1dc2b88baab392a99"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "ce6735bc45e1e5df62aa815c2c586ff9512b06d157cab0715d87be3d16ca87bb"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 62
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1116 Series Grid Plate (7 x 7 Hole, 56 x 56mm)",
+    "sku": "1116-0056-0056",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1116-series-grid-plate-7-x-7-hole-56-x-56mm/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "high",
+    "codeConfidence": "high",
+    "warnings": [
+      "Dimensions come from the printed drawing: 56 x 56 mm outline, 2.5 mm thickness, Ø4 mm holes, 8 mm pitch and a 48 x 48 mm hole-center span. The bounding box is centered at the origin, with X to the right and Y up in the drawing view. Hole count (49) matches the '7 x 7 Hole' spec. The holes appear to be plain through holes in the images.",
+      "Plate thickness is along Y to satisfy the bottom-at-Y=0 rule, so the drawing's face lies in the XZ plane.",
+      "Dimensions are taken from the drawing and are marked unverified in the source data.",
+      "Anodizing and material are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -28,
+      "xmax": 28,
+      "ymin": 0,
+      "ymax": 2.5,
+      "zmin": -28,
+      "zmax": 28,
+      "xlen": 56,
+      "ylen": 2.5,
+      "zlen": 56
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 200412,
+        "sha256": "e634ab1eb97e9f6311c6a67372e4ad20e485611f254bb79facad1f66e6840086"
+      },
+      "model.stl": {
+        "bytes": 833684,
+        "sha256": "bc655591c3026e485b9607d63b95f32c61846f63cf4950a96046003cc05cae3d"
+      },
+      "model.glb": {
+        "bytes": 299968,
+        "sha256": "f32efd0e3399aecb03f93ca17a534cb9f35c53026b3294ab606edff606b80f88"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "e634ab1eb97e9f6311c6a67372e4ad20e485611f254bb79facad1f66e6840086"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

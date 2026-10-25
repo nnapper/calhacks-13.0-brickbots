@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "3607 Series Disc Wheel (14mm Bore, 72mm Diameter, Black) - 2 Pack",
+    "sku": "3607-0014-0072",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/3607-series-disc-wheel-14mm-bore-72mm-diameter-black-2-pack/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The 72 mm diameter, 6 mm width, 3 mm web, 14 mm bore, 32 mm and 16 mm pattern spacings and 4 mm hole size are printed on the drawing. The 62 mm dimension is the recessed face diameter; its drawn extent suggests the recess is shallow, roughly 1.5 mm per side. The recess depth and web centering are read from the section view, not stated. The 4 mm holes at (±16, ±16) are round. The holes at (±8, ±8) look slightly elongated diagonally and are approximated as 4 mm round holes. The four slots on the axes are 4 mm wide, listed as end-arc centers at 11 mm and 16 mm from center (slot positions are my estimate from the drawing scale). The listed hole positions are approximate (about ±0.5 mm) and should be checked against the vendor CAD before use.",
+      "Recess depth (1.5 mm per side) and web centering are inferred from the section view.",
+      "The (±8,±8) holes look slightly elongated in the drawing and are modeled as 4 mm round holes.",
+      "Slot end positions are estimated from the drawing scale.",
+      "The rubber lip and tire material are not modeled separately, so the wheel is a single solid.",
+      "Dimensions are unverified against the vendor CAD."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -36,
+      "xmax": 36,
+      "ymin": -3.9968028886505635e-15,
+      "ymax": 6.0000000000000036,
+      "zmin": -36,
+      "zmax": 36,
+      "xlen": 72,
+      "ylen": 6.000000000000007,
+      "zlen": 72
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 14.000 mm; measured dimensions are [6.000000000000007, 72.0, 72.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 127520,
+        "sha256": "414927978dddca0a2e453100e4baad76ac4380ae2e65a024e46af82c5cae3303"
+      },
+      "model.stl": {
+        "bytes": 272884,
+        "sha256": "382c63c754a31121b927c4438c9b49e2129967e94153ad990307ffee98f744a0"
+      },
+      "model.glb": {
+        "bytes": 98960,
+        "sha256": "5fdbb68668007fd15f36e346b25f5af053bcf288e66e25dbab399e30aeb0270f"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "414927978dddca0a2e453100e4baad76ac4380ae2e65a024e46af82c5cae3303"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 38
+  },
+  "status": "prototype_unverified"
+}

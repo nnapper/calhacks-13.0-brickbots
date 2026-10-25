@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Plastic Servo Hub (H25T Spline, 32mm Diameter)",
+    "sku": "1921-0025-0032",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/plastic-servo-hub-h25t-spline-32mm-diameter/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 32 mm diameter, the 16 mm hole pattern and the 24 mm spacing across the slots come from the provided data. The 10 mm height and the hole and slot diameters are visual estimates, and the source marks its dimensions as unverified. The hole positions assume the 16 mm pattern is a square rotated 45°, which puts the round holes at about 11.3 mm radius on the axes and the slots at 12 mm radius on the diagonals. The central H25T splined bore is on the z axis and is not listed as a hole because its size is not given. The slots are modeled as simple through-holes without their hex counterbores.",
+      "The H25T spline teeth are omitted; the bore is a plain 5.9 mm round hole.",
+      "The height of 10 mm, the 3 mm base thickness and the hole diameters are visual estimates; the source marks its dimensions as unverified.",
+      "The hex nut counterbores, triangular lightening pockets, raised pads and ribbed underside are omitted.",
+      "The slots are modeled as simple round holes, not elongated slots.",
+      "The lobe and boss shapes are simplified from the image."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -16.00000000000003,
+      "xmax": 16,
+      "ymin": 0,
+      "ymax": 10,
+      "zmin": -16.00000000000001,
+      "zmax": 16.000000000000018,
+      "xlen": 32.00000000000003,
+      "ylen": 10,
+      "zlen": 32.00000000000003
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 168236,
+        "sha256": "db1aca6e05339bceb5d74aaee77e1abf146e6f1c05f2d4b261a81982810fd42c"
+      },
+      "model.stl": {
+        "bytes": 177484,
+        "sha256": "4c7bd97ed1dec8fdc283e3f0aba7ad13d396a89ca531be8f08e97c0696aaaa9d"
+      },
+      "model.glb": {
+        "bytes": 64692,
+        "sha256": "3310b95a66afe8a337e1453bbd0002078a55950b9847c182fec79a978247bf50"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "db1aca6e05339bceb5d74aaee77e1abf146e6f1c05f2d4b261a81982810fd42c"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

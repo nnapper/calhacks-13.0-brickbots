@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Split-ring clamp mount, 8 mm thick along Y (Y=0..8). Ø48 mm outer ring with a Ø36 mm through bore centered at X=0, Z=0. Flat base block with its mounting face 24 mm below the bore center. Right-side block extends to X=26 and is split by a 1.5 mm horizontal slit above the bore centerline to form the clamp.",
+  "confidence": "low",
+  "warnings": [
+    "Overall X width (~52 mm) and 8 mm thickness are estimated from image proportions.",
+    "Clamp screw and its hole are omitted because their size is not given.",
+    "Foot notches and relief cutouts on the underside are omitted, so the base is a simple block.",
+    "Slit position and width, and the right-side block shape, are approximated from the image.",
+    "No base mounting holes are modeled because none are dimensioned or clearly visible."
+  ],
+  "cadquery": "ring = cq.Workplane('XZ').circle(24).extrude(-8)\nbase = cq.Workplane('XZ').center(1, -16).rect(50, 16).extrude(-8)\ntab = cq.Workplane('XZ').center(13, -5).rect(26, 38).extrude(-8)\nbody = ring.union(base).union(tab)\nslit = cq.Workplane('XZ').center(15, 9.75).rect(30, 1.5).extrude(-8)\nbody = body.cut(slit)\nbore = cq.Workplane('XZ').circle(18).extrude(-8)\npart = body.cut(bore)"
+}

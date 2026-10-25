@@ -1,0 +1,37 @@
+{
+  "partType": "gear",
+  "summary": "Steel MOD 0.8 spur pinion gear, 20 teeth, with a toothed section and a plain cylindrical hub section. It has a central 8mm hex (REX) through-bore along the axis. A radial set-screw feature is visible on the hub side.",
+  "boundsMm": {
+    "x": 17.6,
+    "y": 17.6,
+    "z": 16
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 8,
+      "description": "Hub-side end face with the hex bore opening"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -8,
+      "description": "Toothed-side end face with the hex bore opening"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Outside diameter is computed, not printed: MOD 0.8 x 20 teeth gives a 16mm pitch diameter (consistent with the 16mm center-to-center for a 1:1 mesh in the drawing). Adding 2 x module (1.6mm) gives an outside diameter of 17.6mm. Overall length (z = 16mm) is not printed anywhere and is only estimated by eye from the scaled mat photo, so verify it before relying on it. The 8mm bore is a hex across-flats size for the 8mm REX shaft, and the bore is assumed through based on the exploded view. The product text says there are two set screws, but only one radial screw hole is visible. Its diameter, position and axis are not given, so it is left out of the holes list."
+}

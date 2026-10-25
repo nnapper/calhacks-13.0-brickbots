@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1400 Series 1-Side, 2-Post Clamping Mount (36mm Bore)",
+    "sku": "1400-0032-0036",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1400-series-1-side-2-post-clamping-mount-36mm-bore/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 36 mm bore, the 24 mm base-to-center height, and the 48 mm center-to-center spacing come from the provided data. The overall x width (about 52 mm, including the clamp tab) and the thickness along the bore axis (about 8 mm) are estimates from image proportions. The ring is assumed to have a 48 mm outer diameter, giving a 48 mm overall height. The bore is placed at the origin, but the clamp tab probably shifts the true center slightly. The clamp screw hole and any base mounting holes are not dimensioned or clearly visible, so they are not listed.",
+      "Overall X width (~52 mm) and 8 mm thickness are estimated from image proportions.",
+      "Clamp screw and its hole are omitted because their size is not given.",
+      "Foot notches and relief cutouts on the underside are omitted, so the base is a simple block.",
+      "Slit position and width, and the right-side block shape, are approximated from the image.",
+      "No base mounting holes are modeled because none are dimensioned or clearly visible."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -24.000000000000004,
+      "xmax": 26,
+      "ymin": 0,
+      "ymax": 8,
+      "zmin": -24,
+      "zmax": 24.000000000000004,
+      "xlen": 50,
+      "ylen": 8,
+      "zlen": 48
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 36.000 mm; measured dimensions are [8.0, 48.0, 50.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 38716,
+        "sha256": "81f2177ee2fe5e2128e48b237b984637bb7394794097928b91a8a0fe156c543f"
+      },
+      "model.stl": {
+        "bytes": 25884,
+        "sha256": "1920c98d25a67055d9c3e010563b593546da972355ff716cebd185fdb7bc02ed"
+      },
+      "model.glb": {
+        "bytes": 10328,
+        "sha256": "541e5e8224cb5b98b222e44267d06f042b387daeacc57e68d6eed9c2cecf8989"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "81f2177ee2fe5e2128e48b237b984637bb7394794097928b91a8a0fe156c543f"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

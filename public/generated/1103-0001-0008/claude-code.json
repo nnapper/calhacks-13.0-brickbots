@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "L-shaped aluminum bracket with a 12 x 12 mm profile, 2.5 mm leg thickness and 8 mm width along Z. The vertical leg is at X=-6 to -3.5 and rises to Y=12. The horizontal leg is on the bottom face from Y=0 to 2.5. One 4 mm through hole runs along X through the vertical leg, centered at Y=8 and Z=0.",
+  "confidence": "medium",
+  "warnings": [
+    "The axes follow the stated rules (Y is up, bottom at Y=0, 8 mm width along Z). The image analysis used Z as the vertical axis, so its coordinates were remapped.",
+    "The product render may show a second hole in the horizontal leg, but the drawing does not size or locate one, so it is omitted.",
+    "The hole is assumed to be a plain 4 mm through hole with no thread or countersink.",
+    "The hole is assumed to be 8 mm up from the bottom and centered across the 8 mm width, read from the drawing."
+  ],
+  "cadquery": "v = cq.Workplane('XY').box(2.5, 12, 8, centered=(False, False, True)).translate((-6, 0, 0))\nh = cq.Workplane('XY').box(12, 2.5, 8, centered=(False, False, True)).translate((-6, 0, 0))\nhole = cq.Workplane('YZ').workplane(offset=-7).center(8, 0).circle(2).extrude(4)\npart = v.union(h).cut(hole)"
+}

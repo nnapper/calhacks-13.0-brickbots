@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "36 mm diameter, 41.6 mm long cylindrical gearbox body with its axis along Z, centered in X and Z (total Z about -32.55 to 32.55) and sitting on Y=0 (axis at Y=18). An 8 mm REX shaft with 7 mm flats extends 23.5 mm from the front face. Front face has four M4 pilot holes (4 mm dia, 10 mm deep) at ±8 mm and two 6 mm deep holes at ±12 mm on the vertical centerline. Rear face has a 13 mm bore and four 3 mm holes on a 25 mm diagonal pattern.",
+  "confidence": "medium",
+  "warnings": [
+    "Front section is modeled as a full 36 mm cylinder; the raised block and clearance cuts are omitted because their shapes are uncertain.",
+    "M4 threads are not modeled; the holes are plain 4 mm diameter.",
+    "Rear 13 mm bore and 3 mm hole depths are not given; 5 mm blind depth is assumed.",
+    "Rear 3 mm hole pattern is read from the 25 mm diagonal, so offsets are ±8.84 mm.",
+    "The part axis is Z with the bottom at Y=0, following the analysis JSON; the drawing is ambiguous about orientation.",
+    "The shaft flats are on the ±X sides; the flat orientation is assumed.",
+    "The overall dimensions are unverified."
+  ],
+  "cadquery": "r=18.0\nz0=-32.55\nzf=z0+41.6\ncy=18.0\nbody=cq.Workplane('XY').workplane(offset=z0).center(0,cy).circle(r).extrude(41.6)\nflat=cq.Workplane('XY').workplane(offset=zf).center(0,cy).circle(4).extrude(23.5)\nflatbox=cq.Workplane('XY').workplane(offset=zf).center(0,cy).rect(7,10).extrude(23.5)\nshaft=flat.intersect(flatbox)\npart=body.union(shaft)\nh10=[(-8,cy-8),(8,cy-8),(-8,cy+8),(8,cy+8)]\nh6=[(0,cy+12),(0,cy-12)]\npart=part.cut(cq.Workplane('XY').workplane(offset=zf-10).pushPoints(h10).circle(2).extrude(10))\npart=part.cut(cq.Workplane('XY').workplane(offset=zf-6).pushPoints(h6).circle(2).extrude(6))\nd=25/math.sqrt(2)/2*math.sqrt(2)/math.sqrt(2)\no=25/2/math.sqrt(2)\nrear=[(-o,cy-o),(o,cy-o),(-o,cy+o),(o,cy+o)]\npart=part.cut(cq.Workplane('XY').workplane(offset=z0).center(0,cy).circle(6.5).extrude(5))\npart=part.cut(cq.Workplane('XY').workplane(offset=z0).pushPoints(rear).circle(1.5).extrude(5))"
+}

@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Simplified servo gearbox: a 85 mm spur gear disc (8 mm thick) with a hub, a ring of 12 lightening holes and a hex bore for an 8 mm shaft, meshed with a 29 mm pinion on the same plane, over a rectangular servo/bracket block (52x44x20 mm) behind the gears. Gear axis is Z and the bottom sits at Y=0.",
+  "confidence": "low",
+  "warnings": [
+    "No real dimensions were provided; sizes are estimated from the image and bounds.",
+    "Gear teeth are omitted and the gears are modeled as plain discs.",
+    "Bracket mounting holes, the servo horn, wires and connector are omitted because their positions are uncertain.",
+    "Only one ring of lightening holes is modeled; the real gear has several rings.",
+    "The overall X extent is slightly larger than the estimated 106 mm bounds (about 114 mm)."
+  ],
+  "cadquery": "gc=(-14,42.5)\npc=(43,42.5)\n# large output gear (axis Z)\ngear=cq.Workplane('XY').workplane(offset=-7.5).center(*gc).circle(42.5).extrude(8)\nhub=cq.Workplane('XY').workplane(offset=0.5).center(*gc).circle(13).extrude(3)\n# pinion\npinion=cq.Workplane('XY').workplane(offset=-7.5).center(*pc).circle(14.5).extrude(8)\nboss=cq.Workplane('XY').workplane(offset=0.5).center(*pc).circle(4).extrude(3)\n# servo body and bracket behind the gears\nservo=cq.Workplane('XY').workplane(offset=-27.5).center(30,42.5).rect(52,44).extrude(20)\npart=gear.union(hub).union(pinion).union(boss).union(servo)\n# lightening holes in the gear\npts=[(gc[0]+30*math.cos(math.radians(a*30)),gc[1]+30*math.sin(math.radians(a*30))) for a in range(12)]\nholes=cq.Workplane('XY').workplane(offset=-8).pushPoints(pts).circle(2.5).extrude(12)\npart=part.cut(holes)\n# hex bore for 8 mm shaft\nhexcut=cq.Workplane('XY').workplane(offset=-8).center(*gc).polygon(6,9.24).extrude(13)\npart=part.cut(hexcut)"
+}

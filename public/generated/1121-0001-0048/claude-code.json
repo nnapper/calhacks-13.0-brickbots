@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "U-channel 48 mm long (Z), 48 mm wide (X), 12 mm tall (Y) with 2.5 mm base and walls, bottom at Y=0. Base has a 14 mm central through bore and a 4x4 grid of 4 mm holes at 8 mm pitch (±8, ±16). Each upright flange has 5 holes of 4 mm diameter at 8 mm pitch, 8 mm above the base's outer face.",
+  "confidence": "medium",
+  "warnings": [
+    "Dimensions are unverified and come from the image analysis and drawing estimates.",
+    "The product name says '1 Hole', but the flange pattern was modeled with 5 holes as the image shows.",
+    "The slots around the central bore were omitted because their dimensions are uncertain.",
+    "The image appears to show additional base holes, for example on the center row and column, which were not modeled because the analysis does not list them.",
+    "Hole diameters of 4 mm and 14 mm are estimates; the flange holes look slightly larger in the image.",
+    "The analysis axes (Z up) were remapped to Y up: length runs along Z and width along X."
+  ],
+  "cadquery": "base = cq.Workplane('XY').box(48, 12, 48, centered=(True, False, True))\ninner = cq.Workplane('XY').box(43, 10, 52, centered=(True, False, True)).translate((0, 2.5, 0))\npart = base.cut(inner)\ngrid = [(x, z) for x in (-16, -8, 8, 16) for z in (-16, -8, 8, 16)]\nbase_holes = cq.Workplane('XZ').pushPoints(grid).circle(2).extrude(-2.5)\nbore = cq.Workplane('XZ').circle(7).extrude(-2.5)\nflange_holes = (cq.Workplane('YZ').workplane(offset=-25)\n    .pushPoints([(8, z) for z in (-16, -8, 0, 8, 16)]).circle(2).extrude(50))\npart = part.cut(base_holes).cut(bore).cut(flange_holes)"
+}

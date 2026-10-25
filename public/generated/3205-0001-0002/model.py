@@ -1,0 +1,7 @@
+shaft = cq.Workplane('XY').circle(3).extrude(19)
+roller = cq.Workplane('XY').workplane(offset=19).circle(5).extrude(10).edges().chamfer(1)
+cap = cq.Workplane('XY').workplane(offset=29).circle(3.5).extrude(4)
+body = shaft.union(roller).union(cap)
+hole = cq.Workplane('XY').circle(2).extrude(8)
+body = body.cut(hole)
+part = body.rotate((0, 0, 0), (1, 0, 0), -90)
