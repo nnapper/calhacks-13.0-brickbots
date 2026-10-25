@@ -100,6 +100,8 @@ export default function App() {
   // If the helper cannot answer, the rule-based composer lays out a design instead, and says so.
   const homeGoal = useRef(null);
   const start = (text) => {
+    text = text.trim();
+    if (!text) return;
     setPrompt(text);
     homeGoal.current = text;
     setPendingGoal(text);

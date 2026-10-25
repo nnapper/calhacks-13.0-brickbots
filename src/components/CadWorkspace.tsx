@@ -160,21 +160,8 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     return 0;
   }
 
-  const pendingPresetRef = useRef(pendingPreset); pendingPresetRef.current = pendingPreset;
-  const pendingGoalRef = useRef(pendingGoal); pendingGoalRef.current = pendingGoal;
-  const goalStarted = useRef(false);
-  useEffect(() => { if (pendingGoal) goalStarted.current = true; }, [pendingGoal]);
-  // First visit with nothing saved: start from the example rover so the workspace is never an empty grid.
-  useEffect(() => {
-    void restore().then(restored => {
-      let seen = false;
-      try { seen = !!localStorage.getItem('brickbots.example-seen'); } catch { /* storage unavailable */ }
-      // A build chosen on the home screen wins over the first-visit example.
-      if (restored || seen || pendingPresetRef.current || pendingGoalRef.current || goalStarted.current) return;
-      try { localStorage.setItem('brickbots.example-seen', '1'); } catch { /* storage unavailable */ }
-      void loadPreset();
-    });
-  }, []);
+  // Restore a saved workspace, but only generate models after an explicit request.
+  useEffect(() => { void restore(); }, []);
 
   // ---- Saved builds: up to five, kept in this browser so they survive a reload ----
   const [builds, setBuilds] = useState<BuildSummary[]>([]);
@@ -1145,7 +1132,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
         <span className={preview ? 'cad-snap-message ready' : 'cad-snap-message'} role="status">{preview ? 'Nodes aligned' : notice}</span>
       </div>
 
-      {!parts.length && !busy && (
+      {!parts.length && !busy && !operation && (
         <div className="cad-empty-prompt">
           <span className="cad-empty-icon">↥</span>
           <strong>A space for your hardware.</strong>

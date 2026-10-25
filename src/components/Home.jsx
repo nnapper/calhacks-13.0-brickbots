@@ -14,7 +14,7 @@ const CALLOUTS = [
 ];
 
 export default function Home({ build, onStart, onPreset, onBlank }) {
-  const [text, setText] = useState("A 4-wheel rover that can carry 2 kg, under $250");
+  const [text, setText] = useState("");
 
   const callouts = useMemo(() => {
     const bom = bomOrder(build);
@@ -39,11 +39,11 @@ export default function Home({ build, onStart, onPreset, onBlank }) {
           className="ask"
           onSubmit={(e) => {
             e.preventDefault();
-            onStart(text.trim() || "4-wheel rover");
+            if (text.trim()) onStart(text.trim());
           }}
         >
-          <input value={text} onChange={(e) => setText(e.target.value)} aria-label="Describe your robot" autoComplete="off" />
-          <button className="go" type="submit">
+          <input value={text} onChange={(e) => setText(e.target.value)} placeholder="Describe your robot, e.g. a 4-wheel rover under $250" aria-label="Describe your robot" autoComplete="off" />
+          <button className="go" type="submit" disabled={!text.trim()}>
             Build it →
           </button>
         </form>
