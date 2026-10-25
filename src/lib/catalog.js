@@ -132,6 +132,9 @@ export const PARTS = Object.values(raw).map(buildPart).filter(Boolean);
 
 export const BY_SKU = Object.fromEntries(PARTS.map((p) => [p.sku, p]));
 
+// Unprocessed parts.json records (spec strings, dimensions_mm, url) for the compatibility checks.
+export const RAW_BY_SKU = Object.fromEntries(Object.values(raw).filter((p) => p.sku).map((p) => [p.sku, p]));
+
 // Uploaded CAD parts join the catalog at runtime (see lib/custom.js).
 export function registerCustomPart(part) {
   const p = withSearchText(part);

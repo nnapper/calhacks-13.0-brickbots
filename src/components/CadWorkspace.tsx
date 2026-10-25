@@ -9,6 +9,7 @@ import { placeholderFile } from '../cad/placeholder';
 import { clone } from 'three/addons/utils/SkeletonUtils.js';
 import { addPosition, findSnap, alignConnectors, compatible, type PartInstance, type Mate, type Snap } from '../assembly/snapping';
 import { BY_SKU } from '../lib/catalog.js';
+import { PRESET } from '../lib/preset.js';
 import { analyzeGeometry } from '../cad/analyze';
 import { applySuggestions, type Connector, type PairSuggestion } from '../contracts/connectors';
 import { cloud, api, workspaceSecret, saveWorkspace, suggestNodes, suggestPairings } from '../cloud/client';
@@ -74,8 +75,8 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     cache.current.forEach(model => disposeModel(model.object));
   }, []);
 
-  async function restore() {
-    if (!cloud) { setCloudStatus('Local only'); setReady(true); return; }
+  async function restore(): Promise<number> {
+    if (!cloud) { setCloudStatus('Local only'); setReady(true); return 0; }
     setOperation('Loading workspace');
     try {
       const secret = workspaceSecret();
@@ -103,6 +104,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       }
       setRevision(saved?.revision ?? 0);
       setCloudStatus('Convex connected · save to sync');
+      return saved?.snapshot?.parts?.length ?? 0;
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Restore failed');
       setCloudStatus('Restore failed');
@@ -110,9 +112,19 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       setReady(true);
       setOperation('');
     }
+    return 0;
   }
 
-  useEffect(() => { void restore(); }, []);
+  // First visit with nothing saved: start from the example rover so the workspace is never an empty grid.
+  useEffect(() => {
+    void restore().then(restored => {
+      let seen = false;
+      try { seen = !!localStorage.getItem('brickbots.example-seen'); } catch { /* storage unavailable */ }
+      if (restored || seen) return;
+      try { localStorage.setItem('brickbots.example-seen', '1'); } catch { /* storage unavailable */ }
+      void loadPreset();
+    });
+  }, []);
 
   async function save() {
     setOperation('Saving workspace');
@@ -234,6 +246,65 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
         setError(e instanceof Error ? e.message : 'Generation failed');
         setBusy('');
       }
+    }
+  }
+
+  // Loads a catalog product's generated model (pre-built ones return instantly) and its attachment nodes without placing it.
+  async function loadProductModel(sku: string): Promise<LoadedModel> {
+    const cached = [...cache.current.values()].find(source => source.asset.productId === sku);
+    if (cached) return cached;
+    const response = await fetch('/geometry/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sku }),
+      signal: AbortSignal.timeout(180_000),
+    });
+    if (!response.ok) {
+      const detail = await response.json().catch(() => ({}));
+      throw new Error(detail.detail ?? `Model for ${sku} failed (HTTP ${response.status})`);
+    }
+    const result = await response.json();
+    const modelResponse = await fetch(result.stepUrl);
+    if (!modelResponse.ok) throw new Error('Generated model download failed');
+    const file = new File([await modelResponse.arrayBuffer()], `${result.name}.step`);
+    const next = await loadModel(file, new AbortController().signal, false);
+    next.asset.productId = sku;
+    cache.current.set(`generated:${sku}`, next);
+    setLibrary(l => [...l, { key: `generated:${sku}`, name: file.name, file, generated: true }]);
+    await findNodes(next);
+    return next;
+  }
+
+  // Replaces the workspace with the example rover (Undo brings the previous build back).
+  async function loadPreset() {
+    if (busy) return;
+    setError('');
+    setBusy(`Loading example ${PRESET.name}`);
+    try {
+      const sources = new Map<string, LoadedModel>();
+      for (const sku of new Set<string>(PRESET.parts.map((p: { sku: string }) => p.sku))) sources.set(sku, await loadProductModel(sku));
+      const ids = new Map<string, string>();
+      const instances: PartInstance[] = PRESET.parts.map((def: { key: string; sku: string; position: number[]; rotY: number }) => {
+        const source = sources.get(def.sku)!;
+        const id = crypto.randomUUID();
+        ids.set(def.key, id);
+        const position = def.position.map(v => v / 1000) as [number, number, number];
+        const quaternion = new Quaternion().setFromAxisAngle(new Vector3(0, 1, 0), def.rotY * Math.PI / 180).toArray() as [number, number, number, number];
+        const model = { ...source, object: clone(source.object) as LoadedModel['object'] };
+        model.object.position.set(...position);
+        model.object.quaternion.set(...quaternion);
+        return { id, model, position, quaternion };
+      });
+      checkpoint();
+      setParts(instances);
+      setMates(PRESET.mates.map((m: { moving: string; target: string; axis: number; side: number }) => ({ movingId: ids.get(m.moving)!, targetId: ids.get(m.target)!, axis: m.axis, side: m.side })));
+      setSelectedId(null);
+      setReset(r => r + 1);
+      setNotice(`Example ${PRESET.name} loaded · each motor shaft fits its wheel bore · see Build health`);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Could not load the example');
+    } finally {
+      setBusy('');
     }
   }
 
@@ -476,6 +547,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
           <span />
           <button title="Fit model in view" onClick={() => setReset(r => r + 1)}>Reset</button>
           <button aria-pressed={wireframe} className={wireframe ? 'active' : ''} onClick={() => setWireframe(v => !v)}>Wireframe</button>
+          <button title="Load the example 4-wheel-drive rover" disabled={!!busy} onClick={() => void loadPreset()}>Example</button>
         </div>
         <div className="cad-measure" role="group" aria-label="Measurement guide">
           <button className="pillbtn" type="button" aria-pressed={measure} onClick={() => onMeasure?.(!measure)}>Measure</button>

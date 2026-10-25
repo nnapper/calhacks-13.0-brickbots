@@ -1,6 +1,7 @@
 import {GROUP_LABELS, GROUP_ORDER, detailName, money, shortName} from '../lib/catalog.js';
 import {buildCheck, buildTotals} from '../lib/build.js';
 import {ChevronIcon} from './Icons.jsx';
+import BuildHealth from './BuildHealth';
 
 // Identical parts collapse into one line with a count; uploads are grouped by name.
 function groupRows(rows) {
@@ -14,7 +15,7 @@ function groupRows(rows) {
   return [...map.values()];
 }
 
-export default function WorkspacePanel({metrics, selectedId, onSelect, onRemove, onAdjust, onWhereToBuy, collapsed, onToggle}) {
+export default function WorkspacePanel({health, checking, lookupError, metrics, selectedId, onSelect, onRemove, onAdjust, onWhereToBuy, collapsed, onToggle}) {
   if (collapsed) return <button className="paneltab right" onClick={onToggle}><ChevronIcon/> Your build · {metrics.count} parts</button>;
   const groups = groupRows(metrics.rows);
   const byCategory = {};
@@ -44,7 +45,9 @@ export default function WorkspacePanel({metrics, selectedId, onSelect, onRemove,
           </div>;
         })}
       </div>) : <div className="empty">No models yet. Add a catalog part or import your own design to see its metrics here.</div>}
-    </div></div>
+    </div>
+      {health && <BuildHealth health={health} checking={checking} lookupError={lookupError} selectedId={selectedId} onSelect={onSelect}/>}
+    </div>
     <div className="foot">
       <div className="stats">
         <div>Weight<b>{(totals.weightG / 1000).toFixed(2)} kg</b></div>
