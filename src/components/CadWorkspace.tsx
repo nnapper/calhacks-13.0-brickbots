@@ -1,5 +1,5 @@
 import {validatePlanCount, layoutIssues} from '../assembly/ai-validation';
-import {Euler,Quaternion,Vector3} from 'three';
+import {Box3,Euler,Quaternion,Vector3} from 'three';
 import {worldBox} from '../assembly/snapping';
 import { createPortal } from 'react-dom';
 import { Component, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react';
@@ -33,12 +33,17 @@ const fixtures = [
   { name: 'L-bracket', file: 'l-bracket.step', subtitle: '24 × 26.5 × 24 mm · 15 Ø4 holes on two legs', tag: 'BUILD', icon: '∟' },
 ];
 
-export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef, pendingGoal, onPendingGoalConsumed, unit='mm', onUnit, measure=true, onMeasure}: {designsHost: HTMLElement | null; onWorkspaceChange?: (state: {parts:PartInstance[];mates:Mate[];selectedId:string|null})=>void; actionsRef?: {current:any}; pendingGoal?: string|null; onPendingGoalConsumed?: () => void; unit?: string; onUnit?: (unit: string)=>void; measure?: boolean; onMeasure?: (on: boolean)=>void}) {
+export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef, pendingGoal, onPendingGoalConsumed, unit='mm', onUnit, measure=true, onMeasure}: {designsHost: HTMLElement | null; onWorkspaceChange?: (state: {parts:PartInstance[];mates:Mate[];selectedId:string|null;selectedIds:string[]})=>void; actionsRef?: {current:any}; pendingGoal?: string|null; onPendingGoalConsumed?: () => void; unit?: string; onUnit?: (unit: string)=>void; measure?: boolean; onMeasure?: (on: boolean)=>void}) {
   const solidBoxes=useRef(new Set<string>());
   const stagedBuild=useRef<PartInstance[]|null>(null);
   const building=useRef(false);
   const [parts, setParts] = useState<PartInstance[]>([]);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  // Several parts can be selected at once (drag box or Shift-click); the last one picked is the primary part.
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const selectedId = selectedIds.length ? selectedIds[selectedIds.length - 1] : null;
+  const setSelectedId = (id: string | null) => setSelectedIds(id ? [id] : []);
+  const [boxSelect, setBoxSelect] = useState(false);
+  const [alignOn, setAlignOn] = useState(true);
   const [mates, setMates] = useState<Mate[]>([]);
   const snapEnabled = true;
   const [preview, setPreview] = useState<Snap | null>(null);
@@ -70,8 +75,8 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
   const runPairingRef = useRef<() => void>(() => {});
   const statusDrag = useRef<{pointerId:number; x:number; y:number; origin:{x:number; y:number}} | null>(null);
   const model = parts.find(p => p.id === selectedId)?.model ?? null;
-  useEffect(()=>{onWorkspaceChange?.({parts,mates,selectedId});},[parts,mates,selectedId,onWorkspaceChange]);
-  if(actionsRef)actionsRef.current={add:generateProduct,select:setSelectedId,remove:(id:string)=>{checkpoint();setParts(items=>items.filter(p=>p.id!==id));setMates(items=>items.filter(m=>m.movingId!==id&&m.targetId!==id));setSelectedId(current=>current===id?null:current);},run};
+  useEffect(()=>{onWorkspaceChange?.({parts,mates,selectedId,selectedIds});},[parts,mates,selectedId,selectedIds,onWorkspaceChange]);
+  if(actionsRef)actionsRef.current={add:generateProduct,select:setSelectedId,remove:(id:string)=>{checkpoint();setParts(items=>items.filter(p=>p.id!==id));setMates(items=>items.filter(m=>m.movingId!==id&&m.targetId!==id));setSelectedIds(current=>current.filter(i=>i!==id));},run};
   const pairingKey = parts.map(p => `${p.id}:${p.model.asset.id}:${p.model.geometryRevision ?? ''}:${p.model.connectors?.length ?? 0}`).join('|');
   const pairingKeyRef = useRef(pairingKey);
   pairingKeyRef.current = pairingKey;
@@ -356,7 +361,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
 
   const [scalePercent,setScalePercent]=useState('100');
   const [turnDegrees,setTurnDegrees]=useState('90');
-  const clipboard=useRef<PartInstance|null>(null);
+  const clipboard=useRef<PartInstance[]>([]);
   const selectedPart=parts.find(p=>p.id===selectedId);
   useEffect(()=>{setScalePercent(String((selectedPart?.scale??1)*100));},[selectedId,selectedPart?.scale]);
   function transform(scale?:number,axis?:'x'|'y'|'z',targetId?:string,degreesArg?:number) {
@@ -513,8 +518,20 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     window.addEventListener('keydown',done);
     return ()=>window.removeEventListener('keydown',done);
   },[selectedId]);
-  function copyPart(){const p=live.current.parts.find(p=>p.id===selectedId);if(p){clipboard.current={...p,position:[...p.position],quaternion:[...(p.quaternion??[0,0,0,1])]};setNotice('Model copied · Ctrl/Cmd+V to paste');}}
-  function pastePart(){const p=clipboard.current;if(!p)return;const width=worldBox(p).getSize(new Vector3()).x;const instance={...p,id:crypto.randomUUID(),model:{...p.model,object:clone(p.model.object) as LoadedModel['object']},position:[p.position[0]+width+.01,p.position[1],p.position[2]] as [number,number,number]};checkpoint();setParts(items=>[...items,instance]);setSelectedId(instance.id);clipboard.current=instance;setNotice('Model pasted · scale and rotation preserved');}
+  function copyPart(){
+    const items=live.current.parts.filter(p=>selectedIds.includes(p.id));
+    if(!items.length)return;
+    clipboard.current=items.map(p=>({...p,position:[...p.position] as [number,number,number],quaternion:[...(p.quaternion??[0,0,0,1])] as [number,number,number,number]}));
+    setNotice(items.length>1?`${items.length} models copied · Ctrl/Cmd+V to paste`:'Model copied · Ctrl/Cmd+V to paste');
+  }
+  function pastePart(){
+    const items=clipboard.current;if(!items.length)return;
+    const box=new Box3();items.forEach(p=>box.union(worldBox(p)));
+    const shift=box.getSize(new Vector3()).x+.01;
+    const copies=items.map(p=>({...p,id:crypto.randomUUID(),model:{...p.model,object:clone(p.model.object) as LoadedModel['object']},position:[p.position[0]+shift,p.position[1],p.position[2]] as [number,number,number]}));
+    checkpoint();setParts(existing=>[...existing,...copies]);setSelectedIds(copies.map(p=>p.id));clipboard.current=copies;
+    setNotice(copies.length>1?`${copies.length} models pasted together`:'Model pasted · scale and rotation preserved');
+  }
   function cutPart(){if(!selectedId)return;copyPart();remove();setNotice('Model cut · Ctrl/Cmd+V to paste');}
   const shortcuts=useRef({copyPart,pastePart,cutPart});shortcuts.current={copyPart,pastePart,cutPart};
   useEffect(()=>{const key=(e:KeyboardEvent)=>{const target=e.target as HTMLElement;if(target.closest('input,textarea,select,[contenteditable="true"]')||!(e.ctrlKey||e.metaKey)||e.altKey||e.repeat)return;if(window.getSelection()?.toString())return;if(e.key.toLowerCase()==='c'){if(live.current.parts.length){e.preventDefault();shortcuts.current.copyPart();}}if(e.key.toLowerCase()==='x'){if(live.current.parts.length){e.preventDefault();shortcuts.current.cutPart();}}if(e.key.toLowerCase()==='v'&&clipboard.current){e.preventDefault();shortcuts.current.pastePart();}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[]);
@@ -623,12 +640,23 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
   }
 
   function remove() {
-    if (!selectedId) return;
+    if (!selectedIds.length) return;
+    const doomed = new Set(selectedIds);
     checkpoint();
-    setParts(p => p.filter(i => i.id !== selectedId));
-    setMates(m => m.filter(c => c.movingId !== selectedId && c.targetId !== selectedId));
-    setSelectedId(null);
-    setNotice('Part removed');
+    setParts(p => p.filter(i => !doomed.has(i.id)));
+    setMates(m => m.filter(c => !doomed.has(c.movingId) && !doomed.has(c.targetId)));
+    setSelectedIds([]);
+    setNotice(doomed.size > 1 ? `${doomed.size} parts removed` : 'Part removed');
+  }
+
+  // Moving or turning a selected group: connections inside the group stay, connections to outside parts are released.
+  function moveMany(moves: { id: string; position: [number, number, number]; quaternion?: [number, number, number, number] }[]) {
+    const ids = new Set(moves.map(m => m.id));
+    checkpoint();
+    setParts(p => p.map(item => { const m = moves.find(x => x.id === item.id); return m ? { ...item, position: m.position, quaternion: m.quaternion ?? item.quaternion } : item; }));
+    setMates(m => m.filter(c => ids.has(c.movingId) === ids.has(c.targetId)));
+    setPreview(null);
+    setNotice(`${moves.length} parts moved together`);
   }
 
   function undo() {
@@ -709,6 +737,11 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
             snapEnabled={snapEnabled}
             mates={mates}
             onSelect={setSelectedId}
+            selectedIds={selectedIds}
+            onSelectMany={setSelectedIds}
+            onMoveMany={moveMany}
+            boxSelect={boxSelect}
+            align={alignOn}
             onConnect={connectNodes}
             onNodeMessage={setNotice}
             onMove={move}
@@ -719,10 +752,12 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       </div>
 
       {selectedId && <aside className="cad-keys" aria-label="Keyboard controls for the selected part">
-        <strong>Selected part</strong>
-        <div><span><kbd>A</kbd><kbd>D</kbd></span>Turn 30°</div>
-        <div><span><kbd>W</kbd><kbd>S</kbd></span>Tip 30°</div>
-        <div><span>Drag arrows</span>Slide along an axis</div>
+        <strong>{selectedIds.length > 1 ? `${selectedIds.length} parts selected` : 'Selected part'}</strong>
+        {selectedIds.length > 1 && <div><span>Drag a part</span>Moves the group</div>}
+        {selectedIds.length > 1 && <div><span><kbd>Shift</kbd>click</span>Add or remove</div>}
+        <div><span><kbd>A</kbd><kbd>D</kbd></span>{selectedIds.length > 1 ? 'Turn group 30°' : 'Turn 30°'}</div>
+        <div><span><kbd>W</kbd><kbd>S</kbd></span>{selectedIds.length > 1 ? 'Tip group 30°' : 'Tip 30°'}</div>
+        {selectedIds.length <= 1 && <div><span>Drag arrows</span>Slide along an axis</div>}
         <div><span><kbd>{navigator.platform.includes('Mac')?'⌘':'Ctrl'}</kbd><kbd>C</kbd></span>Copy</div>
         <div><span><kbd>{navigator.platform.includes('Mac')?'⌘':'Ctrl'}</kbd><kbd>X</kbd></span>Cut</div>
         <div><span><kbd>{navigator.platform.includes('Mac')?'⌘':'Ctrl'}</kbd><kbd>V</kbd></span>Paste</div>
@@ -737,6 +772,9 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
           <span />
           <button title="Fit model in view" onClick={() => setReset(r => r + 1)}>Reset</button>
           <button aria-pressed={wireframe} className={wireframe ? 'active' : ''} onClick={() => setWireframe(v => !v)}>Wireframe</button>
+          <span />
+          <button aria-pressed={boxSelect} className={boxSelect ? 'active' : ''} title="Drag a box around parts to select several (or hold Shift and drag)" onClick={() => setBoxSelect(v => !v)}>Box select</button>
+          <button aria-pressed={alignOn} className={alignOn ? 'active' : ''} title="Line parts up with their neighbours while you drag" onClick={() => setAlignOn(v => !v)}>Align</button>
           <button title="Load the example 4-wheel-drive rover" disabled={!!busy} onClick={() => void loadPreset()}>Example</button>
         </div>
         <div className="cad-measure" role="group" aria-label="Measurement guide">

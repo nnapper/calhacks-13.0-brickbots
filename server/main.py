@@ -117,7 +117,7 @@ def analyze(file: UploadFile):
 @app.post('/generate')
 def generate_model(payload: dict):
     sku=payload.get('sku')
-    if not isinstance(sku,str) or not re.fullmatch(r'[a-z0-9-]+',sku):raise HTTPException(400,'A catalog SKU is required')
+    if not isinstance(sku,str) or not re.fullmatch(r'[A-Za-z0-9-]+',sku):raise HTTPException(400,'A catalog SKU is required')
     root=Path(__file__).resolve().parents[1]
     # Pre-built models (npm run models:build) are served straight from public/generated.
     manifest_path=root/'public/generated'/sku/'manifest.json'

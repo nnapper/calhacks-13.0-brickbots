@@ -87,3 +87,43 @@ export function findSnap(moving:PartInstance,position:[number,number,number],par
   }}
  }return best;
 }
+
+export type Alignment = { position: [number, number, number]; guides: { axis: 0 | 2; value: number; label: 'center' | 'edge'; targetId: string }[] };
+// Soft alignment for free placement: nudges a part so its centre or an edge lines up with another part along x and z,
+// and rests it on (or under) that part when it ends up centred over it and almost touching. Returns null when nothing is close.
+export function findAlignment(moving: PartInstance, position: [number, number, number], parts: PartInstance[], threshold?: number): Alignment | null {
+  const box = worldBox(moving, position);
+  const limit = threshold ?? THREE.MathUtils.clamp(box.getSize(new THREE.Vector3()).length() * .12, .003, .012);
+  const adjust: [number, number, number] = [0, 0, 0];
+  const guides: Alignment['guides'] = [];
+  for (const axis of [0, 2] as const) {
+    const lo = box.min.getComponent(axis), hi = box.max.getComponent(axis), mid = (lo + hi) / 2;
+    let best: { delta: number; score: number; value: number; label: 'center' | 'edge'; targetId: string } | null = null;
+    for (const target of parts) {
+      if (target.id === moving.id) continue;
+      const other = worldBox(target), tlo = other.min.getComponent(axis), thi = other.max.getComponent(axis);
+      const options: [number, number, 'center' | 'edge'][] = [[(tlo + thi) / 2 - mid, (tlo + thi) / 2, 'center'], [tlo - lo, tlo, 'edge'], [thi - hi, thi, 'edge']];
+      for (const [delta, value, label] of options) {
+        // Centring wins over edge-flush when they are nearly as close.
+        const score = Math.abs(delta) * (label === 'center' ? .6 : 1);
+        if (Math.abs(delta) <= limit && (!best || score < best.score)) best = { delta, score, value, label, targetId: target.id };
+      }
+    }
+    if (best) { adjust[axis] = best.delta; guides.push({ axis, value: best.value, label: best.label, targetId: best.targetId }); }
+  }
+  if (!guides.length) return null;
+  const aligned: [number, number, number] = [position[0] + adjust[0], position[1], position[2] + adjust[2]];
+  const moved = worldBox(moving, aligned);
+  for (const id of new Set(guides.map(g => g.targetId))) {
+    const target = parts.find(p => p.id === id); if (!target) continue;
+    const other = worldBox(target);
+    if (!overlaps2d(moved, other)) continue;
+    const onTop = moved.min.y - other.max.y, below = moved.max.y - other.min.y;
+    const dy = Math.abs(onTop) <= limit ? -onTop : Math.abs(below) <= limit ? -below : 0;
+    if (dy && moved.min.y + dy >= -1e-9) { aligned[1] += dy; break; }
+  }
+  return { position: aligned, guides };
+}
+function overlaps2d(a: THREE.Box3, b: THREE.Box3) {
+  return [0, 2].every(i => Math.min(a.max.getComponent(i), b.max.getComponent(i)) - Math.max(a.min.getComponent(i), b.min.getComponent(i)) > 1e-7);
+}

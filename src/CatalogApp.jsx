@@ -19,7 +19,7 @@ export default function App() {
   const [prompt, setPrompt] = useState("");
   const [receiptOpen, setReceiptOpen] = useState(false);
   const [liveVersion, setLiveVersion] = useState(0); // bumped when live prices replace catalog prices
-  const [workspace,setWorkspace]=useState({parts:[],mates:[],selectedId:null});
+  const [workspace,setWorkspace]=useState({parts:[],mates:[],selectedId:null,selectedIds:[]});
   const cadActions=useRef(null);
   const [designsHost, setDesignsHost] = useState(null);
   const [partsOpen, setPartsOpen] = useState(true);
@@ -154,7 +154,7 @@ export default function App() {
           </section>
 
           <PartsPanel designsHostRef={setDesignsHost} onAdd={addPart} onLive={onLive} onRemoveCustom={removeCustom} version={liveVersion} unit={unit} collapsed={!partsOpen} onToggle={() => setPartsOpen((o) => !o)} />
-          <WorkspacePanel health={health} checking={checking} lookupError={lookupError} metrics={totals} onAdjust={adjustPart} selectedId={workspace.selectedId} onSelect={id=>cadActions.current?.select(id)} onRemove={id=>cadActions.current?.remove(id)} onWhereToBuy={()=>setReceiptOpen(true)} collapsed={!bomOpen} onToggle={()=>setBomOpen(o=>!o)} />
+          <WorkspacePanel health={health} checking={checking} lookupError={lookupError} metrics={totals} onAdjust={adjustPart} selectedId={workspace.selectedId} selectedIds={workspace.selectedIds} onSelect={id=>cadActions.current?.select(id)} onRemove={id=>cadActions.current?.remove(id)} onWhereToBuy={()=>setReceiptOpen(true)} collapsed={!bomOpen} onToggle={()=>setBomOpen(o=>!o)} />
         </section>
       )}
 

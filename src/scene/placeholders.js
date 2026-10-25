@@ -10,9 +10,9 @@ export function kindOf(p) {
   const n = p.name;
   if (/Controller|Commander|Programmer|Driver|Sensor/.test(n)) return "board";
   if (/Wheel|Flywheel/.test(n)) return "wheel";
-  if ((/Motor\b/.test(n) && !/Mount|Hub/.test(n)) || /Gearbox/.test(n)) return "motor";
+  if ((/Motor\b/.test(n) && !/Mount|Hub/.test(n)) || /Gearbox|Gear ?motor|Geared/i.test(n)) return "motor";
   if (/^Axon MAX Servo|Dual Mode Servo|ServoBlock|Micro Servo/.test(n)) return "servo";
-  if (/Gear|Sprocket|Pulley|Chain|Rack/.test(n)) return "gear";
+  if (/\bGears?\b|Sprocket|Pulley|Chain|Rack/.test(n)) return "gear";
   if (/Baseplate|Grid Plate|Pattern Plate/.test(n)) return "plate";
   if (/Channel|Beam/.test(n)) return "channel";
   return "bit";
