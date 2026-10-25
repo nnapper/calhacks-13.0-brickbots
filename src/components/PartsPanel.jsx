@@ -1,10 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { GROUPS, PARTS, money, searchParts, shortName } from "../lib/catalog.js";
 import { useLive } from "../hooks/useLive.js";
 import { useLookup } from "../hooks/useLookup.js";
-import { UNITS, addCadFile } from "../lib/custom.js";
 import { formatSize } from "../lib/units.js";
-import { ChevronIcon, RefreshIcon, SearchIcon, UploadIcon } from "./Icons.jsx";
+import { ChevronIcon, RefreshIcon, SearchIcon } from "./Icons.jsx";
 
 const LIVE_LIMIT = 12; // live lookups cost money, so only the top results get checked
 const CATALOG_GROUPS = GROUPS.filter(([key]) => key !== "custom");
@@ -57,7 +56,10 @@ function PartCard({ part, unit, onAdd, onRemove }) {
       title={part.name}
       onClick={() => onAdd(part.sku)}
       onKeyDown={(e) => e.key === "Enter" && onAdd(part.sku)}
-      onDragStart={(e) => e.dataTransfer.setData("text/plain", part.sku)}
+      onDragStart={(e) => {
+        e.dataTransfer.setData("text/plain", part.sku);
+        if (!part.custom) e.dataTransfer.setData("application/x-buildflow-catalog", part.sku);
+      }}
     >
       {part.img ? <img src={part.img} alt="" loading="lazy" draggable={false} /> : <div className="noimg">No photo</div>}
       {!part.inStock && <span className="oos">Out of stock</span>}
@@ -80,7 +82,7 @@ function PartCard({ part, unit, onAdd, onRemove }) {
   );
 }
 
-export default function PartsPanel({ onAdd, onLive, onRemoveCustom, version, unit, collapsed, onToggle }) {
+export default function PartsPanel({ designsHostRef, onAdd, onLive, onRemoveCustom, version, unit, collapsed, onToggle }) {
   const [tab, setTab] = useState("catalog");
   const [query, setQuery] = useState("");
   const [group, setGroup] = useState("all");
@@ -90,35 +92,12 @@ export default function PartsPanel({ onAdd, onLive, onRemoveCustom, version, uni
   const [live, refreshLive] = useLive(onLive);
   const [lookup, lookupControls] = useLookup(onLive);
   const looked = query.trim();
-  const [units, setUnits] = useState("mm");
-  const [cadMsg, setCadMsg] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [dropping, setDropping] = useState(false);
-  const fileRef = useRef(null);
-
   // Nothing local matches: search the web instead of making the user ask. Other searches get a button (each lookup costs a credit).
   useEffect(() => {
     if (tab !== "catalog" || looked.length < 3 || catalog.length || lookup.query === looked) return;
     const t = setTimeout(() => lookupControls.search(looked), 700);
     return () => clearTimeout(t);
   }, [tab, looked, catalog.length, lookup.query]);
-
-  const upload = async (files) => {
-    if (!files.length) return;
-    setBusy(true);
-    const notes = [];
-    for (const f of files) {
-      try {
-        const p = await addCadFile(f, units);
-        notes.push(`Added “${p.name}” (${formatSize(p, unit)})`);
-      } catch (err) {
-        notes.push(err.message);
-      }
-    }
-    setBusy(false);
-    setCadMsg(notes.join(" · "));
-    onLive?.();
-  };
 
   if (collapsed) {
     return (
@@ -141,7 +120,7 @@ export default function PartsPanel({ onAdd, onLive, onRemoveCustom, version, uni
         <div className="ptabs" role="tablist">
           <button type="button" role="tab" aria-selected={tab === "catalog"} onClick={() => setTab("catalog")}>Catalog</button>
           <button type="button" role="tab" aria-selected={tab === "uploads"} onClick={() => setTab("uploads")}>
-            My uploads{uploads.length ? <span className="pcount">{uploads.length}</span> : null}
+            My Designs{uploads.length ? <span className="pcount">{uploads.length}</span> : null}
           </button>
         </div>
 
@@ -171,31 +150,8 @@ export default function PartsPanel({ onAdd, onLive, onRemoveCustom, version, uni
               {live.text && !live.busy && <span role="status">{live.text}</span>}
             </div>
           </>
-        ) : (
-          <>
-            <input ref={fileRef} type="file" accept=".stl" multiple hidden onChange={(e) => { const files = [...e.target.files]; e.target.value = ""; upload(files); }} />
-            <button
-              type="button"
-              className={`dropzone${dropping ? " over" : ""}`}
-              onClick={() => fileRef.current?.click()}
-              onDragOver={(e) => { e.preventDefault(); setDropping(true); }}
-              onDragLeave={() => setDropping(false)}
-              onDrop={(e) => { e.preventDefault(); setDropping(false); upload([...e.dataTransfer.files]); }}
-              disabled={busy}
-            >
-              <UploadIcon />
-              <b>{busy ? "Reading your model…" : "Upload STL"}</b>
-              <span>Drop .stl files here or click to choose. Export them from Fusion, Onshape, SolidWorks or any CAD tool.</span>
-            </button>
-            <label className="unitrow">
-              File units
-              <select className="unitsel" value={units} onChange={(e) => setUnits(e.target.value)} aria-label="Units used in the STL file">
-                {UNITS.map(([v, label]) => <option key={v} value={v}>{label}</option>)}
-              </select>
-            </label>
-            {cadMsg && <p className="cadmsg" role="status">{cadMsg}</p>}
-          </>
-        )}
+        ) : null}
+
       </div>
 
       <div className="scroll">
@@ -209,12 +165,18 @@ export default function PartsPanel({ onAdd, onLive, onRemoveCustom, version, uni
             )}
             {looked.length >= 3 && <LookupResults lookup={lookup} controls={lookupControls} query={looked} />}
           </>
-        ) : uploads.length ? (
+        ) : (
+          <>
+          <div ref={designsHostRef} className="my-designs-library" />
+          {uploads.length > 0 && <h3 className="legacy-designs-heading">Saved STL imports</h3>}
+          {uploads.length ? (
           <div className="cards">
             {uploads.map((p) => <PartCard key={p.sku} part={p} unit={unit} onAdd={onAdd} onRemove={onRemoveCustom} />)}
           </div>
         ) : (
-          <div className="empty">Your uploaded parts show up here. They're saved in this browser, so they'll still be here next time.</div>
+          null
+          )}
+          </>
         )}
       </div>
     </aside>

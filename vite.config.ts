@@ -11,7 +11,7 @@ export default defineConfig(({mode}) => {
 
   return {
     plugins: [react(), livePrices(), lookupParts()],
-    build: {rollupOptions: {input: {workspace: 'index.html', catalog: 'catalog.html'}}},
+    build: {rollupOptions: {input: {catalog: 'index.html', workspace: 'workspace.html', legacyCatalog: 'catalog.html'}}},
     // Adding a part rewrites parts.json mid-session; refresh catalog data without reloading the page.
     server: {
       watch: {ignored: ['**/data/parts.json']},

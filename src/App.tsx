@@ -1,9 +1,10 @@
 import { Component, useEffect, useRef, useState, type ReactNode } from 'react';
+import { Quaternion, Vector3 } from 'three';
 import { Viewer, type View, type ViewerBridge } from './components/Viewer';
 import { loadModel, type LoadedModel } from './cad/import';
 import { disposeModel } from './cad/geometry';
 import { clone } from 'three/addons/utils/SkeletonUtils.js';
-import { addPosition, findSnap, alignConnectors, compatible, type PartInstance, type Mate, type Snap } from './assembly/snapping';
+import { addPosition, findSnap, alignConnectors, compatible, worldBox, type PartInstance, type Mate, type Snap } from './assembly/snapping';
 import './style.css';
 import {CatalogBrowser} from './components/CatalogBrowser.jsx';
 import {analyzeGeometry} from './cad/analyze';
@@ -182,12 +183,21 @@ export default function App() {
       byNode.set(node.id,`${reason} · pairs with ${counterpart.model.asset.name} ${counterpartNode.id}`.slice(0,600));
       partners.set(`${part.id}:${node.id}`,{partId:counterpart.id,nodeId:counterpartNode.id});
     };
+    // Auto-adjust: compatible Bitdeer pairs snap together without any manual node clicking.
+    const working=[...live.current.parts];
+    const movedIds=new Set<string>();
+    const autoMates:{movingId:string;targetId:string;movingNodeId:string;targetNodeId:string}[]=[];
     for(const pair of pairs){
-      const moving=live.current.parts.find(p=>p.id===pair.movingPartId),target=live.current.parts.find(p=>p.id===pair.targetPartId);
+      const moving=working.find(p=>p.id===pair.movingPartId),target=working.find(p=>p.id===pair.targetPartId);
       const a=moving?.model.connectors?.find(n=>n.id===pair.movingNodeId),b=target?.model.connectors?.find(n=>n.id===pair.targetNodeId);
       if(!moving||!target||!a||!b||a.review==='rejected'||b.review==='rejected'||a.geometryRevision!==moving.model.geometryRevision||b.geometryRevision!==target.model.geometryRevision)continue;
-      if(!compatible({...a,review:'accepted'},{...b,review:'accepted'}))continue;
+      if(!compatible({...a,review:'accepted'},{...b,review:'accepted'},moving.scale??1,target.scale??1))continue;
       mark(moving,a,target,b,pair.reason);mark(target,b,moving,a,pair.reason);
+      const snap=alignConnectors(moving,{...a,review:'accepted'},target,{...b,review:'accepted'});
+      const at=working.findIndex(p=>p.id===moving.id);
+      working[at]={...moving,position:snap.position,quaternion:snap.quaternion};
+      movedIds.add(moving.id);
+      autoMates.push({movingId:moving.id,targetId:target.id,movingNodeId:a.id,targetNodeId:b.id});
     }
     pairPartners.current=partners;
     if(!marks.size)return;
@@ -195,13 +205,21 @@ export default function App() {
       const byNode=marks.get(source.asset.id);if(!byNode)return source;
       return {...source,connectors:source.connectors?.map(n=>{
         const reason=byNode.get(n.id);
-        if(reason!==undefined)return {...n,aiSelected:true,aiReason:reason};
+        if(reason!==undefined)return {...n,review:'accepted' as const,aiSelected:true,aiReason:reason};
         if(n.aiSelected||n.aiReason!==undefined){const {aiSelected,aiReason,...rest}=n;return rest as Connector;}
         return n;
       })};
     };
     for(const [key,source] of cache.current)cache.current.set(key,reviewed(source));
-    setParts(items=>items.map(p=>({...p,model:reviewed(p.model)})));
+    if(movedIds.size)checkpoint();
+    setParts(items=>items.map(p=>{
+      const w=working.find(w=>w.id===p.id);
+      return {...p,model:reviewed(p.model),...(w&&movedIds.has(p.id)?{position:w.position,quaternion:w.quaternion}:{})};
+    }));
+    if(movedIds.size){
+      setMates(items=>[...items.filter(m=>!movedIds.has(m.movingId)&&!movedIds.has(m.targetId)),...autoMates]);
+      setNotice(`Bitdeer auto-connected ${autoMates.length} pair${autoMates.length===1?'':'s'} · adjust freely`);
+    }
   }
   function runPairing() {
     if(!cloud)return;
@@ -232,20 +250,44 @@ export default function App() {
   }
   function remove() { if(!selectedId)return; checkpoint(); setParts(p => p.filter(i => i.id !== selectedId)); setMates(m => m.filter(c => c.movingId !== selectedId && c.targetId !== selectedId));setSelectedId(null);setNotice('Part removed'); }
   function undo() { const last = history.at(-1); if(!last)return;setParts(last.parts);setMates(last.mates);setHistory(h => h.slice(0,-1));setSelectedId(null);setPreview(null);setNotice('Last change undone'); }
-  const dimensions = model ? model.asset.bounds.max.map((v, i) => (v - model.asset.bounds.min[i]) * 1000) : null;
+  const clipboard=useRef<PartInstance|null>(null);
+  const selectedPart=parts.find(p=>p.id===selectedId);
+  // Uniform scale keeps the model's proportions exact: one scalar drives every axis.
+  const [scalePercent,setScalePercent]=useState('100');
+  const [turnDegrees,setTurnDegrees]=useState('90');
+  useEffect(()=>{setScalePercent(String((selectedPart?.scale??1)*100));},[selectedId,selectedPart?.scale]);
+  function transform(scale?:number,axis?:'x'|'y'|'z') {
+    const p=live.current.parts.find(p=>p.id===selectedId);if(!p)return;
+    if(scale!==undefined&&(!Number.isFinite(scale)||scale<.001||scale>1000)){setNotice('Enter a scale from 0.1% to 100000%.');return;}
+    const degrees=Number(turnDegrees);if(axis&&!Number.isFinite(degrees)){setNotice('Enter a valid angle.');return;}
+    const q=new Quaternion(...(p.quaternion??[0,0,0,1]));
+    if(axis)q.premultiply(new Quaternion().setFromAxisAngle(new Vector3(axis==='x'?1:0,axis==='y'?1:0,axis==='z'?1:0),degrees*Math.PI/180));
+    const nextScale=scale??p.scale??1;
+    const localCenter=new Vector3(...p.model.asset.bounds.min).add(new Vector3(...p.model.asset.bounds.max)).multiplyScalar(.5);
+    const center=worldBox(p).getCenter(new Vector3());
+    const position=center.sub(localCenter.multiplyScalar(nextScale).applyQuaternion(q)).toArray() as [number,number,number];
+    checkpoint();setParts(items=>items.map(item=>item.id===p.id?{...item,scale:nextScale,quaternion:q.toArray(),position}:item));
+    setMates(items=>items.filter(m=>m.movingId!==p.id&&m.targetId!==p.id));setPreview(null);
+    setNotice(axis?`Rotated ${degrees}° around ${axis.toUpperCase()}`:`Resized to ${nextScale*100}% · proportions locked`);
+  }
+  function copyPart(){const p=live.current.parts.find(p=>p.id===selectedId);if(p){clipboard.current={...p,position:[...p.position],quaternion:[...(p.quaternion??[0,0,0,1]) as [number,number,number,number]]};setNotice('Model copied · Ctrl/Cmd+V to paste');}}
+  function pastePart(){const p=clipboard.current;if(!p)return;const width=worldBox(p).getSize(new Vector3()).x;const instance={...p,id:crypto.randomUUID(),model:{...p.model,object:clone(p.model.object) as LoadedModel['object']},position:[p.position[0]+width+.01,p.position[1],p.position[2]] as [number,number,number]};checkpoint();setParts(items=>[...items,instance]);setSelectedId(instance.id);clipboard.current=instance;setNotice('Model pasted · scale and rotation preserved');}
+  const shortcuts=useRef({copyPart,pastePart});shortcuts.current={copyPart,pastePart};
+  useEffect(()=>{const key=(e:KeyboardEvent)=>{const target=e.target as HTMLElement;if(target.closest('input,textarea,select,[contenteditable="true"]')||!(e.ctrlKey||e.metaKey)||e.altKey||e.repeat)return;if(e.key.toLowerCase()==='c'){if(live.current.parts.length){e.preventDefault();shortcuts.current.copyPart();}}if(e.key.toLowerCase()==='v'&&clipboard.current){e.preventDefault();shortcuts.current.pastePart();}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[]);
+  const dimensions = model ? model.asset.bounds.max.map((v, i) => (v - model.asset.bounds.min[i]) * 1000 * (selectedPart?.scale??1)) : null;
   return <main aria-busy={!!operation}>
-    <header className="topbar"><a className="brand" href="/" aria-label="BuildFlow home"><span className="brand-mark">▧</span> buildflow<span className="brand-dot">.</span></a><span className="project-name">Hardware workspace <span>/</span> Untitled project</span><span className="local-pill"><i/> {cloudStatus}</span></header>
+    <header className="topbar"><a className="brand" href="/" aria-label="BrickBots home"><span className="brand-mark">▧</span> brickbots<span className="brand-dot">.</span></a><span className="project-name">Hardware workspace <span>/</span> Untitled project</span><span className="local-pill"><i/> {cloudStatus}</span></header>
     <div className="workspace" style={operation?{pointerEvents:'none',opacity:.85}:undefined}>
       <section className={`stage ${dragging ? 'dragging' : ''}`} aria-label="3D model workspace" onDragOver={e => { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; setDragging(true); }} onDragLeave={e => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setDragging(false); }} onDrop={e => { e.preventDefault(); setDragging(false); const point = bridge.current?.dropPoint(e.clientX,e.clientY); const sku = e.dataTransfer.getData('application/x-buildflow-catalog'); const key = e.dataTransfer.getData('application/x-buildflow-model'); if(sku) void generateProduct(sku,point); else if(key) void demo(key,point); else if (e.dataTransfer.files[0]) void open(e.dataTransfer.files[0],false,undefined,point); }}>
         <div className="starfield"/>
         <div className="stage-heading"><div className="eyebrow">DESIGN BEFORE YOU BUILD</div><h1>Your next build,<br/>in perspective.</h1><p>Bring your hardware into view.</p></div>
         <div className="canvas"><ViewerBoundary><Viewer parts={parts} selectedId={selectedId} view={view} reset={reset} wireframe={wireframe} snapEnabled={snapEnabled} mates={mates} onSelect={setSelectedId} onConnect={connectNodes} onNodeMessage={setNotice} onMove={move} onPreview={setPreview} bridge={bridge}/></ViewerBoundary></div>
-        <div className="assembly-tools"><button disabled={!model || !!busy} onClick={() => model && place(model)}>＋ Duplicate</button><button disabled={!model || !!busy} onClick={remove}>Remove</button><button disabled={!history.length || !!busy} onClick={undo}>↶ Undo</button><span className={preview ? 'snap-message ready' : 'snap-message'} role="status">{preview ? 'Nodes aligned' : notice}</span></div>
+        <div className="assembly-tools"><button disabled={!model || !!busy} onClick={()=>{copyPart();pastePart();}}>＋ Duplicate</button><button disabled={!model || !!busy} onClick={copyPart}>Copy</button><button disabled={!!busy} onClick={pastePart}>Paste</button>{selectedPart&&<div className="assembly-transform"><label>Scale % <input aria-label="Uniform scale percent" type="number" min="0.1" max="100000" step="any" value={scalePercent} onChange={e=>setScalePercent(e.target.value)}/></label><button disabled={!!busy} onClick={()=>transform(Number(scalePercent)/100)}>Apply scale</button><label>Rotate ° <input aria-label="Rotation angle degrees" type="number" value={turnDegrees} onChange={e=>setTurnDegrees(e.target.value)}/></label>{(['x','y','z'] as const).map(axis=><button disabled={!!busy} key={axis} onClick={()=>transform(undefined,axis)}>Rotate {axis.toUpperCase()}</button>)}</div>}<button disabled={!model || !!busy} onClick={remove}>Remove</button><button disabled={!history.length || !!busy} onClick={undo}>↶ Undo</button><span className={preview ? 'snap-message ready' : 'snap-message'} role="status">{preview ? 'Nodes aligned' : notice}</span></div>
         <div className="viewbar" aria-label="Camera views">{(['Perspective', 'Front', 'Top', 'Side'] as View[]).map(v => <button key={v} className={view === v ? 'active' : ''} onClick={() => { setView(v); setReset(r => r + 1); }}>{v}</button>)}<span/><button title="Fit model in view" onClick={() => setReset(r => r + 1)}>↺ Reset</button><button aria-pressed={wireframe} onClick={() => setWireframe(v => !v)} className={wireframe ? 'active' : ''}>Wireframe</button></div>
         {!parts.length && !busy && <div className="empty-prompt"><span className="empty-icon">↥</span><strong>A space for your hardware.</strong><p>Drop a STEP, STL, or GLB model here<br/>or drag in a model from the library.</p><button className="primary" onClick={() => input.current?.click()}>Upload model <span>↗</span></button></div>}
         {busy && <div className="import-status" role="status"><span className="spinner"/><strong>{busy}</strong><small>Preparing geometry · original scale preserved</small><button onClick={() => { controller.current?.abort(); controller.current = null; setBusy(''); }}>Cancel import</button></div>}
         {dragging && <div className="drop-overlay">Drop to add a part</div>}
-        <div className="stage-bottom"><span><i className="status-dot"/>{parts.length ? `${parts.length} parts · ${mates.length} snaps` : 'Ready to assemble'}</span><span>Drag a part to move it <b>·</b> Click a part then <b>R</b> to rotate (A/D turn, W/S tip) <b>·</b> Shift skips snapping</span></div>
+        <div className="stage-bottom"><span><i className="status-dot"/>{parts.length ? `${parts.length} parts · ${mates.length} snaps` : 'Ready to assemble'}</span><span>Drag a part to move it <b>·</b> Click a part then <b>R</b> to rotate (A/D turn, W/S tip) <b>·</b> Ctrl/Cmd+C then V copies the selected part <b>·</b> Shift skips snapping</span></div>
       </section>
       <aside>
         <div className="cloud-controls"><button disabled={!ready||!!operation||!!busy} onClick={()=>void save()}>Save workspace</button><button disabled={!!operation||!!busy} onClick={()=>void restore()}>Reload saved</button></div>{operation&&<p role="status">{operation}…</p>}<CatalogBrowser onGenerate={(sku:string)=>void generateProduct(sku)} onDragEnd={()=>setDragging(false)}/><div className="panel-heading"><div><div className="eyebrow">YOUR WORKBENCH</div><h2>Model library</h2></div><span className="count">{fixtures.length + library.length}</span></div>

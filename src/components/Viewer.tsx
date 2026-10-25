@@ -39,7 +39,7 @@ function Scene(props: Props) {
     }
     const from=parts.find(p=>p.id===armed.partId),a=from?.model.connectors?.find(n=>n.id===armed.nodeId),b=part.model.connectors?.find(n=>n.id===nodeId);
     if(!a||!b||a.geometryRevision!==from?.model.geometryRevision||b.geometryRevision!==part.model.geometryRevision){setArmed(null);return;}
-    if(!compatible({...a,review:'accepted'},{...b,review:'accepted'})){props.onNodeMessage('These nodes differ in type or hole diameter. Choose another dot.');return;}
+    if(!compatible({...a,review:'accepted'},{...b,review:'accepted'},from?.scale??1,part.scale??1)){props.onNodeMessage('These nodes differ in type or hole diameter. Choose another dot.');return;}
     props.onConnect(armed.partId,armed.nodeId,part.id,nodeId);setArmed(null);
   }
   const controls = useRef<OrbitControlsImpl>(null);
@@ -88,7 +88,7 @@ function Scene(props: Props) {
     const delta = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(axis === 'y' ? 0 : 1, axis === 'y' ? 1 : 0, 0), direction * (axis === 'y' ? Math.PI / 6 : Math.PI / 2));
     const mate = (joined ?? []).find(m => m.movingId === p.id || m.targetId === p.id);
     const node = mate && p.model.connectors?.find(n => n.id === (mate.movingId === p.id ? mate.movingNodeId : mate.targetNodeId));
-    const pivot = node ? new THREE.Vector3(...node.position).applyQuaternion(q).add(new THREE.Vector3(...p.position)) : worldBox(p).getCenter(new THREE.Vector3());
+    const pivot = node ? new THREE.Vector3(...node.position).multiplyScalar(p.scale??1).applyQuaternion(q).add(new THREE.Vector3(...p.position)) : worldBox(p).getCenter(new THREE.Vector3());
     const turned = delta.clone().multiply(q);
     const position = pivot.clone().add(new THREE.Vector3(...p.position).sub(pivot).applyQuaternion(delta)).toArray() as [number, number, number];
     const lowest = worldBox({ ...p, quaternion: turned.toArray() }, position).min.y; if (lowest < 0) position[1] -= lowest;
@@ -158,11 +158,11 @@ function Scene(props: Props) {
   const ringRadius = Math.max(.003, Math.min(.012, span * .04));
   return <>
     <ambientLight intensity={1.3}/><hemisphereLight args={['#edf5ff','#55535b',1.5]}/><directionalLight position={[3,5,4]} intensity={3}/><directionalLight position={[-3,1,-2]} intensity={2}/>
-    {parts.map(p => <primitive key={p.id} object={p.model.object} position={p.position} quaternion={p.quaternion??[0,0,0,1]} dispose={null} onPointerDown={(e:ThreeEvent<PointerEvent>) => down(e,p)} onPointerMove={move} onPointerUp={(e:ThreeEvent<PointerEvent>) => { if (drag.current) { e.stopPropagation(); end(); } }} />)}
-    {selected && selectedBox && <group ref={selection} position={selected.position} quaternion={selected.quaternion??[0,0,0,1]}><Box args={selectedBox.getSize(new THREE.Vector3()).multiplyScalar(1.012).toArray()} position={selectedBox.getCenter(new THREE.Vector3())} raycast={() => {}}><meshBasicMaterial color={rotating ? "#65d9ff" : "#c5e7a8"} wireframe transparent opacity={rotating ? .95 : .55} depthTest={false}/></Box></group>}
+    {parts.map(p => <primitive key={p.id} object={p.model.object} scale={p.scale??1} position={p.position} quaternion={p.quaternion??[0,0,0,1]} dispose={null} onPointerDown={(e:ThreeEvent<PointerEvent>) => down(e,p)} onPointerMove={move} onPointerUp={(e:ThreeEvent<PointerEvent>) => { if (drag.current) { e.stopPropagation(); end(); } }} />)}
+    {selected && selectedBox && <group ref={selection} scale={selected.scale??1} position={selected.position} quaternion={selected.quaternion??[0,0,0,1]}><Box args={selectedBox.getSize(new THREE.Vector3()).multiplyScalar(1.012).toArray()} position={selectedBox.getCenter(new THREE.Vector3())} raycast={() => {}}><meshBasicMaterial color={rotating ? "#65d9ff" : "#c5e7a8"} wireframe transparent opacity={rotating ? .95 : .55} depthTest={false}/></Box></group>}
     {glow && <SnapGlow key={glow.since} point={glow.point} radius={ringRadius} since={glow.since}/>}
     {rotating && selected && <Html position={[worldBox(selected).getCenter(new THREE.Vector3()).x, worldBox(selected).max.y, worldBox(selected).getCenter(new THREE.Vector3()).z]} center style={{pointerEvents:'none',transform:'translateY(-34px)',whiteSpace:'nowrap',fontSize:12,fontWeight:600,color:'#04222c',padding:'4px 10px',borderRadius:12,background:'#65d9ff',boxShadow:'0 2px 10px #0007'}}>Rotating · A / D turn · W / S tip · click outside to finish</Html>}
-    <Grid position={[bounds.center.x, -.0001, bounds.center.z]} args={[span*10,span*10]} cellSize={cell} sectionSize={cell*5} cellThickness={.65} sectionThickness={1} cellColor="#494e56" sectionColor="#8a929b" fadeDistance={span*12}/>
+    <Grid position={[bounds.center.x, -.0001, bounds.center.z]} args={[span*10,span*10]} cellSize={cell} sectionSize={cell*5} cellThickness={.65} sectionThickness={1} cellColor="#202020" sectionColor="#000000" fadeDistance={span*12}/>
     <OrbitControls ref={controls} makeDefault enableDamping minDistance={span*.02} maxDistance={span*100}/>
     <GizmoHelper alignment="bottom-right" margin={[65,65]}><GizmoViewport axisColors={['#e19090','#b1d2a2','#9cbce5']} labelColor="black"/></GizmoHelper>
   </>;

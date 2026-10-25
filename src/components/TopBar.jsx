@@ -8,7 +8,7 @@ export default function TopBar({ view, prompt, onPrompt, onHome, totals, onCart,
   const dark = theme === "dark";
 
   return (
-    <header className="top"><a href="/" style={{color:"inherit",marginRight:16}}>CAD workspace ↗</a>
+    <header className="top">
       <button className="logo" type="button" onClick={onHome} aria-label="BrickBots home">
         <i />
         BrickBots
@@ -27,9 +27,9 @@ export default function TopBar({ view, prompt, onPrompt, onHome, totals, onCart,
         <div className="spacer" />
       )}
       {view === "build" && (
-        <button className="cartpill" type="button" onClick={onCart} disabled={!totals.count}>
+        <button className="cartpill" type="button" onClick={onCart} disabled={!Object.keys(totals.build??{}).length}>
           <span>{totals.count} parts</span>
-          <b>{money(totals.total)}</b>
+          <b>{totals.pricedCount ? `${money(totals.total)}${totals.unpricedCount ? ' + unpriced' : ''}` : 'Price unavailable'}</b>
         </button>
       )}
       <button className="iconbtn" type="button" onClick={onToggleTheme} aria-label={dark ? "Switch to day mode" : "Switch to night mode"}>

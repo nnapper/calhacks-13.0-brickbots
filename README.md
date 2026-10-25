@@ -1,4 +1,4 @@
-# BuildFlow
+# BrickBots
 
 CAD assembly workspace with STEP/GLB import, geometry-based attachment nodes, Bitdeer node and cross-part mate-pair recommendations, approved-node snapping, and Convex persistence. Product discovery and image-to-3D remain separate integrations.
 
@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open http://127.0.0.1:5173/. `postinstall` copies the OpenCascade runtime and licenses into ignored `public/vendor/occt/`. Basic viewing requires no API credentials. Geometry analysis needs the local Python service; AI recommendations and saved workspaces use the configuration below. Unsaved changes are lost on refresh.
+Open http://127.0.0.1:5173/ for the unified robot planner. Start a build to open the real 3D CAD workspace in the center of the same page. `postinstall` copies the OpenCascade runtime and licenses into ignored `public/vendor/occt/`. Basic viewing requires no API credentials. Geometry analysis needs the local Python service; AI recommendations and saved workspaces use the configuration below. Unsaved changes are lost on refresh.
 
 ```sh
 npm test
@@ -95,11 +95,12 @@ Checks: `npm test`, `npm run build`, `.venv/bin/python -m unittest server.test_g
 
 ## Merged catalog experience
 
-The default `/` remains the CAD workspace and now includes the main-branch product
-catalog search. `/catalog.html` preserves the teammate's complete robot planner,
-placeholder assembly animation, seller comparison and receipt flow. Both entry
-points build together. Catalog photos and category-based placeholder geometry are
-not manufacturer CAD; importing STEP/GLB remains the accurate assembly path.
+The default `/` is the teammate's complete robot planner with seller comparison and
+receipt flow. The build view replaces the placeholder assembly stage with the real 3D
+CAD workspace, model library and attachment-node inspector. `/workspace.html` and
+`/catalog.html` are redirects for existing bookmarks. Catalog photos and
+category-based placeholder geometry are not manufacturer CAD; importing STEP/GLB
+remains the accurate assembly path.
 The catalog and exchange-rate data are preserved from main, including generic
 multi-seller products. The `catalog:*`, `enrich:*`, `prices:refresh`, and `part:add`
 commands are retained; their credentials remain in ignored environment files.
