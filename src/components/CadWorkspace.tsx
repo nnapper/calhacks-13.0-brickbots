@@ -850,8 +850,8 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     setNotice(copies.length>1?`${copies.length} models pasted together`:'Model pasted · scale and rotation preserved');
   }
   function cutPart(){if(!selectedId)return;copyPart();remove();setNotice('Model cut · Ctrl/Cmd+V to paste');}
-  const shortcuts=useRef({copyPart,pastePart,cutPart});shortcuts.current={copyPart,pastePart,cutPart};
-  useEffect(()=>{const key=(e:KeyboardEvent)=>{const target=e.target as HTMLElement;if(target.closest('input,textarea,select,[contenteditable="true"]')||!(e.ctrlKey||e.metaKey)||e.altKey||e.repeat)return;if(window.getSelection()?.toString())return;if(e.key.toLowerCase()==='c'){if(live.current.parts.length){e.preventDefault();shortcuts.current.copyPart();}}if(e.key.toLowerCase()==='x'){if(live.current.parts.length){e.preventDefault();shortcuts.current.cutPart();}}if(e.key.toLowerCase()==='v'&&clipboard.current){e.preventDefault();shortcuts.current.pastePart();}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[]);
+  const shortcuts=useRef({copyPart,pastePart,cutPart,undo});shortcuts.current={copyPart,pastePart,cutPart,undo};
+  useEffect(()=>{const key=(e:KeyboardEvent)=>{const target=e.target as HTMLElement;if(target.closest('input,textarea,select,[contenteditable="true"]')||!(e.ctrlKey||e.metaKey)||e.altKey||e.repeat)return;if(window.getSelection()?.toString())return;if(e.key.toLowerCase()==='c'){if(live.current.parts.length){e.preventDefault();shortcuts.current.copyPart();}}if(e.key.toLowerCase()==='x'){if(live.current.parts.length){e.preventDefault();shortcuts.current.cutPart();}}if(e.key.toLowerCase()==='z'&&!e.shiftKey){e.preventDefault();shortcuts.current.undo();return;}if(e.key.toLowerCase()==='v'&&clipboard.current){e.preventDefault();shortcuts.current.pastePart();}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[]);
 
   function move(id: string, position: [number, number, number], snap: Snap | null, quaternion?: [number, number, number, number]) {
     checkpoint();
