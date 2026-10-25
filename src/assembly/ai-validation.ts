@@ -5,7 +5,7 @@ export type Placement={partId:string;positionMm:{x:number;y:number;z:number};rot
 // Only explicit counts attached to parts/blocks are constraints, never dimensions such as 20 mm.
 export function requestedCount(goal:string):number|null {
  const words:Record<string,number>={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12};
- const matches=[...goal.toLowerCase().matchAll(/\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\s+(?:(?:identical|equal|small|large|wooden|rectangular|square)\s+)*(?:\d+(?:\.\d+)?\s*(?:mm|cm|m)\s+)?(?:blocks?|cubes?|components?|parts?)\b/g)];
+	 const matches=[...goal.toLowerCase().matchAll(/\b(?!\d+(?:\.\d+)?\s*(?:mm|cm|m)\b)(\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\s+(?:(?:identical|equal|small|large|wooden|rectangular|square)\s+)?(?:(?:\d+(?:\.\d+)?(?:[-:]\d+)*(?:\s*(?:mm|cm|m))?|[a-z]+(?:-[a-z]+)?)\s+){0,5}?(?:blocks?|cubes?|components?|parts?|plates?|sheets?|boards?|beams?|brackets?)\b/g)];
  return matches.length===1?(words[matches[0][1]]??Number(matches[0][1])):null;
 }
 export function validatePlanCount(goal:string, plan:any):number {

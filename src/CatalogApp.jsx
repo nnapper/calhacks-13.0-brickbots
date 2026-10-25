@@ -97,7 +97,8 @@ export default function App() {
   const start = (text) => {
     setPrompt(text);
     setView("build");
-    assemble(text);
+    if (view !== "build") setPendingGoal(text);
+    else assemble(text);
   };
 
   const addPart = (sku) => {
