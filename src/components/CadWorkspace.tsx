@@ -1,5 +1,5 @@
 import {validatePlanCount, layoutIssues} from '../assembly/ai-validation';
-import {localCatalogPlan, shelfArrangement} from '../assembly/fast-build';
+import {localCatalogPlan, fallbackPlan, shelfArrangement} from '../assembly/fast-build';
 import {Box3,Euler,Quaternion,Vector3} from 'three';
 import {worldBox} from '../assembly/snapping';
 import { createPortal } from 'react-dom';
@@ -574,12 +574,17 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
         return {ok:true,output:result.summary??'Existing parts arranged and reviewed by Anthropic.'};
       }
       const catalog=planCatalog(goal);
-      const fastPlan=localCatalogPlan(goal,catalog);
+      let fastPlan=localCatalogPlan(goal,catalog);
       setOperation(fastPlan?'Preparing exact requested parts':'Gemini is planning the requested inventory');
-      const plan=fastPlan
+      let plan=fastPlan
         ? {plan:fastPlan.plan,model:'local-exact-match'}
         : await raceDeadline(askPlanner(goal,live.current.parts.map(p=>({id:p.id,name:p.model.asset.name,scale:p.scale??1})),catalog),subDeadline(deadline,15_000));
-      if(!plan)throw new Error('The planner missed the 30-second budget. Try an exact catalog request or retry with more context.');
+      if(!plan) {
+        const fullCatalog=(Object.values(BY_SKU) as any[]).map(toPlannerPart);
+        fastPlan={match:{sku:'fallback',name:goal},plan:fallbackPlan(goal,fullCatalog)};
+        plan={plan:fastPlan.plan,model:'local-fallback'};
+        setOperation('Preparing a deadline-safe fallback design');
+      }
       const expected=validatePlanCount(goal,plan.plan);
       if(expected+live.current.parts.length>100)throw new Error('This build would exceed the workspace limit of 100 parts.');
       stagedBuild.current=[];
