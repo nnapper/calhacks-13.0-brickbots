@@ -1,19 +1,12 @@
-/* The health overlay lives in CatalogApp.jsx, outside CadWorkspace's input area. */
+/* Build health lives at the bottom of the "Your build" panel and follows the light/dark theme. */
 .compat-health {
-  position: absolute;
-  top: 69px;
-  right: 346px;
-  width: min(320px, calc(100vw - 680px));
-  max-height: min(64vh, 500px);
-  z-index: 4;
   display: flex;
   flex-direction: column;
-  border: 1px solid #45505e;
+  margin-top: 14px;
+  border: 1px solid var(--line);
   border-radius: 12px;
-  background: rgba(20, 25, 31, .95);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, .32);
-  color: #edf0f4;
-  backdrop-filter: blur(12px);
+  background: var(--panel);
+  color: var(--ink);
   font-size: 12px;
   overflow: hidden;
 }
@@ -29,36 +22,29 @@
   border: 0;
   text-align: left;
   font-weight: 600;
+  cursor: pointer;
 }
 .compat-health-title { letter-spacing: .03em; }
-.compat-health-header-end { display: inline-flex; gap: 9px; align-items: center; color: #a6afbb; font-weight: 400; }
+.compat-health-header-end { display: inline-flex; gap: 9px; align-items: center; color: var(--muted); font-weight: 400; }
 .compat-health-totals { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 12px 10px; }
 .compat-number { border-radius: 6px; padding: 4px 6px; font-size: 10px; font-weight: 600; white-space: nowrap; }
-.compat-number.is-good { background: #1e4931; color: #b7f2ca; }
-.compat-number.is-bad { background: #612a2e; color: #ffd3d6; }
-.compat-number.is-unknown { background: #343b47; color: #d6dce6; }
-.compat-health-body { overflow-y: auto; min-height: 0; border-top: 1px solid #3b444e; padding: 8px 12px 10px; }
-.compat-empty { color: #b8c0ca; line-height: 1.5; }
+.compat-number.is-good { background: color-mix(in srgb, var(--ok) 18%, transparent); color: var(--ok); }
+.compat-number.is-bad { background: color-mix(in srgb, #e5484d 18%, transparent); color: #e5484d; }
+.compat-number.is-unknown { background: color-mix(in srgb, var(--muted) 16%, transparent); color: var(--muted); }
+.compat-health-body { overflow-y: auto; max-height: 280px; min-height: 0; border-top: 1px solid var(--line); padding: 8px 12px 10px; }
+.compat-empty { color: var(--muted); line-height: 1.5; margin: 4px 0; }
 .compat-pair-list { list-style: none; padding: 0; margin: 0; }
-.compat-pair { padding: 9px 0 10px; border-bottom: 1px solid #343d47; }
+.compat-pair { padding: 9px 0 10px; border-bottom: 1px solid var(--line); }
+.compat-pair:last-child { border-bottom: 0; }
 .compat-pair-head { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
 .compat-status { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
-.compat-pair.is-compatible .compat-status { color: #9fefbc; }
-.compat-pair.is-incompatible .compat-status { color: #ff9ba3; }
-.compat-pair.is-unknown .compat-status { color: #aeb9c7; }
-.compat-pair-target { padding: 0; border: 0; background: transparent; color: #edf0f4; text-align: left; font-size: 11px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
-.compat-pair-target:hover, .compat-pair-target:focus-visible { color: #b7deac; text-decoration: underline; }
-.compat-pair p { margin: 5px 0 0; color: #b9c3ce; font-size: 11px; line-height: 1.5; }
+.compat-pair.is-compatible .compat-status { color: var(--ok); }
+.compat-pair.is-incompatible .compat-status { color: #e5484d; }
+.compat-pair.is-unknown .compat-status { color: var(--muted); }
+.compat-pair-target { padding: 0; border: 0; background: transparent; color: var(--ink); text-align: left; font-size: 11px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; cursor: pointer; }
+.compat-pair-target:hover, .compat-pair-target:focus-visible { color: var(--cool); text-decoration: underline; }
+.compat-pair p { margin: 5px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
 .compat-sources { display: flex; flex-wrap: wrap; gap: 4px 9px; margin-top: 5px; }
-.compat-sources a { color: #b4d5f4; font-size: 10px; }
-.compat-meta { font-size: 10px; color: #d9c48d; margin: 9px 0 0; }
-.compat-disclaimer { font-size: 10px; line-height: 1.5; margin: 10px 0 0; color: #8f9da9; }
-@media (max-width: 1160px) {
-  .compat-health { right: 298px; width: 280px; }
-}
-@media (max-width: 970px) {
-  .compat-health { top: 62px; right: 14px; width: min(290px, calc(100% - 28px)); max-height: 54vh; }
-}
-@media (max-width: 860px) {
-  .compat-health { top: 57px; right: 10px; width: min(290px, calc(100% - 20px)); max-height: 31vh; }
-}
+.compat-sources a { color: var(--cool); font-size: 10px; }
+.compat-meta { font-size: 10px; color: var(--warm); margin: 9px 0 0; }
+.compat-disclaimer { font-size: 10px; line-height: 1.5; margin: 10px 0 0; color: var(--muted); }
