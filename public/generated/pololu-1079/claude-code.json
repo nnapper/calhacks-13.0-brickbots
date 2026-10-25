@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Single round aluminum hub, 12 mm diameter and 4.5 mm thick, with its axis along Y and its bottom face at Y=0. It has a 3 mm central through bore, four 2.2 mm blind mounting holes 3 mm deep on a square pattern at ±3.1 mm on the top face, and one 2.3 mm radial set-screw hole along +Z at mid-height that meets the bore. The set screws and Allen wrench from the 2-pack are not modeled.",
+  "confidence": "low",
+  "warnings": [
+    "The listing gives no dimensions except the 3 mm shaft, so the outer diameter, thickness, hole sizes, hole spacing and set-screw position are estimates scaled from the photos.",
+    "The mounting holes are modeled as plain 2.2 mm blind holes 3 mm deep. Their real depth is not visible and the #2-56 threads are not modeled.",
+    "The set-screw hole is modeled as a plain 2.3 mm hole at mid-height on the +Z side, with no thread. Its exact position and direction are uncertain.",
+    "Only one hub is modeled. The second hub, the set screws and the Allen wrench are omitted."
+  ],
+  "cadquery": "part = cq.Workplane('XZ').circle(6).extrude(-4.5)\nbore = cq.Workplane('XZ').circle(1.5).extrude(-4.5)\nmount = (cq.Workplane('XZ', origin=(0, 4.5, 0))\n         .pushPoints([(3.1, 3.1), (-3.1, 3.1), (3.1, -3.1), (-3.1, -3.1)])\n         .circle(1.1).extrude(3))\nset_screw = cq.Workplane('XY').center(0, 2.25).circle(1.15).extrude(7)\npart = part.cut(bore).cut(mount).cut(set_screw)"
+}

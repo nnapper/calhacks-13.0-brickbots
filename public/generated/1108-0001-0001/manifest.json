@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1108 Series Flat Pattern Bracket (1-1)",
+    "sku": "1108-0001-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1108-series-flat-pattern-bracket-1-1/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "dimensionsEstimated": true,
+    "codeConfidence": "medium",
+    "warnings": [
+      "The drawing prints width 40 mm, thickness 2.5 mm, top radius 20 mm, bore Ø14 mm, hole Ø4 mm, 8 mm hole pitch, 32 mm span of the base hole row, and 4 mm base-edge offset. Total height of 56 mm is derived, not printed: the bore centerline is 32 mm above the base hole row, which is 4 mm above the bottom edge, giving 36 mm to the bottom edge, plus the 20 mm radius above the centerline. The pixel scale of the drawing agrees with this. The origin is the bounding-box center, so the bore center is at y=+8. The eight ring holes are slightly elongated slots (about 4 mm wide and 4.7 mm long, elongated radially). They are modeled here as Ø4 mm points at roughly 12 mm radius from the bore center, with diagonal slots at 45° (about ±8.5 mm). The drawing prints 16 mm and 24 mm dimensions for these, which suggests the diagonal offsets may be nearer 8 mm, so treat the ring positions as approximate. Slot elongation is not modeled.",
+      "Ring holes are drawn as slots elongated radially (about 4 x 4.7 mm); they are modeled as plain Ø4 mm circles.",
+      "Ring hole positions are approximate: placed on a 12 mm radius at 45° steps. The drawing's 16 mm dimension suggests the diagonal holes may be at ±8 mm in Y rather than ±8.49 mm.",
+      "Total height of 56 mm is derived from 4 + 32 + 20 mm, not printed on the drawing.",
+      "The weight and other specs were not used for geometry."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -20,
+      "xmax": 20,
+      "ymin": 0,
+      "ymax": 56,
+      "zmin": -1.25,
+      "zmax": 1.25,
+      "xlen": 40,
+      "ylen": 56,
+      "zlen": 2.5
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 125367,
+        "sha256": "9c2026d96d7e458fcfdbbad329f0750f69b6261b456b269a4d5d141a5f9a7197"
+      },
+      "model.stl": {
+        "bytes": 368784,
+        "sha256": "0202c590e5d3fa2254bbaa007c3fa0fe3940923058199e7b04c27020fb871e18"
+      },
+      "model.glb": {
+        "bytes": 133444,
+        "sha256": "a35b50791e13e4e4f622b191250b2e3a9da5571be1c909972e32eda1fe063984"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "9c2026d96d7e458fcfdbbad329f0750f69b6261b456b269a4d5d141a5f9a7197"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Simplified Bilda dual-mode servo programmer: 48x48 mm board with 2 mm backing layer, 1.6 mm PCB, four 6 mm tactile buttons, one IC block, and two 3-pin vertical headers at the back edge reaching 14 mm total height (Y up).",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are visual estimates; the source gives none.",
+    "Height is placed on Y (14 mm) per the Y=0 bottom rule, while the analysis lists Z as height; X and Z are both 48 mm.",
+    "Corner mounting holes were omitted because their positions and diameters are uncertain.",
+    "The L-shaped notch in the backing pad, the crystal/SMD parts and the battery tray and cable were omitted.",
+    "Header pins are modeled as vertical, which is assumed from the 14 mm height estimate; in the image they may be right-angle.",
+    "Button and header positions are approximate."
+  ],
+  "cadquery": "def bx(x,y,z,cx,y0,cz):\n    return cq.Workplane('XY').box(x,y,z,centered=(True,False,True)).translate((cx,y0,cz))\n\npart = bx(48,2,48,0,0,0)  # backing layer\npart = part.union(bx(48,1.6,48,0,2,0))  # PCB\n# tactile buttons (body + cap)\nfor bxp,bzp in [(-12,8),(0,8),(12,8),(6,18)]:\n    part = part.union(bx(6,3.5,6,bxp,3.6,bzp))\n    part = part.union(cq.Workplane('XY').circle(1.8).extrude(1.2).translate((bxp,7.1,bzp)))\n# main IC\npart = part.union(bx(10,1.8,5,-10,3.6,-4))\n# two 3-pin headers with vertical pins\nfor hx in (-6,6):\n    part = part.union(bx(7.62,2.5,2.54,hx,3.6,-18))\n    for i in (-1,0,1):\n        part = part.union(bx(0.64,14-3.6-2.5+2.5,0.64,hx+i*2.54,3.6,-18).intersect(bx(2,14-3.6,2,hx+i*2.54,3.6,-18)))\n"
+}

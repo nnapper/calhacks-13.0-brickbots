@@ -1,167 +1,37 @@
 [
  {
-  "url": "https://www.pololu.com/category/127",
-  "category": "linear-actuators",
-  "max": 6
- },
- {
-  "url": "https://www.pololu.com/category/205",
-  "category": "servos",
-  "max": 6
- },
- {
-  "url": "https://www.pololu.com/category/87",
-  "category": "stepper-motors",
-  "max": 6
- },
- {
-  "url": "https://www.pololu.com/category/60",
-  "category": "micro-metal-gearmotors",
-  "max": 5
- },
- {
-  "url": "https://www.pololu.com/category/51",
-  "category": "metal-dc-gearmotors",
-  "max": 5
- },
- {
-  "url": "https://www.pololu.com/category/232",
-  "category": "tracks",
+  "url": "https://www.pololu.com/category/115",
+  "category": "25d-metal-gearmotors",
   "max": 4
  },
  {
-  "url": "https://www.pololu.com/category/231",
-  "category": "ball-casters",
+  "url": "https://www.pololu.com/category/116",
+  "category": "37d-metal-gearmotors",
   "max": 4
  },
  {
-  "url": "https://www.pololu.com/category/234",
-  "category": "wheels",
-  "max": 6
- },
- {
-  "url": "https://www.pololu.com/category/230",
-  "category": "brackets",
-  "max": 5
- },
- {
-  "url": "https://www.pololu.com/category/179",
-  "category": "motor-shaft-adapters",
+  "url": "https://www.pololu.com/category/138",
+  "category": "motor-brackets",
   "max": 4
  },
  {
-  "url": "https://www.pololu.com/category/201",
-  "category": "encoders",
-  "max": 5
- },
- {
-  "url": "https://www.pololu.com/category/123",
-  "category": "reflectance-sensors",
-  "max": 5
- },
- {
-  "url": "https://www.pololu.com/category/78",
-  "category": "sonar-range-finders",
+  "url": "https://www.pololu.com/category/137",
+  "category": "mounting-hubs",
   "max": 3
  },
  {
-  "url": "https://www.pololu.com/category/79",
-  "category": "ir-distance-sensors",
-  "max": 4
+  "url": "https://www.pololu.com/category/164",
+  "category": "scooter-wheel-adapters",
+  "max": 2
  },
  {
-  "url": "https://www.pololu.com/category/306",
-  "category": "tof-distance-sensors",
-  "max": 4
+  "url": "https://www.pololu.com/category/166",
+  "category": "hex-wheel-adapters",
+  "max": 2
  },
  {
-  "url": "https://www.pololu.com/category/80",
-  "category": "imus",
-  "max": 5
- },
- {
-  "url": "https://www.pololu.com/category/118",
-  "category": "current-sensors",
-  "max": 3
- },
- {
-  "url": "https://www.pololu.com/category/331",
-  "category": "vibration-motors",
-  "max": 4
- },
- {
-  "url": "https://www.pololu.com/category/135",
-  "category": "relay-modules",
-  "max": 3
- },
- {
-  "url": "https://www.pololu.com/category/136",
-  "category": "voltage-regulators",
-  "max": 4
- },
- {
-  "url": "https://www.pololu.com/category/120",
-  "category": "stepper-drivers",
-  "max": 4
- },
- {
-  "url": "https://www.pololu.com/category/11",
-  "category": "dc-motor-drivers",
-  "max": 4
- },
- {
-  "url": "https://www.pololu.com/category/102",
-  "category": "servo-controllers",
-  "max": 3
- },
- {
-  "url": "https://www.pololu.com/category/54",
-  "category": "batteries",
-  "max": 4
- },
- {
-  "url": "https://www.pololu.com/category/55",
-  "category": "battery-holders",
-  "max": 3
- },
- {
-  "url": "https://www.pololu.com/category/26",
-  "category": "chassis",
-  "max": 5
- },
- {
-  "url": "https://www.pololu.com/category/202",
-  "category": "romi-chassis",
-  "max": 4
- },
- {
-  "url": "https://www.pololu.com/category/64",
-  "category": "dev-boards",
-  "max": 4
- },
- {
-  "url": "https://www.pololu.com/category/148",
-  "category": "force-sensors",
-  "max": 3
- },
- {
-  "url": "https://www.pololu.com/category/81",
-  "category": "switches",
-  "max": 4
- },
- {
-  "url": "https://www.pololu.com/category/34",
-  "category": "tamiya-motor-kits",
-  "max": 3
- },
- {
-  "url": "https://www.pololu.com/category/46",
-  "category": "servo-wheels",
-  "max": 3
- },
- {
-  "url": "https://www.pololu.com/category/191",
-  "category": "scooter-wheels",
+  "url": "https://www.pololu.com/category/149",
+  "category": "a-star-controllers",
   "max": 3
  }
 ]

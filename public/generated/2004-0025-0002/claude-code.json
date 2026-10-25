@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Simplified standard servo: 40 x 37 x 20 mm rectangular case, a 54.5 mm wide, 4 mm thick mounting flange near the top, a 7 mm diameter output shaft stub rising 5 mm from the top and offset toward -X, and four 4.5 mm vertical mounting holes in the flange ears at x=±24.75, z=±5. The overall size is 54.5 x 42 x 20 mm, with the bottom at Y=0.",
+  "confidence": "low",
+  "warnings": [
+    "All dimensions are estimates because the listing gives none.",
+    "The analysis bounds use Z as the shaft axis. I mapped that to Y (up) as the rules require, so the 42 mm overall height is on Y and the 20.5 mm width became about 20 mm on Z.",
+    "The flange height, shaft offset (-12 mm) and shaft diameter are guesses.",
+    "Omitted the cooling ribs, the spline teeth and tapped bore, the output boss ring, screws, the cable and connector, and the logo.",
+    "The open U-shaped mounting slots are modeled as round through holes, as the analysis suggests."
+  ],
+  "cadquery": "body = cq.Workplane('XY').box(40, 37, 20, centered=(True, False, True))\nflange = cq.Workplane('XY').box(54.5, 4, 20, centered=(True, False, True)).translate((0, 31, 0))\npart = body.union(flange)\nshaft = cq.Workplane('XY').add(cq.Solid.makeCylinder(3.5, 5, cq.Vector(-12, 37, 0), cq.Vector(0, 1, 0)))\npart = part.union(shaft)\nfor x in (-24.75, 24.75):\n    for z in (-5, 5):\n        h = cq.Solid.makeCylinder(2.25, 10, cq.Vector(x, 28, z), cq.Vector(0, 1, 0))\n        part = part.cut(cq.Workplane('XY').add(h))"
+}

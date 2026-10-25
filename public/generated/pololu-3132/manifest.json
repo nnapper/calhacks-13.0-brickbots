@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Tic T834 USB Multi-Interface Stepper Motor Controller (Connectors Soldered)",
+    "sku": "pololu-3132",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "X and Y come from the printed dimensions in the photo (1.5 in x 1.05 in, i.e. 38.1 x 26.67 mm). Z is an assumption. I assumed a 1.6 mm PCB and a terminal block, header and capacitor height of about 10 mm above the board, and I ignored any header pin length below the board. Mounting hole positions and diameters are estimated from pixel scaling of the top-view photo (about 0.0635 mm per pixel) with the origin at the board center. Both holes are assumed to be about 2.3 mm in diameter. The holes are assumed to be through-holes. The PCB is modeled at z = -6 to -4.4 mm. The many small header and castellated pad holes are not listed. No other features are inferred.",
+      "Dimensions are estimates; height of 12 mm is assumed.",
+      "The analysis bounds are given in Z-up form (x 38.1, y 26.7, z 12). They were remapped to Y-up so that the board depth runs along Z and the 12 mm height along Y, as the rules require.",
+      "Only the front-left mounting hole is clearly visible and is included. The second hole at (16.4, 9.6) was omitted because it is uncertain and would collide with the terminal block.",
+      "Component positions and sizes (terminal block, header, capacitor, USB) are approximated from the photo.",
+      "Small SMD parts, the large pad, castellations, and silkscreen are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -19.05,
+      "xmax": 19.05,
+      "ymin": 0,
+      "ymax": 10.1,
+      "zmin": -14.35,
+      "zmax": 13.75,
+      "xlen": 38.1,
+      "ylen": 10.1,
+      "zlen": 28.1
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 241599,
+        "sha256": "cb4d83eeb9afdef93e07ddd484da244bd8b3d9e17802594ef1a87caaaa99aeb4"
+      },
+      "model.stl": {
+        "bytes": 46084,
+        "sha256": "cbdaa1532dbbc740adff40d38ebdbafa0141617dd6aeb0b0500c063ef4aca72b"
+      },
+      "model.glb": {
+        "bytes": 17580,
+        "sha256": "1a74dd9b75a688f4035baf40609f9064f3ed384da50f15cf7e5a19bea963ab54"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "cb4d83eeb9afdef93e07ddd484da244bd8b3d9e17802594ef1a87caaaa99aeb4"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

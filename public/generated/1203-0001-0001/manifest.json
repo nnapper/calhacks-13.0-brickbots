@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1203 Series Block Mount (1-1) - 4 Pack",
+    "sku": "1203-0001-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1203-series-block-mount-1-1-4-pack/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are given in the listing, so all sizes are assumptions. I assumed a 16 mm width and thickness from the goBILDA 8 mm grid. The 30 mm length comes from the face-on view, where the aspect ratio is about 1.85:1, so it may really be 32 mm. The 8 mm hole diameter is estimated from the visible bore and may be the thread opening rather than the minor diameter. Hole positions are read from the images; the hole near the rounded end is about 8 mm from that end. The listing text does not say whether the end-face hole is blind, so it is recorded as non-through. Thread details, chamfer size and corner radius are not modeled.",
+      "No dimensions are given in the listing, so all sizes come from the image analysis estimates and may be off.",
+      "The 6 mm fillet radius is a guess. It may actually be a full 8 mm radius, and it may apply to only one corner.",
+      "The 3 mm chamfer size and its location on the square end are estimated.",
+      "The 8 mm hole diameter may be the thread opening rather than the tap drill size. Threads and countersinks are not modeled.",
+      "The depth of the end-face hole is unknown, so a 16 mm blind hole is assumed.",
+      "The analysis axes are ambiguous, so the long axis was placed along Y following the bounds and hole positions."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -8,
+      "xmax": 8,
+      "ymin": 0,
+      "ymax": 30,
+      "zmin": -8,
+      "zmax": 8,
+      "xlen": 16,
+      "ylen": 30,
+      "zlen": 16
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 38256,
+        "sha256": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065"
+      },
+      "model.stl": {
+        "bytes": 51484,
+        "sha256": "afdc529a770f609b50ebbbe9674f9fd78411937a790a0fb4189be04c2fb3d40c"
+      },
+      "model.glb": {
+        "bytes": 19536,
+        "sha256": "9b11fa7266858757f6912913854c1ba4b5442d08ecc12a9bbb28214ae1932d14"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "f03ac1671f10872784b01e14e97c206cd77b8bb00f9ad814985a6046d89d9065"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

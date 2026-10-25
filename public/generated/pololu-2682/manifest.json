@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "12mm Hex Wheel Adapter for 3mm Shaft (2-Pack)",
+    "sku": "pololu-2682",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "dimensionsEstimated": false,
+    "codeConfidence": "medium",
+    "warnings": [
+      "The drawing prints 17 mm length, 12 mm across flats (end view), a 3 mm bore diameter, 2.75 mm and 4.5 mm set-screw spacing, and a 7 mm M4 hole depth. The x extent of 13.86 mm is across corners, computed from 12 / cos(30°); it is not printed. The end view shows flats at top and bottom, so the set-screw flat is placed at +y. The 3 mm bore depth is not printed, and the drawing does not show whether it meets the M4 hole. The M3 hole diameter uses the nominal 3 mm and is not a drilled size from the drawing. The two M3 holes are placed along the axis from the shaft-bore end, at z = 5.75 and 1.25 with the part centered. The 4 mm hole diameter is nominal.",
+      "The bore depth is not given. I assumed 9.5 mm so the set-screw holes intersect it.",
+      "The 3 mm bore and the 4 mm hole leave a 0.5 mm wall between them. The drawing does not show whether they meet.",
+      "The M4 hole uses the nominal 4 mm diameter, not a tap-drill size. Threads are not modeled.",
+      "The M3 set-screw holes use the nominal 3 mm diameter and are not threaded.",
+      "The set-screw flat is placed at +Y, following the end-view analysis.",
+      "The bore is modeled round. The D-shaft compatibility is not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -6.928203230275509,
+      "xmax": 6.92820323027551,
+      "ymin": -2.6645352591003757e-15,
+      "ymax": 12.000000000000002,
+      "zmin": -8.5,
+      "zmax": 8.5,
+      "xlen": 13.856406460551018,
+      "ylen": 12.000000000000004,
+      "zlen": 17
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [12.000000000000004, 13.856406460551018, 17.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 53791,
+        "sha256": "3d204e4dbea4927273fb47df67803027ea45b855d6f903ca063076b749d10198"
+      },
+      "model.stl": {
+        "bytes": 73284,
+        "sha256": "7251657343e227bc29706d846f87c83e156519d115b4d3b813d32dfa5ca58871"
+      },
+      "model.glb": {
+        "bytes": 27364,
+        "sha256": "32777b46cd3afd1c12fd24c80ca479046e0622daf58bafdf59eb9c8d58160d8a"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "3d204e4dbea4927273fb47df67803027ea45b855d6f903ca063076b749d10198"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

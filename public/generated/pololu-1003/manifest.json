@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Rechargeable NiMH AA Battery: 1.2 V, 2200 mAh, 1 cell",
+    "sku": "pololu-1003",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "The product text gives no dimensions. Sizes assume the standard AA cell (about 14.5 mm diameter, about 50.5 mm length). The photos show a cylindrical body and a raised button terminal at one end, which is consistent with this. The cell fits the 3-cell holder in the second image, so it is the same standard size. No holes or mounting features are visible or stated, so none are listed. Terminal button height and diameter are not modeled because their sizes are not given. The axis choice (long axis along x) is arbitrary and the bounding box is centered on the part.",
+      "The product page gives no dimensions, so the standard AA size is assumed: 14.5 mm diameter, 50.5 mm overall length.",
+      "The button terminal diameter (5.5 mm) and height (1.2 mm) are estimated from the photo.",
+      "The negative end is modeled as a flat face because its terminal is not clearly visible.",
+      "The long axis along X is an arbitrary choice taken from the analysis.",
+      "The shrink-wrap label, text and end-cap rims are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -25.25,
+      "xmax": 25.249999999999996,
+      "ymin": 0,
+      "ymax": 14.5,
+      "zmin": -7.25,
+      "zmax": 7.25,
+      "xlen": 50.5,
+      "ylen": 14.5,
+      "zlen": 14.5
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 10303,
+        "sha256": "7eafe5f0a0f650b1c3ba55bfaa612eb0c9b6ef7430479161d618efb28e0a20b6"
+      },
+      "model.stl": {
+        "bytes": 33484,
+        "sha256": "b28c8c4313229159ffc8bcfdda1d1bcd344bbb8f0a38ea208024ff0400549392"
+      },
+      "model.glb": {
+        "bytes": 13064,
+        "sha256": "a275e6e8325af58b2706ff7304a614f23ba4fb4fb83d25f90f08bf1d7fa0e67b"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "7eafe5f0a0f650b1c3ba55bfaa612eb0c9b6ef7430479161d618efb28e0a20b6"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 14
+  },
+  "status": "prototype_unverified"
+}

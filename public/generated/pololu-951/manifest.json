@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Ball Caster with 3/8″ Metal Ball",
+    "sku": "pololu-951",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "Stated: ball diameter 9.525 mm, height with no spacers 10.16 mm, screw-hole spacing 13.46 mm (used for hole x positions, centered on the part), spacer thicknesses 1.59 mm and 3.175 mm. Not stated and estimated from the photos and a #2 screw (about 2.18 mm major diameter): the 2.4 mm hole diameter, the 18 mm length across the ears, and the 11 mm width. The z extent is the no-spacer height. Spacers would increase it up to 15.24 mm. The ball sits partly below the housing, so the bounding box is centered on the housing and ball. The screw and nut protrusion is excluded. Hole through-status is assumed from the screw hardware. Dimensions are unverified.",
+      "Housing profile is simplified: a cylindrical cap with a rectangular ear plate, no rounded ears or exact curved contours.",
+      "Ear thickness, plate width (7 mm), and cap radius are estimated from the photo.",
+      "Overall bounds follow the given estimate (X 18, Y 11, Z 10.16), which is slightly taller than the 10.16 mm stated height; Z is the cap's 10.16 mm diameter.",
+      "Spacers, screws, nuts and threads are omitted.",
+      "The ball is fused with the housing cavity, which has zero clearance, to give a single solid.",
+      "The housing opens at the ball's equator, so the lower half of the ball is exposed. The real lip geometry is uncertain."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -9,
+      "xmax": 9,
+      "ymin": 0,
+      "ymax": 11,
+      "zmin": -5.08,
+      "zmax": 5.08,
+      "xlen": 18,
+      "ylen": 11,
+      "zlen": 10.16
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 44196,
+        "sha256": "82629eec7582874f843ca4c00db0781b18b7f70010c35acc85ea94f93adb567b"
+      },
+      "model.stl": {
+        "bytes": 146284,
+        "sha256": "bbdd530305b252c08edf5efeb269d74f99c5857bc800cbf27b1c14976aeb6ff2"
+      },
+      "model.glb": {
+        "bytes": 53636,
+        "sha256": "c9dfc1f7149bfa430c2dd55de7b8787cab03d5250a21f9056f9b06920b60e236"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "82629eec7582874f843ca4c00db0781b18b7f70010c35acc85ea94f93adb567b"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 23
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,37 @@
+{
+  "partType": "gear",
+  "summary": "12-tooth MOD 0.8 spur gear with a 20° pressure angle. It has a central through bore with an internal 25-tooth servo spline and a shallow recess on one face.",
+  "boundsMm": {
+    "x": 11.2,
+    "y": 11.2,
+    "z": 8
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 5.8,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 4,
+      "description": "Flat end face on the recessed side, which has a shallow counterbore around the bore"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -4,
+      "description": "Flat end face on the opposite side, with the splined bore opening flush"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Outer diameter is calculated from the gear specs: MOD 0.8 with 12 teeth gives a pitch diameter of 9.6 mm and a tip diameter of 9.6 + 2×0.8 = 11.2 mm. The listed center distances confirm the module: 24 mm with the 48-tooth gear and 48 mm with the 108-tooth gear. Face width (about 8 mm) is a visual estimate from the pencil scale photo and is not stated. The bore (about 5.8 mm) is an assumed nominal size for a 25-tooth servo spline; its diameter is not given in the text. The recess on one face is visible but its diameter and depth are not stated, so it is not listed as a hole. The gear axis is along z, centered at the origin."
+}

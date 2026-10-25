@@ -1,0 +1,8 @@
+plate = cq.Workplane('XY').box(48, 24, 6, centered=(True, False, False)).translate((0, 0, -7))
+block_l = cq.Workplane('XY').box(8, 24, 14, centered=(True, False, True)).translate((-20, 0, 0))
+block_r = cq.Workplane('XY').box(8, 24, 14, centered=(True, False, True)).translate((20, 0, 0))
+part = plate.union(block_l).union(block_r)
+bore = cq.Workplane('XY').workplane(offset=-10).center(0, 12).circle(7).extrude(20)
+part = part.cut(bore)
+holes = cq.Workplane('XY').workplane(offset=-10).pushPoints([(-12, 18), (-4, 4), (4, 20), (12, 6)]).circle(2.1).extrude(20)
+part = part.cut(holes)

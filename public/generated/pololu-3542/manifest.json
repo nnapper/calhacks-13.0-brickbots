@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Romi Encoder Pair Kit, 12 CPR, 3.5-18V",
+    "sku": "pololu-3542",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "Dimensions are estimates. The text states that the encoder fits within the 11.5 mm × 22.5 mm motor cross section on three sides and extends 7 mm past the fourth side. That gives a board about 22.5 mm wide and about 11.5 + 7 = 18.5 mm long. The 1.6 mm thickness is the standard PCB thickness and is assumed. Header pads are on a stated 2.54 mm pitch. The 4 mm center hole is estimated visually and is not stated. The 1 mm pad hole size is assumed. Hole positions are approximate. The slotted corner mounting or solder holes are visible but are not modeled. The magnetic disc (about 8 mm diameter, 2.5 mm thick) and the header pins are separate parts and are not included in the bounds. The shaft is stated to protrude 5 mm beyond the back of the motor.",
+      "Dimensions are estimated from the description and bounds; none are verified.",
+      "The board is modeled as a plain rectangle. The real outline has a notched or rounded shape.",
+      "The corner solder slots are visible but omitted because their size and position are uncertain.",
+      "The magnetic disc and the male and female header pins are separate parts and are excluded.",
+      "The 4 mm center hole size and position are visual estimates.",
+      "The 1 mm pad hole diameter and positions are assumed.",
+      "Hole positions were shifted by +9.25 mm in Y to put the board bottom at Y=0. The board thickness runs along Z, as in the given bounds."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -11.25,
+      "xmax": 11.25,
+      "ymin": 0,
+      "ymax": 18.5,
+      "zmin": -0.8,
+      "zmax": 0.8,
+      "xlen": 22.5,
+      "ylen": 18.5,
+      "zlen": 1.6
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 48875,
+        "sha256": "6169d921310cf265827931adda6843c8173ac9e2e1dc8b2679bcae191ea72508"
+      },
+      "model.stl": {
+        "bytes": 119684,
+        "sha256": "7be1fd9754ed175834a1d49a110abbc682b59c7584706f64925e660a949faf6a"
+      },
+      "model.glb": {
+        "bytes": 43932,
+        "sha256": "de40615bf44fcdd1763df61957503b54930b1b8589bd10586169fff9620be019"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "6169d921310cf265827931adda6843c8173ac9e2e1dc8b2679bcae191ea72508"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

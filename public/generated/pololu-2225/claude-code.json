@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Battery pack of six AA-sized cylinders (15 mm dia, 51 mm long, axes along X) in two stacked rows of three. The rows are spread along Z to match the 58 mm estimated bound. A central filler block joins the cells into one solid. The overall size is 51 x 30 x 58 mm, with the bottom at Y=0 and X and Z centered.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are unverified estimates. The 58 mm Z extent is larger than three AA cells (about 45 mm), so the cells are spaced apart and bridged by a filler block.",
+    "A more realistic pack would be about 51 x 30 x 44 mm. The given bounds were used as instructed.",
+    "The lead wires and JR connector are omitted because the lead is outside the bounds.",
+    "Scalloped end profile is only approximated by the cylinder ends.",
+    "The shrink wrap is not modeled separately.",
+    "AAA and 2/3 AAA variants are not modeled."
+  ],
+  "cadquery": "cell_d = 15.0\nL = 51.0\npitch_z = 21.5\npts = [(cell_d/2 + row*cell_d, z) for row in (0, 1) for z in (-pitch_z, 0, pitch_z)]\ncells = (cq.Workplane('YZ').pushPoints(pts).circle(cell_d/2).extrude(L).translate((-L/2, 0, 0)))\ncore = cq.Workplane('XY').box(L, 16.0, 2*pitch_z, centered=(True, True, True)).translate((0, 15.0, 0))\npart = cells.union(core)"
+}

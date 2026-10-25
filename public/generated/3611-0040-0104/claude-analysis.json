@@ -1,0 +1,32 @@
+{
+  "partType": "other",
+  "summary": "Service pack of 44 barrel-shaped, textured rubber rollers for 104 mm GripForce mecanum wheels. It also contains a roller pin, 2 bearings, 12 E-clips and 12 shims. The model is a single roller with a central axial bore, centered on the origin with its axis along z.",
+  "boundsMm": {
+    "x": 20,
+    "y": 20,
+    "z": 40
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 20,
+      "description": "Roller end faces (at z = ±20 mm) around the axial bore. The roller seats on the pin, bearings, shims and E-clips inside the wheel."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are stated, so every size is an estimate. The roller length of about 40 mm and maximum diameter of about 20 mm are assumed from the 104 mm wheel with 12 rollers per wheel and the roller-to-grid proportions in the photo. The 8 mm bore is assumed from the bore-to-diameter ratio and the size of the small bearings shown. The surface bumps are ignored. The pin, bearings, E-clips and shims are not modeled. The pack's 44 rollers are not arranged as a single envelope."
+}

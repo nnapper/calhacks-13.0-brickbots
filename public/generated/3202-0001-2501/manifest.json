@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "ServoBlock® (Standard Size, 25 Tooth Spline, Hub-Shaft)",
+    "sku": "3202-0001-2501",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/servoblock-standard-size-25-tooth-spline-hub-shaft/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No scraped dimensions were available, so sizes come from the drawing. Printed values: 40 mm plate width, 43 mm overall width in the bottom view, 49.5 mm overall depth in the bottom view (stated for a goBILDA 2000 Series servo), 32 mm square bolt pattern, 24 mm and 16 mm hub hole spacings, Ø14 bore, Ø16 and Ø32 hub features, and Ø4 slots. The 63 mm plate length was scaled from the front view at about 4.88 px/mm, using the 40 mm width as reference. Slot and flange-bore positions were also estimated from that scaling. The 49.5 mm depth may include the servo envelope, since the drawing says 'using 2000 Series Servo'. The z axis is taken as the hub axis. The hub's own hole pattern, shaft bore and individual hole diameters are not stated, so they are omitted.",
+      "No scraped dimensions were available; sizes are estimated from the drawing and the given bounds.",
+      "The 49.5 mm depth may include the servo envelope; the servo itself is not modeled.",
+      "The hub's alternating threaded and through hole ring, the spline and the hex or D-bore detail are omitted because their sizes are not stated.",
+      "Plate and flange thicknesses, post sizes, the hub center height (21 mm) and the slot positions are guesses.",
+      "The side flanges and bearings are simplified into corner posts and a single bearing plate."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -21.5,
+      "xmax": 21.5,
+      "ymin": 0,
+      "ymax": 63,
+      "zmin": -24.75,
+      "zmax": 24.75,
+      "xlen": 43,
+      "ylen": 63,
+      "zlen": 49.5
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 190750,
+        "sha256": "050c09b88e5b0e12053287066d70e32a8f55a4eb6d3e205a4502aa24e1b8f85a"
+      },
+      "model.stl": {
+        "bytes": 193684,
+        "sha256": "b3632882af44ad738b54c929bd580920d7440e28204c1df6aff3ae114aa51d61"
+      },
+      "model.glb": {
+        "bytes": 70424,
+        "sha256": "b7f52b544aaa71101708444adb31fb5f011b1f7c19ff560530c4d964eeddf181"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "050c09b88e5b0e12053287066d70e32a8f55a4eb6d3e205a4502aa24e1b8f85a"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

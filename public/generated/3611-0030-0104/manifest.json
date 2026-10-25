@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "GripForce™ Mecanum Wheel Roller Pack (30A)",
+    "sku": "3611-0030-0104",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/gripforce-mecanum-wheel-roller-pack-30a/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are given in the listing. The bounds are for one roller, centered on the part, with its long axis along z. Assumptions: the roller's max diameter is about 20 mm and its length about 44 mm. These come from the roller's length-to-diameter ratio of roughly 2.2:1 in the photo, and from fitting a ring of about 10 rollers inside a 104 mm wheel in the third image. The 8 mm bore is a rough estimate from the visible end opening, at roughly 40% of the roller diameter. It also assumes the bore holds the bearings and pin. No flat mounting surfaces are visible or stated, so none are listed. The loose pin, E-clips, shims and bearings are not modeled.",
+      "The listing gives no dimensions. Length, diameter, end diameter and bore are estimated from the photo and the supplied bounds.",
+      "The barrel profile is a single circular arc, which is an approximation of the real curvature.",
+      "The raised dimple texture is omitted as decorative detail.",
+      "The loose pin, bearings, E-clips and shims in the pack are not modeled.",
+      "The bore is modeled as a plain 8 mm through-hole. Any bearing seats or counterbores are not visible, so they are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -10.000000100000014,
+      "xmax": 10.000000100000014,
+      "ymin": -1.0000001421085471e-7,
+      "ymax": 20.000000100000015,
+      "zmin": -22.0000001,
+      "zmax": 22.000000100000012,
+      "xlen": 20.000000200000027,
+      "ylen": 20.00000020000003,
+      "zlen": 44.00000020000002
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 9497,
+        "sha256": "fae7fbfe996f5c1af1ab60a638ffe30732290d8678ea756c6b8436cd69756b3f"
+      },
+      "model.stl": {
+        "bytes": 111284,
+        "sha256": "851288a72e23b0c9adb31ede5262d719c591fef5b3484eb0a9d0516569e1432a"
+      },
+      "model.glb": {
+        "bytes": 41068,
+        "sha256": "8ec863c3f22e131f8c38af6889cf68677437a2caef6939347670aaadfb04e064"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "fae7fbfe996f5c1af1ab60a638ffe30732290d8678ea756c6b8436cd69756b3f"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 10
+  },
+  "status": "prototype_unverified"
+}

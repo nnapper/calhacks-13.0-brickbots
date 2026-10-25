@@ -1,0 +1,49 @@
+{
+  "partType": "bracket",
+  "summary": "Stamped steel clevis-style mounting bracket. Two parallel side flanges carry a cross pin through both. The flanges are joined by a sloped web that ends in a foot with a mounting hole. A retaining clip secures the pin.",
+  "boundsMm": {
+    "x": 34,
+    "y": 50,
+    "z": 30
+  },
+  "holes": [
+    {
+      "axis": "x",
+      "diameterMm": 12.6,
+      "positionsMm": [
+        [
+          0,
+          -18,
+          6
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          0,
+          18,
+          -12
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": 0,
+      "description": "Clevis opening between the two flanges, where the actuator end tab is captured by the cross pin"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -15,
+      "description": "Foot at the distal end of the bracket, with a single visible mounting hole for attaching to the user's structure"
+    }
+  ],
+  "confidence": "low",
+  "notes": "The only stated dimension is the 12.6 mm (0.498 in) mounting pin diameter, taken as the pin hole diameter. The bounding box, the foot hole diameter and all hole positions are rough estimates from proportions in the photos, not printed values. Coordinates: x is along the pin axis, y is along the actuator axis, z is the bracket height. A second hole in the sloped web appears in the first image, but its size and axis are unclear, so it is not listed. The foot hole axis is approximate because the foot may be slightly inclined. The pin and clip are treated as part of the assembly. Verify against the manufacturer drawing before use."
+}

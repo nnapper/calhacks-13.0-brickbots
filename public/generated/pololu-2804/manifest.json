@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu RC Switch with Relay (Assembled)",
+    "sku": "pololu-2804",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions were supplied, so every size is an estimate. The Omron G5LE relay body is about 15.5 x 10.5 x 12.5 mm in its datasheet, and I used that as the scale reference. In the top photo the relay is roughly 250 px long by 345 px wide, which puts the PCB at about 30 x 22 mm, consistent with a small Pololu board. The terminal block is assumed to sit within the PCB length, and the 5-pin header (2.54 mm pitch) is assumed to be on the opposite edge. The board is about 1.6 mm thick. Height z is about 1.6 mm PCB + 12.5 mm relay, plus the extra header and terminal height, so about 19 mm overall, centered on the bounding box. The hole diameter of about 3.1 mm (for M3) and the hole positions are visual estimates. The loose header pieces and jumper shown in the photos are excluded. Internal and hidden parts are not described.",
+      "All dimensions are estimates; none were supplied.",
+      "Analysis bounds listed z=19 as height, but the Y-up rule was applied: X=31, Y=19 (height), Z=23.",
+      "Relay size taken from Omron G5LE datasheet approximation (20.5x16.5x15.3), not the analysis's 15.5x10.5x12.5.",
+      "Hole positions adjusted to clear the relay and terminal block.",
+      "Terminal screw slots, wire openings, relay markings, SMD parts, loose header pieces and jumper omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -15.5,
+      "xmax": 15.5,
+      "ymin": 0,
+      "ymax": 19,
+      "zmin": -11.500000000000025,
+      "zmax": 11.500000000000025,
+      "xlen": 31,
+      "ylen": 19,
+      "zlen": 23.00000000000005
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 166376,
+        "sha256": "c6ea8452091588690807cf8e066d724cc1c1304d8a6bf46c1fba1f87ab7f0731"
+      },
+      "model.stl": {
+        "bytes": 69484,
+        "sha256": "c0f6e8ca7ae4d2659fa5f1572dfc0e01858312e5ca8c17b949bfaf07438d3599"
+      },
+      "model.glb": {
+        "bytes": 26024,
+        "sha256": "881c308204afe284d51c45bd1732661aecacdb4b6944f9d2872ab26f142a630a"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "c6ea8452091588690807cf8e066d724cc1c1304d8a6bf46c1fba1f87ab7f0731"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Square 40 x 40 mm housing, 14 mm tall (Y up, bottom at Y=0), with four 4.2 mm through-holes on a 32 mm square pattern, a 14 mm diameter knob cylinder on top (to Y=19), and four small cylindrical push buttons in a row along the +X side.",
+  "confidence": "low",
+  "warnings": [
+    "All dimensions are estimates; no verified dimensions were provided.",
+    "Body height of 14 mm and knob height of 5 mm are guessed to fit the 19 mm overall bound.",
+    "Hex counterbores omitted (size unknown).",
+    "XT30 connector, headers, corner notches/ears, bottom vent slots and knob pointer/ribs omitted as uncertain or decorative.",
+    "Button and knob positions are approximate.",
+    "Analysis z (height) was mapped to Y per the rules; X/Z footprint is 40 x 40."
+  ],
+  "cadquery": "body = cq.Workplane('XY').box(40, 14, 40, centered=(True, False, True))\nholes = None\nfor x in (-16, 16):\n    for z in (-16, 16):\n        h = cq.Workplane('XY').add(cq.Solid.makeCylinder(2.1, 14, cq.Vector(x, 0, z), cq.Vector(0, 1, 0)))\n        body = body.cut(h)\nknob = cq.Solid.makeCylinder(7, 5, cq.Vector(0, 14, 0), cq.Vector(0, 1, 0))\npart = body.union(cq.Workplane('XY').add(knob))\nfor z in (-9, -3, 3, 9):\n    b = cq.Solid.makeCylinder(2, 1.5, cq.Vector(14, 14, z), cq.Vector(0, 1, 0))\n    part = part.union(cq.Workplane('XY').add(b))"
+}

@@ -1,0 +1,24 @@
+{
+  "partType": "wheel",
+  "summary": "Swivel caster wheel with a polyurethane wheel, a steel yoke and top plate, and an M8 male stud pointing up. The drawing gives an overall height of 81 mm including the 15 mm stud, a 66 mm height without the stud, a 50.5 mm wheel diameter and a 33.5 mm side-view width.",
+  "boundsMm": {
+    "x": 33.5,
+    "y": 66,
+    "z": 81
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 25.5,
+      "description": "Top face of the swivel plate. The M8 x 1.25 stud rises 15 mm above it, and it mates with the M8 pattern plate."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -40.5,
+      "description": "Wheel tread contact point at the bottom of the part (floor contact)."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Dimensions are printed on the drawing: 81 mm total height with stud, 66 mm height without stud, 15 mm stud length, 50.5 mm wheel diameter, 33.5 mm side-view width, 40.75 mm from the axle to the top plate, 20 mm axle offset from the stud axis, and 14 mm across the hex or flange. The bounding box is centered on the part. The z extent is the full height of 81 mm including the stud. The 66 mm y value is a sizing assumption: it is the stack height without the stud, and the true plan-view extent is not directly given. The swivel sweep envelope is 90.5 mm in diameter, which is larger than the static bounds listed. The wheel width is not stated and is only implied by the 33.5 mm side-view width. No holes are visible in the part. The stud is a male thread, so no thread detail is modeled."
+}

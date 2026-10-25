@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Swivel caster with Y up: 50.5 mm diameter, 19 mm wide polyurethane wheel with its axle 25.25 mm above the floor and offset 20 mm from the stud axis. Zinc steel yoke modeled as a bridge and two side plates. Round 33.5 mm top plate, small hex base, and an 8 mm diameter, 15 mm long stud reaching 81 mm total height. The wheel tread touches Y=0.",
+  "confidence": "medium",
+  "warnings": [
+    "The supplied boundsMm lists y=66 and z=81, which conflicts with the rule that Y is up. Total height of 81 mm is placed along Y.",
+    "The stud axis is at X=0, Z=0. The wheel is offset 20 mm in X, so the whole part is not centered on its bounding box.",
+    "Wheel width of 19 mm is estimated from drawing proportions, not stated.",
+    "Yoke, flange and base thicknesses and the yoke side-plate shape are approximated.",
+    "The thread is not modeled; the stud is a plain 8 mm cylinder.",
+    "The 90.5 mm swivel sweep circle is not modeled.",
+    "The yoke's diagonal gusset and the wheel's hub spokes and bearing detail are omitted."
+  ],
+  "cadquery": "wheel = cq.Workplane('XY').center(20, 25.25).circle(25.25).extrude(9.5, both=True)\naxle = cq.Workplane('XY').center(20, 25.25).circle(4).extrude(12.5, both=True)\nflange = cq.Workplane('XZ').workplane(offset=-64).circle(16.75).extrude(3)\nbase = cq.Workplane('XZ').workplane(offset=-66).polygon(6, 14).extrude(2)\nstud = cq.Workplane('XZ').workplane(offset=-81).circle(4).extrude(15)\nbridge = cq.Workplane('XY').box(36, 3, 23, centered=(False, False, True)).translate((-10, 58, 0))\nplate1 = cq.Workplane('XY').box(16, 36, 2, centered=(False, False, True)).translate((10, 24, 10.5))\nplate2 = cq.Workplane('XY').box(16, 36, 2, centered=(False, False, True)).translate((10, 24, -10.5))\npart = wheel.union(axle).union(flange).union(base).union(stud).union(bridge).union(plate1).union(plate2)"
+}

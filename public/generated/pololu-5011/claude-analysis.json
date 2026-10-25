@@ -1,0 +1,29 @@
+{
+  "partType": "other",
+  "summary": "Assembled tracked robot (Zumo 2040) with a main control board, a battery holder chassis, two silicone tracks, and a front blade plate. The top-side OLED display and the board electronics sit on the chassis between the tracks.",
+  "boundsMm": {
+    "x": 98,
+    "y": 100,
+    "z": 40
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -20,
+      "description": "Underside of the chassis, where the line sensor board and the tracks' ground contact are located"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 20,
+      "description": "Top of the main control board with the 0.1-inch-spaced through-hole expansion area and the OLED display"
+    },
+    {
+      "axis": "y",
+      "offsetMm": 50,
+      "description": "Front blade plate edge facing the front"
+    }
+  ],
+  "confidence": "low",
+  "notes": "The description says the robot is less than 10 cm × 10 cm, so x (width across the tracks) is estimated at about 98 mm and y (length including the blade) at about 100 mm. These are assumptions, not stated values. Height of about 40 mm is estimated from the photo proportions and the track diameter relative to the width. No hole sizes or positions are printed anywhere in the images or text, so the holes list is left empty rather than invented. The mounting surfaces are rough, inferred from the visible layout only. The axes assume x is across the width, y is front-to-back, and z is vertical."
+}

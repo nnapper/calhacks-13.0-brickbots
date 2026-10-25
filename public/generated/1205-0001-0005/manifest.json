@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1205 Series Dual Block Mount (1-5) - 2 Pack",
+    "sku": "1205-0001-0005",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1205-series-dual-block-mount-1-5-2-pack/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions were provided, so all sizes are assumptions. The part sits on the 8 mm goBILDA grid. The '1-5' name is read as five hole positions counted inclusive, two at the block centers and three bar holes between them. That gives 32 mm center-to-center spacing, so x = 32 + 8 = 40 mm. The end blocks are assumed to be 8 mm cubes, so y and z are both 8 mm. The bar looks about half the block height, which is not modeled here. The bar-hole diameter of about 5 mm and the block-hole diameter of about 4 mm are rough estimates from the photos. The 5.7 g aluminum weight is roughly consistent with these volumes but does not confirm them. Block hole positions are given at block centers, and the hole depths are not known.",
+      "No dimensions were provided; all sizes are estimates taken from the bounds and the 8 mm grid.",
+      "Bar thickness (3 mm) and bar width (full 8 mm) are guesses from the image.",
+      "Counterbores on the bar holes are not modeled; they are plain 5 mm through holes.",
+      "Block holes are unthreaded 4 mm blind holes with an assumed 6 mm depth.",
+      "Block hole faces (top, +Z, outer X) are assumed. The image may show the third hole on a different face.",
+      "Chamfers on the block edges are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -20,
+      "xmax": 20,
+      "ymin": 0,
+      "ymax": 8,
+      "zmin": -4,
+      "zmax": 4,
+      "xlen": 40,
+      "ylen": 8,
+      "zlen": 8
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 222294,
+        "sha256": "199df25b1c623c5d804b98b106a759a352d6e05b69d0e6a464a5f9c24ae99013"
+      },
+      "model.stl": {
+        "bytes": 220484,
+        "sha256": "3c8b3a6aeb4ef8e0042cb064b4c91ba68383b2a5821dfba651d38eb5b49d0e09"
+      },
+      "model.glb": {
+        "bytes": 80220,
+        "sha256": "3c5f69ab3a2f30434d3d3c101e07b4d46711aab2491b4d97e913b11ef38b96f4"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "199df25b1c623c5d804b98b106a759a352d6e05b69d0e6a464a5f9c24ae99013"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1201 Series Quad Block Pattern Mount (43-5)",
+    "sku": "1201-0043-0005",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1201-series-quad-block-pattern-mount-43-5/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "The text gives no dimensions. The 43mm footprint comes from the 43-5 name and the Product Insight #4 callout (43mm between the counterbore floor and the opposing channel wall). Product Insight #5 gives the 14mm central hole. The 15mm overall height is a guess based on a 1120 U-Channel inner width of about 48mm minus the 43mm span. The small hole diameters and positions are assumed from the 8mm goBILDA grid and the 16mm center pattern. The mount is asymmetric, so the 43 x 43 footprint may not be exact, and the half-circle notch and slots are not modeled. Dimensions are unverified.",
+      "The source gives no dimensions, so the 43 x 43 x 15 footprint is an estimate. Axes follow boundsMm (Y=43, thickness along Z), which keeps the bottom at Y=0.",
+      "Plate thickness (7.5 mm), block size (10 mm) and block placement are guesses from the image.",
+      "The tapped holes on the block top and side faces are omitted because threads are not modeled.",
+      "The many extra round holes and the slots visible in the image are omitted, since their sizes and positions are uncertain. Only the 14 mm bore and the four 3.5 mm holes from the analysis are cut.",
+      "The notch radius of 7 mm is inferred from the statement that two mounts form a 14 mm hole.",
+      "The small chamfers on the blocks are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -21.5,
+      "xmax": 21.5,
+      "ymin": 0,
+      "ymax": 43,
+      "zmin": -7.5,
+      "zmax": 7.5,
+      "xlen": 43,
+      "ylen": 43,
+      "zlen": 15
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 89463,
+        "sha256": "f1f664b4c795448b121004eba4bbb61cec29df4722f29cca4306be0a2c30c816"
+      },
+      "model.stl": {
+        "bytes": 96684,
+        "sha256": "9edb7a28520ed5dfe1f2c339d896a25889f0f042ec127c427e68658f5e8ccd0e"
+      },
+      "model.glb": {
+        "bytes": 35692,
+        "sha256": "0bb9de7cf5bfacf4dc372bef7dfd01e629addcb419f1a312caa51f5215744107"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "f1f664b4c795448b121004eba4bbb61cec29df4722f29cca4306be0a2c30c816"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

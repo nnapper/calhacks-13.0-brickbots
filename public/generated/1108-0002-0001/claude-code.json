@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Flat 3 mm steel plate (XY profile, thickness centered on Z=0, bottom at Y=0) with a 40 mm wide lower leg and a 135° angled upper leg, overall about 59.7 x 75.8 mm. It has a central 14 mm through bore, 8 small 4 mm holes around the bore, a 2x5 grid of 4 mm holes at 8 mm pitch in the lower leg, and 10 diagonal 4 mm holes in the upper leg.",
+  "confidence": "medium",
+  "warnings": [
+    "Thickness (3 mm) is estimated from weight, not stated in the drawing.",
+    "The 8 holes around the bore are slots in the drawing. They are modeled as 4 mm round holes because the slot length and orientation are uncertain.",
+    "Outline vertices and hole positions were scaled from the drawing and are accurate to about ±0.3 mm.",
+    "The outline is a 45° chamfered polygon with no bend, and no corner radii are modeled."
+  ],
+  "cadquery": "pts=[(-29.9,0),(10.1,0),(10.1,27.7),(29.8,47.4),(1.4,75.8),(-29.9,44.2)]\npart=cq.Workplane('XY').polyline(pts).close().extrude(3).translate((0,0,-1.5))\nxs=[-25.9,-17.9,-9.9,-1.9,6.1]\ngrid=[(x,y) for x in xs for y in (4.1,12.0)]\nring=[(-9.9,48.1),(-9.9,24.1),(-21.9,36.1),(2.1,36.1),(-17.9,44.1),(-1.9,44.1),(-17.9,28.1),(-1.9,28.1)]\nup=[(1.4,70.1),(-4.2,64.5),(7.1,64.5),(1.4,58.8),(12.8,58.8),(7.1,53.1),(18.4,53.1),(12.8,47.8),(24.2,47.8),(18.4,41.8)]\nsmall=cq.Workplane('XY').workplane(offset=-5).pushPoints(grid+ring+up).circle(2).extrude(10)\nbore=cq.Workplane('XY').workplane(offset=-5).center(-9.9,36.1).circle(7).extrude(10)\npart=part.cut(small).cut(bore)"
+}

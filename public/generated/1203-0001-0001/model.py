@@ -1,0 +1,6 @@
+part = cq.Workplane('XY').box(16, 30, 16, centered=(True, False, True))
+part = part.edges('|Z and >Y').fillet(6)
+part = part.edges('|Z and <Y and >X').chamfer(3)
+thru = cq.Workplane('XY').center(0, 22).circle(4).extrude(10, both=True)
+blind = cq.Workplane('XZ').circle(4).extrude(-16)
+part = part.cut(thru).cut(blind)

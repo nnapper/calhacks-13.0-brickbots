@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Arduino Uno-format shield: 68.6 x 53.3 mm, 1.6 mm PCB raised 6 mm above Y=0, two 3.2 mm through holes, two 10-pin stackable female headers (12 mm tall) along the long edges with 0.5 mm square pins projecting down to Y=0, and four 10.16 mm-wide green screw terminal blocks (10 mm tall) in a row. Overall height about 19.6 mm.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are unverified estimates from a standard Arduino Uno shield footprint.",
+    "The analysis bounds list Y=53.3 and Z=20, but the rules require Y as height. I mapped the 68.6 x 53.3 board to X and Z and the 20 mm height to Y.",
+    "Header lengths, pin counts and positions are approximate. Real Uno headers are 6/8/10-pin groups, which I simplified to two 10-pin rows.",
+    "Terminal block size and position are estimates, and I assumed the row sits at Z=+8.",
+    "Hole positions are rough estimates from the photo. Other holes may exist.",
+    "ICs, capacitors, LEDs, silkscreen and the small through-hole pads were omitted."
+  ],
+  "cadquery": "pcb_t=1.6\npin_len=6.0\ny_pcb=pin_len\nL=68.6\nW=53.3\n# PCB (Y is up)\npcb=cq.Workplane('XY').box(L,pcb_t,W).translate((0,y_pcb+pcb_t/2,0))\n# mounting holes (analysis x,y -> model x,z)\nfor (hx,hz) in [(-24,-12),(10,-19)]:\n    pcb=pcb.cut(cq.Workplane('XY').add(cq.Solid.makeCylinder(1.6,pcb_t+2,cq.Vector(hx,y_pcb-1,hz),cq.Vector(0,1,0))))\npart=pcb\ny_top=y_pcb+pcb_t\n# stackable headers along both long edges\nhdr_h=12.0\nfor (cx,cz,n) in [(-5.0,-24.13,10),(0.0,24.13,10)]:\n    body=cq.Workplane('XY').box(2.54*n,hdr_h,2.54).translate((cx,y_top+hdr_h/2,cz))\n    part=part.union(body)\n    for i in range(n):\n        px=cx-2.54*(n-1)/2+2.54*i\n        pin=cq.Workplane('XY').box(0.5,pin_len+1,0.5).translate((px,(pin_len+1)/2,cz))\n        part=part.union(pin)\n# four 2-position screw terminal blocks\ntb_h=10.0\nfor i in range(4):\n    x=-15.24+10.16*i\n    blk=cq.Workplane('XY').box(10.16,tb_h,10.0).translate((x,y_top+tb_h/2,8.0))\n    part=part.union(blk)\n"
+}

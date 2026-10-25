@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1201 Series Quad Block Pattern Mount (24-1)",
+    "sku": "1201-0024-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1201-series-quad-block-pattern-mount-24-1/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions were scraped. The 48 x 24 mm footprint is assumed from the 24 mm part name and the 48 mm goBILDA U-channel inner width in the Product Insight image. The Product Insight also says the counterbore floor sits 43 mm from the opposing channel wall. The height of 14 mm is a rough guess from the photo proportions and the 14 g weight (about 5 cm3 of aluminum). The central bore (about 14 mm) and the clearance hole diameters and positions are visual estimates. Threaded holes in the plate face and on the block faces are omitted because their sizes and positions are uncertain.",
+      "No dimensions were scraped; the overall size comes from the estimated bounds.",
+      "Block width (8 mm) and plate thickness (6 mm) are guesses from the photo.",
+      "Bore diameter and the 4.2 mm hole positions are visual estimates. The photo shows counterbores, which are omitted.",
+      "The plate sits at the -Z side; its Z side is ambiguous in the image.",
+      "All threaded holes on the plate and block faces are omitted because their sizes and positions are uncertain.",
+      "The bore's shallow step or recess is omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -24,
+      "xmax": 24,
+      "ymin": 0,
+      "ymax": 24,
+      "zmin": -7,
+      "zmax": 7,
+      "xlen": 48,
+      "ylen": 24,
+      "zlen": 14
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 57531,
+        "sha256": "3459528c89e5637175fe8380b4cd9e674ef2288baefc1084f7402072c97e5012"
+      },
+      "model.stl": {
+        "bytes": 81684,
+        "sha256": "df35e33286f6285574684b34bb45d981e960a5d147e8707710b3a9413b2335e6"
+      },
+      "model.glb": {
+        "bytes": 30348,
+        "sha256": "b19943a2b33a301e346216439e5ee9c53e2a4d014bd1913efa7c0aefb0cee49a"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "3459528c89e5637175fe8380b4cd9e674ef2288baefc1084f7402072c97e5012"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

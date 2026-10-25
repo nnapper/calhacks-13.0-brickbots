@@ -1,0 +1,236 @@
+{
+  "partType": "flat_plate",
+  "summary": "Flat aluminum servo pattern plate on an 8 mm grid. It measures 104 x 40 x 3 mm and has a central 42 x 21 mm servo pocket near one end. The pocket has four tapped mounting holes. The other end has a Ø14 mm bore and several slots, with a grid of Ø4 mm holes between them.",
+  "boundsMm": {
+    "x": 104,
+    "y": 40,
+    "z": 3
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -48,
+          16,
+          0
+        ],
+        [
+          -40,
+          16,
+          0
+        ],
+        [
+          -32,
+          16,
+          0
+        ],
+        [
+          -24,
+          16,
+          0
+        ],
+        [
+          -16,
+          16,
+          0
+        ],
+        [
+          -8,
+          16,
+          0
+        ],
+        [
+          0,
+          16,
+          0
+        ],
+        [
+          8,
+          16,
+          0
+        ],
+        [
+          16,
+          16,
+          0
+        ],
+        [
+          24,
+          16,
+          0
+        ],
+        [
+          40,
+          16,
+          0
+        ],
+        [
+          48,
+          16,
+          0
+        ],
+        [
+          -48,
+          -16,
+          0
+        ],
+        [
+          -40,
+          -16,
+          0
+        ],
+        [
+          -32,
+          -16,
+          0
+        ],
+        [
+          -24,
+          -16,
+          0
+        ],
+        [
+          -16,
+          -16,
+          0
+        ],
+        [
+          -8,
+          -16,
+          0
+        ],
+        [
+          0,
+          -16,
+          0
+        ],
+        [
+          8,
+          -16,
+          0
+        ],
+        [
+          16,
+          -16,
+          0
+        ],
+        [
+          24,
+          -16,
+          0
+        ],
+        [
+          40,
+          -16,
+          0
+        ],
+        [
+          48,
+          -16,
+          0
+        ],
+        [
+          8,
+          8,
+          0
+        ],
+        [
+          16,
+          8,
+          0
+        ],
+        [
+          40,
+          8,
+          0
+        ],
+        [
+          48,
+          8,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          8,
+          -8,
+          0
+        ],
+        [
+          16,
+          -8,
+          0
+        ],
+        [
+          24,
+          -8,
+          0
+        ],
+        [
+          48,
+          -8,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -50,
+          5,
+          0
+        ],
+        [
+          -50,
+          -5,
+          0
+        ],
+        [
+          -2,
+          5,
+          0
+        ],
+        [
+          -2,
+          -5,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          32,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 1.5,
+      "description": "Top face of the 3 mm plate; servo seats around the 42 x 21 mm pocket and the hole pattern is accessible."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -1.5,
+      "description": "Bottom face of the 3 mm plate; flat mating face."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Sizes come from the printed drawing: 104 mm length, 40 mm width, 3 mm thickness, 8 mm grid, Ø4 mm holes, Ø14 mm bore, and a 42 x 21 mm pocket. The origin is the plate center, with x along the 104 mm length. The Ø14 mm bore is at the right end. Hole coordinates were scaled from the drawing pixels and snapped to the 8 mm grid, so they are approximate. The pocket center is estimated at about x=-26, y=0. The four tapped holes are at x=-50 and x=-2, y=±5, which gives about 48 mm by 10 mm spacing. They are listed as Ø4 mm and assumed through, which is not confirmed. Vertical slots at x=32, y=±16, horizontal slots near (17,0) and (46,0), short oblong holes near (24,8) and (40,-8), and a small slot at the left end of the pocket are not listed in holes because their exact sizes are not printed. The left-end profile has a rounded bump, and the pocket has corner relief notches. Neither is modeled. Servo spline offset (48 mm) is from the text and not modeled."
+}

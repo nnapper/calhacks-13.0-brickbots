@@ -1,0 +1,7 @@
+pcb = cq.Workplane('XY').box(35, 1.6, 35, centered=(True, False, True))
+holes = (cq.Workplane('XZ').pushPoints([(-16.5,-16.5),(16.5,-16.5),(-16.5,16.5),(16.5,16.5)])
+         .circle(1.25).extrude(5, both=True))
+pcb = pcb.cut(holes)
+gasket = cq.Workplane('XY').workplane(offset=1.6).box(28, 2.4, 28, centered=(True, False, True))
+patch = cq.Workplane('XY').workplane(offset=4.0).box(25, 5.0, 25, centered=(True, False, True))
+part = pcb.union(gasket).union(patch)

@@ -1,0 +1,37 @@
+{
+  "partType": "other",
+  "summary": "Small ball caster with a 3/8 inch (9.525 mm) metal ball held in a two-ear housing. Two screw holes sit on opposite ears, and the assembly is about 10.16 mm tall with no spacers. Photos show a loose kit with housing, two spacer plates, two screws, two nuts and the ball.",
+  "boundsMm": {
+    "x": 18,
+    "y": 11,
+    "z": 10.16
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.4,
+      "positionsMm": [
+        [
+          -6.73,
+          0,
+          0
+        ],
+        [
+          6.73,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 5.08,
+      "description": "Flat mounting face of the housing ears, where the caster attaches to a chassis. Optional spacer plates stack on this face to raise the height."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Stated: ball diameter 9.525 mm, height with no spacers 10.16 mm, screw-hole spacing 13.46 mm (used for hole x positions, centered on the part), spacer thicknesses 1.59 mm and 3.175 mm. Not stated and estimated from the photos and a #2 screw (about 2.18 mm major diameter): the 2.4 mm hole diameter, the 18 mm length across the ears, and the 11 mm width. The z extent is the no-spacer height. Spacers would increase it up to 15.24 mm. The ball sits partly below the housing, so the bounding box is centered on the housing and ball. The screw and nut protrusion is excluded. Hole through-status is assumed from the screw hardware. Dimensions are unverified."
+}

@@ -1,0 +1,52 @@
+{
+  "partType": "other",
+  "summary": "Compact square servo controller module with a top-mounted control knob and four push buttons. It has an XT30-style power connector on one side, two 2.54 mm header sets, and a perforated bottom cover plate. Four counterbored thru-holes sit at the corners of a 32 mm square pattern.",
+  "boundsMm": {
+    "x": 40,
+    "y": 40,
+    "z": 19
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4.2,
+      "positionsMm": [
+        [
+          -16,
+          -16,
+          0
+        ],
+        [
+          16,
+          -16,
+          0
+        ],
+        [
+          -16,
+          16,
+          0
+        ],
+        [
+          16,
+          16,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -9.5,
+      "description": "Bottom perforated plate, flat face with four corner thru-holes on the 32 mm square pattern, used to mount against structure"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 9.5,
+      "description": "Top face carrying the knob and buttons; the four corner holes are also accessible from here via counterbores"
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions were scraped or stated, so every size is an estimate. The 32 mm hole spacing comes from the specs (goBILDA 32 mm square pattern). The footprint of about 40 x 40 mm assumes the housing extends roughly 4 mm beyond the hole centers, based on the corner ear proportions in the photos. In the first photo the grid is not clearly 8 mm, so the pencil was used as a rough scale: it is about 7 mm wide, so the part's width is roughly 5-6 pencil widths. Height of about 19 mm covers the body plus knob, which is a rough guess. The knob adds a few extra mm above the top face and is not itemized. The hole diameter of 4.2 mm is an assumed clearance for M4 screws; the hex counterbore is not modeled. The bottom plate has visible vent slots and the headers/connector positions are not located precisely, so they are not listed as holes. The rear of the bottom plate shows an unidentified multi-pin connector area that is not included. The coordinate origin is the part center, with z up through the knob."
+}

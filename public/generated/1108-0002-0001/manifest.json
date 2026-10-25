@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1108 Series Flat Pattern Bracket (2-1)",
+    "sku": "1108-0002-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1108-series-flat-pattern-bracket-2-1/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "medium",
+    "warnings": [
+      "The x and y extents were scaled from the drawing, using 40 mm overall width = 649 px (about 16.2 px/mm) and the 8 mm hole pitch. The x/y origin is the center of the bounding box, with y pointing up in the drawing. Thickness is not printed. The 3 mm value is an estimate from the 46 g weight, steel density of about 7.85 g/cm³ and an estimated area of about 2000 mm² after holes, so it is uncertain. The 8 holes around the bore are slots about 4 mm wide and 5-6 mm long, but are listed here as 4 mm circular holes at their centers. The 4 mm hole diameter is printed on the drawing. The 14 mm bore is printed, with a 24 mm span between opposite slot centers and 16 mm between diagonal slot centers. Hole positions were measured from pixel coordinates and are accurate to about ±0.3 mm. The 135° angle is printed. Holes are assumed to be through holes, and no countersinks are modeled.",
+      "Thickness (3 mm) is estimated from weight, not stated in the drawing.",
+      "The 8 holes around the bore are slots in the drawing. They are modeled as 4 mm round holes because the slot length and orientation are uncertain.",
+      "Outline vertices and hole positions were scaled from the drawing and are accurate to about ±0.3 mm.",
+      "The outline is a 45° chamfered polygon with no bend, and no corner radii are modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -29.900000000000002,
+      "xmax": 29.8,
+      "ymin": 0,
+      "ymax": 75.8,
+      "zmin": -1.5,
+      "zmax": 1.5,
+      "xlen": 59.7,
+      "ylen": 75.8,
+      "zlen": 3
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 172072,
+        "sha256": "c0f91b6cc8499defd96f8350da79cb589f1b88d97e3f1839e8d0fba96b0bef9a"
+      },
+      "model.stl": {
+        "bytes": 494084,
+        "sha256": "ebac729ea24d52476b4a700e0867e35b86c1bee05e6cc3ab8476a28ddf5953af"
+      },
+      "model.glb": {
+        "bytes": 178192,
+        "sha256": "883f8e0b57baec6ecd48b2b4bb409e619521810418de5674daffbe59cba08e32"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "c0f91b6cc8499defd96f8350da79cb589f1b88d97e3f1839e8d0fba96b0bef9a"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

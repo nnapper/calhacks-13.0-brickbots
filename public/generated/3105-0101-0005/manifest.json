@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1x5A Motor Controller (6-24V Input, 9A Burst)",
+    "sku": "3105-0101-0005",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1x5a-motor-controller-6-24v-input-9a-burst/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "dimensionsEstimated": true,
+    "codeConfidence": "medium",
+    "warnings": [
+      "Dimensions come from the printed drawing. Body length is 28.5 mm, body width is 15.5 mm, and the 4 mm hole center is 35.45 mm from the body's far end. The scale is about 8 px/mm. The spacer extends about 4.9 mm beyond the hole center, so I estimated overall length as 35.45 + 4.9 ≈ 40.3 mm. The 5.6 mm label appears to be the spacer height. The body sits slightly above the spacer, so I estimated total thickness at about 6.6 mm. That value and the hole's z position are scaled from the drawing, not printed. The hole looks open in the views, so I recorded it as through. The 150 mm wire leads and the connectors (XT30, 3.5 mm bullets, servo-style signal header) are excluded from the bounds. The box is centered on the part at the origin.",
+      "Body thickness (about 4.5 mm), z offsets, spacer diameter (about 9.7 mm) and tab thickness are estimated from the drawing.",
+      "Wires, connectors (XT30, bullet, TJC8), the LED and the logo are omitted.",
+      "The analysis lists the hole at y=0, but it is placed at the body mid-width (y=7.75) because the bottom of the part sits at Y=0.",
+      "Edges are sharp; the heat-shrink taper at the body ends is not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -20.15,
+      "xmax": 20.15,
+      "ymin": 0,
+      "ymax": 15.5,
+      "zmin": -3.3,
+      "zmax": 3.3,
+      "xlen": 40.3,
+      "ylen": 15.5,
+      "zlen": 6.6
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 39493,
+        "sha256": "27bea2f8f3a5df7abc64d8680dbe206444789b51f1f02c6c04d813672b6dcfe2"
+      },
+      "model.stl": {
+        "bytes": 35084,
+        "sha256": "e3c5d8d372bbf5227df49723c33e861744374e1237fd0e9cd4acd2ad2e9c00a1"
+      },
+      "model.glb": {
+        "bytes": 13616,
+        "sha256": "3618fbb350fe5cc8598548d27dd1f90f59bc54e5a06f1f43293c0091e304c696"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "27bea2f8f3a5df7abc64d8680dbe206444789b51f1f02c6c04d813672b6dcfe2"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

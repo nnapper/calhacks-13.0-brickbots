@@ -1,0 +1,74 @@
+{
+  "partType": "other",
+  "summary": "Dual-channel Hall effect encoder board, a thin PCB that mounts on the back of a Romi mini plastic gearmotor. A 6-pole magnetic disc sits on the extended rear motor shaft, which passes through the central hole of the board. A 6-pin 0.1 in header row is along one edge. The kit contains two boards, two discs and header pins. The part is modeled as one board, with the disc excluded.",
+  "boundsMm": {
+    "x": 22.5,
+    "y": 18.5,
+    "z": 1.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          -1,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          -7.62,
+          8,
+          0
+        ],
+        [
+          -5.08,
+          8,
+          0
+        ],
+        [
+          -2.54,
+          8,
+          0
+        ],
+        [
+          0,
+          8,
+          0
+        ],
+        [
+          2.54,
+          8,
+          0
+        ],
+        [
+          5.08,
+          8,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.8,
+      "description": "Back face of the board, soldered against the rear face of the gearmotor. The motor's rear shaft passes through the central hole."
+    },
+    {
+      "axis": "y",
+      "offsetMm": 9.25,
+      "description": "Header edge with a 6-position, 2.54 mm pitch pad row for signal and power connections. It extends about 7 mm past the motor edge."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Dimensions are estimates. The text states that the encoder fits within the 11.5 mm × 22.5 mm motor cross section on three sides and extends 7 mm past the fourth side. That gives a board about 22.5 mm wide and about 11.5 + 7 = 18.5 mm long. The 1.6 mm thickness is the standard PCB thickness and is assumed. Header pads are on a stated 2.54 mm pitch. The 4 mm center hole is estimated visually and is not stated. The 1 mm pad hole size is assumed. Hole positions are approximate. The slotted corner mounting or solder holes are visible but are not modeled. The magnetic disc (about 8 mm diameter, 2.5 mm thick) and the header pins are separate parts and are not included in the bounds. The shaft is stated to protrude 5 mm beyond the back of the motor."
+}

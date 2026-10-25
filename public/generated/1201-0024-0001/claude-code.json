@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "48 x 24 x 14 mm aluminum block mount: a 6 mm thick plate with a 14 mm central through bore and four 4.2 mm through holes, plus two full-height 8 mm wide end blocks spanning the 24 mm width at each X end.",
+  "confidence": "low",
+  "warnings": [
+    "No dimensions were scraped; the overall size comes from the estimated bounds.",
+    "Block width (8 mm) and plate thickness (6 mm) are guesses from the photo.",
+    "Bore diameter and the 4.2 mm hole positions are visual estimates. The photo shows counterbores, which are omitted.",
+    "The plate sits at the -Z side; its Z side is ambiguous in the image.",
+    "All threaded holes on the plate and block faces are omitted because their sizes and positions are uncertain.",
+    "The bore's shallow step or recess is omitted."
+  ],
+  "cadquery": "plate = cq.Workplane('XY').box(48, 24, 6, centered=(True, False, False)).translate((0, 0, -7))\nblock_l = cq.Workplane('XY').box(8, 24, 14, centered=(True, False, True)).translate((-20, 0, 0))\nblock_r = cq.Workplane('XY').box(8, 24, 14, centered=(True, False, True)).translate((20, 0, 0))\npart = plate.union(block_l).union(block_r)\nbore = cq.Workplane('XY').workplane(offset=-10).center(0, 12).circle(7).extrude(20)\npart = part.cut(bore)\nholes = cq.Workplane('XY').workplane(offset=-10).pushPoints([(-12, 18), (-4, 4), (4, 20), (12, 6)]).circle(2.1).extrude(20)\npart = part.cut(holes)"
+}

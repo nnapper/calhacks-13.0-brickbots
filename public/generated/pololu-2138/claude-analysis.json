@@ -1,0 +1,52 @@
+{
+  "partType": "other",
+  "summary": "Square GPS receiver module: a green PCB carrying a square ceramic patch antenna on top. The underside has the GPS chip module, a coin backup battery, and a 5-pad serial header. The PCB has four corner mounting holes and castellated edge pads along its edges.",
+  "boundsMm": {
+    "x": 30,
+    "y": 30,
+    "z": 9
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.2,
+      "positionsMm": [
+        [
+          -13.5,
+          13.5,
+          0
+        ],
+        [
+          13.5,
+          13.5,
+          0
+        ],
+        [
+          -13.5,
+          -13.5,
+          0
+        ],
+        [
+          13.5,
+          -13.5,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -4.5,
+      "description": "Flat PCB underside (the face with the chip, battery and serial pads), used as the mounting face. Parts on this face stand proud of the board, so spacers or standoffs would be needed."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 4.5,
+      "description": "Flat top face of the square ceramic antenna, which should face the sky."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are printed in the images or the text, so all sizes are assumptions. The LS20031 is commonly listed at about 30 x 30 mm. The PCB is assumed to be about 30 mm square and about 1.6 mm thick, with the antenna roughly 25 mm square and about 6 to 7 mm tall, giving a total height near 9 mm. The 2.2 mm hole diameter and the ±13.5 mm hole positions are estimated from the photo proportions. The corner holes appear to sit about 3 mm in from the board edges. The edge pad count and pitch are not modeled because they cannot be measured reliably. The serial pads are labeled VCC, RX, TX, GND, GND. The battery and chip heights are not modeled separately."
+}

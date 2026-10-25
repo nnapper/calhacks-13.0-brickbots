@@ -1,0 +1,24 @@
+{
+  "partType": "block",
+  "summary": "Rectangular battery pack made of six AA cells arranged in two rows of three, wrapped together. Wire lead exits one end. The cell ends form a scalloped profile.",
+  "boundsMm": {
+    "x": 51,
+    "y": 30,
+    "z": 58
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -14.5,
+      "description": "Flat bottom face along the long side of the pack, usable as a seating surface"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 14.5,
+      "description": "Flat top face along the long side of the pack, opposite the bottom"
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are stated or printed. Size is estimated from standard AA cells (about 14.5 mm diameter, about 50 mm long). The photos show six AA cells in two rows of three, which gives about 3 x 14.5 = 43.5 mm by 2 x 14.5 = 29 mm. Heat-shrink wrap adds a little, so the estimate is x about 51 mm (cell length plus wrap), y about 30 mm (two cells stacked) and z about 58 mm. Using z for the three-cell width is uncertain. A more likely layout is length 51 mm, width 44 mm and height 29-30 mm, so the axis assignment is an assumption. The lead is excluded from the bounds. The 4 inch lead and JR connector are not modeled. The listed variants (AAA and 2/3 AAA) would be smaller, and this estimate assumes the 2200 mAh AA version. No holes or mounting features are visible."
+}

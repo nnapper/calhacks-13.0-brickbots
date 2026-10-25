@@ -1,0 +1,9 @@
+{
+  "shapeSummary": "Flat rectangular plate 56 mm (X) by 14 mm (Y) by 2.5 mm thick (Z). X and Z are centered on 0, and the bottom face sits at Y=0. Seven Ø4 mm through holes (along Z) on the Y=7 mm centerline at 8 mm pitch, X from -24 to 24.",
+  "confidence": "high",
+  "warnings": [
+    "Holes are assumed to sit on the plate's width midline (Y=7), which is not a printed dimension.",
+    "Plate edges and corners are modeled sharp, since no fillets or chamfers are visible."
+  ],
+  "cadquery": "pts=[(-24+8*i,7) for i in range(7)]\nplate=cq.Workplane('XY').box(56,14,2.5,centered=(True,False,True))\ncutter=cq.Workplane('XY').workplane(offset=-2).pushPoints(pts).circle(2).extrude(4)\npart=plate.cut(cutter)"
+}

@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Simplified standard-size hobby servo: rectangular case, a 40.5 mm long mounting flange plate with four 4.5 mm holes, a round boss and a plain cylindrical output shaft on top. The part is oriented with Z as the servo height axis (-18.25 to 18.25), X as length, and Y from 0 to 20.2 as width.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are estimated from the standard servo form factor; none were given in the source data.",
+    "The Y axis is the 20.2 mm case width, not the servo height, to match boundsMm and the Z-axis hole description.",
+    "The 25-tooth spline is modelled as a plain cylinder because its teeth are not visible or dimensioned.",
+    "Flange holes are placed at x=±17.2 so they fit within the 40.5 mm X bound; the analysis positions of ±24.5 lie outside it.",
+    "Flanges are modelled as plain plates, without the slotted-hole detail.",
+    "The shaft offset (x=7), boss size and case height are guesses.",
+    "The wire lead and the accessory kit shown in the image (arms, screws, bushings, grommets) are omitted."
+  ],
+  "cadquery": "case_l, case_w = 28.0, 20.2\nzb, zt = -18.25, 8.75\ncy = 10.1\ncase = cq.Workplane('XY').box(case_l, case_w, zt - zb).translate((0, cy, (zt + zb) / 2))\nflange = cq.Workplane('XY').box(40.5, case_w, 2.5).translate((0, cy, -5.25))\nholes = (cq.Workplane('XY').workplane(offset=-8)\n    .pushPoints([(-17.2, cy - 5), (-17.2, cy + 5), (17.2, cy - 5), (17.2, cy + 5)])\n    .circle(2.25).extrude(6))\nboss = cq.Workplane('XY').workplane(offset=zt).center(7, cy).circle(6).extrude(3.0)\nshaft = cq.Workplane('XY').workplane(offset=zt + 3.0).center(7, cy).circle(3.5).extrude(18.25 - (zt + 3.0))\npart = case.union(flange).union(boss).union(shaft).cut(holes)"
+}

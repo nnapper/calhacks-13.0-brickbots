@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Square 35 x 35 mm, 1.6 mm thick PCB lying in the XZ plane with its bottom at Y=0. It has four 2.5 mm through holes at (±16.5, ±16.5). A 28 x 28 mm gasket block (1.6 to 4.0 mm) and a 25 x 25 mm patch antenna block (4.0 to 9.0 mm) sit on the top face. Total height is 9 mm along Y.",
+  "confidence": "low",
+  "warnings": [
+    "All dimensions are estimates because the product text gives none.",
+    "The analysis bounds list Y as 35 and Z as 9, but the rules require Y to be the up axis. The 9 mm thickness is therefore along Y and the 35 mm plate lies in X and Z.",
+    "The gasket and patch heights are guessed so the total height matches 9 mm.",
+    "The side connector, cable, braided sleeve, components on the underside, LEDs and logos are omitted.",
+    "The PCB thickness of 1.6 mm is assumed."
+  ],
+  "cadquery": "pcb = cq.Workplane('XY').box(35, 1.6, 35, centered=(True, False, True))\nholes = (cq.Workplane('XZ').pushPoints([(-16.5,-16.5),(16.5,-16.5),(-16.5,16.5),(16.5,16.5)])\n         .circle(1.25).extrude(5, both=True))\npcb = pcb.cut(holes)\ngasket = cq.Workplane('XY').workplane(offset=1.6).box(28, 2.4, 28, centered=(True, False, True))\npatch = cq.Workplane('XY').workplane(offset=4.0).box(25, 5.0, 25, centered=(True, False, True))\npart = pcb.union(gasket).union(patch)"
+}

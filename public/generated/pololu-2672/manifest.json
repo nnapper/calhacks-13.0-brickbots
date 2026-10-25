@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Aluminum Scooter Wheel Adapter for 4mm Shaft",
+    "sku": "pololu-2672",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": false,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are printed in the images, and the supplied dimensions_mm fields are null, so the overall size and hole positions are rough visual estimates. Only the 4 mm shaft bore comes from the listing. The 3 mm screw-hole size is assumed from the stated M3 screws, and the 4 mm radial hole size from the stated M4 set screws. The washer's central hole is visible, but its diameter is unverified. The hub's three screw holes are shown blind (through: false) because their depth is not visible. The washer holes are listed as through at z=6, but the 3.2 mm size and the position are guesses. Verify all values against a datasheet before using them for CAD.",
+      "No dimensions are given in the listing except the 4 mm shaft, so the diameters, step heights and hole positions are visual estimates.",
+      "Only the hub is modeled. The washer and the included screws are separate pieces and were omitted.",
+      "The two radial set-screw holes are placed at different heights on the same side, as they appear in the image. Their exact heights, spacing and angular positions are uncertain.",
+      "Axial hole depth (8 mm) is assumed. Threads are not modeled, and the radial holes use a tap-drill size of 3.3 mm.",
+      "Overall height and the step split (7 mm and 5 mm) are guesses."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -11.0000001,
+      "xmax": 11.0000001,
+      "ymin": -1.0000000122124532e-7,
+      "ymax": 12.0000001,
+      "zmin": -11.0000001,
+      "zmax": 11.0000001,
+      "xlen": 22.0000002,
+      "ylen": 12.0000002,
+      "zlen": 22.0000002
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 4.000 mm; measured dimensions are [12.0000002, 22.0000002, 22.0000002]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 168467,
+        "sha256": "55ed279a39c0bab8f8cc21e993525b97afd13c3b2df525f41bacf1c8a828ef78"
+      },
+      "model.stl": {
+        "bytes": 162584,
+        "sha256": "a1d53095f4fecab4033f51009cb484c0993398ea8bba946d45830dec1b6586d5"
+      },
+      "model.glb": {
+        "bytes": 59468,
+        "sha256": "d2af3ece0218cc658e46806bb86a3a6fe8ca0ce495803fa0806afcea63ad1ebb"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "55ed279a39c0bab8f8cc21e993525b97afd13c3b2df525f41bacf1c8a828ef78"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 21
+  },
+  "status": "prototype_unverified"
+}

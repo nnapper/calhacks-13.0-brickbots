@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1800 Series Servo Pattern Plate (For Standard Size Servos)",
+    "sku": "1800-0040-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1800-series-servo-pattern-plate-for-standard-size-servos/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "dimensionsEstimated": true,
+    "codeConfidence": "medium",
+    "warnings": [
+      "Sizes come from the printed drawing: 104 mm length, 40 mm width, 3 mm thickness, 8 mm grid, Ø4 mm holes, Ø14 mm bore, and a 42 x 21 mm pocket. The origin is the plate center, with x along the 104 mm length. The Ø14 mm bore is at the right end. Hole coordinates were scaled from the drawing pixels and snapped to the 8 mm grid, so they are approximate. The pocket center is estimated at about x=-26, y=0. The four tapped holes are at x=-50 and x=-2, y=±5, which gives about 48 mm by 10 mm spacing. They are listed as Ø4 mm and assumed through, which is not confirmed. Vertical slots at x=32, y=±16, horizontal slots near (17,0) and (46,0), short oblong holes near (24,8) and (40,-8), and a small slot at the left end of the pocket are not listed in holes because their exact sizes are not printed. The left-end profile has a rounded bump, and the pocket has corner relief notches. Neither is modeled. Servo spline offset (48 mm) is from the text and not modeled.",
+      "Slots (vertical at x=32,y=±16, horizontal near x=18 and x=46 on the centerline) and the oblong holes near (24,8) and (40,-8) are omitted because their lengths are not dimensioned.",
+      "The rounded bump on the left end and the pocket corner relief notches are not modeled.",
+      "The four M4 holes beside the pocket are modeled as plain Ø4 mm through holes with no threads, and their positions are approximate.",
+      "The hole layout was read from the drawing and snapped to the 8 mm grid, so some positions may be slightly off.",
+      "The plate lies in the XY plane because the given bounds are x=104, y=40, z=3. The Y offset of +20 puts the bottom edge at Y=0."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -52,
+      "xmax": 52,
+      "ymin": 0,
+      "ymax": 40,
+      "zmin": -1.5,
+      "zmax": 1.5,
+      "xlen": 104,
+      "ylen": 40,
+      "zlen": 3
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 231800,
+        "sha256": "4eafb097e6b70300f863d1ed98ad0b20d719fbeb1665495bdb5c44e145446ac1"
+      },
+      "model.stl": {
+        "bytes": 647684,
+        "sha256": "c6f06fb5aca8a2aef5db66ee81d60eb1cd9c3d1380383894b6fc88e56c49bde1"
+      },
+      "model.glb": {
+        "bytes": 233248,
+        "sha256": "a88bec392292360d5881d9f87855c4df35d68173f0375d000b1633d40e930aba"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "4eafb097e6b70300f863d1ed98ad0b20d719fbeb1665495bdb5c44e145446ac1"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Flat rectangular PCB, 65 mm (X) × 56 mm (Z) × 1.6 mm thick (Y from 0 to 1.6), with 3 mm corner radii and four 2.75 mm through mounting holes on a 58 × 49 mm Raspberry Pi HAT pattern. Components, pads and connectors are not modeled.",
+  "confidence": "low",
+  "warnings": [
+    "Board thickness of 1.6 mm is assumed (standard PCB); height is not given in the data.",
+    "Dimensions of 65 × 56 mm are unverified.",
+    "Hole diameter (2.75 mm) and spacing (58 × 49 mm) are taken from the Raspberry Pi HAT spec, not from a printed dimension.",
+    "Corner radius of 3 mm is assumed from the HAT spec.",
+    "SMT components, through-hole pads, buttons, USB connector, switch and LEDs are omitted because their heights and positions are uncertain."
+  ],
+  "cadquery": "t = 1.6\nboard = cq.Workplane('XY').box(65, t, 56, centered=(True, False, True)).edges('|Y').fillet(3.0)\nholes = (cq.Workplane('XZ', origin=(0, t, 0))\n         .pushPoints([(-29, -24.5), (29, -24.5), (-29, 24.5), (29, 24.5)])\n         .circle(2.75 / 2).extrude(t))\npart = board.cut(holes)"
+}

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "24V High-Power (HP) 25D mm Gearmotors",
+    "sku": "pololu-5724",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": false,
+    "codeConfidence": "low",
+    "warnings": [
+      "The product data states the shaft (4 mm diameter D-shape, 12.5 mm protrusion) and the body diameter (just under 25 mm). The body length of about 54 mm (total 66.5 mm with shaft) and the mounting-hole diameter and positions are visual estimates, since no drawing or printed dimensions are given. Hole depth is not visible, so the holes are marked as not through. Only two small holes are listed. The face plate appears to have additional small holes and gearbox screw heads, whose layout I could not determine. The bounding box is centered on the origin, with the shaft tip at x=+33.25 and the motor-end at x=-33.25. The images show the encoder-free motor and a variant with an encoder and wire harness, and the encoder is not modeled.",
+      "Body length, can/gearbox split, and body diameter (24.4 mm) are visual estimates; no drawing dimensions were given.",
+      "Mounting hole diameter, positions and depth are estimated; the face plate probably has more holes, whose layout is not clear.",
+      "The encoder disc/cap and the wire harness with its connector are visible in the image but are omitted.",
+      "The brass bushing ring at the shaft base, the gearbox screw heads and the D-flat size are not modeled precisely; the flat is approximated at 1.5 mm from the axis.",
+      "The motor rear end cap and terminals are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -33.25,
+      "xmax": 33.25,
+      "ymin": 0.3000000000000007,
+      "ymax": 24.7,
+      "zmin": -12.2,
+      "zmax": 12.2,
+      "xlen": 66.5,
+      "ylen": 24.4,
+      "zlen": 24.4
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 4.000 mm; measured dimensions are [24.4, 24.4, 66.5]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 25335,
+        "sha256": "249412b57ab4e99e31ad41aca474d0aadd5ce57729ee5836088d67580435da32"
+      },
+      "model.stl": {
+        "bytes": 67484,
+        "sha256": "c019e2db9c8bdaf5a57d5e01a18c3a3a0f6dc6e26d37c0a0ce4a8f31e119c294"
+      },
+      "model.glb": {
+        "bytes": 25324,
+        "sha256": "c063caea6afca3c4f146b53bfeb35b91e9d63e9587465e17fcb3666dc7cbe63b"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "249412b57ab4e99e31ad41aca474d0aadd5ce57729ee5836088d67580435da32"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 20
+  },
+  "status": "prototype_unverified"
+}

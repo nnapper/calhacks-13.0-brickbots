@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Cylindrical 25D-style gearmotor with its axis along X, centered at X=0 and Z=0, and lying on Y=0 (axis at Y=12.5). It is built from a 24.4 mm diameter motor can and gearbox, 54 mm long in total, plus a 4 mm D-shaft extending 12.5 mm from the face plate (tip at X=33.25). Two 3 mm blind mounting holes, 4 mm deep, sit at Z=±8 on the face plate.",
+  "confidence": "low",
+  "warnings": [
+    "Body length, can/gearbox split, and body diameter (24.4 mm) are visual estimates; no drawing dimensions were given.",
+    "Mounting hole diameter, positions and depth are estimated; the face plate probably has more holes, whose layout is not clear.",
+    "The encoder disc/cap and the wire harness with its connector are visible in the image but are omitted.",
+    "The brass bushing ring at the shaft base, the gearbox screw heads and the D-flat size are not modeled precisely; the flat is approximated at 1.5 mm from the axis.",
+    "The motor rear end cap and terminals are omitted."
+  ],
+  "cadquery": "r = 12.2\ncy = 12.5\nmotor = cq.Workplane('YZ', origin=(-33.25, cy, 0)).circle(r).extrude(33.0)\ngear = cq.Workplane('YZ', origin=(-0.25, cy, 0)).circle(r).extrude(21.0)\nshaft = cq.Workplane('YZ', origin=(20.75, cy, 0)).circle(2.0).extrude(12.5)\nflat_cut = cq.Workplane('XY').box(10, 4, 2, centered=(False, True, False)).translate((23.25, cy, 1.5))\nshaft = shaft.cut(flat_cut)\nholes = cq.Workplane('YZ', origin=(16.75, cy, 0)).pushPoints([(0, 8), (0, -8)]).circle(1.5).extrude(4.0)\npart = motor.union(gear).union(shaft).cut(holes)"
+}

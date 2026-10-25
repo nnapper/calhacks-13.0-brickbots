@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Swivel Caster Wheel (M8 x 1.25mm Male Stud)",
+    "sku": "3621-0001-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/swivel-caster-wheel-m8-x-1-25mm-male-stud/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "dimensionsEstimated": true,
+    "codeConfidence": "medium",
+    "warnings": [
+      "Dimensions are printed on the drawing: 81 mm total height with stud, 66 mm height without stud, 15 mm stud length, 50.5 mm wheel diameter, 33.5 mm side-view width, 40.75 mm from the axle to the top plate, 20 mm axle offset from the stud axis, and 14 mm across the hex or flange. The bounding box is centered on the part. The z extent is the full height of 81 mm including the stud. The 66 mm y value is a sizing assumption: it is the stack height without the stud, and the true plan-view extent is not directly given. The swivel sweep envelope is 90.5 mm in diameter, which is larger than the static bounds listed. The wheel width is not stated and is only implied by the 33.5 mm side-view width. No holes are visible in the part. The stud is a male thread, so no thread detail is modeled.",
+      "The supplied boundsMm lists y=66 and z=81, which conflicts with the rule that Y is up. Total height of 81 mm is placed along Y.",
+      "The stud axis is at X=0, Z=0. The wheel is offset 20 mm in X, so the whole part is not centered on its bounding box.",
+      "Wheel width of 19 mm is estimated from drawing proportions, not stated.",
+      "Yoke, flange and base thicknesses and the yoke side-plate shape are approximated.",
+      "The thread is not modeled; the stud is a plain 8 mm cylinder.",
+      "The 90.5 mm swivel sweep circle is not modeled.",
+      "The yoke's diagonal gusset and the wheel's hub spokes and bearing detail are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -16.75,
+      "xmax": 45.25,
+      "ymin": 0,
+      "ymax": 81,
+      "zmin": -16.75,
+      "zmax": 16.75,
+      "xlen": 62,
+      "ylen": 81,
+      "zlen": 33.5
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 109985,
+        "sha256": "261c5763e83aca4a4121a15d7770197444f0500deb30a456b0c326367e120e44"
+      },
+      "model.stl": {
+        "bytes": 88484,
+        "sha256": "119434c1e98fe923b08aaa13854de52e54da0edb7310057a73569384cf803110"
+      },
+      "model.glb": {
+        "bytes": 32860,
+        "sha256": "f454783dc41b63c442ba5f4d3d84d20508834f9f969033ed2bc205858c3ae2dc"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "261c5763e83aca4a4121a15d7770197444f0500deb30a456b0c326367e120e44"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

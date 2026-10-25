@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "8 mm thick aluminum pattern mount: 32 mm dia round boss centered 24 mm above the bottom, merged with a 30 mm wide lower body having an 18 mm wide U relief that forms two posts. 14 mm center bore with 16 mm x 1 mm counterbore, four M4 tapped holes (modeled as 3.3 mm drills) on a 11.3 mm radius, four 4 mm through holes on diagonals, and two M4 x 7 mm holes in the bottom faces of the posts, 24 mm apart.",
+  "confidence": "medium",
+  "warnings": [
+    "Obround 4 mm slots approximated as round 4 mm through holes",
+    "Concave blend fillets between boss and posts and rounded U corners omitted",
+    "U relief depth (~8.5 mm) estimated from drawing, and its arched top simplified to flat",
+    "M4 pattern-face hole depth not stated; 7 mm assumed, modeled as 3.3 mm tap drill without threads",
+    "Counterbore is assumed on the +Z face"
+  ],
+  "cadquery": "boss = cq.Workplane('XY').center(0,24).circle(16).extrude(4, both=True)\nlegs = cq.Workplane('XY').center(0,7).rect(30,14).extrude(4, both=True)\npart = boss.union(legs)\n# U relief between posts\npart = part.cut(cq.Workplane('XY').center(0,4.25).rect(18,8.5).extrude(5, both=True))\n# center bore and 1 mm deep counterbore on +Z face\npart = part.cut(cq.Workplane('XY').center(0,24).circle(7).extrude(5, both=True))\npart = part.cut(cq.Workplane('XY').workplane(offset=3).center(0,24).circle(8).extrude(1))\n# four M4 holes (modeled as 3.3 mm tap drill, 7 mm deep) from +Z face\nm4 = [(11.31,24),(-11.31,24),(0,35.31),(0,12.69)]\npart = part.cut(cq.Workplane('XY').workplane(offset=-3).pushPoints(m4).circle(1.65).extrude(7))\n# four 4 mm through holes on diagonals\nsl = [(8.49,32.49),(-8.49,32.49),(8.49,15.51),(-8.49,15.51)]\npart = part.cut(cq.Workplane('XY').pushPoints(sl).circle(2).extrude(5, both=True))\n# two M4 post holes in bottom faces, 7 mm deep\npart = part.cut(cq.Workplane('XZ').pushPoints([(-12,0),(12,0)]).circle(1.65).extrude(-7))"
+}

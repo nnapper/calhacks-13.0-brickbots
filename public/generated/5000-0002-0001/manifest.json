@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "5000 Series 12VDC Motor",
+    "sku": "5000-0002-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/5000-series-12vdc-motor/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "dimensionsEstimated": true,
+    "codeConfidence": "medium",
+    "warnings": [
+      "Sizes come from the printed dimensions on the drawing; the product text gives none. Diameter is 37.5 mm. The 75 mm body length is measured from the front face to the rear of the encoder, excluding boss and shaft. Boss height is 4.8 mm and shaft protrusion beyond the boss is 7.44 mm, so total z = 75 + 4.8 + 7.44 = 87.24 mm. The bounding box is centered on the origin, so z runs from -43.62 to +43.62. The front face is at z = 43.62 - 7.44 - 4.8 = 31.38 and the rear is at z = -43.62. The boss diameter is read as 13 mm. The shaft is labeled 1/8 in (3.175 mm) with a flat. The 25 mm dimension is assumed to be the diagonal distance between opposite hole centers, which gives a square pattern with a side of about 17.68 mm. That puts the holes at ±8.84 mm in x and y, and this reading is an assumption. The holes are shown as 3 mm deep, so they are modeled as blind. Their 3 mm diameter is the nominal size taken from the drawing's M3 callout. The wire leads and connectors are not included in the bounds.",
+      "The 25 mm dimension is read as the diagonal between opposite hole centers (square side about 17.68 mm). This is an assumption.",
+      "The M3 holes are modeled as plain 3 mm blind holes with no threads.",
+      "The shaft flat is omitted, so the shaft is a plain round cylinder.",
+      "The rear encoder module, can-body details, wire leads and connectors are omitted. The rear is modeled as one plain cylinder.",
+      "The front boss is modeled as a plain 13 mm cylinder, and its inner details are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -18.75,
+      "xmax": 18.75,
+      "ymin": 0,
+      "ymax": 37.5,
+      "zmin": -43.62,
+      "zmax": 43.62,
+      "xlen": 37.5,
+      "ylen": 37.5,
+      "zlen": 87.24
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 29214,
+        "sha256": "248c0ba595ee752419bf66e311ac4032aad6e47933514b8a03b43c50e5d49886"
+      },
+      "model.stl": {
+        "bytes": 117484,
+        "sha256": "49b8d8c7f152d7b49661330fcef47865f515a7885f388c9000e6a8b34d54d115"
+      },
+      "model.glb": {
+        "bytes": 43308,
+        "sha256": "dd60c4481e67834dcc2ae7e4c6b1ca552ebf452ccae840d78582e791a3f61a15"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "248c0ba595ee752419bf66e311ac4032aad6e47933514b8a03b43c50e5d49886"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 17
+  },
+  "status": "prototype_unverified"
+}

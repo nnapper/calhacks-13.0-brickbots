@@ -1,0 +1,20 @@
+cy = 21.0
+plate = cq.Workplane('XY').box(40, 63, 3, centered=(True, False, True)).translate((0, 0, -23.25))
+bp = cq.Workplane('XY').box(43, 42, 3, centered=(True, False, True)).translate((0, 0, 20.25))
+part = plate.union(bp)
+for sx in (-16, 16):
+    for sy in (cy - 16, cy + 16):
+        post = cq.Workplane('XY').box(6, 6, 40.5).translate((sx, sy, -1.5))
+        part = part.union(post)
+hub = cq.Workplane('XY').workplane(offset=18.75).center(0, cy).circle(16).extrude(6)
+part = part.union(hub)
+bore = cq.Workplane('XY').workplane(offset=-30).center(0, cy).circle(7).extrude(60)
+part = part.cut(bore)
+holes = (cq.Workplane('XY').workplane(offset=-30)
+         .pushPoints([(-16, cy - 16), (16, cy - 16), (-16, cy + 16), (16, cy + 16)])
+         .circle(2).extrude(60))
+part = part.cut(holes)
+slots = (cq.Workplane('XY').workplane(offset=-26)
+         .pushPoints([(-16.5, 47), (16.5, 47), (-16.5, 57.4), (16.5, 57.4)])
+         .slot2D(7, 4, 90).extrude(6))
+part = part.cut(slots)

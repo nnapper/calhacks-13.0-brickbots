@@ -1,0 +1,37 @@
+{
+  "partType": "other",
+  "summary": "Double gearbox with two side-by-side motors and independent gear trains in a plastic housing. Each side has an output axle that passes through the housing. Estimated envelope is the housing plus motors, excluding the protruding axle tips.",
+  "boundsMm": {
+    "x": 60,
+    "y": 70,
+    "z": 23
+  },
+  "holes": [
+    {
+      "axis": "x",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -11.5,
+      "description": "Flat underside of the housing, usable for mounting. Screw hole positions are not dimensioned."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 11.5,
+      "description": "Flat top of the housing, with the two motors lying side by side."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The drawing shows 60 mm for the housing width, 70 mm for the overall length including motors, and 23 mm for the side-view depth. These are used for boundsMm, with x as width, y as length along the motors, and z as depth. The axles are 3 mm hex shafts, 50 mm long x2 per the drawing, and stick out beyond the 60 mm housing. The product text says 10 cm tip to tip, so the axle ends are not included in the bounds. The single 3 mm hole entry is an approximation: it represents the axle bore and is placed at the center because the axle offsets are not dimensioned. The actual output axle position and the second axle are not located. Screw hole sizes and positions are not given, so none are listed. The 12.7:1 to 344:1 ratios are from the text. The x-axis hole direction is assumed from the photos."
+}

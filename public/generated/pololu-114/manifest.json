@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Tamiya 70168 Double Gearbox Kit",
+    "sku": "pololu-114",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "The drawing shows 60 mm for the housing width, 70 mm for the overall length including motors, and 23 mm for the side-view depth. These are used for boundsMm, with x as width, y as length along the motors, and z as depth. The axles are 3 mm hex shafts, 50 mm long x2 per the drawing, and stick out beyond the 60 mm housing. The product text says 10 cm tip to tip, so the axle ends are not included in the bounds. The single 3 mm hole entry is an approximation: it represents the axle bore and is placed at the center because the axle offsets are not dimensioned. The actual output axle position and the second axle are not located. Screw hole sizes and positions are not given, so none are listed. The 12.7:1 to 344:1 ratios are from the text. The x-axis hole direction is assumed from the photos.",
+      "Dimensions are unverified estimates taken from the supplied boundsMm (60 x 70 x 23).",
+      "Y is treated as the 70 mm motor-length axis, as the analysis notes describe, with Y=0 at the bottom of the part. The photo suggests the motors may actually lie parallel to the axle, so the orientation is uncertain.",
+      "The 40 mm housing length and 20 mm motor diameter are guesses.",
+      "The 3 mm axle bore is placed at Y=12 mm, Z=0, a guessed position. The second axle and the real axle offsets are not located.",
+      "The protruding 3 mm hex axles are excluded, because the bounds exclude the axle tips.",
+      "The gear cavities, side windows, screw holes, mounting tabs and motor end details are omitted because they are not dimensioned."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -30,
+      "xmax": 30,
+      "ymin": 0,
+      "ymax": 70,
+      "zmin": -11.5,
+      "zmax": 11.5,
+      "xlen": 60,
+      "ylen": 70,
+      "zlen": 23
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 27976,
+        "sha256": "325892679ed657144e539ec3eb1b46367e7d203f11a6c99b4042d2cd5721283f"
+      },
+      "model.stl": {
+        "bytes": 51284,
+        "sha256": "db62fbdc783f35e03e9131ed36b1a499222396fb7d9b1997f3faa61d487274cd"
+      },
+      "model.glb": {
+        "bytes": 19448,
+        "sha256": "b5d5e569673edc0b0077b8d292d6ce633bd5b37e9164f04fe10a4a2adb657bc6"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "325892679ed657144e539ec3eb1b46367e7d203f11a6c99b4042d2cd5721283f"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

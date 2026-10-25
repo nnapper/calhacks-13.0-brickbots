@@ -1,0 +1,20 @@
+{
+  "partType": "other",
+  "summary": "Small rectangular servo programmer PCB with four tactile buttons, two 3-pin male headers and a USB-style connector at one edge. It ships with a separate 4-cell battery tray and a servo extension cable. Only the programmer board is sized here.",
+  "boundsMm": {
+    "x": 48,
+    "y": 48,
+    "z": 14
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -7,
+      "description": "Underside of the board, which carries a flat gray backing layer that appears to be a spacer or foam pad. It is the likely resting surface."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are given in the text and no drawing is visible, so the size is estimated. Assumptions: the board is roughly 48 x 48 mm, about 6 buttons-widths across, with 6 mm tactile switches and 2.54 mm pin-header pitch as scale references. Estimated Z of 14 mm covers the PCB, the backing layer, the tall tactile buttons (about 5 mm) and the header pins standing up above the board. The board shows small mounting holes at the corners, about 2-3 mm in diameter, but their exact positions and diameters cannot be measured, so none are listed. The battery tray (roughly 4-cell AA size) and the 3-wire cable are not included in the bounds. The backing layer thickness is a guess.",
+  "confidence_reason": "All sizes are visual estimates against standard component sizes."
+}

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Aluminum Scooter Wheel Adapter for 5mm Shaft",
+    "sku": "pololu-2673",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": false,
+    "codeConfidence": "low",
+    "warnings": [
+      "No drawing or printed dimensions are visible, and the supplied dimensions_mm values are null except the 5 mm shaft diameter, so the other sizes are estimates. The 25 mm flange diameter and 15 mm hub length are estimates scaled from the photos and the stated 608-bearing compatibility. The 608 bearing outer diameter is 22 mm, which suggests the nose and washer are about that size. The 3 mm axial hole diameter is assumed from the stated M3 clamping screws, and the 4 mm radial hole diameter from the stated M4 set screws. The 7.5 mm bolt-circle radius and the z-positions are visual estimates. The photos show the three axial holes spaced evenly around the bore and two radial holes in the flange. I assumed the radial holes are 90° apart, which is not confirmed. The washer has a central opening and three holes matching the hub, but their sizes are not stated.",
+      "No dimensions are given, so all sizes are estimated from the photo and the 608-bearing context.",
+      "Only the hub is modeled. The separate washer and the screws are omitted.",
+      "The radial holes are placed at flange mid-height and 90° apart. In the photo they look vertically stacked, so their exact positions are uncertain.",
+      "Axial holes are modeled as 2.5 mm M3 tap-drill size and radial holes as 3.3 mm M4 tap-drill size. Threads are not modeled.",
+      "The nose diameter and the flange and nose heights are visual guesses."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -12.5000001,
+      "xmax": 12.5000001,
+      "ymin": -1.0000000138777878e-7,
+      "ymax": 12.0000001,
+      "zmin": -12.50000013221484,
+      "zmax": 12.5000001,
+      "xlen": 25.0000002,
+      "ylen": 12.0000002,
+      "zlen": 25.000000232214838
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 5.000 mm; measured dimensions are [12.0000002, 25.0000002, 25.000000232214838]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 155927,
+        "sha256": "e5577d550d663bf5e905cf7b24a750bb40c58223fcd75a5de20c158396960bd2"
+      },
+      "model.stl": {
+        "bytes": 173684,
+        "sha256": "5778fc94edfd65939cb4e4b9f0ece947c72e0d02ba074294d1261a2b568a65f9"
+      },
+      "model.glb": {
+        "bytes": 63392,
+        "sha256": "4d645ed8a20838ee744a5c89755beb67631325e9b9d233407619c4b423a80dd9"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "e5577d550d663bf5e905cf7b24a750bb40c58223fcd75a5de20c158396960bd2"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 26
+  },
+  "status": "prototype_unverified"
+}

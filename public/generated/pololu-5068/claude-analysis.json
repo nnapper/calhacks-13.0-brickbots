@@ -1,0 +1,42 @@
+{
+  "partType": "other",
+  "summary": "Arduino Uno-format shield PCB (Motoron M3S550 triple motor controller) with four green screw terminal blocks along one long edge, stackable female headers on both long edges, and two through-board mounting holes. Pins of the stackable headers extend below the board.",
+  "boundsMm": {
+    "x": 68.6,
+    "y": 53.3,
+    "z": 20
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3.2,
+      "positionsMm": [
+        [
+          -24,
+          -12,
+          0
+        ],
+        [
+          10,
+          -19,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1,
+      "description": "Underside of the PCB, with stackable header pins projecting downward to plug into an Arduino Uno-compatible board"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Top face of the PCB, carrying the terminal blocks, capacitors and ICs"
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are given in the text. The size is assumed from the standard Arduino Uno shield footprint of about 68.6 x 53.3 mm. The stated 3.2 mm hole diameter and the hole positions are rough estimates from the photos, and only two holes are clearly visible. The z value of about 20 mm is an estimate. It covers the 1.6 mm PCB, the terminal blocks and headers above it, and the header pins below it, and it is not a stated figure. The count and locations of any further holes were not determined. No other dimensions or features were inferred."
+}

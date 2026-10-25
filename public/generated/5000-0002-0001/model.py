@@ -1,0 +1,5 @@
+body = cq.Workplane('XY').workplane(offset=-43.62).center(0, 18.75).circle(18.75).extrude(75)
+boss = cq.Workplane('XY').workplane(offset=31.38).center(0, 18.75).circle(6.5).extrude(4.8)
+shaft = cq.Workplane('XY').workplane(offset=36.18).center(0, 18.75).circle(1.5875).extrude(7.44)
+holes = cq.Workplane('XY').workplane(offset=28.38).pushPoints([(8.84, 18.75 + 8.84), (-8.84, 18.75 + 8.84), (8.84, 18.75 - 8.84), (-8.84, 18.75 - 8.84)]).circle(1.5).extrude(3)
+part = body.union(boss).union(shaft).cut(holes)

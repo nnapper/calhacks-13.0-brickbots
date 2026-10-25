@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Hex aluminum adapter, 12 mm across flats (about 13.86 mm across corners) and 17 mm long. The hex axis runs along Z, centered in X and Z, with the bottom flat at Y=0 and the top flat at Y=12. A 3 mm blind bore enters from the +Z end. A 4 mm blind hole, 7 mm deep, enters from the -Z end. Two 3 mm radial set-screw holes at z=5.75 and z=1.25 go from the +Y flat down to the bore axis.",
+  "confidence": "medium",
+  "warnings": [
+    "The bore depth is not given. I assumed 9.5 mm so the set-screw holes intersect it.",
+    "The 3 mm bore and the 4 mm hole leave a 0.5 mm wall between them. The drawing does not show whether they meet.",
+    "The M4 hole uses the nominal 4 mm diameter, not a tap-drill size. Threads are not modeled.",
+    "The M3 set-screw holes use the nominal 3 mm diameter and are not threaded.",
+    "The set-screw flat is placed at +Y, following the end-view analysis.",
+    "The bore is modeled round. The D-shaft compatibility is not modeled."
+  ],
+  "cadquery": "d = 12 / math.cos(math.radians(30))\nbody = cq.Workplane('XY').polygon(6, d).extrude(17).translate((0, 6, -8.5))\nbore = cq.Solid.makeCylinder(1.5, 9.5, cq.Vector(0, 6, 8.5), cq.Vector(0, 0, -1))\nm4 = cq.Solid.makeCylinder(2.0, 7, cq.Vector(0, 6, -8.5), cq.Vector(0, 0, 1))\npart = body.cut(cq.Workplane('XY').add(bore)).cut(cq.Workplane('XY').add(m4))\nfor z in (5.75, 1.25):\n    s = cq.Solid.makeCylinder(1.5, 6.5, cq.Vector(0, 12.5, z), cq.Vector(0, -1, 0))\n    part = part.cut(cq.Workplane('XY').add(s))"
+}

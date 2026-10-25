@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "24-tooth MOD 0.8 spur gear, 20.8 mm outer diameter and 6 mm face width, with the axis along Z centered at z=0. The gear center is at y=10.4 so the bottom sits at Y=0. It has a plain 3 mm through bore. The teeth are simplified trapezoids.",
+  "confidence": "medium",
+  "warnings": [
+    "Tooth profile is a trapezoidal approximation, not a true involute.",
+    "The 25-tooth spline is modeled as a plain 3 mm bore.",
+    "The raised hub and shallow recess are omitted because their diameters and depths are not dimensioned.",
+    "The axis is along Z per the analysis bounds, so the Y=0 bottom places the gear center at y=10.4."
+  ],
+  "cadquery": "m=0.8\nN=24\nro=10.4\nrr=ro-2.25*m\npts=[]\nfor i in range(N):\n    a=i*360.0/N\n    for da,r in((-6.5,rr),(-3.5,ro),(3.5,ro),(6.5,rr)):\n        t=math.radians(a+da)\n        pts.append((r*math.cos(t),r*math.sin(t)))\nbody=cq.Workplane('XY').polyline(pts).close().extrude(3,both=True)\nbody=body.cut(cq.Workplane('XY').circle(1.5).extrude(3,both=True))\npart=body.translate((0,10.4,0))"
+}

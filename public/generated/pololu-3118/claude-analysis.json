@@ -1,0 +1,52 @@
+{
+  "partType": "flat_plate",
+  "summary": "Rectangular printed circuit board with rounded corners and a notch-free outline. It has four corner mounting holes, and the board is shown stacked on a Raspberry Pi with standoffs. The SMT-only variant carries surface-mount components and open through-hole pads on the top face. Size is 65 mm × 56 mm; thickness is not stated.",
+  "boundsMm": {
+    "x": 65,
+    "y": 56,
+    "z": 1.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.75,
+      "positionsMm": [
+        [
+          -29,
+          -24.5,
+          0
+        ],
+        [
+          29,
+          -24.5,
+          0
+        ],
+        [
+          -29,
+          24.5,
+          0
+        ],
+        [
+          29,
+          24.5,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.8,
+      "description": "Underside of the board, which seats on standoffs at the four corner holes when stacked on a Raspberry Pi."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.8,
+      "description": "Top face of the board, which carries the surface-mount components and unpopulated through-hole pads."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Length 65 mm and width 56 mm come from the listed specs, which are flagged as unverified. Board thickness (1.6 mm) is an assumed standard value, because height is null in the data. Component heights are not included. The four corner holes are visible in the images. Their 2.75 mm diameter and 58 × 49 mm spacing (3.5 mm from each edge) come from the Raspberry Pi HAT specification, which the product is said to conform to, not from a printed dimension. Hole positions assume the outline is centered at the origin and x runs along the 65 mm side. The images do not show connector or header locations, so none are modeled."
+}

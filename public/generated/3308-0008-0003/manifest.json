@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Grid-Link for 8mm Pitch Steel Chain - 6 Pack",
+    "sku": "3308-0008-0003",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/grid-link-for-8mm-pitch-steel-chain-6-pack/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "The only stated dimension is the 16mm hole spacing, from the specs and the Product Insight #5 text. The 8mm pitch is also stated. The rest is estimated. Hole diameter is about 4.2mm, assuming it passes an M4 screw, and the Product Insight drawings show M4 locknuts and screws going through the holes. Overall length is about 22mm, from 16mm hole spacing plus a tab radius of roughly 3mm at each end. Width of about 8mm assumes it matches the chain's outer plate. Height of about 6mm is a rough guess from the photo: two pin-linked side plates, with tabs bent outward and level with the bottom. The photo shows the tabs bending away from the chain plates, but the exact bend geometry and offset are not measured. Hole positions are centered on the part, with tabs at x = ±8mm. The z values are approximate.",
+      "Only the 16 mm hole spacing and 8 mm pitch are stated; all other dimensions are estimated from the photo.",
+      "Hole diameter of 4.2 mm is assumed from an M4 screw.",
+      "The analysis lists hole axis z, but the photo shows the tabs lying flat with vertical holes. I used a Y-axis hole with Y up, so the holes pass through the tabs.",
+      "Plate outline is simplified to rectangles; rounded plate ends, tab bend radii and pin heads are omitted.",
+      "Pin diameter and plate spacing are guesses."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -11,
+      "xmax": 11,
+      "ymin": 0,
+      "ymax": 8,
+      "zmin": -3,
+      "zmax": 3,
+      "xlen": 22,
+      "ylen": 8,
+      "zlen": 6
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 103780,
+        "sha256": "021f4e18bcbfa7305ef8a4e850c7afc0aabb1165775936c39f6cb411a587a2e0"
+      },
+      "model.stl": {
+        "bytes": 72684,
+        "sha256": "64fcab969d5e32ea37ca414c4beb3a3da5475229114621adca58fbe22cec9595"
+      },
+      "model.glb": {
+        "bytes": 27056,
+        "sha256": "bd1ecdcfdc37cf108d4f72808a464d1b2ae089079f24a491c02c73d157b4f5c9"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "021f4e18bcbfa7305ef8a4e850c7afc0aabb1165775936c39f6cb411a587a2e0"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 44
+  },
+  "status": "prototype_unverified"
+}

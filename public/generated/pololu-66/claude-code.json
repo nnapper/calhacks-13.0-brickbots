@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Simplified 35 mm Tamiya ball caster: 25x25x3 mm square base plate with four 3 mm corner through-holes, four 6 mm round standoff posts, a central 16 mm cylindrical ball holder, and a 12 mm sphere protruding to a 35 mm overall height. Y is up and the bottom is at Y=0.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are unverified estimates, including the 25x25 mm footprint, 3 mm plate thickness, post size and position, holder diameter, and ball diameter.",
+    "The bounds list Y=25 and Z=35, but the rules put the bottom at Y=0 with Y up. I treated Y as the 35 mm height and X and Z as the 25 mm footprint.",
+    "Holes in the tops of the posts and the central front boss are visible but their depth and diameter are unknown, so they are omitted.",
+    "The ball is modeled as a fused sphere without a clearance gap or retaining-cap details.",
+    "The screw visible near the back-left of the holder and the small ribs and gussets are omitted.",
+    "The photo shows the ball at the top, but the description says the ball holder is at the bottom. I kept the ball at the top, matching the photo orientation."
+  ],
+  "cadquery": "base = cq.Workplane('XY').box(25, 3, 25, centered=(True, False, True))\nposts = cq.Workplane('XY')\nfor x in (-5.5, 5.5):\n    for z in (-5.5, 5.5):\n        posts = posts.union(cq.Workplane('XY').add(cq.Solid.makeCylinder(3, 29, cq.Vector(x, 3, z), cq.Vector(0, 1, 0))))\nholder = cq.Workplane('XY').add(cq.Solid.makeCylinder(8, 27, cq.Vector(0, 3, 0), cq.Vector(0, 1, 0)))\nball = cq.Workplane('XY').add(cq.Solid.makeSphere(6, cq.Vector(0, 29, 0), cq.Vector(0, 1, 0), 0, 90, 360)).union(\n    cq.Workplane('XY').add(cq.Solid.makeSphere(6, cq.Vector(0, 29, 0), cq.Vector(0, 1, 0), -90, 0, 360)))\nbody = base.union(posts).union(holder).union(ball)\ncutters = cq.Workplane('XY')\nfor x in (-10, 10):\n    for z in (-10, 10):\n        cutters = cutters.union(cq.Workplane('XY').add(cq.Solid.makeCylinder(1.5, 3, cq.Vector(x, 0, z), cq.Vector(0, 1, 0))))\npart = body.cut(cutters)"
+}

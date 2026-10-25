@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Simplified round 3pi+ chassis: a 97 mm OD, 3 mm wall bumper skirt ring, 30 mm tall along Z, with an internal 3 mm base plate, a block representing the four-AAA battery holder, and two 7 mm wide wheel cylinders at the left and right sides. Total X is 100 mm, Y runs 0 to 97 mm, Z is 30 mm.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are unverified; scale comes from the 32x7 mm wheel spec and the estimated bounds.",
+    "The wheel diameter is reduced from 32 mm to 30 mm so the part fits the 30 mm Z bound.",
+    "Bounds put the ring axis along Z, so Y is the 97 mm in-plane dimension and the part sits on Y=0 as instructed.",
+    "The battery holder is a plain block with no AAA cell bays, slots, or small holes.",
+    "The ball caster, motor pockets, motor clips, skirt cutouts and tabs, battery contacts, tire tread and wheel spokes are omitted.",
+    "Wheels are solid cylinders with no tires or axle holes, and they are fused to the skirt.",
+    "The kit is loose parts in the photo; this models one assembled approximation."
+  ],
+  "cadquery": "R = 48.5\nCY = 48.5\nH = 30.0\nring = cq.Workplane('XY').center(0, CY).circle(R).circle(R - 3).extrude(H / 2, both=True)\nplate = cq.Workplane('XY').workplane(offset=-H / 2).center(0, CY).circle(R - 2).extrude(3)\nbatt = cq.Workplane('XY').box(40, 50, 12, centered=(True, True, False)).translate((0, CY, -H / 2 + 3))\nwheel_r = 15.0\nwheel_r_side = cq.Workplane('YZ').workplane(offset=43).center(CY, 0).circle(wheel_r).extrude(7)\nwheel_l_side = cq.Workplane('YZ').workplane(offset=-50).center(CY, 0).circle(wheel_r).extrude(7)\npart = ring.union(plate).union(batt).union(wheel_r_side).union(wheel_l_side)"
+}

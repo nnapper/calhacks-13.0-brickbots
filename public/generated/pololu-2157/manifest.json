@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "LOCOSYS LC20031-V2 135-Channel Dual-Band GNSS Receiver Module",
+    "sku": "pololu-2157",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are given in the text, so all sizes are estimates. The board is assumed to be about 35 mm square, based on the typical size of the LC20031 module and a 25 mm patch antenna. PCB thickness is assumed to be about 1.6 mm. The antenna, its gray gasket and the connector are assumed to bring the total height to about 9 mm. The corner hole diameter (about 2.5 mm) and a hole spacing of about 33 mm are visual estimates from the photos. The cable and braided sleeve are excluded from the bounds, and the side connector is not modeled.",
+      "All dimensions are estimates because the product text gives none.",
+      "The analysis bounds list Y as 35 and Z as 9, but the rules require Y to be the up axis. The 9 mm thickness is therefore along Y and the 35 mm plate lies in X and Z.",
+      "The gasket and patch heights are guessed so the total height matches 9 mm.",
+      "The side connector, cable, braided sleeve, components on the underside, LEDs and logos are omitted.",
+      "The PCB thickness of 1.6 mm is assumed."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -17.50000000000001,
+      "xmax": 17.500000000000057,
+      "ymin": 0,
+      "ymax": 5,
+      "zmin": -17.50000000000005,
+      "zmax": 17.500000000000046,
+      "xlen": 35.00000000000007,
+      "ylen": 5,
+      "zlen": 35.0000000000001
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 131095,
+        "sha256": "07ff3e762b468e622794236177cecb50297474c4d6987b73213a2e5ae86458ba"
+      },
+      "model.stl": {
+        "bytes": 43484,
+        "sha256": "9c33d5d3ca0cc623af83d8336562482a61695628fa41d307dfa1b987488f0f6c"
+      },
+      "model.glb": {
+        "bytes": 16764,
+        "sha256": "690c0e8f5f0bcd6c6e1ad105c17c1fbec3347caa5d561dc4d1d279ba1140dfd8"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "07ff3e762b468e622794236177cecb50297474c4d6987b73213a2e5ae86458ba"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

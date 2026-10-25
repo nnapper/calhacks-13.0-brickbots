@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "AAA NiMH cell modeled as a 10.5 mm diameter cylinder with its axis along Z, spanning z=-22.25 to 21.25. A 4 mm diameter, 1 mm tall positive button sits on the +Z end, giving 44.5 mm total length. X is centered at 0, Z is centered at 0, and the bottom of the cylinder rests at Y=0, so the axis is at Y=5.25. The negative end is flat.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are unverified and based on the standard AAA (R03) size: 10.5 mm diameter and 44.5 mm length including the button.",
+    "Button diameter (4 mm) and height (1 mm) are estimated, not measured.",
+    "The negative end is not visible in the image, so it is assumed flat.",
+    "The printed text and any label wrap or insulating sleeve edge detail are not modeled.",
+    "No holes were modeled because none are visible."
+  ],
+  "cadquery": "body = cq.Workplane('XY').workplane(offset=-22.25).center(0, 5.25).circle(5.25).extrude(43.5)\nbutton = cq.Workplane('XY').workplane(offset=21.25).center(0, 5.25).circle(2.0).extrude(1.0)\npart = body.union(button)"
+}

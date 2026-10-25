@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Single barrel-shaped roller with its axis along Z (length 44 mm, max diameter 20 mm at mid-length, end diameter 16 mm) and an 8 mm axial through-bore. It is centered in X and Z, and its bottom sits at Y=0, so the axis lies at Y=10.",
+  "confidence": "low",
+  "warnings": [
+    "The listing gives no dimensions. Length, diameter, end diameter and bore are estimated from the photo and the supplied bounds.",
+    "The barrel profile is a single circular arc, which is an approximation of the real curvature.",
+    "The raised dimple texture is omitted as decorative detail.",
+    "The loose pin, bearings, E-clips and shims in the pack are not modeled.",
+    "The bore is modeled as a plain 8 mm through-hole. Any bearing seats or counterbores are not visible, so they are omitted."
+  ],
+  "cadquery": "r_end=8.0\nr_max=10.0\nr_bore=4.0\nL=44.0\nprofile=(cq.Workplane('XZ')\n    .moveTo(r_bore,-L/2)\n    .lineTo(r_end,-L/2)\n    .threePointArc((r_max,0),(r_end,L/2))\n    .lineTo(r_bore,L/2)\n    .close())\nroller=profile.revolve(360,(0,0,0),(0,1,0))\npart=roller.translate((0,r_max,0))"
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "STSPIN220 Low-Voltage Stepper Motor Driver Carrier",
+    "sku": "pololu-2876",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "The size comes from the printed dimensions in the third image: 0.6 in x 0.8 in, which is 15.24 mm x 20.32 mm. The hole pitch is assumed to be 0.1 in (2.54 mm), matching the 0.1 in header listed in the specs. The two rows are about 12.7 mm apart, which the photo scale supports. The 8 holes per side span 17.78 mm, leaving about 1.27 mm of margin at each end. The hole diameter of 1.0 mm is an assumption based on standard 0.1 in header pin holes, and the pad sizes are not measured. Thickness is not stated. I assumed a 1.6 mm PCB plus about 1.4 mm for the tallest component, giving 3.0 mm overall. The board has a small unmarked round hole or ring near its center and a trimmer, which I did not model as holes. The loose header strip is excluded from the bounds.",
+      "The supplied bounds list Y=20.32 and Z=3, but the rules require Y as the up axis. I put the 20.32 mm board length along Z and the 3 mm thickness along Y.",
+      "Dimensions are unverified. The PCB thickness of 1.6 mm and the hole diameter of 1 mm are assumptions.",
+      "The capacitor and IC are rough blocks with approximate positions and sizes. I included them only so the overall height matches 3 mm.",
+      "The trimmer, small resistors and capacitors, the round marker ring, pads and the loose header strip are omitted.",
+      "The board corners are modelled as square, with no mounting holes."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -7.62,
+      "xmax": 7.62,
+      "ymin": 0,
+      "ymax": 3,
+      "zmin": -10.16,
+      "zmax": 10.16,
+      "xlen": 15.24,
+      "ylen": 3,
+      "zlen": 20.32
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 123484,
+        "sha256": "7a94c72f2e6c6fcb87a1c5ec8978c0fb37076dbe6c7fb4f1ad76f57239f13f61"
+      },
+      "model.stl": {
+        "bytes": 274284,
+        "sha256": "bf1be040506ab5f7cc058ee29a5f4422d36cc4cf9cd94af0b2798f256c83b4cb"
+      },
+      "model.glb": {
+        "bytes": 99376,
+        "sha256": "657cd663ee109d13ac2d3fbcddea9a58ce93c0af9f8895f37c4f86649559865c"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "7a94c72f2e6c6fcb87a1c5ec8978c0fb37076dbe6c7fb4f1ad76f57239f13f61"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

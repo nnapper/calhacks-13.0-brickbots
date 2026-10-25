@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Clevis-style stamped bracket: a flat 3 mm foot plate with one 8 mm through hole, two parallel 3 mm side flanges with a sloped profile rising to the pin end, and a 12.6 mm cross pin spanning the flanges along X. Overall about 34 x 50 x 30 mm.",
+  "confidence": "low",
+  "warnings": [
+    "Only the 12.6 mm pin diameter is stated; all other dimensions are estimated from image proportions.",
+    "The pin is modeled as a solid cylinder through the flanges, so no separate pin hole is cut.",
+    "The retaining clip is omitted.",
+    "The sloped web and its second hole are omitted because their size and axis are unclear. The foot plate is modeled flat.",
+    "The axis convention follows the supplied bounds (X is the pin axis, Y is 50 mm long, Z is 30 mm). The bottom is at Y=0, and X and Z are centered.",
+    "The foot hole diameter (8 mm) and position are guesses.",
+    "Sheet thickness and bend radii are assumed, with sharp corners."
+  ],
+  "cadquery": "pts=[(0,-15),(30,-15),(50,0),(50,15),(36,15)]\nfl=cq.Workplane('YZ').workplane(offset=14).polyline(pts).close().extrude(3)\nfr=cq.Workplane('YZ').workplane(offset=-17).polyline(pts).close().extrude(3)\nbase=cq.Workplane('XY').box(34,32,3,centered=(True,False,False)).translate((0,0,-15))\npin=cq.Workplane('YZ').workplane(offset=-17).center(42,6).circle(6.3).extrude(34)\npart=base.union(fl).union(fr).union(pin)\nhole=cq.Workplane('XY').workplane(offset=-16).center(0,18).circle(4).extrude(5)\npart=part.cut(hole)"
+}

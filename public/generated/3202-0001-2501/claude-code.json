@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "ServoBlock approximation: 40x63x3 servo mounting plate with four Ø4 slots, 43x42x3 bearing plate, four 6 mm square corner posts on a 32 mm square pattern, Ø32 hub boss on top, Ø14 central bore through all, and four Ø4 through holes on the 32 mm square pattern. Overall about 43 x 63 x 49.5 mm, with the hub axis along Z and the bottom at Y=0.",
+  "confidence": "low",
+  "warnings": [
+    "No scraped dimensions were available; sizes are estimated from the drawing and the given bounds.",
+    "The 49.5 mm depth may include the servo envelope; the servo itself is not modeled.",
+    "The hub's alternating threaded and through hole ring, the spline and the hex or D-bore detail are omitted because their sizes are not stated.",
+    "Plate and flange thicknesses, post sizes, the hub center height (21 mm) and the slot positions are guesses.",
+    "The side flanges and bearings are simplified into corner posts and a single bearing plate."
+  ],
+  "cadquery": "cy = 21.0\nplate = cq.Workplane('XY').box(40, 63, 3, centered=(True, False, True)).translate((0, 0, -23.25))\nbp = cq.Workplane('XY').box(43, 42, 3, centered=(True, False, True)).translate((0, 0, 20.25))\npart = plate.union(bp)\nfor sx in (-16, 16):\n    for sy in (cy - 16, cy + 16):\n        post = cq.Workplane('XY').box(6, 6, 40.5).translate((sx, sy, -1.5))\n        part = part.union(post)\nhub = cq.Workplane('XY').workplane(offset=18.75).center(0, cy).circle(16).extrude(6)\npart = part.union(hub)\nbore = cq.Workplane('XY').workplane(offset=-30).center(0, cy).circle(7).extrude(60)\npart = part.cut(bore)\nholes = (cq.Workplane('XY').workplane(offset=-30)\n         .pushPoints([(-16, cy - 16), (16, cy - 16), (-16, cy + 16), (16, cy + 16)])\n         .circle(2).extrude(60))\npart = part.cut(holes)\nslots = (cq.Workplane('XY').workplane(offset=-26)\n         .pushPoints([(-16.5, 47), (16.5, 47), (-16.5, 57.4), (16.5, 57.4)])\n         .slot2D(7, 4, 90).extrude(6))\npart = part.cut(slots)"
+}

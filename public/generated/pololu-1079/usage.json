@@ -1,0 +1,6 @@
+{
+  "model": "claude-sonnet-5-5",
+  "inputTokens": 3786,
+  "outputTokens": 3129,
+  "estimatedUsd": 0.0389
+}

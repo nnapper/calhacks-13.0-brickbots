@@ -1,0 +1,198 @@
+{
+  "partType": "flat_plate",
+  "summary": "Flat steel bracket with a 135° bend-free angled outline. A 40 mm wide lower leg and a 40 mm wide upper leg are offset by 45°. Features are a central 14 mm bore, 8 slotted 4 mm mounting holes around it, a 2x5 grid of 4 mm holes in the lower leg, and a diagonal pattern of 10 4 mm holes in the upper leg.",
+  "boundsMm": {
+    "x": 59.7,
+    "y": 75.8,
+    "z": 3
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          -9.9,
+          -1.8,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -25.9,
+          -33.8,
+          0
+        ],
+        [
+          -17.9,
+          -33.8,
+          0
+        ],
+        [
+          -9.9,
+          -33.8,
+          0
+        ],
+        [
+          -1.9,
+          -33.8,
+          0
+        ],
+        [
+          6.1,
+          -33.8,
+          0
+        ],
+        [
+          -25.9,
+          -25.9,
+          0
+        ],
+        [
+          -17.9,
+          -25.9,
+          0
+        ],
+        [
+          -9.9,
+          -25.9,
+          0
+        ],
+        [
+          -1.9,
+          -25.9,
+          0
+        ],
+        [
+          6.1,
+          -25.9,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -9.9,
+          10.2,
+          0
+        ],
+        [
+          -9.9,
+          -13.8,
+          0
+        ],
+        [
+          -21.9,
+          -1.8,
+          0
+        ],
+        [
+          2.1,
+          -1.8,
+          0
+        ],
+        [
+          -17.9,
+          6.2,
+          0
+        ],
+        [
+          -1.9,
+          6.2,
+          0
+        ],
+        [
+          -17.9,
+          -9.8,
+          0
+        ],
+        [
+          -1.9,
+          -9.8,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          1.4,
+          32.2,
+          0
+        ],
+        [
+          -4.2,
+          26.6,
+          0
+        ],
+        [
+          7.1,
+          26.6,
+          0
+        ],
+        [
+          1.4,
+          20.9,
+          0
+        ],
+        [
+          12.8,
+          20.9,
+          0
+        ],
+        [
+          7.1,
+          15.2,
+          0
+        ],
+        [
+          18.4,
+          15.2,
+          0
+        ],
+        [
+          12.8,
+          9.9,
+          0
+        ],
+        [
+          24.2,
+          9.9,
+          0
+        ],
+        [
+          18.4,
+          3.9,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 1.5,
+      "description": "Top flat face"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -1.5,
+      "description": "Bottom flat face"
+    }
+  ],
+  "confidence": "low",
+  "notes": "The x and y extents were scaled from the drawing, using 40 mm overall width = 649 px (about 16.2 px/mm) and the 8 mm hole pitch. The x/y origin is the center of the bounding box, with y pointing up in the drawing. Thickness is not printed. The 3 mm value is an estimate from the 46 g weight, steel density of about 7.85 g/cm³ and an estimated area of about 2000 mm² after holes, so it is uncertain. The 8 holes around the bore are slots about 4 mm wide and 5-6 mm long, but are listed here as 4 mm circular holes at their centers. The 4 mm hole diameter is printed on the drawing. The 14 mm bore is printed, with a 24 mm span between opposite slot centers and 16 mm between diagonal slot centers. Hole positions were measured from pixel coordinates and are accurate to about ±0.3 mm. The 135° angle is printed. Holes are assumed to be through holes, and no countersinks are modeled."
+}

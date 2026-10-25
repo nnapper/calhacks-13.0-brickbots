@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Zumo 2040 Robot",
+    "sku": "pololu-5011",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "The description says the robot is less than 10 cm × 10 cm, so x (width across the tracks) is estimated at about 98 mm and y (length including the blade) at about 100 mm. These are assumptions, not stated values. Height of about 40 mm is estimated from the photo proportions and the track diameter relative to the width. No hole sizes or positions are printed anywhere in the images or text, so the holes list is left empty rather than invented. The mounting surfaces are rough, inferred from the visible layout only. The axes assume x is across the width, y is front-to-back, and z is vertical.",
+      "Dimensions are estimates and are marked unverified. They were taken from boundsMm.",
+      "The bounds put the 100 mm length along Y, but the rules put the part bottom at Y=0. The robot is therefore modeled with its 100 mm length along the Y axis and its 40 mm height along Z, not in its natural upright orientation.",
+      "Omitted as uncertain or decorative: OLED display, connectors, sensors, battery holder detail, track tread, wheels and sprockets, and the USB-C port.",
+      "No holes were cut because none are specified or dimensioned.",
+      "Tracks are modeled as plain rectangular blocks rather than rounded track loops."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -49,
+      "xmax": 49,
+      "ymin": 0,
+      "ymax": 100,
+      "zmin": -20,
+      "zmax": 20,
+      "xlen": 98,
+      "ylen": 100,
+      "zlen": 40
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 70547,
+        "sha256": "155cbd578d8028f3c3e956d9d4cdba738e064b45aa42034e00dd984b8e478b81"
+      },
+      "model.stl": {
+        "bytes": 3884,
+        "sha256": "070c282ebc6feaa398f89e0564453040e731ca35247d585eb812da23624eebb7"
+      },
+      "model.glb": {
+        "bytes": 2400,
+        "sha256": "705c043869d71b6dcbb7e690a63bcee23b7d75bc1cf59e11e119c43ae9090ebd"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "155cbd578d8028f3c3e956d9d4cdba738e064b45aa42034e00dd984b8e478b81"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

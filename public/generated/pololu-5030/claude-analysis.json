@@ -1,0 +1,42 @@
+{
+  "partType": "other",
+  "summary": "Arduino-Uno-format shield PCB carrying a motor driver circuit. It has stackable female headers along both long edges, male pins pointing down, four green screw terminal blocks along one long edge, and two electrolytic capacitors on the top face.",
+  "boundsMm": {
+    "x": 68.6,
+    "y": 53.3,
+    "z": 19
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3.2,
+      "positionsMm": [
+        [
+          -24,
+          -18,
+          0
+        ],
+        [
+          24,
+          18,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1,
+      "description": "Underside of the PCB. It sits on an Arduino Uno-format board through the pin headers, and the male pins extend below it."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.8,
+      "description": "Top face of the PCB, carrying the components and terminal blocks."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are printed in the images or text. The PCB is assumed to match the standard Arduino Uno shield footprint of about 68.6 x 53.3 mm. The third image supports this, since the board sits on an Uno-style board and roughly matches its footprint. Z of about 19 mm is an estimate covering the PCB (about 1.6 mm), the tall header bodies, and the pins protruding below. The two mounting holes are visible near the corners of the PCB, but their positions and the 3.2 mm diameter are estimates. Other holes are not listed. The small castellated or test pads are not confirmed as holes, and the header pin patterns are not given as holes. Hole positions are relative to the board center, with z set at the board mid-plane."
+}

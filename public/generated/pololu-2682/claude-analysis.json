@@ -1,0 +1,76 @@
+{
+  "partType": "block",
+  "summary": "Aluminum hex wheel adapter, 17 mm long and 12 mm across flats. The hex axis runs along z. One end has a 3 mm shaft bore and the opposite end has a blind M4 hole for the wheel screw. Two M3 radial holes on one hex flat open into the shaft bore.",
+  "boundsMm": {
+    "x": 13.86,
+    "y": 12,
+    "z": 17
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          0,
+          8.5
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          0,
+          -8.5
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "y",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          6,
+          5.75
+        ],
+        [
+          0,
+          6,
+          1.25
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 8.5,
+      "description": "End face with the 3 mm shaft bore, which sits on the motor shaft side"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -8.5,
+      "description": "End face with the M4 hole for the wheel retaining screw, on the wheel side"
+    },
+    {
+      "axis": "y",
+      "offsetMm": 6,
+      "description": "Hex flat carrying the two M3 set-screw holes, spaced 4.5 mm apart, with the first 2.75 mm from the shaft-bore end"
+    },
+    {
+      "axis": "y",
+      "offsetMm": -6,
+      "description": "Opposite hex flat. The 12 mm hex drives a wheel with a matching hex hub."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The drawing prints 17 mm length, 12 mm across flats (end view), a 3 mm bore diameter, 2.75 mm and 4.5 mm set-screw spacing, and a 7 mm M4 hole depth. The x extent of 13.86 mm is across corners, computed from 12 / cos(30°); it is not printed. The end view shows flats at top and bottom, so the set-screw flat is placed at +y. The 3 mm bore depth is not printed, and the drawing does not show whether it meets the M4 hole. The M3 hole diameter uses the nominal 3 mm and is not a drilled size from the drawing. The two M3 holes are placed along the axis from the shaft-bore end, at z = 5.75 and 1.25 with the part centered. The 4 mm hole diameter is nominal."
+}

@@ -1,0 +1,37 @@
+{
+  "partType": "other",
+  "summary": "Tamiya 70100 track and wheel kit with flexible plastic track links, sprockets, idler wheels, road wheels, wheel caps, 3 mm shafts and tapping screws. The parts are supplied on sprues. Overall size is estimated for a single assembled track and wheel unit.",
+  "boundsMm": {
+    "x": 180,
+    "y": 60,
+    "z": 60
+  },
+  "holes": [
+    {
+      "axis": "y",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "y",
+      "offsetMm": 30,
+      "description": "Outer face of the sprocket or wheel stack on a 3 mm axle. The axle is the mounting interface for a chassis or gearbox."
+    },
+    {
+      "axis": "y",
+      "offsetMm": -30,
+      "description": "Inner face of the sprocket or wheel stack on the 3 mm axle."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are stated for the assembled unit. Sizing assumptions: (1) The 3 x 100 mm shafts are the only stated lengths, so they set the scale. In the photo they are about as long as the sprue width. (2) The track length of about 180 mm is a guess for one 30-link track laid flat, assuming roughly 8 mm link pitch for the track. In the photo the 30-link strip is slightly longer than the sprue. (3) The wheel diameter of about 30-60 mm and the 60 mm height are visual estimates from the 100 mm shaft. The 3 mm hole is taken from the shaft spec, with the position at the part center as a placeholder. Screw holes, hex shaft bore, and individual wheel hole patterns are not dimensioned and are not listed. The bounds are only a rough envelope. The set is a collection of loose parts, not a single solid."
+}

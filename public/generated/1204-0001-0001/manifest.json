@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1204 Series Gusseted Angle Mount (1-1) - 2 Pack",
+    "sku": "1204-0001-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1204-series-gusseted-angle-mount-1-1-2-pack/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "dimensionsEstimated": true,
+    "codeConfidence": "medium",
+    "warnings": [
+      "Dimensions are printed on the drawing: 15 mm and 15 mm for the profile, 14 mm for the extrusion width, holes 8 mm from the corner, Ø4 mm hole, Ø8 mm counterbore. The text lists no dimensions, so confidence is medium rather than high. Axis assignment is my assumption: x and z are the two 15 mm legs, y is the 14 mm width, and the box is centered at the origin. The hole axes are perpendicular to the leg faces and centered across the 14 mm width (y = 0). The counterbore positions and depths are approximate. The section view shows 2.25 mm wall thicknesses at the leg faces, but I did not model those or any internal geometry. The small chamfer at the top corner is not modeled.",
+      "Counterbore depths are not dimensioned; floors were set at 3 mm from the center plane (about 4 mm hole length left at the leg face).",
+      "Internal T-slot/section geometry with 2.25 mm walls was omitted.",
+      "Tip truncation size (~3.2 mm) was estimated from drawing proportions.",
+      "Axis assignment and hole orientation are assumed from the analysis JSON; the source dimensions are unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -7.5000001,
+      "xmax": 7.5,
+      "ymin": 0,
+      "ymax": 14,
+      "zmin": -7.5000001,
+      "zmax": 7.5,
+      "xlen": 15.000000100000001,
+      "ylen": 14,
+      "zlen": 15.000000100000001
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 187593,
+        "sha256": "08c07907f93ef8dfeca50600b77cb406a3d6aa01e753fc911abde3060fdfb1ba"
+      },
+      "model.stl": {
+        "bytes": 74984,
+        "sha256": "2304df3f58f7e1fddc38dbb91801f9a6094ba27b5f0dcc15909c9f6b9f0d91a6"
+      },
+      "model.glb": {
+        "bytes": 27960,
+        "sha256": "0f4950b46e9cd1ce350fc5bfda89832d3a5fa9fc5be9ccb4d7c162697fe60d22"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "08c07907f93ef8dfeca50600b77cb406a3d6aa01e753fc911abde3060fdfb1ba"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

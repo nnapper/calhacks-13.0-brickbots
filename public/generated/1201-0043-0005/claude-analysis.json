@@ -1,0 +1,69 @@
+{
+  "partType": "block",
+  "summary": "Asymmetric quad block pattern mount: a flat aluminum plate with a 14mm central bore, a half-circle notch on one edge, and four raised corner blocks. The plate carries a grid of round holes and slots. Each corner block has tapped holes on its top and side faces.",
+  "boundsMm": {
+    "x": 43,
+    "y": 43,
+    "z": 15
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 3.5,
+      "positionsMm": [
+        [
+          8,
+          8,
+          0
+        ],
+        [
+          -8,
+          8,
+          0
+        ],
+        [
+          8,
+          -8,
+          0
+        ],
+        [
+          -8,
+          -8,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -7.5,
+      "description": "Flat bottom face of the plate; it sits against the channel wall."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 7.5,
+      "description": "Top faces of the four corner blocks, each tapped for fasteners."
+    },
+    {
+      "axis": "y",
+      "offsetMm": 21.5,
+      "description": "Edge with the half-circle notch. It sits flush with the open edge of the channel, and two such mounts form a 14mm hole."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The text gives no dimensions. The 43mm footprint comes from the 43-5 name and the Product Insight #4 callout (43mm between the counterbore floor and the opposing channel wall). Product Insight #5 gives the 14mm central hole. The 15mm overall height is a guess based on a 1120 U-Channel inner width of about 48mm minus the 43mm span. The small hole diameters and positions are assumed from the 8mm goBILDA grid and the 16mm center pattern. The mount is asymmetric, so the 43 x 43 footprint may not be exact, and the half-circle notch and slots are not modeled. Dimensions are unverified."
+}

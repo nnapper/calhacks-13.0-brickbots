@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Mounting Bracket for Glideforce Medium-Duty Linear Actuators - Steel",
+    "sku": "pololu-3623",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": false,
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 10 mm mounting pin diameter is stated. No drawing or printed dimensions are visible, so the bounding box, the base hole diameter and the hole and pin positions are rough visual estimates from proportions and are unverified. The pin clip is not modeled. Both ears are assumed to have a pin hole of about 10 mm, with the pin passing through them. The base hole count of two is visible in the images. The base holes may be slightly slotted, but this is not clear. Axis assignment: x is the width across the ears, y is the length along the base, and z is the height from base to pin end.",
+      "No dimensions are given except the 10 mm pin diameter. All other sizes are visual estimates.",
+      "Ear height (30 mm) and thickness (3 mm) are guessed, so the supplied 50 mm bounding-box height was not followed.",
+      "Pin position (Y=22, Z=10) and length (30 mm) are estimated.",
+      "Base hole diameter (6.5 mm) and positions are estimated. The holes may be slotted, but this is unclear, so they are modeled as round.",
+      "The pin clip/cotter ring, the pin head and the stamped edge radii and tapering are not modeled.",
+      "The pin is unioned with the ears, so no separate pin hole is cut."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -15,
+      "xmax": 15,
+      "ymin": 0,
+      "ymax": 30,
+      "zmin": -20,
+      "zmax": 20,
+      "xlen": 30,
+      "ylen": 30,
+      "zlen": 40
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 10.000 mm; measured dimensions are [30.0, 30.0, 40.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 51442,
+        "sha256": "ca075a5eba37b40eda70dc20c445fb7cc44eda186cd25e8dbcfc9a03eb025214"
+      },
+      "model.stl": {
+        "bytes": 86084,
+        "sha256": "f39546c152f81e284f6b9a162e5c47ac9a92bdc39632c7cd16ce511e943d0ade"
+      },
+      "model.glb": {
+        "bytes": 31932,
+        "sha256": "1e20e2dac1714a0fe868c89ee0955ac4e9ce2d5c7c1851b76b6a20e9f9710f00"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "ca075a5eba37b40eda70dc20c445fb7cc44eda186cd25e8dbcfc9a03eb025214"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

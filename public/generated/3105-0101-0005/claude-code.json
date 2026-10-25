@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Flat 28.5 x 15.5 mm potted/heat-shrink ESC body with a round 9.7 mm spacer boss at one end (5.6 mm tall) with a 4 mm through hole along Z, joined by a thin PCB tab. Overall about 40.3 x 15.5 x 6.6 mm (X length, Y width with bottom at Y=0, Z thickness). Wires and connectors are omitted.",
+  "confidence": "medium",
+  "warnings": [
+    "Body thickness (about 4.5 mm), z offsets, spacer diameter (about 9.7 mm) and tab thickness are estimated from the drawing.",
+    "Wires, connectors (XT30, bullet, TJC8), the LED and the logo are omitted.",
+    "The analysis lists the hole at y=0, but it is placed at the body mid-width (y=7.75) because the bottom of the part sits at Y=0.",
+    "Edges are sharp; the heat-shrink taper at the body ends is not modeled."
+  ],
+  "cadquery": "bw=15.5\nyc=bw/2\nx0=-20.15\nbody_x0=x0+40.3-28.5\n# heat-shrink PCB body (z -1.2..3.3)\nbody=cq.Workplane('XY').box(28.5,bw,4.5,centered=False).translate((body_x0,0,-1.2))\n# round spacer at tab end (z -3.3..2.3, height 5.6)\nspacer=cq.Workplane('XY').workplane(offset=-3.3).center(-15.3,yc).circle(4.85).extrude(5.6)\n# PCB tab bridging spacer and body\ntab=cq.Workplane('XY').box(body_x0+0.5+15.3,9.7,1.6,centered=False).translate((-15.3,yc-4.85,0.7))\npart=body.union(spacer).union(tab)\nhole=cq.Workplane('XY').workplane(offset=-4).center(-15.3,yc).circle(2).extrude(9)\npart=part.cut(hole)"
+}

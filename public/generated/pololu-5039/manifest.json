@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Motoron M2S24v14 Dual High-Power Motor Controller Shield for Arduino (Connectors Soldered)",
+    "sku": "pololu-5039",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "X and Y come from the printed board dimensions in the rear photo: 2.56 in x 2.02 in, which is 65.0 mm x 51.3 mm. Z is an assumption, since no height is stated: about 1.6 mm PCB plus the tallest top parts (terminal blocks and headers) at about 10 to 12 mm. Header pins protruding below the board are not included. Hole positions are scaled from the top and rear photos, with the origin at the board center, x to the right and y up in the top view. Hole diameter is assumed to be about 3.2 mm, the standard Arduino mounting hole size. Only two holes are clearly identifiable, and others may exist. Header and terminal block outlines are not modeled as separate features.",
+      "Axis ambiguity: boundsMm used literally (X=65, Y=51.3 from 0, Z=12 centered), so the PCB lies in the XY plane with thickness along Z, not Y-up.",
+      "Header lengths, positions, and pin counts are approximate.",
+      "Terminal block size and position are estimated; screw heads, wire openings and individual pockets are not modeled.",
+      "Capacitor count (5), diameter, and positions are estimated from the photo.",
+      "Small SMD components, LEDs, pads, protruding header pins and silkscreen are omitted.",
+      "Only the two identified mounting holes are cut; other holes may exist.",
+      "Dimensions are unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -32.5,
+      "xmax": 32.5,
+      "ymin": 0,
+      "ymax": 51.3,
+      "zmin": -6,
+      "zmax": 6,
+      "xlen": 65,
+      "ylen": 51.3,
+      "zlen": 12
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 129884,
+        "sha256": "909610b090c9c5b507ada6d4767e7e29f034a05edfd13b2feb1d9b475d9a6ea2"
+      },
+      "model.stl": {
+        "bytes": 111884,
+        "sha256": "159da15d54ff13f56e91d3d1377bd4fbf4be48a03657f00dc1e41d4309a2d28d"
+      },
+      "model.glb": {
+        "bytes": 41244,
+        "sha256": "f239cf7213ec29b3a2985f8c37831933fc2602e6edd94ff4a8dad7cf3fdfdf83"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "909610b090c9c5b507ada6d4767e7e29f034a05edfd13b2feb1d9b475d9a6ea2"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

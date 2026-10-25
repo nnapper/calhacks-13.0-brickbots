@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Straight acetal MOD 0.8 gear rack: 329.2 mm long (131 trapezoidal teeth at 2.513 mm pitch along the top edge), 12 mm tall overall including 1.8 mm teeth, 8 mm thick in Z, with 41 through holes of 4 mm diameter on an 8 mm pitch along the length (Z axis).",
+  "confidence": "low",
+  "warnings": [
+    "Tooth profile is a simplified trapezoid, not a true involute.",
+    "Hole row height (Y=6) is assumed; the analysis put holes at y=0 relative to a different origin.",
+    "Body width, thickness and tooth height are estimates.",
+    "End chamfers are not modeled.",
+    "Tooth phase relative to the ends is assumed."
+  ],
+  "cadquery": "p = math.pi * 0.8\nL = 131 * p\nx0 = -L / 2\nroot = 10.2\npts = [(x0, 0), (x0 + L, 0), (x0 + L, root)]\nfor i in range(130, -1, -1):\n    xs = x0 + i * p\n    pts += [(xs + 0.85 * p, root), (xs + 0.65 * p, 12), (xs + 0.35 * p, 12), (xs + 0.15 * p, root)]\npts.append((x0, root))\nbody = cq.Workplane('XY').polyline(pts).close().extrude(4, both=True)\nholes = cq.Workplane('XY').pushPoints([(-160 + 8 * k, 6) for k in range(41)]).circle(2).extrude(5, both=True)\npart = body.cut(holes)"
+}

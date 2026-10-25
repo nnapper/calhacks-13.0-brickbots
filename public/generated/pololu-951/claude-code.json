@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Ball caster with the vertical axis along Y. A 9.525 mm ball is centered at y=4.76 so its lowest point is at Y=0. A black housing sits over it: a Y-axis cylindrical cap with a spherical cavity, plus a flat 18 x 7 mm ear plate whose top is at y=11. Two 2.4 mm through holes sit at x=±6.73 and run along Y. Spacers, screws and nuts are omitted.",
+  "confidence": "low",
+  "warnings": [
+    "Housing profile is simplified: a cylindrical cap with a rectangular ear plate, no rounded ears or exact curved contours.",
+    "Ear thickness, plate width (7 mm), and cap radius are estimated from the photo.",
+    "Overall bounds follow the given estimate (X 18, Y 11, Z 10.16), which is slightly taller than the 10.16 mm stated height; Z is the cap's 10.16 mm diameter.",
+    "Spacers, screws, nuts and threads are omitted.",
+    "The ball is fused with the housing cavity, which has zero clearance, to give a single solid.",
+    "The housing opens at the ball's equator, so the lower half of the ball is exposed. The real lip geometry is uncertain."
+  ],
+  "cadquery": "ball_r = 9.525/2\ncy = ball_r\ncyl = cq.Workplane('XZ', origin=(0, 11, 0)).circle(5.08).extrude(11 - cy)\near = cq.Workplane('XY').box(18, 2.2, 7.0).translate((0, 9.9, 0))\nhousing = cyl.union(ear)\ncavity = cq.Workplane('XY').sphere(ball_r).translate((0, cy, 0))\nhousing = housing.cut(cavity)\nholes = cq.Workplane('XZ', origin=(0, 11, 0)).pushPoints([(-6.73, 0), (6.73, 0)]).circle(1.2).extrude(3)\nhousing = housing.cut(holes)\nball = cq.Workplane('XY').sphere(ball_r).translate((0, cy, 0))\npart = housing.union(ball)"
+}

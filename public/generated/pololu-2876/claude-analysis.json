@@ -1,0 +1,112 @@
+{
+  "partType": "other",
+  "summary": "Small rectangular stepper driver breakout PCB with surface-mount components on one face. It has two edge rows of 8 through-holes each, at 2.54 mm pitch. The 16-pin header strip is shown loose, not soldered.",
+  "boundsMm": {
+    "x": 15.24,
+    "y": 20.32,
+    "z": 3
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          -6.35,
+          8.89,
+          0
+        ],
+        [
+          -6.35,
+          6.35,
+          0
+        ],
+        [
+          -6.35,
+          3.81,
+          0
+        ],
+        [
+          -6.35,
+          1.27,
+          0
+        ],
+        [
+          -6.35,
+          -1.27,
+          0
+        ],
+        [
+          -6.35,
+          -3.81,
+          0
+        ],
+        [
+          -6.35,
+          -6.35,
+          0
+        ],
+        [
+          -6.35,
+          -8.89,
+          0
+        ],
+        [
+          6.35,
+          8.89,
+          0
+        ],
+        [
+          6.35,
+          6.35,
+          0
+        ],
+        [
+          6.35,
+          3.81,
+          0
+        ],
+        [
+          6.35,
+          1.27,
+          0
+        ],
+        [
+          6.35,
+          -1.27,
+          0
+        ],
+        [
+          6.35,
+          -3.81,
+          0
+        ],
+        [
+          6.35,
+          -6.35,
+          0
+        ],
+        [
+          6.35,
+          -8.89,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.5,
+      "description": "Flat underside of the PCB, usable as a seating face. It sits on the header pins when soldered in."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.1,
+      "description": "Top PCB face carrying the driver IC, resistors, capacitors and trimmer. It is not flat because of the components."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The size comes from the printed dimensions in the third image: 0.6 in x 0.8 in, which is 15.24 mm x 20.32 mm. The hole pitch is assumed to be 0.1 in (2.54 mm), matching the 0.1 in header listed in the specs. The two rows are about 12.7 mm apart, which the photo scale supports. The 8 holes per side span 17.78 mm, leaving about 1.27 mm of margin at each end. The hole diameter of 1.0 mm is an assumption based on standard 0.1 in header pin holes, and the pad sizes are not measured. Thickness is not stated. I assumed a 1.6 mm PCB plus about 1.4 mm for the tallest component, giving 3.0 mm overall. The board has a small unmarked round hole or ring near its center and a trimmer, which I did not model as holes. The loose header strip is excluded from the bounds."
+}
