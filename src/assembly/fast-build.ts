@@ -51,6 +51,8 @@ function subsystem(name: string, purpose: string, parts: {sku: string; qty: numb
 export function fallbackPlan(goal: string, catalog: FastCatalogItem[]): any {
   const lower = goal.toLowerCase();
   const tokens = lower.split(/[^a-z0-9.]+/).filter(token => token.length > 1 && !STOP_WORDS.has(token));
+  const primitivePlan = primitiveBodyPlan(goal);
+  if (primitivePlan) return primitivePlan;
   let best: {item: FastCatalogItem; score: number} | null = null;
   for (const item of catalog) {
     const name = item.name.toLowerCase();
@@ -80,6 +82,26 @@ export function fallbackPlan(goal: string, catalog: FastCatalogItem[]): any {
       summary: `Fallback build: ${qty} × ${best.item.name}.`,
       assumptions: [{label: 'Reason', value: 'The AI planner missed its deadline, so the strongest catalog match was used.'}],
       subsystems: [subsystem('Requested concept', 'Built from the closest available catalog match.', [{sku: best.item.sku, qty, reason: 'Strong local catalog match after planner timeout.'}])],
+    };
+  }
+
+  // An explicit component count is a hard constraint. Never let a template inflate it.
+  if (best && best.score >= 8 && requestedCount(goal)) {
+    const qty = requestedCount(goal)!;
+    return {
+      summary: `Fallback build: ${qty} × ${best.item.name}.`,
+      assumptions: [{label: 'Reason', value: 'The AI planner missed its deadline, so the closest catalog match was used.'}],
+      subsystems: [subsystem('Requested parts', 'Built from the closest available catalog match.', [{sku: best.item.sku, qty, reason: 'Local catalog match after planner timeout.'}])],
+    };
+  }
+
+  if (requestedCount(goal)) {
+    const qty = requestedCount(goal)!;
+    const item = pick(beams.length ? beams : catalog);
+    return {
+      summary: `Fallback build: ${qty} × ${item.name}.`,
+      assumptions: [{label: 'Reason', value: 'The AI planner missed its deadline, so a simple catalog stand-in was used.'}],
+      subsystems: [subsystem('Requested parts', 'One simple catalog body per requested part.', [{sku: item.sku, qty, reason: 'Count-preserving fallback after planner timeout.'}])],
     };
   }
 
@@ -114,6 +136,39 @@ export function fallbackPlan(goal: string, catalog: FastCatalogItem[]): any {
       subsystem('Chassis', 'Flat base for the starter drivetrain.', [{sku: pick(baseplate).sku, qty: 1, reason: 'Main chassis surface.'}]),
       subsystem('Drive', 'Two motors with four wheels and mounting blocks.', [{sku: pick(motors).sku, qty: 2, reason: 'Left and right drive motors.'}, {sku: pick(wheels).sku, qty: 4, reason: 'Four-point wheel layout.'}, {sku: pick(mounts).sku, qty: 2, reason: 'Structural mounting blocks.'}]),
     ],
+  };
+}
+
+// Vague primitive requests must remain primitives. A generic robotics fallback is wrong for "one cube".
+export function primitiveBodyPlan(goal: string): any | null {
+  if (!/\b(cubes?|cuboids?|rectangular prisms?|blocks?|boxes?)\b/.test(goal.toLowerCase())) return null;
+  const expected = requestedCount(goal);
+  const explicitCount = /\b(one|a|an)\s+(?:cubes?|cuboids?|rectangular prisms?|blocks?|boxes?)\b/i.test(goal)
+    ? 1
+    : expected;
+  const count = explicitCount ?? 1;
+  if (count < 1 || count > 100) return null;
+  const units: Record<string, number> = {mm: 1, millimeter: 1, millimetre: 1, cm: 10, centimeter: 10, centimetre: 10, m: 1000, meter: 1000, metre: 1000};
+  const dimensions = [...goal.matchAll(/(\d+(?:\.\d+)?)\s*(mm|millimeters?|millimetres?|cm|centimeters?|centimetres?|m|meters?|metres?)\b/gi)]
+    .map(match => Number(match[1]) * (units[match[2].toLowerCase()] ?? 1))
+    .filter(value => Number.isFinite(value) && value > 0 && value <= 2000);
+  const uniform = dimensions[0] ?? 20;
+  const size = [dimensions[0] ?? uniform, dimensions[1] ?? uniform, dimensions[2] ?? uniform];
+  return {
+    summary: `${count} custom ${dimensions.length ? 'dimensioned' : '20 mm'} primitive body${count === 1 ? '' : 'ies'}.`,
+    assumptions: [{label: 'Default size', value: dimensions.length ? 'From the requested dimensions' : '20 × 20 × 20 mm'}],
+    subsystems: [{
+      name: 'Primitive bodies',
+      purpose: 'The request asked for simple geometry, so no supporting robotics parts were added.',
+      parts: [],
+      customBodies: Array.from({length: count}, (_, index) => ({
+        name: `Primitive ${index + 1}`,
+        lengthMm: size[0],
+        widthMm: size[1],
+        heightMm: size[2],
+        reason: 'Generated directly as a solid primitive; no catalog substitution.',
+      })),
+    }],
   };
 }
 

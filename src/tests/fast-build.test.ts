@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {localCatalogPlan, fallbackPlan, shelfArrangement} from '../assembly/fast-build';
+import {localCatalogPlan, fallbackPlan, primitiveBodyPlan, shelfArrangement} from '../assembly/fast-build';
 
 const catalog = [
   {sku: '1105-0002-0016', name: '1105 Series Round End Pattern Plate (16 Hole)', category: 'pattern-plates', price: 8},
@@ -52,5 +52,21 @@ describe('deadline-safe fallback plans', () => {
   it('uses the closest catalog item for a strong direct request', () => {
     const plan = fallbackPlan('make a Steel Flywheel', kit);
     expect(plan.subsystems[0].parts).toEqual([{sku: '3628-0014-0060', qty: 1, reason: expect.any(String)}]);
+  });
+});
+
+describe('primitive fallback plans', () => {
+  it('keeps one cube as exactly one custom body', () => {
+    const plan = primitiveBodyPlan('make one cube');
+    expect(plan?.subsystems[0].customBodies).toHaveLength(1);
+    expect(plan?.subsystems[0].parts).toHaveLength(0);
+    expect(plan?.subsystems[0].customBodies[0].lengthMm).toBe(20);
+    expect(fallbackPlan('make one cube', [])).toEqual(plan);
+  });
+
+  it('keeps three dimensioned cubes as three bodies', () => {
+    const plan = primitiveBodyPlan('make three 30 mm cubes');
+    expect(plan?.subsystems[0].customBodies).toHaveLength(3);
+    expect(plan?.subsystems[0].customBodies[0].widthMm).toBe(30);
   });
 });
