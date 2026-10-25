@@ -12,6 +12,7 @@ import { clone } from 'three/addons/utils/SkeletonUtils.js';
 import { addPosition, findSnap, alignConnectors, compatible, type PartInstance, type Mate, type Snap } from '../assembly/snapping';
 import { BY_SKU } from '../lib/catalog.js';
 import { PRESET } from '../lib/preset.js';
+import { savedBuilds, toRecord, MAX_SAVED_BUILDS, type BuildSummary } from '../lib/savedBuilds';
 import { analyzeGeometry } from '../cad/analyze';
 import { applySuggestions, type Connector, type PairSuggestion } from '../contracts/connectors';
 import { cloud, api, workspaceSecret, saveWorkspace, suggestNodes, suggestPairings, askPlanner, askArrangement, verifyArrangement, verifyPlan } from '../cloud/client';
@@ -49,7 +50,7 @@ function raceDeadline<T>(task: Promise<T>, deadline: number): Promise<T | null> 
   });
 }
 
-export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef, pendingGoal, onPendingGoalConsumed, unit='mm', onUnit, measure=true, onMeasure}: {designsHost: HTMLElement | null; onWorkspaceChange?: (state: {parts:PartInstance[];mates:Mate[];selectedId:string|null;selectedIds:string[]})=>void; actionsRef?: {current:any}; pendingGoal?: string|null; onPendingGoalConsumed?: () => void; unit?: string; onUnit?: (unit: string)=>void; measure?: boolean; onMeasure?: (on: boolean)=>void}) {
+export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef, pendingGoal, onPendingGoalConsumed, pendingPreset, onPendingPresetConsumed, onGoalResult, unit='mm', onUnit, measure=true, onMeasure}: {designsHost: HTMLElement | null; onWorkspaceChange?: (state: {parts:PartInstance[];mates:Mate[];selectedId:string|null;selectedIds:string[]})=>void; actionsRef?: {current:any}; pendingGoal?: string|null; onPendingGoalConsumed?: () => void; pendingPreset?: any; onPendingPresetConsumed?: () => void; onGoalResult?: (goal: string, result: {ok:boolean;output:string;detail?:string}) => void; unit?: string; onUnit?: (unit: string)=>void; measure?: boolean; onMeasure?: (on: boolean)=>void}) {
   const solidBoxes=useRef(new Set<string>());
   const stagedBuild=useRef<PartInstance[]|null>(null);
   const building=useRef(false);
@@ -143,17 +144,84 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     return 0;
   }
 
+  const pendingPresetRef = useRef(pendingPreset); pendingPresetRef.current = pendingPreset;
+  const pendingGoalRef = useRef(pendingGoal); pendingGoalRef.current = pendingGoal;
+  const goalStarted = useRef(false);
+  useEffect(() => { if (pendingGoal) goalStarted.current = true; }, [pendingGoal]);
   // First visit with nothing saved: start from the example rover so the workspace is never an empty grid.
   useEffect(() => {
     void restore().then(restored => {
       let seen = false;
       try { seen = !!localStorage.getItem('brickbots.example-seen'); } catch { /* storage unavailable */ }
-      // A pending prompt takes priority. The example import otherwise races it and can replace staged AI parts.
-      if (restored || seen || pendingGoal) return;
+      // A build chosen on the home screen wins over the first-visit example.
+      if (restored || seen || pendingPresetRef.current || pendingGoalRef.current || goalStarted.current) return;
       try { localStorage.setItem('brickbots.example-seen', '1'); } catch { /* storage unavailable */ }
       void loadPreset();
     });
   }, []);
+
+  // ---- Saved builds: up to five, kept in this browser so they survive a reload ----
+  const [builds, setBuilds] = useState<BuildSummary[]>([]);
+  const [buildsOpen, setBuildsOpen] = useState(false);
+  const [buildName, setBuildName] = useState('');
+  const refreshBuilds = () => savedBuilds.list().then(setBuilds).catch(() => setBuilds([]));
+  useEffect(() => { void refreshBuilds(); }, []);
+
+  async function saveBuild() {
+    if (busy) return;
+    setError('');
+    try {
+      await savedBuilds.save(await toRecord(buildName || `Build ${builds.length + 1}`, parts, mates));
+      setBuildName('');
+      await refreshBuilds();
+      setNotice('Build saved in this browser');
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Could not save this build');
+    }
+  }
+
+  async function deleteBuild(id: string) {
+    if (!window.confirm('Delete this saved build? This cannot be undone.')) return;
+    try { await savedBuilds.remove(id); await refreshBuilds(); } catch (e) { setError(e instanceof Error ? e.message : 'Could not delete this build'); }
+  }
+
+  async function openBuild(id: string) {
+    if (busy) return;
+    setError('');
+    setBusy('Opening saved build');
+    try {
+      const record = await savedBuilds.get(id);
+      if (!record) throw new Error('That saved build is no longer stored.');
+      const sources = new Map<string, LoadedModel>();
+      const entries: { key: string; name: string; file: File }[] = [];
+      for (const saved of record.sources) {
+        const file = new File([saved.bytes], saved.fileName);
+        const source = await loadModel(file, new AbortController().signal, saved.asset.sourceKind === 'test_fixture');
+        Object.assign(source, { asset: saved.asset, connectors: saved.connectors, geometryRevision: saved.geometryRevision });
+        sources.set(saved.sourceId, source);
+        cache.current.set(saved.sourceId, source);
+        if (saved.asset.sourceKind === 'test_fixture') cache.current.set(file.name, source);
+        else entries.push({ key: saved.sourceId, name: file.name, file });
+      }
+      const ids = record.parts.map(() => crypto.randomUUID());
+      const instances: PartInstance[] = record.parts.map((p, i) => {
+        const source = sources.get(p.sourceId)!;
+        return { id: ids[i], scale: p.scale, position: p.position, quaternion: p.quaternion, model: { ...source, object: clone(source.object) as LoadedModel['object'] } };
+      });
+      checkpoint();
+      setParts(instances);
+      setMates(record.mates.map(m => ({ movingId: ids[m.moving], targetId: ids[m.target], axis: m.axis, side: m.side, movingNodeId: m.movingNodeId, targetNodeId: m.targetNodeId })));
+      setLibrary(l => [...l, ...entries.filter(e => !l.some(x => x.key === e.key))]);
+      setSelectedIds([]);
+      setReset(r => r + 1);
+      setBuildsOpen(false);
+      setNotice(`Opened “${record.name}” · Undo brings back the previous build`);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Could not open this build');
+    } finally {
+      setBusy('');
+    }
+  }
 
   async function save() {
     setOperation('Saving workspace');
@@ -336,17 +404,17 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     return next;
   }
 
-  // Replaces the workspace with the example rover (Undo brings the previous build back).
-  async function loadPreset() {
+  // Replaces the workspace with an example build (Undo brings the previous build back).
+  async function loadPreset(preset: any = PRESET) {
     // The ref is set synchronously by run(), so it also catches an AI build that has not repainted yet.
     if (busy || building.current) return;
     setError('');
-    setBusy(`Loading example ${PRESET.name}`);
+    setBusy(`Loading example ${preset.name}`);
     try {
       const sources = new Map<string, LoadedModel>();
-      for (const sku of new Set<string>(PRESET.parts.map((p: { sku: string }) => p.sku))) sources.set(sku, await loadProductModel(sku));
+      for (const sku of new Set<string>(preset.parts.map((p: { sku: string }) => p.sku))) sources.set(sku, await loadProductModel(sku));
       const ids = new Map<string, string>();
-      const instances: PartInstance[] = PRESET.parts.map((def: { key: string; sku: string; position: number[]; rotY: number }) => {
+      const instances: PartInstance[] = preset.parts.map((def: { key: string; sku: string; position: number[]; rotY: number }) => {
         const source = sources.get(def.sku)!;
         const id = crypto.randomUUID();
         ids.set(def.key, id);
@@ -359,10 +427,10 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       });
       checkpoint();
       setParts(instances);
-      setMates(PRESET.mates.map((m: { moving: string; target: string; axis: number; side: number }) => ({ movingId: ids.get(m.moving)!, targetId: ids.get(m.target)!, axis: m.axis, side: m.side })));
+      setMates(preset.mates.map((m: { moving: string; target: string; axis: number; side: number }) => ({ movingId: ids.get(m.moving)!, targetId: ids.get(m.target)!, axis: m.axis, side: m.side })));
       setSelectedId(null);
       setReset(r => r + 1);
-      setNotice(`Example ${PRESET.name} loaded · each motor shaft fits its wheel bore · see Build health`);
+      setNotice(preset.notes?.length ? `${preset.notes.join(' ')} · see Build health` : `${preset.name} loaded · see Build health`);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Could not load the example');
     } finally {
@@ -646,14 +714,19 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
   }
 
   const pendingRun=useRef<string|null>(null);
+  // A goal from the home screen or top bar starts a fresh design: wait for the saved workspace to restore, then clear it
+  // so the plan is not mixed into an earlier build.
   useEffect(()=>{
-    if(!pendingGoal||pendingRun.current===pendingGoal)return;
+    if(!pendingGoal||!ready||pendingRun.current===pendingGoal)return;
     // Strict Mode can invoke this effect twice for the same object before state propagates.
     pendingRun.current=pendingGoal;
     setTimeout(()=>{if(pendingRun.current===pendingGoal)pendingRun.current=null;},750);
     onPendingGoalConsumed?.();
-    void run(pendingGoal);
-  },[pendingGoal]);
+    checkpoint();live.current={parts:[],mates:[]};setParts([]);setMates([]);setSelectedIds([]);
+    void run(pendingGoal).then(result=>onGoalResult?.(pendingGoal,result));
+  },[pendingGoal,ready]);
+  // A design picked or described on the home screen loads once the saved workspace has been restored.
+  useEffect(()=>{if(pendingPreset&&ready){onPendingPresetConsumed?.();void loadPreset(pendingPreset);}},[pendingPreset,ready]);
   useEffect(()=>{
     if(!selectedId)return;
     const done=(e:KeyboardEvent)=>{if(e.key==='Escape')setSelectedId(null);};
@@ -917,7 +990,27 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
           <span />
           <button aria-pressed={boxSelect} className={boxSelect ? 'active' : ''} title="Drag a box around parts to select several (or hold Shift and drag)" onClick={() => setBoxSelect(v => !v)}>Box select</button>
           <button aria-pressed={alignOn} className={alignOn ? 'active' : ''} title="Line parts up with their neighbours while you drag" onClick={() => setAlignOn(v => !v)}>Align</button>
-          <button title="Load the example 4-wheel-drive rover" disabled={!!busy} onClick={() => void loadPreset()}>Example</button>
+        </div>
+        <div className="cad-builds">
+          <button className="pillbtn" type="button" aria-expanded={buildsOpen} onClick={() => setBuildsOpen(o => !o)}>Saved builds {builds.length}/{MAX_SAVED_BUILDS}</button>
+          {buildsOpen && <div className="cad-builds-panel" role="dialog" aria-label="Saved builds">
+            <form onSubmit={e => { e.preventDefault(); void saveBuild(); }}>
+              <input value={buildName} maxLength={60} placeholder="Name this build" aria-label="Build name" onChange={e => setBuildName(e.target.value)} />
+              <button type="submit" disabled={!parts.length || !!busy || builds.length >= MAX_SAVED_BUILDS}>Save current</button>
+            </form>
+            {builds.length >= MAX_SAVED_BUILDS && <p className="cad-builds-note">Five builds saved. Delete one to save another.</p>}
+            {!builds.length && <p className="cad-builds-note">Nothing saved yet. Saved builds stay in this browser after a reload.</p>}
+            <ul>
+              {builds.map(b => (
+                <li key={b.id}>
+                  <button type="button" className="open" disabled={!!busy} onClick={() => void openBuild(b.id)} title="Open this build">
+                    <b>{b.name}</b><span>{b.partCount} parts · {new Date(b.savedAt).toLocaleDateString()}</span>
+                  </button>
+                  <button type="button" className="del" aria-label={`Delete ${b.name}`} title="Delete" onClick={() => void deleteBuild(b.id)}>×</button>
+                </li>
+              ))}
+            </ul>
+          </div>}
         </div>
         <div className="cad-measure" role="group" aria-label="Measurement guide">
           <button className="pillbtn" type="button" aria-pressed={measure} onClick={() => onMeasure?.(!measure)}>Measure</button>

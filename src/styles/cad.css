@@ -286,3 +286,24 @@ dd { margin: 0; color: #d4dbe3; text-align: right; }
 /* Drag-box selection rectangle. */
 .cad-viewer { position: absolute; inset: 0; }
 .cad-marquee { position: absolute; z-index: 3; border: 1px solid var(--cool); background: color-mix(in srgb, var(--cool) 18%, transparent); border-radius: 3px; pointer-events: none; }
+
+/* ---------- saved builds ---------- */
+.cad-builds { pointer-events: auto; position: relative; margin-left: auto; }
+.cad-builds-panel {
+  position: absolute; right: 0; top: calc(100% + 8px); width: 280px; padding: 12px; z-index: 5;
+  background: rgba(17, 20, 25, .96); border: 1px solid #30343a; border-radius: 12px; color: #d9dee4;
+  backdrop-filter: blur(8px); box-shadow: 0 18px 40px -20px rgba(0, 0, 0, .6);
+}
+.cad-builds-panel form { display: flex; gap: 6px; }
+.cad-builds-panel input { flex: 1; min-width: 0; background: #0f1216; border: 1px solid #39414c; color: #f5f6f7; border-radius: 6px; padding: 7px 9px; font-size: 12px; }
+.cad-builds-panel form button { border: 1px solid #3c4650; background: #262c35; color: #f5f6f7; border-radius: 6px; padding: 7px 10px; font-size: 11px; }
+.cad-builds-panel button:disabled { opacity: .4; cursor: default; }
+.cad-builds-panel ul { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; }
+.cad-builds-panel li { display: flex; gap: 6px; }
+.cad-builds-panel .open { flex: 1; text-align: left; display: grid; gap: 2px; border: 1px solid #30343a; background: #151a20; color: inherit; border-radius: 8px; padding: 8px 10px; }
+.cad-builds-panel .open:hover:not(:disabled) { border-color: #5a6675; }
+.cad-builds-panel .open b { font-size: 12px; font-weight: 600; }
+.cad-builds-panel .open span { font-size: 11px; color: #9097a1; }
+.cad-builds-panel .del { border: 1px solid #30343a; background: #151a20; color: #c7d1db; border-radius: 8px; width: 34px; font-size: 16px; }
+.cad-builds-panel .del:hover { border-color: #a1504f; color: #ff9d9b; }
+.cad-builds-note { margin: 8px 2px 0; font-size: 11px; color: #9097a1; }

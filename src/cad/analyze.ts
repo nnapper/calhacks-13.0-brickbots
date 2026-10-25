@@ -4,6 +4,7 @@ import type { LoadedModel } from './import';
 import catalog from '../../data/parts.json';
 import { parseHoleGrid, placeHoleGrid } from '../assembly/gridNodes';
 import { estimateToConnectors } from '../assembly/imageNodes';
+import { kindOf } from '../scene/placeholders.js';
 
 // Estimates written by scripts/image-nodes.mjs, one file per SKU. Missing or malformed files are ignored.
 const estimateFiles = import.meta.glob('../../data/nodes/*.json', { eager: true, import: 'default' }) as Record<string, { sku?: string; estimate?: unknown }>;
@@ -32,6 +33,7 @@ export async function analyzeGeometry(model:LoadedModel):Promise<{geometryRevisi
  // Mesh-only fallback: verified triangle sample locations, not CAD feature inference.
  const digest=await crypto.subtle.digest('SHA-256',await model.original.arrayBuffer());
  const revision=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
+ if(kindOf({name:model.asset.name})==='cable')return {geometryRevision:revision,engine:'Cable end points (from the mesh extremes)',candidates:cableEndNodes(model,revision)};
  const samples:{point:THREE.Vector3;normal:THREE.Vector3;area:number}[]=[];
  model.object.updateMatrixWorld(true);
  model.object.traverse(o=>{if(!(o instanceof THREE.Mesh))return;const g=o.geometry,p=g.attributes.position,idx=g.index;const normalMatrix=new THREE.Matrix3().getNormalMatrix(o.matrixWorld);
@@ -44,4 +46,19 @@ export async function analyzeGeometry(model:LoadedModel):Promise<{geometryRevisi
   const ref=Math.abs(s.normal.x)<.85?new THREE.Vector3(1,0,0):new THREE.Vector3(0,1,0);const tangent=ref.addScaledVector(s.normal,-ref.dot(s.normal)).normalize();
   return {id:`m${i+1}`,geometryRevision:revision,kind:'surface',position:s.point.toArray(),normal:s.normal.toArray(),tangent:tangent.toArray(),label:`Mesh surface ${i+1}`,reason:'Point sampled from an actual mesh triangle; approximate mounting intent requires review.',review:'suggested',method:'mesh_planar',areaM2:s.area};
  })};
+}
+
+// A cable attaches at its two ends: one node on each end face, pointing away along the cable's longest axis.
+function cableEndNodes(model:LoadedModel,revision:string):Connector[]{
+ const {min,max}=model.asset.bounds;const axis=[0,1,2].reduce((a,i)=>max[i]-min[i]>max[a]-min[a]?i:a,0);
+ const ends=[{side:-1,sum:new THREE.Vector3(),n:0},{side:1,sum:new THREE.Vector3(),n:0}];
+ const eps=1e-6;model.object.updateMatrixWorld(true);
+ model.object.traverse(o=>{if(!(o instanceof THREE.Mesh))return;const p=o.geometry.attributes.position;
+  for(let i=0;i<p.count;i++){const v=new THREE.Vector3().fromBufferAttribute(p,i).applyMatrix4(o.matrixWorld);const c=v.getComponent(axis);
+   for(const e of ends)if(e.side<0?c<=min[axis]+eps:c>=max[axis]-eps){e.sum.add(v);e.n++;}}});
+ return ends.filter(e=>e.n).map((e,i)=>{
+  const normal=new THREE.Vector3();normal.setComponent(axis,e.side);const tangent=new THREE.Vector3();tangent.setComponent((axis+1)%3,1);
+  return {id:`c${i+1}`,geometryRevision:revision,kind:'surface' as const,position:e.sum.divideScalar(e.n).toArray() as [number,number,number],normal:normal.toArray() as [number,number,number],tangent:tangent.toArray() as [number,number,number],
+   label:`Cable end ${i+1}`,reason:'One end of the cable, found at the extreme of its longest axis. Connect each end to a port or board; confirm before accepting.',review:'suggested' as const,method:'mesh_planar' as const,areaM2:3.6e-5};
+ });
 }

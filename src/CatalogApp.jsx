@@ -11,6 +11,7 @@ import PartsPanel from "./components/PartsPanel.jsx";
 import WorkspacePanel from "./components/WorkspacePanel.jsx";
 import {workspaceMetrics} from "./lib/workspace-metrics.js";
 import Receipt from "./components/Receipt.jsx";
+import { compose } from "./lib/composer.js";
 
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
   const [aiBusy, setAiBusy] = useState(false);
   const [aiHistory, setAiHistory] = useState(() => { try { return JSON.parse(localStorage.getItem("buildflow.aiHistory") ?? "[]"); } catch { return []; } });
   const [pendingGoal, setPendingGoal] = useState(null);
+  const [pendingPreset, setPendingPreset] = useState(null);
   const [toast, setToast] = useState({ text: "", visible: false });
   const [unit, setUnit] = useState("mm");
   const [measureOn, setMeasureOn] = useState(true);
@@ -72,7 +74,6 @@ export default function App() {
     toastTimer.current = setTimeout(() => setToast((t) => ({ ...t, visible: false })), 2000);
   }, []);
 
-  const assemble = useCallback((text)=>{showToast('Choose catalog parts or import models to build your design. Metrics follow the actual workspace.');},[showToast]);
   const recordAi = useCallback((entry) => {
     setAiHistory((h) => {
       const next = [entry, ...h.filter((x) => x.query !== entry.query)].slice(0, 3);
@@ -94,11 +95,28 @@ export default function App() {
     } finally { setAiBusy(false); }
   }, [aiBusy, recordAi, showToast]);
 
+  // The home screen's prompt goes to the same AI helper as the top search bar (Claude plans the parts from the catalog).
+  // If the helper cannot answer, the rule-based composer lays out a design instead, and says so.
+  const homeGoal = useRef(null);
   const start = (text) => {
     setPrompt(text);
+    homeGoal.current = text;
+    setPendingGoal(text);
     setView("build");
-    if (view !== "build") setPendingGoal(text);
-    else assemble(text);
+  };
+  const onGoalResult = useCallback((goal, result) => {
+    recordAi({ query: goal, ok: !!result.ok, output: result.output, detail: result.detail });
+    if (homeGoal.current !== goal) return;
+    homeGoal.current = null;
+    if (result.ok) { showToast("Built from the AI plan"); return; }
+    setPendingPreset(compose(goal));
+    showToast("The AI helper could not build this, so a rule-based design was used instead");
+  }, [recordAi, showToast]);
+  // A ready-made example from the home screen.
+  const startPreset = (preset) => {
+    setPrompt(preset.name);
+    setPendingPreset(preset);
+    setView("build");
   };
 
   const addPart = (sku) => {
@@ -147,11 +165,11 @@ export default function App() {
       />
 
       {view === "home" ? (
-        <Home build={totals.build} onStart={start} />
+        <Home build={totals.build} onStart={start} onPreset={startPreset} />
       ) : (
         <section className="build" data-parts-open={partsOpen} data-build-open={bomOpen}>
           <section className="stagewrap">
-            <CadWorkspace unit={unit} onUnit={setUnit} measure={measureOn} onMeasure={setMeasureOn} designsHost={designsHost} onWorkspaceChange={setWorkspace} actionsRef={cadActions} pendingGoal={pendingGoal} onPendingGoalConsumed={() => setPendingGoal(null)} />
+            <CadWorkspace unit={unit} onUnit={setUnit} measure={measureOn} onMeasure={setMeasureOn} designsHost={designsHost} onWorkspaceChange={setWorkspace} actionsRef={cadActions} pendingGoal={pendingGoal} onPendingGoalConsumed={() => setPendingGoal(null)} pendingPreset={pendingPreset} onPendingPresetConsumed={() => setPendingPreset(null)} onGoalResult={onGoalResult} />
           </section>
 
           <PartsPanel designsHostRef={setDesignsHost} onAdd={addPart} onLive={onLive} onRemoveCustom={removeCustom} version={liveVersion} unit={unit} collapsed={!partsOpen} onToggle={() => setPartsOpen((o) => !o)} />

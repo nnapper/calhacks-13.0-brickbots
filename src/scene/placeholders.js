@@ -8,6 +8,7 @@ import * as THREE from "three";
 export function kindOf(p) {
   if (p.custom) return "custom";
   const n = p.name;
+  if (/\b(Cables?|Wires?|Wiring|Harness|Jumper)\b/i.test(n) && !/Screw|Mount|Holder/i.test(n)) return "cable";
   if (/Controller|Commander|Programmer|Driver|Sensor/.test(n)) return "board";
   if (/Wheel|Flywheel/.test(n)) return "wheel";
   if ((/Motor\b/.test(n) && !/Mount|Hub/.test(n)) || /Gearbox|Gear ?motor|Geared/i.test(n)) return "motor";
@@ -35,7 +36,24 @@ function mesh(geo, material, x = 0, y = 0, z = 0) {
   return m;
 }
 
+// A bendy cable running along x with a connector plug on each end. cableCurve is shared with the exported stand-in model.
+export function cableCurve(length, inset, height, sag = 0.12) {
+  const half = length / 2 - inset;
+  return new THREE.CatmullRomCurve3([
+    new THREE.Vector3(-half, height, 0),
+    new THREE.Vector3(-half / 2, height, length * sag),
+    new THREE.Vector3(0, height, 0),
+    new THREE.Vector3(half / 2, height, -length * sag),
+    new THREE.Vector3(half, height, 0),
+  ]);
+}
+
 const BUILDERS = {
+  cable(g) {
+    const len = 2.4;
+    g.add(mesh(new THREE.TubeGeometry(cableCurve(len, 0.1, 0.04), 48, 0.02, 8), DARK()));
+    for (const s of [-1, 1]) g.add(mesh(box(0.1, 0.08, 0.1), BRASS(), s * (len / 2 - 0.05), 0.04, 0));
+  },
   plate(g) {
     g.add(mesh(box(2.4, 0.07, 1.4), ALU()));
     for (let i = 0; i < 9; i++)
