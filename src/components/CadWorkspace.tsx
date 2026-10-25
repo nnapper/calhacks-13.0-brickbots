@@ -431,13 +431,24 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
         const response=await fetch('/geometry/custom',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(Math.max(1, deadline?remainingMs(deadline):120_000))});
         if(!response.ok){const detail=await response.json().catch(()=>({}));throw new Error(detail.detail??`Body generation failed (HTTP ${response.status})`);}
         const result=await response.json();
-        const modelResponse=await fetch(result.stepUrl);
+        const meshFormat=result.stlUrl?'stl':'step';
+        const modelResponse=await fetch(result.stlUrl??result.stepUrl);
         if(!modelResponse.ok)throw new Error('Generated model download failed');
         const bytes=new Uint8Array(await modelResponse.arrayBuffer());
-        // A HTML error page or truncated download would surface as a cryptic parse error; catch it here instead.
-        if(!new TextDecoder().decode(bytes.slice(0,12)).startsWith('ISO-10303'))throw new Error('The generated file did not download correctly.');
-        const partId=await open(new File([bytes],`${result.name}.step`),false,new AbortController(),undefined,`generated:${result.slug}`,deadline,analyzeNodes);
+        // A mesh is the finalized output for a custom primitive; older geometry services still return STEP.
+        if(meshFormat==='step'&&!new TextDecoder().decode(bytes.slice(0,12)).startsWith('ISO-10303'))throw new Error('The generated file did not download correctly.');
+        const partId=await open(new File([bytes],`${result.name}.${meshFormat}`),false,new AbortController(),undefined,`generated:${result.slug}`,deadline,analyzeNodes);
         if(partId&&!(body.holesX>0&&body.holesY>0))solidBoxes.current.add(partId);
+        if(partId&&analyzeNodes) {
+          const source=cache.current.get(`generated:${result.slug}`);
+          if(source?.connectors?.length&&source.geometryRevision) {
+            // Mesh analysis is output-critical; Bitdeer refines connector intent without blocking the result.
+            void suggestNodes(source).then(({result:suggestions}) => {
+              const reviewed=applySuggestions(source.connectors ?? [], suggestions);
+              updateNodes(source, reviewed, source.geometryRevision);
+            }).catch(() => {});
+          }
+        }
         setBusy('');
         return {name:result.name,partId:partId??null};
       }catch(e){lastError=e;setBusy('');if(attempt===0&&(!deadline||remainingMs(deadline)>2000))await new Promise(r=>setTimeout(r,1200));}
@@ -561,6 +572,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     building.current=true;
     try{
       const deadline=Date.now()+30_000;
+      if(cloud) await cloud.mutation(api.data.open, {secret: workspaceSecret()});
       const existingOnly=/\b(arrange|rearrange|organize|position|make|build|form|stack)\b/i.test(goal)&&/\b(existing|these|current|already|workspace)\b/i.test(goal);
       if(existingOnly){
         const ids=live.current.parts.map(p=>p.id);
@@ -575,6 +587,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       }
       const catalog=planCatalog(goal);
       let fastPlan=localCatalogPlan(goal,catalog);
+      let deterministic=!!fastPlan;
       setOperation(fastPlan?'Preparing exact requested parts':'Gemini is planning the requested inventory');
       let plan=fastPlan
         ? {plan:fastPlan.plan,model:'local-exact-match'}
@@ -583,18 +596,28 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
         const fullCatalog=(Object.values(BY_SKU) as any[]).map(toPlannerPart);
         fastPlan={match:{sku:'fallback',name:goal},plan:fallbackPlan(goal,fullCatalog)};
         plan={plan:fastPlan.plan,model:'local-fallback'};
+        deterministic=true;
         setOperation('Preparing a deadline-safe fallback design');
       }
-      const expected=validatePlanCount(goal,plan.plan);
+      let expected=validatePlanCount(goal,plan.plan);
       if(expected+live.current.parts.length>100)throw new Error('This build would exceed the workspace limit of 100 parts.');
       stagedBuild.current=[];
       setOperation('Anthropic is reviewing while models are prepared');
-      const [review,prepared]=await Promise.all([
-        fastPlan?Promise.resolve({approved:true,issues:[],model:'local-exact-match'}):raceDeadline(verifyPlan(goal,plan.plan),subDeadline(deadline,6000)),
-        applyPlan(plan.plan,deadline,!!fastPlan),
-      ]);
-      if(review&&!review.approved)throw new Error(`Inventory review rejected: ${review.issues.join(' · ')}`);
+      let review=deterministic
+        ? {approved:true,issues:[],model:deterministic?'local-exact-match':'local-validation'}
+        : await raceDeadline(verifyPlan(goal,plan.plan),subDeadline(deadline,6000));
+      if(!review) {
+        // Verification missed its budget. Use the local count-safe fallback rather than building an unreviewed plan.
+        const fullCatalog=(Object.values(BY_SKU) as any[]).map(toPlannerPart);
+        fastPlan={match:{sku:'fallback',name:goal},plan:fallbackPlan(goal,fullCatalog)};
+        plan={plan:fastPlan.plan,model:'local-fallback'};
+        deterministic=true;
+        expected=validatePlanCount(goal,plan.plan);
+        review={approved:true,issues:[],model:'local-fallback'};
+        setOperation('Preparing a deadline-safe fallback design');
+      }
       if(!review.approved)throw new Error(`Inventory review rejected: ${review.issues.join(' · ')}`);
+      const prepared=await applyPlan(plan.plan,deadline,!deterministic);
       const {report,generated}=prepared;
       if(generated.length!==expected)throw new Error(`Expected ${expected} models but imported ${generated.length}.`);
       if(fastPlan){

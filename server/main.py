@@ -170,6 +170,9 @@ def generate_custom(payload: dict):
         path=out/'model.step'
         if not path.exists():
             cq.exporters.export(body,str(path),exportType='STEP')
+        mesh_path=out/'model.stl'
+        if not mesh_path.exists():
+            cq.exporters.export(body,str(mesh_path),exportType='STL')
     except HTTPException:raise
     except Exception as exc:raise HTTPException(422,f'Could not build the body: {str(exc)[:200]}')
-    return {'slug':slug,'name':name,'stepUrl':f'/generated/custom/{slug}/model.step'}
+    return {'slug':slug,'name':name,'stepUrl':f'/generated/custom/{slug}/model.step','stlUrl':f'/generated/custom/{slug}/model.stl'}
