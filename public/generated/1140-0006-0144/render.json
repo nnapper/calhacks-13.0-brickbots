@@ -14,16 +14,16 @@
   "warnings": [],
   "files": {
     "model.step": {
-      "bytes": 265392,
-      "sha256": "9cf807ad9b17b2638c217f9d8acbc838774de74edfe4585863beab97dfe7595c"
+      "bytes": 5744,
+      "sha256": "93e45970c6f7a324ec0eb14ccdbc8f8258e5e8d660672a7c481378b866b0f275"
     },
     "model.stl": {
-      "bytes": 720184,
-      "sha256": "f1de75c6605f8b5e5aafb53b2247b95f127194404dd8d3d206c0ef01282be458"
+      "bytes": 16684,
+      "sha256": "7a0173fb4de5935b89bdcd595c82fffb7699138f02b5d8aa52976698868e0eb4"
     },
     "model.glb": {
-      "bytes": 259680,
-      "sha256": "86435e808c3728e8bf8805aab12f8c447fb7aefdb89d48fd2240f213edf5f327"
+      "bytes": 7012,
+      "sha256": "f6eb39ea78cbda1fc414ac6f401f59e6462fe48e2a23d26293a95986b05f4a85"
     }
   }
 }

@@ -9,50 +9,51 @@
   "generation": {
     "provider": "anthropic",
     "model": "claude-sonnet-5-5",
-    "analysisConfidence": "medium",
+    "analysisConfidence": "low",
     "dimensionsEstimated": true,
-    "codeConfidence": "medium",
+    "codeConfidence": "low",
     "warnings": [
-      "Dimensions come from the printed drawing. Body length is 28.5 mm, body width is 15.5 mm, and the 4 mm hole center is 35.45 mm from the body's far end. The scale is about 8 px/mm. The spacer extends about 4.9 mm beyond the hole center, so I estimated overall length as 35.45 + 4.9 ≈ 40.3 mm. The 5.6 mm label appears to be the spacer height. The body sits slightly above the spacer, so I estimated total thickness at about 6.6 mm. That value and the hole's z position are scaled from the drawing, not printed. The hole looks open in the views, so I recorded it as through. The 150 mm wire leads and the connectors (XT30, 3.5 mm bullets, servo-style signal header) are excluded from the bounds. The box is centered on the part at the origin.",
-      "Body thickness (about 4.5 mm), z offsets, spacer diameter (about 9.7 mm) and tab thickness are estimated from the drawing.",
-      "Wires, connectors (XT30, bullet, TJC8), the LED and the logo are omitted.",
-      "The analysis lists the hole at y=0, but it is placed at the body mid-width (y=7.75) because the bottom of the part sits at Y=0.",
-      "Edges are sharp; the heat-shrink taper at the body ends is not modeled."
+      "The drawing prints 28.5 mm (board length), 35.45 mm (hole center to the far end of the board), 15.5 mm (width), 5.6 mm (thickness) and a Ø4 mm hole. The 40.5 mm x-bound is my estimate: 35.45 mm plus about 5 mm from the hole center to the ear's outer edge, scaled from the drawing at about 8 px/mm (28.5 mm = 227 px). The hole position is derived the same way, with the box centered at the origin and the hole near the -x end. Heat-shrink tail and wire leads are excluded (leads are 150 mm each). Whether the 5.6 mm thickness covers the ear standoff or only the board is uncertain. Treat the hole as through because the photos show an open bore, but its exact depth is not stated. The z mounting-surface offset assumes the underside sits at -z/2.",
+      "Overall X length of 40.5 mm is estimated from the drawing, not stated.",
+      "The hole is placed at Y = 7.75 (mid-width) because the analysis gave Y=0 while the bottom sits at Y=0.",
+      "The board and heat-shrink thickness (3.2 mm), the board's z offset, the ear diameter and the connecting web are guesses.",
+      "It is uncertain whether the 5.6 mm thickness covers the standoff or the whole board.",
+      "Wire leads, XT30, bullet and signal connectors, the heat-shrink taper, the LED and the logos are omitted."
     ]
   },
   "geometry": {
     "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
     "boundsMm": {
-      "xmin": -20.15,
-      "xmax": 20.15,
+      "xmin": -20.25,
+      "xmax": 20.25,
       "ymin": 0,
       "ymax": 15.5,
-      "zmin": -3.3,
-      "zmax": 3.3,
-      "xlen": 40.3,
+      "zmin": -2.8,
+      "zmax": 2.8,
+      "xlen": 40.5,
       "ylen": 15.5,
-      "zlen": 6.6
+      "zlen": 5.6
     },
     "warnings": [],
     "files": {
       "model.step": {
-        "bytes": 39493,
-        "sha256": "27bea2f8f3a5df7abc64d8680dbe206444789b51f1f02c6c04d813672b6dcfe2"
+        "bytes": 51952,
+        "sha256": "81847e9c70b20ca24b4ee2ec8915d68fc9e697fcc7dcef82c7357b2b58d0c1cd"
       },
       "model.stl": {
-        "bytes": 35084,
-        "sha256": "e3c5d8d372bbf5227df49723c33e861744374e1237fd0e9cd4acd2ad2e9c00a1"
+        "bytes": 36084,
+        "sha256": "51b137ea78bb6653ef7aa87b2322da9d0c7a6f436b802862e091d413e9a26e7a"
       },
       "model.glb": {
-        "bytes": 13616,
-        "sha256": "3618fbb350fe5cc8598548d27dd1f90f59bc54e5a06f1f43293c0091e304c696"
+        "bytes": 13972,
+        "sha256": "ab04c9d810b5e82252fed2e9788eeaebfceb497d5f4bb8353ded0ce430397196"
       }
     }
   },
   "artifacts": {
     "step": "model.step",
     "glb": "model.glb",
-    "stepSha256": "27bea2f8f3a5df7abc64d8680dbe206444789b51f1f02c6c04d813672b6dcfe2"
+    "stepSha256": "81847e9c70b20ca24b4ee2ec8915d68fc9e697fcc7dcef82c7357b2b58d0c1cd"
   },
   "verification": {
     "service": "http://127.0.0.1:8001",

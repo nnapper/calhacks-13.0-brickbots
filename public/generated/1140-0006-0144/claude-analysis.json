@@ -1,6 +1,6 @@
 {
   "partType": "flat_plate",
-  "summary": "Round aluminum baseplate, 144 mm diameter and 6 mm thick, with a scattered pattern of through holes, counterbored holes, and five clusters of keyed hub openings with counterbored lobes. The plate has a flat top face and a flat bottom face.",
+  "summary": "Flat circular aluminum baseplate, 144 mm in diameter and 6 mm thick. Five identical cutouts with a quad-lobe counterbored pattern sit in the plate, one at the center and four arranged symmetrically around it. The plate also has many small through-holes and larger counterbored holes spread across the face. One product image shows it as a rotating platform on a gearbox hub, and another shows it as a base with rubber feet.",
   "boundsMm": {
     "x": 144,
     "y": 144,
@@ -11,14 +11,14 @@
     {
       "axis": "z",
       "offsetMm": 3,
-      "description": "Top flat face, used to mount assemblies and hardware. Counterbores let M4 hardware sit below this surface."
+      "description": "Top flat face, used to mount the assembly. Counterbored holes let M4 screw heads sit below the surface."
     },
     {
       "axis": "z",
       "offsetMm": -3,
-      "description": "Bottom flat face, used to rest on a floor or tabletop or to attach rubber feet."
+      "description": "Bottom flat face, used to rest on a table or floor, or to attach rubber feet or a hub."
     }
   ],
-  "confidence": "low",
-  "notes": "The 144 mm diameter and 6 mm thickness come from the product specs and are unverified. The images show many holes, but no hole diameters or coordinates are printed, so the holes array is left empty rather than guessed. The visible features are: a pattern of small through holes and tapped holes, larger counterbored holes, and five keyed hub clusters (one at the center, four near the diagonals). Each cluster has a large central opening with counterbored lobes. Exact sizes and positions need to be taken from the vendor drawing or CAD file. The bounding box is centered on the origin, so the top face is at z=+3 and the bottom face at z=-3."
+  "confidence": "medium",
+  "notes": "Only the 144 mm diameter and 6 mm thickness are stated. The part is centered on the origin, with its thickness along z. The individual hole diameters and positions are not printed in the images or the product data. Hole diameters, positions, and counterbore depths were left out rather than guessed, so the holes array is empty. The locations visible in the images are the central cutout and the four symmetric cutouts. The source data is marked as unverified, so the CAD hole pattern still needs the vendor's drawing."
 }
