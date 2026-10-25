@@ -116,7 +116,8 @@ export async function loadRates() {
       if (!res.ok) continue;
       const j = await res.json();
       const rates = { date: j.date, base: "USD", rates: { USD: 1, ...j.rates } };
-      await writeFile(RATES_FILE, JSON.stringify(rates, null, 2));
+      // A deployed site has a read-only disk: the rates are still good for this request.
+      await writeFile(RATES_FILE, JSON.stringify(rates, null, 2)).catch(() => {});
       return rates;
     } catch {}
   }

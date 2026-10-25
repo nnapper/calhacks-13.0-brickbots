@@ -44,21 +44,13 @@ const send = (res, status, body) => {
   res.end(JSON.stringify(body));
 };
 
-async function handle(req, res) {
-  if (req.method !== "POST") return send(res, 405, { error: "POST only" });
-  if (!process.env.APIFY_API_KEY) return send(res, 503, { error: "APIFY_API_KEY is not set on the server" });
-
-  let body;
-  try {
-    body = await readJson(req);
-  } catch (e) {
-    return send(res, 400, { error: e.message });
-  }
+// Works out prices for a request. `parts` is the catalog, `cache` a Map of sku -> { at, offers }, and `persist` saves the
+// cache (a no-op on a deployed site). `budgetMs` caps how long the sellers are given before the last known prices are served.
+export async function computeQuotes(body, { parts, cache, persist = () => {}, budgetMs = Infinity, rates = loadRates }) {
+  if (!process.env.APIFY_API_KEY) return { status: 503, body: { error: "APIFY_API_KEY is not set on the server" } };
   const skus = [...new Set(Array.isArray(body.skus) ? body.skus.filter((s) => typeof s === "string") : [])];
-  if (!skus.length || skus.length > MAX_SKUS) return send(res, 400, { error: `send 1-${MAX_SKUS} skus` });
+  if (!skus.length || skus.length > MAX_SKUS) return { status: 400, body: { error: `send 1-${MAX_SKUS} skus` } };
 
-  await loadCache();
-  const parts = JSON.parse(await readFile(PARTS_FILE, "utf8"));
   const bySku = Object.fromEntries(Object.values(parts).map((p) => [p.sku, p]));
   const known = skus.filter((s) => bySku[s]);
   const urlsOf = (s) => bySku[s].offer_urls ?? (bySku[s].url?.startsWith("http") ? [bySku[s].url] : []);
@@ -71,13 +63,16 @@ async function handle(req, res) {
   let found = {};
   if (urls.length) {
     try {
-      found = await fetchOffers(urls);
+      const late = new Promise((resolve) => setTimeout(() => resolve(null), budgetMs));
+      const result = await Promise.race([fetchOffers(urls), late]);
+      if (result) found = result;
+      else error = "the sellers took too long to answer";
     } catch (e) {
       error = e.message;
     }
   }
 
-  const fx = await loadRates();
+  const fx = await rates();
   const prices = {};
   let refreshed = 0;
   for (const s of known) {
@@ -93,17 +88,34 @@ async function handle(req, res) {
     }
     if (cache.has(s)) prices[s] = { offers: cache.get(s).offers, at: cache.get(s).at };
   }
-  if (refreshed) persistCache();
+  if (refreshed) persist();
 
-  send(res, 200, {
-    prices,
-    refreshed,
-    cached: known.length - todo.length,
-    stale: Boolean(error) || (todo.length > 0 && refreshed === 0),
-    error,
-    unknown: skus.filter((s) => !bySku[s]),
-    rates_date: fx.date,
-  });
+  return {
+    status: 200,
+    body: {
+      prices,
+      refreshed,
+      cached: known.length - todo.length,
+      stale: Boolean(error) || (todo.length > 0 && refreshed === 0),
+      error,
+      unknown: skus.filter((s) => !bySku[s]),
+      rates_date: fx.date,
+    },
+  };
+}
+
+async function handle(req, res) {
+  if (req.method !== "POST") return send(res, 405, { error: "POST only" });
+  let body;
+  try {
+    body = await readJson(req);
+  } catch (e) {
+    return send(res, 400, { error: e.message });
+  }
+  await loadCache();
+  const parts = JSON.parse(await readFile(PARTS_FILE, "utf8"));
+  const { status, body: out } = await computeQuotes(body, { parts, cache, persist: persistCache });
+  send(res, status, out);
 }
 
 export default function livePrices() {
