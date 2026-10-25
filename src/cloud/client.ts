@@ -32,3 +32,18 @@ export async function verifyArrangement(input:{goal:string;summary:string;arrang
 }
 
 export async function verifyPlan(goal:string,plan:unknown){if(!cloud)throw new Error("Convex is not configured");return cloud.action(api.anthropic.verifyPlan,{secret:workspaceSecret(),goal,plan});}
+
+// Claude plans the build through the dev server, which holds the API key. It decides how to build and which catalog parts to use.
+export type ClaudeSpec={summary:string;kind:'drive'|'duck'|'parts';drive?:{wheels:number;motor:'small'|'strong';wheel:'small'|'large';arm:boolean};extras:{sku:string;qty:number;reason:string}[];subsystems:any[]};
+export async function askClaudePlan(goal:string,workspace:{name:string}[],catalog:{sku:string;name:string;price?:number;category?:string}[],signal?:AbortSignal):Promise<{spec:ClaudeSpec;model:string}>{
+ const response=await fetch('/api/plan',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({goal,workspace,catalog}),signal});
+ const data=await response.json().catch(()=>({}));
+ if(!response.ok)throw new Error(data.error??`Planner failed (HTTP ${response.status})`);
+ return data;
+}
+export async function askClaudeArrangement(input:{goal:string;summary:string;parts:{id:string;name:string;sizeMm:{x:number;y:number;z:number}}[];previous?:unknown;issues?:string},signal?:AbortSignal):Promise<{summary:string;parts:any[]}>{
+ const response=await fetch('/api/arrange',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(input),signal});
+ const data=await response.json().catch(()=>({}));
+ if(!response.ok)throw new Error(data.error??`Arrangement failed (HTTP ${response.status})`);
+ return data;
+}

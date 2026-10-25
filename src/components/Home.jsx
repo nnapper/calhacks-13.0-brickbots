@@ -13,7 +13,7 @@ const CALLOUTS = [
   ["wheel", 130, 90],
 ];
 
-export default function Home({ build, onStart, onPreset }) {
+export default function Home({ build, onStart, onPreset, onBlank }) {
   const [text, setText] = useState("A 4-wheel rover that can carry 2 kg, under $250");
 
   const callouts = useMemo(() => {
@@ -51,13 +51,14 @@ export default function Home({ build, onStart, onPreset }) {
           <span className="presets-label">Or start from a finished build</span>
           <div className="preset-row">
             {PRESETS.map((preset) => (
-              <button key={preset.id} type="button" className="preset" onClick={() => onPreset(preset)}>
+              <button key={preset.id} type="button" className="preset" title={preset.blurb} onClick={() => onPreset(preset)}>
                 <b>{preset.name}</b>
                 <span>{preset.blurb}</span>
                 <em>{preset.parts.length} parts · {preset.mates.length} connections checked</em>
               </button>
             ))}
           </div>
+          <button type="button" className="blank-canvas" onClick={onBlank}>Start a blank canvas</button>
         </div>
         <div className="examples">
           {EXAMPLES.map((ex) => (

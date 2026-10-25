@@ -80,7 +80,7 @@ export function fallbackPlan(goal: string, catalog: FastCatalogItem[]): any {
     const qty = requestedCount(goal) ?? 1;
     return {
       summary: `Fallback build: ${qty} × ${best.item.name}.`,
-      assumptions: [{label: 'Reason', value: 'The AI planner missed its deadline, so the strongest catalog match was used.'}],
+      assumptions: [{label: 'Reason', value: "Brick's planner missed its deadline, so the strongest catalog match was used."}],
       subsystems: [subsystem('Requested concept', 'Built from the closest available catalog match.', [{sku: best.item.sku, qty, reason: 'Strong local catalog match after planner timeout.'}])],
     };
   }
@@ -90,7 +90,7 @@ export function fallbackPlan(goal: string, catalog: FastCatalogItem[]): any {
     const qty = requestedCount(goal)!;
     return {
       summary: `Fallback build: ${qty} × ${best.item.name}.`,
-      assumptions: [{label: 'Reason', value: 'The AI planner missed its deadline, so the closest catalog match was used.'}],
+      assumptions: [{label: 'Reason', value: "Brick's planner missed its deadline, so the closest catalog match was used."}],
       subsystems: [subsystem('Requested parts', 'Built from the closest available catalog match.', [{sku: best.item.sku, qty, reason: 'Local catalog match after planner timeout.'}])],
     };
   }
@@ -100,7 +100,7 @@ export function fallbackPlan(goal: string, catalog: FastCatalogItem[]): any {
     const item = pick(beams.length ? beams : catalog);
     return {
       summary: `Fallback build: ${qty} × ${item.name}.`,
-      assumptions: [{label: 'Reason', value: 'The AI planner missed its deadline, so a simple catalog stand-in was used.'}],
+      assumptions: [{label: 'Reason', value: "Brick's planner missed its deadline, so a simple catalog stand-in was used."}],
       subsystems: [subsystem('Requested parts', 'One simple catalog body per requested part.', [{sku: item.sku, qty, reason: 'Count-preserving fallback after planner timeout.'}])],
     };
   }
@@ -110,7 +110,7 @@ export function fallbackPlan(goal: string, catalog: FastCatalogItem[]): any {
     const rotor = pick(rotors);
     return {
       summary: 'Fallback flyer prototype: a base plate with four motors and rotor discs.',
-      assumptions: [{label: 'Reason', value: 'The AI planner missed its deadline, so this conservative flyer layout was used.'}],
+      assumptions: [{label: 'Reason', value: "Brick's planner missed its deadline, so this conservative flyer layout was used."}],
       subsystems: [
         subsystem('Flyer frame', 'Provides the mounting surface for the propulsion layout.', [{sku: pick(baseplate).sku, qty: 1, reason: 'Base plate for the flyer layout.'}]),
         subsystem('Propulsion', 'Four evenly distributed drive motors with rotor discs.', [{sku: motor.sku, qty: 4, reason: 'Compact drive motor.'}, {sku: rotor.sku, qty: 4, reason: 'Disc-shaped rotor stand-in.'}]),
@@ -121,7 +121,7 @@ export function fallbackPlan(goal: string, catalog: FastCatalogItem[]): any {
   if (/\b(arm|grip|gripper|claw|manipulator|pick)\b/.test(lower)) {
     return {
       summary: 'Fallback arm prototype: a base plate, servo joint, linkage beams, and mounts.',
-      assumptions: [{label: 'Reason', value: 'The AI planner missed its deadline, so this conservative arm layout was used.'}],
+      assumptions: [{label: 'Reason', value: "Brick's planner missed its deadline, so this conservative arm layout was used."}],
       subsystems: [
         subsystem('Arm base', 'Stable plate for the joint and linkage layout.', [{sku: pick(baseplate).sku, qty: 1, reason: 'Arm mounting surface.'}]),
         subsystem('Joint and linkage', 'Servo-driven joint with simple structural links.', [{sku: pick(servos).sku, qty: 1, reason: 'Actuates the arm joint.'}, {sku: pick(beams).sku, qty: 2, reason: 'Primary linkage beam.'}, {sku: pick(mounts).sku, qty: 2, reason: 'Joint and linkage mounts.'}]),
@@ -131,7 +131,7 @@ export function fallbackPlan(goal: string, catalog: FastCatalogItem[]): any {
 
   return {
     summary: 'Fallback starter drivetrain: a base plate with motors, wheels, and mounts.',
-    assumptions: [{label: 'Reason', value: 'The AI planner missed its deadline, so this conservative starter layout was used.'}],
+    assumptions: [{label: 'Reason', value: "Brick's planner missed its deadline, so this conservative starter layout was used."}],
     subsystems: [
       subsystem('Chassis', 'Flat base for the starter drivetrain.', [{sku: pick(baseplate).sku, qty: 1, reason: 'Main chassis surface.'}]),
       subsystem('Drive', 'Two motors with four wheels and mounting blocks.', [{sku: pick(motors).sku, qty: 2, reason: 'Left and right drive motors.'}, {sku: pick(wheels).sku, qty: 4, reason: 'Four-point wheel layout.'}, {sku: pick(mounts).sku, qty: 2, reason: 'Structural mounting blocks.'}]),
@@ -139,13 +139,16 @@ export function fallbackPlan(goal: string, catalog: FastCatalogItem[]): any {
   };
 }
 
-// Vague primitive requests must remain primitives. A generic robotics fallback is wrong for "one cube".
+// Vague primitive requests must remain primitives. A generic robotics fallback is wrong for "one cube" or "a circle".
 export function primitiveBodyPlan(goal: string): any | null {
-  if (!/\b(cubes?|cuboids?|rectangular prisms?|blocks?|(?:box(?:es)?))\b/.test(goal.toLowerCase())) return null;
+  const lower = goal.toLowerCase();
+  // "disc wheels" or "ball caster" describe a robot part, not a primitive.
+  if (/\b(wheels?|motors?|robots?|rovers?|servos?|drones?|ducks?|walkers?|vehicles?|chassis|gears?|casters?|bearings?|arms?)\b/.test(lower)) return null;
+  const word = lower.match(/\b(cubes?|cuboids?|rectangular prisms?|blocks?|boxe?s?|circles?|discs?|disks?|cylinders?|spheres?|balls?)\b/);
+  if (!word) return null;
+  const kind = /^(circle|disc|disk)/.test(word[1]) ? 'disc' : /^cylinder/.test(word[1]) ? 'cylinder' : /^(sphere|ball)/.test(word[1]) ? 'sphere' : 'box';
   const expected = requestedCount(goal);
-  const explicitCount = /\b(one|a|an)\s+(?:cubes?|cuboids?|rectangular prisms?|blocks?|(?:box(?:es)?))\b/i.test(goal)
-    ? 1
-    : expected;
+  const explicitCount = new RegExp(`\\b(one|a|an)\\s+(?:\\w+\\s+)?${word[1]}\\b`, 'i').test(goal) ? 1 : expected;
   const count = explicitCount ?? 1;
   if (count < 1 || count > 100) return null;
   const units: Record<string, number> = {mm: 1, millimeter: 1, millimetre: 1, cm: 10, centimeter: 10, centimetre: 10, m: 1000, meter: 1000, metre: 1000};
@@ -153,16 +156,22 @@ export function primitiveBodyPlan(goal: string): any | null {
     .map(match => Number(match[1]) * (units[match[2].toLowerCase()] ?? 1))
     .filter(value => Number.isFinite(value) && value > 0 && value <= 2000);
   const uniform = dimensions[0] ?? 20;
-  const size = [dimensions[0] ?? uniform, dimensions[1] ?? uniform, dimensions[2] ?? uniform];
+  // Round bodies are sized by diameter (the first number); a disc is thin unless a thickness is given.
+  const size = kind === 'box'
+    ? [dimensions[0] ?? uniform, dimensions[1] ?? uniform, dimensions[2] ?? uniform]
+    : [uniform, uniform, kind === 'disc' ? Math.min(dimensions[1] ?? 4, 500) : kind === 'cylinder' ? Math.min(dimensions[1] ?? uniform, 500) : uniform];
+  const shape = kind === 'box' ? 'box' : kind === 'sphere' ? 'sphere' : 'cylinder';
+  const noun = kind === 'box' ? 'primitive body' : kind;
   return {
-    summary: `${count} custom ${dimensions.length ? 'dimensioned' : '20 mm'} primitive body${count === 1 ? '' : 'ies'}.`,
-    assumptions: [{label: 'Default size', value: dimensions.length ? 'From the requested dimensions' : '20 × 20 × 20 mm'}],
+    summary: `${count} custom ${dimensions.length ? 'dimensioned' : '20 mm'} ${noun}${count === 1 ? '' : 's'}.`,
+    assumptions: [{label: 'Default size', value: dimensions.length ? 'From the requested dimensions' : kind === 'box' ? '20 × 20 × 20 mm' : '20 mm diameter'}],
     subsystems: [{
       name: 'Primitive bodies',
       purpose: 'The request asked for simple geometry, so no supporting robotics parts were added.',
       parts: [],
       customBodies: Array.from({length: count}, (_, index) => ({
-        name: `Primitive ${index + 1}`,
+        name: `${kind === 'box' ? 'Primitive' : kind[0].toUpperCase() + kind.slice(1)} ${index + 1}`,
+        shape,
         lengthMm: size[0],
         widthMm: size[1],
         heightMm: size[2],

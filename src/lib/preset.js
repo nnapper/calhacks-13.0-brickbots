@@ -33,7 +33,7 @@ const ROVER = {
 
 // The presets below were placed from each generated model's measured geometry (see src/tests/preset.test.ts, which loads the
 // real STEP files and checks that no unconnected parts overlap and that each wheel sits on its motor's shaft).
-// A motor with rotY = -90 has its shaft pointing to -x, and +90 points it to +x. A motor's shaft axis sits at a fixed height
+// rotX (optional) tilts a part about the x axis before rotY turns it. A motor with rotY = -90 has its shaft pointing to -x, and +90 points it to +x. A motor's shaft axis sits at a fixed height
 // in the model, so the motor's origin is raised until that axis lines up with the wheel axis.
 
 // MicroDuck: a two-legged duck. Each leg is an Axon MAX servo standing on a foot plate, its H25T output spline pointing up
@@ -45,7 +45,7 @@ const HIP_HUB = "1921-0025-0032"; // H25T spline hub, 32 mm, 10 mm tall, axis al
 const MICRODUCK = {
   id: "microduck",
   name: "MicroDuck",
-  blurb: "A two-legged duck on servo hips, with a head and bill",
+  blurb: "A two-legged duck on servo hips, with a round head, eyes and a bill",
   parts: [
     { key: "foot-l", sku: "1123-0043-0096", position: [-50, 0, 0], rotY: 0 },
     { key: "foot-r", sku: "1123-0043-0096", position: [50, 0, 0], rotY: 0 },
@@ -54,9 +54,12 @@ const MICRODUCK = {
     { key: "hip-l", sku: HIP_HUB, position: [-38, 41, 0], rotY: 0 },
     { key: "hip-r", sku: HIP_HUB, position: [38, 41, 0], rotY: 0 },
     { key: "body", sku: "1140-0006-0144", position: [0, 51, 0], rotY: 0 },
-    { key: "neck", sku: "1200-0024-0001", position: [0, 57, 0], rotY: 0 },
-    { key: "head", sku: "1116-0056-0056", position: [0, 97, 8], rotY: 0 },
-    { key: "bill", sku: "1105-0002-0056", position: [0, 97, 52], rotY: 0 },
+    { key: "neck", sku: "1203-0001-0001", position: [0, 57, 20], rotY: 0 },
+    // The head is a 96 mm wheel standing on its edge, facing forward: a round face with a wide flat bill and two roller eyes.
+    { key: "head", sku: "3601-0014-0096", position: [0, 87, 20], rotY: 0 },
+    { key: "eye-l", sku: "3618-4008-0016", position: [-24, 150, 20], rotY: 0, rotX: 90 },
+    { key: "eye-r", sku: "3618-4008-0016", position: [24, 150, 20], rotY: 0, rotX: 90 },
+    { key: "bill", sku: "1105-0002-0056", position: [0, 100, 52], rotY: 0 },
     { key: "brain", sku: "3105-0101-0005", position: [0, 57, -40], rotY: 0 },
     { key: "tail", sku: "1101-0001-0008", position: [0, 57, -60], rotY: 0 },
   ],
@@ -64,6 +67,8 @@ const MICRODUCK = {
     { moving: "hip-l", target: "leg-l", axis: 1, side: 1 },
     { moving: "hip-r", target: "leg-r", axis: 1, side: 1 },
   ],
+  // Parts that sit inside another part's bounding box without touching it (the eyes sit in the head's dish).
+  nested: [["eye-l", "head"], ["eye-r", "head"]],
 };
 
 // Balancer: two Saturn gearmotors (8 mm REX shaft) drive 48 mm omni wheels; a pattern plate and grid plate form the

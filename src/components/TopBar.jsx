@@ -23,12 +23,12 @@ export default function TopBar({ view, onHome, totals, onCart, theme, onToggleTh
       {view === "build" ? (
         <div className="topprompt">
           <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
-            <input value={draft} disabled={aiBusy} placeholder="Type here for help" aria-label="Ask the AI helper" autoComplete="off"
+            <input value={draft} disabled={aiBusy} placeholder="Ask Brick to build something" aria-label="Ask Brick" autoComplete="off"
               onChange={(e) => { setDraft(e.target.value); setOpen(true); }}
               onFocus={() => setOpen(true)}
               onBlur={() => setTimeout(() => setOpen(false), 120)} />
           </form>
-          {aiBusy && <span className="ai-busy-dot" aria-label="AI is working" />}
+          {aiBusy && <span className="ai-busy-dot" aria-label="Brick is working" />}
           {open && !!(aiHistory?.length) && (
             <div className="ai-recent" onMouseDown={(e) => e.preventDefault()}>
               <div className="ai-recent-head">Recent</div>

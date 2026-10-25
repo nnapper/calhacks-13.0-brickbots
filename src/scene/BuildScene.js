@@ -3,6 +3,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { CSS2DRenderer } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 import { makePart, assignTargets } from "./placeholders.js";
 import { MeasureGuide } from "./MeasureGuide.js";
+import { makeDuck } from "./duck.js";
 
 const cssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 const ONE = new THREE.Vector3(1, 1, 1);
@@ -52,6 +53,12 @@ export class BuildScene {
 
     this.robot = new THREE.Group();
     this.scene.add(this.robot);
+    // The MicroDuck stands beside the rover on the home screen only.
+    this.duck = makeDuck();
+    this.duck.position.set(-0.4, 0, 1.6);
+    this.duck.rotation.y = 0.5;
+    this.duck.scale.setScalar(0.9);
+    this.scene.add(this.duck);
 
     this.measure = new MeasureGuide();
     this.measureOn = false;
@@ -80,6 +87,7 @@ export class BuildScene {
     this.mode = mode;
     this.controls.autoRotate = mode === "home";
     this.controls.enableZoom = mode === "build";
+    this.duck.visible = mode === "home";
     if (mode === "home") this.camera.position.set(4.6, 3.1, 4.9);
   }
 
@@ -234,6 +242,12 @@ export class BuildScene {
       this.measure.hide();
     }
 
+    if (this.duck.visible) {
+      const t = this.clock.elapsedTime;
+      this.duck.position.y = Math.abs(Math.sin(t * 2.2)) * 0.03;
+      const head = this.duck.getObjectByName("head");
+      if (head) { head.rotation.z = Math.sin(t * 1.6) * 0.1; head.rotation.y = Math.sin(t * 0.8) * 0.25; }
+    }
     this.controls.update();
     this.renderer.render(this.scene, this.camera);
     this.labelRenderer.render(this.scene, this.camera);
