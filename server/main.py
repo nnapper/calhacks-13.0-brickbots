@@ -16,6 +16,7 @@ from OCP.BRepGProp import BRepGProp
 from OCP.GProp import GProp_GProps
 from OCP.GeomAbs import GeomAbs_Plane, GeomAbs_Cylinder
 from OCP.gp import gp_Pnt, gp_Pnt2d
+import cadquery as cq
 
 MIN_FACE_AREA_MM2=20
 app = FastAPI()
@@ -132,3 +133,36 @@ def generate_model(payload: dict):
         'stepUrl':f'/generated/{sku}/model.step',
         'manifest':manifest,
     }
+
+@app.post('/custom')
+def generate_custom(payload: dict):
+    def dimension(key, low, high, required=False):
+        value=payload.get(key)
+        if value is None:
+            if required:raise HTTPException(400,f'{key} is required')
+            return None
+        if not isinstance(value,(int,float)) or isinstance(value,bool) or not math.isfinite(value) or value<low or value>high:
+            raise HTTPException(422,f'{key} must be a number from {low} to {high}')
+        return float(value)
+    length=dimension('lengthMm',1,2000,required=True)
+    width=dimension('widthMm',1,2000,required=True)
+    height=dimension('heightMm',.5,500,required=True)
+    diameter=dimension('holeDiameterMm',.5,50)
+    pitch=dimension('holePitchMm',2,500)
+    holes_x=dimension('holesX',0,24)
+    holes_y=dimension('holesY',0,24)
+    raw_name=payload.get('name')
+    name=raw_name.strip()[:80] if isinstance(raw_name,str) and raw_name.strip() else f'Custom body {length:g} x {width:g} x {height:g} mm'
+    slug=hashlib.sha256(json.dumps([length,width,height,diameter,pitch,holes_x,holes_y,name],sort_keys=True).encode()).hexdigest()[:16]
+    try:
+        body=cq.Workplane('XY').box(length,width,height)
+        if diameter and holes_x and holes_y and pitch:
+            body=body.faces('>Z').workplane().rarray(pitch,pitch,int(holes_x),int(holes_y)).hole(diameter)
+        out=Path(__file__).resolve().parents[1]/'public'/'generated'/'custom'/slug
+        out.mkdir(parents=True,exist_ok=True)
+        path=out/'model.step'
+        if not path.exists():
+            cq.exporters.export(body,str(path),exportType='STEP')
+    except HTTPException:raise
+    except Exception as exc:raise HTTPException(422,f'Could not build the body: {str(exc)[:200]}')
+    return {'slug':slug,'name':name,'stepUrl':f'/generated/custom/{slug}/model.step'}
