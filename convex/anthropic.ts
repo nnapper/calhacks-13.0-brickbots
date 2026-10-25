@@ -92,8 +92,8 @@ export const plan = action({
           const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json', 'x-goog-api-key': geminiKey},
-            signal: AbortSignal.timeout(120000),
-            body: JSON.stringify({systemInstruction: {parts: [{text: SYSTEM}]}, contents: [{role: 'user', parts: [{text: context}]}], generationConfig: {temperature: .1, maxOutputTokens: 16000, responseMimeType: 'application/json'}}),
+            signal: AbortSignal.timeout(30_000),
+            body: JSON.stringify({systemInstruction: {parts: [{text: SYSTEM}]}, contents: [{role: 'user', parts: [{text: context}]}], generationConfig: {temperature: .1, maxOutputTokens: 8192, responseMimeType: 'application/json'}}),
           });
           if (!response.ok) {
             const detail = await response.json().catch(() => ({}));
@@ -122,8 +122,9 @@ export const plan = action({
       return result;
     } catch (error) {
       const text = error instanceof Error ? error.message : 'Claude request failed';
-      await ctx.runMutation(internal.data.finish, {id: job.id!, error: text.slice(0, 250), model});
-      throw new Error(text);
+      const friendly = /abort|timeout/i.test(text) ? 'The planner did not finish within 30 seconds. Try a shorter or more specific request, then retry.' : text;
+      await ctx.runMutation(internal.data.finish, {id: job.id!, error: friendly.slice(0, 250), model});
+      throw new Error(friendly);
     }
   },
 });

@@ -228,8 +228,8 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     }
   }
 
-  async function generateProduct(sku: string, drop?: [number, number, number]):Promise<string|null> {
-    if (busy) return null;
+  async function generateProduct(sku: string, drop?: [number, number, number], forceBusy=false):Promise<string|null> {
+    if (busy && !forceBusy) return null;
     const cachedSource = [...cache.current.values()].find(source => source.asset.productId === sku);
     if (cachedSource) { const id=place(cachedSource, drop); setNotice('Generated CAD prototype reused · inspect before assembly'); return id; }
     setError('');
@@ -400,32 +400,58 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     }
     throw lastError;
   }
-  // Gemini planner: decompose a vague goal into subsystems with assumed specs, then execute the plan.
-  function planCatalog() {
-    return Object.values(BY_SKU).slice(0,120).map((p:any)=>{
-      const dims=p.dimensions_mm?Object.entries(p.dimensions_mm).filter(([,v])=>typeof v==='number').map(([k,v])=>`${k} ${v} mm`).join(', '):undefined;
-      const price=(p.prices??[]).find((x:any)=>typeof x?.price==='number')?.price;
-      return {sku:p.sku,name:p.name,price,dims,weightG:typeof p.weight_g==='number'?p.weight_g:undefined,category:p.category};
-    });
+  // A small, goal-relevant catalog keeps planning fast without starving the model of structure options.
+  function toPlannerPart(p:any) {
+    const dims=p.dims?Object.entries(p.dims).filter(([,v])=>typeof v==='number').map(([k,v])=>`${k} ${v} mm`).join(', '):undefined;
+    const price=(p.prices??p.offers??[]).find((x:any)=>typeof x?.price==='number')?.price;
+    return {sku:p.sku,name:p.name,price,dims,weightG:typeof p.weight_g==='number'?p.weight_g:undefined,category:p.category};
+  }
+  function planCatalog(goal:string) {
+    const all=Object.values(BY_SKU) as any[];
+    if(all.length<=48)return all.map(toPlannerPart);
+    const words=new Set(goal.toLowerCase().split(/[^a-z0-9.]+/).filter(w=>w.length>2));
+    const score=(p:any)=>{
+      const hay=`${p.sku} ${p.name} ${p.category}`.toLowerCase();
+      return [...words].reduce((n,w)=>n+(hay.includes(w)?2:0),0)+(p.inStock===false?-1:0);
+    };
+    const selected=new Map<string,any>();
+    const add=(items:any[])=>{for(const p of items)if(selected.size<48)selected.set(p.sku,p);};
+    add(all.filter(p=>words.has(p.sku.toLowerCase())||words.has(p.name.toLowerCase())));
+    for(const group of ['structure','motors','wheels','electronics','servos','gears']) add(all.filter(p=>p.group===group).slice(0,5));
+    add([...all].sort((a,b)=>score(b)-score(a)||a.price-b.price));
+    return [...selected.values()].map(toPlannerPart);
   }
   async function applyPlan(plan:any):Promise<{report:string;executed:number;generated:string[]}> {
-    const lines:string[]=[];let actions=0;let executed=0;const generated:string[]=[];
-    for(const subsystem of plan.subsystems??[]){
-      const bits:string[]=[];
-      for(const part of subsystem.parts??[]){
-        for(let i=0;i<part.qty;i++,actions++){
-          try{const partId=await generateProduct(part.sku);if(!partId)throw new Error('Model import failed');generated.push(partId);executed++;bits.push(`• ${part.sku} — ${part.reason}`);}
-          catch(e){throw new Error(`${part.sku}: ${e instanceof Error?e.message:String(e)}`);}
-        }
+    const bits:string[][]=(plan.subsystems??[]).map(()=>[]);
+    let executed=0;const generated:string[]=[];const jobs:any[]=[];
+    (plan.subsystems??[]).forEach((subsystem:any,subsystemIndex:number)=>{
+      for(const part of subsystem.parts??[])for(let i=0;i<part.qty;i++)jobs.push({kind:'part',subsystemIndex,sku:part.sku,reason:part.reason});
+      for(const body of subsystem.customBodies??[])jobs.push({kind:'body',subsystemIndex,body,reason:body.reason??'commissioned by planner'});
+    });
+    for(let offset=0;offset<jobs.length;offset+=4){
+      const chains=new Map<string,Promise<string|null>>();
+      const batch=jobs.slice(offset,offset+4).map(async job=>{
+        const key=job.kind==='part'?`part:${job.sku}`:`body:${JSON.stringify(job.body)}`;
+        const previous=chains.get(key)??Promise.resolve(null);
+        const next=previous.then(async()=>{
+          if(job.kind==='part')return generateProduct(job.sku,undefined,true);
+          return (await generateCustomBody(job.body)).partId;
+        });
+        chains.set(key,next);
+        try{return {job,partId:await next,error:null};}
+        catch(error){return {job,partId:null,error};}
+      });
+      const batchResults=await Promise.all(batch);
+      const failed=batchResults.find(r=>r.error);
+      if(failed)throw failed.error;
+      for(const result of batchResults){
+        if(!result.partId)throw new Error('Model import failed');
+        generated.push(result.partId);executed++;
+        const label=result.job.kind==='part'?result.job.sku:`${result.job.body.name??'Custom body'} (custom ${result.job.body.lengthMm}×${result.job.body.widthMm}×${result.job.body.heightMm} mm)`;
+        bits[result.job.subsystemIndex].push(`• ${label} — ${result.job.reason}`);
       }
-      for(const body of subsystem.customBodies??[]){
-
-        try{const bodyPart=await generateCustomBody(body);if(!bodyPart.partId)throw new Error('Custom model import failed');generated.push(bodyPart.partId);executed++;bits.push(`• ${bodyPart.name} (custom ${body.lengthMm}×${body.widthMm}×${body.heightMm} mm) — ${body.reason??'commissioned by planner'}`);}
-        catch(e){throw new Error(`Custom body: ${e instanceof Error?e.message:String(e)}`);}
-        actions++;
-      }
-      lines.push(`${subsystem.name} — ${subsystem.purpose}\n${bits.join('\n')}`);
     }
+    const lines=(plan.subsystems??[]).map((subsystem:any,index:number)=>`${subsystem.name} — ${subsystem.purpose}\n${bits[index].join('\n')}`);
     if(plan.assumptions?.length)lines.push(`Assumptions: ${plan.assumptions.map((a:any)=>`${a.label} = ${a.value}`).join(' · ')}`);
     return {report:[plan.summary,...lines.filter(Boolean)].join('\n\n'),executed,generated};
   }
@@ -491,15 +517,14 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
         return {ok:true,output:result.summary??'Existing parts arranged and reviewed by Anthropic.'};
       }
       setOperation('Gemini is planning the requested inventory');
-      const plan=await askPlanner(goal,live.current.parts.map(p=>({id:p.id,name:p.model.asset.name,scale:p.scale??1})),planCatalog());
+      const plan=await askPlanner(goal,live.current.parts.map(p=>({id:p.id,name:p.model.asset.name,scale:p.scale??1})),planCatalog(goal));
       const expected=validatePlanCount(goal,plan.plan);
       if(expected+live.current.parts.length>100)throw new Error('This build would exceed the workspace limit of 100 parts.');
-      setOperation('Anthropic is checking quantities and design intent');
-      const review=await verifyPlan(goal,plan.plan);
-      if(!review.approved)throw new Error(`Inventory review rejected: ${review.issues.join(' · ')}`);
       stagedBuild.current=[];
-      setOperation(`Preparing ${expected} parts before arrangement`);
-      const {report,generated}=await applyPlan(plan.plan);
+      setOperation('Anthropic is reviewing while models are prepared');
+      const [review,prepared]=await Promise.all([verifyPlan(goal,plan.plan),applyPlan(plan.plan)]);
+      if(!review.approved)throw new Error(`Inventory review rejected: ${review.issues.join(' · ')}`);
+      const {report,generated}=prepared;
       if(generated.length!==expected)throw new Error(`Expected ${expected} models but imported ${generated.length}.`);
       const arrangement=await arrangeAndVerify(goal,plan.plan.summary,generated);
       if(!arrangement.ok)throw new Error(`Arrangement not approved: ${arrangement.issues.join(' · ')}`);
