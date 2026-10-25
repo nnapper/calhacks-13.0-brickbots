@@ -32,8 +32,9 @@ import { cadToGroup } from '../cad/geometry';
 import { PRESETS } from '../lib/preset.js';
 import { compose } from '../lib/composer.js';
 
-type Def = { key: string; sku: string; position: number[]; rotY: number };
-type Preset = { id: string; name: string; parts: Def[]; mates: { moving: string; target: string }[] };
+type Def = { key: string; sku: string; position: number[]; rotY: number; rotX?: number };
+const turn = (def: Def) => new THREE.Quaternion().setFromEuler(new THREE.Euler((def.rotX ?? 0) * Math.PI / 180, def.rotY * Math.PI / 180, 0, 'YXZ'));
+type Preset = { id: string; name: string; parts: Def[]; mates: { moving: string; target: string }[]; nested?: string[][] };
 // Where each shaft runs (two points in the model's own frame, from its generator script) and where a mounted part's bore
 // sits: its centre, its bore direction and half its length along the bore.
 const SHAFT: Record<string, { a: number[]; b: number[] }> = {
@@ -56,13 +57,12 @@ function place(def: Def) {
   const settings = JSON.parse(readFileSync('public/cad-settings.json', 'utf8'));
   const object = cadToGroup(occt.ReadStepFile(readFileSync(`public/generated/${def.sku}/model.step`), settings));
   object.position.set(...(def.position.map(v => v / 1000) as [number, number, number]));
-  object.quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), def.rotY * Math.PI / 180);
+  object.quaternion.copy(turn(def));
   object.updateMatrixWorld(true);
   return { def, object, box: new THREE.Box3().setFromObject(object) };
 }
 const mmPoint = (def: Def, local: number[]) => {
-  const q = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), def.rotY * Math.PI / 180);
-  return new THREE.Vector3(...local).applyQuaternion(q).add(new THREE.Vector3(...def.position));
+  return new THREE.Vector3(...local).applyQuaternion(turn(def)).add(new THREE.Vector3(...def.position));
 };
 
 const composed = ['4 wheel rover', 'small 2 wheel bot', 'rover that can carry 2 kg', '6 wheel truck', 'rover with a servo claw arm', 'two wheel arm bot under $300']
@@ -100,7 +100,7 @@ describe.each([...(PRESETS as Preset[]).filter(p => p.id !== 'rover'), ...compos
   });
 
   it('keeps unconnected parts from overlapping and everything above the floor', () => {
-    const connected = new Set(preset.mates.map(m => [m.moving, m.target].sort().join('|')));
+    const connected = new Set([...preset.mates.map(m => [m.moving, m.target]), ...(preset.nested ?? [])].map(pair => [...pair].sort().join('|')));
     const all = [...placed.values()];
     for (let i = 0; i < all.length; i++) for (let j = i + 1; j < all.length; j++) {
       if (connected.has([all[i].def.key, all[j].def.key].sort().join('|'))) continue;

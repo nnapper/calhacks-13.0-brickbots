@@ -431,12 +431,13 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     const left = Math.min(...preset.parts.map((p: { position: number[] }) => p.position[0]), 0) - 150;
     const right = existing.reduce((x, p) => Math.max(x, worldBox(p).max.x * 1000), Number.NEGATIVE_INFINITY);
     const shiftMm = Number.isFinite(right) ? right - left + 60 : 0;
-    const instances: PartInstance[] = preset.parts.map((def: { key: string; sku: string; position: number[]; rotY: number }) => {
+    const instances: PartInstance[] = preset.parts.map((def: { key: string; sku: string; position: number[]; rotY: number; rotX?: number }) => {
       const source = sources.get(def.sku)!;
       const id = crypto.randomUUID();
       ids.set(def.key, id);
       const position = [(def.position[0] + shiftMm) / 1000, def.position[1] / 1000, def.position[2] / 1000] as [number, number, number];
-      const quaternion = new Quaternion().setFromAxisAngle(new Vector3(0, 1, 0), def.rotY * Math.PI / 180).toArray() as [number, number, number, number];
+      // rotX tilts the part first, then rotY turns it about the vertical axis.
+      const quaternion = new Quaternion().setFromEuler(new Euler((def.rotX ?? 0) * Math.PI / 180, def.rotY * Math.PI / 180, 0, 'YXZ')).toArray() as [number, number, number, number];
       const model = { ...source, object: clone(source.object) as LoadedModel['object'] };
       model.object.position.set(...position);
       model.object.quaternion.set(...quaternion);

@@ -16,6 +16,8 @@ h1, h2, h3 { margin: 0; }
 .mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
 .app { min-height: 100%; display: flex; flex-direction: column; }
 .app[data-view="build"] { height: 100%; }
+/* The home screen fits the window: the hero takes whatever height is left, so nothing needs scrolling. */
+.app[data-view="home"] { height: 100dvh; overflow: hidden; }
 
 /* ---------- top bar ---------- */
 .top { display: flex; align-items: center; gap: 14px; height: 60px; flex: none; padding: 0 16px; border-bottom: 1px solid transparent; position: relative; z-index: 5; }
@@ -46,11 +48,11 @@ h1, h2, h3 { margin: 0; }
 .cartpill b { font-weight: 500; }
 
 /* ---------- home ---------- */
-.home { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: center; gap: 32px; padding: 20px 16px 0; max-width: 1320px; width: 100%; margin: 0 auto; }
-.copy { display: grid; gap: 22px; padding-left: clamp(0px, 3vw, 40px); max-width: 600px; }
+.home { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); grid-template-rows: minmax(0, 1fr) auto; align-items: center; gap: 20px 32px; padding: 12px 16px 0; max-width: 1320px; width: 100%; margin: 0 auto; }
+.copy { display: grid; gap: 14px; padding-left: clamp(0px, 3vw, 40px); max-width: 600px; }
 h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(36px, 4.8vw, 62px); line-height: 1.02; letter-spacing: -0.035em; text-wrap: balance; }
 h1 em { font-style: normal; background: linear-gradient(100deg, var(--cool), var(--warm)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.lede { margin: 0; font-size: 17px; color: var(--muted); max-width: 46ch; }
+.lede { margin: 0; font-size: 15px; color: var(--muted); max-width: 46ch; }
 .ask { display: flex; gap: 8px; padding: 7px; border: 1px solid var(--line); background: var(--panel); border-radius: 18px; box-shadow: 0 14px 40px -18px var(--shadow); backdrop-filter: blur(10px); }
 .ask:focus-within { border-color: var(--cool); }
 .ask input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; padding: 10px 12px; }
@@ -63,20 +65,22 @@ h1 em { font-style: normal; background: linear-gradient(100deg, var(--cool), var
 .presets { display: grid; gap: 8px; }
 .presets-label { font-size: 12.5px; color: var(--muted); }
 .preset-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
-.preset { display: grid; gap: 4px; text-align: left; border: 1px solid var(--line); background: var(--panel); border-radius: 16px; padding: 12px 14px; color: var(--ink); transition: border-color 0.15s, transform 0.15s; }
-.preset.blank { border-style: dashed; }
+.preset { display: grid; gap: 2px; text-align: left; border: 1px solid var(--line); background: var(--panel); border-radius: 14px; padding: 9px 12px; color: var(--ink); transition: border-color 0.15s, transform 0.15s; }
+.blank-canvas { width: 100%; border: 1px dashed var(--line); background: transparent; border-radius: 12px; padding: 8px 14px; font-size: 13px; color: var(--muted); transition: border-color 0.15s, color 0.15s; }
+.blank-canvas:hover { border-color: var(--cool); color: var(--ink); }
 .preset:hover { border-color: var(--cool); transform: translateY(-2px); }
 .preset b { font-size: 14px; font-weight: 600; }
-.preset span { font-size: 12.5px; color: var(--muted); line-height: 1.35; }
+.preset span { display: none; }
 .preset em { font-style: normal; font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
-.herostage { position: relative; height: min(60vh, 540px); min-height: 340px; border-radius: 28px; overflow: hidden; border: 1px solid var(--line); background: radial-gradient(110% 90% at 50% 25%, var(--bg) 35%, var(--bg2) 100%); box-shadow: 0 30px 60px -40px var(--shadow); }
-.marquee { grid-column: 1 / -1; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); padding: 10px 0 22px; }
+.herostage { position: relative; align-self: stretch; height: auto; min-height: 0; max-height: 560px; border-radius: 28px; overflow: hidden; border: 1px solid var(--line); background: radial-gradient(110% 90% at 50% 25%, var(--bg) 35%, var(--bg2) 100%); box-shadow: 0 30px 60px -40px var(--shadow); }
+.marquee { grid-column: 1 / -1; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); padding: 4px 0 12px; }
 .track { display: flex; gap: 12px; width: max-content; animation: slide 70s linear infinite; }
 .marquee:hover .track { animation-play-state: paused; }
 .mq { display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); background: var(--panel); border-radius: 12px; padding: 6px 12px 6px 6px; }
 .mq img { width: 38px; height: 38px; object-fit: contain; border-radius: 8px; background: #fff; }
 .mq span { font-size: 12.5px; max-width: 170px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mq b { font-family: var(--f-mono); font-weight: 500; font-size: 12px; color: var(--muted); }
+@media (max-height: 700px) and (min-width: 901px) { .marquee { display: none; } .lede { display: none; } }
 @keyframes slide { to { transform: translateX(-50%); } }
 
 /* ---------- callouts that follow parts in 3D ---------- */
@@ -240,9 +244,10 @@ h1 em { font-style: normal; background: linear-gradient(100deg, var(--cool), var
 @media (max-width: 860px) {
   .home { grid-template-columns: 1fr; padding-top: 8px; }
   .copy { padding-left: 0; }
-  .herostage { height: 46vh; min-height: 280px; order: -1; border-radius: 20px; }
+  .herostage { height: 34vh; min-height: 200px; order: -1; border-radius: 20px; }
   .balloons { display: none; }
   .app[data-view="build"] { height: auto; }
+  .app[data-view="home"] { height: auto; overflow: auto; }
   .build { display: flex; flex-direction: column; gap: 12px; padding: 12px; }
   .stagewrap { position: relative; inset: auto; height: 52vh; min-height: 300px; border-radius: 20px; }
   .panel, .paneltab { position: static; width: auto !important; transform: none !important; }
