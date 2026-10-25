@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "48 mm diameter, 6 mm thick disc wheel with its axis along Y (Y=0 to 6), a 14 mm through bore, a 38 mm diameter by 3 mm deep recess on the top face leaving a 3 mm web, and eight 4 mm through holes around the bore at about a 24 mm bolt circle.",
+  "confidence": "medium",
+  "warnings": [
+    "The 4 mm holes look slightly oval or slotted in the drawing, so they are modeled as round 4 mm holes.",
+    "The diagonal hole positions are estimated from the 24 mm and 16 mm dimensions.",
+    "Which face carries the recess is ambiguous, so it is placed on the top face (Y=3 to 6).",
+    "The rubber lip is not modeled separately and is treated as part of the single solid.",
+    "The disc axis is along Y to match the bottom-at-Y=0 rule, while the source analysis described it along Z."
+  ],
+  "cadquery": "part = cq.Workplane('XZ').circle(24).extrude(-6)\nrecess = cq.Workplane('XZ').workplane(offset=-3).circle(19).extrude(-3)\npart = part.cut(recess)\nbore = cq.Workplane('XZ').circle(7).extrude(-6)\npart = part.cut(bore)\npts = [(12,0),(-12,0),(0,12),(0,-12),(8,8.7),(-8,8.7),(8,-8.7),(-8,-8.7)]\nholes = cq.Workplane('XZ').pushPoints(pts).circle(2).extrude(-6)\npart = part.cut(holes)"
+}

@@ -1,0 +1,42 @@
+{
+  "partType": "flat_plate",
+  "summary": "Flat aluminum pattern plate with a stadium (round-end) outline, 56mm long, 32mm wide and 2.5mm thick. It has two large 14mm through holes along the centerline, surrounded by a pattern of smaller through holes.",
+  "boundsMm": {
+    "x": 56,
+    "y": 32,
+    "z": 2.5
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          -12,
+          0,
+          0
+        ],
+        [
+          12,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 1.25,
+      "description": "Top flat face for mounting hubs, bearings or brackets against the plate."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -1.25,
+      "description": "Bottom flat face, mounts flush against rails or channel."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Bounds come from the stated dimensions (56 x 32 x 2.5mm), which are marked unverified. The two 14mm holes are placed at x = ±12mm, assuming each is concentric with a semicircular end of radius 16mm (56/2 - 16 = 12). This matches the 24mm center spacing in the description. The images show about 14 smaller through holes and some slotted ones, arranged in a 16mm goBILDA pattern. Their diameter and exact positions are not stated, so they are left out of the holes list instead of guessed. Product Insight #2 shows the plate fastened across two flush goRAIL pieces with 12mm M4 screws, with T-slots 24mm apart."
+}

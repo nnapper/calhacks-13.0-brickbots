@@ -1,0 +1,32 @@
+{
+  "partType": "other",
+  "summary": "Cylindrical standoff post with a 6 mm diameter shaft, a 10 mm diameter roller section above it, and a smaller cap at the top with a hex drive recess. The bottom end of the shaft has a blind axial hole. The roller center sits 24 mm above the base, which matches the drawing: 19 mm shaft plus half of the 10 mm roller section.",
+  "boundsMm": {
+    "x": 10,
+    "y": 10,
+    "z": 33
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          0,
+          -16.5
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -16.5,
+      "description": "Flat circular base face at the bottom of the 6 mm shaft. It is the fastening face and holds the 8 mm deep blind hole."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Drawing values: shaft 6 mm diameter x 19 mm long, roller section 10 mm diameter x 10 mm tall (8 mm straight band between chamfers), base hole 8 mm deep, cap hex drive 3 mm. Total height of about 33 mm is estimated from the drawing scale: the cap protrudes roughly 4 mm above the roller section, and this value is not printed. The 24 mm base-to-center height from the listing agrees with 19 + 10/2. The hole diameter of 4 mm is taken from the nominal size in the callout. The bounding box is centered on the part, with z running from -16.5 to +16.5. The hex socket in the cap is a small recess and is not listed as a hole."
+}

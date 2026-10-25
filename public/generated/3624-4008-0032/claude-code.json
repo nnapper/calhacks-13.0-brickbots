@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Small omni wheel with its axis along Z: a 24 mm plastic core 14 mm wide, with two staggered rows of 8 cylindrical rollers (6 mm diameter, 8 mm long) set tangent around the rim. This gives a 32 mm overall diameter. An 8 mm across-flats hex bore runs through the hub. The wheel is centered at X=0 and Z=0, with its lowest point at Y=0.",
+  "confidence": "low",
+  "warnings": [
+    "The 14 mm wheel width is an estimate, since no width is stated.",
+    "The rollers are simplified to plain cylinders and lack the real barrel profile.",
+    "The roller size, count (8 per row) and stagger angle are estimated from the image.",
+    "Core diameter and roller placement are approximate.",
+    "The three countersunk screws, the recessed hub detail and the logos are omitted.",
+    "The -z face is assumed to mirror the +z face.",
+    "The 8 mm hex size is taken as across-flats, which is uncertain."
+  ],
+  "cadquery": "core = cq.Workplane('XY').circle(12).extrude(7, both=True)\nrollers = None\nfor row, zc in enumerate((-3.5, 3.5)):\n    for i in range(8):\n        ang = i * 45 + (22.5 if row else 0)\n        r = (cq.Workplane('YZ').circle(3).extrude(4, both=True)\n             .translate((0, 13, zc)).rotate((0, 0, 0), (0, 0, 1), ang))\n        rollers = r if rollers is None else rollers.union(r)\nwheel = core.union(rollers)\nbore = cq.Workplane('XY').polygon(6, 8 / math.cos(math.radians(30))).extrude(10, both=True)\npart = wheel.cut(bore).translate((0, 16, 0))"
+}

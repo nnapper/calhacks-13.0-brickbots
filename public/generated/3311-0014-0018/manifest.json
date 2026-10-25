@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "8mm Pitch Acetal Hub-Mount Sprocket (14mm Bore, 18 Tooth)",
+    "sku": "3311-0014-0018",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/8mm-pitch-acetal-hub-mount-sprocket-14mm-bore-18-tooth/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The drawing prints a 49.2mm outer diameter, 46.1mm pitch diameter, 2.4mm thickness, 14mm bore and 4mm holes. The four round 4mm holes sit on a 16mm square pattern, so I placed them at (±8, ±8). The drawing also shows four slotted holes on the x and y axes at about 11.3mm radius. They are not dimensioned, so I left them out of the holes list. The 24mm dimension is ambiguous against the 16mm spacing and was not used. The 18-tooth count comes from the product data.",
+      "Tooth profile is simplified: round 5.4mm roller seats at the pitch radius with a straight flared opening to the OD. It is not a true ANSI/ISO 05B tooth form.",
+      "The four unlabeled slotted holes on the X and Z axes (about 11.3mm radius) are omitted because they are not dimensioned.",
+      "The 24mm dimension is ambiguous and was not used.",
+      "The tooth gaps are phased with one gap on the +X axis, and the drawing's phase may differ.",
+      "The 5.4mm roller seat is assumed, not stated in the drawing."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -24.379557370226088,
+      "xmax": 24.379557370226088,
+      "ymin": -2.7311486405778852e-15,
+      "ymax": 2.400000000000003,
+      "zmin": -24.6,
+      "zmax": 24.6,
+      "xlen": 48.759114740452176,
+      "ylen": 2.4000000000000057,
+      "zlen": 49.2
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 14.000 mm; measured dimensions are [2.4000000000000057, 48.759114740452176, 49.2]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 310783,
+        "sha256": "b6022260e73c6246924e019aab4dc8b0981d083fc839da19a34506a9e54a5590"
+      },
+      "model.stl": {
+        "bytes": 254084,
+        "sha256": "a6fdc87ecef3d6f2fd58ecee810049514a0275668b7c06f371ff3813d834c576"
+      },
+      "model.glb": {
+        "bytes": 92384,
+        "sha256": "7b75b4fb92bcaa8b95775f55ec93a05b06d04b5d7112384a179052ff400bf3da"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "b6022260e73c6246924e019aab4dc8b0981d083fc839da19a34506a9e54a5590"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 14
+  },
+  "status": "prototype_unverified"
+}

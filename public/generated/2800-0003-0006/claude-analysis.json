@@ -1,0 +1,37 @@
+{
+  "partType": "other",
+  "summary": "Socket head cap screw with a cylindrical head and a hex drive socket in the head top. The head is 5.5 mm in diameter and 3 mm tall. The shank extends 6 mm below the head, so overall length is 9 mm. The screw axis is modeled along X, with the head toward -X.",
+  "boundsMm": {
+    "x": 9,
+    "y": 5.5,
+    "z": 5.5
+  },
+  "holes": [
+    {
+      "axis": "x",
+      "diameterMm": 2.5,
+      "positionsMm": [
+        [
+          -4.5,
+          0,
+          0
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": -1.5,
+      "description": "Underside of the head, which bears against the clamped part. The shank extends from here toward +X."
+    },
+    {
+      "axis": "x",
+      "offsetMm": -4.5,
+      "description": "Flat top face of the head, which contains the hex drive socket."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The drawing gives a 5.5 mm head diameter, 3 mm head height, 6 mm shank length measured from the underside of the head, and a 2.5 mm hex socket. Total length of 9 mm is head height plus shank length. The 2.5 mm hex socket is across flats, used here as the hole diameter. Socket depth is not stated, so it is modeled as a blind recess. The text spec lists length as 6 mm, which matches the shank length only and excludes the head. The bounding box is centered on the part, with x from -4.5 to 4.5. The shank diameter is not given as a separate dimension and is not modeled. The thread-locker tube in the third image is a separate accessory and is not part of this component."
+}

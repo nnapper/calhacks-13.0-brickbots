@@ -1,0 +1,47 @@
+{
+  "partType": "motor",
+  "summary": "Cylindrical brushed DC motor with a square-ish four-point mounting plate at the output end and a hex-profile output shaft protruding from the mount face. The rear has an encoder cover, and the lead wires exit the back. The long axis is z, with the shaft pointing +z.",
+  "boundsMm": {
+    "x": 42,
+    "y": 42,
+    "z": 100
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          16,
+          16,
+          18
+        ],
+        [
+          -16,
+          16,
+          18
+        ],
+        [
+          16,
+          -16,
+          18
+        ],
+        [
+          -16,
+          -16,
+          18
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 18,
+      "description": "Front face of the motor mount plate. The shaft protrudes 32 mm from this face, and the plate seats against a channel or plate."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The only dimension stated in the supplied data is the 32 mm shaft protrusion from the mount face; the 3.175 mm shaft_diameter listed in the metadata conflicts with the 8mm REX shaft and was ignored. The 42 mm mount width, the 100 mm overall length (centered, so z runs -50 to +50 with the mount face at +18), and the 4 mm corner hole size and 16 mm offsets are visual estimates, not printed dimensions. The Coke can mockup in the photo has nonsensical printed dimensions and was not used for scale. The motor body diameter is assumed to be about 36 mm, which falls inside the 42 mm mount footprint. The brass insert holes and the small M3 face-screw holes were not modeled, since their sizes and positions are not given."
+}

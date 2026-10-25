@@ -1,0 +1,19 @@
+{
+  "partType": "motor",
+  "summary": "Cylindrical planetary gear motor with an 8mm REX output shaft that protrudes 80mm from the gearbox end. The drawings show the motor clamped in a quad block mount, passing through a U-channel wall, and carrying a hub and wheel.",
+  "boundsMm": {
+    "x": 37,
+    "y": 37,
+    "z": 80
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Gearbox output end face, where the 8mm REX shaft exits. Mounting is by a clamp or quad block mount around the gearbox, but no hole pattern is dimensioned."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The images print no body dimensions. The only stated figures are the 80mm shaft length (Insight #8) and the 8mm REX shaft diameter. The catalog 'length: 80' appears to be the shaft length, not the overall motor length, so z=80 is a placeholder and not a verified body length. The x and y values of 37 are an assumed gearbox diameter and are not printed anywhere. Holes are left empty because no hole diameters or positions are given. The shaft is a protrusion, not a hole. Overall length, body diameter and mounting hole pattern should be checked against the manufacturer drawing before use."
+}

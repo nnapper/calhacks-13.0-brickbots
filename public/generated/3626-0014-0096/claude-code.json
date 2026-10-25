@@ -1,0 +1,15 @@
+{
+  "shapeSummary": "Simplified 96 mm diameter wheel with its axis along Z, 24 mm wide and centered at X=0, Z=0, with its lowest point at Y=0. One face (+Z) has an annular recess (outer Ø80, inner Ø44, 10 mm deep) around a raised central hub. A Ø16 central bore passes through the whole wheel. The tread is modeled as a plain cylinder with the plastic core and rubber as one solid.",
+  "confidence": "low",
+  "warnings": [
+    "The 24 mm width is a visual estimate and is not stated in the source.",
+    "The bore diameter (16 mm), recess diameters and recess depth are estimated from the image.",
+    "The mounting-hole pattern on the hub and rim is omitted because positions and diameters are unknown.",
+    "Spokes and triangular ribs are omitted as uncertain decorative or structural detail.",
+    "Tread grooves along the outer edge are omitted.",
+    "The plastic core and rubber tread are merged into a single solid.",
+    "The yellow ring and printed text are not modeled, as required.",
+    "The analysis JSON puts the axis along Z, so the wheel center sits at Y=48 to keep the bottom at Y=0."
+  ],
+  "cadquery": "outer = cq.Workplane('XY').workplane(offset=-12).circle(48).extrude(24)\nrecess = cq.Workplane('XY').workplane(offset=2).circle(40).circle(22).extrude(10)\nbore = cq.Workplane('XY').workplane(offset=-12).circle(8).extrude(24)\npart = outer.cut(recess).cut(bore).translate((0, 48, 0))"
+}

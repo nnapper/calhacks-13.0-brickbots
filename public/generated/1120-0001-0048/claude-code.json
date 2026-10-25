@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Plain U-channel with a 48mm length along X, 48mm outside width along Z, and 48mm overall height along Y. The web is 2.5mm thick and lies on the Y=0 plane. Two 2.5mm side walls rise to Y=48, leaving a 43mm inside width, and the top and both ends are open. The part is centered in X and Z.",
+  "confidence": "medium",
+  "warnings": [
+    "Hole patterns are omitted because their diameters and positions are not dimensioned in the images.",
+    "The 48mm overall height is scaled from the drawing and is unverified.",
+    "The orientation is remapped so the web is the bottom face at Y=0, which differs from the analysis axes.",
+    "Only the 2.5mm wall and web thickness and the 43mm inside width come from the drawing."
+  ],
+  "cadquery": "outer = cq.Workplane('XY').box(48, 48, 48, centered=(True, False, True))\ninner = cq.Workplane('XY').box(50, 48, 43, centered=(True, False, True)).translate((0, 2.5, 0))\npart = outer.cut(inner)"
+}

@@ -1,0 +1,113 @@
+{
+  "partType": "other",
+  "summary": "Planetary gearbox with a 36mm round housing. The front face is a raised block with M4 mounting holes. An 8mm REX output shaft (7mm flat to flat) extends 23.5mm from the front face. The motor-side face has a 13mm central bore and four 3mm holes on a 25mm diagonal pattern. The housing axis is z, centered on the bounding box, with the output shaft toward +z.",
+  "boundsMm": {
+    "x": 36,
+    "y": 36,
+    "z": 65.1
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -8,
+          -8,
+          9.05
+        ],
+        [
+          8,
+          -8,
+          9.05
+        ],
+        [
+          -8,
+          8,
+          9.05
+        ],
+        [
+          8,
+          8,
+          9.05
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          12,
+          9.05
+        ],
+        [
+          0,
+          -12,
+          9.05
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          -8.84,
+          -8.84,
+          -32.55
+        ],
+        [
+          8.84,
+          -8.84,
+          -32.55
+        ],
+        [
+          -8.84,
+          8.84,
+          -32.55
+        ],
+        [
+          8.84,
+          8.84,
+          -32.55
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "z",
+      "diameterMm": 13,
+      "positionsMm": [
+        [
+          0,
+          0,
+          -32.55
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 9.05,
+      "description": "Front output face of the raised block (11.6mm tall, 24mm across). Six M4 holes: four at ±8mm (16mm spacing, 10mm deep) and two at ±12mm on the vertical centerline (24mm spacing, 6mm deep). The 8mm REX shaft projects 23.5mm from this face."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -32.55,
+      "description": "Motor-side rear face with a 13mm central bore and four 3mm holes on a 25mm diagonal pattern."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "36mm diameter cylindrical housing; the drawing shows it truncated at the rear."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 41.6mm dimension runs from the truncated rear of the housing to the front face and excludes the shaft. Total z of 65.1mm is 41.6 + 23.5 for the shaft. The 25mm dimension on the rear face is read as the diagonal of a square 3mm hole pattern, giving about ±8.84mm offsets. The two 6mm-deep holes are read from the top hole; the bottom one is assumed by symmetry. Hole depths are 10mm and 6mm for the front holes (blind); the rear 3mm hole depth is not given, so through=false is assumed. The drawing's front-face hole positions are approximate readings. The 24mm in the product name matches the shaft length (23.5mm in the drawing). The 13.7:1 ratio does not affect the geometry."
+}

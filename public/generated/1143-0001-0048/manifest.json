@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1143 Series Mini Low-Side U-Channel (1 Hole, 48mm Length)",
+    "sku": "1143-0001-0048",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1143-series-mini-low-side-u-channel-1-hole-48mm-length/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The metadata lists only the 48 mm length, so the 48 mm width and 16 mm height are estimated from the images, the 16 mm pattern note and the 8 mm hole pitch. The 4 mm and 14 mm hole diameters and the flange hole positions are also estimated. The base also has several smaller holes arranged around the central hole. Their exact positions and sizes are not clear enough to list, so they are left out. Wall thickness is not given and is not modeled.",
+      "Only the 48 mm length is given. Width (48 mm), height (16 mm) and wall thickness (4 mm) are estimates.",
+      "The flange hole diameter (4 mm) and height (10 mm) are estimated.",
+      "The central hole diameter (14 mm) is estimated.",
+      "The smaller holes around the central hole in the base are visible, but their positions and sizes are uncertain, so they are omitted.",
+      "Countersinks or chamfers on the holes are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -24,
+      "xmax": 24,
+      "ymin": 0,
+      "ymax": 16,
+      "zmin": -24,
+      "zmax": 24,
+      "xlen": 48,
+      "ylen": 16,
+      "zlen": 48
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 76662,
+        "sha256": "d0d7829862cfe15488e6a7e84e63b9d2f3d657d0633fb55e79831f7a09f5c534"
+      },
+      "model.stl": {
+        "bytes": 188484,
+        "sha256": "27a5b6b59b4672984f986d545d9b8f2cecba6e1abe721b2e3497c047711e7fc4"
+      },
+      "model.glb": {
+        "bytes": 68604,
+        "sha256": "b3067c2a3b62d9b17a45f4820cf099cea3d734dc690475fd26e1b7fbf8f3a549"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "d0d7829862cfe15488e6a7e84e63b9d2f3d657d0633fb55e79831f7a09f5c534"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

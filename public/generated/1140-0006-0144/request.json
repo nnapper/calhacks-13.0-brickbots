@@ -1,0 +1,11 @@
+{
+  "name": "1140 Series Aluminum Baseplate (6mm Thickness, 144mm Diameter)",
+  "sku": "1140-0006-0144",
+  "category": "baseplates",
+  "sourceUrl": "https://www.gobilda.com/1140-series-aluminum-baseplate-6mm-thickness-144mm-diameter/",
+  "expectedDimensionsMm": [
+    6,
+    144
+  ],
+  "units": "millimeter"
+}

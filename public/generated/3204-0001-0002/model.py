@@ -1,0 +1,5 @@
+wheel = cq.Workplane('XY').circle(18.75).extrude(10).translate((0, 0, -5))
+bore = cq.Workplane('XY').circle(4).extrude(10).translate((0, 0, -5))
+holes = (cq.Workplane('XY').pushPoints([(8, 0), (-8, 0), (0, 8), (0, -8)])
+         .circle(2).extrude(10).translate((0, 0, -5)))
+part = wheel.cut(bore).cut(holes).translate((0, 18.75, 0))

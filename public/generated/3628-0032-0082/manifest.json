@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Steel Flywheel (82mm Diameter, 152g, 1651 g·cm²)",
+    "sku": "3628-0032-0082",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/steel-flywheel-82mm-diameter-152g-1651-g-cm/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 82 mm diameter is given. Thickness (~6.4 mm) is estimated from the 152 g steel mass and the visible cutout area. Hole diameters (~4.2 mm, M4 clearance), bolt-circle radii (~35 mm outer, ~20 mm inner hex pockets) and angular positions are estimated from the photos and the product-insight drawings. The central cutout (roughly 45–50 mm across, with lobes) is not modelled as a hole. Counterbores and hex pocket details are not captured in the hole list.",
+      "Thickness (6.4 mm) is estimated from the steel mass and not stated; the mass suggests it could be nearer 5-6 mm.",
+      "The central opening profile, lobe size and lobe shape are approximated; the real cutout has more detailed contours.",
+      "Outer holes are placed at 22.5° offsets between the diagonal hex pockets, as seen in the image; the analysis JSON listed them at 0°/45°.",
+      "Hole diameters, bolt-circle radii and hex pocket size and depth are estimated.",
+      "Counterbores or countersinks on the outer holes are omitted because their dimensions are uncertain.",
+      "The engraved ring groove and the goBILDA.com text are not modelled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -41,
+      "xmax": 41,
+      "ymin": 0,
+      "ymax": 6.4,
+      "zmin": -41,
+      "zmax": 41,
+      "xlen": 82,
+      "ylen": 6.4,
+      "zlen": 82
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 209957,
+        "sha256": "3cf03da0d7d7cdca9d49678f6caaf803854bcb5e978c45ff88614ec1ac036723"
+      },
+      "model.stl": {
+        "bytes": 238484,
+        "sha256": "53319bdd478e6167d901f04c709eb368d5877bbc77de599392a1bc5920ca4c00"
+      },
+      "model.glb": {
+        "bytes": 86556,
+        "sha256": "2dd9c28d94c907a1426134e2d61b386343be78a2da0c3db421edea4601249c80"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "3cf03da0d7d7cdca9d49678f6caaf803854bcb5e978c45ff88614ec1ac036723"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

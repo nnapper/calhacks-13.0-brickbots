@@ -1,0 +1,19 @@
+{
+  "partType": "motor",
+  "summary": "Brushed DC RS-555 planetary gear motor with a cylindrical body, an 8mm REX output shaft extending 24mm from the gearbox face, and an encoder module at the rear. The long axis is z, centered on the part.",
+  "boundsMm": {
+    "x": 36,
+    "y": 36,
+    "z": 100
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 26,
+      "description": "Gearbox output face, with the 8mm REX shaft protruding 24mm beyond it toward +z (shaft tip at z=+50). The product images show it mounting against a channel wall."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 24mm shaft length and 8mm shaft diameter are stated. The 36mm body diameter and 100mm overall length are estimates, because the supplied specs give no width, height or diameter. No hole sizes or positions are given in the images or specs, so holes is empty. The mounting face offset assumes the 100mm estimate. The flat sides on the jacket are shown in the images but their dimensions are not given."
+}

@@ -1,0 +1,91 @@
+{
+  "partType": "bracket",
+  "summary": "Open rectangular servo frame machined from a single flat aluminum piece. It has a large central rectangular window for a standard-size servo. Stepped, offset mounting tabs at the corners carry through-holes and tapped holes on the faces. Additional tapped holes sit on the end and side faces. The frame is 43 mm wide, and its other dimensions are estimated from the images.",
+  "boundsMm": {
+    "x": 43,
+    "y": 65,
+    "z": 12
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4.5,
+      "positionsMm": [
+        [
+          -16,
+          28,
+          0
+        ],
+        [
+          16,
+          -28,
+          0
+        ],
+        [
+          -16,
+          -14,
+          0
+        ],
+        [
+          16,
+          14,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -8,
+          24,
+          0
+        ],
+        [
+          8,
+          -24,
+          0
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "x",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -21.5,
+          -28,
+          0
+        ],
+        [
+          21.5,
+          28,
+          0
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 6,
+      "description": "Top face with stepped tabs and through-holes for servo mounting or standoffs"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -6,
+      "description": "Bottom face, flat, which sits against the channel or a spacer"
+    },
+    {
+      "axis": "x",
+      "offsetMm": 21.5,
+      "description": "Side faces with tapped holes for fastening inside channel"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 43 mm width comes from the product data, and the source marks it as unverified. Length and thickness are rough estimates from image proportions. Hole counts and positions are approximate readings from the renders. The included hardware (4 screws, 4 washers) is not modeled. The 32 mm and 24 mm hole patterns are mentioned in the description but not confirmed by the images."
+}

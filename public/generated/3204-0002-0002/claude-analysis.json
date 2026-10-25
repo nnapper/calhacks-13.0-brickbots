@@ -1,0 +1,32 @@
+{
+  "partType": "gear",
+  "summary": "Zinc-plated steel 2:1 bevel gear set. The main body modeled here is the 28-tooth bevel hub gear, a thin disc with a large central opening and a ring of smaller holes, with bevel teeth on one face. The mating 14-tooth pinion has a clamping hub and is described in the notes.",
+  "boundsMm": {
+    "x": 6.5,
+    "y": 42,
+    "z": 42
+  },
+  "holes": [
+    {
+      "axis": "x",
+      "diameterMm": 16,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": -3.25,
+      "description": "Flat back face of the 28-tooth gear, for mounting a 16mm pattern hub (the front face carries the bevel teeth). The gear has clearance for a hub up to 32mm in diameter."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The gear axis is along X, with the gear centered on the origin. The 42mm diameter and 6.5mm thickness are scaled from the side-view drawing, whose printed dimensions are 13.5mm, 31mm and 16.5mm, so they are estimates. The 31mm printed dimension runs from the top of the pinion hub to the gear centerline, and 16.5mm runs from the pinion's lower edge to that same line. The 16mm central bore is an estimate; the product data gives no bore diameter and only a 32mm hub clearance diameter. The image shows a ring of smaller holes around the bore, but their diameter and exact positions are not stated, so they are left out. The 14-tooth pinion is about 21mm in diameter and has a clamping hub roughly 13.5mm wide. It has an 8mm REX bore and two clamp screws, and it meshes at 90 degrees with the gear."
+}

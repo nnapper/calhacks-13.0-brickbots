@@ -1,0 +1,91 @@
+{
+  "partType": "flat_plate",
+  "summary": "Circular steel flywheel disk, 60 mm diameter and about 6 mm thick (thickness estimated from the 115 g weight). It has a central bore, four pocketed screw holes around the bore, and four counterbored mounting holes near the rim at the diagonals.",
+  "boundsMm": {
+    "x": 60,
+    "y": 60,
+    "z": 6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4.2,
+      "positionsMm": [
+        [
+          17,
+          17,
+          0
+        ],
+        [
+          -17,
+          17,
+          0
+        ],
+        [
+          -17,
+          -17,
+          0
+        ],
+        [
+          17,
+          -17,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4.2,
+      "positionsMm": [
+        [
+          8.5,
+          8.5,
+          0
+        ],
+        [
+          -8.5,
+          8.5,
+          0
+        ],
+        [
+          -8.5,
+          -8.5,
+          0
+        ],
+        [
+          8.5,
+          -8.5,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 3,
+      "description": "Front flat face with the outer bolt circle and the counterbores"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -3,
+      "description": "Rear flat face, which sits against the traction wheel when attached"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 60 mm diameter is given. Thickness is estimated from 115 g of steel (density about 7.85 g/cm³) minus the cutouts, and agrees with the stated 551 g·cm² MOI. The bore diameter, hole diameters and hole positions are rough estimates from the renders. The center bore has a keyed or notched profile for the hub that is not modeled here. The four inner holes sit in hex-shaped pockets, and the outer holes are counterbored. Counterbore depths are not stated."
+}

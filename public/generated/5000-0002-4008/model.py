@@ -1,0 +1,6 @@
+plate = (cq.Workplane('XY').workplane(offset=14).rect(42, 42).extrude(4)
+         .faces('>Z').workplane().pushPoints([(16,16),(-16,16),(16,-16),(-16,-16)]).hole(4))
+body = cq.Workplane('XY').workplane(offset=-30).circle(18).extrude(44)
+cover = cq.Workplane('XY').workplane(offset=-50).circle(15).extrude(20)
+shaft = cq.Workplane('XY').workplane(offset=18).polygon(6, 8/math.cos(math.radians(30))).extrude(32)
+part = body.union(cover).union(plate).union(shaft).translate((0, 21, 0))

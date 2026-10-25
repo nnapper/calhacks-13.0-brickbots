@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "GripForce Gecko™ Wheel (14mm Bore, 72mm Diameter, 30A Durometer)",
+    "sku": "3613-0014-0072",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/gripforce-gecko-wheel-14mm-bore-72mm-diameter-30a-durometer/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Diameter (72 mm) and bore (14 mm) are from the supplied data, which is marked unverified. Width is not stated anywhere, so the 30 mm Z extent is a rough estimate from the render proportions and should be checked. The square pattern is read as 4 holes at the corners of a 16 mm square (±8 mm). The 4 mm pattern hole diameter is assumed from the M4 screws shown through the pattern, not printed. The core may sit slightly recessed from the rubber faces, but no recess depth is visible. The raised pips on the tread and the spoke cutouts are omitted from the bounding description.",
+      "Wheel width of 30 mm is estimated from the render, not stated in the product data.",
+      "The 4 mm pattern hole diameter is assumed.",
+      "Spoke pockets are simplified to round holes with an assumed depth of 10 mm per side; the real profile is a contoured, hourglass-like shape.",
+      "The pockets are placed on a 27 mm radius, outside the plastic core.",
+      "The render appears to show more holes in the core (a ring of about 8) than the 4 given in the analysis; only the 4-hole square pattern is modeled.",
+      "The core recess/cup, the plastic-versus-rubber split, tread pips and logos are omitted.",
+      "Dimensions are marked unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -36,
+      "xmax": 36,
+      "ymin": 0,
+      "ymax": 72,
+      "zmin": -15,
+      "zmax": 15,
+      "xlen": 72,
+      "ylen": 72,
+      "zlen": 30
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 14.000 mm; measured dimensions are [30.0, 72.0, 72.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 198127,
+        "sha256": "70e3341b67fbf66b9a2c63c08c155ddf12b44aa603b52622d1bf8830246d7c9e"
+      },
+      "model.stl": {
+        "bytes": 689684,
+        "sha256": "fa4d32b744e87327b1e867d592eb44cef0d9524b7de02e32b0f0754bc845f901"
+      },
+      "model.glb": {
+        "bytes": 249184,
+        "sha256": "f74f8446c729399ec0a936a086a2be3e26ed2819ae91d606b1dae12655086e60"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "70e3341b67fbf66b9a2c63c08c155ddf12b44aa603b52622d1bf8830246d7c9e"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,37 @@
+{
+  "partType": "wheel",
+  "summary": "Non-directional spoked wheel with a raised-pip tread and a central hex-style bore for an 8mm shaft. The axis of rotation is modeled along Z. Overall diameter is 32mm. Width is estimated at about 16mm.",
+  "boundsMm": {
+    "x": 32,
+    "y": 32,
+    "z": 16
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 8,
+      "description": "Flat outer face of the hub and rim on the +Z side. It can be used for axial constraint against neighboring components."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -8,
+      "description": "Flat outer face of the hub and rim on the -Z side. It can be used for axial constraint against neighboring components."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 32mm diameter and 8mm bore come from the product data, which is marked unverified. The view sheet and photos show no printed dimensions. The 16mm width is inferred from the side-view proportions in the view sheet, which show about a 2:1 diameter-to-width ratio, so it is not a stated value. The bore is a hexagonal profile, and 8mm is treated as its nominal size. The spoke cutouts are visible on the face but are not modeled as holes. The 32mm diameter is assumed to include the raised pips."
+}

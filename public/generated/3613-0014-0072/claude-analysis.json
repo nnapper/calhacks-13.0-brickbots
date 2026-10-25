@@ -1,0 +1,64 @@
+{
+  "partType": "wheel",
+  "summary": "Cylindrical silicone-rubber wheel, 72 mm outside diameter, with a spoked, compliant sidewall and a plastic center core. A 14 mm central bore runs along the axis, surrounded by a through-hole pattern on the 16 mm square pattern.",
+  "boundsMm": {
+    "x": 72,
+    "y": 72,
+    "z": 30
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          8,
+          8,
+          0
+        ],
+        [
+          -8,
+          8,
+          0
+        ],
+        [
+          -8,
+          -8,
+          0
+        ],
+        [
+          8,
+          -8,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 15,
+      "description": "Plastic core face on the +Z side, with the 14 mm bore and 16 mm square pattern holes, for hub or spacer attachment"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -15,
+      "description": "Plastic core face on the -Z side, with the same bore and hole pattern, for hub or spacer attachment or for stacking a second wheel"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Diameter (72 mm) and bore (14 mm) are from the supplied data, which is marked unverified. Width is not stated anywhere, so the 30 mm Z extent is a rough estimate from the render proportions and should be checked. The square pattern is read as 4 holes at the corners of a 16 mm square (±8 mm). The 4 mm pattern hole diameter is assumed from the M4 screws shown through the pattern, not printed. The core may sit slightly recessed from the rubber faces, but no recess depth is visible. The raised pips on the tread and the spoke cutouts are omitted from the bounding description."
+}

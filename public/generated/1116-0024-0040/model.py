@@ -1,0 +1,1 @@
+part = (cq.Workplane('XZ').rect(40, 24).extrude(-2.5).faces('>Y').workplane(centerOption='CenterOfBoundBox').rarray(8, 8, 5, 3).hole(4))

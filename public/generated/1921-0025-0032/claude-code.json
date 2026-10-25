@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "32 mm round servo hub with its axis along Y, 10 mm tall. A 3 mm base disc carries four 80° sector lobes at full height, joined by a 14 mm central boss. A central round bore stands in for the H25T spline. Four 3.4 mm through-holes sit on the axes at 11.3 mm radius. Four 4.2 mm through-holes sit on the diagonals at 12 mm radius, representing the slots.",
+  "confidence": "low",
+  "warnings": [
+    "The H25T spline teeth are omitted; the bore is a plain 5.9 mm round hole.",
+    "The height of 10 mm, the 3 mm base thickness and the hole diameters are visual estimates; the source marks its dimensions as unverified.",
+    "The hex nut counterbores, triangular lightening pockets, raised pads and ribbed underside are omitted.",
+    "The slots are modeled as simple round holes, not elongated slots.",
+    "The lobe and boss shapes are simplified from the image."
+  ],
+  "cadquery": "R=16.0\nh=10.0\nt=3.0\ncyl=cq.Workplane('XZ').circle(R).extrude(-h)\nbase=cq.Workplane('XZ').circle(R).extrude(-t)\npart=base\nfor k in range(4):\n    a=k*90\n    pts=[(0,0)]+[(40*math.cos(math.radians(a+d)),40*math.sin(math.radians(a+d))) for d in (-40,40)]\n    lobe=cq.Workplane('XZ').polyline(pts).close().extrude(-h).intersect(cyl)\n    part=part.union(lobe)\nboss=cq.Workplane('XZ').circle(7.0).extrude(-h)\npart=part.union(boss)\nround_pts=[(11.3,0),(-11.3,0),(0,11.3),(0,-11.3)]\nslot_pts=[(8.5,8.5),(-8.5,8.5),(8.5,-8.5),(-8.5,-8.5)]\npart=part.cut(cq.Workplane('XZ').pushPoints(round_pts).circle(1.7).extrude(-h))\npart=part.cut(cq.Workplane('XZ').pushPoints(slot_pts).circle(2.1).extrude(-h))\npart=part.cut(cq.Workplane('XZ').circle(2.95).extrude(-h))"
+}

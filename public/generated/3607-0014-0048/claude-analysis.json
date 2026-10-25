@@ -1,0 +1,84 @@
+{
+  "partType": "wheel",
+  "summary": "48mm diameter, 6mm thick disc wheel with a 14mm center bore and eight 4mm holes on a 24mm bolt circle. A 38mm diameter recess leaves a 3mm web, and the outer rim is the rubber lip.",
+  "boundsMm": {
+    "x": 48,
+    "y": 48,
+    "z": 6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          12,
+          0,
+          0
+        ],
+        [
+          -12,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          -12,
+          0
+        ],
+        [
+          8,
+          8.7,
+          0
+        ],
+        [
+          -8,
+          8.7,
+          0
+        ],
+        [
+          8,
+          -8.7,
+          0
+        ],
+        [
+          -8,
+          -8.7,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Recessed hub face (3mm web inside the 38mm recess) with the 14mm bore and the 8-hole 24mm bolt circle. This is the mounting face for a hub."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 3,
+      "description": "Outer face at the rim, 6mm total thickness. The rim carries the rubber tread surface on its outer circumference."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Dimensions come from the drawing: 48mm OD, 14mm bore, 4mm holes, 24mm across the horizontal hole centers, 16mm across the lower diagonal holes, 38mm recess diameter, 3mm web and 6mm overall thickness. The 4mm holes look slightly oval or slotted, but only a 4mm size is given. The diagonal hole coordinates are estimated from the 24mm bolt circle and the 16mm spacing. Which face carries the recess is ambiguous in the side view, so the z offsets are approximate."
+}

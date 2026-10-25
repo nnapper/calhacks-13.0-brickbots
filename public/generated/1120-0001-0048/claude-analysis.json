@@ -1,0 +1,34 @@
+{
+  "partType": "bracket",
+  "summary": "U-channel with a 48mm outside width and a 48mm outside height (web outer face to wall edge). The length is 48mm along the channel. The web is 2.5mm thick and the side walls are 2.5mm thick, leaving a 43mm inside width. Both walls and the web carry hole patterns.",
+  "boundsMm": {
+    "x": 48,
+    "y": 48,
+    "z": 48
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -24,
+      "description": "Outer face of the web (base of the U); the web is 2.5mm thick."
+    },
+    {
+      "axis": "y",
+      "offsetMm": -24,
+      "description": "Outer face of one side wall (2.5mm thick); the pattern is spaced on a 24mm grid."
+    },
+    {
+      "axis": "y",
+      "offsetMm": 24,
+      "description": "Outer face of the opposite side wall (2.5mm thick)."
+    },
+    {
+      "axis": "y",
+      "offsetMm": -21.5,
+      "description": "Inner face of one side wall; the inside width between the walls is 43mm. This is where inside-channel parts mount, centered 24mm from the outside of the walls."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "X is the channel length (48mm from the SKU), Y is the width, and Z is the height, with the origin at the center of the bounding box. The 48mm width, 43mm inside width and 2.5mm wall thickness are printed in the Insight #2 drawing. The 48mm height is scaled from that drawing (the wall edge sits 24mm past the center line). Hole diameters and positions are not dimensioned in the images, so the holes list is left empty rather than guessed. The 24mm pattern pitch is stated in the drawing text."
+}

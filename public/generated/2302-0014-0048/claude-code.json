@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "48-tooth MOD 0.8 spur gear (approx. involute teeth, OD 40 mm, root dia ~36.4 mm), 6 mm thick, axis along Y with bottom at Y=0, 14 mm center bore and eight radially elongated 4 x 4.7 mm slots on an 11.4 mm radius bolt circle.",
+  "confidence": "medium",
+  "warnings": [
+    "Thickness of 6 mm is estimated.",
+    "Shallow web recess on the front face is not modeled because its depth is not visible.",
+    "Tooth profile is a polyline-approximated involute with straight tip and root segments, without tip or root fillets.",
+    "Slot size and bolt-circle radius were measured from pixel scale and are approximate."
+  ],
+  "cadquery": "N=48\nrp=19.2\nrb=rp*math.cos(math.radians(20))\nra=20.0\nrr=18.2\nT=6.0\nh=math.pi/(2*N)\ninv=lambda t:t-math.atan(t)\nip=inv(math.tan(math.radians(20)))\ndef f(r):\n    return inv(math.sqrt((r/rb)**2-1))-ip\nrs=[rr+(ra-rr)*i/5 for i in range(6)]\npts=[]\nfor i in range(N):\n    a=2*math.pi*i/N\n    for r in rs:\n        th=a-h+f(r)\n        pts.append((r*math.cos(th),r*math.sin(th)))\n    for r in reversed(rs):\n        th=a+h-f(r)\n        pts.append((r*math.cos(th),r*math.sin(th)))\n    th=a+math.pi/N\n    pts.append((rr*math.cos(th),rr*math.sin(th)))\npart=cq.Workplane('XZ').polyline(pts).close().extrude(-T)\npart=part.cut(cq.Workplane('XZ').circle(7).extrude(-T))\nR=11.4\nfor k in range(8):\n    p=math.radians(k*45)\n    s=cq.Workplane('XZ').center(R*math.cos(p),R*math.sin(p)).slot2D(4.7,4,k*45).extrude(-T)\n    part=part.cut(s)\n"
+}

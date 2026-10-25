@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Round 32 mm diameter, 4 mm thick plate at the top (Y 4.5 to 8.5) with a 14 mm through bore and a 16 mm x 1 mm counterbore. It has four 3.3 mm tap-drill holes at 24 mm bolt-circle positions on the axes and four 4.5 mm round holes on the diagonals. Four 6 x 7 mm corner posts (X ±13 to ±19, Y 0 to 7) give a 38 mm width, and a 3.3 mm hole runs through each post along Z at y = 3.",
+  "confidence": "medium",
+  "warnings": [
+    "Diagonal slotted holes are modeled as 4.5 mm round holes because the slot size is not dimensioned.",
+    "M4 holes are modeled as 3.3 mm plain holes with no threads.",
+    "Post shape is simplified to rectangular blocks, so the tapered gussets and fillets are omitted.",
+    "Post Y range of 0 to 7 and the plate offset are estimated from the side view.",
+    "Post hole diameter and depth are assumed. They are modeled as 3.3 mm and as passing through the post along Z.",
+    "The vendor's 43 mm width applies to two mounts, so the 38 mm single-part width was used."
+  ],
+  "cadquery": "post = cq.Workplane('XY').pushPoints([(sx*16, 3.5, sz*11.75) for sx in (-1,1) for sz in (-1,1)]).eachpoint(lambda l: cq.Workplane('XY').box(6, 7, 8.5).val().moved(l))\nplate = cq.Workplane('XZ', origin=(0, 8.5, 0)).circle(16).extrude(4)\nbody = plate.union(post)\nbore = cq.Workplane('XZ', origin=(0, 8.5, 0)).circle(7).extrude(4)\ncb = cq.Workplane('XZ', origin=(0, 8.5, 0)).circle(8).extrude(1)\nholes1 = cq.Workplane('XZ', origin=(0, 8.5, 0)).pushPoints([(0, 12), (0, -12), (12, 0), (-12, 0)]).circle(1.65).extrude(4)\nholes2 = cq.Workplane('XZ', origin=(0, 8.5, 0)).pushPoints([(8.5, 8.5), (-8.5, 8.5), (8.5, -8.5), (-8.5, -8.5)]).circle(2.25).extrude(4)\nposthole = cq.Workplane('XY', origin=(0, 0, 0)).pushPoints([(-16, 3), (16, 3)]).circle(1.65).extrude(20, both=True)\npart = body.cut(bore).cut(cb).cut(holes1).cut(holes2).cut(posthole)"
+}

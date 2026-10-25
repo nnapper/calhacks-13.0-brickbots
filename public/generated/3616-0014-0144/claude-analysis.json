@@ -1,0 +1,37 @@
+{
+  "partType": "wheel",
+  "summary": "Wheel with a 144mm outer diameter and 52mm width, modeled as a cylinder with its axis along z. It has a 14mm center bore and an open web face. A bolt-circle pattern surrounds the bore on the hub face, and the tread is aggressive and lugged. The hub face accepts a hub on the 16mm and 32mm square patterns.",
+  "boundsMm": {
+    "x": 144,
+    "y": 144,
+    "z": 52
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -26,
+      "description": "Inner hub face with the 14mm center bore and goBILDA 16mm and 32mm square mounting hole patterns. A hub is bolted here, and a second wheel can be fastened to it for a dually setup."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 26,
+      "description": "Opposite face. It is recessed and open, and a second wheel can be bolted to it in the dually configuration."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 144mm diameter, 52mm width and 14mm bore come from the supplied specs, which are flagged as unverified, not from a printed drawing. Z is taken as the rotation axis and the wheel is centered on the origin. The small mounting holes are visible in the images, but their diameters and exact positions are not stated, so they are left out of the holes list. The dual-wheel images show 4 M4 screws on a hub bolt pattern and 8 thread-forming screws, but the hole coordinates are not dimensioned."
+}

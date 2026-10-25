@@ -1,0 +1,10 @@
+{
+  "shapeSummary": "16 x 8 x 8 mm square aluminum beam with its length along X, centered in X and Z, and its bottom at Y=0. Two 4 mm through-holes at x=±4 run along Y, and two 4 mm through-holes at x=±4 run along Z, so the two sets cross at the center. A 3.3 mm tap-drill hole, 7 mm deep, is cut into each end face to stand in for the M4x0.7 threads.",
+  "confidence": "medium",
+  "warnings": [
+    "Only the Y-axis holes (the face with two holes in the drawing) are dimensioned. The Z-axis holes are inferred from the product description of holes on all four sides, and their 4 mm diameter and through condition are assumed.",
+    "The M4x0.7 end holes are modeled as plain 3.3 mm tap-drill holes with no threads. The 7 mm depth is a guess because the drawing gives no depth.",
+    "Because the end holes are only 7 mm deep and the cross holes sit at x=±4, the end holes may or may not meet the cross holes in the real part."
+  ],
+  "cadquery": "part = cq.Workplane('XY').box(16, 8, 8, centered=(True, False, True))\ny_holes = cq.Workplane('XZ').pushPoints([(-4, 0), (4, 0)]).circle(2).extrude(-8)\nz_holes = cq.Workplane('XY').workplane(offset=-4).pushPoints([(-4, 4), (4, 4)]).circle(2).extrude(8)\nend_l = cq.Workplane('YZ', origin=(-8, 4, 0)).circle(1.65).extrude(7)\nend_r = cq.Workplane('YZ', origin=(8, 4, 0)).circle(1.65).extrude(-7)\npart = part.cut(y_holes).cut(z_holes).cut(end_l).cut(end_r)"
+}

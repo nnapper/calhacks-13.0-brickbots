@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1106 Series Square Beam (2 Hole, 16mm Length)",
+    "sku": "1106-0002-0016",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1106-series-square-beam-2-hole-16mm-length/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The drawing gives 16 x 8 x 8mm overall, 4mm hole diameter and 8mm hole spacing. Only the side-view drawing is dimensioned. The holes on the other long faces are taken from the renders and the product description, so the 4mm diameter and through condition are assumed for them. The central hole at each end face is not in the holes list because the drawing gives it as a fastener specification, not a plain diameter. The two perpendicular hole sets would cross at their centers if both are fully through. The axis assignment is a modeling choice, with x along the length.",
+      "Only the Y-axis holes (the face with two holes in the drawing) are dimensioned. The Z-axis holes are inferred from the product description of holes on all four sides, and their 4 mm diameter and through condition are assumed.",
+      "The M4x0.7 end holes are modeled as plain 3.3 mm tap-drill holes with no threads. The 7 mm depth is a guess because the drawing gives no depth.",
+      "Because the end holes are only 7 mm deep and the cross holes sit at x=±4, the end holes may or may not meet the cross holes in the real part."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -8.0000001,
+      "xmax": 8.0000001,
+      "ymin": -1e-7,
+      "ymax": 8.0000001,
+      "zmin": -4.0000001,
+      "zmax": 4.0000001,
+      "xlen": 16.0000002,
+      "ylen": 8.000000199999999,
+      "zlen": 8.0000002
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 354311,
+        "sha256": "b614e2869ae69d394f992349f70b7eb90b83d5f4b4bbbd42306ab21d69da84e9"
+      },
+      "model.stl": {
+        "bytes": 177284,
+        "sha256": "472682c55786aad94b930982aa926540d5fe59ffe85c4456d93f151305a004e8"
+      },
+      "model.glb": {
+        "bytes": 64644,
+        "sha256": "5e3f341f12b530299418fcf9fc70abf46b02a76a46e1d5d1c9fdfdca439043a2"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "b614e2869ae69d394f992349f70b7eb90b83d5f4b4bbbd42306ab21d69da84e9"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Planetary gearbox with its axis along Y, bottom at Y=0. A Ø36 x 21.1 mm body is followed by a 24x24 mm, 11.6 mm tall front housing and an 8 mm REX shaft with 7 mm flats that projects 23.5 mm. Total length is 56.2 mm. The front face has four 4 mm holes, 10 mm deep, at (±8, ±8). The rear face has four Ø3 holes on a 25 mm pattern at 45° and a Ø13 central recess.",
+  "confidence": "medium",
+  "warnings": [
+    "Front housing is modeled as a plain 24x24 square block. The real housing has clearance cuts and a stepped profile that are not modeled.",
+    "The (0,±12) M4 holes (6 mm deep) are omitted because they would break out of the simplified 24 mm housing.",
+    "Threads are not modeled. The M4 holes are drawn as plain 4 mm holes.",
+    "Depths of the rear Ø3 holes (6 mm) and the Ø13 recess (5 mm) are not stated and were assumed.",
+    "The vendor's 24 mm length conflicts with the 32.7 mm body length in the drawing. The drawing was used.",
+    "The rear Ø3 hole angles (45°) are assumed from the view.",
+    "The central hex nut and shaft-end details are omitted."
+  ],
+  "cadquery": "def cyl(d,h,y0,pts=[(0,0)]):\n    return cq.Workplane('XZ',origin=(0,y0,0)).pushPoints(pts).circle(d/2).extrude(-h)\n\nbody=cyl(36,21.1,0)\nhousing=cq.Workplane('XZ',origin=(0,21.1,0)).rect(24,24).extrude(-11.6)\nshaft=cyl(8,23.5,32.7).intersect(cq.Workplane('XY').box(7,200,10,centered=(True,True,True)))\npart=body.union(housing).union(shaft)\n\nfront=[(-8,-8),(8,-8),(-8,8),(8,8)]\npart=part.cut(cyl(4,10,32.7-10,front))\nrear=[(8.84,8.84),(-8.84,8.84),(8.84,-8.84),(-8.84,-8.84)]\npart=part.cut(cyl(3,6,0,rear))\npart=part.cut(cyl(13,5,0))"
+}

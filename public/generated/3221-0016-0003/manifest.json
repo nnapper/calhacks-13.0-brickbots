@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Axon MAX 1:3.2 Overdrive Kit",
+    "sku": "3221-0016-0003",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/axon-max-1-3-2-overdrive-kit/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The overall 85 x 42 mm footprint and the 73.6mm height come from the drawing. The 69mm hub-center distance from the left edge also comes from the drawing, and so does the 16mm hole spacing on the hub face. The x/y hole positions are scaled from the drawing and the z values are assumed. The 4mm hole diameter is nominal, taken from the M4 label on the drawing. The 3mm plate hole diameter is an estimate and is not printed. The listed 30mm y-spacing of the plate holes was measured off the drawing and is not printed. The supplied dimensions are marked unverified. Servo-related height is included in bounds, so the kit alone is shorter.",
+      "The servo is not part of the kit, so it is omitted. Overall height is therefore about 53.6 mm, not the 73.6 mm shown in the drawing.",
+      "Plate thickness, plate spacing, standoff positions and size, hub height, and shaft length are estimated from the drawing scale.",
+      "The plate outline is simplified to a rectangle, a narrower rectangle and a circular boss.",
+      "The 4 mm holes are modeled as plain through holes with no threads. They also cut the bottom plate, whereas the drawing shows them only in the hub and top plate.",
+      "The corner fastener holes on the plates are omitted because their diameter is not stated.",
+      "Worm/brass gear, the servo spline interface, the hub's internal cutouts and the shaft bearing are omitted because they are uncertain."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -42.5,
+      "xmax": 42.5,
+      "ymin": 0,
+      "ymax": 53.6,
+      "zmin": -21,
+      "zmax": 21,
+      "xlen": 85,
+      "ylen": 53.6,
+      "zlen": 42
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 6.000 mm; measured dimensions are [42.0, 53.6, 85.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 193181,
+        "sha256": "158e0ee0113622f186fbe0563f92ff9c7312fd38d7f898aef5651f66fb445e2a"
+      },
+      "model.stl": {
+        "bytes": 188184,
+        "sha256": "77fcb26f3935c84ae5711f3978baa361ed4c3be0699cbd1f6a988ddff3d10a51"
+      },
+      "model.glb": {
+        "bytes": 68500,
+        "sha256": "44c2002f08cbc540fe9a2e23c492fc716bc3380ae5d48eafd07b98880ecf5f07"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "158e0ee0113622f186fbe0563f92ff9c7312fd38d7f898aef5651f66fb445e2a"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

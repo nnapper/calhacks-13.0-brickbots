@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "3601 Series Rhino Wheel (32mm Bore, 96mm Diameter)",
+    "sku": "3601-0032-0096",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/3601-series-rhino-wheel-32mm-bore-96mm-diameter/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The wheel axis is Z, centered at the origin, so the faces sit at z=-16 and z=+16. The 96mm OD, 32mm width, 32mm bore, 8mm plate thickness and 16mm offset are printed on the drawing. The 76mm dimension is the inner recess diameter. The 4mm hole positions were read from the drawing's 8mm grid and are approximate. The pattern may not be perfectly symmetric, so the hole list should be checked against the source. Four slotted holes, at about (0,24), (0,-24), (-24,0) and (24,0), are not in the round-hole list because their slot length is not dimensioned. Hole z-positions use the plate mid-depth (z=-4). The dimensions in the supplied data are unverified.",
+      "The four slotted holes near (0,±24) and (±24,0) are omitted because their slot length is not dimensioned.",
+      "The rubber tread and the plastic rim are modeled as one solid. The tread-to-rim boundary is not separated.",
+      "The 4 mm hole positions were read from the drawing's 8mm grid and may be slightly off.",
+      "The source dimensions are marked unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -48,
+      "xmax": 48,
+      "ymin": 0,
+      "ymax": 96,
+      "zmin": -16,
+      "zmax": 16,
+      "xlen": 96,
+      "ylen": 96,
+      "zlen": 32
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 130096,
+        "sha256": "19647fa7b92dcfa210343483acf4f4082c25d787d914ace750165f6325d4dc18"
+      },
+      "model.stl": {
+        "bytes": 577284,
+        "sha256": "bb96b51771d751b724151b6a75fd3c75351301965ad335e6917b9b60d07e5f94"
+      },
+      "model.glb": {
+        "bytes": 208092,
+        "sha256": "2b79ba475604966faa7f66c36faf2e89c8f390c5e6adf4426f707f7080819e27"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "19647fa7b92dcfa210343483acf4f4082c25d787d914ace750165f6325d4dc18"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

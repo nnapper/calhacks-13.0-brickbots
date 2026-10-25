@@ -1,0 +1,6 @@
+part = cq.Workplane('XY').box(16, 8, 8, centered=(True, False, True))
+y_holes = cq.Workplane('XZ').pushPoints([(-4, 0), (4, 0)]).circle(2).extrude(-8)
+z_holes = cq.Workplane('XY').workplane(offset=-4).pushPoints([(-4, 4), (4, 4)]).circle(2).extrude(8)
+end_l = cq.Workplane('YZ', origin=(-8, 4, 0)).circle(1.65).extrude(7)
+end_r = cq.Workplane('YZ', origin=(8, 4, 0)).circle(1.65).extrude(-7)
+part = part.cut(y_holes).cut(z_holes).cut(end_l).cut(end_r)

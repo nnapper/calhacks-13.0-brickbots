@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "60 mm diameter, 6 mm thick steel flywheel disk with its axis along Y and its bottom face at Y=0. It has a 14 mm central bore, four 4.2 mm through holes on the diagonals at about 24 mm radius, and four 4.2 mm through holes at about 12 mm radius around the bore.",
+  "confidence": "low",
+  "warnings": [
+    "Thickness of 6 mm is estimated from the 115 g weight, not stated.",
+    "Bore diameter, hole diameters and hole positions are rough estimates from the render.",
+    "Counterbores on the outer holes are omitted because their depth and diameter are unknown.",
+    "Hex pockets around the inner holes are omitted as uncertain.",
+    "The keyed or notched center bore profile is omitted; the bore is modeled as a plain circle.",
+    "Logo and engraved ring marks are not modeled."
+  ],
+  "cadquery": "t=6\nbody=cq.Workplane('XZ').circle(30).extrude(-t)\npts_o=[(17,17),(-17,17),(-17,-17),(17,-17)]\npts_i=[(8.5,8.5),(-8.5,8.5),(-8.5,-8.5),(8.5,-8.5)]\nbore=cq.Workplane('XZ').circle(7).extrude(-t)\nouter=cq.Workplane('XZ').pushPoints(pts_o).circle(2.1).extrude(-t)\ninner=cq.Workplane('XZ').pushPoints(pts_i).circle(2.1).extrude(-t)\npart=body.cut(bore).cut(outer).cut(inner)"
+}

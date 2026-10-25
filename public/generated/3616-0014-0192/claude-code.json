@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "192mm diameter, 72mm wide wheel with its axis along Z, centered at X=0, Z=0, with its bottom at Y=0 (center at Y=96). It has a 70-96mm radius tire ring, 24 blind rectangular pockets on each side wall, a thin 8mm center hub disc, a 14mm center bore, and 4mm holes in 16mm and 32mm square patterns. The tread is smooth.",
+  "confidence": "low",
+  "warnings": [
+    "Tread lugs omitted; the outer surface is a plain cylinder.",
+    "Spokes and the hub recess are simplified to a solid thin disc, with no lattice spokes.",
+    "Pocket size, count, and depth are estimated from the image.",
+    "Pattern hole diameter (4mm) is assumed; the hub plate position and thickness are not stated.",
+    "Dimensions come from an unverified listing.",
+    "Inner rim radius of 70mm is estimated."
+  ],
+  "cadquery": "R=96.0\nW=72.0\nri=70.0\ntire=cq.Workplane('XY').circle(R).circle(ri).extrude(W/2,both=True)\nhub=cq.Workplane('XY').circle(ri+1).extrude(4,both=True)\nbody=tire.union(hub)\npk=None\nfor side in (1,-1):\n    for i in range(24):\n        a=i*15.0\n        b=(cq.Workplane('XY').box(14,16,20).translate((81,0,side*(W/2-10))).rotate((0,0,0),(0,0,1),a))\n        pk=b if pk is None else pk.union(b)\nbody=body.cut(pk)\nbody=body.cut(cq.Workplane('XY').circle(7).extrude(W,both=True))\npts=[(8,8),(8,-8),(-8,8),(-8,-8),(16,16),(16,-16),(-16,16),(-16,-16)]\nbody=body.cut(cq.Workplane('XY').pushPoints(pts).circle(2).extrude(W,both=True))\npart=body.translate((0,R,0))"
+}

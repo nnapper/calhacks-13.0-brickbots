@@ -1,0 +1,84 @@
+{
+  "partType": "gear",
+  "summary": "48-tooth MOD 0.8 spur gear with a 14 mm center bore and eight radial slotted holes on a circular pattern. Outer diameter is computed from the module as 0.8*(48+2)=40 mm, with a 38.4 mm pitch diameter. Thickness is estimated from the side view.",
+  "boundsMm": {
+    "x": 40,
+    "y": 40,
+    "z": 6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          11.6,
+          0
+        ],
+        [
+          8.2,
+          8.2,
+          0
+        ],
+        [
+          11.6,
+          0,
+          0
+        ],
+        [
+          8.2,
+          -8.2,
+          0
+        ],
+        [
+          0,
+          -11.6,
+          0
+        ],
+        [
+          -8.2,
+          -8.2,
+          0
+        ],
+        [
+          -11.6,
+          0,
+          0
+        ],
+        [
+          -8.2,
+          8.2,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 3,
+      "description": "Front flat face of the gear. It appears to have a slightly recessed web inside the tooth rim, and the eight slotted holes can be used to mount a hub."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -3,
+      "description": "Back flat face, which looks fully flat in the images."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 40 mm outer diameter and 14 mm bore come from the MOD and tooth count and from the product data. The 6 mm thickness is estimated from the side view proportions. The eight slots measure about 4 mm wide and 4.7 mm long, elongated radially. Their bolt-circle radius of about 11.6 mm is measured from pixel scale and is approximate. The depth of the face recess is not visible, so it is not modeled."
+}

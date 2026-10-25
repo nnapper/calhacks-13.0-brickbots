@@ -1,0 +1,24 @@
+{
+  "partType": "motor",
+  "summary": "Cylindrical brushed DC planetary gear motor with a 36 mm diameter gearbox, a 6 mm D-shaft output and a rear-mounted encoder cap. The motor axis is along X, with the output shaft toward +X. The 24 mm in the product name is taken as the shaft length. The overall body length is not given in the data or the drawings, so the X bound is a rough placeholder.",
+  "boundsMm": {
+    "x": 124,
+    "y": 36,
+    "z": 36
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": 38,
+      "description": "Gearbox output face. The 6 mm D-shaft protrudes toward +X from here, and the gearbox head has flat sides for clearance. Pattern mounts such as the quad block mount attach here, but the hole pattern is not dimensioned, so none is modeled."
+    },
+    {
+      "axis": "x",
+      "offsetMm": -62,
+      "description": "Rear face of the encoder cap, where the encoder connector is located. It is not a mounting surface."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The only verified dimensions are the 36 mm gearbox diameter and the 6 mm D-shaft diameter. The 24 mm shaft length is taken from the product name. The X bound is a rough guess of about 100 mm body plus the 24 mm shaft, centered on the part. Gearbox mounting hole sizes and positions are not printed in the images or data, so the holes list is empty. The sizes of any wire pass-through holes are not shown either, apart from the 14 mm holes in the channel. The dimensions in the source data are flagged as unverified."
+}

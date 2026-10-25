@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "5203 Series Yellow Jacket Motor (1:1 Ratio, 24mm Length 8mm REX® Shaft, 6000 RPM, 3.3 - 5V Encoder)",
+    "sku": "5203-2402-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/5203-series-yellow-jacket-motor-1-1-ratio-24mm-length-8mm-rex-shaft-6000-rpm-3-3-5v-encoder/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 24mm shaft length and 8mm shaft diameter are stated. The 36mm body diameter and 100mm overall length are estimates, because the supplied specs give no width, height or diameter. No hole sizes or positions are given in the images or specs, so holes is empty. The mounting face offset assumes the 100mm estimate. The flat sides on the jacket are shown in the images but their dimensions are not given.",
+      "Body diameter (36mm) and overall length (100mm) are estimates, because the specs give no body dimensions.",
+      "The output shaft is modeled as a plain 8mm round cylinder. The real 8mm REX profile is not modeled.",
+      "The flat sides on the yellow jacket, the gearbox pilot and mounting holes, the screws, the encoder connector and the wires are omitted because their dimensions are not given.",
+      "The section lengths for cap, can and gearbox are guesses."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -18,
+      "xmax": 18,
+      "ymin": 0,
+      "ymax": 36,
+      "zmin": -50,
+      "zmax": 50,
+      "xlen": 36,
+      "ylen": 36,
+      "zlen": 100
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 24.000 mm; measured dimensions are [36.0, 36.0, 100.0]",
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [36.0, 36.0, 100.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 9656,
+        "sha256": "13e9e210048d32234424ca4f3c7d3f77f1441145f0b2bfdf64c33d251829bb1c"
+      },
+      "model.stl": {
+        "bytes": 33484,
+        "sha256": "d3613a335baa5dc1301da6bac0b3cc627d2efcd2d02189c2ad848974ed33c2e3"
+      },
+      "model.glb": {
+        "bytes": 13064,
+        "sha256": "6bfdea72a4c0a91151a04cd7e100411a865a75cf9640eec8347ae542bee12d14"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "13e9e210048d32234424ca4f3c7d3f77f1441145f0b2bfdf64c33d251829bb1c"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 14
+  },
+  "status": "prototype_unverified"
+}

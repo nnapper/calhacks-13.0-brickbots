@@ -1,0 +1,37 @@
+{
+  "partType": "flat_plate",
+  "summary": "Round aluminum baseplate, 144 mm diameter and 6 mm thick. It has a flat top and bottom face and a pattern of through holes. Some holes are counterbored, and five hub-pattern clusters (one central, four outer) each have a large central opening with keyhole-style slots. The plate can be fastened to a floor or tabletop, or used as a rotating platform on a hub.",
+  "boundsMm": {
+    "x": 144,
+    "y": 144,
+    "z": 6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 3,
+      "description": "Flat top face with counterbored holes for mounting assemblies. Counterbores let M4 hardware sit below the surface."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -3,
+      "description": "Flat bottom face that rests on a floor or tabletop. Rubber feet can be attached here."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The 144 mm diameter and 6 mm thickness come from the supplied specs, which are marked unverified. The images show no printed hole dimensions. Only the central large opening is listed, and its 14 mm diameter is a rough visual estimate. The remaining holes are not listed because their sizes and positions could not be read reliably. They include the four outer hub-pattern clusters, the many small M4-class holes, and the counterbored holes. The plate is centered at the origin, with the z-axis normal to its faces."
+}

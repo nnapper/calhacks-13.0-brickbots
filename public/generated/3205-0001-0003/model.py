@@ -1,0 +1,5 @@
+s = cq.Workplane('XZ').circle(3).extrude(-8)
+w = cq.Workplane('XZ').workplane(offset=-8).circle(5).extrude(-10).edges().chamfer(1)
+h = cq.Workplane('XZ').workplane(offset=-18).circle(3.5).extrude(-4)
+bore = cq.Workplane('XZ').circle(2).extrude(-8)
+part = s.union(w).union(h).cut(bore)

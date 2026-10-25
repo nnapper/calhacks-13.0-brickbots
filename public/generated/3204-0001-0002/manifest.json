@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Worm Gear Set (28:1 Ratio, 8mm REX® Bore Worm)",
+    "sku": "3204-0001-0002",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/worm-gear-set-28-1-ratio-8mm-rex-bore-worm/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 33 mm worm length, MOD 1.25, 28:1 ratio, 8 mm bore and 43 mm internal channel width are given. The wheel outer diameter (about 37.5 mm) is computed from 28 teeth at MOD 1.25 plus addendum. The wheel thickness (10 mm) is an estimate, not a stated value. The 16mm-pattern hole positions and the 4 mm clearance diameter are assumed from the Sonic Hub pattern, not from a drawing. The images show additional holes between these four that are not modeled. The worm is mounted on its own axis, offset from the wheel axis, and is not modeled here.",
+      "Teeth are not modeled. The wheel is a plain disc at the estimated outer diameter.",
+      "The 10 mm thickness is an estimate, not a stated value.",
+      "The 8 mm REX bore is modeled as round rather than hex.",
+      "The 4 mm hole diameter and 8 mm radial positions are assumed from the hub pattern.",
+      "The extra holes visible between the four modeled ones are omitted.",
+      "The 33 mm worm is omitted.",
+      "The listed dimensions are unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -18.75,
+      "xmax": 18.75,
+      "ymin": 0,
+      "ymax": 37.5,
+      "zmin": -5,
+      "zmax": 5,
+      "xlen": 37.5,
+      "ylen": 37.5,
+      "zlen": 10
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 33.000 mm; measured dimensions are [10.0, 37.5, 37.5]",
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [10.0, 37.5, 37.5]",
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [10.0, 37.5, 37.5]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 23949,
+        "sha256": "614c36538a9ca8af8060dde60bc8e5406155b5ac27f20141120fe0551edade8c"
+      },
+      "model.stl": {
+        "bytes": 101684,
+        "sha256": "d08e97895ed16ba97a0309657efefd9c5aacb84bd5323aa16b36e6a520163225"
+      },
+      "model.glb": {
+        "bytes": 37500,
+        "sha256": "60a604aa107a6836ae6f4ef3a6cefc4c7c5b625854fad6b8f6c8b080b97bacad"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "614c36538a9ca8af8060dde60bc8e5406155b5ac27f20141120fe0551edade8c"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 18
+  },
+  "status": "prototype_unverified"
+}

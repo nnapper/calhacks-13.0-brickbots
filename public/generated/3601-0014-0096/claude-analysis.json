@@ -1,0 +1,274 @@
+{
+  "partType": "wheel",
+  "summary": "Rhino wheel, 96 mm diameter and 32 mm wide, with a rubber tread. The wheel axis is along Z. An internal hub plate 8 mm thick is offset from center, leaving an 8 mm recess on one side and a 16 mm recess on the other. The plate has a 14 mm center bore and a pattern of 4 mm holes on an 8 mm grid.",
+  "boundsMm": {
+    "x": 96,
+    "y": 96,
+    "z": 32
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          -4
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -8,
+          32,
+          -4
+        ],
+        [
+          0,
+          32,
+          -4
+        ],
+        [
+          8,
+          32,
+          -4
+        ],
+        [
+          -16,
+          24,
+          -4
+        ],
+        [
+          -8,
+          24,
+          -4
+        ],
+        [
+          0,
+          24,
+          -4
+        ],
+        [
+          8,
+          24,
+          -4
+        ],
+        [
+          16,
+          24,
+          -4
+        ],
+        [
+          -24,
+          16,
+          -4
+        ],
+        [
+          -16,
+          16,
+          -4
+        ],
+        [
+          -8,
+          16,
+          -4
+        ],
+        [
+          8,
+          16,
+          -4
+        ],
+        [
+          16,
+          16,
+          -4
+        ],
+        [
+          24,
+          16,
+          -4
+        ],
+        [
+          -32,
+          8,
+          -4
+        ],
+        [
+          -24,
+          8,
+          -4
+        ],
+        [
+          -16,
+          8,
+          -4
+        ],
+        [
+          -8,
+          8,
+          -4
+        ],
+        [
+          8,
+          8,
+          -4
+        ],
+        [
+          24,
+          8,
+          -4
+        ],
+        [
+          32,
+          8,
+          -4
+        ],
+        [
+          -32,
+          0,
+          -4
+        ],
+        [
+          -24,
+          0,
+          -4
+        ],
+        [
+          24,
+          0,
+          -4
+        ],
+        [
+          32,
+          0,
+          -4
+        ],
+        [
+          -32,
+          -8,
+          -4
+        ],
+        [
+          -24,
+          -8,
+          -4
+        ],
+        [
+          -16,
+          -8,
+          -4
+        ],
+        [
+          -8,
+          -8,
+          -4
+        ],
+        [
+          8,
+          -8,
+          -4
+        ],
+        [
+          24,
+          -8,
+          -4
+        ],
+        [
+          32,
+          -8,
+          -4
+        ],
+        [
+          -24,
+          -16,
+          -4
+        ],
+        [
+          -16,
+          -16,
+          -4
+        ],
+        [
+          -8,
+          -16,
+          -4
+        ],
+        [
+          8,
+          -16,
+          -4
+        ],
+        [
+          16,
+          -16,
+          -4
+        ],
+        [
+          24,
+          -16,
+          -4
+        ],
+        [
+          -16,
+          -24,
+          -4
+        ],
+        [
+          -8,
+          -24,
+          -4
+        ],
+        [
+          0,
+          -24,
+          -4
+        ],
+        [
+          8,
+          -24,
+          -4
+        ],
+        [
+          16,
+          -24,
+          -4
+        ],
+        [
+          -8,
+          -32,
+          -4
+        ],
+        [
+          0,
+          -32,
+          -4
+        ],
+        [
+          8,
+          -32,
+          -4
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Hub plate face on the deeper 16 mm recess side. Mount hubs or brackets here, centered on the 14 mm bore."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -8,
+      "description": "Hub plate face on the shallow 8 mm recess side, at the opposite face of the 8 mm thick plate."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Bounds, bore, 4 mm hole diameter, 8 mm grid, 8 mm plate thickness and the 8 mm / 16 mm recess depths come from the drawing. The 4 mm hole positions were estimated from the drawing's grid, so verify them. The four 4 mm-wide slots next to the bore are not listed as round holes. The Z sign convention is arbitrary: the 8 mm recess is placed at z=-16 to -8, the plate at -8 to 0, and the 16 mm recess at 0 to 16. The stepped rim and tread profile are not modeled."
+}

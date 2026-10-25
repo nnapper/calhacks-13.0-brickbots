@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1305 Series Thru-Hole Clamping Hub (32mm Bore)",
+    "sku": "1305-0032-0032",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1305-series-thru-hole-clamping-hub-32mm-bore/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The scale comes from the 32 mm bore (about 35.8 px/mm in the front views). Hole spacing measures about 32 mm in both directions. The bore center sits about 3.6 mm below the bbox center because the clamp block extends upward. The 8 mm thickness is a visual estimate from the isometric view and is not printed anywhere. The 4 mm mounting hole and 3 mm clamp-screw diameters are also estimates. The product data has no dimensions and is marked unverified. The clamp slit is about 2 mm wide and runs from the bore to the top edge at x=0.",
+      "Product data has no dimensions; sizes are scaled from the image using the 32 mm bore as reference and are unverified.",
+      "Thickness of 8 mm, ear hole diameter of 4 mm, and screw hole diameter of 3 mm are estimates.",
+      "Clamp block width of 14 mm, its height, and the screw hole position are visual estimates; the analysis JSON screw Y of 20.4 was not used because it conflicts with the block height.",
+      "The cap screw itself is omitted, so only the cross hole is modeled.",
+      "Small fillets where the ears blend into the ring are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -20,
+      "xmax": 20,
+      "ymin": -0.10000000000000142,
+      "ymax": 43,
+      "zmin": -4.0000001,
+      "zmax": 4.0000001,
+      "xlen": 40,
+      "ylen": 43.1,
+      "zlen": 8.0000002
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 32.000 mm; measured dimensions are [8.0000002, 40.0, 43.1]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 146249,
+        "sha256": "25fe57e4141319d5ffed64eec99f11055ea33d8eba9783ff0146c35e55d0f2dc"
+      },
+      "model.stl": {
+        "bytes": 236084,
+        "sha256": "d4b571a07a2c3127091d4d23ff44fef691e5fcd6f6c9a7197f141a333242118d"
+      },
+      "model.glb": {
+        "bytes": 85880,
+        "sha256": "0225183370b637d6b794ce19d7653cd2ba1484360b7b4876f86d2e6ad9eca60d"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "25fe57e4141319d5ffed64eec99f11055ea33d8eba9783ff0146c35e55d0f2dc"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

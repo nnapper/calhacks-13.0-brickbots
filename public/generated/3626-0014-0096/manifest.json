@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Hogback Traction Wheel (96mm Diameter, 50A Durometer)",
+    "sku": "3626-0014-0096",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/hogback-traction-wheel-96mm-diameter-50a-durometer/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 96mm diameter comes from the spec and the printed label. Width is not given anywhere, so the 24mm z thickness is a visual estimate from the renders and should be checked. The images show a central opening and several mounting holes, but no hole diameters or positions are printed or stated, so the holes array is empty rather than guessed. The source dimensions are flagged as unverified.",
+      "The 24 mm width is a visual estimate and is not stated in the source.",
+      "The bore diameter (16 mm), recess diameters and recess depth are estimated from the image.",
+      "The mounting-hole pattern on the hub and rim is omitted because positions and diameters are unknown.",
+      "Spokes and triangular ribs are omitted as uncertain decorative or structural detail.",
+      "Tread grooves along the outer edge are omitted.",
+      "The plastic core and rubber tread are merged into a single solid.",
+      "The yellow ring and printed text are not modeled, as required.",
+      "The analysis JSON puts the axis along Z, so the wheel center sits at Y=48 to keep the bottom at Y=0."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -48,
+      "xmax": 48,
+      "ymin": 0,
+      "ymax": 96,
+      "zmin": -12,
+      "zmax": 12,
+      "xlen": 96,
+      "ylen": 96,
+      "zlen": 24
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 17179,
+        "sha256": "2dad33f8b319e60661de74cbcf5837905d9d4581d3448695fbea3ca2bb12d3e6"
+      },
+      "model.stl": {
+        "bytes": 67284,
+        "sha256": "0ab7fcddf90ff5efdb2dddc0d9043b93cb66cce0135e8aff337dbf35580bbcdc"
+      },
+      "model.glb": {
+        "bytes": 25208,
+        "sha256": "6e7daa781b49c7dcf34e0e9916ec14ae9680024d486468f5b05330c36288cc41"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "2dad33f8b319e60661de74cbcf5837905d9d4581d3448695fbea3ca2bb12d3e6"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 19
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,89 @@
+{
+  "partType": "other",
+  "summary": "Short aluminum Rail-Channel, 48mm long. The cross-section is an I-shaped web with a pair of parallel rails along each long edge. The web carries the central grid pattern, which for the 1-hole version is one large hole plus smaller holes and slots. The ends of the rails have axial holes.",
+  "boundsMm": {
+    "x": 48,
+    "y": 72,
+    "z": 16
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "x",
+      "diameterMm": 3.3,
+      "positionsMm": [
+        [
+          -24,
+          32,
+          -8
+        ],
+        [
+          -24,
+          32,
+          8
+        ],
+        [
+          -24,
+          -32,
+          -8
+        ],
+        [
+          -24,
+          -32,
+          8
+        ],
+        [
+          24,
+          32,
+          -8
+        ],
+        [
+          24,
+          32,
+          8
+        ],
+        [
+          24,
+          -32,
+          -8
+        ],
+        [
+          24,
+          -32,
+          8
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Central web faces carrying the grid hole pattern, used for attaching structure and motion components. The web is thin and lies in the XY plane."
+    },
+    {
+      "axis": "y",
+      "offsetMm": 36,
+      "description": "Outer faces of the rail pairs along the top and bottom edges, which act as smooth running surfaces for U-Wheels."
+    },
+    {
+      "axis": "x",
+      "offsetMm": 24,
+      "description": "End faces of the rails, with axial holes for end attachments. The same applies at x = -24."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Length 48mm comes from the product data. The 16mm rail-pair spacing (z) is read from the Insight #4 cross-section drawing. The 72mm width, the 64mm rail-to-rail center distance, and the rail positions are scaled from that drawing and assume an 8mm rail diameter, so they are estimates. The 14mm central bore diameter and the 3.3mm end-hole diameter are assumed nominal values that are not printed anywhere. The end-hole count and positions are inferred from the visible rail ends. The web thickness is not given, so the web is not modeled separately from the 16mm envelope. Small grid holes and slots are not individually listed because their sizes and positions are not legible."
+}

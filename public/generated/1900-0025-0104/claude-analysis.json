@@ -1,0 +1,64 @@
+{
+  "partType": "other",
+  "summary": "Single servo arm: a flat 8mm-wide bar with 4 equally spaced 4mm holes at 8mm pitch. One end has a round Ø10mm hub with a 25-tooth (H25T) spline and a Ø3mm center hole. The hub stands proud of the 4mm plate to a total thickness of 7.6mm.",
+  "boundsMm": {
+    "x": 10,
+    "y": 41,
+    "z": 7.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          -7.5,
+          -1.8
+        ],
+        [
+          0,
+          0.5,
+          -1.8
+        ],
+        [
+          0,
+          8.5,
+          -1.8
+        ],
+        [
+          0,
+          16.5,
+          -1.8
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          -15.5,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -3.8,
+      "description": "Flat face of the 4mm-thick arm plate, with the 4 linkage holes. The Ø7mm recess around the Ø3mm center hole opens on this side."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 3.8,
+      "description": "Face of the Ø10mm hub on the 25-tooth spline side. It mounts onto the servo output shaft and sits 7.6mm from the plate face."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Coordinates are centered on the bounding box. The box spans y from -20.5 to 20.5, so the hub center is at y=-15.5. From the drawing: the arm is 8mm wide, the hub is Ø10mm, and the farthest hole center is 32mm from the hub center. The end radius is taken as 4mm and the hub radius as 5mm, which gives y=41. The hub is wider than the arm, so x=10. The 4mm plate is placed on the -z side and the hub projects to +z, with a 7.6mm overall thickness. The hole z-positions use the plate mid-plane at z=-1.8. The Ø7mm recess around the Ø3mm hole is on the plate side. The 3.1mm and 3.5mm dimensions are not clearly tied to a feature, so they are not modeled. The spline bore diameter is not stated and is not modeled."
+}

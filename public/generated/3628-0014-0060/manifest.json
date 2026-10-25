@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Steel Flywheel (60mm Diameter, 115g, 551 g·cm²)",
+    "sku": "3628-0014-0060",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/steel-flywheel-60mm-diameter-115g-551-g-cm/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 60 mm diameter is given. Thickness is estimated from 115 g of steel (density about 7.85 g/cm³) minus the cutouts, and agrees with the stated 551 g·cm² MOI. The bore diameter, hole diameters and hole positions are rough estimates from the renders. The center bore has a keyed or notched profile for the hub that is not modeled here. The four inner holes sit in hex-shaped pockets, and the outer holes are counterbored. Counterbore depths are not stated.",
+      "Thickness of 6 mm is estimated from the 115 g weight, not stated.",
+      "Bore diameter, hole diameters and hole positions are rough estimates from the render.",
+      "Counterbores on the outer holes are omitted because their depth and diameter are unknown.",
+      "Hex pockets around the inner holes are omitted as uncertain.",
+      "The keyed or notched center bore profile is omitted; the bore is modeled as a plain circle.",
+      "Logo and engraved ring marks are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -30,
+      "xmax": 30,
+      "ymin": 0,
+      "ymax": 6,
+      "zmin": -30,
+      "zmax": 30,
+      "xlen": 60,
+      "ylen": 6,
+      "zlen": 60
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 38432,
+        "sha256": "6d5ed183ebe65287d2c6ff242137e552800a9fa855c06a58fe27940941b00bd1"
+      },
+      "model.stl": {
+        "bytes": 169684,
+        "sha256": "ce1b9e42ba11d40934bd4ad3f984dbb1de6c211f9d94d63cbaec3d57d652a34e"
+      },
+      "model.glb": {
+        "bytes": 61888,
+        "sha256": "5e0a191ed039c15612549f244af0eba56e4877b4f67a40247ab61ee2b2b69b18"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "6d5ed183ebe65287d2c6ff242137e552800a9fa855c06a58fe27940941b00bd1"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 26
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "2302 Series Aluminum, MOD 0.8, Hub Mount Gear (14mm Bore, 48 Tooth)",
+    "sku": "2302-0014-0048",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/2302-series-aluminum-mod-0-8-hub-mount-gear-14mm-bore-48-tooth/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The 40 mm outer diameter and 14 mm bore come from the MOD and tooth count and from the product data. The 6 mm thickness is estimated from the side view proportions. The eight slots measure about 4 mm wide and 4.7 mm long, elongated radially. Their bolt-circle radius of about 11.6 mm is measured from pixel scale and is approximate. The depth of the face recess is not visible, so it is not modeled.",
+      "Thickness of 6 mm is estimated.",
+      "Shallow web recess on the front face is not modeled because its depth is not visible.",
+      "Tooth profile is a polyline-approximated involute with straight tip and root segments, without tip or root fillets.",
+      "Slot size and bolt-circle radius were measured from pixel scale and are approximate."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -19.997610411166008,
+      "xmax": 19.997610411166008,
+      "ymin": 0,
+      "ymax": 6,
+      "zmin": -19.997610411166008,
+      "zmax": 19.997610411166008,
+      "xlen": 39.995220822332016,
+      "ylen": 6,
+      "zlen": 39.995220822332016
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 14.000 mm; measured dimensions are [6.0, 39.995220822332016, 39.995220822332016]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 2634476,
+        "sha256": "fb8a03206dadcd356187198f529ab53e44b939973072e902d3bee34d355e209e"
+      },
+      "model.stl": {
+        "bytes": 280884,
+        "sha256": "570acf145c241491fdfccfe3dfdca318730fe78257aa8499852867c25f492bdb"
+      },
+      "model.glb": {
+        "bytes": 101912,
+        "sha256": "dac150380aa5b5ce8c3980bf974590cd717b58925ed879c87afab23404df92e9"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "fb8a03206dadcd356187198f529ab53e44b939973072e902d3bee34d355e209e"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 10
+  },
+  "status": "prototype_unverified"
+}

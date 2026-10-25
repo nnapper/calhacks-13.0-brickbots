@@ -1,0 +1,74 @@
+{
+  "partType": "other",
+  "summary": "Servo gearbox kit with two parallel black plates joined by hex standoffs and a geared output hub with a 6mm shaft. The plates are 42mm wide and the output hub is 32mm in diameter. The kit holds the servo between the plates. The drawing shows 85 x 42 x 73.6 mm overall, and that height includes the servo, which is not part of the kit.",
+  "boundsMm": {
+    "x": 85,
+    "y": 42,
+    "z": 73.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          26.5,
+          11.3,
+          36.8
+        ],
+        [
+          26.5,
+          -11.3,
+          36.8
+        ],
+        [
+          37.8,
+          0,
+          36.8
+        ],
+        [
+          15.2,
+          0,
+          36.8
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          -38.5,
+          15,
+          0
+        ],
+        [
+          -38.5,
+          -15,
+          0
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 36.8,
+      "description": "Top face of the output hub. It has four tapped holes on a 16mm adjacent-hole spacing, centered on the output axis at x≈26.5mm."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -36.8,
+      "description": "Bottom of the assembly at the servo base. The servo is not included, so this face is not a kit mounting surface."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Plate mounting region at the far end from the hub. Two fastener locations are spaced 30mm apart in y, near x≈-38.5mm."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The overall 85 x 42 mm footprint and the 73.6mm height come from the drawing. The 69mm hub-center distance from the left edge also comes from the drawing, and so does the 16mm hole spacing on the hub face. The x/y hole positions are scaled from the drawing and the z values are assumed. The 4mm hole diameter is nominal, taken from the M4 label on the drawing. The 3mm plate hole diameter is an estimate and is not printed. The listed 30mm y-spacing of the plate holes was measured off the drawing and is not printed. The supplied dimensions are marked unverified. Servo-related height is included in bounds, so the kit alone is shorter."
+}

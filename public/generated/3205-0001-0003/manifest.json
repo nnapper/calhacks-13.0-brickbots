@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "V-Wheel Standoff Kit (13mm Center Height)",
+    "sku": "3205-0001-0003",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/v-wheel-standoff-kit-13mm-center-height/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Dimensions are from the printed drawing: wheel diameter 10mm, wheel body height 8mm, 10mm across the wheel including its chamfered edges, standoff diameter 6mm and standoff length 8mm, and a bottom hole 8mm deep. The total height of about 22mm is scaled from the drawing (about 19.25 px/mm), not printed. The screw head projects about 4mm above the wheel, estimated from the drawing, although the screw is labeled 6mm long. The 13mm base-to-center height in the listing does not match any dimension in the drawing, so it was not used. The hole diameter of 4mm is the nominal size from the drawing label. The 3mm hex socket in the screw head is not modeled as a hole because its depth is not given. The third image shows a perforated plate, which is a separate part and was not analyzed. The bounding box is centered at the origin, with z from -11 to 11.",
+      "Total height of 22 mm is scaled from the drawing and is not printed on it.",
+      "Screw head diameter (about 7 mm) and height above the wheel (about 4 mm) are estimated from the drawing.",
+      "The 3mm hex socket in the screw head is not modeled because its depth is not given.",
+      "Threads are not modeled. The M4 bottom hole is a plain 4 mm nominal diameter blind hole.",
+      "The 13 mm base-to-center height in the listing does not match any dimension in the drawing, so it was not used.",
+      "Chamfer size of 1 mm is estimated from the 10 mm overall height versus the 8 mm flat height.",
+      "The listed kit contains several units, but only one unit is modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -5,
+      "xmax": 5,
+      "ymin": 0,
+      "ymax": 22,
+      "zmin": -5,
+      "zmax": 5,
+      "xlen": 10,
+      "ylen": 22,
+      "zlen": 10
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 13.000 mm; measured dimensions are [10.0, 10.0, 22.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 22647,
+        "sha256": "e58942e1ff55db47a195436f75f25c29bd7130c033690c2ab00b980edd717ddc"
+      },
+      "model.stl": {
+        "bytes": 92284,
+        "sha256": "a0af18773a6a36e84fe0a92489fbaab8bdedf5e19e520742e477e3955525c0bc"
+      },
+      "model.glb": {
+        "bytes": 34236,
+        "sha256": "c3901f3a4015fe39432a23c02b4773d40de7c7eb29b24b258dff7d18de39b7f4"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "e58942e1ff55db47a195436f75f25c29bd7130c033690c2ab00b980edd717ddc"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 10
+  },
+  "status": "prototype_unverified"
+}

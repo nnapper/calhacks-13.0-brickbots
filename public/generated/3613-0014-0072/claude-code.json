@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "72 mm diameter, 30 mm wide wheel with its axis along Z, centered on X and Z, spanning Y 0 to 72. It has a 14 mm through bore, four 4 mm through holes on a 16 mm square pattern, and 16 round pockets (8 mm diameter, 10 mm deep) on each face, centered on a 27 mm radius, approximating the spoke cutouts.",
+  "confidence": "low",
+  "warnings": [
+    "Wheel width of 30 mm is estimated from the render, not stated in the product data.",
+    "The 4 mm pattern hole diameter is assumed.",
+    "Spoke pockets are simplified to round holes with an assumed depth of 10 mm per side; the real profile is a contoured, hourglass-like shape.",
+    "The pockets are placed on a 27 mm radius, outside the plastic core.",
+    "The render appears to show more holes in the core (a ring of about 8) than the 4 given in the analysis; only the 4-hole square pattern is modeled.",
+    "The core recess/cup, the plastic-versus-rubber split, tread pips and logos are omitted.",
+    "Dimensions are marked unverified."
+  ],
+  "cadquery": "tire = cq.Workplane('XY').circle(36).extrude(15, both=True)\npk = cq.Workplane('XY').workplane(offset=5).polarArray(27, 0, 360, 16).circle(4).extrude(11)\npk2 = cq.Workplane('XY').workplane(offset=-16).polarArray(27, 0, 360, 16).circle(4).extrude(11)\ntire = tire.cut(pk).cut(pk2)\nbore = cq.Workplane('XY').circle(7).extrude(20, both=True)\nholes = cq.Workplane('XY').pushPoints([(8, 8), (-8, 8), (-8, -8), (8, -8)]).circle(2).extrude(20, both=True)\npart = tire.cut(bore).cut(holes).translate((0, 36, 0))"
+}

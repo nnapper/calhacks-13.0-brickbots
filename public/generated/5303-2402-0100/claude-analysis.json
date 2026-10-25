@@ -1,0 +1,24 @@
+{
+  "partType": "motor",
+  "summary": "Cylindrical brushed DC planetary gear motor with a 36mm diameter gearbox and an 8mm REX output shaft protruding from the gearbox face. The body axis runs along Z, with the shaft toward +Z. The motor can be clamped by the 36mm gearbox body or mounted on the gearbox face with M4 screws.",
+  "boundsMm": {
+    "x": 36,
+    "y": 36,
+    "z": 124
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 38.5,
+      "description": "Gearbox output face. The 8mm REX shaft protrudes about 23.5mm in +Z from this face. M4 screws attach mounts here, but the hole pattern is not dimensioned."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "36mm diameter cylindrical gearbox body, clamped by a 36mm-bore clamping mount. The clamp sits on the gearbox section, not at the box center, so its Z position is approximate."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Stated values: 36mm gearbox diameter, 8mm REX shaft, 23.5mm shaft length, RS-560 motor size. The listed 'length: 24' matches the shaft length, so I did not treat it as the body length. Total motor length is not given in the images or data. The 124mm Z bound is an estimate (roughly 100mm body plus the 23.5mm shaft) and should be checked against the vendor drawing. The face mounting holes appear in the exploded views, but their diameter, count and positions are not dimensioned, so the holes array is empty. The 36mm figure applies to the gearbox, and the rear motor can may differ in diameter."
+}

@@ -1,0 +1,42 @@
+{
+  "partType": "flat_plate",
+  "summary": "Short stadium-shaped (obround) flat beam, 16mm long by 8mm wide by 4mm thick. It has two round through holes of 4mm diameter on the long centerline, spaced 8mm apart.",
+  "boundsMm": {
+    "x": 16,
+    "y": 8,
+    "z": 4
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -4,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 2,
+      "description": "Top flat face (+Z), 16x8mm obround, with two 4mm hole openings"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -2,
+      "description": "Bottom flat face (-Z), 16x8mm obround, with two 4mm hole openings"
+    }
+  ],
+  "confidence": "high",
+  "notes": "Dimensions come from the printed drawing: 16mm overall length, 8mm width, 8mm hole spacing, 4mm hole diameter and 4mm thickness. The ends are full semicircular radii of 4mm, so the hole centers sit at the end-radius centers. The box is centered at the origin with X along the length, Y along the width and Z along the thickness. The 3D render shows the holes go straight through, and the drawing does not state this. The edges look slightly chamfered or softened in the render, but no dimension is given, so it is not modeled. The product listing's dimensionsAreUnverified flag does not affect the values used, because the drawing confirms the 16mm length."
+}

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "GripForce Gecko™ Wheel (8mm REX® Bore, 32mm Diameter, 30A Durometer)",
+    "sku": "3613-4008-0032",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/gripforce-gecko-wheel-8mm-rex-bore-32mm-diameter-30a-durometer/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The 32mm diameter and 8mm bore come from the product data, which is marked unverified. The view sheet and photos show no printed dimensions. The 16mm width is inferred from the side-view proportions in the view sheet, which show about a 2:1 diameter-to-width ratio, so it is not a stated value. The bore is a hexagonal profile, and 8mm is treated as its nominal size. The spoke cutouts are visible on the face but are not modeled as holes. The 32mm diameter is assumed to include the raised pips.",
+      "The 16 mm width is inferred from image proportions, not stated in the product data.",
+      "The 32 mm diameter and 8 mm bore come from unverified product data.",
+      "The 8 mm bore is modeled as a hexagon with 8 mm across flats, treating 8 mm as the nominal size.",
+      "The spoke cutouts on the faces are omitted because their geometry is uncertain.",
+      "The raised tread pips are omitted, so the tread is a plain cylinder.",
+      "The plastic core and silicone rim are merged into one solid.",
+      "The text on the wheel (goBILDA.com) is not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -16,
+      "xmax": 16,
+      "ymin": 0,
+      "ymax": 32,
+      "zmin": -8,
+      "zmax": 8,
+      "xlen": 32,
+      "ylen": 32,
+      "zlen": 16
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [16.0, 32.0, 32.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 31964,
+        "sha256": "d4d9b61d6c4485380753a418c2000d4134be544184f65aef79d918debc17fed0"
+      },
+      "model.stl": {
+        "bytes": 26484,
+        "sha256": "5941333bfd687152867ff18fedf148bcec269f205c6299961327d178cf99bfee"
+      },
+      "model.glb": {
+        "bytes": 10516,
+        "sha256": "3957ece6fdff664a04cddd7b11f10b3a35d1ba64d978ae4db69db64cd63f3c74"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "d4d9b61d6c4485380753a418c2000d4134be544184f65aef79d918debc17fed0"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 62
+  },
+  "status": "prototype_unverified"
+}

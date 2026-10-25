@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Flat 8 mm thick aluminum clamping hub: 40 mm OD ring with a 32 mm through bore, four 8 mm-diameter ears with 4 mm holes on a 32 mm square pattern, and a 14 mm wide clamp block at the top with a 2 mm slit into the bore and a 3 mm cross hole for the clamp screw. Bottom sits at Y=0 and the part is centered in X and Z.",
+  "confidence": "low",
+  "warnings": [
+    "Product data has no dimensions; sizes are scaled from the image using the 32 mm bore as reference and are unverified.",
+    "Thickness of 8 mm, ear hole diameter of 4 mm, and screw hole diameter of 3 mm are estimates.",
+    "Clamp block width of 14 mm, its height, and the screw hole position are visual estimates; the analysis JSON screw Y of 20.4 was not used because it conflicts with the block height.",
+    "The cap screw itself is omitted, so only the cross hole is modeled.",
+    "Small fillets where the ears blend into the ring are not modeled."
+  ],
+  "cadquery": "cy = 19.9\nring = cq.Workplane('XY').center(0, cy).circle(20).extrude(4, both=True)\npts = [(-16, cy-16), (16, cy-16), (-16, cy+16), (16, cy+16)]\nears = cq.Workplane('XY').pushPoints(pts).circle(4).extrude(4, both=True)\nblock = cq.Workplane('XY').box(14, 11.1, 8).translate((0, cy + 17.55, 0))\nbody = ring.union(ears).union(block)\nbore = cq.Workplane('XY').center(0, cy).circle(16).extrude(10, both=True)\nholes = cq.Workplane('XY').pushPoints(pts).circle(2).extrude(10, both=True)\nslit = cq.Workplane('XY').box(2, 25, 12).translate((0, cy + 12.5, 0))\nscrew = cq.Workplane('YZ').center(cy + 18, 0).circle(1.5).extrude(10, both=True)\npart = body.cut(bore).cut(holes).cut(slit).cut(screw)"
+}

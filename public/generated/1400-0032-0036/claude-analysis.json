@@ -1,0 +1,37 @@
+{
+  "partType": "bracket",
+  "summary": "Aluminum 1-side, 2-post clamping motor mount. A split ring clamp with a 36 mm through bore sits on a flat base with two post feet. One clamp screw closes a slit at the upper side. The base is 24 mm below the bore centerline, so the bore center sits 24 mm above the mounting face.",
+  "boundsMm": {
+    "x": 52,
+    "y": 8,
+    "z": 48
+  },
+  "holes": [
+    {
+      "axis": "y",
+      "diameterMm": 36,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -24,
+      "description": "Flat underside of the two post feet. It seats on the outside of the channel and puts the bore centerline 24 mm above it, which gives the 48 mm center-to-center spacing."
+    },
+    {
+      "axis": "y",
+      "offsetMm": 0,
+      "description": "The 36 mm bore is clamped around the Ø36 mm gearbox, and the clamp screw tightens the split."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 36 mm bore, the 24 mm base-to-center height, and the 48 mm center-to-center spacing come from the provided data. The overall x width (about 52 mm, including the clamp tab) and the thickness along the bore axis (about 8 mm) are estimates from image proportions. The ring is assumed to have a 48 mm outer diameter, giving a 48 mm overall height. The bore is placed at the origin, but the clamp tab probably shifts the true center slightly. The clamp screw hole and any base mounting holes are not dimensioned or clearly visible, so they are not listed."
+}

@@ -1,0 +1,64 @@
+{
+  "partType": "gear",
+  "summary": "Flat 18-tooth, 8mm-pitch (05B) chain sprocket. It has a 14mm center bore and a ring of small holes around the bore. The disc axis is along z.",
+  "boundsMm": {
+    "x": 49.2,
+    "y": 49.2,
+    "z": 2.4
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          8,
+          8,
+          0
+        ],
+        [
+          -8,
+          8,
+          0
+        ],
+        [
+          -8,
+          -8,
+          0
+        ],
+        [
+          8,
+          -8,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 1.2,
+      "description": "Front flat face of the sprocket disc, around the 14mm bore and 4mm holes"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -1.2,
+      "description": "Back flat face of the sprocket disc, around the 14mm bore and 4mm holes"
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The drawing prints a 49.2mm outer diameter, 46.1mm pitch diameter, 2.4mm thickness, 14mm bore and 4mm holes. The four round 4mm holes sit on a 16mm square pattern, so I placed them at (±8, ±8). The drawing also shows four slotted holes on the x and y axes at about 11.3mm radius. They are not dimensioned, so I left them out of the holes list. The 24mm dimension is ambiguous against the 16mm spacing and was not used. The 18-tooth count comes from the product data."
+}

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "3624 Series Omni Wheel (8mm REX® Bore, 32mm Diameter, 50A Durometer)",
+    "sku": "3624-4008-0032",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/3624-series-omni-wheel-8mm-rex-bore-32mm-diameter-50a-durometer/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 32 mm diameter and 8 mm bore come from the supplied, unverified product data. The bore is hexagonal, and the 8 mm nominal value is treated as its size. The images show it passing fully through the wheel. Width is not stated anywhere, so the 14 mm z value is a rough estimate from the thickness-to-diameter proportion in the images and should be checked against a datasheet. The fastener head diameters and positions cannot be measured from the images, so they are not listed as holes. The -z face is assumed to match the +z face because it is not visible.",
+      "The 14 mm wheel width is an estimate, since no width is stated.",
+      "The rollers are simplified to plain cylinders and lack the real barrel profile.",
+      "The roller size, count (8 per row) and stagger angle are estimated from the image.",
+      "Core diameter and roller placement are approximate.",
+      "The three countersunk screws, the recessed hub detail and the logos are omitted.",
+      "The -z face is assumed to mirror the +z face.",
+      "The 8 mm hex size is taken as across-flats, which is uncertain."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -16.31280634964095,
+      "xmax": 16.31280634964095,
+      "ymin": -0.31280634964094894,
+      "ymax": 32.31280634964095,
+      "zmin": -7.0000001,
+      "zmax": 7.0000001,
+      "xlen": 32.6256126992819,
+      "ylen": 32.6256126992819,
+      "zlen": 14.0000002
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [14.0000002, 32.6256126992819, 32.6256126992819]",
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [14.0000002, 32.6256126992819, 32.6256126992819]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 382982,
+        "sha256": "b386a534bbfe9524d3fd4d8950bdc515eee153b1acdb5e609a551c891d564ccc"
+      },
+      "model.stl": {
+        "bytes": 251684,
+        "sha256": "d6ec25cc938aa68488892d82df151ac9f24dd14d3451a456502d74c0bf4f3634"
+      },
+      "model.glb": {
+        "bytes": 91616,
+        "sha256": "aa595a4f93e399d9669397e019103dbccfd4aa7ebbdae889a11d443ebc8be775"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "b386a534bbfe9524d3fd4d8950bdc515eee153b1acdb5e609a551c891d564ccc"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}
