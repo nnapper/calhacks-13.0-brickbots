@@ -58,6 +58,9 @@ describe('partsInRect', () => {
 });
 
 describe('placeholderSize', () => {
+  it('shapes cables as a bendy lead', () => {
+    expect(placeholderSize({ name: 'JST SH Servo Cable 300mm', sku: 'c', dims: { length: 300 } })).toMatchObject({ shape: 'cable', kind: 'cable', x: 300 });
+  });
   it('uses the real diameter for a wheel', () => {
     expect(placeholderSize({ name: 'Omni Wheel', sku: 'w', dims: { diameter: 48, width: 19 } })).toMatchObject({ shape: 'disc', x: 48, z: 19 });
   });

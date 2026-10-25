@@ -154,8 +154,28 @@ function shaftBore(shaftPart, borePart) {
   return verdict('compatible', `Nominal direct fit: ${round(shaft)} mm ${shapeA} shaft and ${round(bore)} mm ${shapeB} bore. Clearance and torque capacity still need checking.`, 'shaft-bore');
 }
 
+// Servo output splines are named by tooth count ("H25T Spline", "25 Tooth Spline"). Only a stated spline counts.
+function splineTeeth(part) {
+  const text = [part.name, ...part.specs.map(({ key, value }) => `${key} ${value}`)].join(' | ');
+  if (!/spline/i.test(text)) return null;
+  const match = text.match(/\bH(\d+)T\b/i) ?? text.match(/\b(\d+)[ -]?tooth\b[^|]{0,20}spline/i) ?? text.match(/spline[^|]{0,20}?\b(\d+)[ -]?tooth\b/i);
+  return match ? Number(match[1]) : null;
+}
+
+// A servo itself, as opposed to the hubs, arms, gears, blocks and frames whose names also say "servo".
+const servoBody = (part) => kind(part) === 'servo' && !/\b(hub|arm|gears?|block|frame|plate|programmer|commander|bracket|mount)\b/i.test(part.name);
+
+function servoSpline(servo, mount) {
+  const teeth = splineTeeth(servo), other = splineTeeth(mount);
+  if (!teeth || !other) return null;
+  if (teeth !== other) return verdict('incompatible', `${servo.name} has a ${teeth}-tooth output spline, while ${mount.name} fits a ${other}-tooth spline. A matching hub or arm is required.`, 'servo-spline');
+  return verdict('compatible', `Both list a ${teeth}-tooth servo spline, so ${mount.name} fits the ${servo.name} output shaft. Fastener and torque capacity still need checking.`, 'servo-spline');
+}
+
 function pairFromSpecs(a, b) {
   const typeA = kind(a), typeB = kind(b);
+  if (servoBody(a) && !servoBody(b)) { const v = servoSpline(a, b); if (v) return v; }
+  if (servoBody(b) && !servoBody(a)) { const v = servoSpline(b, a); if (v) return v; }
   if ((typeA === 'motor' || typeA === 'servo') && ['rotary', 'gear'].includes(typeB)) return shaftBore(a, b);
   if ((typeB === 'motor' || typeB === 'servo') && ['rotary', 'gear'].includes(typeA)) return shaftBore(b, a);
   if (typeA === 'motor' && typeB === 'motor-driver' || typeB === 'motor' && typeA === 'motor-driver') {
