@@ -50,35 +50,54 @@ export function compatible(a:Connector,b:Connector,scaleA=1,scaleB=1){
  if(a.kind==='hole')return a.diameterM!==undefined&&b.diameterM!==undefined&&Math.abs(a.diameterM*scaleA-b.diameterM*scaleB)<=Math.max(.0001,Math.min(a.diameterM*scaleA,b.diameterM*scaleB)*.02);
  return true;
 }
-export function alignConnectors(moving:PartInstance,a:Connector,target:PartInstance,b:Connector):Snap {
+// `opposed` turns the part so the two connector normals face each other; false leaves them pointing the same way,
+// which is how a part with a plain through-hole goes on from its other side.
+export function alignConnectors(moving:PartInstance,a:Connector,target:PartInstance,b:Connector,opposed=true):Snap {
  const targetQ=new THREE.Quaternion(...(target.quaternion??[0,0,0,1]));
- const q=targetQ.clone().multiply(connectorFrame(b)).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1,0,0),Math.PI)).multiply(connectorFrame(a).invert()).normalize();
+ const q=targetQ.clone().multiply(connectorFrame(b)).multiply(opposed?new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1,0,0),Math.PI):new THREE.Quaternion()).multiply(connectorFrame(a).invert()).normalize();
  const point=new THREE.Vector3(...b.position).multiplyScalar(target.scale??1).applyQuaternion(targetQ).add(new THREE.Vector3(...target.position));
  const position=point.clone().sub(new THREE.Vector3(...a.position).multiplyScalar(moving.scale??1).applyQuaternion(q));
  return {targetId:target.id,position:position.toArray(),point:point.toArray(),quaternion:q.toArray(),movingNodeId:a.id,targetNodeId:b.id,axis:0,side:1,distance:0};
 }
-// A mate fixes the hole axis and position but not the spin about it. Pick the 30° step about that axis closest to
-// how the part is already oriented, so a part the user turned stays turned when it clicks in.
-function keepRoll(moving:PartInstance,a:Connector,target:PartInstance,b:Connector,snap:Snap):Snap {
+// A mate fixes the hole axis and position but not the spin about it, and a plain hole accepts the part from either side.
+// Keep the facing and the exact spin the user already gave the part, so it clicks in the way it was held instead of being turned.
+function keepOrientation(moving:PartInstance,a:Connector,target:PartInstance,b:Connector):Snap {
  const axis=new THREE.Vector3(...b.normal).applyQuaternion(new THREE.Quaternion(...(target.quaternion??[0,0,0,1]))).normalize();
- const aligned=new THREE.Quaternion(...snap.quaternion!),current=new THREE.Quaternion(...(moving.quaternion??[0,0,0,1]));
- let best=aligned,bestScore=-1;
- for(let k=0;k<12;k++){const candidate=new THREE.Quaternion().setFromAxisAngle(axis,k*Math.PI/6).multiply(aligned);const score=Math.abs(candidate.dot(current));if(score>bestScore+1e-9){best=candidate;bestScore=score;}}
- const position=new THREE.Vector3(...snap.point).sub(new THREE.Vector3(...a.position).multiplyScalar(moving.scale??1).applyQuaternion(best));
- return {...snap,quaternion:best.toArray(),position:position.toArray()};
+ const current=new THREE.Quaternion(...(moving.quaternion??[0,0,0,1])),pure=new THREE.Quaternion(axis.x,axis.y,axis.z,0);
+ let best:{q:THREE.Quaternion;snap:Snap}|null=null,bestScore=-1;
+ for(const opposed of a.kind==='hole'?[true,false]:[true]){
+  const snap=alignConnectors(moving,a,target,b,opposed),aligned=new THREE.Quaternion(...snap.quaternion!);
+  // The spin about the axis that leaves the part closest to how it is held: maximise cos(h)*A + sin(h)*B.
+  const h=Math.atan2(pure.clone().multiply(aligned).dot(current),aligned.dot(current));
+  const q=new THREE.Quaternion().setFromAxisAngle(axis,2*h).multiply(aligned).normalize(),score=Math.abs(q.dot(current));
+  if(score>bestScore+1e-9){best={q,snap};bestScore=score;}
+ }
+ const {q,snap}=best!;
+ const position=new THREE.Vector3(...snap.point).sub(new THREE.Vector3(...a.position).multiplyScalar(moving.scale??1).applyQuaternion(q));
+ return {...snap,quaternion:q.toArray(),position:position.toArray()};
 }
 const FACE_PENALTY=1.6;
 const TURN_COST_M=.004;
-export function findSnap(moving:PartInstance,position:[number,number,number],parts:PartInstance[],threshold?:number,floorY?:number):Snap|null {
+// A connection point that already holds a part (in a mate that does not involve `moving`) is taken and cannot be snapped to again.
+function takenNodes(moving:PartInstance,mates:Mate[]=[]){
+ const taken=new Set<string>();
+ for(const m of mates){if(m.movingId===moving.id||m.targetId===moving.id)continue;
+  if(m.movingNodeId)taken.add(m.movingId+':'+m.movingNodeId);if(m.targetNodeId)taken.add(m.targetId+':'+m.targetNodeId);}
+ return taken;
+}
+// `mates` marks connection points as taken; `accept` can veto a placement, e.g. one that would push solid into solid.
+export function findSnap(moving:PartInstance,position:[number,number,number],parts:PartInstance[],threshold?:number,floorY?:number,mates?:Mate[],accept?:(snap:Snap)=>boolean):Snap|null {
  const q=new THREE.Quaternion(...(moving.quaternion??[0,0,0,1]));const limit=threshold??THREE.MathUtils.clamp(localBox(moving).getSize(new THREE.Vector3()).length()*.15,.003,.02);
+ const taken=takenNodes(moving,mates);
  let best:Snap|null=null,bestScore=Infinity;
  for(const a of moving.model.connectors??[]){if(a.geometryRevision!==moving.model.geometryRevision||a.review!=='accepted')continue;const from=new THREE.Vector3(...a.position).multiplyScalar(moving.scale??1).applyQuaternion(q).add(new THREE.Vector3(...position));
-  for(const target of parts){if(target.id===moving.id)continue;for(const b of target.model.connectors??[]){if(b.geometryRevision!==target.model.geometryRevision||!compatible(a,b,moving.scale??1,target.scale??1))continue;
+  for(const target of parts){if(target.id===moving.id)continue;for(const b of target.model.connectors??[]){if(b.geometryRevision!==target.model.geometryRevision||taken.has(target.id+':'+b.id)||!compatible(a,b,moving.scale??1,target.scale??1))continue;
    const to=new THREE.Vector3(...b.position).multiplyScalar(target.scale??1).applyQuaternion(new THREE.Quaternion(...(target.quaternion??[0,0,0,1]))).add(new THREE.Vector3(...target.position));const distance=from.distanceTo(to);
    if(distance>limit)continue;
-   const candidate={...keepRoll(moving,a,target,b,alignConnectors(moving,a,target,b)),distance};
+   const candidate={...keepOrientation(moving,a,target,b),distance};
    // A mate that would push the part below the build surface is not a valid placement.
    if(floorY!==undefined&&worldBox({...moving,quaternion:candidate.quaternion},candidate.position).min.y<floorY-1e-6)continue;
+   if(accept&&!accept(candidate))continue;
    // Face points are looser than holes, and a corner touches three faces, so prefer a hole that fits and the pairing that turns the part least.
    const turn=new THREE.Quaternion(...candidate.quaternion!).angleTo(q);
    const score=distance*(a.kind==='surface'?FACE_PENALTY:1)+turn*TURN_COST_M;

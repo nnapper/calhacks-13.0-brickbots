@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import { findSnap, findAlignment, compatible, worldBox, localBox, type PartInstance, type Snap, type Mate } from '../assembly/snapping';
+import { collides, startingContacts, SNAP_SHRINK } from '../assembly/collision';
 import { partsInRect, type Rect } from '../assembly/selection';
 import { playSnapSound } from '../assembly/clickSound';
 export type View = 'Perspective' | 'Front' | 'Top' | 'Side';
@@ -59,7 +60,7 @@ function Scene(props: Props) {
     props.onConnect(armed.partId,armed.nodeId,part.id,nodeId);setArmed(null);
   }
   const controls = useRef<OrbitControlsImpl>(null);
-  const drag = useRef<{ id: string; plane: THREE.Plane; offset: THREE.Vector3; start: [number,number,number]; snap: Snap | null; pointerId: number; target: {releasePointerCapture:(id:number)=>void}; started: boolean; startX: number; startY: number; group?: { id: string; start: THREE.Vector3 }[] } | null>(null);
+  const drag = useRef<{ id: string; plane: THREE.Plane; offset: THREE.Vector3; start: [number,number,number]; snap: Snap | null; exempt: Set<string>; last: [number, number, number]; pointerId: number; target: {releasePointerCapture:(id:number)=>void}; started: boolean; startX: number; startY: number; group?: { id: string; start: THREE.Vector3 }[] } | null>(null);
   const latest = useRef(props); latest.current = props;
   // Wireframe box of every selected part; `selection` is the primary part's box, kept in step while it is dragged.
   const boxRefs = useRef(new Map<string, THREE.Group>());
@@ -111,7 +112,9 @@ function Scene(props: Props) {
     const position = pivot.clone().add(new THREE.Vector3(...p.position).sub(pivot).applyQuaternion(delta)).toArray() as [number, number, number];
     const lowest = worldBox({ ...p, quaternion: turned.toArray() }, position).min.y; if (lowest < 0) position[1] -= lowest;
     const moved = { ...p, position, quaternion: turned.toArray() } as PartInstance;
-    const snap = findSnap(moved, position, all, undefined, 0);
+    const exempt = startingContacts(p, all, joined);
+    if (collides(p, position, turned.toArray() as [number, number, number, number], all, exempt)) { latest.current.onNodeMessage('Blocked: turning here would push into another part'); return; }
+    const snap = findSnap(moved, position, all, undefined, 0, joined, s => !collides(p, s.position, s.quaternion ?? (turned.toArray() as [number, number, number, number]), all, exempt, SNAP_SHRINK));
     if (snap) flash(snap.point);
     latest.current.onMove(p.id, snap?.position ?? position, snap, snap ? undefined : turned.toArray());
   }
@@ -213,7 +216,7 @@ function Scene(props: Props) {
   }, [gl, camera]);
   // Axis arrows: drag an arrow to slide the selected part along that world axis only.
   const gizmo = useRef<THREE.Group>(null);
-  const axisDrag = useRef<{ id: string; axis: THREE.Vector3; t0: number; startPos: THREE.Vector3; startCenter: THREE.Vector3; pointerId: number; target: {releasePointerCapture:(id:number)=>void} } | null>(null);
+  const axisDrag = useRef<{ id: string; axis: THREE.Vector3; t0: number; startPos: THREE.Vector3; startCenter: THREE.Vector3; exempt: Set<string>; pointerId: number; target: {releasePointerCapture:(id:number)=>void} } | null>(null);
   function axisT(ray: THREE.Ray, origin: THREE.Vector3, axis: THREE.Vector3) {
     const w0 = origin.clone().sub(ray.origin), b = axis.dot(ray.direction), d = axis.dot(w0), e = ray.direction.dot(w0), den = 1 - b * b;
     return Math.abs(den) < 1e-6 ? null : (b * e - d) / den;
@@ -223,7 +226,7 @@ function Scene(props: Props) {
     const startCenter = worldBox(p).getCenter(new THREE.Vector3()); const t0 = axisT(e.ray, startCenter, axis); if (t0 === null) return;
     const target = e.target as unknown as {setPointerCapture:(id:number)=>void; releasePointerCapture:(id:number)=>void};
     target.setPointerCapture(e.pointerId);
-    axisDrag.current = { id: p.id, axis, t0, startPos: new THREE.Vector3(...p.position), startCenter, pointerId: e.pointerId, target };
+    axisDrag.current = { id: p.id, axis, t0, startPos: new THREE.Vector3(...p.position), startCenter, exempt: startingContacts(p, latest.current.parts, latest.current.mates), pointerId: e.pointerId, target };
     if (controls.current) controls.current.enabled = false;
   }
   function arrowMove(e: ThreeEvent<PointerEvent>) {
@@ -232,6 +235,8 @@ function Scene(props: Props) {
     const t = axisT(e.ray, a.startCenter, a.axis); if (t === null) return;
     const pos = a.startPos.clone().addScaledVector(a.axis, t - a.t0).toArray() as [number, number, number];
     const lowest = worldBox(p, pos).min.y; if (lowest < 0) pos[1] -= lowest;
+    // Sliding along an arrow stops at solid parts too.
+    if (collides(p, pos, p.quaternion, parts, a.exempt)) return;
     p.model.object.position.set(...pos);
     selection.current?.position.set(...pos);
     gizmo.current?.position.set(...pos);
@@ -244,7 +249,7 @@ function Scene(props: Props) {
     const p = latest.current.parts.find(i => i.id === a.id); if (!p) return;
     const pos = p.model.object.position.toArray() as [number, number, number];
     if (new THREE.Vector3(...pos).distanceTo(a.startPos) < 1e-9) return;
-    const snap = snapEnabled && !e.shiftKey ? findSnap(p, pos, latest.current.parts, undefined, 0) : null;
+    const snap = snapEnabled && !e.shiftKey ? findSnap(p, pos, latest.current.parts, undefined, 0, latest.current.mates, s => !collides(p, s.position, s.quaternion ?? p.quaternion, latest.current.parts, a.exempt, SNAP_SHRINK)) : null;
     if (snap) flash(snap.point);
     latest.current.onMove(p.id, snap?.position ?? pos, snap);
   }
@@ -261,7 +266,7 @@ function Scene(props: Props) {
     const plane = new THREE.Plane().setFromNormalAndCoplanarPoint(new THREE.Vector3(0, 1, 0), e.point);
     const target = e.target as unknown as {setPointerCapture:(id:number)=>void; releasePointerCapture:(id:number)=>void};
     target.setPointerCapture(e.pointerId);
-    drag.current = { id: p.id, plane, offset: p.model.object.position.clone().sub(e.point), start: [...p.position], snap: null, pointerId: e.pointerId, target, started: false, startX: e.clientX, startY: e.clientY,
+    drag.current = { id: p.id, plane, offset: p.model.object.position.clone().sub(e.point), start: [...p.position], snap: null, exempt: inGroup ? new Set<string>() : startingContacts(p, parts, latest.current.mates), last: [...p.position], pointerId: e.pointerId, target, started: false, startX: e.clientX, startY: e.clientY,
       group: inGroup ? parts.filter(x => ids.includes(x.id)).map(x => ({ id: x.id, start: x.model.object.position.clone() })) : undefined };
     if (controls.current) controls.current.enabled = false;
     gl.domElement.style.cursor = 'grabbing';
@@ -284,7 +289,8 @@ function Scene(props: Props) {
     }
     const raw = point.add(active.offset).toArray();
     const lowest = worldBox(p, raw).min.y; if (lowest < 0) raw[1] -= lowest;
-    const snap = snapEnabled && !e.shiftKey ? findSnap(p, raw, parts, undefined, 0) : null;
+    // A connection only counts when the part can actually go there: solid may not end up inside solid.
+    const snap = snapEnabled && !e.shiftKey ? findSnap(p, raw, parts, undefined, 0, props.mates, s => !collides(p, s.position, s.quaternion ?? p.quaternion, parts, active.exempt, SNAP_SHRINK)) : null;
     // With no connection point nearby, line the part up with its neighbours (centre or edge) and show guide lines.
     const align = !snap && snapEnabled && props.align !== false && !e.shiftKey ? findAlignment(p, raw as [number, number, number], parts) : null;
     if (align) { raw[0] = align.position[0]; raw[1] = align.position[1]; raw[2] = align.position[2]; }
@@ -293,7 +299,16 @@ function Scene(props: Props) {
       alignKey.current = guideKey; setGuides(align ? align.guides.map(g => ({ axis: g.axis, value: g.value })) : []);
       if (align) { const first = align.guides[0]; const other = parts.find(x => x.id === first.targetId); props.onNodeMessage(`${first.label === 'center' ? 'Centred with' : 'Edge aligned with'} ${other?.model.asset.name ?? 'part'}`); }
     }
-    p.model.object.position.set(...(snap?.position ?? raw));
+    // Free movement stops at solid parts but slides along them: try the full move, then each horizontal axis alone.
+    let placed = (snap?.position ?? raw) as [number, number, number], blocked = false;
+    if (!snap) {
+      const tries: [number, number, number][] = [placed, [placed[0], placed[1], active.last[2]], [active.last[0], placed[1], placed[2]]];
+      const free = tries.find(t => !collides(p, t, p.quaternion, parts, active.exempt));
+      blocked = !free; placed = free ?? active.last;
+    }
+    active.last = placed;
+    gl.domElement.style.cursor = blocked ? 'not-allowed' : 'grabbing';
+    p.model.object.position.set(...placed);
     p.model.object.quaternion.set(...(snap?.quaternion??p.quaternion??[0,0,0,1]));
     active.snap = snap;
     const key = snap ? `${snap.targetId}:${snap.movingNodeId}:${snap.targetNodeId}` : null;
