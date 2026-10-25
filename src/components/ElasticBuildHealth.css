@@ -34,3 +34,73 @@
 .elastic-compatible > strong { color: #15803d; }
 .elastic-unknown > strong { color: #6b7280; }
 .elastic-failure > small { display: block; margin-top: 3px; opacity: .8; }
+
+/* Compact, accessible per-connection Elastic results. */
+.elastic-pair-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+.elastic-pair-heading strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.elastic-pair-status {
+  flex: none;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.elastic-status-compatible { color: #15803d; }
+.elastic-status-incompatible { color: #dc2626; }
+.elastic-status-unknown { color: #6b7280; }
+.elastic-pair-preview {
+  color: var(--text, #374151);
+  overflow-wrap: anywhere;
+}
+.elastic-pair-details {
+  margin-top: 5px;
+}
+.elastic-pair-details summary {
+  cursor: pointer;
+  color: #2563eb;
+  font-weight: 600;
+  padding: 4px 0;
+}
+.elastic-pair-details summary:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+.elastic-hide-details { display: none; }
+.elastic-pair-details[open] .elastic-show-details { display: none; }
+.elastic-pair-details[open] .elastic-hide-details { display: inline; }
+.elastic-pair-expanded {
+  border-left: 2px solid #9ca3af66;
+  margin: 6px 0 0 4px;
+  padding-left: 10px;
+  overflow-wrap: anywhere;
+}
+.elastic-pair-expanded > small {
+  display: block;
+  margin-top: 4px;
+  opacity: .8;
+}
+
+/* Service failures are different from engineering unknown verdicts. */
+.elastic-status-unavailable, .elastic-unavailable-count { color: #b45309; }
+.elastic-error-detail { font-size: 12px; color: #b45309; }
+.elastic-retry {
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  padding: 2px 7px;
+  color: #1d4ed8;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+.elastic-retry:hover { background: #2563eb15; }
+.elastic-retry:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+
+.elastic-status-pending { color: #64748b; }

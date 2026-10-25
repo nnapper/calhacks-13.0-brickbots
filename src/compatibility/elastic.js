@@ -79,7 +79,7 @@ const counts = (pairs) => ({
   unknown: pairs.filter((p) => p.status === 'unknown').length,
 });
 
-function unknown(pair, explanation) {
+function unknown(pair, explanation, failure = null) {
   return {
     id: pair.id,
     aId: pair.a.id, bId: pair.b.id,
@@ -90,6 +90,8 @@ function unknown(pair, explanation) {
     explanation,
     evidence: [],
     alternatives: null,
+    assessmentState: failure ? 'unavailable' : 'pending',
+    failure, agentUsed: false,
   };
 }
 
@@ -101,9 +103,9 @@ export function pendingReport(parts = [], mates = [], catalog = {}, raw = {}) {
 }
 
 /**
- * Evaluates each directly connected pair independently (2 requests max in flight).
- * onProgress(report) allows Build Health to show finished results while remaining
- * connections are still being assessed. Never classifies from local tables.
+ * Evaluate recorded connections with one request in flight from this browser.
+ * The server also bounds Agent Builder traffic across requests. AbortSignal
+ * prevents a hung local request from leaving the UI in a permanent spinner.
  */
 export async function evaluateBuildWithElastic(
   parts = [], mates = [], catalogBySku = {}, rawBySku = {}, options = {},
@@ -114,49 +116,60 @@ export async function evaluateBuildWithElastic(
 
   const values = base.map((pair) => unknown(pair,
     'Waiting for Elastic Agent Builder to evaluate this connection.'));
-  let completed = 0, agentUsed = false, indexedParts = 0, cursor = 0;
-  const warnings = [];
-  const snapshot = () => ({
-    pairs: [...values], totals: counts(values), checked: values.length, parts: parts.length,
-    elastic: {
-      status: completed < base.length ? 'pending' : agentUsed ? 'connected' : 'unavailable',
-      completed, total: base.length, agentUsed, indexedParts,
-      warning: warnings.length ? warnings[0] : null,
-    },
-  });
-  const worker = async () => {
-    while (cursor < base.length) {
-      if (options.signal?.aborted) return;
-      const index = cursor++;
-      const pair = base[index];
-      try {
-        const response = await (options.fetchImpl ?? fetch)(`${API}/evaluate`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ pairs: [pair] }),
-          signal: options.signal,
-        });
-        const data = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(data.error || `Elastic HTTP ${response.status}`);
-        const found = Array.isArray(data.pairs)
-          ? data.pairs.find((candidate) => candidate?.id === pair.id) : null;
-        values[index] = found ? { ...unknown(pair, ''), ...found,
-          id: pair.id, aId: pair.a.id, bId: pair.b.id,
-          aName: pair.a.name, bName: pair.b.name }
-          : unknown(pair, 'Elastic did not return a result for this connection.');
-        agentUsed ||= Boolean(values[index].agentUsed);
-        indexedParts = Math.max(indexedParts, data.elastic?.indexedParts ?? 0);
-        if (data.elastic?.warning) warnings.push(data.elastic.warning);
-      } catch (error) {
-        if (options.signal?.aborted) return;
-        values[index] = unknown(pair, `Elastic assessment unavailable: ${String(error.message).slice(0, 160)}`);
-        warnings.push(error.message);
-      }
-      completed++;
-      if (!options.signal?.aborted) options.onProgress?.(snapshot());
-    }
+  let completed = 0, agentUsed = false, indexedParts = 0;
+  const timeoutMs = Math.max(5_000, Math.min(Number(options.requestTimeoutMs) || 65_000, 180_000));
+  const snapshot = () => {
+    const failedPairs = values.filter((p) => p.assessmentState === 'unavailable');
+    const failed = failedPairs.length;
+    const warning = failedPairs[0]?.failure?.message || null;
+    return {
+      pairs: [...values], totals: counts(values), checked: values.length, parts: parts.length,
+      elastic: {
+        status: completed < base.length ? 'pending'
+          : failed === base.length ? 'unavailable' : failed ? 'partial' : 'connected',
+        completed, total: base.length, agentUsed, indexedParts, failed, warning,
+      },
+    };
   };
-  await Promise.all(Array.from({ length: Math.min(2, base.length) }, worker));
+  for (const [index, pair] of base.entries()) {
+    if (options.signal?.aborted) break;
+    const deadline = AbortSignal.timeout(timeoutMs);
+    const signal = options.signal ? AbortSignal.any([options.signal, deadline]) : deadline;
+    const started = Date.now();
+    try {
+      const response = await (options.fetchImpl ?? fetch)(`${API}/evaluate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pairs: [pair] }),
+        signal,
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || `Elastic HTTP ${response.status}`);
+      const found = Array.isArray(data.pairs)
+        ? data.pairs.find((candidate) => candidate?.id === pair.id) : null;
+      values[index] = found ? { ...unknown(pair, ''), ...found,
+        id: pair.id, aId: pair.a.id, bId: pair.b.id,
+        aName: pair.a.name, bName: pair.b.name }
+        : unknown(pair, 'Elastic did not return a result for this connection.',
+          { code: 'missing-result', stage: 'server',
+            message: 'The Elastic endpoint returned no assessment for this pair.' });
+      agentUsed ||= Boolean(values[index].agentUsed);
+      indexedParts = Math.max(indexedParts, data.elastic?.indexedParts ?? 0);
+    } catch (error) {
+      if (options.signal?.aborted) break;
+      const timedOut = deadline.aborted || ['TimeoutError', 'AbortError'].includes(error?.name);
+      const message = timedOut
+        ? `BrickBots waited ${Math.round(timeoutMs / 1000)}s for the Elastic API and cancelled the request. This is a client-to-server timeout; check the server logs for the underlying Elastic stage.`
+        : `BrickBots could not contact its Elastic backend: ${short(error?.message, 160)}`;
+      values[index] = unknown(pair, message, {
+        code: timedOut ? 'client-timeout' : 'backend-error',
+        stage: 'browser', message, timeoutMs: timedOut ? timeoutMs : null,
+      });
+      values[index].latencyMs = Date.now() - started;
+    }
+    completed++;
+    if (!options.signal?.aborted) options.onProgress?.(snapshot());
+  }
   if (options.signal?.aborted) throw options.signal.reason ?? new Error('Aborted');
   return snapshot();
 }
