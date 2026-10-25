@@ -123,7 +123,7 @@ export default function App() {
     if(busy)return;
     const cachedSource = [...cache.current.values()].find(source => source.asset.productId === sku);
     if(cachedSource){place(cachedSource,drop);setNotice('Generated CAD prototype reused · inspect before assembly');return;}
-    setError('');setBusy('Generating CAD prototype');
+    setError('');setBusy('Generating');
     try{
       const response=await fetch('/geometry/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sku}),signal:AbortSignal.timeout(180_000)});
       if(!response.ok){const detail=await response.json().catch(()=>({}));throw new Error(detail.detail??`Generation failed (HTTP ${response.status})`);}

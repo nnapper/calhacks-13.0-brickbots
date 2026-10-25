@@ -23,7 +23,8 @@ export default function App() {
   const [partsOpen, setPartsOpen] = useState(true);
   const [bomOpen, setBomOpen] = useState(true);
   const [toast, setToast] = useState({ text: "", visible: false });
-  const unit = "mm";
+  const [unit, setUnit] = useState("mm");
+  const [measureOn, setMeasureOn] = useState(true);
 
   const toastTimer = useRef(null);
 
@@ -48,7 +49,21 @@ export default function App() {
 
   const addPart = (sku) => {
     if(BY_SKU[sku]?.custom){showToast('Import the original STL in My Designs to add it to this workspace.');return;}
-    void cadActions.current?.add(sku);
+    return cadActions.current?.add(sku);
+  };
+
+  // Panel and receipt +/-: plus places more copies in the workspace (one at a time, each must finish loading);
+  // minus removes the most recently placed copy.
+  const adjustPart = async (sku, delta) => {
+    if (delta > 0) {
+      for (let i = 0; i < delta; i++) {
+        await addPart(sku);
+        await new Promise((resolve) => setTimeout(resolve, 60));
+      }
+      return;
+    }
+    const row = [...totals.rows].reverse().find((r) => r.product?.sku === sku);
+    if (row) cadActions.current?.remove(row.id);
   };
 
   const closeReceipt = useCallback(() => setReceiptOpen(false), []);
@@ -84,15 +99,15 @@ export default function App() {
       ) : (
         <section className="build">
           <section className="stagewrap">
-            <CadWorkspace designsHost={designsHost} onWorkspaceChange={setWorkspace} actionsRef={cadActions} />
+            <CadWorkspace unit={unit} onUnit={setUnit} measure={measureOn} onMeasure={setMeasureOn} designsHost={designsHost} onWorkspaceChange={setWorkspace} actionsRef={cadActions} />
           </section>
 
           <PartsPanel designsHostRef={setDesignsHost} onAdd={addPart} onLive={onLive} onRemoveCustom={removeCustom} version={liveVersion} unit={unit} collapsed={!partsOpen} onToggle={() => setPartsOpen((o) => !o)} />
-          <WorkspacePanel metrics={totals} selectedId={workspace.selectedId} onSelect={id=>cadActions.current?.select(id)} onRemove={id=>cadActions.current?.remove(id)} onWhereToBuy={()=>setReceiptOpen(true)} collapsed={!bomOpen} onToggle={()=>setBomOpen(o=>!o)} />
+          <WorkspacePanel metrics={totals} onAdjust={adjustPart} selectedId={workspace.selectedId} onSelect={id=>cadActions.current?.select(id)} onRemove={id=>cadActions.current?.remove(id)} onWhereToBuy={()=>setReceiptOpen(true)} collapsed={!bomOpen} onToggle={()=>setBomOpen(o=>!o)} />
         </section>
       )}
 
-      <Receipt open={receiptOpen} build={totals.build} buildName={prompt} onClose={closeReceipt} onToast={showToast} onLive={onLive} />
+      <Receipt open={receiptOpen} build={totals.build} onAdjust={adjustPart} buildName={prompt} onClose={closeReceipt} onToast={showToast} onLive={onLive} />
       <div className={`toast${toast.visible ? " show" : ""}`} role="status">{toast.text}</div>
     </div>
   );

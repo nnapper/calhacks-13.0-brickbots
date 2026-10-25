@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
+    "dev": "node scripts/dev.mjs",
+    "dev:web": "vite --host 127.0.0.1",
     "build": "tsc -b && vite build",
     "test": "vitest run",
     "preview": "vite preview --host 127.0.0.1",
@@ -20,6 +21,7 @@
     "prices:refresh": "node --env-file=.env scripts/apify-prices.mjs",
     "part:add": "node --env-file=.env scripts/add-part.mjs",
     "nodes:image": "node --env-file=.env scripts/image-nodes.mjs",
+    "models:build": "node --env-file-if-exists=.env --env-file-if-exists=.env.local scripts/build-models.mjs",
     "model:generate": "node --env-file-if-exists=.env.local scripts/generate-model.mjs"
   },
   "dependencies": {
