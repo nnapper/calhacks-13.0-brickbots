@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "RoboClaw Solo 60A Motor Controller",
+    "sku": "pololu-3291",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The images show no printed dimensions. The supplied metadata (99 x 72.6 x 30 mm) is marked unverified and does not match the part's proportions in the photos, where the top view is about 1.8:1 and the height is roughly 0.6 of the width. The bounds above are therefore a proportional estimate, and the absolute scale must be checked against a datasheet. Axes: x is length, y is width, z is height, centered on the part. No mounting holes, tabs or flanges are visible. The underside is not shown, so no bottom mounting features are stated. Wire leads are excluded from the bounds.",
+      "The supplied metadata (99 x 72.6 x 30 mm) is unverified and does not match the photo proportions. The model uses the proportional estimate from the image analysis (41 x 23 x 15 mm), so check the scale against a datasheet.",
+      "Image analysis axes (y = width, z = height) were remapped to the required convention: X is length, Y is height and Z is width.",
+      "The fin grooves are simplified to straight rectangular cuts. The diagonal or sloped fin profile in the photo is uncertain.",
+      "The micro USB port, 10-pin CTRL header and status LEDs are omitted because their sizes and depths are uncertain.",
+      "The four 12 AWG wire leads are omitted.",
+      "The underside is not visible, so no bottom features are modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -20.5,
+      "xmax": 20.5,
+      "ymin": 0,
+      "ymax": 15,
+      "zmin": -11.5,
+      "zmax": 11.5,
+      "xlen": 41,
+      "ylen": 15,
+      "zlen": 23
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 99.000 mm; measured dimensions are [15.0, 23.0, 41.0]",
+      "Generated geometry is missing a listed dimension 72.600 mm; measured dimensions are [15.0, 23.0, 41.0]",
+      "Generated geometry is missing a listed dimension 30.000 mm; measured dimensions are [15.0, 23.0, 41.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 151563,
+        "sha256": "cdaf551b61094177096302f1ab08f7231c6f821435461fb4a70817c8aac357ee"
+      },
+      "model.stl": {
+        "bytes": 7884,
+        "sha256": "15e9e0183d15947c945625559077469fa8b17ab0b7293260603485b6c4d1fccd"
+      },
+      "model.glb": {
+        "bytes": 3844,
+        "sha256": "97884bb20e2824c17c04f6a5bfea43e4d514b376c07e8d257d502069c4bbf457"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "cdaf551b61094177096302f1ab08f7231c6f821435461fb4a70817c8aac357ee"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

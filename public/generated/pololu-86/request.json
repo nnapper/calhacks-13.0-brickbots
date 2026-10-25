@@ -1,0 +1,10 @@
+{
+  "name": "Tamiya 70157 Universal Plate Set (2pcs.)",
+  "sku": "pololu-86",
+  "category": "chassis",
+  "expectedDimensionsMm": [
+    160,
+    60
+  ],
+  "units": "millimeter"
+}

@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Flat coin-type vibration motor modeled as a 10 mm diameter, 2.0 mm tall solid cylinder. The disc axis runs along Y, with its bottom face at Y=0 and the disc centered at X=0 and Z=0. The leads, adhesive tab, and top dimple are omitted.",
+  "confidence": "medium",
+  "warnings": [
+    "The image analysis put the disc axis along Z, but the rules require the bottom at Y=0, so the axis was placed along Y.",
+    "The two leads (about 1.5 in long) are omitted because their routing is uncertain and they are outside the stated bounds.",
+    "The adhesive backing tab is omitted because it is a thin, non-structural detail.",
+    "The small dimple on the top face is omitted because its depth and diameter are unknown.",
+    "The 10 mm diameter and 2.0 mm height come from the unverified product description."
+  ],
+  "cadquery": "d=10.0\nh=2.0\npart = cq.Workplane('XZ').circle(d/2).extrude(-h)"
+}

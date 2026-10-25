@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "SPDT micro switch: 20 x 10.2 x 6.4 mm black body (X length, Y height, Z thickness) with two 2.4 mm through-holes along Z, three flat 3.2 mm wide solder tabs extending 3.5 mm below the body, a flat lever arm on top, and a cylindrical roller at the lever tip.",
+  "confidence": "medium",
+  "warnings": [
+    "The lever is modeled as a flat plate; the real one is slightly angled and bent.",
+    "Roller diameter, width and height are estimated from the image.",
+    "Tab X positions are estimated, with the middle tab placed midway between the outer tabs.",
+    "Tab holes and the pivot are omitted because they are not clearly visible.",
+    "The 10.2 mm height is assumed to be the body only, with the tabs added below it, so total height is greater than 10.2 mm.",
+    "The hole height of 2.9 mm above the body bottom is uncertain.",
+    "The lever arm length is approximately 16.3 mm, but its pivot position is estimated."
+  ],
+  "cadquery": "body_h=10.2\ntab_h=3.5\nbody=cq.Workplane('XY').box(20,body_h,6.4).translate((0,tab_h+body_h/2,0))\nholes=cq.Workplane('XY').pushPoints([(-2.85,tab_h+2.9),(6.65,tab_h+2.9)]).circle(1.2).extrude(5,both=True)\nbody=body.cut(holes)\ntabs=cq.Workplane('XY')\nfor x in (-2.85,1.9,6.65):\n    tabs=tabs.union(cq.Workplane('XY').box(3.2,tab_h+0.5,0.5).translate((x,(tab_h+0.5)/2,0)))\ntop=tab_h+body_h\narm=cq.Workplane('XY').box(15.5,0.5,4.0).translate((1.25,top+0.25-0.25,0))\nroller=cq.Workplane('XY').center(-6.5,top+2.3).circle(2.5).extrude(2.1,both=True)\npart=body.union(tabs).union(arm).union(roller)"
+}

@@ -1,0 +1,37 @@
+{
+  "partType": "other",
+  "summary": "Assembled Mini Maestro 18-channel USB servo controller. It is a rectangular green PCB with a mini-USB connector on one short end, a screw terminal on the opposite side, and installed header pins. Its footprint is 1.10 in x 1.80 in (27.94 x 45.72 mm), matching the dimensions printed in the size-comparison image.",
+  "boundsMm": {
+    "x": 27.94,
+    "y": 45.72,
+    "z": 1.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.2,
+      "positionsMm": [
+        [
+          -5,
+          20.4,
+          0
+        ],
+        [
+          9,
+          -20.4,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.8,
+      "description": "Flat underside of the PCB, usable as the mounting face. The two corner or edge mounting holes pass through the board."
+    }
+  ],
+  "confidence": "low",
+  "notes": "X and Y come from the printed 1.10 in and 1.80 in dimensions and the supplied spec. Z is not stated anywhere. 1.6 mm is an assumed bare-PCB thickness, so the connectors, header pins and screw terminal are excluded and would add several mm of height. Two mounting holes are visible, but their diameter and positions are not dimensioned. The 2.2 mm diameter and the coordinates are rough estimates from the bottom-view image and should be checked against the vendor drawing. No other holes or mounting features are included."
+}

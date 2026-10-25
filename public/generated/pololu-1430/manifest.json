@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Wheel 80×10mm Pair - Black",
+    "sku": "pololu-1430",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The 80 mm diameter, 10 mm width and 3 mm bore come from the vendor listing, which is flagged as unverified. The images show six mounting holes around the hub, and the listing says they fit #4 or M3 screws, so I used 3 mm for them. The bolt-circle radius of about 6.35 mm and the hole positions are estimated from the images and are not printed. The tire and rim appear to be separate parts, but I treated them as one wheel envelope. The hub's axial offset and the exact D-flat geometry are not visible, so the 3 mm bore is approximated as round.",
+      "The bore is modeled as a round 3 mm hole because the D-flat geometry is not visible.",
+      "The tire and rim are merged into one ring, and the tire thickness, rim depth and rim profile are estimated.",
+      "The spoke slots for M2 screws are visible but their dimensions are not given, so they are omitted.",
+      "The spoke width and thickness, the hub radius and thickness, and the 6.35 mm mounting-hole circle radius are estimated from the images.",
+      "The 80 mm diameter, 10 mm width and 3 mm bore come from the vendor listing, which is flagged as unverified.",
+      "The model is a single wheel, not the pair."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -40,
+      "xmax": 40,
+      "ymin": 0,
+      "ymax": 80,
+      "zmin": -5,
+      "zmax": 5,
+      "xlen": 80,
+      "ylen": 80,
+      "zlen": 10
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [10.0, 80.0, 80.0]",
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [10.0, 80.0, 80.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 160341,
+        "sha256": "cdf71e366aa144cd1e946451654d8607ad8d1d2090e360d79cb227f1aa7aed60"
+      },
+      "model.stl": {
+        "bytes": 186684,
+        "sha256": "ad0c9656aab0746544c6d94e6243a91a50a754eb489f4150db1df49102dc2bd3"
+      },
+      "model.glb": {
+        "bytes": 67908,
+        "sha256": "1950dd34b69ad05f768595a1a4d02515dc06daa87aeee91975083d9c4c78d107"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "cdf71e366aa144cd1e946451654d8607ad8d1d2090e360d79cb227f1aa7aed60"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

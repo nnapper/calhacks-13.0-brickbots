@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "VL53L4CD Time-of-Flight Distance Sensor Carrier with Voltage Regulator, 120cm Max",
+    "sku": "pololu-3692",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Width (0.5 in), length (0.7 in), hole spacing (0.5 in) and hole diameter (0.086 in) are printed on the drawing. Thickness 0.085 in comes from the spec text and is probably the overall height including components, so the bare PCB is thinner. Hole X offset (about 2.54 mm in from the edge) is estimated from the image scale, and the pair is assumed centered along Y. The x axis runs across the 12.7 mm width, with the header edge at +x. The 7 header pin holes (VDD, VIN, GND, SDA, SCL, XSHUT, GPIO1) are on a 2.54 mm pitch along the +x edge. Their diameter is not stated, so they are not listed. The supplied catalog dimensions (18 x 13 x 2 mm) are unverified and were not used.",
+      "PCB thickness (1.16 mm) and sensor height (1.0 mm) are assumed so the total matches the 2.16 mm overall height.",
+      "Header hole diameter (1.0 mm) and inset (1.27 mm from the edge) are estimated, not stated.",
+      "The square pad of the first header position is modeled as a round hole.",
+      "The regulator, capacitors, resistors, and small IC are omitted as small decorative detail.",
+      "Sensor position and size are approximated from the image and the VL53L4CD package.",
+      "The supplied catalog dimensions (18 x 13 x 2 mm) are unverified, so the printed 0.7 x 0.5 in outline was used instead."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -8.89,
+      "xmax": 8.89,
+      "ymin": 0,
+      "ymax": 2.16,
+      "zmin": -6.35,
+      "zmax": 6.35,
+      "xlen": 17.78,
+      "ylen": 2.16,
+      "zlen": 12.7
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 2.000 mm; measured dimensions are [2.16, 12.7, 17.78]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 63034,
+        "sha256": "94227526d42b04df6c4f318135b104d7830bc4fcea7d8cd35931d88b433e396d"
+      },
+      "model.stl": {
+        "bytes": 154484,
+        "sha256": "a7013b0c474b63245887511fe2b4a623e5e23b0ffa0933c7ba1d431fe2ddb2b0"
+      },
+      "model.glb": {
+        "bytes": 56408,
+        "sha256": "77e2546389d4472885adc2666a6b2c959a63711a4a8159b97f7f74b0e8862a53"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "94227526d42b04df6c4f318135b104d7830bc4fcea7d8cd35931d88b433e396d"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 53
+  },
+  "status": "prototype_unverified"
+}

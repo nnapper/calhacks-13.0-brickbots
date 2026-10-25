@@ -1,0 +1,7 @@
+body = cq.Workplane('XY').box(42, 18.6, 42, centered=(True, False, True)).edges('|Y').chamfer(4)
+pilot = cq.Workplane('XZ', origin=(0, 18.6, 0)).circle(11).extrude(-2)
+shaft = cq.Workplane('XZ', origin=(0, 18.6, 0)).circle(2.5).extrude(-7)
+holes = (cq.Workplane('XZ', origin=(0, 18.6, 0))
+         .pushPoints([(15.5, 15.5), (-15.5, 15.5), (15.5, -15.5), (-15.5, -15.5)])
+         .circle(1.5).extrude(4))
+part = body.union(pilot).union(shaft).cut(holes)

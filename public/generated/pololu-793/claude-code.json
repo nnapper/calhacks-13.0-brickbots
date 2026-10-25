@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "A 22.1 x 19.9 x 1.0 mm rectangular PCB lies in the XY plane at the back (Z from -8.2 to -7.2). A solid 16 mm diameter cylinder, the ultrasonic transducer, extends from the PCB along +Z to Z=8.2. The cylinder is slightly right of center and low on the board. One 3.1 mm through hole sits near the upper-left corner of the PCB. The overall bounds are 22.1 x 19.9 x 16.4 mm, with the bottom at Y=0 and X and Z centered.",
+  "confidence": "medium",
+  "warnings": [
+    "The PCB thickness (1.0 mm), transducer diameter (16 mm) and transducer center offset (x=1.5, y=8.5) are estimated from image proportions.",
+    "The mounting-hole position was moved to the top-left corner (x=-7.4, y=16.5) because the analysis coordinates were inconsistent with the visible location. Its diameter is estimated.",
+    "The 7 solder pads, SMD components, and the transducer's grille slots and openings are omitted as uncertain or decorative. The transducer is modeled as a solid cylinder.",
+    "The stated dimensions are unverified."
+  ],
+  "cadquery": "pcb = cq.Workplane('XY').box(22.1, 19.9, 1.0).translate((0, 9.95, -7.7))\nhole = cq.Workplane('XY').workplane(offset=-8.3).center(-7.4, 16.5).circle(1.55).extrude(1.2)\npcb = pcb.cut(hole)\ntx = cq.Workplane('XY').workplane(offset=-7.2).center(1.5, 8.5).circle(8.0).extrude(15.4)\npart = pcb.union(tx)"
+}

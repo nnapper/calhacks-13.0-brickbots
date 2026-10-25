@@ -1,0 +1,11 @@
+{
+  "name": "L3GD20 3-Axis Gyro Carrier with Voltage Regulator",
+  "sku": "pololu-2125",
+  "category": "imus",
+  "expectedDimensionsMm": [
+    23,
+    13,
+    3
+  ],
+  "units": "millimeter"
+}

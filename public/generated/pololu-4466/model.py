@@ -1,0 +1,7 @@
+case = cq.Workplane('XY').box(48, 21, 16).translate((54.5, 10.5, 0))
+tube = cq.Workplane('XY').box(97, 12, 12).translate((-17.5, 10.5, 0))
+cap = cq.Workplane('XY').box(12, 14, 14).translate((-66, 10.5, 0))
+shaft = cq.Workplane('YZ').workplane(offset=-78.5).center(10.5, 0).circle(4).extrude(6.5)
+part = case.union(tube).union(cap).union(shaft)
+hole = cq.Workplane('XY').workplane(offset=-10).center(74.25, 10.5).circle(2.125).extrude(20)
+part = part.cut(hole)

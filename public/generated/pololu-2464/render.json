@@ -1,0 +1,29 @@
+{
+  "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+  "boundsMm": {
+    "xmin": -22.25,
+    "xmax": 22.25,
+    "ymin": -0.04999999999999982,
+    "ymax": 18.9,
+    "zmin": -6.75,
+    "zmax": 6.75,
+    "xlen": 44.5,
+    "ylen": 18.95,
+    "zlen": 13.5
+  },
+  "warnings": [],
+  "files": {
+    "model.step": {
+      "bytes": 61869,
+      "sha256": "d46bd6caa41cc3f11eb8f58ef3d7fb83966d0e57cdfc38f3154fd4756dde1468"
+    },
+    "model.stl": {
+      "bytes": 55084,
+      "sha256": "c6e5f0fe4776b9f901a4cbe9233e54553775ef9a71700b712e06a220f7c903f9"
+    },
+    "model.glb": {
+      "bytes": 20812,
+      "sha256": "c234b6873314cf78218f07453e9f73a215412759e301c9d7af3ce49912345b4f"
+    }
+  }
+}

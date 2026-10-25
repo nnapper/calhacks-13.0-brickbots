@@ -1,0 +1,11 @@
+{
+  "name": "QTRX-HD-15A Reflectance Sensor Array: 15-Channel, 4mm Pitch, Analog Output, Low Current",
+  "sku": "pololu-4415",
+  "category": "reflectance-sensors",
+  "expectedDimensionsMm": [
+    61,
+    20,
+    3
+  ],
+  "units": "millimeter"
+}

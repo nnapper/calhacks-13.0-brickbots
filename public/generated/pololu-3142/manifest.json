@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Jrk G2 21v3 USB Motor Controller with Feedback",
+    "sku": "pololu-3142",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "X and Y come from the printed 1.0 in × 1.2 in dimensions in the product drawing. The Z thickness of 1.6 mm is an assumed nominal PCB thickness. No height is stated, and the electrolytic capacitor and connector heights are excluded. Hole diameter and positions are estimated from image scale, not printed. Only three mounting holes are clearly visible, with none at the USB-side corner. Hole positions assume x is across the 25.4 mm width, y is along the 30.48 mm length, and the origin is the board center, with the USB edge at +y.",
+      "Board thickness of 1.6 mm is assumed because no height is given.",
+      "Mounting hole positions and diameter are estimated from the image, not stated.",
+      "The fourth corner (USB side) hole is not visible, so it is omitted.",
+      "The micro-USB connector, electrolytic capacitor, ICs, LEDs, castellated edge pads and header or terminal through-holes are omitted because their dimensions are uncertain.",
+      "The XZ workplane maps local y to global Z, so the hole coordinates are given as (X, Z)."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -12.7,
+      "xmax": 12.7,
+      "ymin": 0,
+      "ymax": 1.6,
+      "zmin": -15.24,
+      "zmax": 15.24,
+      "xlen": 25.4,
+      "ylen": 1.6,
+      "zlen": 30.48
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 29761,
+        "sha256": "dd507934ef21d23d69a5189e78c4bd63dfc46847a74f9923764ea29ea1509427"
+      },
+      "model.stl": {
+        "bytes": 51684,
+        "sha256": "55066ea68df89036c37241e4b718a24ea77c6364075198b7a3a3778f9e920d40"
+      },
+      "model.glb": {
+        "bytes": 19544,
+        "sha256": "1599b9e3f913f95825f4280c440369c1e213c911ced4b51ed2cd173713c2283f"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "dd507934ef21d23d69a5189e78c4bd63dfc46847a74f9923764ea29ea1509427"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 60
+  },
+  "status": "prototype_unverified"
+}

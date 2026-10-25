@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Single wheel with its axis along X: a 50 mm OD by 30 mm wide smooth tire ring (inner radius 17 mm) fused to a solid 26 mm wide hub cylinder. The wheel center is at Y=25, so the bottom sits at Y=0, and it is centered in X and Z.",
+  "confidence": "low",
+  "warnings": [
+    "Diameter and width come from unverified product text.",
+    "Tread lugs are omitted as decorative detail.",
+    "The 3 mm hex shaft bore is not clearly visible in the image, so it is omitted.",
+    "Rim radius (17 mm) and hub width (26 mm) are estimated from the image.",
+    "Hub recesses and the central boss are not modeled.",
+    "Only one of the two wheels shown is modeled."
+  ],
+  "cadquery": "r_out = 25.0\nw = 30.0\nr_rim = 17.0\nhub_w = 26.0\ncy = 25.0\n\ntire = (cq.Workplane('YZ').workplane(offset=-w/2).center(cy, 0)\n        .circle(r_out).circle(r_rim).extrude(w))\nhub = (cq.Workplane('YZ').workplane(offset=-hub_w/2).center(cy, 0)\n       .circle(r_rim).extrude(hub_w))\npart = tire.union(hub)"
+}

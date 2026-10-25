@@ -1,0 +1,69 @@
+{
+  "partType": "flat_plate",
+  "summary": "Small rectangular black PCB carrying a 2-channel IR reflectance sensor array. It has one larger mounting hole near one short end, and a row of five 0.1 in-pitch through-holes along the opposite short end. SMD components and two sensors sit on the top face, and the bottom face is flat with silkscreen only.",
+  "boundsMm": {
+    "x": 10.2,
+    "y": 20,
+    "z": 2.5
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.4,
+      "positionsMm": [
+        [
+          0,
+          7.7,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          -3.81,
+          -8.9,
+          0
+        ],
+        [
+          -1.27,
+          -8.9,
+          0
+        ],
+        [
+          1.27,
+          -8.9,
+          0
+        ],
+        [
+          3.81,
+          -8.9,
+          0
+        ],
+        [
+          3.81,
+          -6.35,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.25,
+      "description": "Flat underside of the PCB, with no components. It can sit against a chassis or standoffs, using the single mounting hole near the end opposite the pin row."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1.25,
+      "description": "Top component and sensor face, which points toward the sensed surface. It is not a mounting face."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 20 mm and 10.2 mm outline and the 4 mm sensor pitch are printed in the images. The 2.5 mm height comes from unverified metadata and probably includes the components on top of the board. The PCB thickness is not stated. Hole diameters and positions are estimated from image proportions. The x origin is the board centerline, y is along the length with the mounting-hole end positive, and z is thickness. The 2.54 mm spacing of the pin holes is inferred from their standard 0.1 in pitch. The two small solid pads near the mounting-hole end appear to be unplated or non-drilled, so they are not listed as holes."
+}

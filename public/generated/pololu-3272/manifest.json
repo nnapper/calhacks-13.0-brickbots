@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Scooter/Skate Wheel 70×25mm - Black",
+    "sku": "pololu-3272",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The 70 mm diameter and 25 mm width come from the product data, which is marked unverified. No drawing with printed dimensions is shown. The central bore is visible, but its diameter is not stated. The 22 mm value is inferred from the standard 608 bearing outer diameter, so verify it before using it. The spoke layout, any bore steps and the exact tire profile radius are not dimensioned and are left out of the model.",
+      "The 22 mm bore is inferred from the standard 608 bearing outer diameter and is not stated in the product data.",
+      "The 70 mm diameter and 25 mm width come from unverified product data.",
+      "The recessed hub, five spokes and central hub tube are visible but not dimensioned, so they are omitted and the body is solid around the bore.",
+      "The 8 mm tire edge radius is estimated from the image.",
+      "Any bore steps or bearing seats are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -35,
+      "xmax": 35,
+      "ymin": 0,
+      "ymax": 70,
+      "zmin": -12.5,
+      "zmax": 12.5,
+      "xlen": 70,
+      "ylen": 70,
+      "zlen": 25
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 14254,
+        "sha256": "d6d0c8b66721b98c0e3f2fbc57fbf9e9edbdc36d8e35e9fc33de144410717b27"
+      },
+      "model.stl": {
+        "bytes": 386484,
+        "sha256": "cc1c4d957acceec02410d0d15ef3780371d67423517ff4ee7d0a6731a7f36a92"
+      },
+      "model.glb": {
+        "bytes": 140124,
+        "sha256": "787ffc59d1d323dafc5707d4abced463dbf479d36d7243d32f6e10f96c25959e"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "d6d0c8b66721b98c0e3f2fbc57fbf9e9edbdc36d8e35e9fc33de144410717b27"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 10
+  },
+  "status": "prototype_unverified"
+}

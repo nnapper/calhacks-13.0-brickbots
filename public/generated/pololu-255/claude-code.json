@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Flat circular 127 mm diameter, 3 mm thick plate. Its bottom face is at Y=0 and the thickness runs along +Y. Cut into it are two large rectangular windows, two small rectangular cutouts, four slots and two mid-size round holes. The pattern is approximated from the photo for the Tamiya gearbox, ball caster and hardware.",
+  "confidence": "low",
+  "warnings": [
+    "The 127 mm diameter comes from the listing and is unverified.",
+    "The 3 mm thickness is a placeholder because no thickness is given.",
+    "Cutout positions and sizes were estimated from the photo, assuming a scale of about 0.338 mm/px with the plate diameter at 127 mm. They are approximate.",
+    "The many small round mounting holes and the smaller slots around the edge were omitted because their sizes and positions are uncertain.",
+    "Several cutouts are partly hidden by the hand in the photo, so their shapes are estimated.",
+    "The Pololu watermark was not modeled."
+  ],
+  "cadquery": "R = 63.5\nT = 3.0\nS = 0.338\nbase = cq.Workplane('XZ').circle(R).extrude(-T)\n\ndef rect(x, z, w, h):\n    return cq.Workplane('XZ').center(x, z).rect(w, h).extrude(-T)\n\ndef slot(x, z, l, w):\n    return cq.Workplane('XZ').center(x, z).slot2D(l, w).extrude(-T)\n\ndef hole(x, z, d):\n    return cq.Workplane('XZ').center(x, z).circle(d / 2).extrude(-T)\n\ncuts = [\n    rect(-45, 11, 23, 32),\n    rect(45.6, -2.7, 25, 38),\n    rect(-27.4, 38, 7.5, 13.5),\n    rect(-26.4, -23.7, 8.5, 14),\n    slot(-23.7, 50.7, 15, 3),\n    slot(33.5, 44.6, 16, 3),\n    slot(-34, -38, 16, 3),\n    slot(-5.4, -52.4, 29, 3),\n    hole(-17.9, 4.7, 6),\n    hole(17.2, 1, 6),\n]\npart = base\nfor c in cuts:\n    part = part.cut(c)\n"
+}

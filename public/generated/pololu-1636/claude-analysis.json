@@ -1,0 +1,24 @@
+{
+  "partType": "motor",
+  "summary": "Small shaftless button-type (coin) vibration motor. It is a flat metal cylindrical disc with two flying leads attached at one edge. Dimensions are 10 mm diameter and 3.4 mm height, taken from the product spec text because no dimensioned drawing is shown. The bounding box is centered on the part with the disc axis along z.",
+  "boundsMm": {
+    "x": 10,
+    "y": 10,
+    "z": 3.4
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.7,
+      "description": "Flat circular bottom face of the disc. It is likely used for adhesive mounting, but no adhesive is visible or stated."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1.7,
+      "description": "Flat circular top face of the disc. It has a small shallow circular dimple at its center."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 10 mm diameter and 3.4 mm height come from the listed specs, which are flagged as unverified. The images show no printed dimensions. The central dimple on the top face is too small and shallow to count as a hole, so no holes are listed. There is no shaft. Two flying leads (red and blue) exit radially from one edge and are not included in the bounding box. Lead length is roughly 1.5–2 times the disc diameter judging by the third image, but it is not stated. The part has small notches along the bottom rim, which are not modeled. The current/RPM chart shows operating data only and gives no geometry."
+}

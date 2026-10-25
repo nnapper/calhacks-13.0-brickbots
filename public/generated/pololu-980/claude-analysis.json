@@ -1,0 +1,19 @@
+{
+  "partType": "wheel",
+  "summary": "Round plastic wheel with a molded-on tire around the rim, five large spoke windows, a central hub with a non-round (hex or D-style) center bore for a gearbox output shaft, and a ring of radial encoder stripes on one face. Axis of rotation is along z.",
+  "boundsMm": {
+    "x": 66.7,
+    "y": 66.7,
+    "z": 7.62
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Central hub, concentric with the wheel axis, where the wheel mounts on the gearbox output shaft. Its exact z-position within the 7.62 mm width is not visible."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No printed dimensions appear in the images. Diameter uses the stated 2-5/8 in (about 66.7 mm). The metadata value of 69 mm is flagged unverified and conflicts with it. Width 7.62 mm (0.30 in) comes from the metadata and is also unverified. The hub bore is visible but its shape and size are not stated (bore_diameter is null), so no hole diameter is given. The five large spoke windows are visible but their dimensions are not provided, so they are not listed as holes. The 64-stripe encoder pattern is molded in on one face. Tire profile, hub protrusion and rim depth are unknown."
+}

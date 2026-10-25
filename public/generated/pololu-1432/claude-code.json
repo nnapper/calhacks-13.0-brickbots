@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Single 80 mm diameter, 10 mm wide wheel with its axis along Z, centered at X=0 and Z=0, with the bottom of the tire at Y=0 (wheel center at Y=40). It has a 3 mm thick-walled tire ring (R37–40), a thin yellow rim ring, three straight bars forming six radial spokes (5 mm wide, 4 mm thick), and a 13 mm radius central hub. The hub has a 3 mm center bore and six 3 mm through holes: a pair at ±6.35 mm on X, and two pairs 19.1 mm apart at Y=±5.51 mm.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are unverified, taken from product text and image estimates.",
+    "The hub bore is a plain 3 mm round hole; the D-shaft flat is omitted.",
+    "Spoke slots for M2 screws are omitted because they are not dimensioned.",
+    "Tire inner radius, rim width, spoke thickness and hub radius are estimated.",
+    "Mounting hole positions are estimated. The 12.7 mm pair is on the X axis and the 19.1 mm pairs are at Y=±5.51 mm.",
+    "Tire tread texture is omitted, and the tire and wheel are fused into one solid.",
+    "Only one wheel is modeled, although the product is sold as a pair."
+  ],
+  "cadquery": "tire = cq.Workplane('XY').circle(40).circle(37).extrude(5, both=True)\nrim = cq.Workplane('XY').circle(37.5).circle(34.5).extrude(4, both=True)\nhub = cq.Workplane('XY').circle(13).extrude(4, both=True)\nbody = tire.union(rim).union(hub)\nfor a in (0, 60, 120):\n    spoke = cq.Workplane('XY').box(70, 5, 4).rotate((0, 0, 0), (0, 0, 1), a)\n    body = body.union(spoke)\npts = [(0, 0), (6.35, 0), (-6.35, 0), (9.55, 5.51), (-9.55, 5.51), (9.55, -5.51), (-9.55, -5.51)]\nholes = cq.Workplane('XY').pushPoints(pts).circle(1.5).extrude(10, both=True)\nbody = body.cut(holes)\npart = body.translate((0, 40, 0))"
+}

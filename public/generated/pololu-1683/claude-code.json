@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Simplified placeholder for the Tamiya 70190 gearbox. A 30 x 17 x 20 mm rectangular housing block (bottom at Y=0, centered in X and Z) is joined to a 15 mm diameter cylinder standing in for the motor, which extends the overall Z size to 31 mm. The overall bounds are 30 x 17 x 31 mm.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions come from unverified product data. The assignment of length, width and height to X, Y and Z is a guess.",
+    "The housing/motor split (20 mm block plus 11 mm cylinder) and the 15 mm motor diameter are estimated from the photo, not measured.",
+    "The 3 mm hex output shaft is omitted. Its position and protrusion are uncertain, and any protrusion would exceed the stated bounds.",
+    "Mounting holes, gears, the plastic mounting bosses and the wires are omitted because the images give no hole sizes or positions.",
+    "The internal gear train and the 12 selectable ratio configurations are not modeled."
+  ],
+  "cadquery": "housing = cq.Workplane('XY').box(30, 17, 20, centered=(True, False, True)).translate((0, 0, -5.5))\nmotor = cq.Workplane('XY').workplane(offset=4.5).center(0, 8.5).circle(7.5).extrude(11)\npart = housing.union(motor)"
+}

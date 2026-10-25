@@ -1,0 +1,37 @@
+{
+  "partType": "other",
+  "summary": "Small rectangular green PCB motor-driver carrier measuring 1.0 in × 1.2 in (25.4 mm × 30.48 mm). A single square driver IC sits near the center of the top face. A cylindrical electrolytic capacitor and small SMD parts stand above the board. Through-hole pads for power and motor terminals run along one long edge, and logic pins run along the opposite edge. Two round mounting holes are visible at the corners of one short edge.",
+  "boundsMm": {
+    "x": 25.4,
+    "y": 30.48,
+    "z": 7
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.3,
+      "positionsMm": [
+        [
+          10,
+          13.1,
+          -2.7
+        ],
+        [
+          10,
+          -13.1,
+          -2.7
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -3.5,
+      "description": "Flat underside of the PCB, which has an exposed ground pad under the driver IC. Use it as the seating face, with the two corner holes for fasteners."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The 25.4 mm × 30.48 mm footprint comes from the printed 1.0 in × 1.2 in dimensions in the image. The product data does not give a height. The 7.0 mm z-extent is an estimate of the 1.6 mm board plus the tallest component, the capacitor, and is not a printed value. The mounting-hole diameter (about 2.3 mm) and positions were scaled from the pixel proportions of the images, not read from a printed dimension. The coordinates use the top (component-side) view, with x to the right, y up the long axis and z up from the board. The bounding box is centered at the origin, with the PCB occupying roughly z = -3.5 to -1.9. The many smaller pin and terminal holes along the edges were not itemized."
+}

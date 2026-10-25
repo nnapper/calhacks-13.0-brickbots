@@ -1,0 +1,47 @@
+{
+  "partType": "motor",
+  "summary": "Micro linear actuator with a 50 mm stroke, shown extended at 157 mm overall (107 mm retracted). It has a rectangular body and case at the rear, a square extension tube, and a shaft with an end fitting at the front. Two 4.25 mm mounting holes are visible in the drawing: one at the rear of the case and one at the front of the body. A cable leaves the rear.",
+  "boundsMm": {
+    "x": 157,
+    "y": 21,
+    "z": 16
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4.25,
+      "positionsMm": [
+        [
+          74.25,
+          0,
+          0
+        ],
+        [
+          -19.6,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 8,
+      "description": "Flat side face of the body and case, at the mounting-ear faces where the two 4.25 mm holes are visible"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -8,
+      "description": "Opposite flat side face of the body and case"
+    },
+    {
+      "axis": "x",
+      "offsetMm": -78.5,
+      "description": "Front end of the extended shaft, with the end fitting and its hole, used as the load attachment point"
+    }
+  ],
+  "confidence": "low",
+  "notes": "The length of 157 mm is the printed extended length (S+A) for the 50 mm stroke. The 16 mm and 21 mm cross-section values come from the end-view callouts (16±0.5 and 21±0.5). Which one is the hole axis direction is ambiguous, so I assigned y=21 and z=16. The hole positions are derived from the drawing: the rear hole is 4.25 mm from the rear end, and the front hole is 8.9 mm from the retracted body front, with the box centered on x. The hole y and z offsets are assumed to be on the centerline. The shaft-end fitting hole is visible in the photo, but its diameter is not given. Cable length (300 mm) is excluded from the bounds. The supplied width, height and diameter fields were null and unverified."
+}

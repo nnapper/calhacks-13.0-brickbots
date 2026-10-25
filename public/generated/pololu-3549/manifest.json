@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "120:1 Mini Plastic Gearmotor HP, Offset 3mm D-Shaft Output, with 12 CPR Encoder, Side Connector",
+    "sku": "pololu-3549",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 3 mm shaft diameter and 9.7 mm shaft length come from the supplied data. Bounds are rough estimates that include the shaft and encoder board. The two small holes in the gearbox face are visible, but their diameter, depth and position are guessed, and whether they go through is not known. The connector is a side-entry 6-pin JST SH-type, with pin order M1, M2, VCC, OUTA, OUTB, GND.",
+      "No overall dimensions were provided; all sizes except the 3 mm shaft diameter and 9.7 mm shaft length are estimated.",
+      "The supplied bounds (23 x 20 x 42) were reinterpreted: Z is the shaft/motor axis (42 mm), Y is the vertical gearbox height (34 mm), X is the width (12 mm).",
+      "The shaft D-flat depth is guessed.",
+      "The two small gearbox holes have guessed positions, diameter (2 mm) and depth (4 mm), and are not through holes.",
+      "The encoder board, connector and magnet disc are simplified boxes and cylinders, with no pins or traces.",
+      "Internal gearbox seams, clutch details, motor terminals and the board silkscreen are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -6,
+      "xmax": 6,
+      "ymin": 0,
+      "ymax": 34,
+      "zmin": -21,
+      "zmax": 21,
+      "xlen": 12,
+      "ylen": 34,
+      "zlen": 42
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [12.0, 34.0, 42.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 75465,
+        "sha256": "46f619043f1f322839db96ce44a61100ba08c682e90e8feff9e1dd716b06dbc9"
+      },
+      "model.stl": {
+        "bytes": 40784,
+        "sha256": "62f5cd697c54118c652823887a01e421dd8c26fc14e00a9f50195cda821b8841"
+      },
+      "model.glb": {
+        "bytes": 15680,
+        "sha256": "5bdb59462a156fb427881417b2c544f652b21e219599113e8c55dafc35fb491d"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "46f619043f1f322839db96ce44a61100ba08c682e90e8feff9e1dd716b06dbc9"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

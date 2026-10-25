@@ -1,0 +1,10 @@
+{
+  "name": "Teensy 4.0, Lockable",
+  "sku": "sparkfun-DEV-28368",
+  "category": "sparkfun-22",
+  "expectedDimensionsMm": [
+    35.56,
+    17.78
+  ],
+  "units": "millimeter"
+}

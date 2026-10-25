@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Green rectangular carrier PCB 10.16 x 22.86 mm, 1.6 mm thick (Y is up, bottom at Y=0, centered in X/Z), with a row of nine 1.0 mm plated pin holes on 2.54 mm pitch along one long edge, a 2.18 mm mounting hole near the opposite end, a 3.5 mm square gyro IC block and a small regulator body on the top face.",
+  "confidence": "medium",
+  "warnings": [
+    "Board length and width taken from the drawing dimensions (22.86 x 10.16 mm), overriding the unverified metadata values.",
+    "Pin hole diameter (1.0 mm) is estimated, not printed on the drawing.",
+    "The 10th DEN hole and the square pad are omitted because their positions are uncertain.",
+    "Component heights are estimated at 1.0 mm, so total height is about 2.6 mm rather than the unverified 3 mm.",
+    "Passive components (resistors, capacitors), the second small IC and the PCB traces are omitted as small detail.",
+    "Mounting hole position is estimated from the image."
+  ],
+  "cadquery": "t = 1.6\nW, L = 10.16, 22.86\nboard = cq.Workplane('XY').box(W, t, L, centered=(True, False, True))\n# through holes along Y (XZ workplane: local x=X, local y=Z, normal=-Y)\npin_pts = [(3.8, -10.16 + i * 2.54) for i in range(9)]\npins = (cq.Workplane('XZ').workplane(offset=1).pushPoints(pin_pts).circle(0.5).extrude(-4))\nmount = (cq.Workplane('XZ').workplane(offset=1).center(-2.8, -9.2).circle(1.09).extrude(-4))\nboard = board.cut(pins).cut(mount)\n# gyro IC (LGA)\nic = cq.Workplane('XY').workplane(offset=t).center(-0.5, -4.0).rect(3.5, 3.5).extrude(1.0)\n# regulator (SOT-23-5 style body)\nreg = cq.Workplane('XY').workplane(offset=t).center(0.8, 7.0).rect(2.9, 1.6).extrude(1.0)\npart = board.union(ic).union(reg)\n"
+}

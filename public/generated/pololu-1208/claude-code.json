@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "NEMA 14 stepper motor with the shaft along +Y. A 35.2 mm square body spans Y=0 to 28. A 22 mm diameter pilot boss, 2 mm tall, sits on the front face. A 5 mm round shaft rises from the front face (Y=28) to Y=49. Four 3 mm blind holes, 3 mm deep, sit on a 26 mm square pattern in the front face.",
+  "confidence": "medium",
+  "warnings": [
+    "The 0.5 mm flat on the D-shaft is omitted because its length is not given, so the shaft is modeled as a plain cylinder.",
+    "The shaft is measured as 21 mm from the body front face, which gives 49 mm overall. The pilot boss is therefore only 2 mm of the shaft's 21 mm, and the shaft length from the boss face is 19 mm.",
+    "The hole diameter of 3 mm comes from the M3 callout, and the thread is not modeled. The 3 mm depth is assumed.",
+    "The lead wires, connector, label and the body's chamfered corners and lamination grooves are omitted.",
+    "The small center hole in the shaft end is not modeled because it is not clearly confirmed.",
+    "The dimensions are unverified."
+  ],
+  "cadquery": "pl = cq.Plane(origin=(0, 0, 0), xDir=(1, 0, 0), normal=(0, 1, 0))\nbody = cq.Workplane(pl).rect(35.2, 35.2).extrude(28)\nboss = cq.Workplane(pl).workplane(offset=28).circle(11).extrude(2)\nshaft = cq.Workplane(pl).workplane(offset=28).circle(2.5).extrude(21)\npts = [(-13, -13), (13, -13), (-13, 13), (13, 13)]\nholes = cq.Workplane(pl).workplane(offset=25).pushPoints(pts).circle(1.5).extrude(3)\npart = body.union(boss).union(shaft).cut(holes)"
+}

@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Flat rectangular plate, 160 mm (X) by 60 mm (Z) by 2 mm thick (Y, from 0 to 2). It has a centered 31 x 11 grid of 3 mm through holes at 5 mm pitch (341 holes), leaving a 5 mm margin on all sides. Angle brackets, shaft mounts, screws, nuts, sprue pegs and tabs are not modeled.",
+  "confidence": "low",
+  "warnings": [
+    "The 160 x 60 mm outline comes from unverified vendor data.",
+    "The 2 mm plate thickness is a placeholder. It is neither stated nor visible in the image.",
+    "The grid is assumed to be centered on the plate with a 5 mm edge margin.",
+    "Angle brackets, shaft mounts, hardware and the molding sprue pegs and tabs are omitted.",
+    "Y is treated as the up axis per the rules, so the thickness runs along Y rather than Z as in the image analysis."
+  ],
+  "cadquery": "t = 2.0\nplate = cq.Workplane('XY').box(160, t, 60, centered=(True, False, True))\nholes = cq.Workplane('XZ').rarray(5, 5, 31, 11).circle(1.5).extrude(-t)\npart = plate.cut(holes)"
+}

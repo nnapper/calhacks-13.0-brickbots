@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Tamiya 70192 Slick Tire Set (4 tires)",
+    "sku": "pololu-1685",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The 31 mm diameter and 10 mm width come from the supplied listing, which is marked unverified. No dimensions are printed on the images. The 3 mm hex bore size is taken from the stated shaft compatibility. The images do not show whether the bore goes all the way through, so 'through' is set to false. The hub recess depth, spoke geometry, and tread pattern are not modeled. The listing describes the set as 4 wheels plus a 60 mm shaft, and this entry covers one wheel only.",
+      "The 31 mm diameter and 10 mm width come from the unverified listing.",
+      "The tire and rim are fused into one solid because the image gives no clear boundary dimensions.",
+      "Recess depth, recess radius, spoke width and hub diameter are estimated from the image.",
+      "The hex bore depth is a guess; the images do not show whether it goes through.",
+      "The back face is modeled as flat. The image suggests a shallow dish, which is omitted.",
+      "The tread grooves and sidewall detail are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -15.5,
+      "xmax": 15.5000001,
+      "ymin": -1e-7,
+      "ymax": 31,
+      "zmin": -5,
+      "zmax": 5,
+      "xlen": 31.0000001,
+      "ylen": 31.0000001,
+      "zlen": 10
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [10.0, 31.0000001, 31.0000001]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 83602,
+        "sha256": "6467f71334850dce49c0f744590087084bd369ac5d1955622d95cb69dbba8616"
+      },
+      "model.stl": {
+        "bytes": 397084,
+        "sha256": "9637048553db1baae970d62da6d4bdac765a064b85992f97df99d5cb7ecf59a4"
+      },
+      "model.glb": {
+        "bytes": 143964,
+        "sha256": "e5d4412c7b69c32adf1524d9e71d40b9de223a9d02adad010151afd7f67cc9d6"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "6467f71334850dce49c0f744590087084bd369ac5d1955622d95cb69dbba8616"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

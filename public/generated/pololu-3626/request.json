@@ -1,0 +1,10 @@
+{
+  "name": "Glideforce LACT6-1000BPL Industrial-Duty Linear Actuator with Ball Screw Drive and Feedback: 450kgf, 6\" Stroke (4.8\" Usable), 0.66\"/s, 12V",
+  "sku": "pololu-3626",
+  "category": "linear-actuators",
+  "expectedDimensionsMm": [
+    525,
+    12.7
+  ],
+  "units": "millimeter"
+}

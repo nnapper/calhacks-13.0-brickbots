@@ -1,0 +1,9 @@
+{
+  "name": "Glideforce LACT6-500APL Industrial-Duty Linear Actuator with Acme Drive and Feedback: 250kgf, 6\" Stroke (5.5\" Usable), 0.66\"/s, 12V",
+  "sku": "pololu-3602",
+  "category": "linear-actuators",
+  "expectedDimensionsMm": [
+    497
+  ],
+  "units": "millimeter"
+}

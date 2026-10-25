@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Flat 98 x 48 mm stainless blade plate, 0.9144 mm thick (thickness along Y, bottom at Y=0), with stepped recesses at both ends of one long edge and two U-slotted tabs (flat, unbent), each with a 2.3 mm through hole.",
+  "confidence": "low",
+  "warnings": [
+    "Length, width, notch geometry, tab sizes and hole positions are estimated from the image and unverified.",
+    "Tabs are modeled flat; the ~70° bend is not modeled.",
+    "Only the 0.9144 mm thickness is stated by the source.",
+    "Hole diameter of 2.3 mm is assumed for #2-56 screws.",
+    "Notch layout (same edge, recess sizes) is simplified compared to the photo."
+  ],
+  "cadquery": "t=0.9144\nL,W=98.0,48.0\ndef bx(cx,cz,sx,sz):\n    return cq.Workplane('XY').box(sx,t+2,sz,centered=(True,False,True)).translate((cx,-1,cz))\npart=cq.Workplane('XY').box(L,t,W,centered=(True,False,True))\n# stepped recesses along the z=-24 edge at both ends\npart=part.cut(bx(-31.5,-20.5,35,7)).cut(bx(38.5,-20.5,21,7))\n# U-shaped slots forming the two bendable tabs, each with a hole\nfor xc in (-24,27):\n    ring=bx(xc,-11.5,12,11).cut(bx(xc,-12,10,10))\n    part=part.cut(ring)\n    part=part.cut(cq.Workplane('XZ').center(xc,11).circle(1.15).extrude(-(t+2)).translate((0,-1,0)))\n"
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "DRV8835 Dual Motor Driver Carrier",
+    "sku": "pololu-2135",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The 17.78 x 10.16 mm footprint comes from the printed 0.7 in x 0.4 in dimensions. The two rows are 0.4 in apart, which implies a hole center offset of about ±3.81 mm from the part center (an inference from the 0.4 in width and the DIP form factor). The 0.1 in pitch is also inferred from the DIP form factor. Hole diameter (about 1.0 mm) and total height (about 2.5 mm, including the tallest capacitor) are visual estimates, not printed values. Board thickness is not stated; the z offsets assume roughly 0.8 mm. The pin count is 14, with 7 per side. The hole centers are shown inset from the board edge. The corner holes look slightly square-padded, but they are treated as round.",
+      "Board thickness (0.8 mm) and component heights are visual estimates.",
+      "Hole row spacing of 7.62 mm comes from the provided analysis; the image suggests holes sit close to the board edges.",
+      "The two extra corner pads/holes visible in the image are omitted because their positions are uncertain.",
+      "Small SMD parts (SOT-23 devices, resistor, small capacitor, other passives) are omitted.",
+      "IC and capacitor positions, sizes and orientations are approximate.",
+      "Square pad shapes and the castellated/edge details are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -5.08,
+      "xmax": 5.08,
+      "ymin": 0,
+      "ymax": 2.6,
+      "zmin": -8.89,
+      "zmax": 8.89,
+      "xlen": 10.16,
+      "ylen": 2.6,
+      "zlen": 17.78
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 124801,
+        "sha256": "ebc111314b93404ed33b92b29dac4833f20b249548f6d1d76088d2368e630f28"
+      },
+      "model.stl": {
+        "bytes": 240584,
+        "sha256": "6c0b6a43c2fa3e7f028f6d8f91293145f23fc218fbe242358946bcfbf2ea3579"
+      },
+      "model.glb": {
+        "bytes": 87288,
+        "sha256": "6bafa9664943f24f65722d9a0ed647b87e2ae984563e0212623a0d939ca4eaba"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "ebc111314b93404ed33b92b29dac4833f20b249548f6d1d76088d2368e630f28"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 45
+  },
+  "status": "prototype_unverified"
+}

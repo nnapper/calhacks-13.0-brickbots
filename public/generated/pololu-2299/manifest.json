@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Sanyo Pancake Stepper Motor: Bipolar, 200 Steps/Rev, 50×16mm, 5.9V, 1 A/Phase",
+    "sku": "pololu-2299",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The 50 mm square, the 41 mm hole spacing, the M2.5 hole size, and the 5 mm shaft diameter and length come from the drawing. The 16 mm body height and 21 mm overall height come from the product text, which is unverified. The drawing's body length label L is not given numerically, so I took it as 16 mm. The 5±1 mm feature on the drawing is not clearly identified, so I did not model it. The hole depth is not stated, so through is false. The corners appear chamfered, with a 66.5 mm diagonal, but I did not model that. The lead wires are 300 mm minimum, exit from one side, and are not included in the bounds.",
+      "Plate and core thicknesses are estimated from the image.",
+      "Clipped plate corners, side notches in the core, the bearing boss and the lead wires are not modeled.",
+      "Hole depth is assumed to be 3 mm.",
+      "The 16 mm body height and 21 mm overall height come from unverified product text.",
+      "The shaft axis is Y to satisfy the bottom-at-Y=0 rule, whereas the image analysis used Z."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -25,
+      "xmax": 25,
+      "ymin": 0,
+      "ymax": 21,
+      "zmin": -25,
+      "zmax": 25,
+      "xlen": 50,
+      "ylen": 21,
+      "zlen": 50
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 16.000 mm; measured dimensions are [21.0, 50.0, 50.0]",
+      "Generated geometry is missing a listed dimension 5.000 mm; measured dimensions are [21.0, 50.0, 50.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 63147,
+        "sha256": "cb40995be686c85efb34a908336363813385d06644854769f55c0ca522a05fd1"
+      },
+      "model.stl": {
+        "bytes": 86284,
+        "sha256": "a33eb1ed86a870b0068b62ef22788fce337b3ff6995a57499da92f34103abd12"
+      },
+      "model.glb": {
+        "bytes": 32072,
+        "sha256": "d21d29bbf890535aea10412cad2a0fa3bb76d1f4d4f75c2bad0d65330a32d3b6"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "cb40995be686c85efb34a908336363813385d06644854769f55c0ca522a05fd1"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,59 @@
+{
+  "partType": "other",
+  "summary": "Small rectangular black reflectance sensor PCB, 7.5 mm wide by 20 mm long, with a 3.0 mm overall height. One mounting hole is near one short end, and three plated through-holes sit along the opposite short edge. The reflective sensor and a few small SMD components are on the top face.",
+  "boundsMm": {
+    "x": 7.5,
+    "y": 20,
+    "z": 3
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3.2,
+      "positionsMm": [
+        [
+          0,
+          7.4,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          -2.54,
+          -8.7,
+          0
+        ],
+        [
+          0,
+          -8.7,
+          0
+        ],
+        [
+          2.54,
+          -8.7,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.5,
+      "description": "Flat underside of the PCB (the printed-label side), usable as the mounting face. The mounting hole passes through it near the +Y end."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1.5,
+      "description": "Top of the sensor package. The sensor faces +Z, so keep this side clear to the target."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 20 mm length and 7.5 mm width are printed in the dimension image. The 3.0 mm height comes from the spec text and is flagged unverified. The hole diameters and positions are not printed anywhere. I estimated them from pixel scaling of the 20 mm × 7.5 mm outline, and the 2.54 mm pin pitch is a measured estimate that matches standard 0.1 in spacing. The mounting hole is roughly centered across the width. PCB thickness is not stated, so the through-holes are placed at z=0 as a simplification."
+}

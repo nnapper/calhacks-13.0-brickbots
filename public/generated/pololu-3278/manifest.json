@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Scooter/Skate Wheel 100×24mm - Black",
+    "sku": "pololu-3278",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The 100 mm diameter and 24 mm width come from the product data, which is marked unverified. No drawing with printed dimensions is shown. The 22 mm bore is not printed anywhere. It is the standard 608 bearing outer diameter, taken from the statement that the wheel works with 608 bearings. The images show a central opening and a spoked hub, but the true bore size and any bearing seat depth are unconfirmed. The spoke cutouts are not modeled. The ±12 mm face offsets assume the hub is flush with the full 24 mm width, which the images do not confirm.",
+      "The 100 mm diameter and 24 mm width come from unverified product data.",
+      "The 22 mm bore is assumed from the 608 bearing outer diameter. It is not shown in any drawing.",
+      "The 8 mm edge rounding is estimated from the image.",
+      "The spoked hub, recesses and any bearing seat are not modeled because their dimensions are uncertain. The image shows a smaller central opening than 22 mm, which is probably the inner hub or bearing seat.",
+      "The wheel is modeled as one solid body with no separate hub and tire.",
+      "The hub is assumed flush with the full 24 mm width."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -50,
+      "xmax": 50,
+      "ymin": 0,
+      "ymax": 100.0000001,
+      "zmin": -12,
+      "zmax": 12.000000000000002,
+      "xlen": 100,
+      "ylen": 100.0000001,
+      "zlen": 24
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 14678,
+        "sha256": "448561a6c83d77b45180e1a8ea4de0f8b66142d662dab553355bcad12116cd8e"
+      },
+      "model.stl": {
+        "bytes": 386484,
+        "sha256": "d7c3a600db6fc6b104cf6d398e15e78d6cff459b08dbd0849fe22a8b976601ca"
+      },
+      "model.glb": {
+        "bytes": 140124,
+        "sha256": "cfa60176961d10c22e13c5ffc88f0dc297dc4c9605a19327f603e0d20f74b019"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "448561a6c83d77b45180e1a8ea4de0f8b66142d662dab553355bcad12116cd8e"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 10
+  },
+  "status": "prototype_unverified"
+}

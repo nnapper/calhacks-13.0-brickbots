@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Flat film FSR with thickness 0.254 mm along Y (Y=0 to 0.254). It has a 7.62 mm diameter circular pad at the -X end and a 5.5 mm wide tail strip. Two 1.2 mm wide pin tabs at 2.54 mm spacing extend to x=+17.78. The overall length is 35.56 mm.",
+  "confidence": "low",
+  "warnings": [
+    "Overall length of 35.56 mm is approximated from the 1.4 in lead spec and is unverified.",
+    "Tail width (5.5 mm), pin width (1.2 mm) and pin tab length are estimated from the image.",
+    "The active-area ink layer, the green/gray trace layers and the gold crimp terminals are omitted because they are decorative or uncertain.",
+    "Thickness is placed along Y to satisfy the bottom-at-Y=0 rule, which differs from the Z-thickness in the image analysis.",
+    "The tail is modeled as a straight strip, although the real part appears slightly curved."
+  ],
+  "cadquery": "t = 0.254\nL = 35.56\nr = 3.81\nxc = -L/2 + r\npad = cq.Workplane('XZ').center(xc, 0).circle(r).extrude(-t)\nx0, x1 = xc, 14.5\ntail = cq.Workplane('XY').box(x1 - x0, t, 5.5, centered=(False, False, True)).translate((x0, 0, 0))\npins = cq.Workplane('XY')\nfor z in (-1.27, 1.27):\n    pin = cq.Workplane('XY').box(L/2 - 13.5, t, 1.2, centered=(False, False, True)).translate((13.5, 0, z))\n    pins = pins.union(pin)\npart = pad.union(tail).union(pins)"
+}

@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Open-top rectangular molded case, 58 mm long (X) by 48 mm wide (Z) by 15 mm high (Y), with its bottom at Y=0. Three parallel 53 × 14 mm cell channels are cut from the top down to a 2 mm floor. This leaves thin dividing walls and thicker end and side walls.",
+  "confidence": "low",
+  "warnings": [
+    "The overall dimensions come from the unverified product listing (58 × 48 × 15 mm).",
+    "The channel size, wall thickness and floor thickness are estimated from the image.",
+    "The spring and flat contacts are omitted.",
+    "The two flying leads (about 152 mm long) are omitted.",
+    "The small round features on the cavity floor and end wall are omitted because their size and position are uncertain.",
+    "The end-wall slots and the curved cell-retaining bumps at the cavity ends are omitted.",
+    "No mounting holes are visible or stated, so none are cut."
+  ],
+  "cadquery": "part = cq.Workplane('XY').box(58, 15, 48, centered=(True, False, True))\nfor z in (-15.2, 0, 15.2):\n    cell = cq.Workplane('XY').box(53, 13.5, 14, centered=(True, False, True)).translate((0, 2, z))\n    part = part.cut(cell)\n"
+}

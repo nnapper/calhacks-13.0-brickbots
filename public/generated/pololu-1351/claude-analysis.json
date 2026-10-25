@@ -1,0 +1,42 @@
+{
+  "partType": "flat_plate",
+  "summary": "Small rectangular green PCB (servo controller board) with a mini-USB connector and a surface-mount IC on the top face. It has two mounting holes, a row of through-hole pads along one long edge, and a second row of pads along the other edges. Modeled as a thin plate; components and connector are not included in the thickness.",
+  "boundsMm": {
+    "x": 30.48,
+    "y": 21.59,
+    "z": 1.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.18,
+      "positionsMm": [
+        [
+          -2.03,
+          8.51,
+          0
+        ],
+        [
+          12.57,
+          -8,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.8,
+      "description": "Flat underside of the PCB, usable for standoff mounting at the two mounting holes (positions given in the bottom-view orientation)"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.8,
+      "description": "Top face of the PCB around the mounting holes, which are unobstructed by components"
+    }
+  ],
+  "confidence": "medium",
+  "notes": "X and Y come from the printed dimensions: 1.200 in = 30.48 mm and 0.850 in = 21.59 mm. The hole spacing is printed as 0.575 in (14.6 mm) in x and 0.650 in (16.5 mm) in y. The hole diameter of 0.086 in = 2.18 mm comes from the listed specs. Hole positions are measured from the bottom-view drawing, with the origin at the board center, x to the right and y up; they are accurate to about ±0.3 mm. Mirror x if you model the top view. The PCB thickness (z = 1.6 mm) is not stated anywhere and is an assumed typical value, so treat it as unverified. Component heights, such as the USB connector and IC, are not given and are excluded. The header pins are unsoldered and loose, so they are not part of the board geometry."
+}

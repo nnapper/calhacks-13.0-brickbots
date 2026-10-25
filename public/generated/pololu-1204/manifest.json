@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Stepper Motor: Bipolar, 200 Steps/Rev, 20×30mm, 3.9V, 0.6 A/Phase",
+    "sku": "pololu-1204",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Drawing values: body 20.2 mm max square, hole pattern 16.0±0.2 mm, 4×M2 deep 3.5, pilot Ø15 mm, 1.5 mm high, shaft Ø4 mm, shaft length L = 15 mm, lead length 300 mm min. The 30 mm body length comes from the product name and SKU. The drawing's 'Length' dimension has no printed value. The Z bound of 45 mm assumes 30 mm body plus 15 mm shaft, centered on the overall envelope, with the front face at z=+7.5. The hole diameter of 2 mm is the nominal M2 size, not a measured drilled diameter. The lead wires (300 mm) are excluded from the bounds. The shaft flat depth is stated as 0.5 mm in the specs and is not modeled.",
+      "The 30 mm body length comes from the product name and SKU. It is not a printed drawing dimension.",
+      "The 0.5 mm D-flat on the shaft is omitted because its length is not given, so the shaft is a plain Ø4 mm cylinder.",
+      "The Ø2 mm blind holes use the nominal M2 size and are not threaded.",
+      "The lead wires (300 mm), rear connector and labels are omitted.",
+      "The pilot boss is modeled as Ø15 x 1.5 mm from the drawing notes.",
+      "The body is modeled as a plain square prism with no corner chamfers or lamination detail."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -10.1,
+      "xmax": 10.1,
+      "ymin": 0,
+      "ymax": 20.2,
+      "zmin": -22.5,
+      "zmax": 22.5,
+      "xlen": 20.2,
+      "ylen": 20.2,
+      "zlen": 45
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 30.000 mm; measured dimensions are [20.2, 20.2, 45.0]",
+      "Generated geometry is missing a listed dimension 4.000 mm; measured dimensions are [20.2, 20.2, 45.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 39361,
+        "sha256": "97e311f067fb9c8b939cbd4c24360c2f9723337843223cc51003e86cf192f409"
+      },
+      "model.stl": {
+        "bytes": 101484,
+        "sha256": "6fa6f9d7d7cb0115d054ff5ef3303d64601f7e77869e2495c081a148a72f947f"
+      },
+      "model.glb": {
+        "bytes": 37548,
+        "sha256": "9752a2ef7817fcc4984f420b96c2f4020cb093d71675b671f191f221d89732d7"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "97e311f067fb9c8b939cbd4c24360c2f9723337843223cc51003e86cf192f409"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 61
+  },
+  "status": "prototype_unverified"
+}

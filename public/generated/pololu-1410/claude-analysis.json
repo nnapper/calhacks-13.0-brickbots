@@ -1,0 +1,37 @@
+{
+  "partType": "flat_plate",
+  "summary": "Thin laser-cut rectangular stainless steel blade plate with two stepped notches along one long edge. Each notch contains a small tab with one hole. The tabs are bent up about 70° before mounting. The model is shown flat, with the tabs in plane.",
+  "boundsMm": {
+    "x": 98,
+    "y": 48,
+    "z": 0.9144
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.3,
+      "positionsMm": [
+        [
+          -24,
+          -11,
+          0
+        ],
+        [
+          27,
+          -11,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Mid-plane of the plate. The two bendable tabs, each with a hole, are the mounting features. They bend up about 70° and fasten to the two protruding front mounting holes of the chassis. The large flat face becomes the slanted pushing surface."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 0.036 in (0.9144 mm) thickness is stated. Length, width, hole diameter and hole positions are not printed and are estimated from image proportions and the chassis width, so they are unverified. The holes are assumed to be sized for #2-56 screws and are likely small, around 2–2.4 mm. Tab hole positions are approximate. The tabs are assumed to share one bend line parallel to the long edge, with the plate centered at the origin. In the bent state, the hole axes would tilt to match the 70° bend."
+}

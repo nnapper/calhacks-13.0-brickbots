@@ -1,0 +1,52 @@
+{
+  "partType": "motor",
+  "summary": "Small NEMA 8 hybrid bipolar stepper motor with a square 20.2 mm body and a 30 mm body length. A 4 mm D-flat output shaft and a round pilot boss protrude from the front face. Four lead wires exit the rear. The shaft axis is along Z.",
+  "boundsMm": {
+    "x": 20.2,
+    "y": 20.2,
+    "z": 45
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2,
+      "positionsMm": [
+        [
+          8,
+          8,
+          7.5
+        ],
+        [
+          -8,
+          8,
+          7.5
+        ],
+        [
+          8,
+          -8,
+          7.5
+        ],
+        [
+          -8,
+          -8,
+          7.5
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 7.5,
+      "description": "Front square flange face with four M2 blind mounting holes (3.5 mm deep) on a 16 x 16 mm pattern. A Ø15 mm pilot boss, 1.5 mm high, is centered on this face, and the Ø4 mm shaft extends outward from it."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -22.5,
+      "description": "Rear face of the motor body, from which the lead wires exit. Not a designed mounting face."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Drawing values: body 20.2 mm max square, hole pattern 16.0±0.2 mm, 4×M2 deep 3.5, pilot Ø15 mm, 1.5 mm high, shaft Ø4 mm, shaft length L = 15 mm, lead length 300 mm min. The 30 mm body length comes from the product name and SKU. The drawing's 'Length' dimension has no printed value. The Z bound of 45 mm assumes 30 mm body plus 15 mm shaft, centered on the overall envelope, with the front face at z=+7.5. The hole diameter of 2 mm is the nominal M2 size, not a measured drilled diameter. The lead wires (300 mm) are excluded from the bounds. The shaft flat depth is stated as 0.5 mm in the specs and is not modeled."
+}

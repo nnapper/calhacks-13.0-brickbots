@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Pancake NEMA 17 stepper motor with its axis along +Y and the bottom (rear face) at Y=0. The body is a 42×42 mm square block, 18.6 mm tall, with chamfered vertical corners. On the front face (Y=18.6) sit a 22 mm diameter pilot boss 2 mm high, a 5 mm shaft projecting 7 mm from the face (overall height 25.6 mm), and four 3 mm blind mounting holes 4 mm deep on a 31 mm square pattern.",
+  "confidence": "medium",
+  "warnings": [
+    "Pilot boss height (2 mm) is assumed; it is not stated.",
+    "Corner chamfer size (4 mm) is estimated from the image.",
+    "Mounting hole depth (4 mm) is assumed, and the holes are modeled as blind.",
+    "The laminated stack grooves and the rear shaft stub or pilot are not modeled.",
+    "The lead wires are omitted.",
+    "The dimensions are unverified."
+  ],
+  "cadquery": "body = cq.Workplane('XY').box(42, 18.6, 42, centered=(True, False, True)).edges('|Y').chamfer(4)\npilot = cq.Workplane('XZ', origin=(0, 18.6, 0)).circle(11).extrude(-2)\nshaft = cq.Workplane('XZ', origin=(0, 18.6, 0)).circle(2.5).extrude(-7)\nholes = (cq.Workplane('XZ', origin=(0, 18.6, 0))\n         .pushPoints([(15.5, 15.5), (-15.5, 15.5), (15.5, -15.5), (-15.5, -15.5)])\n         .circle(1.5).extrude(4))\npart = body.union(pilot).union(shaft).cut(holes)"
+}

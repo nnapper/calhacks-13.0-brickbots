@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Stepper Motor with 18cm Lead Screw: Bipolar, 200 Steps/Rev, 42×38mm, 2.8V, 1.7 A/Phase",
+    "sku": "pololu-2689",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 42.3 mm square footprint and 38 mm body length come from the listed dimensions, which are marked unverified. The z extent of 220 mm assumes the 182 mm listed length is the screw protruding beyond the 38 mm body (38 + 182). If 182 mm is the overall length, z would be 182. The four front-face holes are visible in the images, but their 31 mm spacing and 3 mm diameter are standard NEMA 17 values, not printed on the product. Their depth is not shown, so they are marked blind. The nut's four holes are visible, but their size and pattern are not given, so they are omitted. The screw diameter is not listed here (the Tr 8 × 8 spec suggests about 8 mm) and is not modeled.",
+      "The listed 182 mm length is ambiguous. I assumed it is the screw protruding beyond the 38 mm body, giving 220 mm overall. If it is the overall length, the screw is too long.",
+      "The screw axis is placed along Y so the bottom of the part is the motor rear face. The image analysis used Z as the axis.",
+      "The 31 mm hole spacing, 3 mm hole diameter and 4 mm depth are standard NEMA 17 assumptions, not stated values.",
+      "The nut position along the screw, the nut diameters and the 8 mm screw diameter are estimated from the image and the Tr8 spec.",
+      "The four nut mounting holes are omitted because their size and pattern are unknown.",
+      "The body corner chamfers, rear flange details, cable and wires, labels and threads are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -21.15,
+      "xmax": 21.15,
+      "ymin": 0,
+      "ymax": 220,
+      "zmin": -21.15,
+      "zmax": 21.15,
+      "xlen": 42.3,
+      "ylen": 220,
+      "zlen": 42.3
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 182.000 mm; measured dimensions are [42.3, 42.3, 220.0]",
+      "Generated geometry is missing a listed dimension 38.000 mm; measured dimensions are [42.3, 42.3, 220.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 52770,
+        "sha256": "25df6295eb07387cc33ab8b527aa43236237657d695c07441a0c3370e18722d5"
+      },
+      "model.stl": {
+        "bytes": 151884,
+        "sha256": "45e9bf7cff9965853896e9fae9930a4db78557224c42a260b9b13e31a2aed79c"
+      },
+      "model.glb": {
+        "bytes": 55692,
+        "sha256": "9fc42b9d1f5ce0a22d89aa41bc5c9fcf6582d17f4761d47c7a66dd6a8528ed7e"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "25df6295eb07387cc33ab8b527aa43236237657d695c07441a0c3370e18722d5"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

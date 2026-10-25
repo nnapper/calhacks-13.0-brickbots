@@ -1,0 +1,222 @@
+{
+  "partType": "other",
+  "summary": "Rectangular green stepper-driver breakout PCB (0.9 in x 2.05 in) with a 0.1 in pitch through-hole pin pattern along both long edges and at the short ends. It carries a surface-mount driver IC, an electrolytic capacitor and a trimmer potentiometer on the top face. The bottom face is flat apart from a ground pad and a small vented pad grid. The bounding box is the bare board, centered on the origin.",
+  "boundsMm": {
+    "x": 22.86,
+    "y": 52.07,
+    "z": 1.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          -10.16,
+          22.86,
+          0
+        ],
+        [
+          -10.16,
+          20.32,
+          0
+        ],
+        [
+          -10.16,
+          17.78,
+          0
+        ],
+        [
+          -10.16,
+          15.24,
+          0
+        ],
+        [
+          -10.16,
+          12.7,
+          0
+        ],
+        [
+          -10.16,
+          10.16,
+          0
+        ],
+        [
+          -10.16,
+          7.62,
+          0
+        ],
+        [
+          -10.16,
+          5.08,
+          0
+        ],
+        [
+          -10.16,
+          2.54,
+          0
+        ],
+        [
+          -10.16,
+          0,
+          0
+        ],
+        [
+          -10.16,
+          -2.54,
+          0
+        ],
+        [
+          -10.16,
+          -5.08,
+          0
+        ],
+        [
+          -10.16,
+          -7.62,
+          0
+        ],
+        [
+          -10.16,
+          -10.16,
+          0
+        ],
+        [
+          -10.16,
+          -12.7,
+          0
+        ],
+        [
+          -10.16,
+          -15.24,
+          0
+        ],
+        [
+          -10.16,
+          -17.78,
+          0
+        ],
+        [
+          -10.16,
+          -20.32,
+          0
+        ],
+        [
+          -10.16,
+          -22.86,
+          0
+        ],
+        [
+          10.16,
+          22.86,
+          0
+        ],
+        [
+          10.16,
+          20.32,
+          0
+        ],
+        [
+          10.16,
+          17.78,
+          0
+        ],
+        [
+          10.16,
+          15.24,
+          0
+        ],
+        [
+          10.16,
+          12.7,
+          0
+        ],
+        [
+          10.16,
+          10.16,
+          0
+        ],
+        [
+          10.16,
+          7.62,
+          0
+        ],
+        [
+          10.16,
+          5.08,
+          0
+        ],
+        [
+          10.16,
+          2.54,
+          0
+        ],
+        [
+          10.16,
+          0,
+          0
+        ],
+        [
+          10.16,
+          -2.54,
+          0
+        ],
+        [
+          10.16,
+          -5.08,
+          0
+        ],
+        [
+          10.16,
+          -7.62,
+          0
+        ],
+        [
+          10.16,
+          -10.16,
+          0
+        ],
+        [
+          10.16,
+          -12.7,
+          0
+        ],
+        [
+          10.16,
+          -15.24,
+          0
+        ],
+        [
+          10.16,
+          -17.78,
+          0
+        ],
+        [
+          10.16,
+          -20.32,
+          0
+        ],
+        [
+          10.16,
+          -22.86,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.8,
+      "description": "Flat bottom face of the PCB. It has a small exposed pad grid and a ground pad, and sits on the pin headers or solder joints."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.8,
+      "description": "Top face of the PCB, carrying the driver IC, electrolytic capacitor, trimmer potentiometer and small SMD parts. Not a flat seating surface."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the outer dimensions are stated: 0.9 in x 2.05 in, which is 22.86 x 52.07 mm. The 1.6 mm thickness, the roughly 1.0 mm hole diameter and the exact pin count and positions are assumptions. The 2.54 mm pitch and the side rows at x = ±10.16 mm are inferred from the 0.1 in grid and the board width. The listed holes cover only the two long-edge rows. The images also show holes along the top end (power and motor outputs) and a row near the bottom end (VREF, AGC_ON, AWGS, AGC_AUTO, ADMD, DECAY2, DECAY1), but these positions are not given and are not listed. Component height above the board (capacitor and IC) is not stated and is excluded from the z bound."
+}

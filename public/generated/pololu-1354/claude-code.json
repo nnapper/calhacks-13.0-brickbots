@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Rectangular 27.94 x 45.72 x 1.6 mm PCB lying in the XZ plane, bottom at Y=0, with two 2.2 mm through mounting holes. A mini-USB connector box sits on the -Z short end and a 2-position screw terminal block on the +Z end.",
+  "confidence": "low",
+  "warnings": [
+    "PCB thickness of 1.6 mm is assumed; no height is given.",
+    "Mounting hole positions and diameters are rough estimates, and the Z-sign mapping from the analysis is uncertain.",
+    "Header pins are not modeled because their exact layout is uncertain.",
+    "USB connector and screw terminal sizes and positions are approximate.",
+    "Small SMD components, the MCU, LEDs and the jumper are omitted.",
+    "The given dimensions are unverified."
+  ],
+  "cadquery": "W=27.94\nL=45.72\nT=1.6\npcb=cq.Workplane('XZ').rect(W,L).extrude(-T)\npcb=pcb.faces('>Y').workplane(centerOption='CenterOfBoundBox').pushPoints([(-5,-20.4),(9,20.4)]).hole(2.2)\nusb=cq.Workplane('XY').box(7.7,2.7,8,centered=(True,False,True)).translate((0,T,-L/2+4-1.5))\nterm=cq.Workplane('XY').box(10,7.5,7.6,centered=(True,False,True)).translate((0,T,L/2-3.8-1))\npart=pcb.union(usb).union(term)"
+}

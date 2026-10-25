@@ -1,0 +1,31 @@
+{
+  "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+  "boundsMm": {
+    "xmin": -21.15,
+    "xmax": 21.15,
+    "ymin": 0.0,
+    "ymax": 282.0,
+    "zmin": -21.15,
+    "zmax": 21.15,
+    "xlen": 42.3,
+    "ylen": 282.0,
+    "zlen": 42.3
+  },
+  "warnings": [
+    "Generated geometry is missing a listed dimension 38.000 mm; measured dimensions are [42.3, 42.3, 282.0]"
+  ],
+  "files": {
+    "model.step": {
+      "bytes": 69129,
+      "sha256": "cdcaaf67b73fd114a3f5b2141552bb617483e16103819d02c3a6ef63545ab034"
+    },
+    "model.stl": {
+      "bytes": 152684,
+      "sha256": "dfc38eb6d23dcd7ceda034306085f2412193ec4a3e755e7d4c5e02ee9aa9626d"
+    },
+    "model.glb": {
+      "bytes": 56000,
+      "sha256": "b15c3289491cf618c8bec883f30a0003b6308af676e9d95aedc8a0123cc19f07"
+    }
+  }
+}

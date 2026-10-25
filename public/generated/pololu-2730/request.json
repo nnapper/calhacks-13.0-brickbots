@@ -1,0 +1,11 @@
+{
+  "name": "Force-Sensing Linear Potentiometer: 4.0″×0.4″ Strip, Customizable Length",
+  "sku": "pololu-2730",
+  "category": "force-sensors",
+  "expectedDimensionsMm": [
+    104.14,
+    14.478,
+    0.508
+  ],
+  "units": "millimeter"
+}

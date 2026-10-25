@@ -1,0 +1,47 @@
+{
+  "partType": "motor",
+  "summary": "Miniature brushed DC gearmotor with a rectangular 12 x 10 mm cross-section. A flat-sided motor can sits behind a stacked-plate gearbox. A 3 mm D-shaped output shaft protrudes from the gearbox end, and a small extended motor shaft protrudes from the rear cap. Axis of rotation is along X, with the output shaft toward -X.",
+  "boundsMm": {
+    "x": 42.5,
+    "y": 12,
+    "z": 10
+  },
+  "holes": [
+    {
+      "axis": "x",
+      "diameterMm": 1.6,
+      "positionsMm": [
+        [
+          -12.25,
+          4.5,
+          0
+        ],
+        [
+          -12.25,
+          -4.5,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": -12.25,
+      "description": "Flat gearbox front plate around the output shaft, with two screw holes on either side of the shaft for face mounting"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 5,
+      "description": "Flat top of the motor can and gearbox, usable for clamping or bracket contact"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -5,
+      "description": "Flat bottom of the motor can and gearbox, usable for clamping or bracket contact"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Stated: 12 x 10 mm gearbox cross-section, 3 mm D-shaft 9 mm long, extended motor shaft 1 mm diameter and 4.5 mm long. The total X length of about 42.5 mm is an estimate from image proportions (9 mm output shaft + gearbox about 14 mm + motor can about 15 mm + 4.5 mm rear shaft). The two front-plate screw holes are visible, but their 1.6 mm diameter and 9 mm spacing are assumed, not stated or measured. The rear cap also shows small holes and terminal tabs that are not dimensioned, so they are not modeled. The bounding box is centered on the part with the shaft axis at y=0, z=0."
+}

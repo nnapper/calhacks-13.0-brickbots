@@ -1,0 +1,10 @@
+{
+  "name": "ACS37041 Current Sensor Compact Carriers",
+  "sku": "pololu-5447",
+  "category": "current-sensors",
+  "expectedDimensionsMm": [
+    20.3,
+    17.8
+  ],
+  "units": "millimeter"
+}

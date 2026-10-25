@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "20 x 7.5 mm PCB, 0.8 mm thick, lying in the XZ plane with its bottom at Y=0. It has a 3.2 mm mounting hole near the +Z end and three 1.0 mm plated holes at 2.54 mm pitch along the -Z edge. A single block represents the reflective sensor on top, making the total height 3.0 mm.",
+  "confidence": "medium",
+  "warnings": [
+    "PCB thickness (0.8 mm) is assumed, not stated.",
+    "Sensor block size (5.5 x 3.5 mm) and position are estimated from the image; lens details are omitted.",
+    "Hole diameters and positions are estimated from pixel scaling.",
+    "SMD resistors, capacitors and the IC are omitted as small decorative detail.",
+    "Square pad on one pin hole and the plated annular rings are not modeled.",
+    "Overall dimensions are unverified."
+  ],
+  "cadquery": "pcb_t = 0.8\npcb = cq.Workplane('XY').box(7.5, pcb_t, 20, centered=(True, False, True))\n# mounting hole near +Z end (local x=X, local y=Z on XZ workplane)\nmount = cq.Workplane('XZ').center(0, 7.4).circle(1.6).extrude(5, both=True)\npins = cq.Workplane('XZ').pushPoints([(-2.54, -8.7), (0, -8.7), (2.54, -8.7)]).circle(0.5).extrude(5, both=True)\npcb = pcb.cut(mount).cut(pins)\n# reflective sensor body on top, bringing total height to 3.0 mm\nsensor = cq.Workplane('XY').box(5.5, 3.0 - pcb_t, 3.5, centered=(True, False, True)).translate((0, pcb_t, 1.5))\npart = pcb.union(sensor)"
+}

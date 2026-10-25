@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Flat rectangular PCB, 25.4 mm (X) by 30.48 mm (Z) by 1.6 mm thick (Y). Its bottom face is at Y=0 and it is centered in X and Z. Three 2.2 mm through holes sit at the corners. Components, castellated pads and header holes are omitted.",
+  "confidence": "low",
+  "warnings": [
+    "Board thickness of 1.6 mm is assumed because no height is given.",
+    "Mounting hole positions and diameter are estimated from the image, not stated.",
+    "The fourth corner (USB side) hole is not visible, so it is omitted.",
+    "The micro-USB connector, electrolytic capacitor, ICs, LEDs, castellated edge pads and header or terminal through-holes are omitted because their dimensions are uncertain.",
+    "The XZ workplane maps local y to global Z, so the hole coordinates are given as (X, Z)."
+  ],
+  "cadquery": "W=25.4\nL=30.48\nT=1.6\nboard=cq.Workplane('XY').box(W,T,L,centered=(True,False,True))\nholes=cq.Workplane('XZ').pushPoints([(10.2,12.7),(-10.2,-12.7),(10.2,-12.7)]).circle(1.1).extrude(-T)\npart=board.cut(holes)"
+}

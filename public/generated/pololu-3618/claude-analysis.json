@@ -1,0 +1,42 @@
+{
+  "partType": "motor",
+  "summary": "Medium-duty 12 V linear actuator in its retracted state. It has a long rectangular extrusion tube along X, a gear housing at the rear, a cylindrical motor mounted alongside the housing, and a cable exiting the housing. A clevis-style hole is visible at the rear mount and at the end of the extension shaft.",
+  "boundsMm": {
+    "x": 402,
+    "y": 70,
+    "z": 40
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 10,
+      "positionsMm": [
+        [
+          -196,
+          0,
+          0
+        ],
+        [
+          196,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": -196,
+      "description": "Shaft-end clevis/tab with a 10 mm cross hole (z-axis). Its position moves with the stroke; shown retracted."
+    },
+    {
+      "axis": "x",
+      "offsetMm": 196,
+      "description": "Rear mounting tab on the gear housing end with a 10 mm cross hole (z-axis)."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the length is stated: 392 mm retracted (assumed hole center to hole center), 642 mm extended, 250 mm actual stroke. The 10 mm mounting hole diameter is stated. Overall width (y = 70) and thickness (z = 40) are rough visual estimates from the product photos, not printed dimensions. The x bound of 402 adds about 5 mm of tab material beyond each hole center, also an estimate. The hole axes are assumed perpendicular to the length and to the stroke-comparison view, and hole positions are assumed centered in y and z. The extended length is 642 mm, so the shaft-end hole would move to x = -446 when fully extended, with the bounds growing to about 652 mm."
+}

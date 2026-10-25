@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Teensy 4.0 style board: 35.56 x 17.78 mm PCB, 1 mm thick, lying in the XZ plane with Y up. It has 28 through holes (1 mm diameter, 2.54 mm pitch, two rows at Z=±7.62), a simplified micro-USB block at the +X end and a simplified 7x7x1 mm processor block near the center. Overall height is about 3.5 mm.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are marked unverified.",
+    "PCB thickness (1.0 mm) and USB and chip heights are estimated, because no height was given.",
+    "Axes follow the Y-up rule (length in X, width in Z). The image analysis bounds listed width as Y, so its hole coordinates were remapped to Z.",
+    "The pads along the short end opposite the USB connector are omitted.",
+    "Small components, the button, the crystals and the pad rings are omitted.",
+    "The USB connector and chip are simplified boxes, with no detail or cutouts."
+  ],
+  "cadquery": "L=35.56\nW=17.78\nT=1.0\npcb=cq.Workplane('XY').box(L,T,W,centered=(True,False,True))\npts=[(-16.51+2.54*i,s*7.62) for i in range(14) for s in (-1,1)]\nholes=cq.Workplane('XZ').workplane(offset=-2).pushPoints(pts).circle(0.5).extrude(4)\npcb=pcb.cut(holes)\nusb=cq.Workplane('XY').box(5.6,2.5,7.5,centered=(True,False,True)).translate((14.98,T,0))\nchip=cq.Workplane('XY').box(7,1.0,7,centered=(True,False,True)).translate((1,T,0))\npart=pcb.union(usb).union(chip)"
+}

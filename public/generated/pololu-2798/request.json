@@ -1,0 +1,11 @@
+{
+  "name": "LSM6DSO 3D Accelerometer and Gyro Carrier with Voltage Regulator",
+  "sku": "pololu-2798",
+  "category": "imus",
+  "expectedDimensionsMm": [
+    23,
+    13,
+    3
+  ],
+  "units": "millimeter"
+}

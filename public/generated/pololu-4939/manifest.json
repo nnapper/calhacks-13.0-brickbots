@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Wheel for Standard Servo Splines (25T, 5.8mm) - 90×10mm, White, 2-Pack",
+    "sku": "pololu-4939",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 90 mm diameter and 10 mm width come from the unverified listing data. The 5.8 mm central hole is the stated servo spline diameter, used here as the hub bore. Its through-hole status is judged from the images, and the spline teeth are not modeled. The listing also gives 6 mounting holes for #4/M3 screws, 19.1 mm hole spacing and M2 screw slots. Their diameters and exact positions are not stated clearly, so they are left out of the holes array rather than guessed.",
+      "The 90 mm diameter and 10 mm width come from unverified listing data.",
+      "The tire and rim radial thicknesses, spoke width and thickness, and hub size are estimated from the image.",
+      "The 25-tooth spline profile is not modeled; the hub has a plain 5.8 mm round bore.",
+      "The six M3/#4 mounting holes (19.1 mm spacing) and the M2 screw slots are omitted because their exact positions and diameters are unclear.",
+      "The tire and rim are fused into one solid, although they are separate parts in the product.",
+      "The tire tread texture is not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -45,
+      "xmax": 45,
+      "ymin": 0,
+      "ymax": 90,
+      "zmin": -5,
+      "zmax": 5,
+      "xlen": 90,
+      "ylen": 90,
+      "zlen": 10
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 5.800 mm; measured dimensions are [10.0, 90.0, 90.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 175676,
+        "sha256": "4dba4c6886ff60789771dc78f0dc2684fe09837aacb242a5d6a3d1cb37d4c461"
+      },
+      "model.stl": {
+        "bytes": 149084,
+        "sha256": "51f4d0536b678c7ac6b1c3333f68603ffe9dfa71ec1ef7d427e4247f8c8facf8"
+      },
+      "model.glb": {
+        "bytes": 54516,
+        "sha256": "bf5e7776ee18ac49dbbddb94ca95794fcefc5a464941b29cdf51d26b4c81c34b"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "4dba4c6886ff60789771dc78f0dc2684fe09837aacb242a5d6a3d1cb37d4c461"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

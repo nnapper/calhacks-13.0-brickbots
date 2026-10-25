@@ -1,0 +1,19 @@
+{
+  "partType": "other",
+  "summary": "Compact optical LIDAR rangefinder with a black rectangular housing. The front has two circular lens apertures side by side. Mounting flanges with holes sit at the base. A round cable with bare stripped wire ends exits from the side.",
+  "boundsMm": {
+    "x": 53.5,
+    "y": 33.5,
+    "z": 24.5
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -12.25,
+      "description": "Flat underside of the base flanges (the mounting ears with screw holes), used to seat the sensor on a plate or bracket. The bounding box is centered on the part."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The bounds come from the listed unit dimensions (53.5 x 33.5 x 24.5 mm), which are flagged as unverified. No drawing with printed dimensions is visible. The axis assignment is assumed: x is the long side along the lens pair, y is the width, and z is the height. The mounting ears show holes, but their diameters and positions are not stated or measurable, so the holes list is left empty rather than guessed. The cable length and the lens and housing details are not modeled."
+}

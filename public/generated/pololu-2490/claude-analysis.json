@@ -1,0 +1,42 @@
+{
+  "partType": "flat_plate",
+  "summary": "Small rectangular carrier PCB (breakout board) with a ranging sensor and a few surface-mount components on one face. It has two large mounting holes along one short-side region and a row of 7 edge pin pads on the opposite edge. Printed drawing dimensions are 0.5 in x 0.7 in.",
+  "boundsMm": {
+    "x": 12.7,
+    "y": 17.78,
+    "z": 2
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.18,
+      "positionsMm": [
+        [
+          -3.85,
+          6.35,
+          0
+        ],
+        [
+          -3.85,
+          -6.35,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1,
+      "description": "Flat underside of the board, usable as the seating face for standoffs or screws through the two mounting holes."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1,
+      "description": "Component side, with the sensor package and passives protruding. Not a flat mounting face."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "X is the 0.5 in width and Y is the 0.7 in length, both printed in the drawing. The mounting-hole diameter (0.086 in = 2.18 mm) and hole spacing (0.5 in = 12.7 mm) are also printed. The hole x-position (about 2.5 mm from the left edge) is scaled from the drawing, so it is approximate. The 2 mm Z height comes from the unverified catalog value and is not printed, so treat it as approximate. Seven 0.1 in-pitch pin holes run along the edge opposite the mounting holes (labels VDD, VIN, GND, SDA, SCL, XSHUT, GPIO1), centered at about x = +5.35 mm. Their drill diameter is not stated, so they are not listed in holes. The two mounting holes appear as a pair of larger holes in the product photo, but the photo's orientation relative to the drawing is ambiguous. Header pins are included separately and are not part of the board bounds."
+}

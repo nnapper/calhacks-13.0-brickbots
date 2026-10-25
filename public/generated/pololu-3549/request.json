@@ -1,0 +1,9 @@
+{
+  "name": "120:1 Mini Plastic Gearmotor HP, Offset 3mm D-Shaft Output, with 12 CPR Encoder, Side Connector",
+  "sku": "pololu-3549",
+  "category": "romi-chassis",
+  "expectedDimensionsMm": [
+    3
+  ],
+  "units": "millimeter"
+}

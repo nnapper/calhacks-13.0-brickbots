@@ -1,0 +1,11 @@
+{
+  "name": "Tamiya 70192 Slick Tire Set (4 tires)",
+  "sku": "pololu-1685",
+  "category": "tamiya-wheels",
+  "expectedDimensionsMm": [
+    10,
+    31,
+    3
+  ],
+  "units": "millimeter"
+}

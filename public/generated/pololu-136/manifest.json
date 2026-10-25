@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Sharp/Socle GP2Y0A21YK0F Analog Distance Sensor 10-80cm",
+    "sku": "pololu-136",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Bounding box comes from the stated size (44.5 x 18.9 x 13.5 mm), which is marked unverified. Axes: x = length, y = width including the connector ledge, z = thickness. The images show no printed dimensions for the holes. The 3.2 mm diameter, the 37 mm hole spacing (x = ±18.5) and the y offset (about +3 mm) are estimates from tab proportions in the back-view photo. The holes are assumed to pass through the tabs along the thickness direction. Verify them against the manufacturer drawing before using them in CAD. The connector and lens details are not modeled.",
+      "Dimensions are unverified and come from the spec sheet and photo proportions.",
+      "Hole diameter (3.2 mm), spacing (37 mm) and Y position are estimates. Hole Y was set to 3.75 so the tab stays within Y>=0.",
+      "Body length (34 mm), tab thickness (3 mm) and the connector block size and position are approximated.",
+      "Lens recesses are simplified round pockets; the real sensor has a stepped rectangular emitter housing, which is omitted.",
+      "The connector is a plain block with no pin cavity, and the PCB is not modeled.",
+      "The Y axis is treated as the 18.9 mm width, following the analysis axes, so the part is not oriented as it would sit on a table."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -22.25,
+      "xmax": 22.25,
+      "ymin": 0,
+      "ymax": 18.9,
+      "zmin": -6.75,
+      "zmax": 6.75,
+      "xlen": 44.5,
+      "ylen": 18.9,
+      "zlen": 13.5
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 85852,
+        "sha256": "3f665f9e263410aa2249091c4316295edb57ab5f525d6d6fc8c656b16757ef51"
+      },
+      "model.stl": {
+        "bytes": 87384,
+        "sha256": "2f36a8543df0d688d88a556855f057f71213228141320aa8ceb3cda00bb55981"
+      },
+      "model.glb": {
+        "bytes": 32420,
+        "sha256": "9c3957f9ab2072c98d7eb84a4fdb975866ad52acf30333afd96885e23ca93fe5"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "3f665f9e263410aa2249091c4316295edb57ab5f525d6d6fc8c656b16757ef51"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

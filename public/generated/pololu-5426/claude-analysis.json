@@ -1,0 +1,64 @@
+{
+  "partType": "other",
+  "summary": "Small rectangular solid-state relay PCB module. The top face carries a large SOIC-style optocoupler/driver package, two MOSFET packages, a small chip and a resistor. The left end has two oblong mounting slots and the right end has three round through-holes in a single column. The bottom face is flat with exposed pads and a long narrow board slot in the middle.",
+  "boundsMm": {
+    "x": 20.32,
+    "y": 8.13,
+    "z": 3.3
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          9,
+          2.54,
+          0
+        ],
+        [
+          9,
+          0,
+          0
+        ],
+        [
+          9,
+          -2.54,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 1.6,
+      "positionsMm": [
+        [
+          -9.1,
+          1.6,
+          0
+        ],
+        [
+          -9.1,
+          -1.6,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.65,
+      "description": "Flat underside of the PCB with exposed pads, usable as the seating face. The bounding box is centered, so the underside sits at the bottom of the 3.3 mm height."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Board plane near the mounting slots and holes. The component stack-up on the top face extends upward from here."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Overall bounds come from the supplied, unverified spec (0.8 in x 0.32 in x 0.13 in). Hole positions and diameters are estimated from pixel proportions in the top-view image, with the three right-end holes assumed to be on 2.54 mm pitch. The two left holes are oblong slots, elongated along y. Their listed diameter is the approximate slot width, and the length is roughly 3 mm. The central board slot is visible but not listed as a hole. Its size is not reliably measurable. The z positions of the holes are given as 0, which is the board mid-plane, because the PCB thickness is not stated. Component heights on the top face are not separately specified."
+}

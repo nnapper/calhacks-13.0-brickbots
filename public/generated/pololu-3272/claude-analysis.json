@@ -1,0 +1,37 @@
+{
+  "partType": "wheel",
+  "summary": "Polyurethane scooter/skate wheel, 70 mm diameter and 25 mm wide. It has a rounded tire profile and a hub with spokes around a central bore. The axle axis is z, and the part is centered at the origin.",
+  "boundsMm": {
+    "x": 70,
+    "y": 70,
+    "z": 25
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 22,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 12.5,
+      "description": "Outer hub face on the +z side, around the central bore, where an adapter or bearing seats"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -12.5,
+      "description": "Outer hub face on the -z side, around the central bore, where an adapter or bearing seats"
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 70 mm diameter and 25 mm width come from the product data, which is marked unverified. No drawing with printed dimensions is shown. The central bore is visible, but its diameter is not stated. The 22 mm value is inferred from the standard 608 bearing outer diameter, so verify it before using it. The spoke layout, any bore steps and the exact tire profile radius are not dimensioned and are left out of the model."
+}

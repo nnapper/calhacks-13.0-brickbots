@@ -1,0 +1,11 @@
+tire = cq.Workplane('XY').workplane(offset=-5).circle(15.5).extrude(10).edges().fillet(2.5)
+recess = cq.Workplane('XY').workplane(offset=1).circle(12).extrude(4)
+body = tire.cut(recess)
+hub = cq.Workplane('XY').workplane(offset=1).circle(3.5).extrude(4)
+body = body.union(hub)
+for a in (90, 210, 330):
+    spoke = cq.Workplane('XY').workplane(offset=1).center(6, 0).rect(12, 3).extrude(4).rotate((0, 0, 0), (0, 0, 1), a)
+    body = body.union(spoke)
+bore = cq.Workplane('XY').workplane(offset=-2).polygon(6, 3.464).extrude(7)
+body = body.cut(bore)
+part = body.translate((0, 15.5, 0))

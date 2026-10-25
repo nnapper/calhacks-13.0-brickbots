@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Force-Sensing Resistor: 0.25″-Diameter Circle, Short Tail",
+    "sku": "pololu-2727",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Width (7.62 mm) and thickness (0.254 mm) come from the stated specs (0.3 in pad, 0.01 in thick). The supplied length of 7.62 mm covers only the circular pad, so it is not the overall length. The overall length of about 20 mm, including the tail and pins, is a rough estimate from the quarter-coin scale photo and is unverified. No holes or mounting cutouts are visible, so none are listed. The two pins are spaced 2.54 mm apart (0.1 in) and extend from the tail end along the length axis. The pin length and the tail length are not individually stated.",
+      "Overall length of about 20 mm is estimated from the photo and is unverified.",
+      "Tail width (6 mm), pin width (0.8 mm) and pin length are estimated.",
+      "Pins are modeled as flat strips with the same thickness as the laminate.",
+      "The pad narrows into the tail in the photo; this is simplified to a circle plus a rectangle.",
+      "Thickness is placed along Y to satisfy the bottom-at-Y=0 rule, which differs from the Z thickness axis in the image analysis.",
+      "The printed traces, active-area graphics, logos and the solder-clip detail on the pins are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -3.8100000000000005,
+      "xmax": 3.8100000000000005,
+      "ymin": 0,
+      "ymax": 0.254,
+      "zmin": -10,
+      "zmax": 10,
+      "xlen": 7.620000000000001,
+      "ylen": 0.254,
+      "zlen": 20
+    },
+    "warnings": [
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 44484,
+        "sha256": "cace6fb0603cc3c1ad1d6655d56448c267a8a77010643d09fdb0e66567b9ab62"
+      },
+      "model.stl": {
+        "bytes": 14084,
+        "sha256": "1baafc67d35566422c11f61ad3ace96199e1d1fc7cbc5caaff854e5e1cdc302c"
+      },
+      "model.glb": {
+        "bytes": 6080,
+        "sha256": "bcae5d8c3c70eb77963ba3376e705668bc6c7987ec0e099fc730e0934ea91961"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "cace6fb0603cc3c1ad1d6655d56448c267a8a77010643d09fdb0e66567b9ab62"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 4
+  },
+  "status": "prototype_unverified"
+}

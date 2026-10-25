@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Flat rectangular plate 160 mm (X) by 60 mm (Z) by 2 mm thick (Y, from 0 to 2). It has a through-hole grid of 31 by 11 holes, 3 mm diameter on a 5 mm pitch, centered on the plate. The holes run along Y.",
+  "confidence": "low",
+  "warnings": [
+    "The 2 mm thickness is a placeholder because no thickness is stated.",
+    "The 160 x 60 mm outline, 3 mm holes, 5 mm pitch and 11 x 31 grid come from the unverified product spec, not from a drawing.",
+    "The photo may show a different hole count than the spec.",
+    "The edge tabs on the plate sides are not dimensioned, so they are omitted.",
+    "The angle brackets, shaft mounts and push rivets are separate parts and are not modeled.",
+    "The Y-up orientation follows the rules (bottom at Y=0), so the plate thickness lies along Y rather than Z as in the analysis bounds."
+  ],
+  "cadquery": "pts = [(-75 + 5*i, -25 + 5*j) for i in range(31) for j in range(11)]\nplate = cq.Workplane('XY').box(160, 2, 60, centered=(True, False, True))\nholes = cq.Workplane('XZ').workplane(offset=1).pushPoints(pts).circle(1.5).extrude(-4)\npart = plate.cut(holes)"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "TB67H420FTG Dual/Single Motor Driver Carrier",
+  "sku": "pololu-2999",
+  "category": "dc-motor-drivers",
+  "expectedDimensionsMm": [
+    30.48,
+    25.4
+  ],
+  "units": "millimeter"
+}

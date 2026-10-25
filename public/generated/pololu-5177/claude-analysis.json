@@ -1,0 +1,13 @@
+{
+  "partType": "motor",
+  "summary": "Miniature brushed DC metal gearmotor with a rectangular gearbox of 10x12 mm cross section, a D-shaped output shaft 3 mm in diameter and 9 mm long, a cylindrical motor can, and a rear encoder housing with a side-facing connector. The long axis is x, with the output shaft toward -x.",
+  "boundsMm": {
+    "x": 50,
+    "y": 12,
+    "z": 10
+  },
+  "holes": [],
+  "mountingSurfaces": [],
+  "confidence": "low",
+  "notes": "Only the 12 mm width, 10 mm height, 3 mm shaft diameter and 9 mm shaft length come from the listing. Total length is not given and no dimensioned drawing is visible, so x=50 is a rough placeholder to be checked against the datasheet. The gearbox plates appear to have small mounting holes, but their diameters and positions are not stated or measurable, so they are left out. Mounting surface offsets are also omitted for the same reason. The encoder housing may extend slightly beyond the 10x12 mm gearbox section."
+}

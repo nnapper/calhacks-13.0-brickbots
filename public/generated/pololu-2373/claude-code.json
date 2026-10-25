@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Micro metal gearmotor with its axis along X at Y=6, Z=0, so the bottom sits at Y=0. It has a 3 mm D-shaft 9 mm long toward -X, three thin 12x10 mm gearbox plates joined by a central spacer block, a 12x10x15 mm motor can, and a 1 mm x 4.5 mm rear shaft. Overall length is 42.5 mm.",
+  "confidence": "low",
+  "warnings": [
+    "The gearbox length of 14 mm and can length of 15 mm are estimated from image proportions.",
+    "Internal gears and gear stack are omitted.",
+    "The front-plate screw holes (1.6 mm dia, 9 mm spacing) are assumed and not clearly visible in the image, so they were not cut.",
+    "The rear cap terminals, tabs, small holes and black end cap detail are omitted.",
+    "The motor can is modeled as a plain 12x10 rectangle, without the rounded or flat-sided profile.",
+    "The plate thickness (1 mm) and the spacer block size (7x6 mm) are assumed.",
+    "The D-flat depth (flat 1.2 mm from the axis) is assumed."
+  ],
+  "cadquery": "def cyl(x0, length, d):\n    return cq.Workplane('YZ', origin=(x0, 6, 0)).circle(d / 2).extrude(length)\n\ndef blk(x0, length, h, w):\n    return cq.Workplane('YZ', origin=(x0, 6, 0)).rect(h, w).extrude(length)\n\nx_start = -21.25\n# D-shaped output shaft (3 mm dia, 9 mm long)\nshaft = cyl(x_start, 9, 3)\nflat_cut = cq.Workplane('XY').box(9, 4, 1).translate((x_start + 4.5, 6, 1.7))\nshaft = shaft.cut(flat_cut)\n# gearbox plates and spacer\nplate_f = blk(-12.25, 1.0, 12, 10)\nplate_m = blk(-5.5, 1.0, 12, 10)\nplate_r = blk(0.75, 1.0, 12, 10)\nspacer = blk(-11.25, 12.0, 7, 6)\n# motor can\ncan = blk(1.75, 15, 12, 10)\n# rear shaft (1 mm dia, 4.5 mm long)\nrear = cyl(16.75, 4.5, 1)\npart = shaft.union(plate_f).union(plate_m).union(plate_r).union(spacer).union(can).union(rear)"
+}
