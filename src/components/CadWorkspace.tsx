@@ -7,7 +7,7 @@ import { Component, useEffect, useRef, useState, type PointerEvent as ReactPoint
 import { Viewer, type View, type ViewerBridge } from './Viewer';
 import { loadModel, type LoadedModel } from '../cad/import';
 import { disposeModel } from '../cad/geometry';
-import { placeholderFile } from '../cad/placeholder';
+import { placeholderFile, primitiveFile } from '../cad/placeholder';
 import { clone } from 'three/addons/utils/SkeletonUtils.js';
 import { addPosition, findSnap, alignConnectors, compatible, type PartInstance, type Mate, type Snap } from '../assembly/snapping';
 import { BY_SKU, shortName } from '../lib/catalog.js';
@@ -398,20 +398,28 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
   async function loadProductModel(sku: string): Promise<LoadedModel> {
     const cached = [...cache.current.values()].find(source => source.asset.productId === sku);
     if (cached) return cached;
-    const response = await fetch('/geometry/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sku }),
-      signal: AbortSignal.timeout(180_000),
-    });
-    if (!response.ok) {
-      const detail = await response.json().catch(() => ({}));
-      throw new Error(detail.detail ?? `Model for ${sku} failed (HTTP ${response.status})`);
+    let file: File;
+    try {
+      const response = await fetch('/geometry/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sku }),
+        signal: AbortSignal.timeout(180_000),
+      });
+      if (!response.ok) {
+        const detail = await response.json().catch(() => ({}));
+        throw new Error(detail.detail ?? `Model for ${sku} failed (HTTP ${response.status})`);
+      }
+      const result = await response.json();
+      const modelResponse = await fetch(result.stepUrl);
+      if (!modelResponse.ok) throw new Error('Generated model download failed');
+      file = new File([await modelResponse.arrayBuffer()], `${result.name}.step`);
+    } catch (error) {
+      // Without the CAD service (the deployed site) the prebuilt model that ships with the app is used instead.
+      const prebuilt = await fetch(`/generated/${sku}/model.glb`).catch(() => null);
+      if (!prebuilt?.ok || /html/i.test(prebuilt.headers.get('content-type') ?? '')) throw error;
+      file = new File([await prebuilt.arrayBuffer()], `${BY_SKU[sku]?.name ?? sku}.glb`);
     }
-    const result = await response.json();
-    const modelResponse = await fetch(result.stepUrl);
-    if (!modelResponse.ok) throw new Error('Generated model download failed');
-    const file = new File([await modelResponse.arrayBuffer()], `${result.name}.step`);
     const next = await loadModel(file, new AbortController().signal, false);
     next.asset.productId = sku;
     cache.current.set(`generated:${sku}`, next);
@@ -553,6 +561,15 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
         setBusy('');
         return {name:result.name,partId:partId??null};
       }catch(e){lastError=e;setBusy('');if(attempt===0&&(!deadline||remainingMs(deadline)>2000))await new Promise(r=>setTimeout(r,1200));}
+    }
+    // No CAD service (the deployed site): a plain box, cylinder or sphere is still made in the browser.
+    if(!(body.holesX>0&&body.holesY>0)){
+      try{
+        const file=await primitiveFile(body);
+        const key=`generated:local-${[body.shape??'box',body.lengthMm,body.widthMm,body.heightMm,body.name??''].join('-').replace(/[^a-z0-9.-]/gi,'_')}`;
+        const partId=await open(file,false,new AbortController(),undefined,key,undefined,analyzeNodes);
+        if(partId){solidBoxes.current.add(partId);return {name:body.name??'Custom body',partId};}
+      }catch{/* fall through to the original error */}
     }
     throw lastError;
   }

@@ -64,3 +64,19 @@ export async function placeholderFile(product: PlaceholderProduct): Promise<File
     new GLTFExporter().parse(root, result => resolve(result as ArrayBuffer), reject, { binary: true }));
   return new File([buffer], `${product.name}.glb`, { type: 'model/gltf-binary' });
 }
+
+// A plain solid made in the browser for a custom body, so box, cylinder and sphere requests work without the CAD service.
+// Axes match the service's output: length along x, width along y, height (or a cylinder's axis) along z.
+export async function primitiveFile(body: { name?: string; shape?: string; lengthMm: number; widthMm: number; heightMm: number }): Promise<File> {
+  const mm = .001;
+  const shape = body.shape === 'cylinder' || body.shape === 'sphere' ? body.shape : 'box';
+  let geometry: THREE.BufferGeometry;
+  if (shape === 'cylinder') { geometry = new THREE.CylinderGeometry(body.lengthMm / 2 * mm, body.lengthMm / 2 * mm, body.heightMm * mm, 48); geometry.rotateX(Math.PI / 2); }
+  else if (shape === 'sphere') geometry = new THREE.SphereGeometry(body.lengthMm / 2 * mm, 40, 28);
+  else geometry = new THREE.BoxGeometry(body.lengthMm * mm, body.widthMm * mm, body.heightMm * mm);
+  const root = new THREE.Group();
+  root.add(new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: '#b9c0cb', metalness: .35, roughness: .55 })));
+  const buffer = await new Promise<ArrayBuffer>((resolve, reject) =>
+    new GLTFExporter().parse(root, result => resolve(result as ArrayBuffer), reject, { binary: true }));
+  return new File([buffer], `${body.name ?? 'Custom body'}.glb`, { type: 'model/gltf-binary' });
+}

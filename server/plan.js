@@ -122,6 +122,37 @@ export async function arrangeWithClaude({ goal, summary = '', parts, previous, i
   };
 }
 
+// Request handlers shared by the dev server and the deployed /api functions. `prebuilt` is the set of SKUs that have a
+// ready model (loads instantly); when given, Claude is only offered those.
+export async function handlePlan(input, { apiKey = process.env.CLAUDE_API_KEY ?? process.env.ANTHROPIC_API_KEY, prebuilt = null } = {}) {
+  try {
+    const goal = text(input?.goal, 2000).trim();
+    const catalog = (Array.isArray(input?.catalog) ? input.catalog : []).filter((p) => typeof p?.sku === 'string').slice(0, 150);
+    if (!goal || !catalog.length) return { status: 400, body: { error: 'Expected a goal and a catalog' } };
+    const ready = prebuilt ? catalog.filter((p) => prebuilt.has(p.sku)) : catalog;
+    const offered = ready.length >= 12 ? ready : catalog;
+    const result = await planWithClaude({
+      goal, workspace: Array.isArray(input.workspace) ? input.workspace.slice(0, 100) : [], catalog: offered, apiKey, signal: AbortSignal.timeout(40_000),
+    });
+    return { status: 200, body: result };
+  } catch (error) {
+    console.error('[plan]', error instanceof Error ? error.message : error);
+    return { status: 502, body: { error: error instanceof Error ? error.message : 'Planning failed' } };
+  }
+}
+
+export async function handleArrange(input, { apiKey = process.env.CLAUDE_API_KEY ?? process.env.ANTHROPIC_API_KEY } = {}) {
+  try {
+    const parts = (Array.isArray(input?.parts) ? input.parts : []).slice(0, 100).filter((p) => typeof p?.id === 'string' && p.sizeMm);
+    if (!parts.length) return { status: 400, body: { error: 'Expected parts to arrange' } };
+    const body = await arrangeWithClaude({ goal: input.goal, summary: input.summary, parts, previous: input.previous, issues: input.issues, apiKey, signal: AbortSignal.timeout(40_000) });
+    return { status: 200, body };
+  } catch (error) {
+    console.error('[arrange]', error instanceof Error ? error.message : error);
+    return { status: 502, body: { error: error instanceof Error ? error.message : 'Arranging failed' } };
+  }
+}
+
 async function getJson(request) {
   const chunks = [];
   let size = 0;
@@ -140,45 +171,24 @@ function send(response, status, value) {
   response.end(JSON.stringify(value));
 }
 
+// SKUs whose model.glb exists on disk (dev server only).
+const onDisk = { has: (sku) => /^[\w-]+$/.test(sku) && existsSync(`public/generated/${sku}/model.glb`) };
+
 export default function planner() {
+  const route = (path, handler) => (vite) => vite.middlewares.use(path, async (req, res) => {
+    if (req.method !== 'POST') return send(res, 405, { error: 'POST required' });
+    try {
+      const { status, body } = await handler(await getJson(req));
+      return send(res, status, body);
+    } catch (error) {
+      return send(res, 400, { error: error instanceof Error ? error.message : 'Bad request' });
+    }
+  });
   return {
     name: 'brickbots-plan',
     configureServer(vite) {
-      vite.middlewares.use('/api/arrange', async (req, res) => {
-        if (req.method !== 'POST') return send(res, 405, { error: 'POST required' });
-        try {
-          const input = await getJson(req);
-          const parts = (Array.isArray(input.parts) ? input.parts : []).slice(0, 100).filter((p) => typeof p?.id === 'string' && p.sizeMm);
-          if (!parts.length) return send(res, 400, { error: 'Expected parts to arrange' });
-          return send(res, 200, await arrangeWithClaude({
-            goal: input.goal, summary: input.summary, parts, previous: input.previous, issues: input.issues,
-            apiKey: process.env.CLAUDE_API_KEY ?? process.env.ANTHROPIC_API_KEY, signal: AbortSignal.timeout(40_000),
-          }));
-        } catch (error) {
-          console.error('[arrange]', error instanceof Error ? error.message : error);
-          return send(res, 502, { error: error instanceof Error ? error.message : 'Arranging failed' });
-        }
-      });
-      vite.middlewares.use('/api/plan', async (req, res) => {
-        if (req.method !== 'POST') return send(res, 405, { error: 'POST required' });
-        try {
-          const input = await getJson(req);
-          const goal = text(input.goal, 2000).trim();
-          const catalog = (Array.isArray(input.catalog) ? input.catalog : []).filter((p) => typeof p?.sku === 'string').slice(0, 150);
-          if (!goal || !catalog.length) return send(res, 400, { error: 'Expected a goal and a catalog' });
-          // Parts with a prebuilt model load instantly; the rest need slow CAD generation, so Claude is offered those first.
-          const ready = catalog.filter((p) => /^[\w-]+$/.test(p.sku) && existsSync(`public/generated/${p.sku}/model.glb`));
-          if (ready.length >= 12) catalog.splice(0, catalog.length, ...ready);
-          const result = await planWithClaude({
-            goal, workspace: Array.isArray(input.workspace) ? input.workspace.slice(0, 100) : [], catalog,
-            apiKey: process.env.CLAUDE_API_KEY ?? process.env.ANTHROPIC_API_KEY, signal: AbortSignal.timeout(40_000),
-          });
-          return send(res, 200, result);
-        } catch (error) {
-          console.error('[plan]', error instanceof Error ? error.message : error);
-          return send(res, 502, { error: error instanceof Error ? error.message : 'Planning failed' });
-        }
-      });
+      route('/api/arrange', (input) => handleArrange(input))(vite);
+      route('/api/plan', (input) => handlePlan(input, { prebuilt: onDisk }))(vite);
     },
   };
 }
