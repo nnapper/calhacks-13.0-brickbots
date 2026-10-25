@@ -110,7 +110,9 @@ export function pendingReport(parts = [], mates = [], catalog = {}, raw = {}) {
 export async function evaluateBuildWithElastic(
   parts = [], mates = [], catalogBySku = {}, rawBySku = {}, options = {},
 ) {
-  const base = connectedPairs(parts, mates, catalogBySku, rawBySku);
+  // `onlyIds` limits the agent to pairs the caller still needs answered; the others are left out of the report.
+  const base = connectedPairs(parts, mates, catalogBySku, rawBySku)
+    .filter((pair) => !options.onlyIds || options.onlyIds.has(pair.id));
   if (!base.length) return { ...pendingReport(parts, mates, catalogBySku, rawBySku),
     elastic: { status: 'idle', indexedParts: 0, agentUsed: false } };
 
