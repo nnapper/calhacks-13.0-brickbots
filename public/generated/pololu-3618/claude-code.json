@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Retracted medium-duty linear actuator lying along X: 40x40 mm rectangular extrusion tube, a rear gear housing box, a 36 mm diameter motor cylinder parallel to the tube on top of the rear housing, a 20 mm diameter extension shaft stub at the front, and a 20 mm diameter rear tab. Each end has a 10 mm through-hole along Z, with hole centers 392 mm apart. Bottom at Y=0, centered in X and Z.",
+  "confidence": "low",
+  "warnings": [
+    "Cross-section sizes (40x40 tube, 44 mm housing height, 36 mm motor diameter) are visual estimates, not stated dimensions.",
+    "Hole centers are placed at x=±196 (392 mm retracted length). The end bosses extend 10 mm past each hole, so the overall X length is about 412 mm, not the 402 mm in the analysis, to leave wall material around the 10 mm holes.",
+    "Modeled in the retracted state only; the 250 mm stroke is not represented.",
+    "Cable, strain relief, end-cap screws, seal ring, potentiometer, labels and logos omitted.",
+    "Motor length and position, and the housing shape, are approximate."
+  ],
+  "cadquery": "tube = cq.Workplane('XY').box(290, 40, 40, centered=(True, False, True)).translate((-35, 0, 0))\nhousing = cq.Workplane('XY').box(90, 44, 40, centered=(True, False, True)).translate((145, 0, 0))\nmotor = cq.Workplane('YZ', origin=(60, 0, 0)).center(52, 0).circle(18).extrude(90)\nshaft = cq.Workplane('YZ', origin=(-206, 0, 0)).center(20, 0).circle(10).extrude(28)\ntab = cq.Workplane('XY', origin=(0, 0, -15)).center(196, 20).circle(10).extrude(30)\npart = tube.union(housing).union(motor).union(shaft).union(tab)\nh1 = cq.Workplane('XY', origin=(0, 0, -25)).center(-196, 20).circle(5).extrude(50)\nh2 = cq.Workplane('XY', origin=(0, 0, -25)).center(196, 20).circle(5).extrude(50)\npart = part.cut(h1).cut(h2)"
+}

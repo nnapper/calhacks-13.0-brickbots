@@ -10,12 +10,15 @@
     "provider": "anthropic",
     "model": "claude-sonnet-5-5",
     "analysisConfidence": "medium",
-    "codeConfidence": "medium",
+    "dimensionsEstimated": false,
+    "codeConfidence": "low",
     "warnings": [
-      "Bounds come from the stated dimensions (56 x 32 x 2.5mm), which are marked unverified. The two 14mm holes are placed at x = ±12mm, assuming each is concentric with a semicircular end of radius 16mm (56/2 - 16 = 12). This matches the 24mm center spacing in the description. The images show about 14 smaller through holes and some slotted ones, arranged in a 16mm goBILDA pattern. Their diameter and exact positions are not stated, so they are left out of the holes list instead of guessed. Product Insight #2 shows the plate fastened across two flush goRAIL pieces with 12mm M4 screws, with T-slots 24mm apart.",
-      "The roughly 14 smaller holes and slotted holes in the 16mm goBILDA pattern are visible in the image. Their diameters and exact positions are not stated, so they are omitted rather than guessed.",
-      "The dimensions are marked unverified in the source data.",
-      "The 14 mm hole positions at X=±12 mm are inferred from the 24 mm center spacing and the 16 mm end radius."
+      "Length (56), width (32) and thickness (2.5) are the listed dimensions, and the ends are full semicircles of radius 16. The 14mm hole diameter is listed. The ±12mm spacing of the two large holes is estimated from the images, which also show them centered on the width axis and concentric with the rounded ends. The smaller pattern holes (about 14 visible, some slotted) follow the listed 16mm goBILDA pattern. Their 4mm diameter is assumed from that standard and not stated here, and their positions are left empty because the images give no printed coordinates.",
+      "Small hole positions are estimated from the image, not from the goBILDA drawing; the 14-hole layout is approximate.",
+      "Small hole diameter of 4 mm is assumed from the goBILDA standard.",
+      "Slotted holes (slotted to 24mm across center) are modeled as round holes because slot extents are uncertain.",
+      "Big hole spacing of ±12 mm is assumed concentric with the end radii.",
+      "The first line of the code assigns an unused alias for math, which is harmless."
     ]
   },
   "geometry": {
@@ -34,27 +37,27 @@
     "warnings": [],
     "files": {
       "model.step": {
-        "bytes": 25662,
-        "sha256": "21e6adeb5094dbb3187b081e886b1f2f0e677a4c701ac4cf4626f6c1a2c71b8b"
+        "bytes": 95170,
+        "sha256": "cd3ba46349a431dc34c71a06224c0691320b405f9d075039e17a235893b38040"
       },
       "model.stl": {
-        "bytes": 51084,
-        "sha256": "edf951332ac7f74924e8065e26ed3d12e73eb1b99eec642b76340afe062db0c3"
+        "bytes": 289084,
+        "sha256": "3a171149152e4ba7084c6bd711325c6c14111387f4e69af9eb7371f4a123ccfa"
       },
       "model.glb": {
-        "bytes": 19352,
-        "sha256": "5ac89c1917703b61ae37df2dc3dd5903f7fd948ea1d34af360ec9dbecaf5371f"
+        "bytes": 104700,
+        "sha256": "24c1a364eddc52148ae906759ad7bb04b0590e8812e60a5468de65312cbc3858"
       }
     }
   },
   "artifacts": {
     "step": "model.step",
     "glb": "model.glb",
-    "stepSha256": "21e6adeb5094dbb3187b081e886b1f2f0e677a4c701ac4cf4626f6c1a2c71b8b"
+    "stepSha256": "cd3ba46349a431dc34c71a06224c0691320b405f9d075039e17a235893b38040"
   },
   "verification": {
     "service": "http://127.0.0.1:8001",
-    "candidateCount": 32
+    "candidateCount": 60
   },
   "status": "prototype_unverified"
 }

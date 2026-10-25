@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Idler Wheel Kit for 2400 Series Tracks (1-1) - 2 Pack",
+    "sku": "2407-0001-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/idler-wheel-kit-for-2400-series-tracks-1-1-2-pack/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are given in the scraped data, so every size is an estimate. Assumptions: (1) The wheel runs on the 2400 series track, which uses a 12-tooth sprocket of roughly 72 mm diameter. The idler is drawn slightly smaller than the sprocket beside it in the product insight image, so about 72 mm is a plausible diameter. (2) Thickness of about 16 mm comes from the rim depth relative to the diameter in the photos. (3) The central bore is assumed to be about 8 mm, matching the flanged bearing OD of a standard goBILDA 8 mm bore bearing and the M4 screw hardware in the kit. The bearing bore is about 4 mm, so the screw is likely M4. (4) The small hole ring is assumed to be 8 holes of 4 mm diameter on a 56 mm bolt circle, following the 8 mm grid. These holes are only loosely visible in the photos, so the count and positions are uncertain. (5) The lightening slots, hex pockets and ribs are not modeled. The stated weight is 29 g per wheel.",
+      "All dimensions are estimates; the source gives none.",
+      "The 8 mm bore is assumed; the real part likely has a larger bearing seat.",
+      "The bolt-hole count and positions are uncertain.",
+      "Recess depth and radii are approximate.",
+      "Lightening slots, bolt bosses, ribs, hex pockets, the bearing and the screw are not modeled.",
+      "The opposite face is assumed flat, although the real part may have a matching recess."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -36,
+      "xmax": 36,
+      "ymin": 0,
+      "ymax": 72,
+      "zmin": -8,
+      "zmax": 8,
+      "xlen": 72,
+      "ylen": 72,
+      "zlen": 16
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 54537,
+        "sha256": "ffd609d18976e150cdf55fa51a51311ed9ddd859d6304329cf30888bb419d8b5"
+      },
+      "model.stl": {
+        "bytes": 211684,
+        "sha256": "525b6c155411cc8f7211114d3d528415e1bc7b36ce263a241acdfa88b808d408"
+      },
+      "model.glb": {
+        "bytes": 77004,
+        "sha256": "5d0ba93d7cd2273bb6dff6c01e74c1603b3fac7822129077ced22065208346d2"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "ffd609d18976e150cdf55fa51a51311ed9ddd859d6304329cf30888bb419d8b5"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 35
+  },
+  "status": "prototype_unverified"
+}

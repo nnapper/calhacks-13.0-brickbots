@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Black rectangular sensor body (34 x 14 x 13.5 mm) with two thin end mounting tabs on the back plane, each with a 3.2 mm through hole along Z. A small connector block projects from the top long edge, bringing total Y extent to 18.9 mm. Two shallow round lens recesses are cut in the front face. Overall envelope is 44.5 x 18.9 x 13.5 mm, centered in X and Z with the bottom at Y=0.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are unverified and come from the spec sheet and photo proportions.",
+    "Hole diameter (3.2 mm), spacing (37 mm) and Y position are estimates. Hole Y was set to 3.75 so the tab stays within Y>=0.",
+    "Body length (34 mm), tab thickness (3 mm) and the connector block size and position are approximated.",
+    "Lens recesses are simplified round pockets; the real sensor has a stepped rectangular emitter housing, which is omitted.",
+    "The connector is a plain block with no pin cavity, and the PCB is not modeled.",
+    "The Y axis is treated as the 18.9 mm width, following the analysis axes, so the part is not oriented as it would sit on a table."
+  ],
+  "cadquery": "body = cq.Workplane('XY').box(34, 14, 13.5, centered=(True, False, True))\nbridge = cq.Workplane('XY').box(37, 7.5, 3, centered=(True, False, False)).translate((0, 0, -6.75))\ntabs = (cq.Workplane('XY').workplane(offset=-6.75)\n        .pushPoints([(-18.5, 3.75), (18.5, 3.75)]).circle(3.75).extrude(3))\nconn = cq.Workplane('XY').box(10, 4.9, 6, centered=(True, False, True)).translate((0, 14, 0))\npart = body.union(bridge).union(tabs).union(conn)\nholes = (cq.Workplane('XY').workplane(offset=-8)\n         .pushPoints([(-18.5, 3.75), (18.5, 3.75)]).circle(1.6).extrude(6))\npart = part.cut(holes)\nlens = (cq.Workplane('XY').workplane(offset=3.75)\n        .pushPoints([(-9, 7), (9, 7)]).circle(2.5).extrude(3.5))\npart = part.cut(lens)"
+}

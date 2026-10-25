@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Half-disc (D-shaped) ABS expansion plate, radius 80 mm centered at (0,5), clipped to 160 x 85 mm outline with a straight back edge at Y=0 and 10 mm thickness along Z (centered). It has a 3 mm top deck, a 3 mm wide underside perimeter rim, a representative grid of 3.5 mm through holes, and four slots.",
+  "confidence": "low",
+  "warnings": [
+    "Bounds used literally (X160, Y85, Z10), so the plate lies in the XY plane with thickness along Z, though the rules put the bottom at Y=0.",
+    "Hole and slot positions and sizes are representative approximations; the real plate has a much denser irregular pattern.",
+    "Hex cutouts, corner standoff bosses, rim notches and side tabs/notches were omitted as uncertain.",
+    "Deck and rim thicknesses are estimates; all dimensions are unverified."
+  ],
+  "cadquery": "import_ok = True\nR = 80\nbox = cq.Workplane('XY').box(160, 85, 10, centered=(True, False, True))\ndisc = cq.Workplane('XY').workplane(offset=-5).center(0, 5).circle(R).extrude(10)\nouter = disc.intersect(box)\n# hollow underside leaving a 3 mm perimeter rim and a 3 mm top deck (z 2..5)\ninner_box = cq.Workplane('XY').box(154, 82, 7, centered=(True, False, True)).translate((0, 3, -1.5))\ninner_disc = cq.Workplane('XY').workplane(offset=-5).center(0, 5).circle(R - 3).extrude(7)\ninner = inner_disc.intersect(inner_box)\nbody = outer.cut(inner)\n# round mounting hole grid\npts = [(x, y) for x in range(-60, 61, 10) for y in range(15, 76, 10) if math.hypot(x, y - 5) < 66]\nholes = cq.Workplane('XY').workplane(offset=-5).pushPoints(pts).circle(1.75).extrude(10)\n# a few slots\nslot_pts = [(-30, 35), (0, 45), (30, 35), (0, 20)]\nslots = cq.Workplane('XY').workplane(offset=-5).pushPoints(slot_pts).slot2D(14, 3.5, 0).extrude(10)\npart = body.cut(holes).cut(slots)"
+}

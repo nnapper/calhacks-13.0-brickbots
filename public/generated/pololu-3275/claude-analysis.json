@@ -1,0 +1,37 @@
+{
+  "partType": "wheel",
+  "summary": "Polyurethane scooter/skate wheel, 84 mm diameter and 24 mm wide, with a rounded tread profile. The inner hub has spoke-like webbing around a central bore. The bore is sized for standard 608 bearings, per the description. The wheel axis is taken as z.",
+  "boundsMm": {
+    "x": 84,
+    "y": 84,
+    "z": 24
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 22,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 12,
+      "description": "Flat hub face on one side with a central bore and recessed spoke webbing. It seats 608 bearings or an adapter. A third image shows an adapter attached with three small screws, but the screw hole pattern is not dimensioned."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -12,
+      "description": "Opposite hub face, which mirrors the first as far as can be inferred."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 84 mm diameter and 24 mm width come from the product description, which is flagged as unverified, and no drawing dimensions are visible. The bore is drawn as a through hole of about 22 mm, matching the outer diameter of a standard 608 bearing (the bearing seat). This is an assumption: the bore is not stated, and the actual through-opening is probably smaller (about 8 mm, the 608 bore). Spoke cutouts and the adapter screw holes are not modeled because their dimensions are not given. The tread cross-section is rounded, with a slight parting line at the center."
+}

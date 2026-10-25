@@ -1,0 +1,121 @@
+{
+  "partType": "bracket",
+  "summary": "Flat aluminum plate, 40 mm wide, with a 20 mm radius rounded top end and a square bottom end. It has a Ø14 mm central bore, eight Ø4 mm slotted holes arranged around the bore, and a row of five Ø4 mm holes on an 8 mm pitch along the base.",
+  "boundsMm": {
+    "x": 40,
+    "y": 56,
+    "z": 2.5
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          8,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          20,
+          0
+        ],
+        [
+          8.5,
+          16.5,
+          0
+        ],
+        [
+          12,
+          8,
+          0
+        ],
+        [
+          8.5,
+          -0.5,
+          0
+        ],
+        [
+          0,
+          -4,
+          0
+        ],
+        [
+          -8.5,
+          -0.5,
+          0
+        ],
+        [
+          -12,
+          8,
+          0
+        ],
+        [
+          -8.5,
+          16.5,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -16,
+          -24,
+          0
+        ],
+        [
+          -8,
+          -24,
+          0
+        ],
+        [
+          0,
+          -24,
+          0
+        ],
+        [
+          8,
+          -24,
+          0
+        ],
+        [
+          16,
+          -24,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 1.25,
+      "description": "Top flat face of the plate; carries the bore, the slotted ring and the base hole row."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -1.25,
+      "description": "Bottom flat face of the plate; sits against a grid plate through the 8 mm linear hole row at the base."
+    },
+    {
+      "axis": "y",
+      "offsetMm": -28,
+      "description": "Square base edge; the 8 mm linear hole row is centered 4 mm in from this edge."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The drawing prints width 40 mm, thickness 2.5 mm, top radius 20 mm, bore Ø14 mm, hole Ø4 mm, 8 mm hole pitch, 32 mm span of the base hole row, and 4 mm base-edge offset. Total height of 56 mm is derived, not printed: the bore centerline is 32 mm above the base hole row, which is 4 mm above the bottom edge, giving 36 mm to the bottom edge, plus the 20 mm radius above the centerline. The pixel scale of the drawing agrees with this. The origin is the bounding-box center, so the bore center is at y=+8. The eight ring holes are slightly elongated slots (about 4 mm wide and 4.7 mm long, elongated radially). They are modeled here as Ø4 mm points at roughly 12 mm radius from the bore center, with diagonal slots at 45° (about ±8.5 mm). The drawing prints 16 mm and 24 mm dimensions for these, which suggests the diagonal offsets may be nearer 8 mm, so treat the ring positions as approximate. Slot elongation is not modeled."
+}

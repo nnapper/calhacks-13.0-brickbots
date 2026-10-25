@@ -1,0 +1,107 @@
+{
+  "partType": "flat_plate",
+  "summary": "Small rectangular carrier PCB with a single surface-mount driver IC and a few small passive components on the top face. It has two parallel rows of 8 plated through-holes at 0.1 in pitch along the long edges.",
+  "boundsMm": {
+    "x": 15.24,
+    "y": 20.32,
+    "z": 3
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          -6.35,
+          8.89,
+          -0.7
+        ],
+        [
+          -6.35,
+          6.35,
+          -0.7
+        ],
+        [
+          -6.35,
+          3.81,
+          -0.7
+        ],
+        [
+          -6.35,
+          1.27,
+          -0.7
+        ],
+        [
+          -6.35,
+          -1.27,
+          -0.7
+        ],
+        [
+          -6.35,
+          -3.81,
+          -0.7
+        ],
+        [
+          -6.35,
+          -6.35,
+          -0.7
+        ],
+        [
+          -6.35,
+          -8.89,
+          -0.7
+        ],
+        [
+          6.35,
+          8.89,
+          -0.7
+        ],
+        [
+          6.35,
+          6.35,
+          -0.7
+        ],
+        [
+          6.35,
+          3.81,
+          -0.7
+        ],
+        [
+          6.35,
+          1.27,
+          -0.7
+        ],
+        [
+          6.35,
+          -1.27,
+          -0.7
+        ],
+        [
+          6.35,
+          -3.81,
+          -0.7
+        ],
+        [
+          6.35,
+          -6.35,
+          -0.7
+        ],
+        [
+          6.35,
+          -8.89,
+          -0.7
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.5,
+      "description": "Flat underside of the PCB. It is the seating face when the board is soldered to a header or mounted on a base."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The board footprint comes from the printed dimensions in the third image: 0.6 in wide by 0.8 in long, which is 15.24 mm by 20.32 mm. Hole positions assume a 0.1 in (2.54 mm) pitch, 8 holes per side, and a 0.5 in (12.7 mm) spacing between the rows. The photo suggests a slightly wider spacing, so the 0.5 in value is an assumption. Hole diameter of about 1.0 mm is estimated from standard 0.1 in header holes and is not stated. Total thickness of 3.0 mm is an estimate: about 1.6 mm of PCB plus about 1.4 mm of component height. The holes are centered at an assumed PCB mid-plane of z = -0.7 mm. Two small unplated holes are also visible near the board corners; they are not modeled because their size and position are not given. The header strip that ships with the product is not included in the bounds."
+}

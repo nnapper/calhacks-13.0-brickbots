@@ -1,0 +1,86 @@
+{
+  "partType": "wheel",
+  "summary": "Single 80 mm diameter, 10 mm wide spoked wheel with a tire and six spokes. It has a central hub for a 3 mm D-shaft and six small mounting holes around the hub. The product is sold as a pair, and this describes one wheel with its axis along z.",
+  "boundsMm": {
+    "x": 80,
+    "y": 80,
+    "z": 10
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          6.35,
+          0,
+          0
+        ],
+        [
+          -6.35,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          9.55,
+          5.51,
+          0
+        ],
+        [
+          -9.55,
+          -5.51,
+          0
+        ],
+        [
+          9.55,
+          -5.51,
+          0
+        ],
+        [
+          -9.55,
+          5.51,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 5,
+      "description": "Outer hub face with the six mounting holes (one pair 12.7 mm apart, two pairs 19.1 mm apart) for #4/M3 screws or a universal mounting hub"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -5,
+      "description": "Opposite hub face"
+    },
+    {
+      "axis": "x",
+      "offsetMm": 40,
+      "description": "Tire tread surface, which is the outer rolling contact surface (radius 40 mm)"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Overall size (80 mm diameter, 10 mm width), the 3 mm D-shaft fit, and the hole spacings (12.7 mm and 19.1 mm) come from the stated, unverified product data. The mounting hole diameter is assumed from the stated #4/M3 screw size. The hole positions are approximate: the 12.7 mm pair is placed on the x axis, and the two 19.1 mm pairs are placed at ±30° from it, which is an estimate from the images. The 6 spoke slots (M2/#2 screws) are not dimensioned and so are not listed as holes. The hub bore is modeled as 3 mm through, but the actual D-profile and hub depth are not visible. The tire is a separate part that fits over the rim, and no internal dimensions are given."
+}

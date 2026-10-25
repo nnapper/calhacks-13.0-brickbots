@@ -1,0 +1,167 @@
+{
+  "partType": "bracket",
+  "summary": "L-shaped 90° aluminum angle pattern mount. Two equal square-ish legs with chamfered outer corners. Each leg has a large central bore ringed by 4 counterbored/pocketed through-holes and 4 plain through-holes.",
+  "boundsMm": {
+    "x": 32,
+    "y": 32,
+    "z": 32
+  },
+  "holes": [
+    {
+      "axis": "y",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          -12,
+          4
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "y",
+      "diameterMm": 4.2,
+      "positionsMm": [
+        [
+          10,
+          -12,
+          4
+        ],
+        [
+          -10,
+          -12,
+          4
+        ],
+        [
+          0,
+          -12,
+          14
+        ],
+        [
+          0,
+          -12,
+          -6
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "y",
+      "diameterMm": 4.2,
+      "positionsMm": [
+        [
+          7,
+          -12,
+          11
+        ],
+        [
+          -7,
+          -12,
+          11
+        ],
+        [
+          7,
+          -12,
+          -3
+        ],
+        [
+          -7,
+          -12,
+          -3
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          4,
+          -12
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4.2,
+      "positionsMm": [
+        [
+          10,
+          4,
+          -12
+        ],
+        [
+          -10,
+          4,
+          -12
+        ],
+        [
+          0,
+          14,
+          -12
+        ],
+        [
+          0,
+          -6,
+          -12
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4.2,
+      "positionsMm": [
+        [
+          7,
+          11,
+          -12
+        ],
+        [
+          -7,
+          11,
+          -12
+        ],
+        [
+          7,
+          -3,
+          -12
+        ],
+        [
+          -7,
+          -3,
+          -12
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -16,
+      "description": "Outer face of the horizontal leg, which sits flat against a structure"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -8,
+      "description": "Inner (top) face of the horizontal leg with the hole pattern"
+    },
+    {
+      "axis": "y",
+      "offsetMm": -16,
+      "description": "Outer face of the vertical leg, which sits flat against a structure"
+    },
+    {
+      "axis": "y",
+      "offsetMm": -8,
+      "description": "Inner face of the vertical leg with the hole pattern"
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions were provided, so all sizes are estimates. Assumptions: the goBILDA 8 mm grid, so about 8 mm leg thickness and a 32 mm square footprint per leg (the '1-3' naming is not interpreted). Each leg is assumed to have one pattern with a ~14 mm central bore. The M4 clearance holes are assumed to be ~4.2 mm, on a ~10 mm radius ring around the bore. Counterbore/nut-pocket depth is not modeled. The cardinal-versus-diagonal split between counterbored and plain holes is only approximate, and the pattern centers are offset from the leg centers to clear the inside corner. The chamfered corners are not modeled. Axes are: x = width, y = depth (vertical leg at y -16 to -8), z = height (horizontal leg at z -16 to -8). The part is centered on the origin."
+}

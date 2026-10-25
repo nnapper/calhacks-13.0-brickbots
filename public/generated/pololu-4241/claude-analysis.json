@@ -1,0 +1,64 @@
+{
+  "partType": "flat_plate",
+  "summary": "Small rectangular PCB reflectance sensor, 7.5 mm × 20 mm. It has one round mounting hole at one end and four plated through-holes for header pins at the opposite end. Surface-mount components and a sensor package sit on the top face. The underside is flat.",
+  "boundsMm": {
+    "x": 7.5,
+    "y": 20,
+    "z": 2.5
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.2,
+      "positionsMm": [
+        [
+          0,
+          7.5,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          -2.54,
+          -8.9,
+          0
+        ],
+        [
+          0,
+          -8.9,
+          0
+        ],
+        [
+          2.54,
+          -8.9,
+          0
+        ],
+        [
+          -2.54,
+          -6.36,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.25,
+      "description": "Flat underside of the PCB, usable as the seating face. It has only printed markings, with no components."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1.25,
+      "description": "Top face carrying the sensor and passive components. Not a seating face."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The images print only the 20 mm length and 7.5 mm width. The 2.5 mm overall height comes from the unverified spec text, not from the images, and it includes the components. The PCB thickness is not shown. Hole diameters and positions are estimated from image proportions: the mounting hole is about 2.2 mm and sits about 2.5 mm from the top edge. The four pin holes are on an approximately 2.54 mm pitch, with the row about 1.1 mm from the bottom edge. The part is centered at the origin, with y running along the length."
+}

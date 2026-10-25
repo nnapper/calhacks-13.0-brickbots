@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Flat rectangular PCB, 33.02 × 1.6 × 17.78 mm (X × Y × Z), with its bottom at Y=0 and centered in X and Z. It has 26 through-holes of 1.0 mm diameter, in two rows of 13 at 2.54 mm pitch, 15.24 mm either side of the centerline along Z. Surface-mount components are not modeled.",
+  "confidence": "low",
+  "warnings": [
+    "Board thickness of 1.6 mm is assumed, since no height is given.",
+    "Length and width come from the unverified 1.3 in × 0.7 in board size.",
+    "The 1.0 mm hole diameter and the two-row layout come from the image analysis and were not read from a dimensioned drawing.",
+    "Interior holes, pads and ISP header holes are visible in the image but omitted because their positions are uncertain.",
+    "The microcontroller IC, regulator, resonator, reset button and LEDs are omitted because their heights are unknown.",
+    "Silkscreen text and logos are not modeled."
+  ],
+  "cadquery": "L=33.02\nW=17.78\nT=1.6\nxs=[-15.24+2.54*i for i in range(13)]\npts=[(x,z) for x in xs for z in (-7.62,7.62)]\nboard=cq.Workplane('XY').box(L,T,W,centered=(True,False,True))\nholes=cq.Workplane('XZ').pushPoints(pts).circle(0.5).extrude(-T)\npart=board.cut(holes)"
+}

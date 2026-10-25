@@ -1,0 +1,64 @@
+{
+  "partType": "block",
+  "summary": "Aluminum quad block pattern mount. A rectangular plate has a large central bore, with a blocky end section at each end of the long edges. The plate face carries counterbored through holes and threaded holes, and the block faces carry more threaded holes.",
+  "boundsMm": {
+    "x": 48,
+    "y": 24,
+    "z": 14
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4.2,
+      "positionsMm": [
+        [
+          -12,
+          6,
+          0
+        ],
+        [
+          -4,
+          -8,
+          0
+        ],
+        [
+          4,
+          8,
+          0
+        ],
+        [
+          12,
+          -6,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 7,
+      "description": "Main plate face with the central bore, counterbored holes and threaded holes, for mounting a bearing or flange pattern"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -7,
+      "description": "Opposite face, formed by the end blocks, which sits against a channel wall"
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions were scraped. The 48 x 24 mm footprint is assumed from the 24 mm part name and the 48 mm goBILDA U-channel inner width in the Product Insight image. The Product Insight also says the counterbore floor sits 43 mm from the opposing channel wall. The height of 14 mm is a rough guess from the photo proportions and the 14 g weight (about 5 cm3 of aluminum). The central bore (about 14 mm) and the clearance hole diameters and positions are visual estimates. Threaded holes in the plate face and on the block faces are omitted because their sizes and positions are uncertain."
+}

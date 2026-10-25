@@ -1,0 +1,162 @@
+{
+  "partType": "other",
+  "summary": "Small rectangular green microcontroller PCB module (A-Star 328PB Micro) with a 0.1 in pitch grid of plated through-holes. Its edge rows break out the I/O pins. Surface-mount components sit on the top face: the microcontroller IC, a regulator, a resonator, a reset button and two LEDs.",
+  "boundsMm": {
+    "x": 33.02,
+    "y": 17.78,
+    "z": 1.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          -15.24,
+          7.62,
+          0
+        ],
+        [
+          -12.7,
+          7.62,
+          0
+        ],
+        [
+          -10.16,
+          7.62,
+          0
+        ],
+        [
+          -7.62,
+          7.62,
+          0
+        ],
+        [
+          -5.08,
+          7.62,
+          0
+        ],
+        [
+          -2.54,
+          7.62,
+          0
+        ],
+        [
+          0,
+          7.62,
+          0
+        ],
+        [
+          2.54,
+          7.62,
+          0
+        ],
+        [
+          5.08,
+          7.62,
+          0
+        ],
+        [
+          7.62,
+          7.62,
+          0
+        ],
+        [
+          10.16,
+          7.62,
+          0
+        ],
+        [
+          12.7,
+          7.62,
+          0
+        ],
+        [
+          15.24,
+          7.62,
+          0
+        ],
+        [
+          -15.24,
+          -7.62,
+          0
+        ],
+        [
+          -12.7,
+          -7.62,
+          0
+        ],
+        [
+          -10.16,
+          -7.62,
+          0
+        ],
+        [
+          -7.62,
+          -7.62,
+          0
+        ],
+        [
+          -5.08,
+          -7.62,
+          0
+        ],
+        [
+          -2.54,
+          -7.62,
+          0
+        ],
+        [
+          0,
+          -7.62,
+          0
+        ],
+        [
+          2.54,
+          -7.62,
+          0
+        ],
+        [
+          5.08,
+          -7.62,
+          0
+        ],
+        [
+          7.62,
+          -7.62,
+          0
+        ],
+        [
+          10.16,
+          -7.62,
+          0
+        ],
+        [
+          12.7,
+          -7.62,
+          0
+        ],
+        [
+          15.24,
+          -7.62,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.8,
+      "description": "Flat underside of the PCB, usable for seating on standoffs or a carrier board. Offset is half the assumed board thickness."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.8,
+      "description": "Top face of the PCB, carrying the SMD components. It is not a flat mounting surface."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Length (33.02 mm) and width (17.78 mm) come from the listed 1.3 in x 0.7 in board size, which is unverified. Board thickness (1.6 mm) is an assumption, since no height is given. Component height above the board is not included. Hole diameter (about 1.0 mm) is an estimate, not a stated value. The listed hole positions are an assumed layout: two outer rows at 2.54 mm pitch, 13 holes each. They were not read from a dimensioned drawing. The interior holes and pads and the ISP/programming headers are visible but not enumerated. The board has no dedicated mounting holes."
+}

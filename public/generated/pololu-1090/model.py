@@ -1,0 +1,13 @@
+tire = cq.Workplane('XY').circle(21).circle(15).extrude(19).translate((0,0,-9.5))
+disc = cq.Workplane('XY').circle(15.5).extrude(2).translate((0,0,-6))
+boss = cq.Workplane('XY').circle(4).extrude(13).translate((0,0,-6))
+body = tire.union(disc).union(boss)
+for i in range(12):
+    tooth = (cq.Workplane('XY').box(4.5, 3, 11, centered=(True, True, False))
+             .translate((13.25, 0, -4))
+             .rotate((0, 0, 0), (0, 0, 1), i * 30))
+    body = body.union(tooth)
+d_cut = (cq.Workplane('XY').circle(1.5).extrude(24).translate((0,0,-12))
+         .intersect(cq.Workplane('XY').box(2.7, 4, 24).translate((-0.15,0,0))))
+body = body.cut(d_cut)
+part = body.translate((0, 21, 0))

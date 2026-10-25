@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Rectangular carrier PCB 12.7 x 17.78 mm, 1.0 mm thick, lying in the XZ plane with its bottom at Y=0. It has two 2.18 mm through mounting holes near one long edge, spaced 12.7 mm apart, and seven 1.0 mm pin holes at 2.54 mm pitch along the opposite long edge. A single block for the VL6180X sensor sits on the top face and brings the overall height to 2.16 mm.",
+  "confidence": "medium",
+  "warnings": [
+    "PCB thickness (1.0 mm) is assumed. The 2.16 mm overall height is taken from the spec text and includes the components.",
+    "The sensor block size (2.8 x 4.8 mm) and position are estimated from the image.",
+    "The regulator IC, capacitors, resistors, and the small IC are omitted because their sizes and positions are uncertain.",
+    "Pin hole diameter (1.0 mm) and x-position are estimated; the holes are plated in the image, but the plating is not modeled.",
+    "The mounting hole x-offset is estimated from the image scale.",
+    "Axes are remapped so that Y is the board thickness: X is the 12.7 mm width and Z is the 17.78 mm length."
+  ],
+  "cadquery": "t=1.0\nboard=cq.Workplane('XY').box(12.7,t,17.78,centered=(True,False,True))\nmount=[(3.65,-6.35),(3.65,6.35)]\npins=[(-5.08,-7.62+2.54*i) for i in range(7)]\nboard=board.cut(cq.Workplane('XZ').pushPoints(mount).circle(1.09).extrude(-3))\nboard=board.cut(cq.Workplane('XZ').pushPoints(pins).circle(0.5).extrude(-3))\nsensor=cq.Workplane('XY').workplane(offset=0).center(0,0).box(2.8,2.16-t,4.8,centered=(True,False,True)).translate((0.3,t,0))\npart=board.union(sensor)"
+}

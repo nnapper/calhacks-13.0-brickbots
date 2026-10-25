@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Thin flat strip sensor body (104.14 x 14.478 mm, 0.508 mm thick) with a narrower, thinner flat tail (30.48 mm long) extending along +X. Total length is 134.62 mm, centered on X and Z, with the bottom at Y=0 and thickness along Y.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are unverified and come from the supplied data.",
+    "Thickness is along Y to follow the stated rule (bottom at Y=0). The image-analysis bounds listed thickness on Z, so that axis assignment conflicts.",
+    "Tail width (6 mm) and thickness (0.254 mm) are estimated.",
+    "The three small tabs on the long edge are omitted because their size and position are uncertain.",
+    "The three male pins and the printed traces at the tail end are omitted.",
+    "The row of white dots is not modeled, since nothing shows they are holes.",
+    "The tail is placed on the Z centerline, which may not match the real part."
+  ],
+  "cadquery": "body_len = 104.14\nbody_w = 14.478\nbody_t = 0.508\ntail_len = 30.48\ntail_w = 6.0\ntail_t = 0.254\ntotal = body_len + tail_len\nx0 = -total / 2\n\nbody = (cq.Workplane('XY')\n        .box(body_len, body_t, body_w, centered=(False, False, True))\n        .translate((x0, 0, 0)))\ntail = (cq.Workplane('XY')\n        .box(tail_len, tail_t, tail_w, centered=(False, False, True))\n        .translate((x0 + body_len, 0, 0)))\npart = body.union(tail)"
+}

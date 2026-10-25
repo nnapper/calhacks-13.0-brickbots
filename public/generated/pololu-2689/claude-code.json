@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "NEMA 17 stepper motor with a 42.3 x 38 x 42.3 mm square body. Its axis runs along +Y with the bottom (rear face) at Y=0. A 22 mm pilot boss sits on the front face, with an 8 mm lead screw rising from it to Y=220. A flanged nut (10 mm barrel, 22 mm flange) sits on the screw at Y=90 to 101.5. Four 3 mm blind holes, 4 mm deep, are on the 31 mm square pattern in the front face.",
+  "confidence": "low",
+  "warnings": [
+    "The listed 182 mm length is ambiguous. I assumed it is the screw protruding beyond the 38 mm body, giving 220 mm overall. If it is the overall length, the screw is too long.",
+    "The screw axis is placed along Y so the bottom of the part is the motor rear face. The image analysis used Z as the axis.",
+    "The 31 mm hole spacing, 3 mm hole diameter and 4 mm depth are standard NEMA 17 assumptions, not stated values.",
+    "The nut position along the screw, the nut diameters and the 8 mm screw diameter are estimated from the image and the Tr8 spec.",
+    "The four nut mounting holes are omitted because their size and pattern are unknown.",
+    "The body corner chamfers, rear flange details, cable and wires, labels and threads are not modeled."
+  ],
+  "cadquery": "def cyl(d, h, y0):\n    return cq.Workplane(cq.Plane(origin=(0, y0, 0), xDir=(1, 0, 0), normal=(0, 1, 0))).circle(d / 2).extrude(h)\n\nS = 42.3\nL = 38.0\nbody = cq.Workplane('XY').box(S, L, S, centered=(True, False, True))\nboss = cyl(22, 2, L)\nscrew = cyl(8, 182, L)\nnut_barrel = cyl(10, 8, 90)\nnut_flange = cyl(22, 3.5, 98)\npart = body.union(boss).union(screw).union(nut_barrel).union(nut_flange)\nfor x in (-15.5, 15.5):\n    for z in (-15.5, 15.5):\n        h = cq.Workplane(cq.Plane(origin=(x, L - 4, z), xDir=(1, 0, 0), normal=(0, 1, 0))).circle(1.5).extrude(4)\n        part = part.cut(h)\n"
+}

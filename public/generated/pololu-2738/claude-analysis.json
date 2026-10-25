@@ -1,0 +1,32 @@
+{
+  "partType": "flat_plate",
+  "summary": "Small rectangular IMU carrier PCB with surface-mount components on top. It has one round mounting hole near a corner and a row of five 0.1 in-pitch pin pads along one short edge, plus an offset SA0 pad.",
+  "boundsMm": {
+    "x": 20.32,
+    "y": 12.7,
+    "z": 3
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.18,
+      "positionsMm": [
+        [
+          -8.06,
+          4.25,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.5,
+      "description": "Flat underside of the PCB, usable as the seating face. The bounding box is centered on the part, so the bottom face sits at z = -1.5 mm."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "X and Y come from the printed 0.8 in x 0.5 in outline (20.32 x 12.7 mm). The mounting hole diameter is the printed 0.086 in (2.18 mm). The hole position is estimated from the pixel layout of the drawing: about 2.1 mm from the left edge and 2.1 mm from the top edge, with the pin row on the +x side and +y toward SCL. The 3 mm height is the unverified catalog value and is not printed in the images, so it covers the board plus the tallest components. The five 2.54 mm-pitch pin holes along the +x edge (SCL, SDA, GND, VIN, VDD) and the SA0 hole are visible, but their diameters are not stated, so they are not listed in the holes array."
+}

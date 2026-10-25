@@ -1,0 +1,24 @@
+{
+  "partType": "other",
+  "summary": "Rechargeable 7-cell NiMH battery pack with AA cells arranged in two rows (4+3) and shrink-wrapped together. A short wire lead exits one side. Modeled as a rectangular envelope for assembly prototyping.",
+  "boundsMm": {
+    "x": 59,
+    "y": 29,
+    "z": 50
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -14.5,
+      "description": "Flat bottom face of the shrink-wrapped cell stack, usable for strapping or adhesive mounting"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 14.5,
+      "description": "Opposite top face, with a lobed surface from the cylindrical cells"
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are stated and no drawing is visible, so the size is estimated from standard hardware. An AA cell is about 14.5 mm in diameter and 50.5 mm long. Four cells side by side give about 58-59 mm, and two staggered rows give about 29 mm in thickness. The x axis runs along the 4-cell row, y is the stack thickness, and z is the cell length of about 50 mm. The specs list both AA and AAA variants, but the description and photo indicate AA, so AA is assumed. The wire lead and connector are excluded from the bounds. No holes or mounting features are visible, so none are given. The pack is a soft-wrapped body, so the bounds are approximate."
+}

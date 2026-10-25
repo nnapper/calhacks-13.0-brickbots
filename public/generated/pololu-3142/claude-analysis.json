@@ -1,0 +1,47 @@
+{
+  "partType": "flat_plate",
+  "summary": "Compact rectangular motor-controller PCB, 25.4 mm × 30.48 mm (1.0 in × 1.2 in), with a micro-USB connector on one short edge. Edge-castellated header pads run along the left edge, and through-hole pads and terminal pads run along the right and bottom edges. Three corner mounting holes are visible.",
+  "boundsMm": {
+    "x": 25.4,
+    "y": 30.48,
+    "z": 1.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.2,
+      "positionsMm": [
+        [
+          10.2,
+          12.7,
+          0
+        ],
+        [
+          -10.2,
+          -12.7,
+          0
+        ],
+        [
+          10.2,
+          -12.7,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.8,
+      "description": "Flat underside of the PCB, usable as the seating face on standoffs through the corner mounting holes. Surface-mount ICs and pads are on this side, so standoffs are needed for clearance."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.8,
+      "description": "Top face of the PCB, carrying the USB connector, LEDs, capacitor and pads. It is not a flat mounting surface."
+    }
+  ],
+  "confidence": "low",
+  "notes": "X and Y come from the printed 1.0 in × 1.2 in dimensions in the product drawing. The Z thickness of 1.6 mm is an assumed nominal PCB thickness. No height is stated, and the electrolytic capacitor and connector heights are excluded. Hole diameter and positions are estimated from image scale, not printed. Only three mounting holes are clearly visible, with none at the USB-side corner. Hole positions assume x is across the 25.4 mm width, y is along the 30.48 mm length, and the origin is the board center, with the USB edge at +y."
+}

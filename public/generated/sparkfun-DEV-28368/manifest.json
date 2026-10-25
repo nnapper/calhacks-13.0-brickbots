@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Teensy 4.0, Lockable",
+    "sku": "sparkfun-DEV-28368",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Length and width come from the supplied dimensions, which are marked unverified. Height is not given, so 4.0 mm is an estimate for the PCB plus the tallest parts (micro-USB connector and chips). The image has no printed dimensions. The pad diameter (about 1.0 mm), the 15.24 mm row spacing and the pad positions are assumed from the standard 0.1 in pitch layout, not measured. The pads along the short end opposite the USB connector are not modeled. There are no dedicated mounting holes. Component placement on the board is not modeled.",
+      "Dimensions are marked unverified.",
+      "PCB thickness (1.0 mm) and USB and chip heights are estimated, because no height was given.",
+      "Axes follow the Y-up rule (length in X, width in Z). The image analysis bounds listed width as Y, so its hole coordinates were remapped to Z.",
+      "The pads along the short end opposite the USB connector are omitted.",
+      "Small components, the button, the crystals and the pad rings are omitted.",
+      "The USB connector and chip are simplified boxes, with no detail or cutouts."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -17.78,
+      "xmax": 17.78,
+      "ymin": 0,
+      "ymax": 3.5,
+      "zmin": -8.89,
+      "zmax": 8.89,
+      "xlen": 35.56,
+      "ylen": 3.5,
+      "zlen": 17.78
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 150514,
+        "sha256": "04e45cc0cccefd6db787dfe57685f94b7e9d12b42657944c6f0d21a122d6cb3b"
+      },
+      "model.stl": {
+        "bytes": 478284,
+        "sha256": "8d7f51ea981dceaafc984d179cd9bc2018c0cdc76760e948f32cc71dd91d07aa"
+      },
+      "model.glb": {
+        "bytes": 172524,
+        "sha256": "f8b99e574a130aee186c2d4051f84c21c57db1ce1d86de107050d3b5d6eecb4a"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "04e45cc0cccefd6db787dfe57685f94b7e9d12b42657944c6f0d21a122d6cb3b"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

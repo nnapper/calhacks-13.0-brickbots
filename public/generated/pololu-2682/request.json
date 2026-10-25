@@ -1,0 +1,10 @@
+{
+  "name": "12mm Hex Wheel Adapter for 3mm Shaft (2-Pack)",
+  "sku": "pololu-2682",
+  "category": "hex-wheel-adapters",
+  "expectedDimensionsMm": [
+    17,
+    3
+  ],
+  "units": "millimeter"
+}

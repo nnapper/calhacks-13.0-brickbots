@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Rectangular 12.7 x 17.78 mm PCB, 1 mm thick (Y is up, bottom at Y=0), with two 2.18 mm through mounting holes, a row of seven 1.0 mm pin holes at 2.54 mm pitch along the opposite long edge, and a 2.6 x 1.0 x 4.9 mm black sensor module block on top giving 2 mm total height.",
+  "confidence": "medium",
+  "warnings": [
+    "PCB thickness (1.0 mm) and sensor module height (1.0 mm) are assumed so the total height matches the unverified 2 mm catalog value.",
+    "Pin hole diameter (1.0 mm) is estimated; the image shows one pin position as a square pad, which is modeled as a round hole.",
+    "Sensor module footprint and position are estimated from the image.",
+    "Small SMD components, the regulator and the level-shifter ICs are omitted.",
+    "The X position of the pin row and the mounting holes, and the side they are on, are estimated from the image."
+  ],
+  "cadquery": "t = 1.0\nW = 12.7\nL = 17.78\npcb = cq.Workplane('XY').box(W, t, L, centered=(True, False, True))\n\ndef cyl(d, x, z):\n    return cq.Workplane('XY').add(cq.Solid.makeCylinder(d / 2.0, t + 2, cq.Vector(x, -1, z), cq.Vector(0, 1, 0)))\n\n# two mounting holes (2.18 mm), 12.7 mm apart\nfor z in (-6.35, 6.35):\n    pcb = pcb.cut(cyl(2.18, -3.7, z))\n\n# 7 pin holes at 2.54 mm pitch along the opposite long edge\nfor i in range(7):\n    pcb = pcb.cut(cyl(1.0, 5.2, (i - 3) * 2.54))\n\n# ToF sensor module on top face\nmod = cq.Workplane('XY').box(2.6, 1.0, 4.9, centered=(True, False, True)).translate((0.3, t, 0))\n\npart = pcb.union(mod)\n"
+}

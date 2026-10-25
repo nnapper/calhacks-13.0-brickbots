@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "72 mm diameter, 16 mm thick idler wheel disc with its axis along Z and its bottom at Y=0 (center at Y=36). One face has an annular recess (r 18–33 mm, 8 mm deep) that leaves a raised outer rim and a central hub. It has an 8 mm central through bore and eight 4 mm through holes on a 56 mm bolt circle.",
+  "confidence": "low",
+  "warnings": [
+    "All dimensions are estimates; the source gives none.",
+    "The 8 mm bore is assumed; the real part likely has a larger bearing seat.",
+    "The bolt-hole count and positions are uncertain.",
+    "Recess depth and radii are approximate.",
+    "Lightening slots, bolt bosses, ribs, hex pockets, the bearing and the screw are not modeled.",
+    "The opposite face is assumed flat, although the real part may have a matching recess."
+  ],
+  "cadquery": "r=36\nt=16\nbody=cq.Workplane('XY').circle(r).extrude(t/2,both=True)\n# recessed web on +Z face, leaving outer rim and central hub\npocket=cq.Workplane('XY').workplane(offset=t/2).circle(33).circle(18).extrude(-8)\nbody=body.cut(pocket)\n# central bore\nbody=body.cut(cq.Workplane('XY').workplane(offset=-t/2).circle(4).extrude(t))\n# ring of 8 bolt holes on 56 mm bolt circle\npts=[(28*math.cos(math.radians(a*45)),28*math.sin(math.radians(a*45))) for a in range(8)]\nholes=cq.Workplane('XY').workplane(offset=-t/2).pushPoints(pts).circle(2).extrude(t)\nbody=body.cut(holes)\npart=body.translate((0,r,0))"
+}

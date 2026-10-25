@@ -1,0 +1,42 @@
+{
+  "partType": "bracket",
+  "summary": "U-shaped clamp bracket that wraps around a mini plastic gearmotor gearbox. It has a ribbed outer face and a mounting tab with a round hole at the base of each side. A separate flat spacer plate with two holes is included, with fasteners sold alongside.",
+  "boundsMm": {
+    "x": 30,
+    "y": 14,
+    "z": 12
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3.2,
+      "positionsMm": [
+        [
+          -13.5,
+          0,
+          -4
+        ],
+        [
+          13.5,
+          0,
+          -4
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -6,
+      "description": "Flat underside of the bracket and tabs, which sits against the chassis (optionally with the 1.25 mm spacer plate between them). The tab holes take M3 screws, and the nuts are captured in the tabs."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Inner U-shaped channel that clasps the gearmotor body."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are given in the listing, so all sizes are estimates. Assumptions: the bracket clamps a mini plastic gearmotor with a roughly 22 mm wide by 18 mm tall gearbox, and the wide version is about 14 mm along the motor axis. The tab hole spacing is estimated at about 27 mm. The hole diameter of 3.2 mm is assumed as M3 clearance, since the listing names M3×12 mm screws. The 1.25 mm spacer plate thickness is stated in the text. The bounding box is for one bracket only and excludes the spacer, screws and nuts. Hole positions and the tab layout are read from the photos by eye. Tab height and the hole Z offset are rough guesses."
+}

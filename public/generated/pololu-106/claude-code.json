@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Simplified single assembled track unit: a 180 x 60 mm stadium-shaped track loop (3 mm wall, 20 mm wide) with two 55 mm discs standing in for the sprocket and idler, each on a 3 mm x 60 mm axle along Y. The Y range is 0 to 60, and X and Z are centered on 0. The sprues, loose parts, screws and shafts of the kit photo are not modeled.",
+  "confidence": "low",
+  "warnings": [
+    "The source is a kit of loose parts on sprues, not a single solid. The model is a rough assembled-unit approximation.",
+    "Dimensions are unverified and estimated from the supplied bounds (180 x 60 x 60 mm).",
+    "Track link teeth, sprocket teeth, wheel spokes and recesses, wheel caps, the hex shaft and the tapping screws are omitted.",
+    "The 3 mm hole at the part center from the analysis was not cut, because the axles are modeled solid at the wheel centers (x=±60).",
+    "The track width (20 mm) and wheel size (55 mm) are guesses."
+  ],
+  "cadquery": "tw=20\ny0=20\nring=(cq.Workplane('XZ',origin=(0,y0,0)).slot2D(180,60).extrude(-tw)\n    .cut(cq.Workplane('XZ',origin=(0,y0,0)).slot2D(174,54).extrude(-tw)))\npart=ring\nfor x in (-60,60):\n    wheel=cq.Workplane('XZ',origin=(x,y0+2,0)).circle(27.5).extrude(-(tw-4))\n    axle=cq.Workplane('XZ',origin=(x,0,0)).circle(1.5).extrude(-60)\n    part=part.union(wheel).union(axle)\n"
+}

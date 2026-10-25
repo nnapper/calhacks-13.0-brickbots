@@ -1,13 +1,11 @@
 {
-  "shapeSummary": "M3 socket head cap screw with its axis along X. The head is a 5.5 mm diameter, 3 mm long cylinder spanning x=-4.5 to -1.5. The plain 3 mm diameter shank runs 6 mm from x=-1.5 to 4.5. A blind hex socket, 2.5 mm across flats and 1.5 mm deep, is cut into the head's top face. The part sits on Y=0 (Y spans 0 to 5.5) and is centered in Z.",
+  "shapeSummary": "M3 socket head cap screw with its axis along Y. The plain 3 mm diameter shank runs from Y=0 to Y=6. The 5.5 mm diameter, 3 mm tall head runs from Y=6 to Y=9. A 2.5 mm across-flats hex socket is cut into the head top. Threads are not modeled.",
   "confidence": "medium",
   "warnings": [
-    "Socket depth is not stated; 1.5 mm is assumed.",
-    "Shank diameter is taken as the nominal 3 mm from the M3 designation; threads are not modeled.",
-    "The product text gives length 6 mm, which is the shank only, so overall length is 9 mm including the 3 mm head.",
-    "The axis is along X, following the image analysis. Y is 0 to 5.5 so the bottom sits at Y=0, and X is centered on the overall length.",
-    "The hex socket orientation is assumed.",
-    "The head chamfer is not modeled."
+    "The hex socket depth is not given; 1.5 mm is assumed.",
+    "The shank is modeled as a plain 3 mm cylinder with no threads, chamfers or head edge rounding.",
+    "The product data lists only the 6 mm shank length. The overall length of 9 mm comes from the drawing, which adds the 3 mm head height.",
+    "The hex orientation is taken from the drawing, with flats on the left and right sides of the end view."
   ],
-  "cadquery": "head = cq.Workplane('YZ').workplane(offset=-4.5).center(2.75, 0).circle(2.75).extrude(3)\nshank = cq.Workplane('YZ').workplane(offset=-1.5).center(2.75, 0).circle(1.5).extrude(6)\nsocket = cq.Workplane('YZ').workplane(offset=-4.5).center(2.75, 0).polygon(6, 2.5 / math.cos(math.pi / 6)).extrude(1.5)\npart = head.union(shank).cut(socket)"
+  "cadquery": "shank = cq.Workplane('XY').circle(1.5).extrude(6)\nhead = cq.Workplane('XY').workplane(offset=6).circle(2.75).extrude(3)\nscrew = shank.union(head)\nhex_cut = (cq.Workplane('XY').workplane(offset=7.5)\n    .transformed(rotate=(0, 0, 90))\n    .polygon(6, 2.5 / math.cos(math.radians(30))).extrude(1.5))\nscrew = screw.cut(hex_cut)\npart = screw.rotate((0, 0, 0), (1, 0, 0), -90)"
 }

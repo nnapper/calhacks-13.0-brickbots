@@ -1,0 +1,32 @@
+{
+  "partType": "wheel",
+  "summary": "Single 32 mm diameter wheel with a 7 mm wide tire and a three-spoke hub. The hub has a central D-shaped bore for a 3 mm D shaft. Treat it as a single wheel, since the product is sold as a pair. The axle runs along the z axis.",
+  "boundsMm": {
+    "x": 32,
+    "y": 32,
+    "z": 7
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Central hub with a D-shaped bore that press-fits onto a 3 mm D shaft. The bore is centered on the wheel axis."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 32 mm diameter and 7 mm width come from the product listing, which is flagged as unverified, and no drawing dimensions are visible in the images. The 3 mm bore comes from the stated shaft size. It is a D-profile, so the 3 mm value is nominal and the flat is not dimensioned. The images show three spokes and a central hub bore. They do not show the hub protrusion, the spoke dimensions, or the tire tread depth, so none of these are modeled. Treat the bore as through, based on the second image where the shaft passes into the wheel."
+}

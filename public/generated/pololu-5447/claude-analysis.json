@@ -1,0 +1,64 @@
+{
+  "partType": "other",
+  "summary": "Small rectangular carrier PCB for a Hall-effect current sensor. A single SOT-23-5 sensor package sits near the middle of the top face. Two large copper current-path pads with several holes lie on one half of the board, split by a narrow gap into IP+ and IP-. Two mounting holes and a row of three 0.1-inch-pitch pin holes (VOUT, VDD, GND) are at the opposite end.",
+  "boundsMm": {
+    "x": 20.3,
+    "y": 17.8,
+    "z": 1.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.2,
+      "positionsMm": [
+        [
+          8,
+          6.4,
+          0
+        ],
+        [
+          8,
+          -6.4,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          6,
+          2.54,
+          0
+        ],
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          6,
+          -2.54,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.8,
+      "description": "Flat underside of the PCB, usable as the seating face against a chassis or standoffs"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.8,
+      "description": "Top face with the two large copper current-input pads (IP+ and IP-) for wires or terminals, the sensor package in the middle, and the pin holes at the far end"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Length 20.3 mm (0.8 in) and width 17.8 mm (0.7 in) come from the product data, which is marked unverified. Board thickness of 1.6 mm is an assumed typical value, since no height is given. Hole diameters and positions are visual estimates from the images, not stated values. The mounting hole count is two. The three signal holes have 2.54 mm pitch. The pad cutouts in the copper are not modeled. The sensor package and capacitor heights are excluded from z. The x axis runs along the 20.3 mm length with the pin end at +x."
+}

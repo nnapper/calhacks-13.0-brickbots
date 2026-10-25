@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Linear actuator lying along X, fully extended at 751 mm. A 16 mm rod sits at the front (-X) with an 8 mm vertical cross hole near its tip. A 32 mm outer tube follows it, ending in a 60x40x70 mm gearbox block at the rear. A 36 mm motor cylinder runs parallel to the tube, offset in Z. The bottom is at Y=0, and the part is centered in X and Z.",
+  "confidence": "low",
+  "warnings": [
+    "Only the 751 mm length is given. The 40 mm height, 70 mm width, tube, rod and motor diameters, and gearbox size are estimates from the photo.",
+    "The motor is offset sideways in Z to match the 70 mm Z bound. In the photo it looks stacked above the tube, so the real layout may differ.",
+    "The cross hole position (8 mm from the rod tip) and its 8 mm diameter are estimated.",
+    "The rear mounting hole is not clearly visible and is omitted.",
+    "The cable, labels, limit switches, potentiometer and the black end cap/seal are not modeled.",
+    "The tube length and overlap with the rod are approximate; the rod is shown fully extended."
+  ],
+  "cadquery": "def cyl(x0, L, r, z, y=20):\n    return cq.Workplane('YZ').workplane(offset=x0).center(y, z).circle(r).extrude(L)\n\nrod = cyl(-375.5, 310, 8, -17)\ntube = cyl(-75, 390.5, 16, -17)\nmotor = cyl(265.5, 80, 18, 17)\ngear = cq.Workplane('XY').box(60, 40, 70, centered=(True, False, True)).translate((345.5, 0, 0))\nhole = cq.Workplane('XZ').center(-367, -17).circle(4).extrude(50, both=True)\npart = rod.union(tube).union(gear).union(motor).cut(hole)"
+}

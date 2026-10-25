@@ -15,6 +15,7 @@
   --warm: #ee9a55;
   --on-warm: #262c40;
   --ok: #2f8a66;
+  --danger: #b53d45;
   --shadow: rgba(38, 44, 64, 0.1);
 
   --f-display: "Sora", ui-sans-serif, system-ui, sans-serif;
@@ -39,6 +40,7 @@
   --warm: #f2b880;
   --on-warm: #1c2030;
   --ok: #7ccba8;
+  --danger: #ff9d9b;
   --shadow: rgba(0, 0, 0, 0.35);
   color-scheme: dark;
 }

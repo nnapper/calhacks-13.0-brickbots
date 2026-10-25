@@ -1,0 +1,52 @@
+{
+  "partType": "other",
+  "summary": "Rectangular blue-PCB robot controller board in the Raspberry Pi HAT form factor, with a microcontroller, motor drivers and a regulator on the top side. It has four corner mounting holes and a prototyping hole grid. The board is modeled as a flat 65 x 56 mm plate with its bounding box centered on the origin.",
+  "boundsMm": {
+    "x": 65,
+    "y": 56,
+    "z": 1.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.75,
+      "positionsMm": [
+        [
+          -29,
+          -24.5,
+          0
+        ],
+        [
+          29,
+          -24.5,
+          0
+        ],
+        [
+          -29,
+          24.5,
+          0
+        ],
+        [
+          29,
+          24.5,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.8,
+      "description": "Bottom face of the PCB, which rests on standoffs above a Raspberry Pi. The four corner holes are the mounting points."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.8,
+      "description": "Top face of the PCB, which carries the surface-mount components and the prototyping hole grid."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The 65 x 56 mm outline comes from the supplied data, which is flagged as unverified. The four corner holes are visible in the images. Their 2.75 mm diameter and their positions (3.5 mm in from each edge, 58 x 49 mm spacing) come from the Raspberry Pi HAT specification, which the product says it conforms to, and were not measured from the images. The 1.6 mm thickness is an assumed typical PCB thickness, because height is null in the data. Components such as the electrolytic capacitor rise above this and are not included in the z bound. The many small prototyping holes were not modeled, because their count and diameter are not given. The board corners look rounded, but the radius is not stated."
+}

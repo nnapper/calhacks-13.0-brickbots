@@ -1,0 +1,10 @@
+{
+  "name": "MPQ6612A Single Brushed DC Motor Driver Carrier (Soldered Connectors)",
+  "sku": "pololu-5286",
+  "category": "dc-motor-drivers",
+  "expectedDimensionsMm": [
+    22.86,
+    20.32
+  ],
+  "units": "millimeter"
+}

@@ -1,0 +1,24 @@
+{
+  "partType": "flat_plate",
+  "summary": "Thin flexible circular-ended force-sensing resistor. A 7.62 mm diameter round pad narrows into a short rectangular tail, which ends in two pins at 2.54 mm spacing. The sensor is a flat laminate.",
+  "boundsMm": {
+    "x": 7.62,
+    "y": 20,
+    "z": 0.254
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0.127,
+      "description": "Top flat face of the pad with the circular active sensing area, which is pressed to apply force"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -0.127,
+      "description": "Bottom flat face of the laminate, usable for adhesive mounting against a backing surface"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Width (7.62 mm) and thickness (0.254 mm) come from the stated specs (0.3 in pad, 0.01 in thick). The supplied length of 7.62 mm covers only the circular pad, so it is not the overall length. The overall length of about 20 mm, including the tail and pins, is a rough estimate from the quarter-coin scale photo and is unverified. No holes or mounting cutouts are visible, so none are listed. The two pins are spaced 2.54 mm apart (0.1 in) and extend from the tail end along the length axis. The pin length and the tail length are not individually stated."
+}

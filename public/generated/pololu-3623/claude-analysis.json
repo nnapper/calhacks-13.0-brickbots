@@ -1,0 +1,54 @@
+{
+  "partType": "bracket",
+  "summary": "Stamped steel clevis-style mounting bracket. It has a U-shaped channel with two parallel upright ears that carry a cross mounting pin held by a clip. The base has two through holes for mounting to a surface. The bracket attaches the end of a linear actuator to a mounting surface.",
+  "boundsMm": {
+    "x": 26,
+    "y": 50,
+    "z": 40
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 6.5,
+      "positionsMm": [
+        [
+          0,
+          -8,
+          -20
+        ],
+        [
+          0,
+          -20,
+          -20
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "x",
+      "diameterMm": 10,
+      "positionsMm": [
+        [
+          0,
+          15,
+          12
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -20,
+      "description": "Flat base of the U-channel with two through holes, used to bolt the bracket to a mounting surface."
+    },
+    {
+      "axis": "x",
+      "offsetMm": 0,
+      "description": "Inner faces of the two parallel ears, which clamp the actuator rod-end or motor-end clevis. The 10 mm cross pin passes through both ears."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 10 mm mounting pin diameter is stated. No drawing or printed dimensions are visible, so the bounding box, the base hole diameter and the hole and pin positions are rough visual estimates from proportions and are unverified. The pin clip is not modeled. Both ears are assumed to have a pin hole of about 10 mm, with the pin passing through them. The base hole count of two is visible in the images. The base holes may be slightly slotted, but this is not clear. Axis assignment: x is the width across the ears, y is the length along the base, and z is the height from base to pin end."
+}

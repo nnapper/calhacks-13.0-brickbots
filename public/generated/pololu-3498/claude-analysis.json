@@ -1,0 +1,37 @@
+{
+  "partType": "other",
+  "summary": "Thin round magnetic encoder disc with a central round bore. Two small circular flat marks are visible on one face.",
+  "boundsMm": {
+    "x": 9.7,
+    "y": 9.7,
+    "z": 2
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1,
+      "description": "Bottom flat face, centered on the bore, which would seat against a shaft shoulder or hub."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1,
+      "description": "Top flat face, centered on the bore. Two small circular marks are visible on it, off-center and near the rim."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The dimensions come from the supplied listing (OD 9.7 mm, ID 2.0 mm, 2 mm thick), which is marked unverified. The image proportions match them: the bore is about 0.2 of the diameter and the thickness is about a fifth of it. The through-bore is assumed from the visible light at the bottom of the hole. The two circular marks on the face are not dimensioned, so I did not model them or give their positions or sizes. The bore appears to run along the disc's flat-face normal (z axis)."
+}

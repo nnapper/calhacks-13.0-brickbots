@@ -1,0 +1,59 @@
+{
+  "partType": "flat_plate",
+  "summary": "Rectangular 15-channel reflectance sensor PCB, 61 x 20 mm. A row of 15 sensors at 4 mm pitch runs along one long edge. Two rows of plated header holes sit near the opposite long edge. Two corner mounting holes and two small holes are visible near the sensor edge.",
+  "boundsMm": {
+    "x": 61,
+    "y": 20,
+    "z": 3
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.2,
+      "positionsMm": [
+        [
+          -28.7,
+          8,
+          0
+        ],
+        [
+          28.6,
+          8,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 1.2,
+      "positionsMm": [
+        [
+          -19.7,
+          8.6,
+          0
+        ],
+        [
+          -1.2,
+          7.7,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.5,
+      "description": "Flat back face of the PCB with silkscreen only and no components. It is the mounting face for the two corner holes."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1.5,
+      "description": "Component face carrying the sensor row, SMD parts and the header-hole pads. It is not a flat mounting surface."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 61 mm length, 20 mm width and 4 mm sensor pitch are printed in the dimension image. The 3 mm height is from the unverified listing data and is only an overall envelope estimate. It is not a measured value, and the board thickness is not stated. Hole positions and diameters were estimated from the dimensioned image scale, with the origin at the board center, +x along the length and +y toward the sensor edge. All hole values are approximate. The two rows of plated header holes at 2.54 mm pitch (about 1 mm holes, one square pad) are visible but not itemized, because their exact count and coordinates were not resolvable."
+}

@@ -1,0 +1,47 @@
+{
+  "partType": "motor",
+  "summary": "Cylindrical brushed DC motor with a round can body, a small front boss and a protruding shaft. A rear encoder module sits at the back. The front face has four blind mounting holes on a square pattern. The motor axis is along z.",
+  "boundsMm": {
+    "x": 37.5,
+    "y": 37.5,
+    "z": 87.24
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          8.84,
+          8.84,
+          31.38
+        ],
+        [
+          -8.84,
+          8.84,
+          31.38
+        ],
+        [
+          8.84,
+          -8.84,
+          31.38
+        ],
+        [
+          -8.84,
+          -8.84,
+          31.38
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 31.38,
+      "description": "Front mounting face of the motor can. It holds the four blind 3 mm-deep holes and the 13 mm diameter boss. The boss projects 4.8 mm and the shaft projects a further 7.44 mm beyond it."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Sizes come from the printed dimensions on the drawing; the product text gives none. Diameter is 37.5 mm. The 75 mm body length is measured from the front face to the rear of the encoder, excluding boss and shaft. Boss height is 4.8 mm and shaft protrusion beyond the boss is 7.44 mm, so total z = 75 + 4.8 + 7.44 = 87.24 mm. The bounding box is centered on the origin, so z runs from -43.62 to +43.62. The front face is at z = 43.62 - 7.44 - 4.8 = 31.38 and the rear is at z = -43.62. The boss diameter is read as 13 mm. The shaft is labeled 1/8 in (3.175 mm) with a flat. The 25 mm dimension is assumed to be the diagonal distance between opposite hole centers, which gives a square pattern with a side of about 17.68 mm. That puts the holes at ±8.84 mm in x and y, and this reading is an assumption. The holes are shown as 3 mm deep, so they are modeled as blind. Their 3 mm diameter is the nominal size taken from the drawing's M3 callout. The wire leads and connectors are not included in the bounds."
+}

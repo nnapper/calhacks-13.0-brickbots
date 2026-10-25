@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Wheel 80×10mm Pair - Yellow",
+    "sku": "pololu-1432",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Overall size (80 mm diameter, 10 mm width), the 3 mm D-shaft fit, and the hole spacings (12.7 mm and 19.1 mm) come from the stated, unverified product data. The mounting hole diameter is assumed from the stated #4/M3 screw size. The hole positions are approximate: the 12.7 mm pair is placed on the x axis, and the two 19.1 mm pairs are placed at ±30° from it, which is an estimate from the images. The 6 spoke slots (M2/#2 screws) are not dimensioned and so are not listed as holes. The hub bore is modeled as 3 mm through, but the actual D-profile and hub depth are not visible. The tire is a separate part that fits over the rim, and no internal dimensions are given.",
+      "Dimensions are unverified, taken from product text and image estimates.",
+      "The hub bore is a plain 3 mm round hole; the D-shaft flat is omitted.",
+      "Spoke slots for M2 screws are omitted because they are not dimensioned.",
+      "Tire inner radius, rim width, spoke thickness and hub radius are estimated.",
+      "Mounting hole positions are estimated. The 12.7 mm pair is on the X axis and the 19.1 mm pairs are at Y=±5.51 mm.",
+      "Tire tread texture is omitted, and the tire and wheel are fused into one solid.",
+      "Only one wheel is modeled, although the product is sold as a pair."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -40,
+      "xmax": 40,
+      "ymin": 0,
+      "ymax": 80,
+      "zmin": -5,
+      "zmax": 5,
+      "xlen": 80,
+      "ylen": 80,
+      "zlen": 10
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [10.0, 80.0, 80.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 217413,
+        "sha256": "2ac9fb08e7780cdf8b4a237e0bbacd735de28e1e4de12c386af7344e31fd8355"
+      },
+      "model.stl": {
+        "bytes": 299484,
+        "sha256": "9f2438b926e9780ae0f27ceee4daffddea0867d6cca2a11ba8f83a95bb7f2909"
+      },
+      "model.glb": {
+        "bytes": 108516,
+        "sha256": "8103b99b0a488a97874fb9c54bca6783d3968aaac94b67f6582c245f60d95036"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "2ac9fb08e7780cdf8b4a237e0bbacd735de28e1e4de12c386af7344e31fd8355"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

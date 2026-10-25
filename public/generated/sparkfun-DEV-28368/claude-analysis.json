@@ -1,0 +1,172 @@
+{
+  "partType": "other",
+  "summary": "Small rectangular microcontroller development board (Teensy 4.0 format) with a micro-USB connector at one short end and a row of plated through-hole pads along each long edge on a 2.54 mm pitch.",
+  "boundsMm": {
+    "x": 35.56,
+    "y": 17.78,
+    "z": 4
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          -16.51,
+          7.62,
+          0
+        ],
+        [
+          -13.97,
+          7.62,
+          0
+        ],
+        [
+          -11.43,
+          7.62,
+          0
+        ],
+        [
+          -8.89,
+          7.62,
+          0
+        ],
+        [
+          -6.35,
+          7.62,
+          0
+        ],
+        [
+          -3.81,
+          7.62,
+          0
+        ],
+        [
+          -1.27,
+          7.62,
+          0
+        ],
+        [
+          1.27,
+          7.62,
+          0
+        ],
+        [
+          3.81,
+          7.62,
+          0
+        ],
+        [
+          6.35,
+          7.62,
+          0
+        ],
+        [
+          8.89,
+          7.62,
+          0
+        ],
+        [
+          11.43,
+          7.62,
+          0
+        ],
+        [
+          13.97,
+          7.62,
+          0
+        ],
+        [
+          16.51,
+          7.62,
+          0
+        ],
+        [
+          -16.51,
+          -7.62,
+          0
+        ],
+        [
+          -13.97,
+          -7.62,
+          0
+        ],
+        [
+          -11.43,
+          -7.62,
+          0
+        ],
+        [
+          -8.89,
+          -7.62,
+          0
+        ],
+        [
+          -6.35,
+          -7.62,
+          0
+        ],
+        [
+          -3.81,
+          -7.62,
+          0
+        ],
+        [
+          -1.27,
+          -7.62,
+          0
+        ],
+        [
+          1.27,
+          -7.62,
+          0
+        ],
+        [
+          3.81,
+          -7.62,
+          0
+        ],
+        [
+          6.35,
+          -7.62,
+          0
+        ],
+        [
+          8.89,
+          -7.62,
+          0
+        ],
+        [
+          11.43,
+          -7.62,
+          0
+        ],
+        [
+          13.97,
+          -7.62,
+          0
+        ],
+        [
+          16.51,
+          -7.62,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "y",
+      "offsetMm": 7.62,
+      "description": "Right-hand row of plated through-hole header pads along the long edge, 2.54 mm pitch, for soldering to headers or a carrier board"
+    },
+    {
+      "axis": "y",
+      "offsetMm": -7.62,
+      "description": "Left-hand row of plated through-hole header pads along the long edge, 2.54 mm pitch, for soldering to headers or a carrier board"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Length and width come from the supplied dimensions, which are marked unverified. Height is not given, so 4.0 mm is an estimate for the PCB plus the tallest parts (micro-USB connector and chips). The image has no printed dimensions. The pad diameter (about 1.0 mm), the 15.24 mm row spacing and the pad positions are assumed from the standard 0.1 in pitch layout, not measured. The pads along the short end opposite the USB connector are not modeled. There are no dedicated mounting holes. Component placement on the board is not modeled."
+}

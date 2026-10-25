@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Tamiya 70145 Narrow Tire Set (2 tires)",
+    "sku": "pololu-63",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Diameter (58 mm) and width (16 mm) come from the supplied specs, which are marked unverified. The image shows a central hub opening and three screws or fasteners on the hub face, but no bore or screw-hole diameters or positions are given. The listing mentions interchangeable hubs for 4 mm round shafts and 3 mm hex shafts, but does not say which one is fitted. The holes array is therefore left empty rather than guessing. The axis choice (y) and the ±8 mm face offsets are modeling assumptions for a part centered at the origin.",
+      "Diameter and width come from unverified specs.",
+      "The hub is simplified to a shallow recess in a single solid; the separate hub part is not modeled.",
+      "The central bore, shaft hole (4 mm round or 3 mm hex), the three screws and the rear standoffs are omitted because their sizes and positions are uncertain.",
+      "The 5 mm edge round and the 21 mm recess radius and 3 mm depth are estimated from the image."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -29,
+      "xmax": 29,
+      "ymin": 0,
+      "ymax": 16,
+      "zmin": -29,
+      "zmax": 29.0000001,
+      "xlen": 58,
+      "ylen": 16,
+      "zlen": 58.0000001
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 14935,
+        "sha256": "7e58543ada6969f71a2ad76177b8090723d450965869cd16e07ef41ba0cae59a"
+      },
+      "model.stl": {
+        "bytes": 386284,
+        "sha256": "8ecd34b0803ab3bc7fdac31bb778bef1d6b7b5bf35f6cbb04ae531183a1a8bc5"
+      },
+      "model.glb": {
+        "bytes": 140080,
+        "sha256": "d8e68c5bcd390a911060f2fdfb7a8668cadf359ae3b7c9e1ff2d7fad93fbdc7e"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "7e58543ada6969f71a2ad76177b8090723d450965869cd16e07ef41ba0cae59a"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 15
+  },
+  "status": "prototype_unverified"
+}

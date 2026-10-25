@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Flat pancake stepper motor with the shaft along +Y. Body is 50x50 mm and 16 mm tall (Y 0 to 16), built from a 3 mm bottom plate, a 46x46x10 mm lamination core and a 3 mm top plate. A 5 mm diameter, 5 mm long shaft rises from the top face to Y=21. Four 2.5 mm blind holes, 3 mm deep, sit on a 41 mm square pattern in the top plate.",
+  "confidence": "medium",
+  "warnings": [
+    "Plate and core thicknesses are estimated from the image.",
+    "Clipped plate corners, side notches in the core, the bearing boss and the lead wires are not modeled.",
+    "Hole depth is assumed to be 3 mm.",
+    "The 16 mm body height and 21 mm overall height come from unverified product text.",
+    "The shaft axis is Y to satisfy the bottom-at-Y=0 rule, whereas the image analysis used Z."
+  ],
+  "cadquery": "plate = 3.0\ncore = cq.Workplane('XY').box(46, 10, 46, centered=(True, False, True)).translate((0, plate, 0))\nbottom = cq.Workplane('XY').box(50, plate, 50, centered=(True, False, True))\ntop = cq.Workplane('XY').box(50, plate, 50, centered=(True, False, True)).translate((0, 16 - plate, 0))\nbody = bottom.union(core).union(top)\nshaft = cq.Workplane('XY').add(cq.Solid.makeCylinder(2.5, 5.0, cq.Vector(0, 16, 0), cq.Vector(0, 1, 0)))\npart = body.union(shaft)\nfor x in (-20.5, 20.5):\n    for z in (-20.5, 20.5):\n        h = cq.Workplane('XY').add(cq.Solid.makeCylinder(1.25, 3.0, cq.Vector(x, 13, z), cq.Vector(0, 1, 0)))\n        part = part.cut(h)"
+}

@@ -1,0 +1,24 @@
+{
+  "partType": "other",
+  "summary": "Teensy 4.1 microcontroller board with pre-soldered male header pins on the underside, shown seated in black foam. It is a long, narrow PCB with a microSD socket at one end, a micro-USB connector at the other, a pushbutton, and a large central processor chip.",
+  "boundsMm": {
+    "x": 60.96,
+    "y": 17.78,
+    "z": 12
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -6,
+      "description": "Underside of the pre-soldered male header pins, which plug into a breadboard or socket. The pins run along both long edges."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -3.5,
+      "description": "Bottom face of the PCB, which sits on top of the header pin plastic."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Length (60.96) and width (17.78) come from the supplied metadata, which is marked unverified. The product images show no printed dimensions. Height is not given, so z=12 is an assumed estimate for the PCB plus components plus the header pins, not a measured value. Individual mounting holes are not clearly visible, so none are listed. Header pins run along both long edges, but their exact positions and count are not resolved from the images. The black foam in the image is packaging and is excluded from the part bounds."
+}

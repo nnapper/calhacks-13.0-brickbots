@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Rectangular 15.24 x 20.32 mm carrier PCB, 1.6 mm thick (Z -1.5 to 0.1), with 16 plated through-holes (1 mm diameter, 2 rows of 8 at 2.54 mm pitch, 12.7 mm row spacing) and a single box-shaped TSSOP IC body on the top face, bringing the total thickness to 3 mm. The board spans Y 0 to 20.32, following the supplied bounds.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are estimates from the supplied bounds and were not verified.",
+    "The axis convention is ambiguous. The bounds put the 20.32 mm length on Y and the 3 mm thickness on Z, so the board is modeled that way (Y from 0 to 20.32, X and Z centered) rather than lying flat with Y as thickness.",
+    "The two unplated corner holes were omitted because their size and position are uncertain.",
+    "The small passives (capacitors, resistors, SOT part) were omitted because their positions and sizes are uncertain.",
+    "IC body size, orientation and height are approximate, and its leads are not modeled.",
+    "The hole positions given are symmetric about the board center, which differs slightly from the photo, where the rows look wider and offset.",
+    "The included header strip is not modeled."
+  ],
+  "cadquery": "pcb = cq.Workplane('XY').box(15.24, 20.32, 1.6).translate((0, 10.16, -0.7))\nys = [8.89, 6.35, 3.81, 1.27, -1.27, -3.81, -6.35, -8.89]\npts = [(x, y) for x in (-6.35, 6.35) for y in ys]\npcb = pcb.faces('>Z').workplane(centerOption='CenterOfBoundBox').pushPoints(pts).hole(1.0)\nic = cq.Workplane('XY').box(6.4, 7.8, 1.4).translate((0, 10.16, 0.8))\npart = pcb.union(ic)"
+}

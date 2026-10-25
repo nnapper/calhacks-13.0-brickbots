@@ -1,0 +1,13 @@
+{
+  "partType": "other",
+  "summary": "Transparent plastic multi-ratio gearbox housing with a small brushed DC motor, a 3 mm hex output shaft and mounting holes. It is a kit with 12 selectable gear ratios and two possible output-axle locations.",
+  "boundsMm": {
+    "x": 30,
+    "y": 17,
+    "z": 31
+  },
+  "holes": [],
+  "mountingSurfaces": [],
+  "confidence": "low",
+  "notes": "The images show no printed dimensions for the housing. The bounds are the unverified length, width and height from the product data (30 x 17 x 31 mm), assigned to x, y and z in that order. The axis assignment is a guess, and the 31 mm height looks large relative to the photos. The 3 mm hex output shaft is a shaft, not a hole. The product text says the mounting holes fit Tamiya universal plates, but the images give no hole diameters or positions, so I left holes and mounting surfaces empty rather than invent values. Verify all dimensions against a Tamiya drawing or a physical measurement."
+}

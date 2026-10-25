@@ -1,0 +1,32 @@
+{
+  "partType": "other",
+  "summary": "Small black encoder PCB with a center hole, two oblong slotted pads, a side-entry 6-pin JST SH-type connector, and two Hall sensors. It is used with a separate magnetic disc on a mini plastic gearmotor shaft. The board is modeled as a single encoder board.",
+  "boundsMm": {
+    "x": 16.5,
+    "y": 16.5,
+    "z": 4.5
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 5,
+      "positionsMm": [
+        [
+          0,
+          1.5,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -2.25,
+      "description": "Flat back face of the PCB (printed side in the dimension photo), which sits against the motor end"
+    }
+  ],
+  "confidence": "low",
+  "notes": "The dimension photo prints 16.5 mm width and 16.5 mm height for the main board, with a 10 mm wide by 5.5 mm tall tab at the bottom. The tab sits inside the 16.5 mm height, so the footprint is 16.5 x 16.5 mm. The z value of 4.5 mm is an assumption from the '4.5 mm?' spec entry: PCB about 1 mm plus the JST connector height, with the disc excluded. The center hole diameter of about 5 mm is estimated from the quarter in the photo (24.26 mm diameter), with the hole about 0.2 times the quarter's diameter. Its position is estimated from the image, about 1.5 mm toward the top edge from board center. The two oblong gold pads at the left and right edges are not counted as holes because they appear to be solder pads, not confirmed through-slots. The magnetic discs are separate parts and are excluded from the bounds. The connector overhang beyond the board edge is not measured."
+}

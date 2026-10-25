@@ -1,0 +1,11 @@
+{
+  "name": "Tamiya 70145 Narrow Tire Set (2 tires)",
+  "sku": "pololu-63",
+  "category": "tamiya-wheels",
+  "expectedDimensionsMm": [
+    58,
+    16,
+    58
+  ],
+  "units": "millimeter"
+}

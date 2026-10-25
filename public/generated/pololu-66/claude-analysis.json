@@ -1,0 +1,47 @@
+{
+  "partType": "bracket",
+  "summary": "Small ball caster assembly with a steel ball held in a ball holder at the bottom. Four standoff posts rise from a square mounting base plate with a corner hole at each corner. The kit can be built at a 25 mm or 35 mm height. This model uses the 35 mm configuration.",
+  "boundsMm": {
+    "x": 25,
+    "y": 25,
+    "z": 35
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          -10,
+          -10,
+          -17.5
+        ],
+        [
+          10,
+          -10,
+          -17.5
+        ],
+        [
+          10,
+          10,
+          -17.5
+        ],
+        [
+          -10,
+          10,
+          -17.5
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -17.5,
+      "description": "Flat square base plate with four corner screw holes, used to fasten the caster to a chassis."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Height of 35 mm is stated in the text and drawing (25 mm alternative also available). The footprint of about 25 x 25 mm is estimated from the photo by comparing the plate width with the height and from typical hardware proportions; it is not printed. Hole diameter of about 3 mm and the hole positions are estimates based on the 3 mm screws shown in the instructions (3x10 mm tapping screws and 3 mm nuts). The top of the posts also shows holes, but their positions and depth are not given, so they are not listed. The ball diameter is not stated."
+}

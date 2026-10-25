@@ -1,0 +1,10 @@
+{
+  "name": "Pololu 22T Track Set - Black",
+  "sku": "pololu-3030",
+  "category": "tracks",
+  "expectedDimensionsMm": [
+    39,
+    14.6
+  ],
+  "units": "millimeter"
+}

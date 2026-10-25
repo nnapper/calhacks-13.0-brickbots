@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Servo Gear Set for 2000 Series 'Torque' Servo (V3.0)",
+    "sku": "2310-2000-0302",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/servo-gear-set-for-2000-series-torque-servo-v3-0/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions were scraped or stated. The estimate assumes the set fits a standard-size servo case of about 40 x 20 x 37 mm, as in the servo photos, so the largest gear is roughly 38-40 mm in diameter. The compound gear stack height is assumed to be about 16 mm. The 4 mm bore is assumed from the small shaft and bushing proportions. Tooth counts and module are not given and were not inferred. The hole is a single representative bore at the gear center. The other gears, shafts and bushings are not modeled individually, and no mounting pattern is visible.",
+      "Dimensions are unverified estimates. The listing gives no sizes, so the bounds come from the image analysis.",
+      "Tooth counts, module, and the gear and pinion thicknesses are assumed. Teeth are simple trapezoids, not true involute profiles.",
+      "Only the largest gear is modeled. The other three gears, the pressed-in bearing, the two steel shafts and the two bronze bushings are omitted.",
+      "The 4 mm bore is an assumed value, with no bearing or bushing detail.",
+      "The gear axis is along Z as in the analysis, so the Y=0 bottom rule puts the gear center at Y=20."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -19.99710430053148,
+      "xmax": 19.99710430053148,
+      "ymin": 0.0028956994685209736,
+      "ymax": 39.997104300531475,
+      "zmin": -8,
+      "zmax": 8,
+      "xlen": 39.99420860106296,
+      "ylen": 39.99420860106295,
+      "zlen": 16
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 1009185,
+        "sha256": "6ce87aead1d8f214e653565d3cb0ee0e287e157d6967ae87ecda7247024dc548"
+      },
+      "model.stl": {
+        "bytes": 68084,
+        "sha256": "70835b26051fca50de94144e5fba698256b3a426361d79a02c4f9681c21961c9"
+      },
+      "model.glb": {
+        "bytes": 25512,
+        "sha256": "496a27d597fbbb629bba9c7050a051b78de15453f83ea6c8b285ba43e3d065cc"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "6ce87aead1d8f214e653565d3cb0ee0e287e157d6967ae87ecda7247024dc548"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 14
+  },
+  "status": "prototype_unverified"
+}

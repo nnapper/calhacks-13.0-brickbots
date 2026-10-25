@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Only the largest compound spur gear from the kit is modeled: a 48-tooth, 40 mm OD gear 6 mm thick with a coaxial 16-tooth, 14 mm OD pinion 10 mm tall, for 16 mm total height. A 4 mm through bore runs along Z. The gear axis is parallel to Z and passes through X=0, Y=20. The part spans Y 0 to 40 and Z -8 to 8, matching the bounds.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are unverified estimates. The listing gives no sizes, so the bounds come from the image analysis.",
+    "Tooth counts, module, and the gear and pinion thicknesses are assumed. Teeth are simple trapezoids, not true involute profiles.",
+    "Only the largest gear is modeled. The other three gears, the pressed-in bearing, the two steel shafts and the two bronze bushings are omitted.",
+    "The 4 mm bore is an assumed value, with no bearing or bushing detail.",
+    "The gear axis is along Z as in the analysis, so the Y=0 bottom rule puts the gear center at Y=20."
+  ],
+  "cadquery": "def gear(n, ro, rr, z0, th):\n    p = 2 * math.pi / n\n    pts = []\n    for i in range(n):\n        a = i * p\n        for r, d in ((rr, -0.25), (ro, -0.13), (ro, 0.13), (rr, 0.25)):\n            pts.append((r * math.cos(a + d * p), r * math.sin(a + d * p)))\n    return cq.Workplane('XY').workplane(offset=z0).polyline(pts).close().extrude(th)\n\nlarge = gear(48, 20.0, 18.2, -8.0, 6.0)\npinion = gear(16, 7.0, 5.6, -2.0, 10.0)\nbody = large.union(pinion)\nbore = cq.Workplane('XY').workplane(offset=-8.0).circle(2.0).extrude(16.0)\npart = body.cut(bore).translate((0, 20.0, 0))"
+}

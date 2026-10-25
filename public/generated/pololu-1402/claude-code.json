@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "SPDT micro switch: 20 x 10.2 x 6.4 mm black body raised 4 mm above Y=0, two 2.4 mm through holes along the thickness (Z), three 3.2 mm wide flat solder tabs (0.5 mm thick, 1.6 mm holes) below the body, and a thin 16.7 mm flat lever tilted upward from a small hinge post at the right top.",
+  "confidence": "medium",
+  "warnings": [
+    "Tab lengths below the body (about 4 mm) and lever angle (10°) and width are estimated from the image.",
+    "Hole spacing taken from the analysis (9.5 mm); the image perspective suggests it may be smaller.",
+    "Hole height on the body is approximate.",
+    "Hinge post, body step/notch on the right end, and the actuator pin details are simplified or omitted.",
+    "Dimensions are unverified."
+  ],
+  "cadquery": "body_h=10.2\nby=4.0\nbody=cq.Workplane('XY').box(20,body_h,6.4).translate((0,by+body_h/2,0))\nholes=cq.Workplane('XY').pushPoints([(-4.75,6.5),(4.75,6.5)]).circle(1.2).extrude(5,both=True)\nbody=body.cut(holes)\npart=body\nfor x in (-8.1,0.7,8.0):\n    pin=cq.Workplane('XY').box(3.2,4.5,0.5).translate((x,2.25,0))\n    ph=cq.Workplane('XY').center(x,1.8).circle(0.8).extrude(2,both=True)\n    part=part.union(pin.cut(ph))\npost=cq.Workplane('XY').box(2.5,1.2,3.2).translate((6.5,14.8,0))\nlever=(cq.Workplane('XY').box(16.7,0.4,3.2).translate((-8.35,0,0))\n       .rotate((0,0,0),(0,0,1),-10).translate((7,14.8,0)))\npart=part.union(post).union(lever)"
+}

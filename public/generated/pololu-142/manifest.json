@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "3-AA Battery Holder",
+    "sku": "pololu-142",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Bounds come from the product listing (58 x 48 x 15 mm), which is flagged as unverified. No dimensions are printed in the images. Small round features are visible in the cavity floor and on the end wall, but their sizes and positions can't be determined, so no holes are listed. No mounting holes are visible or stated. The wires (about 152.4 mm long, 24 gauge) are excluded from the bounding box. The bounding box is centered on the part.",
+      "The overall dimensions come from the unverified product listing (58 × 48 × 15 mm).",
+      "The channel size, wall thickness and floor thickness are estimated from the image.",
+      "The spring and flat contacts are omitted.",
+      "The two flying leads (about 152 mm long) are omitted.",
+      "The small round features on the cavity floor and end wall are omitted because their size and position are uncertain.",
+      "The end-wall slots and the curved cell-retaining bumps at the cavity ends are omitted.",
+      "No mounting holes are visible or stated, so none are cut."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -29,
+      "xmax": 29,
+      "ymin": 0,
+      "ymax": 15,
+      "zmin": -24,
+      "zmax": 24,
+      "xlen": 58,
+      "ylen": 15,
+      "zlen": 48
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 59077,
+        "sha256": "14fcab4fe23d3b49a86af2744f6c478062c684a42b5dfc8d5913c0bc80a4b3b4"
+      },
+      "model.stl": {
+        "bytes": 3084,
+        "sha256": "414280f26c9d030ef7a8a7904de2be24131739a1108149abe13cd1973f854813"
+      },
+      "model.glb": {
+        "bytes": 2112,
+        "sha256": "9150bc20f3e13161bb68fe7a5a8d6fcec2b1edf999a75cfb1fffb5174010a3ff"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "14fcab4fe23d3b49a86af2744f6c478062c684a42b5dfc8d5913c0bc80a4b3b4"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

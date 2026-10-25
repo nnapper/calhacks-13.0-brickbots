@@ -1,10 +1,12 @@
 {
-  "shapeSummary": "Flat aluminum stadium-shaped (round-end) plate, 56 x 32 mm and 2.5 mm thick. The plate lies in the XZ plane with its bottom at Y=0 and its thickness along +Y. Two 14 mm through holes sit at X=±12 mm, concentric with the 16 mm end radii.",
-  "confidence": "medium",
+  "shapeSummary": "Stadium-shaped aluminum pattern plate 56 x 32 x 2.5 mm (length along X, width along Z, thickness along Y from 0 to 2.5) with full-radius ends, two 14 mm through holes at X=±12, and 14 small 4 mm through holes: 5 in an arc around each big hole plus 4 in the middle.",
+  "confidence": "low",
   "warnings": [
-    "The roughly 14 smaller holes and slotted holes in the 16mm goBILDA pattern are visible in the image. Their diameters and exact positions are not stated, so they are omitted rather than guessed.",
-    "The dimensions are marked unverified in the source data.",
-    "The 14 mm hole positions at X=±12 mm are inferred from the 24 mm center spacing and the 16 mm end radius."
+    "Small hole positions are estimated from the image, not from the goBILDA drawing; the 14-hole layout is approximate.",
+    "Small hole diameter of 4 mm is assumed from the goBILDA standard.",
+    "Slotted holes (slotted to 24mm across center) are modeled as round holes because slot extents are uncertain.",
+    "Big hole spacing of ±12 mm is assumed concentric with the end radii.",
+    "The first line of the code assigns an unused alias for math, which is harmless."
   ],
-  "cadquery": "plate = cq.Workplane('XZ').slot2D(56, 32).extrude(-2.5)\nbores = cq.Workplane('XZ').pushPoints([(-12, 0), (12, 0)]).circle(7).extrude(-2.5)\npart = plate.cut(bores)"
+  "cadquery": "import_math = math\nL, W, T = 56.0, 32.0, 2.5\nc = L/2 - W/2  # 12 mm end-arc centers\nbig = [(-c, 0), (c, 0)]\nsmall = [(-4, -8), (-4, 8), (4, -8), (4, 8)]\nfor s in (-1, 1):\n    for a in (-90, -45, 0, 45, 90):\n        ang = math.radians(a)\n        small.append((s*c + s*12*math.cos(ang), 12*math.sin(ang)))\nplate = cq.Workplane('XZ').slot2D(L, W).extrude(-T)\nplate = plate.faces('>Y').workplane(centerOption='CenterOfBoundBox').pushPoints(big).hole(14)\nplate = plate.faces('>Y').workplane(centerOption='CenterOfBoundBox').pushPoints(small).hole(4)\npart = plate"
 }

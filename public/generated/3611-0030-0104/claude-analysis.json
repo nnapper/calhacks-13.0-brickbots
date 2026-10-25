@@ -1,0 +1,26 @@
+{
+  "partType": "other",
+  "summary": "Representative single barrel-shaped, dimpled roller from a 44-roller replacement pack for 104 mm mecanum wheels. It has an axial through-bore at the center. The pack also includes loose hardware: a pin, 2 bearings, E-clips and shims.",
+  "boundsMm": {
+    "x": 20,
+    "y": 20,
+    "z": 44
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [],
+  "confidence": "low",
+  "notes": "No dimensions are given in the listing. The bounds are for one roller, centered on the part, with its long axis along z. Assumptions: the roller's max diameter is about 20 mm and its length about 44 mm. These come from the roller's length-to-diameter ratio of roughly 2.2:1 in the photo, and from fitting a ring of about 10 rollers inside a 104 mm wheel in the third image. The 8 mm bore is a rough estimate from the visible end opening, at roughly 40% of the roller diameter. It also assumes the bore holds the bearings and pin. No flat mounting surfaces are visible or stated, so none are listed. The loose pin, E-clips, shims and bearings are not modeled."
+}

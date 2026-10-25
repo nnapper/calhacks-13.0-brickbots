@@ -1,0 +1,37 @@
+{
+  "partType": "wheel",
+  "summary": "Round wheel with a deeply treaded rubber tire on a plastic hub. The hub has a central D-shaped shaft bore. One side has a flat hub face, and the other side has an open hub with twelve evenly spaced teeth. The wheel axis is along z, and the part is centered on the origin.",
+  "boundsMm": {
+    "x": 42,
+    "y": 42,
+    "z": 19
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -9.5,
+      "description": "Outer side envelope on the flat-hub-face side. The hub face is visibly recessed inside the tire, and its exact depth is not measurable from the images."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 9.5,
+      "description": "Outer side envelope on the toothed-hub side, where the motor shaft enters the central D-bore. The exact tooth and hub depth is not stated."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Diameter (42 mm), tire width (19 mm), 3 mm D-shaft size and the twelve hub teeth (3 mm wide, 3 mm gaps) come from the unverified listing text, not from a dimensioned drawing. The images show a D-shaped slot in the hub on both sides, so the bore is assumed to pass through, but its depth is not directly visible. Hub recess depth, tooth height, hub diameter and tread geometry are not given and are not modeled. The bounding box is the tire envelope."
+}

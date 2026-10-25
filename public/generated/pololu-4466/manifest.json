@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Glideforce GF01-121005-1-66 Micro Linear Actuator with Limit Switches: 12V, 4.3kgf, 17.6mm/s, 50mm Stroke",
+    "sku": "pololu-4466",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The length of 157 mm is the printed extended length (S+A) for the 50 mm stroke. The 16 mm and 21 mm cross-section values come from the end-view callouts (16±0.5 and 21±0.5). Which one is the hole axis direction is ambiguous, so I assigned y=21 and z=16. The hole positions are derived from the drawing: the rear hole is 4.25 mm from the rear end, and the front hole is 8.9 mm from the retracted body front, with the box centered on x. The hole y and z offsets are assumed to be on the centerline. The shaft-end fitting hole is visible in the photo, but its diameter is not given. Cable length (300 mm) is excluded from the bounds. The supplied width, height and diameter fields were null and unverified.",
+      "Case, tube and cap cross-sections and lengths are estimated from the photo, not from stated dimensions.",
+      "The rear mounting ear is merged into the rectangular case block instead of being modeled as a separate narrower tab.",
+      "The second 4.25 mm hole from the analysis (x=-19.6) was omitted. It is not visible in the photo and would fall in the middle of the extension tube.",
+      "The hole in the front shaft-end fitting is visible but has no stated size, so it was omitted.",
+      "The 300 mm cable is not modeled.",
+      "Hole axis direction (Z) is ambiguous in the source analysis.",
+      "The tube and shaft are centered vertically on the case, which is an assumption."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -78.5,
+      "xmax": 78.5,
+      "ymin": 0,
+      "ymax": 21,
+      "zmin": -8,
+      "zmax": 8,
+      "xlen": 157,
+      "ylen": 21,
+      "zlen": 16
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 53102,
+        "sha256": "eff121b0edef41434754f67c235c24e683231d7ef90cd87f826c6e1195a7f96e"
+      },
+      "model.stl": {
+        "bytes": 36084,
+        "sha256": "873763d729a8a2db34d9760a5f7bf2640dbe8cc6931d577740bd6f78c276705f"
+      },
+      "model.glb": {
+        "bytes": 13972,
+        "sha256": "a570384147ccd7d89748a5655e10580737eb124cb5430f73136cf547948bfe2d"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "eff121b0edef41434754f67c235c24e683231d7ef90cd87f826c6e1195a7f96e"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

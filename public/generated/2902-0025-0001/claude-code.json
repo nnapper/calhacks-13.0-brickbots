@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Single hinge block, 24 x 12 x 16 mm (X x Y x Z). A 12 mm diameter barrel with its axis along Z sits at one end on a flat-bottomed base. A 4 mm thick tab extends along +X and ends in an 8 mm radius round end. A 4.2 mm through bore runs along Z through the barrel. A 4.2 mm through hole runs along Y in the tab round end.",
+  "confidence": "low",
+  "warnings": [
+    "No dimensions were given in the text, so all sizes are estimates from the analysis bounds.",
+    "The hole positions in the analysis were inconsistent, so the hole layout was re-derived from the image: the tab hole and barrel bore axes are perpendicular, 10 mm apart in X.",
+    "Tab thickness (4 mm), barrel radius (6 mm) and base height (6 mm) are guesses.",
+    "The 45° grooves and the notches on the rounded end are omitted.",
+    "No fillets or edge breaks are modeled."
+  ],
+  "cadquery": "barrel = cq.Workplane('XY').center(-6, 6).circle(6).extrude(8, both=True)\nbase = cq.Workplane('XY').box(12, 6, 16, centered=(False, False, True)).translate((-12, 0, 0))\ntab_box = cq.Workplane('XY').box(10, 4, 16, centered=(False, False, True)).translate((-6, 0, 0))\ntab_round = cq.Workplane('XZ').center(4, 0).circle(8).extrude(-4)\npart = barrel.union(base).union(tab_box).union(tab_round)\nbore = cq.Workplane('XY').center(-6, 6).circle(2.1).extrude(10, both=True)\ntab_hole = cq.Workplane('XZ').center(4, 0).circle(2.1).extrude(-12)\npart = part.cut(bore).cut(tab_hole)"
+}

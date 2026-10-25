@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Stamped clevis-style U-bracket: a 26x40 mm base plate 3 mm thick with two 6.5 mm through holes, two 3 mm thick upright ears 30 mm high, and a 10 mm cross pin spanning both ears near the end of the channel. The pin clip is omitted.",
+  "confidence": "low",
+  "warnings": [
+    "No dimensions are given except the 10 mm pin diameter. All other sizes are visual estimates.",
+    "Ear height (30 mm) and thickness (3 mm) are guessed, so the supplied 50 mm bounding-box height was not followed.",
+    "Pin position (Y=22, Z=10) and length (30 mm) are estimated.",
+    "Base hole diameter (6.5 mm) and positions are estimated. The holes may be slotted, but this is unclear, so they are modeled as round.",
+    "The pin clip/cotter ring, the pin head and the stamped edge radii and tapering are not modeled.",
+    "The pin is unioned with the ears, so no separate pin hole is cut."
+  ],
+  "cadquery": "base = cq.Workplane('XY').box(26, 3, 40, centered=(True, False, True))\near_l = cq.Workplane('XY').box(3, 30, 40, centered=(True, False, True)).translate((-11.5, 0, 0))\near_r = cq.Workplane('XY').box(3, 30, 40, centered=(True, False, True)).translate((11.5, 0, 0))\npart = base.union(ear_l).union(ear_r)\n# 10 mm cross pin through both ears (axis X)\npin = cq.Workplane('YZ').center(22, 10).circle(5).extrude(15, both=True)\npart = part.union(pin)\n# two base mounting holes (axis Y)\nholes = cq.Workplane('XZ').pushPoints([(0, -6), (0, -16)]).circle(3.25).extrude(10, both=True)\npart = part.cut(holes)"
+}

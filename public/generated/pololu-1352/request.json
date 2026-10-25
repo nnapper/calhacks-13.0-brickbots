@@ -1,0 +1,10 @@
+{
+  "name": "Mini Maestro 12-Channel USB Servo Controller (Assembled)",
+  "sku": "pololu-1352",
+  "category": "servo-controllers",
+  "expectedDimensionsMm": [
+    36.07,
+    27.94
+  ],
+  "units": "millimeter"
+}

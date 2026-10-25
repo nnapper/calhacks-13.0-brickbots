@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Notional flat-laid starter kit footprint of about 250 x 150 x 30 mm: 8 stadium-shaped HTD belt loops of decreasing length (15 mm wide) in a top row, 2 large hub-mount pulleys (74 mm OD, 20 mm thick, 8 mm bore) at lower right, 8 small aluminum pulleys (20 mm OD, 15 mm wide, 8 mm bore) in a 2x4 grid at lower left, and 8 6 mm OD standoffs along the bottom edge.",
+  "confidence": "low",
+  "warnings": [
+    "The kit is a multi-piece assortment, not a single part, so the model is a notional layout of simplified primitives.",
+    "No dimensions were provided, so all sizes are estimates taken from the image analysis.",
+    "The result is a compound of disjoint solids.",
+    "Belt teeth, pulley teeth and flanges, hex bores (modeled as round 8 mm), and the large-pulley hole patterns were omitted.",
+    "Sonic hubs, bearing idlers, small idlers, shims, screws and hex keys were omitted as too uncertain or too detailed.",
+    "The belts are modeled as simple stadium loops that are not to scale with the pulleys."
+  ],
+  "cadquery": "def cyl(x,y,d,h,b=0):\n    w=cq.Workplane('XY').center(x,y).circle(d/2)\n    if b: w=w.circle(b/2)\n    return w.extrude(h/2,both=True)\n\npart=cyl(88,37,74,20,8).union(cyl(14,37,74,20,8))\nfor i in range(8):\n    L=72-6*i\n    cx=-105+30*i\n    cy=150-L/2\n    outer=cq.Workplane('XY').center(cx,cy).slot2D(L,22,90).extrude(7.5,both=True)\n    inner=cq.Workplane('XY').center(cx,cy).slot2D(L-6,16,90).extrude(10,both=True)\n    part=part.union(outer.cut(inner))\n    part=part.union(cyl(-114+12*i,6,6,30))\nfor r in range(2):\n    for c in range(4):\n        part=part.union(cyl(-110+24*c,55-30*r,20,15,8))\n"
+}

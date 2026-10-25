@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Retracted industrial linear actuator, 403.1 mm long along X, centered at X and Z with bottom at Y=0. Rear block gearbox (62x75x60 mm), 40 mm diameter extension tube along X, 25 mm diameter rod end, and a 46 mm diameter motor cylinder parallel to the tube on top of the gearbox. 13 mm vertical (Y-axis) cross holes at the rod end and in the rear gearbox.",
+  "confidence": "low",
+  "warnings": [
+    "No dimensions are printed; width, height and diameters are estimated from photo proportions.",
+    "The 120 mm Z bound from the analysis seems too wide for the visible housing, so the gearbox is modeled 60 mm wide.",
+    "The rear mounting hole is placed at z=0, x=-186.5, because the analyzed offset (z=-35) would fall at the housing edge. The position is uncertain.",
+    "The rod-end hole is oriented along Y as in the analysis. The photo may show a different orientation.",
+    "The cable, potentiometer, side bosses, end cap, rod/tube steps and internal mechanism are omitted.",
+    "The motor length and position are estimates.",
+    "The rod is modeled in the retracted state only."
+  ],
+  "cadquery": "L=403.1\nx0=-L/2\nx1=L/2\n# gearbox housing at rear\ngear=cq.Workplane('XY').box(62,75,60,centered=(False,False,True)).translate((x0,0,0))\n# outer tube along X (retracted state)\ntube=cq.Workplane('YZ').workplane(offset=x0+50).center(20,0).circle(20).extrude((x1-25)-(x0+50))\n# rod end\nrod=cq.Workplane('YZ').workplane(offset=x1-25).center(20,0).circle(12.5).extrude(25)\n# motor parallel to tube, on top of gearbox\nmotor=cq.Workplane('YZ').workplane(offset=x0+50).center(52,0).circle(23).extrude(130)\npart=gear.union(tube).union(rod).union(motor)\n# 13 mm vertical cross holes\nh1=cq.Workplane('XZ').workplane(offset=-80).center(x1-12.5,0).circle(6.5).extrude(80)\nh2=cq.Workplane('XZ').workplane(offset=-80).center(x0+15,0).circle(6.5).extrude(80)\npart=part.cut(h1).cut(h2)"
+}

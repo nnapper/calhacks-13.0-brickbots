@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Mounting Bracket for Glideforce Medium-Duty Linear Actuators - Aluminum",
+    "sku": "pololu-3622",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": false,
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 10 mm pin diameter is stated; the other dimensions are unverified estimates scaled from that pin in the photos. Base hole size and positions are visual estimates, and the holes are assumed through because nuts are supplied. The pin hole is assumed to match the 10 mm pin. The coordinate origin is at the center of the bounding box, with x across the ears, y along the base length, and z up.",
+      "Only the 10 mm pin diameter is given; all other dimensions are estimates scaled from the photos.",
+      "Y is up, with the bottom at Y=0. The analysis JSON used Z as up, so its axes were remapped.",
+      "The analysis positions put the pin and a base hole at the same length coordinate. I moved the pin toward one end (Z=-6) and the base holes to Z=2 and 12.",
+      "The pin is modeled as a solid 10 mm cylinder fused to the ears, with no separate hole or clearance. The cotter clip, bolts and nuts are omitted.",
+      "The ear tops are left square because the rounding is uncertain.",
+      "Base hole diameter and spacing are visual estimates."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -22,
+      "xmax": 22,
+      "ymin": 0,
+      "ymax": 30,
+      "zmin": -16,
+      "zmax": 16,
+      "xlen": 44,
+      "ylen": 30,
+      "zlen": 32
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 10.000 mm; measured dimensions are [30.0, 32.0, 44.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 52459,
+        "sha256": "6a2712f4211705e41595598f769da503357fcbfb8c83234efcb315bb17bc4b73"
+      },
+      "model.stl": {
+        "bytes": 86084,
+        "sha256": "258276bc79cf5ab74bee7813fcce904ec113a59bac98ad25429d1065fb8d7b8a"
+      },
+      "model.glb": {
+        "bytes": 31928,
+        "sha256": "af5c671c369db91d8fda50e4458890fede60ad11134b3ce629f33b4467632adc"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "6a2712f4211705e41595598f769da503357fcbfb8c83234efcb315bb17bc4b73"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

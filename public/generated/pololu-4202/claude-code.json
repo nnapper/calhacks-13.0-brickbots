@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Flat 10.2 x 20 mm PCB, 0.8 mm thick, in the XZ plane with its bottom at Y=0 and thickness along Y. It has a 2.4 mm mounting hole near the +Z end and five 1 mm through-holes near the -Z end. Two block-shaped sensor bodies at 4 mm pitch rise to a total height of 2.5 mm.",
+  "confidence": "medium",
+  "warnings": [
+    "PCB thickness of 0.8 mm is assumed; it is not stated.",
+    "Sensor body size and position are estimated from the image.",
+    "The first sensors definition in the code is overwritten by the second, which uses the correct Y-up orientation.",
+    "Small SMD components, the IC and the unplated pads are omitted.",
+    "Hole sizes and positions are estimated from the image analysis.",
+    "Pin-hole pad shapes, including the square pad, are not modeled."
+  ],
+  "cadquery": "t = 0.8\nboard = cq.Workplane('XY').box(10.2, t, 20, centered=(True, False, True))\n# holes through the board along Y\nmount = cq.Workplane('XZ').center(0, 7.7).circle(1.2).extrude(-t)\npins = (cq.Workplane('XZ')\n        .pushPoints([(-3.81, -8.9), (-1.27, -8.9), (1.27, -8.9), (3.81, -8.9), (3.81, -6.35)])\n        .circle(0.5).extrude(-t))\nboard = board.cut(mount).cut(pins)\n# two QTR sensor bodies at 4 mm pitch, top height 2.5 mm\nh = 2.5 - t\nsensors = (cq.Workplane('XY').workplane(offset=t)\n           .pushPoints([(-2.2, 3.5), (-2.2, -0.5)])\n           .rect(3.2, 3.6).extrude(h))\n# workplane XY normal is Z, so rebuild sensors with Y as up\nsensors = (cq.Workplane('XZ', origin=(0, t, 0))\n           .pushPoints([(-2.2, 3.5), (-2.2, -0.5)])\n           .rect(3.2, 3.6).extrude(-h))\npart = board.union(sensors)"
+}

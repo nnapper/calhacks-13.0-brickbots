@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Tamiya 70144 Ball Caster Kit (2 casters)",
+    "sku": "pololu-66",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "Height of 35 mm is stated in the text and drawing (25 mm alternative also available). The footprint of about 25 x 25 mm is estimated from the photo by comparing the plate width with the height and from typical hardware proportions; it is not printed. Hole diameter of about 3 mm and the hole positions are estimates based on the 3 mm screws shown in the instructions (3x10 mm tapping screws and 3 mm nuts). The top of the posts also shows holes, but their positions and depth are not given, so they are not listed. The ball diameter is not stated.",
+      "Dimensions are unverified estimates, including the 25x25 mm footprint, 3 mm plate thickness, post size and position, holder diameter, and ball diameter.",
+      "The bounds list Y=25 and Z=35, but the rules put the bottom at Y=0 with Y up. I treated Y as the 35 mm height and X and Z as the 25 mm footprint.",
+      "Holes in the tops of the posts and the central front boss are visible but their depth and diameter are unknown, so they are omitted.",
+      "The ball is modeled as a fused sphere without a clearance gap or retaining-cap details.",
+      "The screw visible near the back-left of the holder and the small ribs and gussets are omitted.",
+      "The photo shows the ball at the top, but the description says the ball holder is at the bottom. I kept the ball at the top, matching the photo orientation."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -12.5,
+      "xmax": 12.5,
+      "ymin": 0,
+      "ymax": 35,
+      "zmin": -12.5,
+      "zmax": 12.5,
+      "xlen": 25,
+      "ylen": 35,
+      "zlen": 25
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 306353,
+        "sha256": "c223ed4b6f343fde17fc5025780c01ca064ae04a456efd2e01500d29af3f776a"
+      },
+      "model.stl": {
+        "bytes": 220834,
+        "sha256": "8efb83c84723434dada6bb0588bf379d42aac34b809477fcf3b749ac97366899"
+      },
+      "model.glb": {
+        "bytes": 80412,
+        "sha256": "a688d7230de63a0d467124c660b4b22d58717c99ff7582c7c707f199360ef002"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "c223ed4b6f343fde17fc5025780c01ca064ae04a456efd2e01500d29af3f776a"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

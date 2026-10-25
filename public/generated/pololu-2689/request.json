@@ -1,0 +1,11 @@
+{
+  "name": "Stepper Motor with 18cm Lead Screw: Bipolar, 200 Steps/Rev, 42×38mm, 2.8V, 1.7 A/Phase",
+  "sku": "pololu-2689",
+  "category": "stepper-motors",
+  "expectedDimensionsMm": [
+    182,
+    42.3,
+    38
+  ],
+  "units": "millimeter"
+}

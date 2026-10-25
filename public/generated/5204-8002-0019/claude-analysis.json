@@ -1,19 +1,24 @@
 {
   "partType": "motor",
-  "summary": "Cylindrical planetary gear motor with an 8mm REX output shaft that protrudes 80mm from the gearbox end. The drawings show the motor clamped in a quad block mount, passing through a U-channel wall, and carrying a hub and wheel.",
+  "summary": "Brushed DC planetary gear motor with an encoder: a cylindrical body with an 8mm REX output shaft that protrudes from the gearbox face. The drawings label the 80mm as shaft length, and the catalog entry's 'length: 80' appears to refer to the same thing. Body bounds are an estimate, with the axis along z and the body centered on the origin.",
   "boundsMm": {
     "x": 37,
     "y": 37,
-    "z": 80
+    "z": 105
   },
   "holes": [],
   "mountingSurfaces": [
     {
       "axis": "z",
-      "offsetMm": 0,
-      "description": "Gearbox output end face, where the 8mm REX shaft exits. Mounting is by a clamp or quad block mount around the gearbox, but no hole pattern is dimensioned."
+      "offsetMm": 52.5,
+      "description": "Output-end gearbox face, flat and perpendicular to the shaft. The 8mm REX shaft extends 80mm from it, so it can pass through a 1120 U-channel wall and still leave room for a hub and wheel (Insight #8)."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -52.5,
+      "description": "Rear (encoder) end face, perpendicular to the shaft axis."
     }
   ],
   "confidence": "low",
-  "notes": "The images print no body dimensions. The only stated figures are the 80mm shaft length (Insight #8) and the 8mm REX shaft diameter. The catalog 'length: 80' appears to be the shaft length, not the overall motor length, so z=80 is a placeholder and not a verified body length. The x and y values of 37 are an assumed gearbox diameter and are not printed anywhere. Holes are left empty because no hole diameters or positions are given. The shaft is a protrusion, not a hole. Overall length, body diameter and mounting hole pattern should be checked against the manufacturer drawing before use."
+  "notes": "The images print only the 80mm shaft length and the 8mm REX shaft size. The 80mm shaft extends beyond the body envelope above, which excludes it. The 37mm body diameter and 105mm body length are my estimates and are not printed or dimensioned in the drawings. The gearbox screw-hole pattern, channel hole sizes and positions, and body diameter are not dimensioned, so no holes are listed. The shaft's M4 tapped end hole is visible but not sized. Verify the body dimensions against the vendor datasheet before use."
 }

@@ -1,0 +1,32 @@
+{
+  "partType": "other",
+  "summary": "Compact single-channel brushed DC motor controller. It is a thin PCB under clear heat-shrink with one 4 mm mounting hole in a small ear at one end. Flying leads (motor bullets, XT30 power, 3-pin signal) are not part of the body bounds.",
+  "boundsMm": {
+    "x": 40.5,
+    "y": 15.5,
+    "z": 5.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -15.2,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -2.8,
+      "description": "Underside of the mounting ear/standoff around the 4 mm hole, used to fasten the board flat to a plate."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The drawing prints 28.5 mm (board length), 35.45 mm (hole center to the far end of the board), 15.5 mm (width), 5.6 mm (thickness) and a Ø4 mm hole. The 40.5 mm x-bound is my estimate: 35.45 mm plus about 5 mm from the hole center to the ear's outer edge, scaled from the drawing at about 8 px/mm (28.5 mm = 227 px). The hole position is derived the same way, with the box centered at the origin and the hole near the -x end. Heat-shrink tail and wire leads are excluded (leads are 150 mm each). Whether the 5.6 mm thickness covers the ear standoff or only the board is uncertain. Treat the hole as through because the photos show an open bore, but its exact depth is not stated. The z mounting-surface offset assumes the underside sits at -z/2."
+}

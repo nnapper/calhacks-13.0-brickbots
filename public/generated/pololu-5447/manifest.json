@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "ACS37041 Current Sensor Compact Carriers",
+    "sku": "pololu-5447",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Length 20.3 mm (0.8 in) and width 17.8 mm (0.7 in) come from the product data, which is marked unverified. Board thickness of 1.6 mm is an assumed typical value, since no height is given. Hole diameters and positions are visual estimates from the images, not stated values. The mounting hole count is two. The three signal holes have 2.54 mm pitch. The pad cutouts in the copper are not modeled. The sensor package and capacitor heights are excluded from z. The x axis runs along the 20.3 mm length with the pin end at +x.",
+      "Board thickness of 1.6 mm is assumed, since no height was given.",
+      "Dimensions are marked unverified in the product data.",
+      "Hole positions and diameters are visual estimates.",
+      "The SOT-23-5 sensor, capacitor, copper pads, and the pad holes and cutouts are not modeled because their positions and heights are uncertain.",
+      "The slot between the IP+ and IP- pads is not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -10.15,
+      "xmax": 10.15,
+      "ymin": 0,
+      "ymax": 1.6,
+      "zmin": -8.9,
+      "zmax": 8.9,
+      "xlen": 20.3,
+      "ylen": 1.6,
+      "zlen": 17.8
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 39188,
+        "sha256": "f12f8bb1568694d7d2677f7f18874cbab8c182752bdef6c2b4a952f55c5c63be"
+      },
+      "model.stl": {
+        "bytes": 85684,
+        "sha256": "4fb9e670dc68824bd3edf0e986abfa1c41517bb9bf0676ecd7738994a1e13c8d"
+      },
+      "model.glb": {
+        "bytes": 31740,
+        "sha256": "8846f2e303856f833b1e1e5976129b45011f3cfe97dbbf873e3268deaf73dac7"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "f12f8bb1568694d7d2677f7f18874cbab8c182752bdef6c2b4a952f55c5c63be"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

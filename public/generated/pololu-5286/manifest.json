@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "MPQ6612A Single Brushed DC Motor Driver Carrier (Soldered Connectors)",
+    "sku": "pololu-5286",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Footprint (20.32 × 22.86 mm) and hole diameter (0.086 in = 2.18 mm) come from the stated specs, which are marked unverified. Overall height (about 11 mm, including the PCB, terminal block and header pins) is not stated and is a rough estimate from the photos. The hole position is estimated from the pin-label photo and is approximate. The long axis (y) runs along the header edge, and the origin is at the bounding-box center.",
+      "Height of about 11 mm is estimated from the photo, not stated in the specs.",
+      "Dimensions are marked unverified.",
+      "Mounting hole position is approximate.",
+      "The separate 2-pin ISET header is omitted because its position is uncertain.",
+      "Terminal block size and pitch, capacitor size and position, and header pin length are estimated from the photo.",
+      "SMD components, silkscreen and the pin tails below the board are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -10.17,
+      "xmax": 10.16,
+      "ymin": 0,
+      "ymax": 11,
+      "zmin": -11.43,
+      "zmax": 11.43,
+      "xlen": 20.33,
+      "ylen": 11,
+      "zlen": 22.86
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 206687,
+        "sha256": "076d35c9015e221f53639d807b4e0b88b7da52841228622b61454d9baa28d999"
+      },
+      "model.stl": {
+        "bytes": 109884,
+        "sha256": "a09aa582d4e3620209f56dedd85528caffcc89626b88125f22e159587cb82eb2"
+      },
+      "model.glb": {
+        "bytes": 40548,
+        "sha256": "415408a499eda856268926e8a0f04311163e9bbe4821a8a50801a46fa2f50160"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "076d35c9015e221f53639d807b4e0b88b7da52841228622b61454d9baa28d999"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

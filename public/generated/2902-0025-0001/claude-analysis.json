@@ -1,0 +1,49 @@
+{
+  "partType": "block",
+  "summary": "Single plastic hinge block: a flat tab with a rounded end and an M4-clearance hole, joined to a raised half-cylindrical barrel with a bore through it. The bore axis is perpendicular to the tab hole axis. The product image shows 25 loose pieces; this describes one.",
+  "boundsMm": {
+    "x": 24,
+    "y": 12,
+    "z": 16
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4.2,
+      "positionsMm": [
+        [
+          -8,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "y",
+      "diameterMm": 4.2,
+      "positionsMm": [
+        [
+          4,
+          0,
+          4
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -8,
+      "description": "Flat underside of the tab and barrel base, which sits flush against a mating block or plate. The tab hole opens on this face."
+    },
+    {
+      "axis": "y",
+      "offsetMm": -6,
+      "description": "Flat end face of the barrel, with the cross bore opening and a hinge-style mating face against an adjacent block."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are given in the text, so all sizes are estimates. Assumptions: the part is on the goBILDA 8 mm pattern, so the hole-to-hole spacing is probably 8 mm. The holes are sized for an M4 screw (about 4 mm), as the description says, and probably have slight clearance. In the top-view image the length is about 2:1 against the width, which gives roughly 24 x 12 mm. The barrel height is guessed at about 16 mm from the perspective view. The tab is probably 4-8 mm thick, and the hole positions are approximate. The grooves at 45° and the notches on the rounded end are visible but not modeled. Only the bounding box centering is stated; the part origin is assumed at the center of the box."
+}

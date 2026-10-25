@@ -1,0 +1,52 @@
+{
+  "partType": "flat_plate",
+  "summary": "Rectangular universal plate with a regular grid of 3 mm through holes at 5 mm pitch (31 columns by 11 rows). The model is centered at the origin, with length along x, width along y and thickness along z. The set also includes angle brackets, shaft mounts and hardware, which are not modeled here.",
+  "boundsMm": {
+    "x": 160,
+    "y": 60,
+    "z": 2
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          -75,
+          -25,
+          0
+        ],
+        [
+          75,
+          -25,
+          0
+        ],
+        [
+          -75,
+          25,
+          0
+        ],
+        [
+          75,
+          25,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 1,
+      "description": "Top flat face of the plate, with the hole grid for mounting components"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -1,
+      "description": "Bottom flat face of the plate, with the hole grid for mounting components"
+    }
+  ],
+  "confidence": "low",
+  "notes": "The 160 x 60 mm outline is vendor data marked unverified, and no drawing shows these dimensions. The 3 mm hole diameter, 5 mm pitch and 11 x 31 grid count come from the spec text, and the image looks consistent with them. Plate thickness is not stated or visible, so z = 2 mm is a placeholder to be checked against the real part. The holes array lists only the four corner holes. The full pattern is every combination of x = -75 to 75 mm and y = -25 to 25 mm in 5 mm steps, which is 341 holes at z = 0. This assumes the grid is centered on the plate, so the edge margin would be 5 mm on all sides. Sprue-attached pegs and tabs visible in the photo are molding artifacts and are ignored."
+}

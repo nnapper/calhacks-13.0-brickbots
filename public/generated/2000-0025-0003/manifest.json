@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "2000 Series Dual Mode Servo (25-3, Speed)",
+    "sku": "2000-0025-0003",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/2000-series-dual-mode-servo-25-3-speed/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions were scraped and none are printed on the images. Bounds are assumed from the standard-size (roughly 40 x 20 x 38 mm) hobby servo form factor that this 58 g servo appears to match. X is the case length without flanges (about 40 mm), plus a small allowance; the flanges extend further, so the true overall length with flanges may be nearer 54 mm. Y is the case width. Z is the case height plus the protruding spline shaft. Hole positions and diameter are guesses from the flange layout (two slotted holes per flange) and are not measured. The 25T spline shaft diameter is not stated, so no shaft feature is given. The wire lead (300 mm) is excluded from the bounds. The accessory-kit image (arms, hubs, screws, bushings, grommets) is not part of the servo body and is ignored.",
+      "Dimensions are estimated from the standard servo form factor; none were given in the source data.",
+      "The Y axis is the 20.2 mm case width, not the servo height, to match boundsMm and the Z-axis hole description.",
+      "The 25-tooth spline is modelled as a plain cylinder because its teeth are not visible or dimensioned.",
+      "Flange holes are placed at x=±17.2 so they fit within the 40.5 mm X bound; the analysis positions of ±24.5 lie outside it.",
+      "Flanges are modelled as plain plates, without the slotted-hole detail.",
+      "The shaft offset (x=7), boss size and case height are guesses.",
+      "The wire lead and the accessory kit shown in the image (arms, screws, bushings, grommets) are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -20.25,
+      "xmax": 20.25,
+      "ymin": 0,
+      "ymax": 20.2,
+      "zmin": -18.25,
+      "zmax": 18.25,
+      "xlen": 40.5,
+      "ylen": 20.2,
+      "zlen": 36.5
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 70930,
+        "sha256": "2019fcc209e380eec6541ef744ad921cb1675bf8fadfc95c5b21ecfe14bfbb2d"
+      },
+      "model.stl": {
+        "bytes": 103884,
+        "sha256": "8de3bc515a70875058ce57d0a7c55dc62a7a583f6e2d83a0e267663a54a5c56b"
+      },
+      "model.glb": {
+        "bytes": 38312,
+        "sha256": "aa015290b4475863bf02264d8f74df2dc7c7fc7a781371011d8e1a5457fac921"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "2019fcc209e380eec6541ef744ad921cb1675bf8fadfc95c5b21ecfe14bfbb2d"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

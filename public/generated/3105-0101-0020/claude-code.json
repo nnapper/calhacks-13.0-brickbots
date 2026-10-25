@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "A 48 x 14 x 48 mm rectangular controller housing (X by Y by Z), with Y as the 14 mm height. The bottom sits at Y=0 and the part is centered in X and Z. Four 4.2 mm through holes run along Y at (±20, ±20) mm in the XZ plane.",
+  "confidence": "low",
+  "warnings": [
+    "Overall size is estimated from the photo, and no dimensions were verified.",
+    "The analysis lists the 14 mm thickness along Z. It was mapped to Y so the bottom sits at Y=0 as the rules require, and the hole axes were mapped to Y to match.",
+    "The 40 mm hole spacing and 4.2 mm hole diameter are assumptions based on the M4 hardware in the kit.",
+    "Omitted the wires, connectors (XT30, bullet, servo header), status LED, labels, and the corner and edge chamfers or bevels on the housing.",
+    "Omitted the underside fins or lower housing step, because their dimensions are uncertain."
+  ],
+  "cadquery": "body = cq.Workplane('XZ').rect(48, 48).extrude(-14)\nholes = (cq.Workplane('XZ').pushPoints([(-20, -20), (20, -20), (-20, 20), (20, 20)])\n         .circle(2.1).extrude(-14))\npart = body.cut(holes)"
+}

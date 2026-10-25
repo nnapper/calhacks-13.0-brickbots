@@ -1,0 +1,12 @@
+{
+  "name": "Pololu Multi-Hub Wheel w/Inserts for 3mm and 4mm Shafts - 80×10mm, Black, 2-Pack",
+  "sku": "pololu-3690",
+  "category": "wheels",
+  "expectedDimensionsMm": [
+    80,
+    10,
+    10,
+    80
+  ],
+  "units": "millimeter"
+}

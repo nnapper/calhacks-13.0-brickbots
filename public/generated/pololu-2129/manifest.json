@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "L3GD20H 3-Axis Gyro Carrier with Voltage Regulator",
+    "sku": "pololu-2129",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Width 0.4 in (10.16 mm), length 0.9 in (22.86 mm) and mounting hole Ø0.086 in (2.18 mm) are printed on the drawing. They override the unverified metadata width of 13 mm and length of 23 mm. The 3 mm height comes from unverified metadata and is assumed to include the board and its components. The mounting hole position is estimated from the image, with x across the width and y along the length, both measured from the board center. The pin holes have no printed diameter, so they are omitted from the holes list. There are 9 pin holes on a 2.54 mm pitch along one long edge (x ≈ +3.8 mm), plus a 10th unlabeled hole (DEN) at the pin-row end and slightly offset from the row. Pin hole diameters would need to be measured.",
+      "Board length and width taken from the drawing dimensions (22.86 x 10.16 mm), overriding the unverified metadata values.",
+      "Pin hole diameter (1.0 mm) is estimated, not printed on the drawing.",
+      "The 10th DEN hole and the square pad are omitted because their positions are uncertain.",
+      "Component heights are estimated at 1.0 mm, so total height is about 2.6 mm rather than the unverified 3 mm.",
+      "Passive components (resistors, capacitors), the second small IC and the PCB traces are omitted as small detail.",
+      "Mounting hole position is estimated from the image."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -5.08,
+      "xmax": 5.08,
+      "ymin": -5.75,
+      "ymax": 7.800000000000001,
+      "zmin": -11.43,
+      "zmax": 11.43,
+      "xlen": 10.16,
+      "ylen": 13.55,
+      "zlen": 22.86
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [10.16, 13.55, 22.86]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 98034,
+        "sha256": "13667e8d9419cf7d67ec544b2ce4b2e6f3f3288ec9f8295b26028798d8cb8cd6"
+      },
+      "model.stl": {
+        "bytes": 171884,
+        "sha256": "81ece597f8061be50f280476872f35089c10bd9e8adfe0f14a454ca30e3b4302"
+      },
+      "model.glb": {
+        "bytes": 62720,
+        "sha256": "8a84fcb08957075a7b30a4e9e68be4f865eff1052f7484242eafd6559b44aafb"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "13667e8d9419cf7d67ec544b2ce4b2e6f3f3288ec9f8295b26028798d8cb8cd6"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 56
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Rectangular carrier PCB 12.7 x 17.78 mm, 1 mm thick, lying in the XZ plane with its bottom at Y=0. It has two 2.18 mm through mounting holes at x=-3.85, z=±6.35 and a row of seven 1.0 mm pin holes at 2.54 mm pitch along x=+5.35. A 2.4 x 4.4 x 1 mm block stands in for the VL53L0X sensor package, giving 2 mm total height.",
+  "confidence": "medium",
+  "warnings": [
+    "The pin hole diameter (1.0 mm) is assumed because it is not stated.",
+    "The PCB thickness (1.0 mm) and sensor height (1.0 mm) are assumed so that the total is the unverified 2 mm.",
+    "The sensor block size and position are approximate, and its long axis is assumed to run along Z.",
+    "The small passives, regulator IC and other SMD components are omitted.",
+    "The hole x-position is scaled from the drawing and is approximate.",
+    "The header pins are not modeled."
+  ],
+  "cadquery": "pcb_t = 1.0\nsens_h = 1.0\nboard = cq.Workplane('XY').box(12.7, pcb_t, 17.78, centered=(True, False, True))\nmount_pts = [(-3.85, 6.35), (-3.85, -6.35)]\npin_pts = [(5.35, (i - 3) * 2.54) for i in range(7)]\nmount = cq.Workplane('XZ').pushPoints(mount_pts).circle(2.18 / 2).extrude(-3)\npins = cq.Workplane('XZ').pushPoints(pin_pts).circle(0.5).extrude(-3)\nboard = board.cut(mount).cut(pins)\nsensor = cq.Workplane('XY').box(2.4, sens_h, 4.4, centered=(True, False, True)).translate((-0.5, pcb_t, 0))\npart = board.union(sensor)"
+}

@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Black rectangular battery holder block, 58 mm long (X), 29 mm tall (Y), 48 mm wide (Z). Three parallel open-top AA cell troughs, 16 mm pitch, are cut along X from the top face. Walls and end walls are simple.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions come from unverified catalog data.",
+    "Y is treated as height (29 mm) to satisfy the bottom-at-Y=0 rule, which differs from the axis assumption in the image notes.",
+    "Only the top three cell cavities are modeled. The back-to-back lower cavities are not visible, so they are omitted.",
+    "Springs, flat contacts, rivets, end-wall slots and clips are omitted as contact hardware or detail.",
+    "Lead wires are omitted because they are outside the body bounds.",
+    "Cavity radius, depth and wall thickness are estimated from the image."
+  ],
+  "cadquery": "body = cq.Workplane('XY').box(58, 29, 48, centered=(True, False, True))\nfor z in (-16, 0, 16):\n    cyl = cq.Workplane('YZ').workplane(offset=-26).center(22, z).circle(7.4).extrude(52)\n    slot = cq.Workplane('XY').box(52, 8, 14.8, centered=(True, False, True)).translate((0, 22, z))\n    body = body.cut(cyl).cut(slot)\npart = body"
+}

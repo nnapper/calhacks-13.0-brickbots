@@ -1,0 +1,103 @@
+{
+  "partType": "bracket",
+  "summary": "Dual block mount with two 8 mm cubic end blocks joined by a thinner flat bar. The bar carries three evenly spaced counterbored holes. Each block has tapped holes on three faces. The part is roughly an elongated U or bridge shape.",
+  "boundsMm": {
+    "x": 40,
+    "y": 8,
+    "z": 8
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 5,
+      "positionsMm": [
+        [
+          -8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -16,
+          0,
+          0
+        ],
+        [
+          16,
+          0,
+          0
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "y",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -16,
+          0,
+          0
+        ],
+        [
+          16,
+          0,
+          0
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "x",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -16,
+          0,
+          0
+        ],
+        [
+          16,
+          0,
+          0
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 4,
+      "description": "Top face of the end blocks and bar, flush and carrying the end-block holes and the three bar holes"
+    },
+    {
+      "axis": "x",
+      "offsetMm": 20,
+      "description": "Outer end faces of the two blocks, each with a hole on the block axis"
+    },
+    {
+      "axis": "y",
+      "offsetMm": 4,
+      "description": "Side faces of the blocks, each with a hole on the block axis"
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions were provided, so all sizes are assumptions. The part sits on the 8 mm goBILDA grid. The '1-5' name is read as five hole positions counted inclusive, two at the block centers and three bar holes between them. That gives 32 mm center-to-center spacing, so x = 32 + 8 = 40 mm. The end blocks are assumed to be 8 mm cubes, so y and z are both 8 mm. The bar looks about half the block height, which is not modeled here. The bar-hole diameter of about 5 mm and the block-hole diameter of about 4 mm are rough estimates from the photos. The 5.7 g aluminum weight is roughly consistent with these volumes but does not confirm them. Block hole positions are given at block centers, and the hole depths are not known."
+}

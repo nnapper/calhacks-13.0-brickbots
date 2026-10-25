@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Ultrasonic range-finder module: a 22.1 x 19.9 x 1.6 mm PCB plate, with a 16 mm diameter cylindrical transducer on its front face reaching a total depth of 16.4 mm. The PCB has one 3.1 mm mounting hole and a row of seven 1 mm header holes at 2.54 mm pitch along the top edge. The bottom of the part sits at Y=0, and X and Z are centered.",
+  "confidence": "low",
+  "warnings": [
+    "Transducer diameter (16 mm) and its offset position (x=1.5, y=8.5) are estimated from the photo.",
+    "PCB thickness of 1.6 mm is assumed.",
+    "The estimated hole Y positions in the analysis (7.5 mm) fall inside the transducer. The header holes are instead placed along the top edge at y=18.2, as seen in the photo.",
+    "The mounting hole is placed at x=-7.5, y=14.5, which is approximate.",
+    "Header hole X positions are approximate (pitch 2.54 mm, starting at -8.9 mm).",
+    "The transducer grille slots and recess, SMD components, and the chip are omitted as decorative or uncertain detail.",
+    "The stated dimensions are flagged unverified, and the axis assignment is inferred from the photo."
+  ],
+  "cadquery": "pcb_t = 1.6\nz0 = -8.2\npcb = cq.Workplane('XY').box(22.1, 19.9, pcb_t, centered=(True, False, False)).translate((0, 0, z0))\ncyl = (cq.Workplane('XY').workplane(offset=z0 + pcb_t).center(1.5, 8.5).circle(8.0).extrude(16.4 - pcb_t))\npart = pcb.union(cyl)\nmount = cq.Workplane('XY').workplane(offset=z0 - 1).center(-7.5, 14.5).circle(1.55).extrude(pcb_t + 2)\npart = part.cut(mount)\npins = (cq.Workplane('XY').workplane(offset=z0 - 1)\n        .pushPoints([(-8.9 + i * 2.54, 18.2) for i in range(7)])\n        .circle(0.5).extrude(pcb_t + 2))\npart = part.cut(pins)"
+}

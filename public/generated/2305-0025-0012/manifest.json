@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "2305 Series Brass, MOD 0.8, Servo Gear (25 Tooth Spline, 12 Tooth)",
+    "sku": "2305-0025-0012",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/2305-series-brass-mod-0-8-servo-gear-25-tooth-spline-12-tooth/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "Outer diameter is calculated from the gear specs: MOD 0.8 with 12 teeth gives a pitch diameter of 9.6 mm and a tip diameter of 9.6 + 2×0.8 = 11.2 mm. The listed center distances confirm the module: 24 mm with the 48-tooth gear and 48 mm with the 108-tooth gear. Face width (about 8 mm) is a visual estimate from the pencil scale photo and is not stated. The bore (about 5.8 mm) is an assumed nominal size for a 25-tooth servo spline; its diameter is not given in the text. The recess on one face is visible but its diameter and depth are not stated, so it is not listed as a hole. The gear axis is along z, centered at the origin.",
+      "Face width (8 mm) and bore diameter (5.8 mm) are estimates; no dimensions were provided.",
+      "The internal 25-tooth spline is omitted; the bore is a plain round hole.",
+      "The shallow recess on one face is omitted because its diameter and depth are unknown.",
+      "Tooth root is a straight-sided polygonal approximation with no root fillet, and the involute flank is approximated with 8 segments."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -5.594493549348858,
+      "xmax": 5.594493549348858,
+      "ymin": 0.005506450651142631,
+      "ymax": 11.19449354934886,
+      "zmin": -4,
+      "zmax": 4,
+      "xlen": 11.188987098697716,
+      "ylen": 11.188987098697718,
+      "zlen": 8
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 943822,
+        "sha256": "d9885d6a26a705eb28e37d312c1d442d53c948b7d20c30a6ae1d30f9ebd0e21a"
+      },
+      "model.stl": {
+        "bytes": 64884,
+        "sha256": "9ca3150ee437435cd5949020069a769b3fd6cc31170d29c818633c50125a1a29"
+      },
+      "model.glb": {
+        "bytes": 24364,
+        "sha256": "6ee184e6fd602da2c11f2bec296b5ad4bb54d5a303cefff63cfed7b72f81d438"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "d9885d6a26a705eb28e37d312c1d442d53c948b7d20c30a6ae1d30f9ebd0e21a"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 10
+  },
+  "status": "prototype_unverified"
+}

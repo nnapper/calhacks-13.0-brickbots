@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "TB67S279FTG Stepper Motor Driver Carrier - Full Breakout",
+    "sku": "pololu-2974",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 25.4 mm x 35.56 mm footprint comes from the printed 1.0 in x 1.4 in dimensions. The z value of 1.6 mm is an assumed bare-PCB thickness, since no height is given. The tallest components, the two capacitors, are not included, so the overall height would be larger. The mounting-hole diameter (2.2 mm) is an estimate and is not stated. The hole positions were scaled from the top-view image, with x across the short side and y along the long side, and are approximate. The edge pin/through-hole rows and the larger power-terminal holes are visible, but their diameters are not stated, so they are left out of the holes list. The pin rows follow roughly a 2.54 mm pitch, which is assumed from the layout.",
+      "Board thickness of 1.6 mm is assumed because no height was given.",
+      "Mounting hole diameter (2.2 mm) and positions are estimated from the image.",
+      "Edge through-hole rows, the larger power terminal holes, the trimmer potentiometer and the small SMD parts are omitted because their sizes are uncertain.",
+      "IC and capacitor dimensions and positions are approximate.",
+      "Dimensions come from the printed 1.0 in x 1.4 in size and are unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -17.78,
+      "xmax": 17.78,
+      "ymin": 0,
+      "ymax": 9.3,
+      "zmin": -12.7,
+      "zmax": 12.7,
+      "xlen": 35.56,
+      "ylen": 9.3,
+      "zlen": 25.4
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 44287,
+        "sha256": "9238addaf9fa7a5d09e2715450f871f621abbd607f1f57c024ddf2adf7588bdd"
+      },
+      "model.stl": {
+        "bytes": 69084,
+        "sha256": "1ece4e320500c9999b8c662ed707a7c659f9b3336012b0a5f5e6eb531bc073a5"
+      },
+      "model.glb": {
+        "bytes": 25828,
+        "sha256": "b350844188ce1fc7ac9bed0d5fdfbdb195a60c686ef58029269d537689064830"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "9238addaf9fa7a5d09e2715450f871f621abbd607f1f57c024ddf2adf7588bdd"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

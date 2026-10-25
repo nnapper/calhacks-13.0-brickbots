@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Micro Maestro 6-Channel USB Servo Controller (Partial Kit)",
+    "sku": "pololu-1351",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "X and Y come from the printed dimensions: 1.200 in = 30.48 mm and 0.850 in = 21.59 mm. The hole spacing is printed as 0.575 in (14.6 mm) in x and 0.650 in (16.5 mm) in y. The hole diameter of 0.086 in = 2.18 mm comes from the listed specs. Hole positions are measured from the bottom-view drawing, with the origin at the board center, x to the right and y up; they are accurate to about ±0.3 mm. Mirror x if you model the top view. The PCB thickness (z = 1.6 mm) is not stated anywhere and is an assumed typical value, so treat it as unverified. Component heights, such as the USB connector and IC, are not given and are excluded. The header pins are unsoldered and loose, so they are not part of the board geometry.",
+      "The 1.6 mm PCB thickness is assumed and not stated.",
+      "The mounting hole positions come from the image analysis, are accurate to about ±0.3 mm, and may need mirroring in X depending on the view.",
+      "The USB connector, IC, SMD components, through-hole pads and loose header pins are omitted because their heights are unknown and the pins are not attached.",
+      "The overall height is not given, so only the bare board is modeled.",
+      "The board dimensions are marked as unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -15.24,
+      "xmax": 15.24,
+      "ymin": 0,
+      "ymax": 1.6,
+      "zmin": -10.795,
+      "zmax": 10.795,
+      "xlen": 30.48,
+      "ylen": 1.6,
+      "zlen": 21.59
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 22974,
+        "sha256": "b8429f139fcae1a25601698a586a4de9ba199f583628c95230ef0078aac932aa"
+      },
+      "model.stl": {
+        "bytes": 34684,
+        "sha256": "3b62fac8584963826bdda86f4e8bbfc76dd0afe7e1d718c59a8c487c39a9bcd6"
+      },
+      "model.glb": {
+        "bytes": 13448,
+        "sha256": "e0c8bf46b0953e575f51886c759710f86c14d396b81b2973516a8cb78a18aaeb"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "b8429f139fcae1a25601698a586a4de9ba199f583628c95230ef0078aac932aa"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 58
+  },
+  "status": "prototype_unverified"
+}

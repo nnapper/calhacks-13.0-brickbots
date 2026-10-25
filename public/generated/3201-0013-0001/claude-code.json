@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Simplified kit-level envelope of about 150 x 150 x 16 mm: four flat hex-bore pulleys in a row along the bottom, one coiled belt ring at upper right, and three flat stadium-shaped closed belt loops at upper left. All pieces are separate solids in one compound. The bottom is at Y=0, with X and Z centered.",
+  "confidence": "low",
+  "warnings": [
+    "The product is a multi-piece kit, not one part, so this is a symbolic layout.",
+    "No dimensions are given. Pulley OD (32 mm), thickness (16 mm), belt width (6 mm) and loop sizes are estimates.",
+    "The Z extent is about 16 mm, below the 20 mm estimated bound.",
+    "The REX bore is modeled as a plain 8 mm across-flats hex, which is an assumption.",
+    "Omitted: belt teeth, pulley hub details and flanges, screws, spacers, idlers, pins, hex keys, o-rings, and the second and third reference images.",
+    "Loop sizes are approximate and do not match the individual belt lengths in the kit."
+  ],
+  "cadquery": "def ext(w,h):\n    return w.extrude(h/2,both=True)\n\nparts=[]\n# 4 pulleys (OD 32, 16 thick) with 8mm hex REX bore\nfor x in (-57,-19,19,57):\n    p=ext(cq.Workplane('XY').center(x,16).circle(16),16)\n    b=ext(cq.Workplane('XY').center(x,16).polygon(6,8/math.cos(math.pi/6)),16)\n    parts.append(p.cut(b))\n# coiled belt as a flat ring (6mm wide)\ncoil=ext(cq.Workplane('XY').center(40,115).circle(35),6).cut(ext(cq.Workplane('XY').center(40,115).circle(15),6))\nparts.append(coil)\n# 3 closed belt loops as flat stadium rings\nfor y in (90,115,140):\n    o=ext(cq.Workplane('XY').center(-35,y).slot2D(80,14),6)\n    i=ext(cq.Workplane('XY').center(-35,y).slot2D(77,11),6)\n    parts.append(o.cut(i))\npart=parts[0]\nfor s in parts[1:]:\n    part=part.union(s)"
+}

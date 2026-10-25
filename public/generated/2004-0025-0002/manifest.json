@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Axon MAX Servo MK2",
+    "sku": "2004-0025-0002",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/axon-max-servo-mk2/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "The listing gives no dimensions, so every size here is assumed. The body length (about 40 mm), width (about 20 mm) and flange span (about 54.5 mm) come from the standard-size servo form factor and the photo proportions. The case height of about 37 mm is a rough estimate from the photos. The shaft adds about 5 mm to give an overall z of about 42 mm. The mounting slots are U-shaped and open toward the ends, so they are modeled as 4.5 mm holes. The 49.5 mm by 10 mm spacing is the standard pattern, and the flange z of about 5 mm is judged from the photos. The shaft is described as H25T spline in the listing, and the shaft diameter is not modeled. The cable (300 mm) and connector are excluded from the bounds. The photos give no usable scale: the first image's mat grid is not goBILDA's 8 mm grid, and its ruler marks are only roughly legible. The pencil in that image is a normal pencil and was not used for sizing.",
+      "All dimensions are estimates because the listing gives none.",
+      "The analysis bounds use Z as the shaft axis. I mapped that to Y (up) as the rules require, so the 42 mm overall height is on Y and the 20.5 mm width became about 20 mm on Z.",
+      "The flange height, shaft offset (-12 mm) and shaft diameter are guesses.",
+      "Omitted the cooling ribs, the spline teeth and tapped bore, the output boss ring, screws, the cable and connector, and the logo.",
+      "The open U-shaped mounting slots are modeled as round through holes, as the analysis suggests."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -27.25,
+      "xmax": 27.25,
+      "ymin": 0,
+      "ymax": 42,
+      "zmin": -10,
+      "zmax": 10,
+      "xlen": 54.5,
+      "ylen": 42,
+      "zlen": 20
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 62111,
+        "sha256": "968fc75040827497b72ce40d7594676353e1f881af5f2cb68b00e0d93d08edae"
+      },
+      "model.stl": {
+        "bytes": 87084,
+        "sha256": "562bab4935635afb198b297a7ccac3ee2cf9465c269020445c0f9bcf3281c773"
+      },
+      "model.glb": {
+        "bytes": 32268,
+        "sha256": "4fa1811df75933e69a1c6a4403b8402691438785d2716f1f9ec75c3be9562d08"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "968fc75040827497b72ce40d7594676353e1f881af5f2cb68b00e0d93d08edae"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

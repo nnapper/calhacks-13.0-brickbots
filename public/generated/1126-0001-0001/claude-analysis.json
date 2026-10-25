@@ -1,0 +1,67 @@
+{
+  "partType": "flat_plate",
+  "summary": "Flat rectangular steel plate with a single row of seven 4 mm through holes at 8 mm pitch, centered on the plate's long axis.",
+  "boundsMm": {
+    "x": 56,
+    "y": 14,
+    "z": 2.5
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -24,
+          0,
+          0
+        ],
+        [
+          -16,
+          0,
+          0
+        ],
+        [
+          -8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          16,
+          0,
+          0
+        ],
+        [
+          24,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 1.25,
+      "description": "Top flat face (2.5 mm thick plate, centered), containing the 7-hole row"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -1.25,
+      "description": "Bottom flat face, opposite the top, also open to the through holes"
+    }
+  ],
+  "confidence": "high",
+  "notes": "Dimensions come from the printed drawing: 56 mm length, 14 mm width, 2.5 mm thickness, seven Ø4 mm holes at 8 mm pitch, and 48 mm between the first and last hole centers. The bounding box is centered at the origin with length along X, width along Y and thickness along Z. The holes sit on the Y centerline, which is the drawing's visual midline and not a printed dimension. The 4 mm end margin is derived as (56-48)/2. The holes are treated as through because the render shows light passing through some of them. A volume check of about 1740 mm³ of steel gives roughly 13.7 g, which matches the stated 14 g each. The goRAIL profile image was not used for sizing, and no other features are assumed."
+}

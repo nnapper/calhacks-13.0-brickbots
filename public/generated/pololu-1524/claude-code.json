@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Plain disc with a 9.7 mm outer diameter and a 2 mm thickness. Its axis runs along Y, with the bottom face at Y=0 and the top at Y=2, centered on X and Z. A 1.5 mm central bore passes through it.",
+  "confidence": "medium",
+  "warnings": [
+    "Dimensions come from the listing text and are flagged unverified.",
+    "The small off-center hole near the rim is visible in the image but its size and depth are unknown, so it is omitted.",
+    "The shallow circular recess on the top face is not modeled because its depth is uncertain.",
+    "The 12-pole magnetization pattern is not visible and is not modeled.",
+    "The central bore is assumed to be a through hole.",
+    "The axis is along Y to satisfy the rule that the part bottom sits at Y=0. The image analysis had the axis along Z."
+  ],
+  "cadquery": "part = cq.Workplane('XZ').circle(4.85).circle(0.75).extrude(-2)"
+}

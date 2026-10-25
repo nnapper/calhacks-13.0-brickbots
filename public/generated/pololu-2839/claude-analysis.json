@@ -1,0 +1,47 @@
+{
+  "partType": "other",
+  "summary": "Small rectangular green PCB module (charge pump voltage inverter) with a 6-pin SMD IC and three SMD capacitors on the top face. Three plated through-holes along one short edge serve as VIN, GND and VOUT pads. A small tooling/mounting hole is visible in one corner.",
+  "boundsMm": {
+    "x": 7.62,
+    "y": 8.89,
+    "z": 1.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          -2.54,
+          -3.7,
+          0
+        ],
+        [
+          0,
+          -3.7,
+          0
+        ],
+        [
+          2.54,
+          -3.7,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.8,
+      "description": "Bottom face of the PCB (flat, with no components) that can sit against a mounting surface."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.8,
+      "description": "Top face carrying the IC and capacitors; not a mounting face."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 0.30 in x 0.35 in outline (7.62 x 8.89 mm) is printed in the image and matches the listed dimensions. The PCB thickness (~1.6 mm) is assumed from the typical board and is not stated. The three pads sit at an apparent 0.1 in (2.54 mm) pitch, and the hole diameter of about 1.0 mm is estimated from the image proportions. The pads' y position is estimated near the bottom edge. The small corner hole or via near the top edge is too ambiguous to list as a hole."
+}

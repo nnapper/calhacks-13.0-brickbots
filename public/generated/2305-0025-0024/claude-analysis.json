@@ -1,0 +1,37 @@
+{
+  "partType": "gear",
+  "summary": "Brass MOD 0.8 spur gear with 24 teeth and a 25-tooth servo spline bore. The drawing shows a 20.8mm outer diameter, a 19.2mm pitch diameter and a 6mm face width. It has a raised central hub and a shallow recess on the visible face. The gear is modeled as a cylinder with its axis along z, centered on the origin.",
+  "boundsMm": {
+    "x": 20.8,
+    "y": 20.8,
+    "z": 6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 3,
+      "description": "Front face with raised hub around the spline bore. Face-to-face mounting against a servo horn or adjacent gear."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -3,
+      "description": "Back face, flat. Mating face against the servo output or spacer."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Outer diameter 20.8mm, pitch diameter 19.2mm and width 6mm are printed on the drawing. The pitch diameter agrees with MOD 0.8 × 24 teeth = 19.2mm. The 3mm bore is the printed Ø3mm callout, which points at the inner bore of the 25-tooth spline. The bore is modeled as a plain 3mm through hole and the spline teeth are not modeled. The through condition is inferred from the side view and the photo, which show the bore running through the part. The raised hub and recess diameters are not dimensioned, so they are not given as features. The 48mm center spacing to the 96-tooth gear is stated in the description."
+}

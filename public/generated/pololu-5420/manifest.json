@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Isolated Solid State Relay/Switch, SPST, 60V, 7A",
+    "sku": "pololu-5420",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Length 0.8 in (20.32 mm) and width 0.32 in (8.128 mm) are printed in the bottom-view image. The 3.302 mm height comes from the unverified product data and is probably the board plus tallest component. Hole diameters and positions are estimated from image proportions and are not printed. The three round holes are on the EN/GND input edge, with a 2.54 mm pitch assumed. The two elongated holes on the output edge are approximated as 1.5 mm circles, though they are slots. The board thickness is not stated, so the z offsets are only the bounding-box half-height.",
+      "Board thickness (0.8 mm) is assumed, not stated.",
+      "Component positions and heights are estimated from the image; package leads are omitted.",
+      "Hole and slot positions and sizes are estimated.",
+      "The image appears to show one square pad among the three input-edge holes. I followed the analysis and modeled all three as round holes.",
+      "Small SMD resistor, pads, silkscreen and the logo are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -10.16,
+      "xmax": 10.16,
+      "ymin": 0,
+      "ymax": 3.3019999999999996,
+      "zmin": -4.064,
+      "zmax": 4.064,
+      "xlen": 20.32,
+      "ylen": 3.3019999999999996,
+      "zlen": 8.128
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 117676,
+        "sha256": "3603980aa5fb68f05d8749c3b9f41b110a0d03b890ce6dc7996b363cb1ad6029"
+      },
+      "model.stl": {
+        "bytes": 89684,
+        "sha256": "3b8c410eeb914099506ea2a355df40ae10267008f42d38ca570f95a9aacaaef1"
+      },
+      "model.glb": {
+        "bytes": 33180,
+        "sha256": "fcf0f37ba0422e5e590c9138d908bcefffd6a8811906cdf21305a512cc2484df"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "3603980aa5fb68f05d8749c3b9f41b110a0d03b890ce6dc7996b363cb1ad6029"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 23
+  },
+  "status": "prototype_unverified"
+}

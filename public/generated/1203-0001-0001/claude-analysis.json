@@ -1,0 +1,54 @@
+{
+  "partType": "block",
+  "summary": "Rectangular aluminum block mount with one end rounded and a chamfered corner. A through hole runs across the thickness near the rounded end. A second hole enters the opposite square end face along the long axis.",
+  "boundsMm": {
+    "x": 16,
+    "y": 30,
+    "z": 16
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          0,
+          7,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "y",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          0,
+          -15,
+          0
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 8,
+      "description": "Large flat face (16 x 30) containing the hole near the rounded end; the through hole exits the opposite face."
+    },
+    {
+      "axis": "y",
+      "offsetMm": -15,
+      "description": "Square end face containing the second hole, perpendicular to the first."
+    },
+    {
+      "axis": "x",
+      "offsetMm": 8,
+      "description": "Long flat side face, plain."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are given in the listing, so all sizes are assumptions. I assumed a 16 mm width and thickness from the goBILDA 8 mm grid. The 30 mm length comes from the face-on view, where the aspect ratio is about 1.85:1, so it may really be 32 mm. The 8 mm hole diameter is estimated from the visible bore and may be the thread opening rather than the minor diameter. Hole positions are read from the images; the hole near the rounded end is about 8 mm from that end. The listing text does not say whether the end-face hole is blind, so it is recorded as non-through. Thread details, chamfer size and corner radius are not modeled."
+}

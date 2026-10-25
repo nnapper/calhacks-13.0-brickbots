@@ -1,0 +1,11 @@
+{
+  "name": "UM7 Orientation Sensor",
+  "sku": "pololu-2764",
+  "category": "imus",
+  "expectedDimensionsMm": [
+    28,
+    28,
+    9
+  ],
+  "units": "millimeter"
+}

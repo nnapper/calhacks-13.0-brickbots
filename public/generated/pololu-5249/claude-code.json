@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Bare rectangular PCB, 22.86 mm (X) by 52.07 mm (Z) by 1.6 mm thick (Y), bottom at Y=0 and centered in X and Z. Two rows of 19 through holes, 1 mm diameter on a 2.54 mm pitch, run along the long edges at X=±10.16 mm. Components on the board are not modeled.",
+  "confidence": "low",
+  "warnings": [
+    "The 1.6 mm thickness and 1.0 mm hole diameter are assumptions.",
+    "The images show extra holes at the top end (power and motor outputs) and the bottom end (VREF, AGC_ON, AWGS and others). Their positions are not given, so they are omitted.",
+    "The IC, electrolytic capacitor, trimmer potentiometer, SMD parts, solder pads and the ground pad grid are omitted because their heights and sizes are not stated.",
+    "The board corner radius, if any, is not modeled.",
+    "The hole list from the analysis used a different axis convention. The holes were remapped so the board length runs along Z and the thickness along Y, as the rules require.",
+    "Dimensions are unverified."
+  ],
+  "cadquery": "pts = [(sx*10.16, -22.86 + 2.54*i) for sx in (-1, 1) for i in range(19)]\nboard = cq.Workplane('XY').box(22.86, 1.6, 52.07, centered=(True, False, True))\nboard = board.rotate((0,0,0),(1,0,0),0)\nholes = cq.Workplane('XZ').pushPoints(pts).circle(0.5).extrude(-3)\npart = board.cut(holes)"
+}

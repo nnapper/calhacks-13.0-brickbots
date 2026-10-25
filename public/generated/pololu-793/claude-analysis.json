@@ -1,0 +1,32 @@
+{
+  "partType": "other",
+  "summary": "Compact ultrasonic range-finder module. A small rectangular PCB carries a cylindrical ultrasonic transducer on its front face, and the transducer's axis is perpendicular to the board. A row of 7 solder pads runs along one board edge, and one mounting hole sits near a top corner.",
+  "boundsMm": {
+    "x": 22.1,
+    "y": 19.9,
+    "z": 16.4
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3.1,
+      "positionsMm": [
+        [
+          -7.4,
+          4.9,
+          -7.4
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -8.2,
+      "description": "Flat back face of the PCB, opposite the transducer. It is the likely seating surface when the module is mounted with the screw hole."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The bounding box comes from the stated size (0.870 x 0.785 x 0.645 in = 22.1 x 19.9 x 16.4 mm). The image shows the PCB as the 22.1 x 19.9 face, with the transducer extending along z. No drawing in the images gives dimensions, so the mounting-hole diameter and position are rough estimates from image proportions, and the hole being through is assumed from its plated appearance. The 7 pads along the top edge are not modeled as holes because their size and pitch are not given. The beam-pattern charts show detection lobes only and add no mechanical dimensions."
+}

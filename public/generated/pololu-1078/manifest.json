@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, #4-40 Holes (2-Pack)",
+    "sku": "pololu-1078",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": false,
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 3 mm shaft diameter comes from the listing. The overall diameter, thickness, mounting-hole size and bolt-circle position, and set-screw hole size and position are rough estimates from the photos, with no printed dimensions. The hub diameter and thickness were scaled against the motor gearbox in the side view. The four mounting holes appear through in the photos, but this is not confirmed. The radial set-screw hole is shown on the +Y side and is assumed, not verified, to meet the bore. Its 'through: false' means it does not go through the hub's full width. The included set screws and Allen wrench are separate items and are not modeled.",
+      "Only the 3 mm shaft diameter comes from the listing. The 12 mm outer diameter and 4 mm thickness are estimates scaled from the photos.",
+      "The four mounting holes are modeled as plain 2.2 mm through holes at ±3.2 mm. Their size and bolt-circle position are estimated, and the #4-40 threads are not modeled.",
+      "The set-screw hole size (2.3 mm) and its position at mid-thickness on the +Z side are assumed. The image analysis suggested 3 mm, but 2.3 mm is closer to a #4-40 tap drill.",
+      "The hub axis is placed along Y to satisfy the bottom-at-Y=0 rule, although the image analysis described the axis as Z. The radial hole direction was remapped accordingly.",
+      "The set screws and Allen wrench are separate items and are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -6.0000001,
+      "xmax": 6.0000001,
+      "ymin": -1e-7,
+      "ymax": 4.0000001,
+      "zmin": -6.0000001,
+      "zmax": 6.000000125052176,
+      "xlen": 12.0000002,
+      "ylen": 4.000000200000001,
+      "zlen": 12.000000225052176
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [4.000000200000001, 12.0000002, 12.000000225052176]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 61044,
+        "sha256": "a53a6faa655c236490c3965049ddf74e47731a9984a39a5deb907096cd003220"
+      },
+      "model.stl": {
+        "bytes": 123584,
+        "sha256": "d01b7ede023f3d93a79397d669352c6d70472d7b3300875374490328fe3545f5"
+      },
+      "model.glb": {
+        "bytes": 45360,
+        "sha256": "704005e6efb98efd39187677966fcdfd5ccb8986504cbcf84e70888c1e69c5d9"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "a53a6faa655c236490c3965049ddf74e47731a9984a39a5deb907096cd003220"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 20
+  },
+  "status": "prototype_unverified"
+}

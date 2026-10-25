@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "104 x 40 x 3 mm flat plate, with the 40 mm width running Y=0..40 and the thickness centered on Z=0. It has a 42 x 21 mm through pocket centered at x=-26, a Ø14 mm bore at x=32, Ø4 mm holes on the 8 mm grid, and four Ø4 mm holes at the pocket ends.",
+  "confidence": "medium",
+  "warnings": [
+    "Slots (vertical at x=32,y=±16, horizontal near x=18 and x=46 on the centerline) and the oblong holes near (24,8) and (40,-8) are omitted because their lengths are not dimensioned.",
+    "The rounded bump on the left end and the pocket corner relief notches are not modeled.",
+    "The four M4 holes beside the pocket are modeled as plain Ø4 mm through holes with no threads, and their positions are approximate.",
+    "The hole layout was read from the drawing and snapped to the 8 mm grid, so some positions may be slightly off.",
+    "The plate lies in the XY plane because the given bounds are x=104, y=40, z=3. The Y offset of +20 puts the bottom edge at Y=0."
+  ],
+  "cadquery": "pts=[(x,y) for y in (16,-16) for x in list(range(-48,25,8))+[40,48]]\npts+=[(8,8),(16,8),(40,8),(48,8),(8,0),(8,-8),(16,-8),(24,-8),(48,-8)]\ntap=[(-50,5),(-50,-5),(-2,5),(-2,-5)]\nplate=cq.Workplane('XY').center(0,20).box(104,40,3)\nholes=cq.Workplane('XY').workplane(offset=-2).pushPoints([(x,y+20) for x,y in pts+tap]).circle(2).extrude(4)\npocket=cq.Workplane('XY').workplane(offset=-2).center(-26,20).rect(42,21).extrude(4)\nbore=cq.Workplane('XY').workplane(offset=-2).center(32,20).circle(7).extrude(4)\npart=plate.cut(holes).cut(pocket).cut(bore)"
+}

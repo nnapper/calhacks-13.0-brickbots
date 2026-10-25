@@ -1,0 +1,47 @@
+{
+  "partType": "motor",
+  "summary": "NEMA 14 hybrid bipolar stepper motor with a square body, a 22 mm round pilot boss on the front face, a 5 mm D-shaft, four front-face mounting holes at a 26 mm square pattern, and a rear-exiting lead wire. The bounding box is centered on the part with the shaft along +Z.",
+  "boundsMm": {
+    "x": 35.2,
+    "y": 35.2,
+    "z": 49
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          -13,
+          13,
+          3.5
+        ],
+        [
+          13,
+          13,
+          3.5
+        ],
+        [
+          -13,
+          -13,
+          3.5
+        ],
+        [
+          13,
+          -13,
+          3.5
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 3.5,
+      "description": "Front square mounting face at the shaft end. It has four blind holes (min 2.0 mm deep) on a 26±0.2 mm square pattern and a 22 mm diameter pilot boss about 2 mm tall, centered on the shaft. The 5 mm D-shaft (21±1 mm long, 0.5 mm flat) extends from this face to z=+24.5."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Body is 35.2 mm max square (drawing) by 28 mm long (spec), so the body spans z=-24.5 to 3.5. The shaft is 21 mm long, so total length is 49 mm. The drawing does not clearly show whether the 21 mm shaft length is measured from the pilot face or from the body face. If it is measured from the body face, the pilot boss may add up to 2 mm to the total. The hole diameter of 3 mm is the nominal size from the '4-M3' callout; the drawing gives no separate diameter. The lead wire (300 mm, AWG26) exits the rear at the bottom and is not included in the bounds. The hole positions assume a centered 26 mm square pattern (±13 mm)."
+}

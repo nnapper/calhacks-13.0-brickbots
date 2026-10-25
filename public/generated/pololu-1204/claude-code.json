@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "NEMA 8 stepper motor with a 20.2 x 20.2 x 30 mm square body, a Ø15 x 1.5 mm pilot boss and a Ø4 mm shaft that extends 15 mm from the front face. Four Ø2 mm blind holes, 3.5 mm deep, sit on a 16 x 16 mm pattern in the front face. The shaft axis runs along Z, with the body spanning Z -22.5 to 7.5 and the shaft tip at Z 22.5. Y runs from 0 to 20.2, so the bottom sits at Y=0, and X and Z are centered on the overall envelope.",
+  "confidence": "medium",
+  "warnings": [
+    "The 30 mm body length comes from the product name and SKU. It is not a printed drawing dimension.",
+    "The 0.5 mm D-flat on the shaft is omitted because its length is not given, so the shaft is a plain Ø4 mm cylinder.",
+    "The Ø2 mm blind holes use the nominal M2 size and are not threaded.",
+    "The lead wires (300 mm), rear connector and labels are omitted.",
+    "The pilot boss is modeled as Ø15 x 1.5 mm from the drawing notes.",
+    "The body is modeled as a plain square prism with no corner chamfers or lamination detail."
+  ],
+  "cadquery": "cy = 10.1\nbody = cq.Workplane('XY').workplane(offset=-22.5).center(0, cy).rect(20.2, 20.2).extrude(30)\npts = [(8, cy + 8), (-8, cy + 8), (8, cy - 8), (-8, cy - 8)]\nholes = cq.Workplane('XY').workplane(offset=4).pushPoints(pts).circle(1.0).extrude(3.5)\nbody = body.cut(holes)\nboss = cq.Workplane('XY').workplane(offset=7.5).center(0, cy).circle(7.5).extrude(1.5)\nshaft = cq.Workplane('XY').workplane(offset=7.5).center(0, cy).circle(2.0).extrude(15)\npart = body.union(boss).union(shaft)"
+}

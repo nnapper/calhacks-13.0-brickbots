@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Three stacked 8 mm wide hinge blocks along the X axis, each with an 8 mm diameter knuckle centered at Y=16. Each block has a 4 mm thick flat foot with a 4 mm through hole along Z and a rounded end. The two outer feet point toward -Y and the middle foot points toward +Y. A 3 mm bore runs the full length along the hinge axis. The overall size is 24 x 32 x 8 mm, with the bottom at Y=0.",
+  "confidence": "low",
+  "warnings": [
+    "All dimensions are estimates because no dimensions were given.",
+    "The bolt head, nylon-insert nut and bolt shaft are not modeled. Only an empty 3 mm axial bore is cut, so the part stays within the 24 mm X bound.",
+    "The 45° grooves, the small gaps between blocks and the knuckle interlock details are omitted.",
+    "Foot hole positions and foot length are rough guesses."
+  ],
+  "cadquery": "def block(x0, foot_low):\n    k = cq.Workplane('YZ').workplane(offset=x0).center(16, 0).circle(4).extrude(8)\n    yc = 8 if foot_low else 24\n    f = cq.Workplane('XY').box(8, 16, 4).translate((x0 + 4, yc, -2))\n    f = f.edges('|Z and <Y' if foot_low else '|Z and >Y').fillet(3.5)\n    hy = 5 if foot_low else 27\n    h = cq.Workplane('XY').workplane(offset=-5).center(x0 + 4, hy).circle(2).extrude(6)\n    return k.union(f).cut(h)\n\npart = block(-12, True).union(block(-4, False)).union(block(4, True))\nbore = cq.Workplane('YZ').workplane(offset=-12).center(16, 0).circle(1.5).extrude(24)\npart = part.cut(bore)"
+}

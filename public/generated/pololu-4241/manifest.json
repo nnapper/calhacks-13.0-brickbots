@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "QTR-MD-01A Reflectance Sensor: 1-Channel, 7.5mm Wide, Analog Output",
+    "sku": "pololu-4241",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The images print only the 20 mm length and 7.5 mm width. The 2.5 mm overall height comes from the unverified spec text, not from the images, and it includes the components. The PCB thickness is not shown. Hole diameters and positions are estimated from image proportions: the mounting hole is about 2.2 mm and sits about 2.5 mm from the top edge. The four pin holes are on an approximately 2.54 mm pitch, with the row about 1.1 mm from the bottom edge. The part is centered at the origin, with y running along the length.",
+      "PCB thickness (0.8 mm) is assumed; only the 2.5 mm overall height is given.",
+      "Sensor block size and position are estimated from the photo.",
+      "Small passives and the IC are omitted as uncertain detail.",
+      "Hole sizes and positions are estimated from image proportions.",
+      "The square pad and plated pad marking are not modeled separately.",
+      "The mounting hole is placed on the centerline (x=0)."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -3.75,
+      "xmax": 3.75,
+      "ymin": 0,
+      "ymax": 2.5,
+      "zmin": -10,
+      "zmax": 10,
+      "xlen": 7.5,
+      "ylen": 2.5,
+      "zlen": 20
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 53101,
+        "sha256": "ae3dab5cc503502e1b610d6cb78ca2987abf71481752cba65d7739eeb35d54d3"
+      },
+      "model.stl": {
+        "bytes": 86484,
+        "sha256": "a42cf5872ada2d2a895711d5feec6942b0adb82b6a0239563ce997f13b1156f1"
+      },
+      "model.glb": {
+        "bytes": 32032,
+        "sha256": "e269c5a65c533d4ac2b9301c67acda82fdb1a4a4d364c7d10dc67e62aaf4cd6e"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "ae3dab5cc503502e1b610d6cb78ca2987abf71481752cba65d7739eeb35d54d3"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 28
+  },
+  "status": "prototype_unverified"
+}

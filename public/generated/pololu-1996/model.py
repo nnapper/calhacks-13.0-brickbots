@@ -1,0 +1,6 @@
+part = cq.Workplane('XZ').circle(10).extrude(-6)
+part = part.cut(cq.Workplane('XZ').circle(1.5).extrude(-6))
+holes = cq.Workplane('XZ', origin=(0, 6, 0)).pushPoints([(5, 5), (-5, 5), (-5, -5), (5, -5)]).circle(1.5).extrude(4)
+part = part.cut(holes)
+setscrew = cq.Workplane('XY', origin=(0, 3, 0)).circle(1.5).extrude(10)
+part = part.cut(setscrew)

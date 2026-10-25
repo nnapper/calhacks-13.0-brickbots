@@ -1,0 +1,7 @@
+sleeve = cq.Workplane('XY').box(10.0, 4.6, 4.8, centered=(False, False, True)).translate((-5.8, 0, 0))
+cap = cq.Workplane('YZ').workplane(offset=4.2).center(2.3, 0).circle(1.9).extrude(0.5)
+shaft = cq.Workplane('YZ').workplane(offset=4.6).center(2.3, 0).circle(0.5).extrude(1.2)
+weight_disc = cq.Workplane('YZ').workplane(offset=4.4).center(2.3, 0).circle(1.9).extrude(1.4)
+half_box = cq.Workplane('XY').box(2.0, 4.6, 2.0, centered=(False, False, False)).translate((4.3, 0, 0))
+weight = weight_disc.intersect(half_box)
+part = sleeve.union(cap).union(shaft).union(weight)

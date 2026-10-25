@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Miniature SPDT slide switch: 8.5 x 3.7 x 3.5 mm rectangular body, a black slider actuator 1.5 x 1.5 mm extending 3 mm above the body, and three straight rectangular pins (0.5 x 0.3 mm) at 2.54 mm pitch extending 3 mm below. Total height is 9.5 mm along Z, X length is 8.5 mm, and Y spans 0 to 3.7 mm.",
+  "confidence": "medium",
+  "warnings": [
+    "Dimensions are unverified estimates taken from the supplied analysis bounds.",
+    "The axes follow boundsMm (Y = 3.7 mm body width, Z = 9.5 mm height including pins and actuator), so the switch's vertical axis is Z even though the bottom sits at Y=0.",
+    "Pin length (about 3 mm) is estimated.",
+    "The actuator is placed at the center of travel (x=0); the real slider sits at one end of its 2 mm travel.",
+    "The slider slot in the body top, the body standoff, and the pin shoulders are omitted.",
+    "The body is modeled as a single solid, with no separate metal shell or plastic base."
+  ],
+  "cadquery": "body = cq.Workplane('XY').box(8.5, 3.7, 3.5, centered=(True, False, True))\nslider = cq.Workplane('XY').box(1.5, 1.5, 3.0, centered=(True, False, False)).translate((0, 1.1, 1.75))\npart = body.union(slider)\nfor x in (-2.54, 0, 2.54):\n    pin = cq.Workplane('XY').box(0.5, 0.3, 3.2, centered=(True, True, False)).translate((x, 1.85, -4.75))\n    part = part.union(pin)\n"
+}

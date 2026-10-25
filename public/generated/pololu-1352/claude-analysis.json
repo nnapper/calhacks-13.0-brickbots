@@ -1,0 +1,42 @@
+{
+  "partType": "other",
+  "summary": "Assembled Mini Maestro 12-channel USB servo controller: a rectangular green PCB with a mini-USB connector on one short edge, a central microcontroller, and rows of 0.1 in male header pins. Two mounting holes are visible in the dimensioned drawing.",
+  "boundsMm": {
+    "x": 27.94,
+    "y": 36.07,
+    "z": 1.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.18,
+      "positionsMm": [
+        [
+          0.1,
+          15,
+          0
+        ],
+        [
+          8.2,
+          -15.5,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.8,
+      "description": "Flat underside of the PCB, usable as the mounting face with standoffs through the two mounting holes."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.8,
+      "description": "Top face of the PCB, carrying the components, header pins, and USB connector."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The printed drawing gives 1.10 in x 1.42 in, which is 27.94 x 36.07 mm and matches the supplied specs. The 0.086 in hole diameter (2.18 mm) comes from the spec text. The two hole positions are estimated by eye from the back-view drawing, so treat them as approximate. No height or thickness is printed, so z = 1.6 mm is an assumed standard PCB thickness. It excludes the header pins, USB connector, and components, which protrude above the board and were not measured. Orientation is assumed with the USB connector toward the -x short edge and the long axis along y."
+}

@@ -1,0 +1,42 @@
+{
+  "partType": "other",
+  "summary": "Compact rectangular IR distance sensor module with a black plastic housing. The front face has one emitter window and one detector window side by side. Two mounting tabs sit at opposite corners, each with a round through hole. A small PCB at the rear carries a 3-pin side-entry connector and protrudes slightly past the housing outline.",
+  "boundsMm": {
+    "x": 27,
+    "y": 13.2,
+    "z": 14.2
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.2,
+      "positionsMm": [
+        [
+          -11.8,
+          4.4,
+          0
+        ],
+        [
+          11.6,
+          -2.2,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -7.1,
+      "description": "Rear face of the housing and mounting tabs, where the PCB and screws sit. Usable as a flat mounting face using the two tab holes."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 7.1,
+      "description": "Front sensing face with the emitter and detector windows. It must stay unobstructed. The tab surfaces are stepped relative to the window face."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No printed dimensions appear in the images. The overall bounds come from the supplied, unverified metadata (27 x 13.2 x 14.2 mm). The hole diameter and positions are estimated from pixel proportions in the front view, scaled to the 27 mm length, so treat them as approximate. The x axis runs along the length, y along the width, and z along the front-to-back depth. The two holes are on diagonally opposite corner tabs. Tab thickness and the exact z-offset of the tab faces are not determinable from the images. The PCB extends slightly beyond the housing in -y, and the connector sits at the rear."
+}

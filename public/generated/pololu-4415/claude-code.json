@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "61 x 20 mm PCB, 1.6 mm thick, with the bottom at Y=0. Fifteen rectangular sensor blocks at 4 mm pitch sit along one long edge, bringing the total height to 3 mm. Two 2.2 mm corner mounting holes and two 1.2 mm small holes pass through the board along Y.",
+  "confidence": "low",
+  "warnings": [
+    "The 3 mm height is an unverified envelope. The 1.6 mm board thickness is assumed.",
+    "The sensors are simplified to plain boxes. Their size and Z position are estimated, and the row is shifted inward so it clears the corner holes.",
+    "The two rows of 2.54 mm header holes are omitted because their count and positions are not resolvable.",
+    "SMD components, pads and silkscreen are omitted.",
+    "The hole positions and diameters are approximate."
+  ],
+  "cadquery": "L=61.0\nW=20.0\nT=1.6\nH=3.0\nboard=cq.Workplane('XY').box(L,T,W,centered=(True,False,True))\n# 15 sensor bodies at 4 mm pitch near the +Z long edge\npts=[(-28+4*i,5.5) for i in range(15)]\nsensors=(cq.Workplane('XZ').workplane(offset=-T).pushPoints(pts).rect(2.6,2.0).extrude(-(H-T)))\npart=board.union(sensors)\n# mounting holes and small holes (through board, along Y)\nbig=cq.Workplane('XZ').pushPoints([(-28.7,8),(28.6,8)]).circle(1.1).extrude(-5)\nsmall=cq.Workplane('XZ').pushPoints([(-19.7,8.6),(-1.2,7.7)]).circle(0.6).extrude(-5)\npart=part.cut(big).cut(small)"
+}

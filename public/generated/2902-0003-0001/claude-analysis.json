@@ -1,0 +1,59 @@
+{
+  "partType": "bracket",
+  "summary": "Assembled hinge made of three interlocking plastic hinge blocks stacked on one bolt axis. Each block has a cylindrical knuckle and a flat foot with a through mounting hole. The outer two feet point one way and the middle foot points the other. A socket-head bolt and nylon-insert nut run through the knuckles along the length.",
+  "boundsMm": {
+    "x": 24,
+    "y": 32,
+    "z": 8
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -8,
+          -10,
+          -2
+        ],
+        [
+          8,
+          -10,
+          -2
+        ],
+        [
+          0,
+          10,
+          -2
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "x",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -4,
+      "description": "Flat underside of the three block feet. The outer two feet face -Y and the middle foot faces +Y. Each foot has one through hole for a bolt."
+    },
+    {
+      "axis": "x",
+      "offsetMm": 0,
+      "description": "Knuckle axis along X. The bolt runs through the stacked knuckles and can be tightened to lock the hinge angle."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are given in the text, so all values are estimates. Assumed sizing: the hardware looks like an M3 socket-head bolt with a nylon-insert nut. The goBILDA 8 mm grid suggests each block is about 8 mm wide, so three blocks stack to about 24 mm along the hinge axis. Knuckle diameter is estimated at about 8 mm, which sets the Z height. Foot hole diameter is estimated at about 4 mm. Foot reach from the axis is estimated at about 14-16 mm, giving a Y span of about 30-32 mm. The bolt head and nut are assumed to sit roughly flush with or slightly beyond the block stack, so X may be a few mm larger than 24. Hole positions are rough guesses. The 6.6 g weight per hinge fits a small plastic part. The 45° grooves on the blocks are visible but not modeled."
+}

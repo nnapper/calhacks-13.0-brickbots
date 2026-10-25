@@ -20,9 +20,10 @@ function importStl(buffer: ArrayBuffer): THREE.Group {
   catch (error) { throw new Error(`STL could not be loaded. ${error instanceof Error ? error.message : ''}`); }
   if (!geometry.attributes.position?.count) throw new Error('This STL file contains no readable triangle geometry.');
   const group = new THREE.Group();
-  group.add(new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: 0xc9d2d8, metalness: 0.1, roughness: 0.75 })));
+  const mesh = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: 0x9aa5ad, metalness: 0.1, roughness: 0.75 }));
   // Most CAD STL files are millimeters, but the format has no units field.
-  group.scale.setScalar(.001);
+  mesh.scale.setScalar(.001);
+  group.add(mesh);
   return group;
 }
 async function importStep(buffer: ArrayBuffer, signal: AbortSignal): Promise<THREE.Group> {

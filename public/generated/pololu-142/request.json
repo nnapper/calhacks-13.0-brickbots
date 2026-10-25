@@ -1,0 +1,11 @@
+{
+  "name": "3-AA Battery Holder",
+  "sku": "pololu-142",
+  "category": "battery-holders",
+  "expectedDimensionsMm": [
+    58,
+    48,
+    15
+  ],
+  "units": "millimeter"
+}

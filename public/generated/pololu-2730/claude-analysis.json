@@ -1,0 +1,24 @@
+{
+  "partType": "flat_plate",
+  "summary": "Thin, flexible rectangular strip sensor with three small tabs along one long edge and a narrow flat tail with three male pins at one end. The overall bounding box includes the tail.",
+  "boundsMm": {
+    "x": 134.62,
+    "y": 14.478,
+    "z": 0.508
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.254,
+      "description": "Flat underside of the strip body, which is the likely surface for mounting to a substrate."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.254,
+      "description": "Flat top face of the strip body, which is the sensing surface and is pressed during use."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Strip body length 104.14 mm, width 14.478 mm and thickness 0.508 mm come from the supplied dimensions, which are marked unverified. The 1.2 in (30.48 mm) lead length is stated in the specs and is added to the body length for x. The images show a row of small white dots along the strip, but nothing indicates they are through-holes, so no holes are listed. The tail is thinner than the body, and its exact thickness and width are not given. The strip can be cut to 1, 2 or 3 in lengths, so the bounds apply to the uncut 4 in version."
+}

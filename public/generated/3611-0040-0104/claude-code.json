@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Single barrel-shaped roller, 40 mm long along Z and 20 mm max diameter. It is made by revolving a profile with a 7 mm end radius bulging to a 10 mm radius at mid-length, with an 8 mm through bore on the axis. The axis runs along Z at Y=10, so the bottom sits at Y=0 and X and Z are centered.",
+  "confidence": "low",
+  "warnings": [
+    "No dimensions are given, so the 40 mm length, 20 mm max diameter, 14 mm end diameter and 8 mm bore are estimates.",
+    "The barrel curvature is an assumed circular arc.",
+    "The surface bump texture is omitted.",
+    "The pack's other 43 rollers, the pin, 2 bearings, 12 E-clips and 12 shims are not modeled.",
+    "The axis is along Z as in the analysis, so the part is centered at Y=10 to satisfy the bottom-at-Y=0 rule."
+  ],
+  "cadquery": "prof = (cq.Workplane('XY').moveTo(4, -20).lineTo(7, -20).threePointArc((10, 0), (7, 20)).lineTo(4, 20).close())\nbody = prof.revolve(360, (0, 0, 0), (0, 1, 0))\npart = body.rotate((0, 0, 0), (1, 0, 0), 90).translate((0, 10, 0))"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "VL53L4CD Time-of-Flight Distance Sensor Carrier with Voltage Regulator, 120cm Max",
+  "sku": "pololu-3692",
+  "category": "tof-distance-sensors",
+  "expectedDimensionsMm": [
+    18,
+    13,
+    2
+  ],
+  "units": "millimeter"
+}

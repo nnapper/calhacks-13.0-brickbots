@@ -1,0 +1,11 @@
+{
+  "name": "Pololu Wheel for Micro Servo Splines (21T, 4.8mm) - 40×7mm, Black, 2-Pack",
+  "sku": "pololu-4905",
+  "category": "servo-wheels",
+  "expectedDimensionsMm": [
+    7,
+    40,
+    4.8
+  ],
+  "units": "millimeter"
+}

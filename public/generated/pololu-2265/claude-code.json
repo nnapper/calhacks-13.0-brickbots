@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Rectangular rubber sleeve (10 x 4.6 x 4.8 mm, long axis X, bottom at Y=0) with a round metal end cap and a small shaft at +X. A half-disc eccentric weight sits on the shaft and brings the total length to 11.6 mm. Lead wires at -X are omitted.",
+  "confidence": "medium",
+  "warnings": [
+    "Bounds come from unverified catalog dimensions.",
+    "The sleeve length (10 mm), cap diameter, shaft diameter, and weight shape and size are estimated from the image.",
+    "The 1.5 in lead wires are omitted because they are excluded from the bounds and their geometry is uncertain.",
+    "The sleeve's internal bore and parting line are not modeled because the motor fills the sleeve.",
+    "The motor is assumed to be centered in the sleeve cross-section."
+  ],
+  "cadquery": "sleeve = cq.Workplane('XY').box(10.0, 4.6, 4.8, centered=(False, False, True)).translate((-5.8, 0, 0))\ncap = cq.Workplane('YZ').workplane(offset=4.2).center(2.3, 0).circle(1.9).extrude(0.5)\nshaft = cq.Workplane('YZ').workplane(offset=4.6).center(2.3, 0).circle(0.5).extrude(1.2)\nweight_disc = cq.Workplane('YZ').workplane(offset=4.4).center(2.3, 0).circle(1.9).extrude(1.4)\nhalf_box = cq.Workplane('XY').box(2.0, 4.6, 2.0, centered=(False, False, False)).translate((4.3, 0, 0))\nweight = weight_disc.intersect(half_box)\npart = sleeve.union(cap).union(shaft).union(weight)"
+}

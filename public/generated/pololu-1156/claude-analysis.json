@@ -1,0 +1,13 @@
+{
+  "partType": "other",
+  "summary": "Black plastic battery holder for six AA cells, built as two back-to-back three-cell layers. It has open cell cavities with spring and flat contacts, and a red and a black lead wire exit one end.",
+  "boundsMm": {
+    "x": 58,
+    "y": 48,
+    "z": 29
+  },
+  "holes": [],
+  "mountingSurfaces": [],
+  "confidence": "low",
+  "notes": "The images show no printed dimensions, so the bounds come from the unverified catalog data (58 length x 48 width x 29 height). X is assumed to run along the cell axis, Y across the three cells, and Z through the two stacked layers. The visible rivets and terminals are contact hardware, not mounting holes. No mounting holes or tabs are visible or stated, so none are listed. The lead wires and their stripped ends are excluded from the bounding box."
+}

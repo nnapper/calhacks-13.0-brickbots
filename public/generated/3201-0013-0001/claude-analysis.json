@@ -1,0 +1,13 @@
+{
+  "partType": "other",
+  "summary": "Multi-piece starter kit of GT2 2mm pitch timing belts (several closed loops plus one coiled length of belt), pulleys with an 8mm REX bore, small idler and hub pieces, pins, fasteners, and two hex keys. It is not a single solid part, so the bounds are a rough kit-level envelope.",
+  "boundsMm": {
+    "x": 150,
+    "y": 150,
+    "z": 20
+  },
+  "holes": [],
+  "mountingSurfaces": [],
+  "confidence": "low",
+  "notes": "No dimensions are stated. The bounds are a rough estimate for a laid-out kit footprint, taken from the largest items: the coiled belt (about 100-120 mm across when coiled) and the long belt loops (about 150 mm or more when flattened). The z value of 20 mm is based on the pulley thickness (about 15-20 mm). The 8 mm REX bore comes from the product name. Pulley outer diameter is estimated at about 40-50 mm from the 8 mm goBILDA grid and standard hardware sizes. Hole positions and counts are not given, so holes is empty. No mounting surfaces are specified because the kit has multiple loose items. The second image (four aluminum spacers) and third image (a motor) appear to be other products and were ignored for this kit's sizing."
+}

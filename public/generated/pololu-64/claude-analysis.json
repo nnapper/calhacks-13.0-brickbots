@@ -1,0 +1,19 @@
+{
+  "partType": "wheel",
+  "summary": "Off-road tire and hub wheel assembly with a deep lugged tread. The product text gives each assembled wheel as about 50 mm in diameter and 30 mm wide. The hub is meant for a 3 mm hex shaft. The image shows two wheels, and this description covers one.",
+  "boundsMm": {
+    "x": 30,
+    "y": 50,
+    "z": 50
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": 0,
+      "description": "Central hub bore on the wheel's rotation axis (x), sized for a 3 mm hex shaft per the product text. The wheel's flat side faces are perpendicular to this axis."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Diameter (50 mm) and width (30 mm) come from the product text, which is flagged as unverified. No dimensions are printed in the image. The wheel axis is taken as x, so the 30 mm width runs along x and the 50 mm diameter spans y and z. The hub bore is not clearly visible, and its 3 mm hex size comes from the text only. It is not listed under holes because a hex bore has no stated round diameter and no position or depth was measured. Tread lug dimensions and hub geometry are not measured. The two wheels in the image are not modeled separately."
+}

@@ -1,0 +1,108 @@
+{
+  "partType": "bracket",
+  "summary": "Aluminum 1200-series 1-side, 2-post pattern mount. A 32 mm diameter, 8 mm thick round boss carries a 14 mm center bore, four M4 threaded holes and four 4 mm clearance slots. Two 8 mm square posts, 30 mm apart overall, extend down to the mounting surface with a U-shaped 18 mm relief between them. The bore center sits 24 mm above the bottom surface.",
+  "boundsMm": {
+    "x": 32,
+    "y": 40,
+    "z": 8
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          4,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          11.31,
+          4,
+          0
+        ],
+        [
+          -11.31,
+          4,
+          0
+        ],
+        [
+          0,
+          15.31,
+          0
+        ],
+        [
+          0,
+          -7.31,
+          0
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          8.49,
+          12.49,
+          0
+        ],
+        [
+          -8.49,
+          -4.49,
+          0
+        ],
+        [
+          -8.49,
+          12.49,
+          0
+        ],
+        [
+          8.49,
+          -4.49,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "y",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          12,
+          -20,
+          0
+        ],
+        [
+          -12,
+          -20,
+          0
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "y",
+      "offsetMm": -20,
+      "description": "Bottom faces of the two posts, each with an M4 hole 7 mm deep, 24 mm apart; this is the mating surface to structure."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 4,
+      "description": "Front pattern face (+z side) with the 14 mm bore, four M4 holes and four 4 mm slots, centered 24 mm above the bottom surface. A 16 mm diameter, 1 mm deep counterbore surrounds the bore."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Sizes are read from the printed drawing. Overall height is 40 mm, thickness 8 mm, and the legs are 30 mm wide. The 32 mm width comes from the bottom view and equals the round boss diameter (24 mm center height + 16 mm radius = 40 mm). The 18 mm post gap is U-shaped. Coordinates are centered on the bounding box, so the bore center is at y = +4 (24 mm above the bottom at y = -20). The four M4 holes lie on a square with 16 mm sides (radius about 11.3 mm). The four 4 mm slots lie on a 24 mm diagonal pattern, about 8.49 mm off-axis in each direction. The M4 thread depth in the pattern face is not stated, so those holes are marked non-through. The 4 mm slots are drawn as obround and are approximated here as round. The 1 mm deep, 16 mm diameter counterbore around the bore is not listed as a hole."
+}

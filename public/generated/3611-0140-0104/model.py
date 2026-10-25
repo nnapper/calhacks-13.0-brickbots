@@ -1,0 +1,7 @@
+prof = (cq.Workplane('XZ')
+    .moveTo(4, -25)
+    .lineTo(10, -25)
+    .threePointArc((12, 0), (10, 25))
+    .lineTo(4, 25)
+    .close())
+part = prof.revolve(360, (0, 0, 0), (0, 1, 0)).translate((0, 12, 0))

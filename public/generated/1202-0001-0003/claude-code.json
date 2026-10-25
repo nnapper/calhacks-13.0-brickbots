@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "L-shaped 90° aluminum angle bracket, 32x32x32 mm bounds, 8 mm thick legs: a horizontal base plate (Y 0..8) and a vertical plate (Z -16..-8, Y 0..32), with outer corners chamfered 4 mm. Each leg has a 14 mm central through-bore with 8 M4 clearance holes (4.2 mm) around it: 4 cardinal holes at 10 mm radius and 4 diagonal holes at (±7, ±7).",
+  "confidence": "low",
+  "warnings": [
+    "No dimensions were provided; all sizes are estimates on the goBILDA 8 mm grid, so leg thickness, 32 mm bounds, bore size and hole positions are unverified.",
+    "Counterbores and nut pockets on the diagonal holes are visible in the image but omitted because their size and depth are uncertain and they would overlap the central bore.",
+    "All 8 holes per leg are modeled as plain 4.2 mm through-holes.",
+    "Chamfer size (4 mm) is estimated, and the inside-corner edge is left sharp.",
+    "Pattern centers are offset from the leg centers to clear the inside corner (Z=4 on the base, Y=20 on the vertical leg)."
+  ],
+  "cadquery": "t=8.0\nvert=cq.Workplane('XY').box(32,32,t,centered=(True,False,False)).translate((0,0,-16)).edges('|Z and >Y').chamfer(4)\nhoriz=cq.Workplane('XY').box(32,t,32,centered=(True,False,True)).edges('|Y and >Z').chamfer(4)\nbody=horiz.union(vert)\ndef pattern(cx,cy):\n    big=[(cx,cy)]\n    small=[(cx+10,cy),(cx-10,cy),(cx,cy+10),(cx,cy-10),(cx+7,cy+7),(cx-7,cy+7),(cx+7,cy-7),(cx-7,cy-7)]\n    return big,small\n# horizontal leg (holes along Y), pattern center X=0, Z=4\nb,s=pattern(0,4)\ncut_h=cq.Workplane('XZ').workplane(offset=1).pushPoints(b).circle(7).extrude(-12)\ncut_h=cut_h.union(cq.Workplane('XZ').workplane(offset=1).pushPoints(s).circle(2.1).extrude(-12))\n# vertical leg (holes along Z), pattern center X=0, Y=20\nb,s=pattern(0,20)\ncut_v=cq.Workplane('XY').workplane(offset=-17).pushPoints(b).circle(7).extrude(10)\ncut_v=cut_v.union(cq.Workplane('XY').workplane(offset=-17).pushPoints(s).circle(2.1).extrude(10))\npart=body.cut(cut_h).cut(cut_v)"
+}

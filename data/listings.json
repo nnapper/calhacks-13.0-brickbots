@@ -1,0 +1,37 @@
+[
+ {
+  "url": "https://www.pololu.com/category/115",
+  "category": "25d-metal-gearmotors",
+  "max": 4
+ },
+ {
+  "url": "https://www.pololu.com/category/116",
+  "category": "37d-metal-gearmotors",
+  "max": 4
+ },
+ {
+  "url": "https://www.pololu.com/category/138",
+  "category": "motor-brackets",
+  "max": 4
+ },
+ {
+  "url": "https://www.pololu.com/category/137",
+  "category": "mounting-hubs",
+  "max": 3
+ },
+ {
+  "url": "https://www.pololu.com/category/164",
+  "category": "scooter-wheel-adapters",
+  "max": 2
+ },
+ {
+  "url": "https://www.pololu.com/category/166",
+  "category": "hex-wheel-adapters",
+  "max": 2
+ },
+ {
+  "url": "https://www.pololu.com/category/149",
+  "category": "a-star-controllers",
+  "max": 3
+ }
+]

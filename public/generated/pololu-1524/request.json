@@ -1,0 +1,12 @@
+{
+  "name": "Magnetic Encoder Disc for Mini Plastic Gearmotors, OD 9.7 mm, ID 1.5 mm, 12 CPR (Bulk)",
+  "sku": "pololu-1524",
+  "category": "encoders",
+  "expectedDimensionsMm": [
+    9.7,
+    2,
+    9.7,
+    1.5
+  ],
+  "units": "millimeter"
+}

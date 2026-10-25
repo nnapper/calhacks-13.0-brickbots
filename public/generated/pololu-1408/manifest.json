@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Mini Slide Switch: 3-Pin, SPDT, 0.3A (3-Pack)",
+    "sku": "pololu-1408",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "dimensionsEstimated": true,
+    "codeConfidence": "medium",
+    "warnings": [
+      "Drawing values used: body length 8.5 mm (x), body width 3.7 mm (y), body height 3.5 mm, actuator height 3 mm above the body, so body plus actuator is 6.5 mm. Pins extend about 3 mm below the body, estimated from the side view where the pin length is roughly the body height (the drawing shows 0.3 and 0.5 pin dimensions and a 0.2 standoff, but no explicit pin length). Total z = 3 + 3.5 + about 3 = 9.5 mm; the pin length is the main uncertainty. Pin pitch is 2.5 mm in the drawing and 2.54 mm in the specs. Actuator travel is 2.0 mm, with a 1.5 mm actuator width and a 3.6 mm slot length. The pins sit along the x axis at about -2.54, 0 and +2.54 mm. No mounting holes are present, and the pins are not modeled as holes. The bounding box is centered on the part. Confidence is medium because the body dimensions are printed but the pin length is estimated.",
+      "Dimensions are unverified estimates taken from the supplied analysis bounds.",
+      "The axes follow boundsMm (Y = 3.7 mm body width, Z = 9.5 mm height including pins and actuator), so the switch's vertical axis is Z even though the bottom sits at Y=0.",
+      "Pin length (about 3 mm) is estimated.",
+      "The actuator is placed at the center of travel (x=0); the real slider sits at one end of its 2 mm travel.",
+      "The slider slot in the body top, the body standoff, and the pin shoulders are omitted.",
+      "The body is modeled as a single solid, with no separate metal shell or plastic base."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -4.25,
+      "xmax": 4.25,
+      "ymin": 0,
+      "ymax": 3.7,
+      "zmin": -4.75,
+      "zmax": 4.75,
+      "xlen": 8.5,
+      "ylen": 3.7,
+      "zlen": 9.5
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 73591,
+        "sha256": "e268d5d095671de45a027df457e788472f011616073c1f9b94ab9ebe1a49ab5d"
+      },
+      "model.stl": {
+        "bytes": 3884,
+        "sha256": "9f28ffbfcd3764d9ee8ab4648d271660019b0f533eb7625c5e32d92d76ffe485"
+      },
+      "model.glb": {
+        "bytes": 2404,
+        "sha256": "288f8c58161c4858747163106d99e53464eb62eb5765807a374ee40c6243cbc9"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "e268d5d095671de45a027df457e788472f011616073c1f9b94ab9ebe1a49ab5d"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 34
+  },
+  "status": "prototype_unverified"
+}

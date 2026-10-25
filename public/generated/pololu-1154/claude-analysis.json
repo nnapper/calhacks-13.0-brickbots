@@ -1,0 +1,13 @@
+{
+  "partType": "other",
+  "summary": "Enclosed four-cell AA battery holder made of two back-to-back two-cell halves. It is a rectangular body with open cell cavities on top, spring and flat contacts at the cell ends, and two wire leads leaving one end.",
+  "boundsMm": {
+    "x": 57,
+    "y": 32,
+    "z": 30
+  },
+  "holes": [],
+  "mountingSurfaces": [],
+  "confidence": "low",
+  "notes": "The images show no printed dimensions. The bounds are the listing's unverified values (length 57 on x, width 32 on y, height 30 on z), centered on the body, and exclude the 6 inch leads. The axis assignment is assumed. The end face has small round openings and two fastener-like features, but their diameters, positions and through-status can't be determined, so no holes are listed. No mounting tabs or screw holes are clearly visible, so no mounting surfaces are listed."
+}

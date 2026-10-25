@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Motoron M3S550 Triple Motor Controller Shield for Arduino (Connectors Soldered)",
+    "sku": "pololu-5068",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are given in the text. The size is assumed from the standard Arduino Uno shield footprint of about 68.6 x 53.3 mm. The stated 3.2 mm hole diameter and the hole positions are rough estimates from the photos, and only two holes are clearly visible. The z value of about 20 mm is an estimate. It covers the 1.6 mm PCB, the terminal blocks and headers above it, and the header pins below it, and it is not a stated figure. The count and locations of any further holes were not determined. No other dimensions or features were inferred.",
+      "Dimensions are unverified estimates from a standard Arduino Uno shield footprint.",
+      "The analysis bounds list Y=53.3 and Z=20, but the rules require Y as height. I mapped the 68.6 x 53.3 board to X and Z and the 20 mm height to Y.",
+      "Header lengths, pin counts and positions are approximate. Real Uno headers are 6/8/10-pin groups, which I simplified to two 10-pin rows.",
+      "Terminal block size and position are estimates, and I assumed the row sits at Z=+8.",
+      "Hole positions are rough estimates from the photo. Other holes may exist.",
+      "ICs, capacitors, LEDs, silkscreen and the small through-hole pads were omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -34.3,
+      "xmax": 34.3,
+      "ymin": 0,
+      "ymax": 19.6,
+      "zmin": -26.65,
+      "zmax": 26.65,
+      "xlen": 68.6,
+      "ylen": 19.6,
+      "zlen": 53.3
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 366731,
+        "sha256": "7072037e4ad5eedeb42ad56eb166963a8fdd6e4000fe23cdc97df94ff257b07c"
+      },
+      "model.stl": {
+        "bytes": 53084,
+        "sha256": "974f832c9e5fc1ffaafd8bed0a12325967f79a90b6b6c5ad1ffc7a247388f5a3"
+      },
+      "model.glb": {
+        "bytes": 20076,
+        "sha256": "0ec7190b4894a41127b9e9b78870243d1256b4036f3fe34e8652768aeb230e69"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "7072037e4ad5eedeb42ad56eb166963a8fdd6e4000fe23cdc97df94ff257b07c"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

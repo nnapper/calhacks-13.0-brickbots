@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "RoboClaw Solo 30A Motor Controller",
+    "sku": "pololu-3290",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Bounds come from the supplied catalog dimensions (60 x 32.5 x 23.5 mm), which are flagged as unverified. No dimensioned drawing is visible in the images. The images show no mounting holes, so none are listed. Wire exit is on the -Y end. Wire length and the fin depth and pitch are not specified and are not modeled. The bounding box is centered on the part, with X as width, Y as length and Z as height.",
+      "Dimensions come from unverified catalog values (60 x 32.5 x 23.5 mm).",
+      "Y is treated as vertical per the rules, so the 60 mm length lies along Z. This differs from the image-analysis bounds, which list Y as 60.",
+      "Fin count, depth, pitch and orientation are estimated from the photo. The diagonal look of the ridges is perspective, so straight transverse grooves were used.",
+      "The wire bundle on the -Z end is omitted because its length and routing are unknown.",
+      "The three LEDs and all text are omitted.",
+      "The USB and header pockets are approximate in size and position, and the stepped end-face profile is simplified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -16.25,
+      "xmax": 16.25,
+      "ymin": 0,
+      "ymax": 23.5,
+      "zmin": -30,
+      "zmax": 30,
+      "xlen": 32.5,
+      "ylen": 23.5,
+      "zlen": 60
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 197374,
+        "sha256": "641ac46d7293304b5b67a379f874b874529c08846b1d73346bf6c074a23c6a63"
+      },
+      "model.stl": {
+        "bytes": 10284,
+        "sha256": "d9fbc32eaa281dfd7987890050e02e4d04fb4e675518758fd806a8fc53019d4e"
+      },
+      "model.glb": {
+        "bytes": 4712,
+        "sha256": "d9de58cbe0154d003654ada2026f6aee451f5991e0538a6e84237c39d9b43d64"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "641ac46d7293304b5b67a379f874b874529c08846b1d73346bf6c074a23c6a63"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

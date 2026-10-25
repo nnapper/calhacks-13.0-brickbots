@@ -1,37 +1,24 @@
 {
   "partType": "flat_plate",
-  "summary": "Round aluminum baseplate, 144 mm diameter and 6 mm thick. It has a flat top and bottom face and a pattern of through holes. Some holes are counterbored, and five hub-pattern clusters (one central, four outer) each have a large central opening with keyhole-style slots. The plate can be fastened to a floor or tabletop, or used as a rotating platform on a hub.",
+  "summary": "Flat circular aluminum baseplate, 144 mm in diameter and 6 mm thick. Five identical cutouts with a quad-lobe counterbored pattern sit in the plate, one at the center and four arranged symmetrically around it. The plate also has many small through-holes and larger counterbored holes spread across the face. One product image shows it as a rotating platform on a gearbox hub, and another shows it as a base with rubber feet.",
   "boundsMm": {
     "x": 144,
     "y": 144,
     "z": 6
   },
-  "holes": [
-    {
-      "axis": "z",
-      "diameterMm": 14,
-      "positionsMm": [
-        [
-          0,
-          0,
-          0
-        ]
-      ],
-      "through": true
-    }
-  ],
+  "holes": [],
   "mountingSurfaces": [
     {
       "axis": "z",
       "offsetMm": 3,
-      "description": "Flat top face with counterbored holes for mounting assemblies. Counterbores let M4 hardware sit below the surface."
+      "description": "Top flat face, used to mount the assembly. Counterbored holes let M4 screw heads sit below the surface."
     },
     {
       "axis": "z",
       "offsetMm": -3,
-      "description": "Flat bottom face that rests on a floor or tabletop. Rubber feet can be attached here."
+      "description": "Bottom flat face, used to rest on a table or floor, or to attach rubber feet or a hub."
     }
   ],
-  "confidence": "low",
-  "notes": "The 144 mm diameter and 6 mm thickness come from the supplied specs, which are marked unverified. The images show no printed hole dimensions. Only the central large opening is listed, and its 14 mm diameter is a rough visual estimate. The remaining holes are not listed because their sizes and positions could not be read reliably. They include the four outer hub-pattern clusters, the many small M4-class holes, and the counterbored holes. The plate is centered at the origin, with the z-axis normal to its faces."
+  "confidence": "medium",
+  "notes": "Only the 144 mm diameter and 6 mm thickness are stated. The part is centered on the origin, with its thickness along z. The individual hole diameters and positions are not printed in the images or the product data. Hole diameters, positions, and counterbore depths were left out rather than guessed, so the holes array is empty. The locations visible in the images are the central cutout and the four symmetric cutouts. The source data is marked as unverified, so the CAD hole pattern still needs the vendor's drawing."
 }

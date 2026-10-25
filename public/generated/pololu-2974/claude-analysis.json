@@ -1,0 +1,42 @@
+{
+  "partType": "other",
+  "summary": "Rectangular black stepper driver carrier PCB, 1.0 in x 1.4 in. A driver IC sits in the middle of the top face, with two electrolytic capacitors near one short end. Through-holes run along the board edges, and there are two larger mounting holes on one long side.",
+  "boundsMm": {
+    "x": 25.4,
+    "y": 35.56,
+    "z": 1.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.2,
+      "positionsMm": [
+        [
+          10.3,
+          15.5,
+          0
+        ],
+        [
+          10.3,
+          -15.5,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.8,
+      "description": "Flat underside of the PCB, usable as the seating face when the board is mounted on standoffs through the two mounting holes."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.8,
+      "description": "Top face of the PCB, which carries the driver IC, capacitors and trimmer potentiometer. It is not flat because of these components."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The 25.4 mm x 35.56 mm footprint comes from the printed 1.0 in x 1.4 in dimensions. The z value of 1.6 mm is an assumed bare-PCB thickness, since no height is given. The tallest components, the two capacitors, are not included, so the overall height would be larger. The mounting-hole diameter (2.2 mm) is an estimate and is not stated. The hole positions were scaled from the top-view image, with x across the short side and y along the long side, and are approximate. The edge pin/through-hole rows and the larger power-terminal holes are visible, but their diameters are not stated, so they are left out of the holes list. The pin rows follow roughly a 2.54 mm pitch, which is assumed from the layout."
+}

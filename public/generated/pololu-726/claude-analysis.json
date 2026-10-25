@@ -1,0 +1,79 @@
+{
+  "partType": "other",
+  "summary": "Compact ultrasonic range-finder module: a small rectangular PCB with a single cylindrical ultrasonic transducer mounted on its front face, a row of 7 through-hole header pads along one edge, and one larger mounting hole in a corner.",
+  "boundsMm": {
+    "x": 22.1,
+    "y": 19.9,
+    "z": 16.4
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3.1,
+      "positionsMm": [
+        [
+          -7.5,
+          4.5,
+          -7.8
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          -5.1,
+          7.5,
+          -7.8
+        ],
+        [
+          -2.5,
+          7.5,
+          -7.8
+        ],
+        [
+          0,
+          7.5,
+          -7.8
+        ],
+        [
+          2.5,
+          7.5,
+          -7.8
+        ],
+        [
+          5.1,
+          7.5,
+          -7.8
+        ],
+        [
+          7.6,
+          7.5,
+          -7.8
+        ],
+        [
+          10.2,
+          7.5,
+          -7.8
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -8.2,
+      "description": "Rear face of the PCB, flat, usable for mounting with the corner hole."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 8.2,
+      "description": "Front face of the cylindrical transducer (sensing face); keep unobstructed, not a mounting surface."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Overall bounds come from the stated spec 0.870 x 0.785 x 0.645 in (22.1 x 19.9 x 16.4 mm). The assignment of x to the PCB width, y to the PCB height and z to the depth along the transducer axis is inferred from the photo; the source data is flagged unverified. Hole diameters and positions are not printed anywhere. They were roughly estimated from the photo using the 2.54 mm header pitch as a scale, so treat them as approximate. The transducer is a cylinder, roughly 16 mm in diameter by eye, protruding from the PCB front, but its size is not stated. The beam-pattern charts do not give physical part dimensions."
+}

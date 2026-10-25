@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Simplified assembled Zumo chassis: a rectangular battery-compartment body, a thin flat top plate, and two stadium-shaped track loops (rings) along the sides. The overall size is 98 mm (X) by 39 mm (Y, up) by 86 mm (Z), with the bottom at Y=0 and the tracks giving ground contact.",
+  "confidence": "low",
+  "warnings": [
+    "The catalog dimensions are unverified. The 98 x 86 x 39 mm envelope was mapped to X length, Z width and Y height to follow the Y-up rule, which differs from the axis labels in the image analysis.",
+    "The body is a plain solid block. The battery compartment cavity, motor sockets and other body details are omitted because their dimensions are uncertain.",
+    "The plate's hole grid, slots and notches are omitted because their positions and sizes cannot be measured from the photo.",
+    "Sprockets, track teeth, battery contacts and loose fasteners are not modeled. The tracks are smooth rings.",
+    "Track width (13 mm), track loop height (30 mm), body height and plate size are estimated from proportions, not measured.",
+    "The plate is modeled at 1.6 mm (1/16 in) from the description."
+  ],
+  "cadquery": "body = cq.Workplane('XY').box(80, 32.4, 62, centered=(True, False, True)).translate((0, 5, 0))\nplate = cq.Workplane('XY').box(76, 1.6, 60, centered=(True, False, True)).translate((0, 37.4, 0))\n\ndef track(z0):\n    outer = cq.Workplane('XY').slot2D(98, 30).extrude(13)\n    inner = cq.Workplane('XY').slot2D(92, 24).extrude(13)\n    return outer.cut(inner).translate((0, 15, z0))\n\npart = body.union(plate).union(track(30)).union(track(-43))"
+}

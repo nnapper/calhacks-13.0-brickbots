@@ -1,0 +1,8 @@
+base = cq.Workplane('XY').box(40, 8, 32, centered=(True, False, True))
+ear_l = cq.Workplane('XY').box(10, 30, 32, centered=(True, False, True)).translate((-15, 0, 0))
+ear_r = cq.Workplane('XY').box(10, 30, 32, centered=(True, False, True)).translate((15, 0, 0))
+body = base.union(ear_l).union(ear_r)
+holes = cq.Workplane('XZ').pushPoints([(0, 2), (0, 12)]).circle(3.25).extrude(-10)
+body = body.cut(holes)
+pin = cq.Workplane('YZ').workplane(offset=-22).center(21, -6).circle(5).extrude(44)
+part = body.union(pin)

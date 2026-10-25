@@ -1,0 +1,11 @@
+{
+  "name": "MinIMU-9 v5 Gyro, Accelerometer, and Compass (LSM6DS33 and LIS3MDL Carrier)",
+  "sku": "pololu-2738",
+  "category": "imus",
+  "expectedDimensionsMm": [
+    20,
+    13,
+    3
+  ],
+  "units": "millimeter"
+}

@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Single encoder board: 1 mm thick black PCB, 16.5 mm wide upper body with a 10 x 5.5 mm tab, a 5 mm through hole for the motor shaft/magnet, and a simplified box for the 6-pin side-entry JST SH connector on top at the right edge, slightly overhanging. The board lies in the XY plane with Y from 0 to 16.5 and Z centered, 4.5 mm overall thickness. The magnetic discs are excluded.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are estimated from the provided bounds and an unverified '4.5 mm?' spec.",
+    "The board outline split (11 mm body plus 5.5 mm tab) is estimated from the notes.",
+    "The connector is a simplified box with estimated size and position, with no pins or cavity.",
+    "The hole position is estimated at 1.5 mm toward the top from board center.",
+    "The oblong gold pads are not modeled because they may be solder pads rather than through-slots.",
+    "The Hall sensors, passive components, logos and silkscreen are omitted.",
+    "The magnetic discs are separate parts and are not modeled."
+  ],
+  "cadquery": "pcb_t = 1.0\nz0 = -2.25\nbody = cq.Workplane('XY').workplane(offset=z0).center(0, 11.0).rect(16.5, 11.0).extrude(pcb_t)\ntab = cq.Workplane('XY').workplane(offset=z0).center(0, 2.75).rect(10.0, 5.5).extrude(pcb_t)\nboard = body.union(tab)\nconn = (cq.Workplane('XY').workplane(offset=z0 + pcb_t)\n        .center(6.6, 10.0).rect(4.3, 8.0).extrude(3.5))\npart = board.union(conn)\nhole = cq.Workplane('XY').workplane(offset=z0 - 1).center(0, 9.75).circle(2.5).extrude(6)\npart = part.cut(hole)"
+}

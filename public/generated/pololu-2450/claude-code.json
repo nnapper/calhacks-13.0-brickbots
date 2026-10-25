@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Black rectangular IR sensor housing (about 22 x 13.2 x 14.2 mm) with two thin mounting tabs at the rear of opposite ends, giving a 27 mm overall length. Each tab has a 2.2 mm through hole along Z. Two shallow rectangular pockets on the front face stand in for the emitter and detector windows.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions come from unverified metadata and pixel estimates.",
+    "Tab thickness, tab z-offset and tab height are guesses.",
+    "The housing's stepped profile is simplified to a single box.",
+    "The rear PCB and JST connector are omitted because their size is uncertain and they would exceed the stated Z bounds.",
+    "The window pockets are approximate in position, size and depth, and the lenses are not modeled.",
+    "Hole positions were shifted from the analysis coordinates (assumed centered in Y) to the bottom-at-Y=0 convention."
+  ],
+  "cadquery": "def bx(x0,x1,y0,y1,z0,z1):\n    return cq.Workplane('XY').box(x1-x0,y1-y0,z1-z0,centered=False).translate((x0,y0,z0))\n\nbody = bx(-11,11,0,13.2,-7.1,7.1)\ntab_l = bx(-13.5,-10,8.5,13.2,-7.1,-3.1)\ntab_r = bx(10,13.5,2.0,6.9,-7.1,-3.1)\npart = body.union(tab_l).union(tab_r)\n\n# emitter and detector window pockets on the front face (+Z)\nfor cx in (-4.5, 3.5):\n    pocket = bx(cx-3, cx+3, 3.6, 9.6, 5.1, 7.1)\n    part = part.cut(pocket)\n\n# mounting holes through the tabs (axis Z)\nfor (hx, hy) in ((-11.8, 11.0), (11.6, 4.4)):\n    h = cq.Workplane('XY').center(hx, hy).circle(1.1).extrude(10, both=True)\n    part = part.cut(h)\n"
+}

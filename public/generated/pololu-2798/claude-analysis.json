@@ -1,0 +1,42 @@
+{
+  "partType": "flat_plate",
+  "summary": "Small rectangular IMU carrier PCB with two round mounting holes along one short-edge side, and two columns of 0.1 in pitch through-holes along the long edges. Components sit on the top face.",
+  "boundsMm": {
+    "x": 12.7,
+    "y": 22.86,
+    "z": 3
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.18,
+      "positionsMm": [
+        [
+          -3.9,
+          8.8,
+          0
+        ],
+        [
+          -3.9,
+          -8.8,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.5,
+      "description": "Bottom face of the board, flat, for standoff or mounting contact around the two mounting holes"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1.5,
+      "description": "Top face with the IC and passive components, so it is not a clean mounting surface"
+    }
+  ],
+  "confidence": "medium",
+  "notes": "X and Y come from the printed drawing: 0.5 in (12.7 mm) wide and 0.9 in (22.86 mm) long, which matches the listed 13 × 23 mm. The mounting hole diameter is printed as 0.086 in (2.18 mm). The hole positions were estimated from pixels in the dimensioned photo, so they are approximate, with the origin at the board center, X across the width and Y along the length. The 3 mm height comes from the unverified spec and probably includes the components. PCB thickness is not shown. The header pad holes are not listed because their diameter is not stated. They sit on a 2.54 mm pitch in two edge columns: 10 pads on one side and 5 on the other."
+}

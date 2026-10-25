@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "A-Star 328PB Micro",
+    "sku": "pololu-3160",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": false,
+    "codeConfidence": "low",
+    "warnings": [
+      "Length (33.02 mm) and width (17.78 mm) come from the listed 1.3 in x 0.7 in board size, which is unverified. Board thickness (1.6 mm) is an assumption, since no height is given. Component height above the board is not included. Hole diameter (about 1.0 mm) is an estimate, not a stated value. The listed hole positions are an assumed layout: two outer rows at 2.54 mm pitch, 13 holes each. They were not read from a dimensioned drawing. The interior holes and pads and the ISP/programming headers are visible but not enumerated. The board has no dedicated mounting holes.",
+      "Board thickness of 1.6 mm is assumed, since no height is given.",
+      "Length and width come from the unverified 1.3 in × 0.7 in board size.",
+      "The 1.0 mm hole diameter and the two-row layout come from the image analysis and were not read from a dimensioned drawing.",
+      "Interior holes, pads and ISP header holes are visible in the image but omitted because their positions are uncertain.",
+      "The microcontroller IC, regulator, resonator, reset button and LEDs are omitted because their heights are unknown.",
+      "Silkscreen text and logos are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -16.51,
+      "xmax": 16.51,
+      "ymin": 0,
+      "ymax": 1.6,
+      "zmin": -8.89,
+      "zmax": 8.89,
+      "xlen": 33.02,
+      "ylen": 1.6,
+      "zlen": 17.78
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 142727,
+        "sha256": "84017920a89daed5f320ddbe437caf314f97a5ccf67c90a10e7bfa7d8cedb697"
+      },
+      "model.stl": {
+        "bytes": 442684,
+        "sha256": "1d036534fabfc6dc59463222138d41c4684b1bfb562387b4c0e7f67b0e3c88b2"
+      },
+      "model.glb": {
+        "bytes": 159756,
+        "sha256": "019ce76028603f1f7c8a5fee7dc3a017c86fbf64a226ef8d23865d6d7b7c395c"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "84017920a89daed5f320ddbe437caf314f97a5ccf67c90a10e7bfa7d8cedb697"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

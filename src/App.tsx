@@ -89,8 +89,8 @@ export default function App() {
     const source=[...cache.current.values()].find(m=>m.asset.id===model.asset.id)!;
     const result=await analyzeGeometry(source);updateNodes(source,result.candidates,result.geometryRevision);setNotice('Review the proposed nodes before snapping.');
   }catch(e){setError(String(e));}finally{setOperation('');}}
-  async function recommend(){if(!model)return;setOperation('Bitdeer is reviewing nodes');setError('');try{
-    const result=await suggestNodes(model);updateNodes(model,applySuggestions(model.connectors??[],result.result));setNotice(`Bitdeer suggestions ready · ${result.model}`);
+  async function recommend(){if(!model)return;setOperation('Brick is reviewing nodes');setError('');try{
+    const result=await suggestNodes(model);updateNodes(model,applySuggestions(model.connectors??[],result.result));setNotice(`Brick suggestions ready`);
   }catch(e){setError(String(e));}finally{setOperation('');}}
   function checkpoint() { setHistory(h => [...h.slice(-19), live.current]); }
   function place(source: LoadedModel, drop?: [number,number,number]) {
@@ -218,7 +218,7 @@ export default function App() {
     }));
     if(movedIds.size){
       setMates(items=>[...items.filter(m=>!movedIds.has(m.movingId)&&!movedIds.has(m.targetId)),...autoMates]);
-      setNotice(`Bitdeer auto-connected ${autoMates.length} pair${autoMates.length===1?'':'s'} · adjust freely`);
+      setNotice(`Brick auto-connected ${autoMates.length} pair${autoMates.length===1?'':'s'} · adjust freely`);
     }
   }
   function runPairing() {

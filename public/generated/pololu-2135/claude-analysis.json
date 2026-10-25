@@ -1,0 +1,102 @@
+{
+  "partType": "other",
+  "summary": "Small rectangular motor driver carrier PCB with a 14-pin DIP-style footprint. It has two columns of 7 through-holes along the long edges at 0.1 in pitch and a few surface-mount components on the top face.",
+  "boundsMm": {
+    "x": 10.16,
+    "y": 17.78,
+    "z": 2.5
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          -3.81,
+          7.62,
+          0
+        ],
+        [
+          -3.81,
+          5.08,
+          0
+        ],
+        [
+          -3.81,
+          2.54,
+          0
+        ],
+        [
+          -3.81,
+          0,
+          0
+        ],
+        [
+          -3.81,
+          -2.54,
+          0
+        ],
+        [
+          -3.81,
+          -5.08,
+          0
+        ],
+        [
+          -3.81,
+          -7.62,
+          0
+        ],
+        [
+          3.81,
+          7.62,
+          0
+        ],
+        [
+          3.81,
+          5.08,
+          0
+        ],
+        [
+          3.81,
+          2.54,
+          0
+        ],
+        [
+          3.81,
+          0,
+          0
+        ],
+        [
+          3.81,
+          -2.54,
+          0
+        ],
+        [
+          3.81,
+          -5.08,
+          0
+        ],
+        [
+          3.81,
+          -7.62,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.4,
+      "description": "Flat underside of the PCB, which sits on the headers or breadboard via the two 7-pin rows spaced 0.4 in apart"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.4,
+      "description": "Top face of the PCB carrying the driver IC and passive components. It is not a mounting face."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 17.78 x 10.16 mm footprint comes from the printed 0.7 in x 0.4 in dimensions. The two rows are 0.4 in apart, which implies a hole center offset of about ±3.81 mm from the part center (an inference from the 0.4 in width and the DIP form factor). The 0.1 in pitch is also inferred from the DIP form factor. Hole diameter (about 1.0 mm) and total height (about 2.5 mm, including the tallest capacitor) are visual estimates, not printed values. Board thickness is not stated; the z offsets assume roughly 0.8 mm. The pin count is 14, with 7 per side. The hole centers are shown inset from the board edge. The corner holes look slightly square-padded, but they are treated as round."
+}

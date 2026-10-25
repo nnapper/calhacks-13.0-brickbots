@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Sharp/Socle GP2Y0A51SK0F Analog Distance Sensor 2-15cm",
+    "sku": "pololu-2450",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "No printed dimensions appear in the images. The overall bounds come from the supplied, unverified metadata (27 x 13.2 x 14.2 mm). The hole diameter and positions are estimated from pixel proportions in the front view, scaled to the 27 mm length, so treat them as approximate. The x axis runs along the length, y along the width, and z along the front-to-back depth. The two holes are on diagonally opposite corner tabs. Tab thickness and the exact z-offset of the tab faces are not determinable from the images. The PCB extends slightly beyond the housing in -y, and the connector sits at the rear.",
+      "Dimensions come from unverified metadata and pixel estimates.",
+      "Tab thickness, tab z-offset and tab height are guesses.",
+      "The housing's stepped profile is simplified to a single box.",
+      "The rear PCB and JST connector are omitted because their size is uncertain and they would exceed the stated Z bounds.",
+      "The window pockets are approximate in position, size and depth, and the lenses are not modeled.",
+      "Hole positions were shifted from the analysis coordinates (assumed centered in Y) to the bottom-at-Y=0 convention."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -13.5,
+      "xmax": 13.5,
+      "ymin": 0,
+      "ymax": 13.2,
+      "zmin": -7.1,
+      "zmax": 7.1,
+      "xlen": 27,
+      "ylen": 13.2,
+      "zlen": 14.2
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 103149,
+        "sha256": "ff6979ce4bd28475af5464add375b8f1d1b6d9920c1224387f4bf7ac2180811a"
+      },
+      "model.stl": {
+        "bytes": 43484,
+        "sha256": "a6b69820c0c3a19bf6ac4a49c6bdcd81f585fc24734567c8a72a06e8f7218de2"
+      },
+      "model.glb": {
+        "bytes": 16616,
+        "sha256": "308ab15837f5caf3719b8f10602a995acef53a51342bc7cd340a43807146214b"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "ff6979ce4bd28475af5464add375b8f1d1b6d9920c1224387f4bf7ac2180811a"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "1000:1 Micro Metal Gearmotor HP 6V with 12 CPR Encoder, Side Connector",
+  "sku": "pololu-5177",
+  "category": "micro-metal-gearmotors",
+  "expectedDimensionsMm": [
+    12,
+    10,
+    3
+  ],
+  "units": "millimeter"
+}

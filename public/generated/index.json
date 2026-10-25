@@ -41,6 +41,20 @@
     "confidence": "medium/medium",
     "status": "prototype_unverified"
   },
+  "1108-0001-0001": {
+    "name": "1108 Series Flat Pattern Bracket (1-1)",
+    "step": "/generated/1108-0001-0001/model.step",
+    "glb": "/generated/1108-0001-0001/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "1108-0002-0001": {
+    "name": "1108 Series Flat Pattern Bracket (2-1)",
+    "step": "/generated/1108-0002-0001/model.step",
+    "glb": "/generated/1108-0002-0001/model.glb",
+    "confidence": "low/medium",
+    "status": "prototype_unverified"
+  },
   "1116-0024-0040": {
     "name": "1116 Series Grid Plate (3 x 5 Hole, 24 x 40mm)",
     "step": "/generated/1116-0024-0040/model.step",
@@ -83,6 +97,13 @@
     "confidence": "low/low",
     "status": "prototype_unverified"
   },
+  "1126-0001-0001": {
+    "name": "1126 Series Steel Flat Bracket (1-1) - 2 Pack",
+    "step": "/generated/1126-0001-0001/model.step",
+    "glb": "/generated/1126-0001-0001/model.glb",
+    "confidence": "high/high",
+    "status": "prototype_unverified"
+  },
   "1140-0006-0144": {
     "name": "1140 Series Aluminum Baseplate (6mm Thickness, 144mm Diameter)",
     "step": "/generated/1140-0006-0144/model.step",
@@ -94,6 +115,62 @@
     "name": "1143 Series Mini Low-Side U-Channel (1 Hole, 48mm Length)",
     "step": "/generated/1143-0001-0048/model.step",
     "glb": "/generated/1143-0001-0048/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "1147-0001-0005": {
+    "name": "Threaded Steel L-Bracket (5 Hole) - 4 Pack",
+    "step": "/generated/1147-0001-0005/model.step",
+    "glb": "/generated/1147-0001-0005/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "1200-0024-0001": {
+    "name": "1200 Series 1-Side, 2-Post Pattern Mount (24-1)",
+    "step": "/generated/1200-0024-0001/model.step",
+    "glb": "/generated/1200-0024-0001/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "1201-0024-0001": {
+    "name": "1201 Series Quad Block Pattern Mount (24-1)",
+    "step": "/generated/1201-0024-0001/model.step",
+    "glb": "/generated/1201-0024-0001/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "1201-0043-0005": {
+    "name": "1201 Series Quad Block Pattern Mount (43-5)",
+    "step": "/generated/1201-0043-0005/model.step",
+    "glb": "/generated/1201-0043-0005/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "1202-0001-0003": {
+    "name": "1202 Series Angle Pattern Mount (1-3)",
+    "step": "/generated/1202-0001-0003/model.step",
+    "glb": "/generated/1202-0001-0003/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "1203-0001-0001": {
+    "name": "1203 Series Block Mount (1-1) - 4 Pack",
+    "step": "/generated/1203-0001-0001/model.step",
+    "glb": "/generated/1203-0001-0001/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "1204-0001-0001": {
+    "name": "1204 Series Gusseted Angle Mount (1-1) - 2 Pack",
+    "step": "/generated/1204-0001-0001/model.step",
+    "glb": "/generated/1204-0001-0001/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "1205-0001-0005": {
+    "name": "1205 Series Dual Block Mount (1-5) - 2 Pack",
+    "step": "/generated/1205-0001-0005/model.step",
+    "glb": "/generated/1205-0001-0005/model.glb",
     "confidence": "low/low",
     "status": "prototype_unverified"
   },
@@ -118,6 +195,13 @@
     "confidence": "low/low",
     "status": "prototype_unverified"
   },
+  "1800-0040-0001": {
+    "name": "1800 Series Servo Pattern Plate (For Standard Size Servos)",
+    "step": "/generated/1800-0040-0001/model.step",
+    "glb": "/generated/1800-0040-0001/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
   "1802-0043-0001": {
     "name": "1802 Series Servo Frame (43mm Width, for Standard Size Servos)",
     "step": "/generated/1802-0043-0001/model.step",
@@ -139,6 +223,20 @@
     "confidence": "low/low",
     "status": "prototype_unverified"
   },
+  "2000-0025-0003": {
+    "name": "2000 Series Dual Mode Servo (25-3, Speed)",
+    "step": "/generated/2000-0025-0003/model.step",
+    "glb": "/generated/2000-0025-0003/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "2004-0025-0002": {
+    "name": "Axon MAX Servo MK2",
+    "step": "/generated/2004-0025-0002/model.step",
+    "glb": "/generated/2004-0025-0002/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
   "2302-0014-0048": {
     "name": "2302 Series Aluminum, MOD 0.8, Hub Mount Gear (14mm Bore, 48 Tooth)",
     "step": "/generated/2302-0014-0048/model.step",
@@ -153,6 +251,34 @@
     "confidence": "low/low",
     "status": "prototype_unverified"
   },
+  "2305-0025-0012": {
+    "name": "2305 Series Brass, MOD 0.8, Servo Gear (25 Tooth Spline, 12 Tooth)",
+    "step": "/generated/2305-0025-0012/model.step",
+    "glb": "/generated/2305-0025-0012/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "2305-0025-0024": {
+    "name": "2305 Series Brass, MOD 0.8, Servo Gear (25 Tooth Spline, 24 Tooth)",
+    "step": "/generated/2305-0025-0024/model.step",
+    "glb": "/generated/2305-0025-0024/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "2310-2000-0302": {
+    "name": "Servo Gear Set for 2000 Series 'Torque' Servo (V3.0)",
+    "step": "/generated/2310-2000-0302/model.step",
+    "glb": "/generated/2310-2000-0302/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "2311-0001-0131": {
+    "name": "Acetal MOD 0.8 Gear Rack (131 Tooth, 41 Hole)",
+    "step": "/generated/2311-0001-0131/model.step",
+    "glb": "/generated/2311-0001-0131/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
   "2405-0014-0054": {
     "name": "2405 Series Track Idler Wheel (14mm Bore, 54mm Diameter) - 2 Pack",
     "step": "/generated/2405-0014-0054/model.step",
@@ -160,10 +286,80 @@
     "confidence": "low/low",
     "status": "prototype_unverified"
   },
+  "2407-0001-0001": {
+    "name": "Idler Wheel Kit for 2400 Series Tracks (1-1) - 2 Pack",
+    "step": "/generated/2407-0001-0001/model.step",
+    "glb": "/generated/2407-0001-0001/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "2902-0003-0001": {
+    "name": "Plastic Hinge - 2 Pack",
+    "step": "/generated/2902-0003-0001/model.step",
+    "glb": "/generated/2902-0003-0001/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
   "2902-0005-0038": {
     "name": "2902 Series Hinge (5 Hole, 38mm Length)",
     "step": "/generated/2902-0005-0038/model.step",
     "glb": "/generated/2902-0005-0038/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "2902-0025-0001": {
+    "name": "Plastic Hinge Block - 25 Pack",
+    "step": "/generated/2902-0025-0001/model.step",
+    "glb": "/generated/2902-0025-0001/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "3102-0001-0001": {
+    "name": "Servo Programmer for 2000 Series Dual Mode Servo",
+    "step": "/generated/3102-0001-0001/model.step",
+    "glb": "/generated/3102-0001-0001/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "3105-0101-0005": {
+    "name": "1x5A Motor Controller (6-24V Input, 9A Burst)",
+    "step": "/generated/3105-0101-0005/model.step",
+    "glb": "/generated/3105-0101-0005/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "3105-0101-0020": {
+    "name": "1x20A Motor Controller (9-30V Input)",
+    "step": "/generated/3105-0101-0020/model.step",
+    "glb": "/generated/3105-0101-0020/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "3109-0004-0002": {
+    "name": "Servo Commander",
+    "step": "/generated/3109-0004-0002/model.step",
+    "glb": "/generated/3109-0004-0002/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "3201-0012-0001": {
+    "name": "5mm Pitch HTD Timing Belt & Pulley Starter Pack (8mm REX® Bore)",
+    "step": "/generated/3201-0012-0001/model.step",
+    "glb": "/generated/3201-0012-0001/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "3201-0013-0001": {
+    "name": "2mm Pitch GT2 Timing Belt & Pulley Starter Pack (8mm REX® Bore)",
+    "step": "/generated/3201-0013-0001/model.step",
+    "glb": "/generated/3201-0013-0001/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "3202-0001-2501": {
+    "name": "ServoBlock® (Standard Size, 25 Tooth Spline, Hub-Shaft)",
+    "step": "/generated/3202-0001-2501/model.step",
+    "glb": "/generated/3202-0001-2501/model.glb",
     "confidence": "low/low",
     "status": "prototype_unverified"
   },
@@ -216,6 +412,13 @@
     "confidence": "low/low",
     "status": "prototype_unverified"
   },
+  "3308-0008-0003": {
+    "name": "Grid-Link for 8mm Pitch Steel Chain - 6 Pack",
+    "step": "/generated/3308-0008-0003/model.step",
+    "glb": "/generated/3308-0008-0003/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
   "3311-0014-0018": {
     "name": "8mm Pitch Acetal Hub-Mount Sprocket (14mm Bore, 18 Tooth)",
     "step": "/generated/3311-0014-0018/model.step",
@@ -256,6 +459,27 @@
     "step": "/generated/3607-0014-0072/model.step",
     "glb": "/generated/3607-0014-0072/model.glb",
     "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "3611-0030-0104": {
+    "name": "GripForce™ Mecanum Wheel Roller Pack (30A)",
+    "step": "/generated/3611-0030-0104/model.step",
+    "glb": "/generated/3611-0030-0104/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "3611-0040-0104": {
+    "name": "GripForce™ Mecanum Wheel Roller Pack (40A)",
+    "step": "/generated/3611-0040-0104/model.step",
+    "glb": "/generated/3611-0040-0104/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "3611-0140-0104": {
+    "name": "GripForce™ Mecanum Wheel Roller Pack (40A Durometer, 4 Rollers)",
+    "step": "/generated/3611-0140-0104/model.step",
+    "glb": "/generated/3611-0140-0104/model.glb",
+    "confidence": "low/low",
     "status": "prototype_unverified"
   },
   "3613-0014-0072": {
@@ -300,6 +524,13 @@
     "confidence": "medium/medium",
     "status": "prototype_unverified"
   },
+  "3621-0001-0001": {
+    "name": "Swivel Caster Wheel (M8 x 1.25mm Male Stud)",
+    "step": "/generated/3621-0001-0001/model.step",
+    "glb": "/generated/3621-0001-0001/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
   "3624-4008-0032": {
     "name": "3624 Series Omni Wheel (8mm REX® Bore, 32mm Diameter, 50A Durometer)",
     "step": "/generated/3624-4008-0032/model.step",
@@ -340,6 +571,13 @@
     "step": "/generated/3628-0032-0082/model.step",
     "glb": "/generated/3628-0032-0082/model.glb",
     "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "5000-0002-0001": {
+    "name": "5000 Series 12VDC Motor",
+    "step": "/generated/5000-0002-0001/model.step",
+    "glb": "/generated/5000-0002-0001/model.glb",
+    "confidence": "medium/medium",
     "status": "prototype_unverified"
   },
   "5000-0002-4008": {
@@ -402,6 +640,951 @@
     "name": "5303 Series Saturn Planetary Gear Motor (99.5:1 Ratio, 24mm Length 8mm REX® Shaft, 180 RPM, 3.3 - 5V Encoder)",
     "step": "/generated/5303-2402-0100/model.step",
     "glb": "/generated/5303-2402-0100/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1002": {
+    "name": "Rechargeable NiMH AAA Battery: 1.2 V, 900 mAh, 1 cell",
+    "step": "/generated/pololu-1002/model.step",
+    "glb": "/generated/pololu-1002/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1003": {
+    "name": "Rechargeable NiMH AA Battery: 1.2 V, 2200 mAh, 1 cell",
+    "step": "/generated/pololu-1003/model.step",
+    "glb": "/generated/pololu-1003/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-106": {
+    "name": "Tamiya 70100 Track and Wheel Set",
+    "step": "/generated/pololu-106/model.step",
+    "glb": "/generated/pololu-106/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1078": {
+    "name": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, #4-40 Holes (2-Pack)",
+    "step": "/generated/pololu-1078/model.step",
+    "glb": "/generated/pololu-1078/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1079": {
+    "name": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, #2-56 Holes (2-Pack)",
+    "step": "/generated/pololu-1079/model.step",
+    "glb": "/generated/pololu-1079/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1088": {
+    "name": "Pololu Wheel 32×7mm Pair - White",
+    "step": "/generated/pololu-1088/model.step",
+    "glb": "/generated/pololu-1088/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1090": {
+    "name": "Pololu Wheel 42×19mm Pair",
+    "step": "/generated/pololu-1090/model.step",
+    "glb": "/generated/pololu-1090/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1137": {
+    "name": "Sharp/Socle GP2Y0A02YK0F Analog Distance Sensor 20-150cm",
+    "step": "/generated/pololu-1137/model.step",
+    "glb": "/generated/pololu-1137/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-114": {
+    "name": "Tamiya 70168 Double Gearbox Kit",
+    "step": "/generated/pololu-114/model.step",
+    "glb": "/generated/pololu-114/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1154": {
+    "name": "4-AA Battery Holder, Back-to-Back",
+    "step": "/generated/pololu-1154/model.step",
+    "glb": "/generated/pololu-1154/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1156": {
+    "name": "6-AA Battery Holder, Back-to-Back",
+    "step": "/generated/pololu-1156/model.step",
+    "glb": "/generated/pololu-1156/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1204": {
+    "name": "Stepper Motor: Bipolar, 200 Steps/Rev, 20×30mm, 3.9V, 0.6 A/Phase",
+    "step": "/generated/pololu-1204/model.step",
+    "glb": "/generated/pololu-1204/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1208": {
+    "name": "Stepper Motor: Bipolar, 200 Steps/Rev, 35×28mm, 10V, 0.5 A/Phase",
+    "step": "/generated/pololu-1208/model.step",
+    "glb": "/generated/pololu-1208/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1351": {
+    "name": "Micro Maestro 6-Channel USB Servo Controller (Partial Kit)",
+    "step": "/generated/pololu-1351/model.step",
+    "glb": "/generated/pololu-1351/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1352": {
+    "name": "Mini Maestro 12-Channel USB Servo Controller (Assembled)",
+    "step": "/generated/pololu-1352/model.step",
+    "glb": "/generated/pololu-1352/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1354": {
+    "name": "Mini Maestro 18-Channel USB Servo Controller (Assembled)",
+    "step": "/generated/pololu-1354/model.step",
+    "glb": "/generated/pololu-1354/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-136": {
+    "name": "Sharp/Socle GP2Y0A21YK0F Analog Distance Sensor 10-80cm",
+    "step": "/generated/pololu-136/model.step",
+    "glb": "/generated/pololu-136/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1402": {
+    "name": "Snap-Action Switch with 16.7mm Lever: 3-Pin, SPDT, 5A",
+    "step": "/generated/pololu-1402/model.step",
+    "glb": "/generated/pololu-1402/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1404": {
+    "name": "Snap-Action Switch with 16.3mm Roller Lever: 3-Pin, SPDT, 5A",
+    "step": "/generated/pololu-1404/model.step",
+    "glb": "/generated/pololu-1404/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1405": {
+    "name": "Snap-Action Switch with 18.5mm Bump Lever: 3-Pin, SPDT, 5A",
+    "step": "/generated/pololu-1405/model.step",
+    "glb": "/generated/pololu-1405/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1406": {
+    "name": "Rocker Switch: 3-Pin, SPDT, 10A",
+    "step": "/generated/pololu-1406/model.step",
+    "glb": "/generated/pololu-1406/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1408": {
+    "name": "Mini Slide Switch: 3-Pin, SPDT, 0.3A (3-Pack)",
+    "step": "/generated/pololu-1408/model.step",
+    "glb": "/generated/pololu-1408/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1410": {
+    "name": "Basic Sumo Blade for Zumo Chassis",
+    "step": "/generated/pololu-1410/model.step",
+    "glb": "/generated/pololu-1410/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1418": {
+    "name": "Zumo Chassis Kit (No Motors)",
+    "step": "/generated/pololu-1418/model.step",
+    "glb": "/generated/pololu-1418/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-142": {
+    "name": "3-AA Battery Holder",
+    "step": "/generated/pololu-142/model.step",
+    "glb": "/generated/pololu-142/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1424": {
+    "name": "Pololu Wheel 60×8mm Pair - White",
+    "step": "/generated/pololu-1424/model.step",
+    "glb": "/generated/pololu-1424/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1430": {
+    "name": "Pololu Wheel 80×10mm Pair - Black",
+    "step": "/generated/pololu-1430/model.step",
+    "glb": "/generated/pololu-1430/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1432": {
+    "name": "Pololu Wheel 80×10mm Pair - Yellow",
+    "step": "/generated/pololu-1432/model.step",
+    "glb": "/generated/pololu-1432/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1524": {
+    "name": "Magnetic Encoder Disc for Mini Plastic Gearmotors, OD 9.7 mm, ID 1.5 mm, 12 CPR (Bulk)",
+    "step": "/generated/pololu-1524/model.step",
+    "glb": "/generated/pololu-1524/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1636": {
+    "name": "Shaftless Vibration Motor 10x3.4mm",
+    "step": "/generated/pololu-1636/model.step",
+    "glb": "/generated/pololu-1636/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1638": {
+    "name": "Shaftless Vibration Motor 10x2.0mm",
+    "step": "/generated/pololu-1638/model.step",
+    "glb": "/generated/pololu-1638/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1683": {
+    "name": "Tamiya 70190 Mini Motor Multi-Ratio Gearbox (12-Speed) Kit",
+    "step": "/generated/pololu-1683/model.step",
+    "glb": "/generated/pololu-1683/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1685": {
+    "name": "Tamiya 70192 Slick Tire Set (4 tires)",
+    "step": "/generated/pololu-1685/model.step",
+    "glb": "/generated/pololu-1685/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-1695": {
+    "name": "Force-Sensing Resistor: 0.2″-Diameter Circle",
+    "step": "/generated/pololu-1695/model.step",
+    "glb": "/generated/pololu-1695/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-1996": {
+    "name": "Pololu Universal Aluminum Mounting Hub for 3mm Shaft, M3 Holes (2-Pack)",
+    "step": "/generated/pololu-1996/model.step",
+    "glb": "/generated/pololu-1996/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2125": {
+    "name": "L3GD20 3-Axis Gyro Carrier with Voltage Regulator",
+    "step": "/generated/pololu-2125/model.step",
+    "glb": "/generated/pololu-2125/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-2129": {
+    "name": "L3GD20H 3-Axis Gyro Carrier with Voltage Regulator",
+    "step": "/generated/pololu-2129/model.step",
+    "glb": "/generated/pololu-2129/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-2135": {
+    "name": "DRV8835 Dual Motor Driver Carrier",
+    "step": "/generated/pololu-2135/model.step",
+    "glb": "/generated/pololu-2135/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-2138": {
+    "name": "LOCOSYS LS20031 66-Channel GPS Receiver Module (MT3339 Chipset)",
+    "step": "/generated/pololu-2138/model.step",
+    "glb": "/generated/pololu-2138/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2157": {
+    "name": "LOCOSYS LC20031-V2 135-Channel Dual-Band GNSS Receiver Module",
+    "step": "/generated/pololu-2157/model.step",
+    "glb": "/generated/pololu-2157/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2225": {
+    "name": "7.2 V NiMH Battery Packs",
+    "step": "/generated/pololu-2225/model.step",
+    "glb": "/generated/pololu-2225/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2226": {
+    "name": "8.4 V NiMH Battery Packs",
+    "step": "/generated/pololu-2226/model.step",
+    "glb": "/generated/pololu-2226/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2265": {
+    "name": "Vibration Motor 11.6×4.6×4.8mm",
+    "step": "/generated/pololu-2265/model.step",
+    "glb": "/generated/pololu-2265/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-2268": {
+    "name": "Stepper Motor with 28cm Lead Screw: Bipolar, 200 Steps/Rev, 42×38mm, 2.8V, 1.7 A/Phase",
+    "step": "/generated/pololu-2268/model.step",
+    "glb": "/generated/pololu-2268/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2296": {
+    "name": "Sanyo Pancake Stepper Motor: Bipolar, 200 Steps/Rev, 42×18.6mm, 5.4V, 1 A/Phase",
+    "step": "/generated/pololu-2296/model.step",
+    "glb": "/generated/pololu-2296/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-2299": {
+    "name": "Sanyo Pancake Stepper Motor: Bipolar, 200 Steps/Rev, 50×16mm, 5.9V, 1 A/Phase",
+    "step": "/generated/pololu-2299/model.step",
+    "glb": "/generated/pololu-2299/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-2313": {
+    "name": "Glideforce LACT12P-12V-20 Light-Duty Linear Actuator with Feedback: 50kgf, 12\" Stroke (11.8\" Usable), 0.57\"/s, 12V",
+    "step": "/generated/pololu-2313/model.step",
+    "glb": "/generated/pololu-2313/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2373": {
+    "name": "1000:1 Micro Metal Gearmotor HP 6V with Extended Motor Shaft",
+    "step": "/generated/pololu-2373/model.step",
+    "glb": "/generated/pololu-2373/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2450": {
+    "name": "Sharp/Socle GP2Y0A51SK0F Analog Distance Sensor 2-15cm",
+    "step": "/generated/pololu-2450/model.step",
+    "glb": "/generated/pololu-2450/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2452": {
+    "name": "ACS711 Current Sensor Carriers",
+    "step": "/generated/pololu-2452/model.step",
+    "glb": "/generated/pololu-2452/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2464": {
+    "name": "Sharp/Socle GP2Y0A41SK0F Analog Distance Sensor 4-30cm",
+    "step": "/generated/pololu-2464/model.step",
+    "glb": "/generated/pololu-2464/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2489": {
+    "name": "VL6180X Time-of-Flight Distance Sensor Carrier with Voltage Regulator, 60cm max",
+    "step": "/generated/pololu-2489/model.step",
+    "glb": "/generated/pololu-2489/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-2490": {
+    "name": "VL53L0X Time-of-Flight Distance Sensor Carrier with Voltage Regulator, 200cm Max",
+    "step": "/generated/pololu-2490/model.step",
+    "glb": "/generated/pololu-2490/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-255": {
+    "name": "Pololu Robot Chassis RRC01A",
+    "step": "/generated/pololu-255/model.step",
+    "glb": "/generated/pololu-255/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2672": {
+    "name": "Pololu Aluminum Scooter Wheel Adapter for 4mm Shaft",
+    "step": "/generated/pololu-2672/model.step",
+    "glb": "/generated/pololu-2672/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2673": {
+    "name": "Pololu Aluminum Scooter Wheel Adapter for 5mm Shaft",
+    "step": "/generated/pololu-2673/model.step",
+    "glb": "/generated/pololu-2673/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2680": {
+    "name": "Pololu Mini Plastic Gearmotor Bracket Pair - Wide",
+    "step": "/generated/pololu-2680/model.step",
+    "glb": "/generated/pololu-2680/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2682": {
+    "name": "12mm Hex Wheel Adapter for 3mm Shaft (2-Pack)",
+    "step": "/generated/pololu-2682/model.step",
+    "glb": "/generated/pololu-2682/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-2689": {
+    "name": "Stepper Motor with 18cm Lead Screw: Bipolar, 200 Steps/Rev, 42×38mm, 2.8V, 1.7 A/Phase",
+    "step": "/generated/pololu-2689/model.step",
+    "glb": "/generated/pololu-2689/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2727": {
+    "name": "Force-Sensing Resistor: 0.25″-Diameter Circle, Short Tail",
+    "step": "/generated/pololu-2727/model.step",
+    "glb": "/generated/pololu-2727/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2730": {
+    "name": "Force-Sensing Linear Potentiometer: 4.0″×0.4″ Strip, Customizable Length",
+    "step": "/generated/pololu-2730/model.step",
+    "glb": "/generated/pololu-2730/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2738": {
+    "name": "MinIMU-9 v5 Gyro, Accelerometer, and Compass (LSM6DS33 and LIS3MDL Carrier)",
+    "step": "/generated/pololu-2738/model.step",
+    "glb": "/generated/pololu-2738/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-2764": {
+    "name": "UM7 Orientation Sensor",
+    "step": "/generated/pololu-2764/model.step",
+    "glb": "/generated/pololu-2764/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2798": {
+    "name": "LSM6DSO 3D Accelerometer and Gyro Carrier with Voltage Regulator",
+    "step": "/generated/pololu-2798/model.step",
+    "glb": "/generated/pololu-2798/model.glb",
+    "confidence": "medium/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2804": {
+    "name": "Pololu RC Switch with Relay (Assembled)",
+    "step": "/generated/pololu-2804/model.step",
+    "glb": "/generated/pololu-2804/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2839": {
+    "name": "Charge Pump Voltage Inverter: 1.8-5.3V, 60mA",
+    "step": "/generated/pololu-2839/model.step",
+    "glb": "/generated/pololu-2839/model.glb",
+    "confidence": "medium/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2876": {
+    "name": "STSPIN220 Low-Voltage Stepper Motor Driver Carrier",
+    "step": "/generated/pololu-2876/model.step",
+    "glb": "/generated/pololu-2876/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2970": {
+    "name": "AMIS-30543 Stepper Motor Driver Carrier",
+    "step": "/generated/pololu-2970/model.step",
+    "glb": "/generated/pololu-2970/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2974": {
+    "name": "TB67S279FTG Stepper Motor Driver Carrier - Full Breakout",
+    "step": "/generated/pololu-2974/model.step",
+    "glb": "/generated/pololu-2974/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-2999": {
+    "name": "TB67H420FTG Dual/Single Motor Driver Carrier",
+    "step": "/generated/pololu-2999/model.step",
+    "glb": "/generated/pololu-2999/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3030": {
+    "name": "Pololu 22T Track Set - Black",
+    "step": "/generated/pololu-3030/model.step",
+    "glb": "/generated/pololu-3030/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3116": {
+    "name": "A-Star 32U4 Robot Controller LV with Raspberry Pi Bridge (SMT Components Only)",
+    "step": "/generated/pololu-3116/model.step",
+    "glb": "/generated/pololu-3116/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3118": {
+    "name": "A-Star 32U4 Robot Controller SV with Raspberry Pi Bridge (SMT Components Only)",
+    "step": "/generated/pololu-3118/model.step",
+    "glb": "/generated/pololu-3118/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3130": {
+    "name": "Tic T825 USB Multi-Interface Stepper Motor Controller (Connectors Soldered)",
+    "step": "/generated/pololu-3130/model.step",
+    "glb": "/generated/pololu-3130/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3132": {
+    "name": "Tic T834 USB Multi-Interface Stepper Motor Controller (Connectors Soldered)",
+    "step": "/generated/pololu-3132/model.step",
+    "glb": "/generated/pololu-3132/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3142": {
+    "name": "Jrk G2 21v3 USB Motor Controller with Feedback",
+    "step": "/generated/pololu-3142/model.step",
+    "glb": "/generated/pololu-3142/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3146": {
+    "name": "Jrk G2 18v19 USB Motor Controller with Feedback",
+    "step": "/generated/pololu-3146/model.step",
+    "glb": "/generated/pololu-3146/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3160": {
+    "name": "A-Star 328PB Micro",
+    "step": "/generated/pololu-3160/model.step",
+    "glb": "/generated/pololu-3160/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3272": {
+    "name": "Scooter/Skate Wheel 70×25mm - Black",
+    "step": "/generated/pololu-3272/model.step",
+    "glb": "/generated/pololu-3272/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-3275": {
+    "name": "Scooter/Skate Wheel 84×24mm - Black",
+    "step": "/generated/pololu-3275/model.step",
+    "glb": "/generated/pololu-3275/model.glb",
+    "confidence": "medium/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3278": {
+    "name": "Scooter/Skate Wheel 100×24mm - Black",
+    "step": "/generated/pololu-3278/model.step",
+    "glb": "/generated/pololu-3278/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-3290": {
+    "name": "RoboClaw Solo 30A Motor Controller",
+    "step": "/generated/pololu-3290/model.step",
+    "glb": "/generated/pololu-3290/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-3291": {
+    "name": "RoboClaw Solo 60A Motor Controller",
+    "step": "/generated/pololu-3291/model.step",
+    "glb": "/generated/pololu-3291/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3415": {
+    "name": "VL53L1X Time-of-Flight Distance Sensor Carrier with Voltage Regulator, 400cm Max",
+    "step": "/generated/pololu-3415/model.step",
+    "glb": "/generated/pololu-3415/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-3449": {
+    "name": "Magnetic Encoder Disc for 20D mm Metal Gearmotors, OD 9.7 mm, ID 2.0 mm, 12 CPR (Bulk)",
+    "step": "/generated/pololu-3449/model.step",
+    "glb": "/generated/pololu-3449/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-3498": {
+    "name": "Magnetic Encoder Disc for 20D mm Metal Gearmotors, OD 9.7 mm, ID 2.0 mm, 20 CPR (Bulk)",
+    "step": "/generated/pololu-3498/model.step",
+    "glb": "/generated/pololu-3498/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-3542": {
+    "name": "Romi Encoder Pair Kit, 12 CPR, 3.5-18V",
+    "step": "/generated/pololu-3542/model.step",
+    "glb": "/generated/pololu-3542/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3547": {
+    "name": "Magnetic Encoder Pair Kit with Side-Entry Connector for Mini Plastic Gearmotor, 12 CPR, 2.7-18V",
+    "step": "/generated/pololu-3547/model.step",
+    "glb": "/generated/pololu-3547/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3549": {
+    "name": "120:1 Mini Plastic Gearmotor HP, Offset 3mm D-Shaft Output, with 12 CPR Encoder, Side Connector",
+    "step": "/generated/pololu-3549/model.step",
+    "glb": "/generated/pololu-3549/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3560": {
+    "name": "Romi Chassis Expansion Plate - Black",
+    "step": "/generated/pololu-3560/model.step",
+    "glb": "/generated/pololu-3560/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3575": {
+    "name": "Balboa 32U4 Balancing Robot Kit (No Motors or Wheels)",
+    "step": "/generated/pololu-3575/model.step",
+    "glb": "/generated/pololu-3575/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3602": {
+    "name": "Glideforce LACT6-500APL Industrial-Duty Linear Actuator with Acme Drive and Feedback: 250kgf, 6\" Stroke (5.5\" Usable), 0.66\"/s, 12V",
+    "step": "/generated/pololu-3602/model.step",
+    "glb": "/generated/pololu-3602/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3618": {
+    "name": "Glideforce MD122010-P Medium-Duty Linear Actuator with Feedback: 100kgf, 10\" Stroke (9.8\" Usable), 0.58\"/s, 12V",
+    "step": "/generated/pololu-3618/model.step",
+    "glb": "/generated/pololu-3618/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3622": {
+    "name": "Mounting Bracket for Glideforce Medium-Duty Linear Actuators - Aluminum",
+    "step": "/generated/pololu-3622/model.step",
+    "glb": "/generated/pololu-3622/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3623": {
+    "name": "Mounting Bracket for Glideforce Medium-Duty Linear Actuators - Steel",
+    "step": "/generated/pololu-3623/model.step",
+    "glb": "/generated/pololu-3623/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3626": {
+    "name": "Glideforce LACT6-1000BPL Industrial-Duty Linear Actuator with Ball Screw Drive and Feedback: 450kgf, 6\" Stroke (4.8\" Usable), 0.66\"/s, 12V",
+    "step": "/generated/pololu-3626/model.step",
+    "glb": "/generated/pololu-3626/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3637": {
+    "name": "Mounting Bracket for Glideforce Industrial-Duty Linear Actuators - Steel",
+    "step": "/generated/pololu-3637/model.step",
+    "glb": "/generated/pololu-3637/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3690": {
+    "name": "Pololu Multi-Hub Wheel w/Inserts for 3mm and 4mm Shafts - 80×10mm, Black, 2-Pack",
+    "step": "/generated/pololu-3690/model.step",
+    "glb": "/generated/pololu-3690/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-3692": {
+    "name": "VL53L4CD Time-of-Flight Distance Sensor Carrier with Voltage Regulator, 120cm Max",
+    "step": "/generated/pololu-3692/model.step",
+    "glb": "/generated/pololu-3692/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-3725": {
+    "name": "3pi+ Chassis Kit (No Motors or Electronics)",
+    "step": "/generated/pololu-3725/model.step",
+    "glb": "/generated/pololu-3725/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-4202": {
+    "name": "QTR-HD-02A Reflectance Sensor Array: 2-Channel, 4mm Pitch, Analog Output",
+    "step": "/generated/pololu-4202/model.step",
+    "glb": "/generated/pololu-4202/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-4241": {
+    "name": "QTR-MD-01A Reflectance Sensor: 1-Channel, 7.5mm Wide, Analog Output",
+    "step": "/generated/pololu-4241/model.step",
+    "glb": "/generated/pololu-4241/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-4415": {
+    "name": "QTRX-HD-15A Reflectance Sensor Array: 15-Channel, 4mm Pitch, Analog Output, Low Current",
+    "step": "/generated/pololu-4415/model.step",
+    "glb": "/generated/pololu-4415/model.glb",
+    "confidence": "medium/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-4466": {
+    "name": "Glideforce GF01-121005-1-66 Micro Linear Actuator with Limit Switches: 12V, 4.3kgf, 17.6mm/s, 50mm Stroke",
+    "step": "/generated/pololu-4466/model.step",
+    "glb": "/generated/pololu-4466/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-4541": {
+    "name": "QTRXL-MD-01RC Reflectance Sensor: 1-Channel, 7.5mm Wide, RC Output, Long Range",
+    "step": "/generated/pololu-4541/model.step",
+    "glb": "/generated/pololu-4541/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-4905": {
+    "name": "Pololu Wheel for Micro Servo Splines (21T, 4.8mm) - 40×7mm, Black, 2-Pack",
+    "step": "/generated/pololu-4905/model.step",
+    "glb": "/generated/pololu-4905/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-4939": {
+    "name": "Pololu Wheel for Standard Servo Splines (25T, 5.8mm) - 90×10mm, White, 2-Pack",
+    "step": "/generated/pololu-4939/model.step",
+    "glb": "/generated/pololu-4939/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-5011": {
+    "name": "Zumo 2040 Robot",
+    "step": "/generated/pololu-5011/model.step",
+    "glb": "/generated/pololu-5011/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-5030": {
+    "name": "Motoron M3S256 Triple Motor Controller Shield for Arduino (Connectors Soldered)",
+    "step": "/generated/pololu-5030/model.step",
+    "glb": "/generated/pololu-5030/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-5039": {
+    "name": "Motoron M2S24v14 Dual High-Power Motor Controller Shield for Arduino (Connectors Soldered)",
+    "step": "/generated/pololu-5039/model.step",
+    "glb": "/generated/pololu-5039/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-5068": {
+    "name": "Motoron M3S550 Triple Motor Controller Shield for Arduino (Connectors Soldered)",
+    "step": "/generated/pololu-5068/model.step",
+    "glb": "/generated/pololu-5068/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-5177": {
+    "name": "1000:1 Micro Metal Gearmotor HP 6V with 12 CPR Encoder, Side Connector",
+    "step": "/generated/pololu-5177/model.step",
+    "glb": "/generated/pololu-5177/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-5249": {
+    "name": "TB67S579FTG Stepper Motor Driver Carrier - Full Breakout",
+    "step": "/generated/pololu-5249/model.step",
+    "glb": "/generated/pololu-5249/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-5286": {
+    "name": "MPQ6612A Single Brushed DC Motor Driver Carrier (Soldered Connectors)",
+    "step": "/generated/pololu-5286/model.step",
+    "glb": "/generated/pololu-5286/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-5420": {
+    "name": "Pololu Isolated Solid State Relay/Switch, SPST, 60V, 7A",
+    "step": "/generated/pololu-5420/model.step",
+    "glb": "/generated/pololu-5420/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-5426": {
+    "name": "Pololu Isolated Solid State Relay/Switch, SPST, 100V, 4.5A",
+    "step": "/generated/pololu-5426/model.step",
+    "glb": "/generated/pololu-5426/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-5442": {
+    "name": "ACS37041 Current Sensor Micro Carriers",
+    "step": "/generated/pololu-5442/model.step",
+    "glb": "/generated/pololu-5442/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-5447": {
+    "name": "ACS37041 Current Sensor Compact Carriers",
+    "step": "/generated/pololu-5447/model.step",
+    "glb": "/generated/pololu-5447/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-5724": {
+    "name": "24V High-Power (HP) 25D mm Gearmotors",
+    "step": "/generated/pololu-5724/model.step",
+    "glb": "/generated/pololu-5724/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-63": {
+    "name": "Tamiya 70145 Narrow Tire Set (2 tires)",
+    "step": "/generated/pololu-63/model.step",
+    "glb": "/generated/pololu-63/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-64": {
+    "name": "Tamiya 70096 Off-Road Tires (2 tires)",
+    "step": "/generated/pololu-64/model.step",
+    "glb": "/generated/pololu-64/model.glb",
+    "confidence": "medium/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-66": {
+    "name": "Tamiya 70144 Ball Caster Kit (2 casters)",
+    "step": "/generated/pololu-66/model.step",
+    "glb": "/generated/pololu-66/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-70": {
+    "name": "Tamiya 72001 Planetary Gearbox Kit",
+    "step": "/generated/pololu-70/model.step",
+    "glb": "/generated/pololu-70/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-713": {
+    "name": "TB6612FNG Dual Motor Driver Carrier",
+    "step": "/generated/pololu-713/model.step",
+    "glb": "/generated/pololu-713/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-723": {
+    "name": "Maxbotix LV-MaxSonar-EZ0 Sonar Range Finder MB1000",
+    "step": "/generated/pololu-723/model.step",
+    "glb": "/generated/pololu-723/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-726": {
+    "name": "Maxbotix LV-MaxSonar-EZ1 Sonar Range Finder MB1010",
+    "step": "/generated/pololu-726/model.step",
+    "glb": "/generated/pololu-726/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-79": {
+    "name": "Tamiya 70098 Universal Plate Set",
+    "step": "/generated/pololu-79/model.step",
+    "glb": "/generated/pololu-79/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-793": {
+    "name": "Maxbotix LV-MaxSonar-EZ3 Sonar Range Finder MB1030",
+    "step": "/generated/pololu-793/model.step",
+    "glb": "/generated/pololu-793/model.glb",
+    "confidence": "medium/medium",
+    "status": "prototype_unverified"
+  },
+  "pololu-86": {
+    "name": "Tamiya 70157 Universal Plate Set (2pcs.)",
+    "step": "/generated/pololu-86/model.step",
+    "glb": "/generated/pololu-86/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-950": {
+    "name": "Pololu Ball Caster with 3/8″ Plastic Ball",
+    "step": "/generated/pololu-950/model.step",
+    "glb": "/generated/pololu-950/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-951": {
+    "name": "Pololu Ball Caster with 3/8″ Metal Ball",
+    "step": "/generated/pololu-951/model.step",
+    "glb": "/generated/pololu-951/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "pololu-980": {
+    "name": "Solarbotics GMPW-R RED Wheel with Encoder Stripes, Silicone Tire",
+    "step": "/generated/pololu-980/model.step",
+    "glb": "/generated/pololu-980/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "sparkfun-DEV-20360": {
+    "name": "Teensy 4.1 without Ethernet (Headers)",
+    "step": "/generated/sparkfun-DEV-20360/model.step",
+    "glb": "/generated/sparkfun-DEV-20360/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "sparkfun-DEV-28368": {
+    "name": "Teensy 4.0, Lockable",
+    "step": "/generated/sparkfun-DEV-28368/model.step",
+    "glb": "/generated/sparkfun-DEV-28368/model.glb",
+    "confidence": "low/low",
+    "status": "prototype_unverified"
+  },
+  "sparkfun-SEN-14599": {
+    "name": "LIDAR-Lite v3HP",
+    "step": "/generated/sparkfun-SEN-14599/model.step",
+    "glb": "/generated/sparkfun-SEN-14599/model.glb",
     "confidence": "low/low",
     "status": "prototype_unverified"
   }

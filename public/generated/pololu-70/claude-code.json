@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Coaxial assembly along X: small cylindrical DC motor (dia 24) at one end, a dia 38 cylindrical planetary gearbox housing, a small output boss with a 4 mm round output shaft, two 6 mm tie rods at top and bottom of the housing, and two flat L-shaped mounting brackets (output end and motor end) with base plates at Y=0.",
+  "confidence": "low",
+  "warnings": [
+    "No overall dimensions were provided, so all sizes are rough estimates from the image and the 95x50x40 bounds.",
+    "The bracket perforations are visible but their sizes and positions are unknown, so they are omitted.",
+    "Screw heads, nuts, motor terminals, wires, motor can details and the end-cap logo are omitted.",
+    "The bracket shapes are simplified to rectangular plates, and the real brackets are likely triangular or gusseted.",
+    "The tie rod positions are approximated at the top and bottom of the housing.",
+    "The shaft length and the housing stage lengths are estimated."
+  ],
+  "cadquery": "def cyl(x0, L, r, y=25, z=0):\n    return cq.Workplane('YZ').workplane(offset=x0).center(y, z).circle(r).extrude(L)\n\n# motor, gearbox stack, output boss, output shaft (all on the X axis at Y=25)\nmotor = cyl(-47.5, 27.5, 12)\ngear = cyl(-20, 52, 19)\nboss = cyl(32, 3, 8)\nshaft = cyl(35, 12.5, 2)\n\n# two tie rods along the housing\nrod_top = cyl(-20, 52, 3, y=25 + 19)\nrod_bot = cyl(-20, 52, 3, y=25 - 19)\n\n# output-end L bracket: base plate at Y=0 plus upright plate\nout_base = cq.Workplane('XY').box(14, 1.5, 32, centered=(False, False, True)).translate((32, 0, 0))\nout_up = cq.Workplane('XY').box(1.5, 22, 32, centered=(False, False, True)).translate((32, 0, 0))\n\n# motor-end L bracket\nm_base = cq.Workplane('XY').box(14, 1.5, 20, centered=(False, False, True)).translate((-22, 0, 0))\nm_up = cq.Workplane('XY').box(1.5, 15, 20, centered=(False, False, True)).translate((-21.5, 0, 0))\n\npart = motor.union(gear).union(boss).union(shaft).union(rod_top).union(rod_bot)\nfor s in (out_base, out_up, m_base, m_up):\n    part = part.union(s)\n"
+}

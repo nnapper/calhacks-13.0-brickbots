@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Rectangular carrier PCB 20.3 x 17.8 mm, 1.6 mm thick (thickness along Y, bottom at Y=0, centered in X and Z), with two 2.2 mm mounting through-holes and three 1.0 mm through-holes at 2.54 mm pitch near the +X end.",
+  "confidence": "low",
+  "warnings": [
+    "Board thickness of 1.6 mm is assumed, since no height was given.",
+    "Dimensions are marked unverified in the product data.",
+    "Hole positions and diameters are visual estimates.",
+    "The SOT-23-5 sensor, capacitor, copper pads, and the pad holes and cutouts are not modeled because their positions and heights are uncertain.",
+    "The slot between the IP+ and IP- pads is not modeled."
+  ],
+  "cadquery": "t = 1.6\nboard = cq.Workplane('XY').box(20.3, t, 17.8, centered=(True, False, True))\nmount = cq.Workplane('XZ').pushPoints([(8, 6.4), (8, -6.4)]).circle(1.1).extrude(-t)\npins = cq.Workplane('XZ').pushPoints([(6, 2.54), (6, 0), (6, -2.54)]).circle(0.5).extrude(-t)\npart = board.cut(mount).cut(pins)"
+}

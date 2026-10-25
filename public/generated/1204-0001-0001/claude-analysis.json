@@ -1,0 +1,73 @@
+{
+  "partType": "bracket",
+  "summary": "Compact 90-degree gusseted angle mount. Its 15 x 15 mm right-angle profile is extruded 14 mm. Two legs meet at a corner and are joined by a 45-degree gusset face. Each leg has one 4 mm through hole with an 8 mm counterbore opening on the angled face.",
+  "boundsMm": {
+    "x": 15,
+    "y": 14,
+    "z": 15
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0.5,
+          0,
+          -7.5
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "x",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -7.5,
+          0,
+          0.5
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          0.5,
+          0,
+          0
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "x",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0.5
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -7.5,
+      "description": "Bottom leg face. It mounts flat to the first channel, and its 4 mm hole sits 8 mm from the outer corner."
+    },
+    {
+      "axis": "x",
+      "offsetMm": -7.5,
+      "description": "Side leg face, perpendicular to the bottom face. It mounts flat to the second channel, and its 4 mm hole sits 8 mm from the outer corner."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Dimensions are printed on the drawing: 15 mm and 15 mm for the profile, 14 mm for the extrusion width, holes 8 mm from the corner, Ø4 mm hole, Ø8 mm counterbore. The text lists no dimensions, so confidence is medium rather than high. Axis assignment is my assumption: x and z are the two 15 mm legs, y is the 14 mm width, and the box is centered at the origin. The hole axes are perpendicular to the leg faces and centered across the 14 mm width (y = 0). The counterbore positions and depths are approximate. The section view shows 2.25 mm wall thicknesses at the leg faces, but I did not model those or any internal geometry. The small chamfer at the top corner is not modeled."
+}

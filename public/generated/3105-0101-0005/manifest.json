@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1x5A Motor Controller (6-24V Input, 9A Burst)",
+    "sku": "3105-0101-0005",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1x5a-motor-controller-6-24v-input-9a-burst/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "The drawing prints 28.5 mm (board length), 35.45 mm (hole center to the far end of the board), 15.5 mm (width), 5.6 mm (thickness) and a Ø4 mm hole. The 40.5 mm x-bound is my estimate: 35.45 mm plus about 5 mm from the hole center to the ear's outer edge, scaled from the drawing at about 8 px/mm (28.5 mm = 227 px). The hole position is derived the same way, with the box centered at the origin and the hole near the -x end. Heat-shrink tail and wire leads are excluded (leads are 150 mm each). Whether the 5.6 mm thickness covers the ear standoff or only the board is uncertain. Treat the hole as through because the photos show an open bore, but its exact depth is not stated. The z mounting-surface offset assumes the underside sits at -z/2.",
+      "Overall X length of 40.5 mm is estimated from the drawing, not stated.",
+      "The hole is placed at Y = 7.75 (mid-width) because the analysis gave Y=0 while the bottom sits at Y=0.",
+      "The board and heat-shrink thickness (3.2 mm), the board's z offset, the ear diameter and the connecting web are guesses.",
+      "It is uncertain whether the 5.6 mm thickness covers the standoff or the whole board.",
+      "Wire leads, XT30, bullet and signal connectors, the heat-shrink taper, the LED and the logos are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -20.25,
+      "xmax": 20.25,
+      "ymin": 0,
+      "ymax": 15.5,
+      "zmin": -2.8,
+      "zmax": 2.8,
+      "xlen": 40.5,
+      "ylen": 15.5,
+      "zlen": 5.6
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 51952,
+        "sha256": "81847e9c70b20ca24b4ee2ec8915d68fc9e697fcc7dcef82c7357b2b58d0c1cd"
+      },
+      "model.stl": {
+        "bytes": 36084,
+        "sha256": "51b137ea78bb6653ef7aa87b2322da9d0c7a6f436b802862e091d413e9a26e7a"
+      },
+      "model.glb": {
+        "bytes": 13972,
+        "sha256": "ab04c9d810b5e82252fed2e9788eeaebfceb497d5f4bb8353ded0ce430397196"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "81847e9c70b20ca24b4ee2ec8915d68fc9e697fcc7dcef82c7357b2b58d0c1cd"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

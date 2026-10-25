@@ -1,13 +1,12 @@
 {
-  "shapeSummary": "Round plate, 144 mm diameter and 6 mm thick. The bottom face is at Y=0 and the plate is centered on X and Z. It has one 14 mm through hole at the center.",
-  "confidence": "low",
+  "shapeSummary": "Plain circular aluminum disc, 144 mm in diameter and 6 mm thick. It is centered on X and Z, with the bottom face at Y=0 and the top face at Y=6. No holes or cutouts are modeled.",
+  "confidence": "medium",
   "warnings": [
-    "The 144 mm diameter and 6 mm thickness come from unverified specs.",
-    "The 14 mm central hole diameter is a rough visual estimate.",
-    "The four outer hub-pattern clusters (large openings with keyhole slots and counterbored lobes) are omitted because their positions and sizes could not be read reliably.",
-    "The many small M4-class through and threaded holes are omitted for the same reason.",
-    "The scattered counterbored holes are omitted because their sizes and positions are uncertain.",
-    "The central cluster's lobed counterbores and keyhole slots are omitted; only the central round opening is modeled."
+    "Only the 144 mm diameter and 6 mm thickness are stated, so the model is a plain disc.",
+    "The five quad-lobe counterbored cutouts (one central, four symmetric) are visible but their dimensions and positions are not given, so they are omitted.",
+    "The many small through-holes and larger counterbored holes are visible but their diameters, positions and counterbore depths are not given, so they are omitted.",
+    "The holes array in the analysis is empty. The vendor drawing is needed to add the hole pattern.",
+    "The source dimensions are marked unverified."
   ],
-  "cadquery": "part = cq.Workplane('XZ').circle(72).extrude(-6)\ncenter_hole = cq.Workplane('XZ').circle(7).extrude(-6)\npart = part.cut(center_hole)"
+  "cadquery": "part = cq.Workplane('XZ').circle(72).extrude(-6)"
 }

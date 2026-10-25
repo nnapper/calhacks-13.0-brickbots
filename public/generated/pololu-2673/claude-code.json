@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Stepped round aluminum hub only (washer and screws omitted), axis along Y with bottom at Y=0. Flange is 25 mm dia x 5 mm and nose is 20 mm dia x 7 mm, 12 mm total. It has a 5 mm central through bore, three 2.5 mm axial through holes on a 7.5 mm radius at 120° spacing, and two 3.3 mm radial set-screw holes in the flange, 90° apart, running from the outside to the bore.",
+  "confidence": "low",
+  "warnings": [
+    "No dimensions are given, so all sizes are estimated from the photo and the 608-bearing context.",
+    "Only the hub is modeled. The separate washer and the screws are omitted.",
+    "The radial holes are placed at flange mid-height and 90° apart. In the photo they look vertically stacked, so their exact positions are uncertain.",
+    "Axial holes are modeled as 2.5 mm M3 tap-drill size and radial holes as 3.3 mm M4 tap-drill size. Threads are not modeled.",
+    "The nose diameter and the flange and nose heights are visual guesses."
+  ],
+  "cadquery": "flange = cq.Workplane('XY').circle(12.5).extrude(5)\nnose = cq.Workplane('XY').workplane(offset=5).circle(10).extrude(7)\nbody = flange.union(nose)\nbody = body.cut(cq.Workplane('XY').circle(2.5).extrude(12))\npts = [(7.5*math.cos(math.radians(a)), 7.5*math.sin(math.radians(a))) for a in (0, 120, 240)]\nbody = body.cut(cq.Workplane('XY').pushPoints(pts).circle(1.25).extrude(12))\nrad_x = cq.Workplane('YZ').center(0, 2.5).circle(1.65).extrude(13)\nrad_y = cq.Workplane('XZ').center(0, 2.5).circle(1.65).extrude(-13)\nbody = body.cut(rad_x).cut(rad_y)\npart = body.rotate((0, 0, 0), (1, 0, 0), -90)"
+}

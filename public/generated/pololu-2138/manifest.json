@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "LOCOSYS LS20031 66-Channel GPS Receiver Module (MT3339 Chipset)",
+    "sku": "pololu-2138",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "dimensionsEstimated": true,
+    "codeConfidence": "low",
+    "warnings": [
+      "No dimensions are printed in the images or the text, so all sizes are assumptions. The LS20031 is commonly listed at about 30 x 30 mm. The PCB is assumed to be about 30 mm square and about 1.6 mm thick, with the antenna roughly 25 mm square and about 6 to 7 mm tall, giving a total height near 9 mm. The 2.2 mm hole diameter and the ±13.5 mm hole positions are estimated from the photo proportions. The corner holes appear to sit about 3 mm in from the board edges. The edge pad count and pitch are not modeled because they cannot be measured reliably. The serial pads are labeled VCC, RX, TX, GND, GND. The battery and chip heights are not modeled separately.",
+      "All dimensions are estimates; none are printed in the source.",
+      "Castellated edge pads, serial pads, LED, antenna feed pin, and underside chip/battery are omitted.",
+      "The antenna's rounded edges and the feed-point dimple are not modeled.",
+      "Corner hole positions and diameter are estimated from photo proportions.",
+      "The analysis axes (Z as thickness) were remapped so that Y is the vertical axis, as the rules require."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -15,
+      "xmax": 15,
+      "ymin": 0,
+      "ymax": 7.4,
+      "zmin": -15,
+      "zmax": 15,
+      "xlen": 30,
+      "ylen": 7.4,
+      "zlen": 30
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 59926,
+        "sha256": "3615b3cf3853e9bc068c1fac8702ad6e4f8db634003cb234b61f5a941674a3f4"
+      },
+      "model.stl": {
+        "bytes": 70184,
+        "sha256": "761f02b46063a0677b675e05ebb997fea58eb4ce80cae3097af6677315277873"
+      },
+      "model.glb": {
+        "bytes": 26184,
+        "sha256": "68d32fada298cbf58985e9e8bdccda4d9b894275fb820315e991d444b84cc901"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "3615b3cf3853e9bc068c1fac8702ad6e4f8db634003cb234b61f5a941674a3f4"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

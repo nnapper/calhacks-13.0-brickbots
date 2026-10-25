@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "LSM6DSO 3D Accelerometer and Gyro Carrier with Voltage Regulator",
+    "sku": "pololu-2798",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "low",
+    "warnings": [
+      "X and Y come from the printed drawing: 0.5 in (12.7 mm) wide and 0.9 in (22.86 mm) long, which matches the listed 13 × 23 mm. The mounting hole diameter is printed as 0.086 in (2.18 mm). The hole positions were estimated from pixels in the dimensioned photo, so they are approximate, with the origin at the board center, X across the width and Y along the length. The 3 mm height comes from the unverified spec and probably includes the components. PCB thickness is not shown. The header pad holes are not listed because their diameter is not stated. They sit on a 2.54 mm pitch in two edge columns: 10 pads on one side and 5 on the other.",
+      "PCB thickness (1.6 mm) is assumed; it is not stated.",
+      "Header hole diameter (1.0 mm) is assumed.",
+      "Header hole counts and positions (9 on one edge, 5 on the other) are estimated from the photo. The analysis notes say 10 and 5, which conflicts with the photo.",
+      "IC sizes and positions are approximate. Passive components, pads and silkscreen are omitted.",
+      "The overall height is about 2.7 mm, not the 3 mm listed, because the spec is unverified and may include other features.",
+      "Mounting hole positions are taken from the analysis and are approximate."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -6.35,
+      "xmax": 6.35,
+      "ymin": 0,
+      "ymax": 2.7,
+      "zmin": -11.43,
+      "zmax": 11.43,
+      "xlen": 12.7,
+      "ylen": 2.7,
+      "zlen": 22.86
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [2.7, 12.7, 22.86]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 119068,
+        "sha256": "a6ef76f5bfe8b32ecd38dfe4e8603197f8a11dc631ab3638cbdd8136a816eca3"
+      },
+      "model.stl": {
+        "bytes": 275084,
+        "sha256": "b3fbbf69d65288162bb3b0fe07b912c0a078758d45d5cc32c28c387fc6447228"
+      },
+      "model.glb": {
+        "bytes": 99660,
+        "sha256": "6f5161b9f7fdf40eaceb4d1281428a5e34ad7184dbf264bc176688566744d1f8"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "a6ef76f5bfe8b32ecd38dfe4e8603197f8a11dc631ab3638cbdd8136a816eca3"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

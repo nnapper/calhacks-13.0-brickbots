@@ -1,0 +1,42 @@
+{
+  "partType": "flat_plate",
+  "summary": "Small rectangular carrier PCB for a time-of-flight distance sensor. It has a 7-pin 0.1 in pitch edge header footprint along one long edge and two round mounting holes on the opposite side. The sensor and small components sit on the top face. Bounds use the printed 0.5 in x 0.7 in outline and the stated 0.085 in overall thickness.",
+  "boundsMm": {
+    "x": 12.7,
+    "y": 17.78,
+    "z": 2.16
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.18,
+      "positionsMm": [
+        [
+          -3.81,
+          6.35,
+          0
+        ],
+        [
+          -3.81,
+          -6.35,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.08,
+      "description": "Flat underside of the board, usable for mounting with #2 or M2 screws through the two holes. The holes are 12.7 mm apart (0.5 in)."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1.08,
+      "description": "Top face carrying the sensor and components. It is not a flat mounting face."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Width (0.5 in), length (0.7 in), hole spacing (0.5 in) and hole diameter (0.086 in) are printed on the drawing. Thickness 0.085 in comes from the spec text and is probably the overall height including components, so the bare PCB is thinner. Hole X offset (about 2.54 mm in from the edge) is estimated from the image scale, and the pair is assumed centered along Y. The x axis runs across the 12.7 mm width, with the header edge at +x. The 7 header pin holes (VDD, VIN, GND, SDA, SCL, XSHUT, GPIO1) are on a 2.54 mm pitch along the +x edge. Their diameter is not stated, so they are not listed. The supplied catalog dimensions (18 x 13 x 2 mm) are unverified and were not used."
+}

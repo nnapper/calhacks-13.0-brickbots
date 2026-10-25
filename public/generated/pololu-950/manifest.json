@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Ball Caster with 3/8″ Plastic Ball",
+    "sku": "pololu-950",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Stated values: ball diameter 9.525 mm (3/8 in) and screw-hole spacing 0.53 in (13.462 mm, so holes at x = ±6.731). Assembled height is 0.4–0.6 in (10.16–15.24 mm) depending on the spacers; z uses the 15.24 mm maximum, and the minimum is 10.16 mm. The hole diameter (about 2.4 mm, a clearance estimate for a #2 screw), the hole z-position, and the x/y housing footprint (19 × 12 mm) are not stated. I estimated them from the product images and the stated spacing, so verify them against a drawing. The images show two flat spacer plates with two holes each, but their thickness is given only as 1/16 in and 1/8 in. The ball's z-position is not given, so it is not modeled here.",
+      "The housing footprint, cup diameter, wall thickness, ear thickness and hole diameter are estimated from the image because they are not stated.",
+      "The vertical axis is Y per the rules, so the analysis JSON's Z axis (height) is mapped to Y.",
+      "Spacers, screws, nuts and threads are omitted. The height is set to the 0.4 in (10.16 mm) minimum, not the 15.24 mm maximum with spacers.",
+      "The ball is unioned with the housing as one solid. The real ball is a separate part with clearance.",
+      "The internal ball socket shape is simplified and not modeled in detail."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -9.5,
+      "xmax": 9.5,
+      "ymin": 0,
+      "ymax": 10.16,
+      "zmin": -6,
+      "zmax": 6,
+      "xlen": 19,
+      "ylen": 10.16,
+      "zlen": 12
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 15.240 mm; measured dimensions are [10.16, 12.0, 19.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 65385,
+        "sha256": "1708b159e35ddc5d4636ff95e88243084961898b5ea161e40501732bcf6a8f79"
+      },
+      "model.stl": {
+        "bytes": 104484,
+        "sha256": "8c28280116ef3843184c62787e2f0b55532f41c296a54b1cb10705bc03dd4c78"
+      },
+      "model.glb": {
+        "bytes": 38600,
+        "sha256": "c0f9176c770f9b9275f46d6657f3e45219695e38b5f09c4990cb31d0fa6f105f"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "1708b159e35ddc5d4636ff95e88243084961898b5ea161e40501732bcf6a8f79"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 13
+  },
+  "status": "prototype_unverified"
+}

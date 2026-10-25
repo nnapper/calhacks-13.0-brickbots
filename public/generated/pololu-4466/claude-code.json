@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Simplified extended micro linear actuator, 157 mm long along X (X from -78.5 to 78.5), 21 mm tall in Y (bottom at Y=0), 16 mm wide in Z. A rectangular rear case (48 x 21 x 16) sits at +X. A 12 x 12 mm square extension tube runs forward from the case. A 14 x 14 x 12 mm front end block and a cylindrical shaft stub (diameter 8) form the front end at -X. One 4.25 mm through hole along Z near the rear end, 4.25 mm from the end face.",
+  "confidence": "low",
+  "warnings": [
+    "Case, tube and cap cross-sections and lengths are estimated from the photo, not from stated dimensions.",
+    "The rear mounting ear is merged into the rectangular case block instead of being modeled as a separate narrower tab.",
+    "The second 4.25 mm hole from the analysis (x=-19.6) was omitted. It is not visible in the photo and would fall in the middle of the extension tube.",
+    "The hole in the front shaft-end fitting is visible but has no stated size, so it was omitted.",
+    "The 300 mm cable is not modeled.",
+    "Hole axis direction (Z) is ambiguous in the source analysis.",
+    "The tube and shaft are centered vertically on the case, which is an assumption."
+  ],
+  "cadquery": "case = cq.Workplane('XY').box(48, 21, 16).translate((54.5, 10.5, 0))\ntube = cq.Workplane('XY').box(97, 12, 12).translate((-17.5, 10.5, 0))\ncap = cq.Workplane('XY').box(12, 14, 14).translate((-66, 10.5, 0))\nshaft = cq.Workplane('YZ').workplane(offset=-78.5).center(10.5, 0).circle(4).extrude(6.5)\npart = case.union(tube).union(cap).union(shaft)\nhole = cq.Workplane('XY').workplane(offset=-10).center(74.25, 10.5).circle(2.125).extrude(20)\npart = part.cut(hole)"
+}

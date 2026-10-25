@@ -1,0 +1,74 @@
+{
+  "partType": "wheel",
+  "summary": "Single 80 mm diameter, 10 mm wide six-spoke wheel with a silicone tire and a central hub with a D-shaped bore. The product is sold as a pair, and this model describes one wheel. The axle is along the z axis.",
+  "boundsMm": {
+    "x": 80,
+    "y": 80,
+    "z": 10
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          6.35,
+          0,
+          0
+        ],
+        [
+          3.175,
+          5.5,
+          0
+        ],
+        [
+          -3.175,
+          5.5,
+          0
+        ],
+        [
+          -6.35,
+          0,
+          0
+        ],
+        [
+          -3.175,
+          -5.5,
+          0
+        ],
+        [
+          3.175,
+          -5.5,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Central hub face with a 3 mm D-shaft bore and a ring of six small mounting holes around it. The hole pattern is visible, but its radius is estimated, not printed."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Slots in the six spokes. They are visible in the images, but their dimensions are not stated."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 80 mm diameter, 10 mm width and 3 mm bore come from the vendor listing, which is flagged as unverified. The images show six mounting holes around the hub, and the listing says they fit #4 or M3 screws, so I used 3 mm for them. The bolt-circle radius of about 6.35 mm and the hole positions are estimated from the images and are not printed. The tire and rim appear to be separate parts, but I treated them as one wheel envelope. The hub's axial offset and the exact D-flat geometry are not visible, so the 3 mm bore is approximated as round."
+}

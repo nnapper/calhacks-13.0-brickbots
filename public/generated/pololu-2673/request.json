@@ -1,0 +1,9 @@
+{
+  "name": "Pololu Aluminum Scooter Wheel Adapter for 5mm Shaft",
+  "sku": "pololu-2673",
+  "category": "scooter-wheel-adapters",
+  "expectedDimensionsMm": [
+    5
+  ],
+  "units": "millimeter"
+}

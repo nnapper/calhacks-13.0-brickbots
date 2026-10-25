@@ -1,0 +1,32 @@
+{
+  "partType": "other",
+  "summary": "Compact stepper motor controller PCB with a micro-USB port, a 12-pin header strip along one long edge, a 6-position screw terminal block along the opposite edge, and a few surface-mount components. A large electrolytic capacitor stands on the board.",
+  "boundsMm": {
+    "x": 37,
+    "y": 30,
+    "z": 14
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.5,
+      "positionsMm": [
+        [
+          -14.5,
+          -11.5,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -7,
+      "description": "Underside of the PCB, which sits on the soldered header pins and terminal block legs. Use it as the flat mounting face."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are given in the text, so the sizes are estimates. The Tic T825 is a small Pololu board, and I assumed a PCB of roughly 36 x 30 mm with a 1.6 mm thickness. The bounding box includes the green terminal block (about 10 mm tall) and the electrolytic capacitor. The terminal block adds some overhang on the right edge, so x is set to about 37 mm. The height of about 14 mm is an estimate that includes the header pins and the terminal block. One mounting hole is visible near the lower left corner. Its diameter is assumed to be about 2.5 mm, similar to an M2.5 or #2 screw, and its position is only approximate. I did not infer any other holes. The header pin positions are not given as holes."
+}

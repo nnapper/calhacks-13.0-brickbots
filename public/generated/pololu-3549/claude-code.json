@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Right-angle-free offset gearmotor: white plastic gearbox block (12 x 34 x 10 mm, rounded top) with a 3 mm D-shaft (9.7 mm long) along Z at the top. A 10 x 10 mm motor body extends along Z from the gearbox bottom, ending in a thin encoder PCB with a small side connector block and a round black disc (magnet/sensor). Two small blind holes in the gearbox face.",
+  "confidence": "low",
+  "warnings": [
+    "No overall dimensions were provided; all sizes except the 3 mm shaft diameter and 9.7 mm shaft length are estimated.",
+    "The supplied bounds (23 x 20 x 42) were reinterpreted: Z is the shaft/motor axis (42 mm), Y is the vertical gearbox height (34 mm), X is the width (12 mm).",
+    "The shaft D-flat depth is guessed.",
+    "The two small gearbox holes have guessed positions, diameter (2 mm) and depth (4 mm), and are not through holes.",
+    "The encoder board, connector and magnet disc are simplified boxes and cylinders, with no pins or traces.",
+    "Internal gearbox seams, clutch details, motor terminals and the board silkscreen are omitted."
+  ],
+  "cadquery": "gb = cq.Workplane('XY').box(12, 28, 10, centered=(True, False, False)).translate((0, 0, -11.3))\ntop = cq.Workplane('XY').circle(6).extrude(10).translate((0, 28, -11.3))\nshaft = cq.Workplane('XY').circle(1.5).extrude(9.7).translate((0, 28, -21))\nflat = cq.Workplane('XY').box(1, 4, 9.7, centered=(False, True, False)).translate((1.0, 28, -21))\nshaft = shaft.cut(flat)\nmotor = cq.Workplane('XY').box(10, 10, 18.3, centered=(True, False, False)).translate((0, 0, -1.3))\nboard = cq.Workplane('XY').box(11, 11, 1.6, centered=(True, False, False)).translate((0, 0, 17))\nconn = cq.Workplane('XY').box(6, 4.5, 2.4, centered=(True, False, False)).translate((0, 5.5, 18.6))\ndisc = cq.Workplane('XY').circle(2.5).extrude(2.4).translate((0, 3, 18.6))\nhole1 = cq.Workplane('XY').circle(1).extrude(4).translate((0, 22, -15.3))\nhole2 = cq.Workplane('XY').circle(1).extrude(4).translate((0, 16, -15.3))\npart = gb.union(top).union(shaft).union(motor).union(board).union(conn).union(disc)\npart = part.cut(hole1).cut(hole2)\n"
+}

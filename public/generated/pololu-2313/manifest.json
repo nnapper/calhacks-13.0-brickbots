@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Glideforce LACT12P-12V-20 Light-Duty Linear Actuator with Feedback: 50kgf, 12\" Stroke (11.8\" Usable), 0.57\"/s, 12V",
+    "sku": "pololu-2313",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 751 mm length is given, and it matches the extended length (about 750 mm) rather than the retracted 450 mm. The width (40 mm), height (70 mm) and rod-end hole diameter (8 mm) are rough estimates from the product photos, not printed dimensions. The hole position is also estimated, assuming it sits about 8 mm from the rod tip. The rod and tube diameters are not stated. Retracted length is 450 mm, so the stroke is 300 mm and the rod travels along x. The feedback potentiometer and limit switches are internal and not modeled.",
+      "Only the 751 mm length is given. The 40 mm height, 70 mm width, tube, rod and motor diameters, and gearbox size are estimates from the photo.",
+      "The motor is offset sideways in Z to match the 70 mm Z bound. In the photo it looks stacked above the tube, so the real layout may differ.",
+      "The cross hole position (8 mm from the rod tip) and its 8 mm diameter are estimated.",
+      "The rear mounting hole is not clearly visible and is omitted.",
+      "The cable, labels, limit switches, potentiometer and the black end cap/seal are not modeled.",
+      "The tube length and overlap with the rod are approximate; the rod is shown fully extended."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -375.5000001,
+      "xmax": 375.5,
+      "ymin": 0,
+      "ymax": 40,
+      "zmin": -35,
+      "zmax": 35,
+      "xlen": 751.0000001000001,
+      "ylen": 40,
+      "zlen": 70
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 89529,
+        "sha256": "a7cca0c6ef1c319d8bf49fac31a4fd2c4fc54f4f0f531f45f7f02f9057b46cc6"
+      },
+      "model.stl": {
+        "bytes": 74884,
+        "sha256": "d40eecf35ae3407e891e3a03d0c0faf2c94fe36791378cea6651e2abaf0e1a31"
+      },
+      "model.glb": {
+        "bytes": 27928,
+        "sha256": "088ea72c0bb20ed56143be5b9f40d82ac50669edf2c688371a39e38a650be6ad"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "a7cca0c6ef1c319d8bf49fac31a4fd2c4fc54f4f0f531f45f7f02f9057b46cc6"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

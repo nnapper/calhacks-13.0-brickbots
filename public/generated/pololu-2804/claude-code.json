@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Green PCB 31x1.6x23 mm with four 3.1 mm corner through-holes, a black relay block 20.5x15.3x16.5 mm in the middle, a blue 3-position terminal block (6.5x10x15 mm) on the +X edge, and a 5-pin 2.54 mm header on the -X edge with pins reaching Y=19 mm. Y is up, bottom at Y=0.",
+  "confidence": "low",
+  "warnings": [
+    "All dimensions are estimates; none were supplied.",
+    "Analysis bounds listed z=19 as height, but the Y-up rule was applied: X=31, Y=19 (height), Z=23.",
+    "Relay size taken from Omron G5LE datasheet approximation (20.5x16.5x15.3), not the analysis's 15.5x10.5x12.5.",
+    "Hole positions adjusted to clear the relay and terminal block.",
+    "Terminal screw slots, wire openings, relay markings, SMD parts, loose header pieces and jumper omitted."
+  ],
+  "cadquery": "def box(x,y,z,cx,cy,cz):\n    return cq.Workplane('XY').box(x,y,z).translate((cx,cy,cz))\n\n# PCB: 31 (X) x 1.6 (Y, up) x 23 (Z)\nboard = box(31,1.6,23,0,0.8,0)\nholes = (cq.Workplane('XZ').pushPoints([(-13.5,-10),(-13.5,10),(13.5,-10),(13.5,10)])\n         .circle(1.55).extrude(-5).translate((0,-1,0)))\nboard = board.cut(holes)\n\n# Relay body (Omron G5LE style)\nrelay = box(20.5,15.3,16.5,-2.5,1.6+15.3/2,0)\n\n# 3-position screw terminal block on +X edge\nterm = box(6.5,10,15,12.25,1.6+5,0)\n\n# 5-pin header on -X edge: plastic base + square pins up to Y=19\nhdr = box(2.54,2.5,12.7,-14.2,1.6+1.25,0)\nfor i in range(5):\n    z = (i-2)*2.54\n    hdr = hdr.union(box(0.64,19-1.6,0.64,-14.2,1.6+(19-1.6)/2,z))\n\npart = board.union(relay).union(term).union(hdr)"
+}

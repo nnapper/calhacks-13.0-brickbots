@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Maxbotix LV-MaxSonar-EZ0 Sonar Range Finder MB1000",
+    "sku": "pololu-723",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Bounds come from the listed specification of 0.870 x 0.785 x 0.645 in (22.1 x 19.9 x 16.4 mm). I assigned x as the PCB width, y as the PCB height and z as the depth including the transducer. The dimensions are marked unverified, and the beam-pattern charts give no mechanical dimensions. The mounting hole is visible in the photo, but its diameter is not printed anywhere, so 3.1 mm is an estimate. Its position is estimated from the photo and is approximate. The 7 top-edge pads are visible, but I did not model them as holes because their size and pitch are not stated. The transducer's diameter and position are not given, so they are not modeled.",
+      "Dimensions are unverified and come from the spec sheet.",
+      "Transducer diameter (16 mm), center position (x=1.5, y=8.5) and length are estimated from the photo.",
+      "Mounting hole position (-7.9, 15.5) and diameter (3.1 mm) are estimated. The analysis coordinates were inconsistent, so the photo location was used.",
+      "PCB thickness of 1.6 mm is assumed.",
+      "The 7 top-edge solder pads, SMD components, and the transducer grille slots and openings were omitted as small or uncertain detail."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -11.05,
+      "xmax": 11.05,
+      "ymin": 0,
+      "ymax": 19.9,
+      "zmin": -8.200000000000001,
+      "zmax": 8.200000000000001,
+      "xlen": 22.1,
+      "ylen": 19.9,
+      "zlen": 16.400000000000002
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 24213,
+        "sha256": "d94e3ceb72f6ad62b3c4c3df3e3235fdfca912a6bf897a33e7adda782ba18ea0"
+      },
+      "model.stl": {
+        "bytes": 34484,
+        "sha256": "69a3f8c8e199118b20417213d8a721f422534eca4d8128157ad36991417c1d39"
+      },
+      "model.glb": {
+        "bytes": 13400,
+        "sha256": "d1a2dee2a4ec7e850a57d127fc4d98568586f327d873b5a8fb150de66a541269"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "d94e3ceb72f6ad62b3c4c3df3e3235fdfca912a6bf897a33e7adda782ba18ea0"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 60
+  },
+  "status": "prototype_unverified"
+}

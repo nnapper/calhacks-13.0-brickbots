@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Single 31 mm diameter x 10 mm wide wheel with its axis along Z, centered at X=0 and Z=0, resting on Y=0. It has a filleted (arched) black-tire body, a recessed face on the +Z side leaving a hub and three spokes, and a blind 3 mm across-flats hex bore from the recessed side.",
+  "confidence": "medium",
+  "warnings": [
+    "The 31 mm diameter and 10 mm width come from the unverified listing.",
+    "The tire and rim are fused into one solid because the image gives no clear boundary dimensions.",
+    "Recess depth, recess radius, spoke width and hub diameter are estimated from the image.",
+    "The hex bore depth is a guess; the images do not show whether it goes through.",
+    "The back face is modeled as flat. The image suggests a shallow dish, which is omitted.",
+    "The tread grooves and sidewall detail are not modeled."
+  ],
+  "cadquery": "tire = cq.Workplane('XY').workplane(offset=-5).circle(15.5).extrude(10).edges().fillet(2.5)\nrecess = cq.Workplane('XY').workplane(offset=1).circle(12).extrude(4)\nbody = tire.cut(recess)\nhub = cq.Workplane('XY').workplane(offset=1).circle(3.5).extrude(4)\nbody = body.union(hub)\nfor a in (90, 210, 330):\n    spoke = cq.Workplane('XY').workplane(offset=1).center(6, 0).rect(12, 3).extrude(4).rotate((0, 0, 0), (0, 0, 1), a)\n    body = body.union(spoke)\nbore = cq.Workplane('XY').workplane(offset=-2).polygon(6, 3.464).extrude(7)\nbody = body.cut(bore)\npart = body.translate((0, 15.5, 0))"
+}

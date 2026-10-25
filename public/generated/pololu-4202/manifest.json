@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "QTR-HD-02A Reflectance Sensor Array: 2-Channel, 4mm Pitch, Analog Output",
+    "sku": "pololu-4202",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The 20 mm and 10.2 mm outline and the 4 mm sensor pitch are printed in the images. The 2.5 mm height comes from unverified metadata and probably includes the components on top of the board. The PCB thickness is not stated. Hole diameters and positions are estimated from image proportions. The x origin is the board centerline, y is along the length with the mounting-hole end positive, and z is thickness. The 2.54 mm spacing of the pin holes is inferred from their standard 0.1 in pitch. The two small solid pads near the mounting-hole end appear to be unplated or non-drilled, so they are not listed as holes.",
+      "PCB thickness of 0.8 mm is assumed; it is not stated.",
+      "Sensor body size and position are estimated from the image.",
+      "The first sensors definition in the code is overwritten by the second, which uses the correct Y-up orientation.",
+      "Small SMD components, the IC and the unplated pads are omitted.",
+      "Hole sizes and positions are estimated from the image analysis.",
+      "Pin-hole pad shapes, including the square pad, are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -5.1,
+      "xmax": 5.1,
+      "ymin": 0,
+      "ymax": 2.5,
+      "zmin": -10,
+      "zmax": 10,
+      "xlen": 10.2,
+      "ylen": 2.5,
+      "zlen": 20
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 72482,
+        "sha256": "870ae8cc37c12d97b4f3d0673b3c8cf23fbba12a8a3a40b3d02e275632daa58d"
+      },
+      "model.stl": {
+        "bytes": 104284,
+        "sha256": "29706406eea79201b29e85874b0b2a7db464fef8b1cc8168376464e2eb9fc5ca"
+      },
+      "model.glb": {
+        "bytes": 38416,
+        "sha256": "432d537cd09410f34bc4009e962b0de134518b1f8e59a63ad0030c73069af64a"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "870ae8cc37c12d97b4f3d0673b3c8cf23fbba12a8a3a40b3d02e275632daa58d"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 30
+  },
+  "status": "prototype_unverified"
+}

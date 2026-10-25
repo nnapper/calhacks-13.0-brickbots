@@ -1,0 +1,9 @@
+{
+  "name": "24V High-Power (HP) 25D mm Gearmotors",
+  "sku": "pololu-5724",
+  "category": "25d-metal-gearmotors",
+  "expectedDimensionsMm": [
+    4
+  ],
+  "units": "millimeter"
+}

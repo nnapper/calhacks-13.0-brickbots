@@ -1,0 +1,8 @@
+housing = cq.Workplane('XY').box(60, 40, 23, centered=(True, False, True))
+motors = (cq.Workplane('XZ', origin=(0, 40, 0))
+          .pushPoints([(-15, 0), (15, 0)])
+          .circle(10)
+          .extrude(-30))
+part = housing.union(motors)
+axle_hole = cq.Workplane('YZ', origin=(-30, 12, 0)).circle(1.5).extrude(60)
+part = part.cut(axle_hole)

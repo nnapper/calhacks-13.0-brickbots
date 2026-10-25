@@ -1,0 +1,11 @@
+{
+  "name": "QTR-HD-02A Reflectance Sensor Array: 2-Channel, 4mm Pitch, Analog Output",
+  "sku": "pololu-4202",
+  "category": "reflectance-sensors",
+  "expectedDimensionsMm": [
+    20,
+    10.2,
+    2.5
+  ],
+  "units": "millimeter"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Zumo Chassis Kit (No Motors)",
+  "sku": "pololu-1418",
+  "category": "chassis",
+  "expectedDimensionsMm": [
+    98,
+    86,
+    39
+  ],
+  "units": "millimeter"
+}

@@ -1,0 +1,37 @@
+{
+  "partType": "other",
+  "summary": "Thin circular magnetic encoder disc with a central round bore. Two circular patches are visible on the top face. The part is a flat cylinder with parallel top and bottom faces.",
+  "boundsMm": {
+    "x": 9.7,
+    "y": 9.7,
+    "z": 2
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1,
+      "description": "Flat bottom face, which would sit against the motor shaft shoulder or hub. The image does not show which face is the seating face."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1,
+      "description": "Flat top face, which is the sensing face and carries the two visible circular patches."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Dimensions come from the listing metadata (OD 9.7 mm, ID 2.0 mm, thickness 2 mm), which is flagged unverified. No drawing with printed dimensions is visible in the image. The image proportions are consistent with these values, since the bore is about 1/5 of the outer diameter. The bore appears to pass through, because light is visible at its bottom. The two circular patches on the top face are not modeled as holes or raised features, and their exact positions and depth are not determinable. The bore is assumed to be centered on the disc axis."
+}

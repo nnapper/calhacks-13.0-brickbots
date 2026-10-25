@@ -145,3 +145,11 @@ These parts of the app are stand-ins the team plans to replace:
 
 - `src/scene/placeholders.js`: part shapes and snapping. Parts are simple shapes in fixed slots, not true size.
 - `src/lib/planner.js`: turns a typed description into a parts list using keyword matching, not AI.
+
+
+### AI arrangements
+The search builder uses Gemini to propose an inventory and layout, and Anthropic to independently review both. Set `GEMINI_API_KEY` and `ANTHROPIC_API_KEY` in the same Convex development deployment used by `VITE_CONVEX_URL`. Optional `GEMINI_MODEL` and `ANTHROPIC_MODEL` select model IDs available to those accounts. Provider failures are reported explicitly; another provider is not substituted for these roles.
+
+Try “Create exactly three 20 mm cubes in an L shape” or “Arrange these existing parts into a tower.” New builds are staged until every requested model loads and the arrangement passes review. Failed builds do not add partial assemblies. An approved build is one undo step. Positions are bounding-box centers in millimeters, Y-up, with XYZ Euler rotations. Validation checks part identity/count, rotated floor bounds, and overlap between known solid boxes. Arbitrary catalog mesh fit and mechanical safety are not certified by an LLM review.
+
+Run `npm test` for regression checks. `node --env-file=.env.local scripts/check-ai-workflow.mjs` runs a live three-block provider smoke test in an isolated Convex workspace without changing the saved user design; it requires working provider credentials and consumes API quota.

@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "90° L-bracket 40 mm long with two 16 mm legs, 2 mm thick. The horizontal leg sits on Y=0 and the vertical leg is at the Z=-8 edge. Each leg has five 4 mm through holes on an 8 mm pitch. The horizontal-leg holes are centered at z=0 and the vertical-leg holes at y=8.",
+  "confidence": "low",
+  "warnings": [
+    "No dimensions were given, so sizes come from the estimated bounds: 40x16x16 mm.",
+    "Thickness of 2 mm is assumed; the 12.9 g weight suggests it may be thinner, but the weight was not used for sizing.",
+    "Holes are tapped in reality; they are modeled as plain 4 mm through holes and the threads are omitted.",
+    "The hole positions in the analysis were inconsistent. I placed them on each leg's centerline, 8 mm from the outer face of the other leg.",
+    "The small inner bend radius visible in the photos is omitted."
+  ],
+  "cadquery": "t=2.0\nh=cq.Workplane('XY').box(40,t,16,centered=(True,False,True))\nv=cq.Workplane('XY').box(40,16,t,centered=(True,False,False)).translate((0,0,-8))\npart=h.union(v)\nfor x in (-16,-8,0,8,16):\n    cy=cq.Solid.makeCylinder(2,10,cq.Vector(x,-1,0),cq.Vector(0,1,0))\n    cz=cq.Solid.makeCylinder(2,10,cq.Vector(x,8,-9),cq.Vector(0,0,1))\n    part=part.cut(cq.Workplane('XY').add(cy)).cut(cq.Workplane('XY').add(cz))"
+}
