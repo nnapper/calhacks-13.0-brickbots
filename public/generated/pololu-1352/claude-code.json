@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Green PCB 36.07 x 27.94 x 1.6 mm (bottom at Y=0, thickness along Y) with two 2.18 mm through mounting holes, a simplified mini-USB connector box on the -X edge, and two 3x6 0.1 in male header blocks with square pins along the long edges.",
+  "confidence": "low",
+  "warnings": [
+    "PCB thickness 1.6 mm is assumed; no height was given.",
+    "Mounting hole positions are estimated and approximate.",
+    "Header block layout, pin lengths, USB connector size and position are approximated from the photo.",
+    "The microcontroller, LEDs, jumper, SMD components and other small parts are omitted.",
+    "Orientation assumed: USB toward -X, long axis along X, Y up."
+  ],
+  "cadquery": "bw, bl, t = 27.94, 36.07, 1.6\npart = cq.Workplane('XY').box(bl, t, bw, centered=(True, False, True))\n# mounting holes (approximate positions), axis along Y\nholes = cq.Workplane('XZ').pushPoints([(15, 0.1), (-15.5, 8.2)]).circle(1.09).extrude(-5)\npart = part.cut(holes)\n# mini-USB connector on -X edge\nusb = cq.Workplane('XY').box(9, 3.9, 7.7, centered=(True, False, True)).translate((-14, t, 0))\npart = part.union(usb)\n# two 3x6 male header blocks along the long edges\npins = []\nfor zc in (-8.66, 8.66):\n    base = cq.Workplane('XY').box(15.24, 2.54, 7.62, centered=(True, False, True)).translate((3, t, zc))\n    part = part.union(base)\n    for i in range(6):\n        for j in range(3):\n            pins.append((3 + (i - 2.5) * 2.54, zc + (j - 1) * 2.54))\npinsol = cq.Workplane('XZ').workplane(offset=3).pushPoints(pins).rect(0.64, 0.64).extrude(-13.1)\npart = part.union(pinsol)\n"
+}

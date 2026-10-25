@@ -1,0 +1,12 @@
+{
+  "name": "Pololu Wheel for Standard Servo Splines (25T, 5.8mm) - 90×10mm, White, 2-Pack",
+  "sku": "pololu-4939",
+  "category": "servo-wheels",
+  "expectedDimensionsMm": [
+    90,
+    10,
+    90,
+    5.8
+  ],
+  "units": "millimeter"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Pololu Wheel 80×10mm Pair - Yellow",
+  "sku": "pololu-1432",
+  "category": "d-shaft-wheels",
+  "expectedDimensionsMm": [
+    80,
+    10,
+    10,
+    80,
+    3
+  ],
+  "units": "millimeter"
+}

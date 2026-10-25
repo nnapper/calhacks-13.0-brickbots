@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Low-profile square sensor enclosure, 22 x 22 mm and 9 mm tall (Y up, bottom at Y=0). Four 5 x 5 x 2.5 mm corner mounting tabs at the base bring the footprint to 28 x 28 mm. Each tab has a 2 mm vertical through hole.",
+  "confidence": "low",
+  "warnings": [
+    "The 28 x 28 x 9 mm size comes from an unverified listing. It was assumed to include the tabs.",
+    "The photo suggests the tabs may sit on the sides rather than at the corners. I used four corner tabs, following the image analysis.",
+    "The body width (22 mm), tab size, tab thickness and hole positions are rough visual estimates.",
+    "The side wire connector, wire leads and expansion connector are not modelled.",
+    "The five threaded M1.4 mounting holes are omitted because their positions are not visible or stated.",
+    "The bottom central hole, the fastener heads, and the printed labels and axis diagram are omitted."
+  ],
+  "cadquery": "body = cq.Workplane('XY').box(22, 9, 22, centered=(True, False, True))\ntabs = (cq.Workplane('XY').pushPoints([(-11.5, -11.5), (11.5, -11.5), (-11.5, 11.5), (11.5, 11.5)])\n        .rect(5, 5).extrude(2.5))\ntabs = cq.Workplane('XZ').pushPoints([(-11.5, -11.5), (11.5, -11.5), (-11.5, 11.5), (11.5, 11.5)]).rect(5, 5).extrude(-2.5)\nholes = (cq.Workplane('XZ', origin=(0, -1, 0))\n         .pushPoints([(-12, -12), (12, -12), (-12, 12), (12, 12)])\n         .circle(1.0).extrude(-4))\npart = body.union(tabs).cut(holes)"
+}

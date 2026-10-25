@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Rectangular green PCB 10.16 x 17.78 mm, 0.8 mm thick, with 14 through-holes (1 mm dia) in two rows of 7 at 2.54 mm pitch and ±3.81 mm from centerline. Two simplified blocks on top: the central driver IC and the large capacitor near one end. Y is up and the bottom sits at Y=0.",
+  "confidence": "medium",
+  "warnings": [
+    "Board thickness (0.8 mm) and component heights are visual estimates.",
+    "Hole row spacing of 7.62 mm comes from the provided analysis; the image suggests holes sit close to the board edges.",
+    "The two extra corner pads/holes visible in the image are omitted because their positions are uncertain.",
+    "Small SMD parts (SOT-23 devices, resistor, small capacitor, other passives) are omitted.",
+    "IC and capacitor positions, sizes and orientations are approximate.",
+    "Square pad shapes and the castellated/edge details are not modeled."
+  ],
+  "cadquery": "pts=[(x,z) for x in (-3.81,3.81) for z in (-7.62,-5.08,-2.54,0,2.54,5.08,7.62)]\nboard=cq.Workplane('XY').box(10.16,0.8,17.78,centered=(True,False,True))\nboard=board.cut(cq.Workplane('XZ').pushPoints(pts).circle(0.5).extrude(1,both=True))\nic=cq.Workplane('XY').box(3.9,1.2,4.9,centered=(True,False,True)).translate((0.3,0.8,0.5))\ncap=cq.Workplane('XY').box(3.0,1.8,3.4,centered=(True,False,True)).translate((-2.3,0.8,-5.6))\npart=board.union(ic).union(cap)"
+}

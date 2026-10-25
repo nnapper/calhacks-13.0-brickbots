@@ -1,0 +1,10 @@
+{
+  "name": "DRV8835 Dual Motor Driver Carrier",
+  "sku": "pololu-2135",
+  "category": "dc-motor-drivers",
+  "expectedDimensionsMm": [
+    17.78,
+    10.16
+  ],
+  "units": "millimeter"
+}

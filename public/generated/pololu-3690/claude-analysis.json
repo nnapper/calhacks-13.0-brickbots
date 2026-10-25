@@ -1,0 +1,37 @@
+{
+  "partType": "wheel",
+  "summary": "Single 80 mm diameter, 10 mm wide wheel with a six-spoke disc, a central hub and a solid outer tire band. The product is sold as a pair, and this describes one wheel. The wheel axis is along z, and the part is centered at the origin.",
+  "boundsMm": {
+    "x": 80,
+    "y": 80,
+    "z": 10
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 9,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -5,
+      "description": "Flat hub face on the side where the shaft collet insert and motor mounting hub attach, around the central bore."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 5,
+      "description": "Opposite outer face of the wheel disc and tire."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 80 mm diameter and 10 mm width are stated, and the listing marks them as unverified. The central bore diameter (9 mm) is a rough scale estimate from the photo, not a printed value. The hub has additional small holes around the bore, and the images show no printed dimensions for them, so I left them out. The 3 mm and 4 mm collet inserts (round and D-shaped) fit into the hub. The images give no collet dimensions, and the listing gives no shaft or bore dimensions. The wheel's overall z extent assumes the 10 mm width covers the whole tire and hub."
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Tamiya 70096 Off-Road Tires (2 tires)",
+  "sku": "pololu-64",
+  "category": "tamiya-wheels",
+  "expectedDimensionsMm": [
+    30,
+    50
+  ],
+  "units": "millimeter"
+}

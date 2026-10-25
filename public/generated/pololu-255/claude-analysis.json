@@ -1,0 +1,24 @@
+{
+  "partType": "flat_plate",
+  "summary": "Circular laser-cut acrylic chassis plate with a pattern of small round holes, slots and larger rectangular cutouts for mounting a twin-motor gearbox, ball caster and other hardware. The plate is flat with parallel top and bottom faces.",
+  "boundsMm": {
+    "x": 127,
+    "y": 127,
+    "z": 3
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 1.5,
+      "description": "Top flat face of the plate, for mounting electronics and hardware"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -1.5,
+      "description": "Bottom flat face of the plate, for mounting the gearbox, ball caster and similar parts"
+    }
+  ],
+  "confidence": "low",
+  "notes": "The 127 mm (5 in) diameter comes from the listing and is unverified. No thickness is given, so the 3 mm z value is a placeholder and should be checked. The images show many round holes, slots and rectangular cutouts, but no printed dimensions, so the holes array is empty rather than guessed. The plate is centered at the origin, with z as the thickness direction."
+}

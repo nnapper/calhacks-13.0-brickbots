@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Black rectangular PCB 35.56 x 30.48 x 1.6 mm lying in the XZ plane with its bottom at Y=0. It has three 2.2 mm mounting holes, two 10 mm cylindrical capacitors on top reaching 8 mm total height, and a simple box for the micro-USB connector at the +Z edge.",
+  "confidence": "low",
+  "warnings": [
+    "Board size follows the image analysis (1.4 in x 1.2 in), which conflicts with the listing (1.0 in x 1.2 in), and both are unverified.",
+    "Total height of 8 mm is a rough estimate.",
+    "PCB thickness of 1.6 mm is assumed.",
+    "Capacitor, USB connector and hole positions were scaled approximately from the photo.",
+    "Header pads, terminal pads, bottom-side parts, small SMD components and LEDs were omitted.",
+    "Only three mounting holes were modeled; other corner holes may exist."
+  ],
+  "cadquery": "pcb_t = 1.6\nL = 35.56\nW = 30.48\npcb = cq.Workplane('XY').box(L, pcb_t, W, centered=(True, False, True))\nhole_pts = [(-2.7, 12.7), (-15.4, -13.2), (14.9, -13.2)]\nholes = cq.Workplane('XZ').pushPoints(hole_pts).circle(1.1).extrude(-pcb_t)\npcb = pcb.cut(holes)\ncaps = (cq.Workplane('XZ', origin=(0, pcb_t, 0))\n        .pushPoints([(5.0, 6.0), (9.0, 0.0)])\n        .circle(5.0).extrude(-(8.0 - pcb_t)))\nusb = (cq.Workplane('XY')\n       .box(8.0, 2.8, 5.6, centered=(True, False, False))\n       .translate((-10.0, pcb_t, W / 2 - 5.6 + 0.8)))\npart = pcb.union(caps).union(usb)"
+}

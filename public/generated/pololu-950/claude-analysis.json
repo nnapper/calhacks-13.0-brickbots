@@ -1,0 +1,37 @@
+{
+  "partType": "other",
+  "summary": "Small ball caster: a 3/8 in plastic ball held in a black ABS housing. The housing has two mounting ears with screw holes on opposite sides. It is mounted to a chassis with two screws and nuts, and spacers set the final height.",
+  "boundsMm": {
+    "x": 19,
+    "y": 12,
+    "z": 15.24
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.4,
+      "positionsMm": [
+        [
+          -6.731,
+          0,
+          -6.1
+        ],
+        [
+          6.731,
+          0,
+          -6.1
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -7.62,
+      "description": "Underside of the housing mounting ears, or of the stacked spacers, which sits against the chassis. The ball protrudes below it on the opposite side."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Stated values: ball diameter 9.525 mm (3/8 in) and screw-hole spacing 0.53 in (13.462 mm, so holes at x = ±6.731). Assembled height is 0.4–0.6 in (10.16–15.24 mm) depending on the spacers; z uses the 15.24 mm maximum, and the minimum is 10.16 mm. The hole diameter (about 2.4 mm, a clearance estimate for a #2 screw), the hole z-position, and the x/y housing footprint (19 × 12 mm) are not stated. I estimated them from the product images and the stated spacing, so verify them against a drawing. The images show two flat spacer plates with two holes each, but their thickness is given only as 1/16 in and 1/8 in. The ball's z-position is not given, so it is not modeled here."
+}

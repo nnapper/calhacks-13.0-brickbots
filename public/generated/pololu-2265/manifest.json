@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Vibration Motor 11.6×4.6×4.8mm",
+    "sku": "pololu-2265",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Bounds come from the listed product dimensions (11.6 x 4.6 x 4.8 mm), which are marked unverified. No dimensions are printed in the images. The long axis is x, with the shaft and eccentric weight at +x and the leads at -x. The weight may extend slightly past the stated length or the sleeve profile, but that is not confirmed. The sleeve has an open bore for the motor body, which is not modeled as a hole because the motor fills it. There are no mounting holes. The shaft diameter is not stated and not inferred. The leads are about 1.5 in (38 mm) long and are excluded from the bounds.",
+      "Bounds come from unverified catalog dimensions.",
+      "The sleeve length (10 mm), cap diameter, shaft diameter, and weight shape and size are estimated from the image.",
+      "The 1.5 in lead wires are omitted because they are excluded from the bounds and their geometry is uncertain.",
+      "The sleeve's internal bore and parting line are not modeled because the motor fills the sleeve.",
+      "The motor is assumed to be centered in the sleeve cross-section."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -5.8,
+      "xmax": 5.800000000000001,
+      "ymin": 0,
+      "ymax": 4.6,
+      "zmin": -2.4,
+      "zmax": 2.4,
+      "xlen": 11.600000000000001,
+      "ylen": 4.6,
+      "zlen": 4.8
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 33691,
+        "sha256": "4c263d38765338f6393cd11f514a97ba2a7ceab81a22efd646dca0f33b1c9bd8"
+      },
+      "model.stl": {
+        "bytes": 26284,
+        "sha256": "aa93615599473c3a13ae56bf42a2143d793fe7210fcd476dc191d617c10c619d"
+      },
+      "model.glb": {
+        "bytes": 10472,
+        "sha256": "b895fc1abae65805dd279a00343194fae171f2049eeeca5336f2afe8ea7e0ee0"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "4c263d38765338f6393cd11f514a97ba2a7ceab81a22efd646dca0f33b1c9bd8"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 45
+  },
+  "status": "prototype_unverified"
+}

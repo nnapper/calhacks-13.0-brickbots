@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "One assembled track loop: a stadium-shaped ring of 39 mm outer height and 14.6 mm width, with a wall of about 2.5 mm. Two solid 35 mm sprocket discs sit 48 mm apart inside it. Each disc has a 3 mm through hole on the Z axis. The loop is centered in X and Z, with its bottom at Y=0.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are unverified and the image gives no drawing dimensions.",
+    "Modeled as a single assembled loop (track + 2 sprockets), not the full kit; the second track, extra sprockets, screws, washers and nuts are omitted.",
+    "Track inner teeth, sprocket teeth, spokes, hub details and the D-shaft profile are omitted; the 3 mm holes are plain round.",
+    "The idler sprocket hole size is not specified; the same 3 mm hole is used on both sprockets.",
+    "The overall X length is 87 mm (48 mm spacing + 39 mm track diameter), not the 83 mm estimate in the analysis bounds (48 mm spacing + 35 mm sprocket).",
+    "The track wall thickness (about 2.5 mm) is estimated.",
+    "The track is modeled as a stadium shape, not the slightly oval shape seen in the image."
+  ],
+  "cadquery": "w=14.6\nspacing=48.0\nR=39.0\nsd=35.0\ncy=R/2\nouter=cq.Workplane('XY').workplane(offset=-w/2).center(0,cy).slot2D(spacing+R,R).extrude(w)\ninner=cq.Workplane('XY').workplane(offset=-w/2).center(0,cy).slot2D(spacing+34.0,34.0).extrude(w)\ntrack=outer.cut(inner)\nspr=(cq.Workplane('XY').workplane(offset=-6.0).pushPoints([(-spacing/2,cy),(spacing/2,cy)]).circle(sd/2).extrude(12.0))\npart=track.union(spr)\nholes=(cq.Workplane('XY').workplane(offset=-w/2).pushPoints([(-spacing/2,cy),(spacing/2,cy)]).circle(1.5).extrude(w))\npart=part.cut(holes)"
+}

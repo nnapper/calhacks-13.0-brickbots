@@ -1,0 +1,42 @@
+{
+  "partType": "flat_plate",
+  "summary": "Rectangular PCB breakout carrier for a time-of-flight distance sensor. It has two large round mounting holes along one long edge and a row of 7 edge pin holes along the opposite long edge. The ranging sensor module and small components sit on the top face.",
+  "boundsMm": {
+    "x": 12.7,
+    "y": 17.78,
+    "z": 2
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.18,
+      "positionsMm": [
+        [
+          -3.7,
+          6.35,
+          0
+        ],
+        [
+          -3.7,
+          -6.35,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1,
+      "description": "Flat underside of the PCB, usable for seating or standoff mounting; the two 2.18 mm holes pass through it"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1,
+      "description": "Top face carrying the sensor module and components; not a mounting face"
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Board outline 0.5 in x 0.7 in (12.7 x 17.78 mm) is printed in the drawing. The two mounting holes are printed as 0.086 in (2.18 mm) diameter and 0.5 in (12.7 mm) apart. Hole x offset (about 2.7 mm from the left edge) is estimated from the image scale. Y positions are placed symmetrically about center. The 2 mm total height is the unverified catalog value and covers the board plus the sensor module. PCB thickness is not stated. Seven 0.1 in pitch (2.54 mm) pin holes run along one long edge, about 1.1 mm in from the edge (x ≈ +5.2), but their diameter is not given, so they are not listed in holes."
+}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "TB67H420FTG Dual/Single Motor Driver Carrier",
+    "sku": "pololu-2999",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 25.4 mm × 30.48 mm footprint comes from the printed 1.0 in × 1.2 in dimensions in the image. The product data does not give a height. The 7.0 mm z-extent is an estimate of the 1.6 mm board plus the tallest component, the capacitor, and is not a printed value. The mounting-hole diameter (about 2.3 mm) and positions were scaled from the pixel proportions of the images, not read from a printed dimension. The coordinates use the top (component-side) view, with x to the right, y up the long axis and z up from the board. The bounding box is centered at the origin, with the PCB occupying roughly z = -3.5 to -1.9. The many smaller pin and terminal holes along the edges were not itemized.",
+      "Board height and component heights are estimated; the product data gives no height.",
+      "The many edge through-hole pads for the logic pins and power/motor terminals are omitted because their positions are uncertain.",
+      "The mounting-hole positions and 2.3 mm diameter were scaled from the image.",
+      "Resistors, small capacitors and the exposed ground pad on the bottom are omitted.",
+      "The component positions are approximate."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -12.7,
+      "xmax": 12.7,
+      "ymin": 0,
+      "ymax": 7,
+      "zmin": -15.24,
+      "zmax": 15.24,
+      "xlen": 25.4,
+      "ylen": 7,
+      "zlen": 30.48
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 72858,
+        "sha256": "85831b2dd8c46239e1089d2c76b3b8d56927e91c109daf0ca7cb35e690491d17"
+      },
+      "model.stl": {
+        "bytes": 53984,
+        "sha256": "c6a85595ac7ea34788b57d71d81a1267f7be751900f718e3bf670f70acbcf74d"
+      },
+      "model.glb": {
+        "bytes": 20396,
+        "sha256": "e68219d6b7071f270cb37a59314ad455f487dbab6b5603a107b0e55a103c8088"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "85831b2dd8c46239e1089d2c76b3b8d56927e91c109daf0ca7cb35e690491d17"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

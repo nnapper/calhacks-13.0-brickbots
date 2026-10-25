@@ -1,0 +1,11 @@
+{
+  "name": "Stepper Motor: Bipolar, 200 Steps/Rev, 20×30mm, 3.9V, 0.6 A/Phase",
+  "sku": "pololu-1204",
+  "category": "stepper-motors",
+  "expectedDimensionsMm": [
+    30,
+    20,
+    4
+  ],
+  "units": "millimeter"
+}

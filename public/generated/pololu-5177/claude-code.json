@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Miniature gearmotor along X (shaft toward -X): 3 mm D-shaft 9 mm long, brass 12x10 mm gearbox block, 12 mm dia motor can with 10 mm flats, black 12x10 mm encoder housing and a small side connector block on +Z. Bottom at Y=0, X/Z centered.",
+  "confidence": "low",
+  "warnings": [
+    "Total length (~44 mm) and the individual section lengths are estimates; no dimensioned drawing was available.",
+    "Gearbox is modeled as a single solid block; individual plates, gears, and mounting holes are omitted because their sizes are not stated.",
+    "The encoder housing is simplified to a box; its rounded back edge is omitted.",
+    "The connector is a simplified block; its pins and socket cavity are omitted, and it protrudes 2 mm beyond the 10 mm Z width.",
+    "The motor can slots and the rear motor details are omitted.",
+    "Y=12 and Z=10 follow the analysis bounds; the listing calls 12 the width and 10 the height."
+  ],
+  "cadquery": "yc=6.0\n# X layout (total 44 mm, centered): shaft -22..-13, gearbox -13..-3.5, motor -3.5..11.5, encoder 11.5..22\ndef cyl(x0, L, d):\n    return cq.Workplane('YZ').workplane(offset=x0).center(yc, 0).circle(d/2).extrude(L)\ndef box(x0, L, h, w, yc_=yc, zc=0):\n    return cq.Workplane('XY').box(L, h, w, centered=(False, True, True)).translate((x0, yc_, zc))\n\n# D-shaped output shaft, 3 mm dia, 9 mm long, flat on +Z side\nshaft = cyl(-22, 9, 3).intersect(box(-22, 9, 3, 2.5, zc=-0.25 + 0.0).translate((0, 0, -0.0)))\nshaft = cyl(-22, 9, 3).intersect(box(-22, 9, 4, 2.6, zc=-0.2))\n\n# brass gearbox 12 (Y) x 10 (Z)\ngearbox = box(-13, 9.5, 12, 10)\n\n# motor can: 12 mm dia round with 10 mm wide flats\nmotor = cyl(-3.5, 15, 12).intersect(box(-3.5, 15, 12, 10))\n\n# black encoder housing\nenc = box(11.5, 10.5, 12, 10)\n\n# side connector on +Z face of encoder housing\nconn = box(13.0, 7.0, 6.0, 2.0, zc=5.0 + 1.0)\n\npart = shaft.union(gearbox).union(motor).union(enc).union(conn)\n"
+}

@@ -1,0 +1,42 @@
+{
+  "partType": "other",
+  "summary": "Small rectangular black motor-controller PCB with a micro-USB connector on one edge, a row of through-hole header pads along the left edge and bottom edge, four large power-terminal pads on the right edge, and two tall cylindrical capacitors on top.",
+  "boundsMm": {
+    "x": 35.56,
+    "y": 30.48,
+    "z": 8
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.2,
+      "positionsMm": [
+        [
+          -2.7,
+          12.7,
+          0
+        ],
+        [
+          -15.4,
+          -13.2,
+          0
+        ],
+        [
+          14.9,
+          -13.2,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -4,
+      "description": "Flat underside of the PCB, which carries the bottom-side components. It would rest on standoffs at the mounting holes."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The printed drawing shows 1.4 in x 1.2 in, so x = 35.56 mm and y = 30.48 mm. This overrides the unverified listing value of 1.0 in x 1.2 in. No height is printed. The z value of 8 mm is a rough estimate covering the PCB and the tall capacitors. Hole positions and the 2.2 mm diameter were scaled from the top-view image, with the origin at the board center and +y toward the USB edge. Some corner holes may be missing or imprecise. Header pads, terminal pads and the USB connector were not modeled as separate holes."
+}

@@ -1,0 +1,42 @@
+{
+  "partType": "other",
+  "summary": "Industrial-duty electric linear actuator with an extending rod tube, a gearbox housing and a side-mounted cylindrical motor. It has a clevis-style mounting hole at the rod end and another at the rear of the gearbox. Modeled in the retracted state. The extended length is 497 mm, an added 140 mm of usable travel.",
+  "boundsMm": {
+    "x": 357,
+    "y": 80,
+    "z": 110
+  },
+  "holes": [
+    {
+      "axis": "y",
+      "diameterMm": 13,
+      "positionsMm": [
+        [
+          -178.5,
+          0,
+          -25
+        ],
+        [
+          178.5,
+          0,
+          -25
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": -178.5,
+      "description": "Rear clevis mounting point at the gearbox end, with a 13 mm cross hole"
+    },
+    {
+      "axis": "x",
+      "offsetMm": 178.5,
+      "description": "Front mounting point at the rod end, with a 13 mm cross hole (retracted position)"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 13 mm mounting hole diameter and the 357 mm retracted and 497 mm extended lengths come from the listing. The 357 mm length is probably measured between mounting-hole centers, so the true overall envelope may be slightly longer. Width (y) and height (z) are rough estimates from the photos, because the listing gives no values. The hole centers along x and the z offset are also estimated, and the through-hole status is assumed. The 6 in stroke has 5.5 in usable travel."
+}

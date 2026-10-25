@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Shaftless Vibration Motor 10x3.4mm",
+    "sku": "pololu-1636",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The 10 mm diameter and 3.4 mm height come from the listed specs, which are flagged as unverified. The images show no printed dimensions. The central dimple on the top face is too small and shallow to count as a hole, so no holes are listed. There is no shaft. Two flying leads (red and blue) exit radially from one edge and are not included in the bounding box. Lead length is roughly 1.5–2 times the disc diameter judging by the third image, but it is not stated. The part has small notches along the bottom rim, which are not modeled. The current/RPM chart shows operating data only and gives no geometry.",
+      "Dimensions (10 mm diameter, 3.4 mm height) come from the unverified spec text.",
+      "The image analysis describes the axis along Z, but the brief requires the bottom at Y=0, so the disc axis is along Y.",
+      "The lead length and diameter are estimated, and the leads are truncated to short stubs. Real flying leads are much longer.",
+      "The tab size and position are estimated from the image.",
+      "The small central dimple on the top face and the notches along the bottom rim are not modeled because they are too small or uncertain.",
+      "The logo watermark is not modeled.",
+      "The lead insulation colors cannot be represented in the geometry."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -5,
+      "xmax": 9.6,
+      "ymin": 0,
+      "ymax": 3.4,
+      "zmin": -5,
+      "zmax": 5,
+      "xlen": 14.6,
+      "ylen": 3.4,
+      "zlen": 10
+    },
+    "warnings": [
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 34368,
+        "sha256": "b42292bcdf268e293b8deabd715b04b073aae103da915b465dffd0e2cbe3d4e7"
+      },
+      "model.stl": {
+        "bytes": 52084,
+        "sha256": "ad63d0def3daf6648da3f6ffd43e3a665f468fb956f0313fd93a2d4da521ef8c"
+      },
+      "model.glb": {
+        "bytes": 19764,
+        "sha256": "858087e3933d91fbae01056807facc9d8eaf12a6f4df611d29fb6e6574e23b79"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "b42292bcdf268e293b8deabd715b04b073aae103da915b465dffd0e2cbe3d4e7"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 10
+  },
+  "status": "prototype_unverified"
+}

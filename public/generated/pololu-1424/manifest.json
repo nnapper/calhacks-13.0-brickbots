@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Wheel 60×8mm Pair - White",
+    "sku": "pololu-1424",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Dimensions come from the listing text, which is marked unverified; no drawing is visible. The 60 mm diameter, 8 mm width, 3 mm shaft and 12.7 mm hole spacing are stated. The mounting-hole diameter is only given as sized for #4 or M3 screws, so 3 mm is a nominal value. The hole orientation (along x) and the through/depth status of the bore and holes are assumed from the images. The five spoke slots for #2 or M2 screws are not modeled because their dimensions are not given. The tire is included in the 60 mm outer diameter.",
+      "Tire thickness, rim width, hub diameter and spoke dimensions are estimated from the image, not stated.",
+      "Tire and wheel are fused into one solid.",
+      "D-bore flat depth is estimated.",
+      "Mounting hole diameter is nominal 3 mm for M3/#4 screws.",
+      "Spoke slots for M2/#2 screws, hub recesses, tire tread texture and logo are omitted.",
+      "Only one wheel of the pair is modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -30,
+      "xmax": 30,
+      "ymin": 0,
+      "ymax": 60,
+      "zmin": -4,
+      "zmax": 4,
+      "xlen": 60,
+      "ylen": 60,
+      "zlen": 8
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [8.0, 60.0, 60.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 141263,
+        "sha256": "0fda7ac8f27849db7138de5e88dbd6cfd96808bc20fd77a88f199ed4f396c064"
+      },
+      "model.stl": {
+        "bytes": 126284,
+        "sha256": "b8617bc02b6a48eb0f2b8aa6b17392d62661c8abe311a57e2aafba51814177b4"
+      },
+      "model.glb": {
+        "bytes": 46332,
+        "sha256": "aabc4ad24bb468035532f9d857e19e793c75eb20beeb64a8387b838a07d68118"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "0fda7ac8f27849db7138de5e88dbd6cfd96808bc20fd77a88f199ed4f396c064"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

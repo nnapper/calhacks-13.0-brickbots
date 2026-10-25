@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Stepper Motor with 28cm Lead Screw: Bipolar, 200 Steps/Rev, 42×38mm, 2.8V, 1.7 A/Phase",
+    "sku": "pololu-2268",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The motor body is 42.3 x 42.3 x 38 mm, as stated in the specs. The z bound is an estimate: 38 mm body plus roughly 280 mm of lead screw, rounded to 320 mm. The listed length of 282 mm is unverified and could be either the screw alone or the overall length, so check it before using this. The hole diameter (3 mm) and spacing (31 mm) are not printed in the images. They come from the NEMA 17 standard and should be verified. The holes are assumed blind and tapped. The brass nut's four holes are not dimensioned and are left out. The motor body is centered in x and y, with its rear face at z = -160.",
+      "The 282 mm overall length is unverified. It could be the screw length alone, so the screw's exposed length is uncertain.",
+      "The 3 mm hole diameter, 31 mm spacing and 4.5 mm depth come from the NEMA 17 standard, not from the images.",
+      "The pilot boss diameter and height (22 x 2 mm) are standard-based estimates.",
+      "The 3 mm corner chamfer is an estimate.",
+      "The nut position along the screw is a guess; it should be adjusted to match the intended nut position.",
+      "The nut dimensions are estimated.",
+      "The nut's four mounting holes are omitted because their size and position are not given.",
+      "The wires, label, screw threads and rear bearing details are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -21.15,
+      "xmax": 21.15,
+      "ymin": 0,
+      "ymax": 282,
+      "zmin": -21.15,
+      "zmax": 21.15,
+      "xlen": 42.3,
+      "ylen": 282,
+      "zlen": 42.3
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 38.000 mm; measured dimensions are [42.3, 42.3, 282.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 69129,
+        "sha256": "cdcaaf67b73fd114a3f5b2141552bb617483e16103819d02c3a6ef63545ab034"
+      },
+      "model.stl": {
+        "bytes": 152684,
+        "sha256": "dfc38eb6d23dcd7ceda034306085f2412193ec4a3e755e7d4c5e02ee9aa9626d"
+      },
+      "model.glb": {
+        "bytes": 56000,
+        "sha256": "b15c3289491cf618c8bec883f30a0003b6308af676e9d95aedc8a0123cc19f07"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "cdcaaf67b73fd114a3f5b2141552bb617483e16103819d02c3a6ef63545ab034"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

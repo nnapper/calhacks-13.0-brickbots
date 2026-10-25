@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Rectangular micro-switch body of 19.8 x 10.2 x 6.4 mm (X length, Y height with bottom at Y=0, Z thickness), centered in X and Z. Two 2.3 mm through-holes run along Z at X=±5.15 mm and Y=2.3 mm. The lever and pins are not modeled.",
+  "confidence": "low",
+  "warnings": [
+    "The supplied dimensions are unverified. The body size comes from the product description.",
+    "The hole diameter (2.3 mm) and positions were estimated from the image scale.",
+    "The 18.5 mm bump lever is omitted. Its exact curvature and pivot geometry are uncertain, and it extends beyond the body envelope.",
+    "The three solder pins are omitted because their size and spacing are not stated.",
+    "The 10.2 mm height may include the pins in the real part. It is used here as the body height, following the image analysis bounds.",
+    "Small body details such as the markings, the actuator plunger and the side recesses are not modeled."
+  ],
+  "cadquery": "body = cq.Workplane('XY').box(19.8, 10.2, 6.4, centered=(True, False, True))\nholes = (cq.Workplane('XY')\n    .pushPoints([(-5.15, 2.3), (5.15, 2.3)])\n    .circle(1.15)\n    .extrude(5, both=True))\npart = body.cut(holes)"
+}

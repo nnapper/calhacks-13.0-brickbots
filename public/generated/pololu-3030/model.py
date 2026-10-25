@@ -1,0 +1,12 @@
+w=14.6
+spacing=48.0
+R=39.0
+sd=35.0
+cy=R/2
+outer=cq.Workplane('XY').workplane(offset=-w/2).center(0,cy).slot2D(spacing+R,R).extrude(w)
+inner=cq.Workplane('XY').workplane(offset=-w/2).center(0,cy).slot2D(spacing+34.0,34.0).extrude(w)
+track=outer.cut(inner)
+spr=(cq.Workplane('XY').workplane(offset=-6.0).pushPoints([(-spacing/2,cy),(spacing/2,cy)]).circle(sd/2).extrude(12.0))
+part=track.union(spr)
+holes=(cq.Workplane('XY').workplane(offset=-w/2).pushPoints([(-spacing/2,cy),(spacing/2,cy)]).circle(1.5).extrude(w))
+part=part.cut(holes)

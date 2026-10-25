@@ -1,0 +1,42 @@
+{
+  "partType": "other",
+  "summary": "Compact rectangular IR distance sensor module with a molded body and two end mounting tabs, each with a round hole. A small board with a 3-pin connector projects from one long edge. The front face has two lens openings, and the back is a PCB.",
+  "boundsMm": {
+    "x": 44.5,
+    "y": 18.9,
+    "z": 13.5
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3.2,
+      "positionsMm": [
+        [
+          -18.5,
+          3,
+          0
+        ],
+        [
+          18.5,
+          3,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -6.75,
+      "description": "Back face of the body (PCB side), 44.5 x 18.9 mm envelope. The two end tabs with holes sit on this plane for screw mounting."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 6.75,
+      "description": "Front face with the two lens openings. It must stay unobstructed and is not a mounting surface."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Bounding box comes from the stated size (44.5 x 18.9 x 13.5 mm), which is marked unverified. Axes: x = length, y = width including the connector ledge, z = thickness. The images show no printed dimensions for the holes. The 3.2 mm diameter, the 37 mm hole spacing (x = ±18.5) and the y offset (about +3 mm) are estimates from tab proportions in the back-view photo. The holes are assumed to pass through the tabs along the thickness direction. Verify them against the manufacturer drawing before using them in CAD. The connector and lens details are not modeled."
+}

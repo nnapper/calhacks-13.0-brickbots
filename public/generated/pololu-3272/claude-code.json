@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "70 mm diameter, 25 mm wide wheel with the axle along Z, centered at X=0 and Z=0. It rests on Y=0, so the wheel center is at Y=35. The tire is a cylinder with 8 mm rounded edges on both faces, and a 22 mm through bore runs along the axle axis.",
+  "confidence": "medium",
+  "warnings": [
+    "The 22 mm bore is inferred from the standard 608 bearing outer diameter and is not stated in the product data.",
+    "The 70 mm diameter and 25 mm width come from unverified product data.",
+    "The recessed hub, five spokes and central hub tube are visible but not dimensioned, so they are omitted and the body is solid around the bore.",
+    "The 8 mm tire edge radius is estimated from the image.",
+    "Any bore steps or bearing seats are omitted."
+  ],
+  "cadquery": "w=25\nd=70\nbore=22\npart=(cq.Workplane('XY').circle(d/2).extrude(w).translate((0,0,-w/2))\n .edges().fillet(8)\n .cut(cq.Workplane('XY').circle(bore/2).extrude(w).translate((0,0,-w/2)))\n .translate((0,d/2,0)))"
+}

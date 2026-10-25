@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Single 32 mm diameter, 7 mm wide wheel with axle along Z, centred at X=0 and Z=0, bottom at Y=0 (wheel centre at Y=16). It has a black tire ring, a thin white rim ring, a central hub, three radial spokes at 120°, and a D-shaped 3 mm through bore.",
+  "confidence": "medium",
+  "warnings": [
+    "Dimensions come from the unverified product listing (32 mm diameter, 7 mm width).",
+    "Tire thickness, rim width, hub size and spoke width are estimated from the image.",
+    "The D-bore flat position is estimated because it is not dimensioned.",
+    "Tire tread pattern and the recessed rim profile are omitted.",
+    "The product is sold as a pair, but only one wheel is modeled.",
+    "The axle is along Z as the analysis states, so the wheel centre sits at Y=16 to keep the bottom at Y=0."
+  ],
+  "cadquery": "R = 16.0\nW = 7.0\ncy = R\n\n# silicone tire ring (axle along Z, wheel centre at Y=16 so the bottom sits at Y=0)\ntire = cq.Workplane('XY').center(0, cy).circle(R).circle(14.0).extrude(W / 2, both=True)\n\n# white rim ring\nrim = cq.Workplane('XY').center(0, cy).circle(14.0).circle(12.5).extrude(2.5, both=True)\n\n# central hub\nhub = cq.Workplane('XY').center(0, cy).circle(4.0).extrude(3.0, both=True)\n\npart = tire.union(rim).union(hub)\n\n# three spokes at 120 degrees\nfor a in (90, 210, 330):\n    spoke = (cq.Workplane('XY').box(12.0, 3.5, 5.0)\n             .translate((6.5, 0, 0))\n             .rotate((0, 0, 0), (0, 0, 1), a)\n             .translate((0, cy, 0)))\n    part = part.union(spoke)\n\n# D-shaped through bore for the 3 mm D shaft\ndcyl = cq.Workplane('XY').center(0, cy).circle(1.5).extrude(5, both=True)\ndbox = cq.Workplane('XY').box(3.2, 3.2, 12).translate((-0.2 - 1.6 + 1.6, cy, 0)).translate((-0.2, 0, 0))\ndbore = dcyl.intersect(cq.Workplane('XY').box(2.7, 4, 12).translate((-0.15, cy, 0)))\npart = part.cut(dbore)"
+}

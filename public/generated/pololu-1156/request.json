@@ -1,0 +1,11 @@
+{
+  "name": "6-AA Battery Holder, Back-to-Back",
+  "sku": "pololu-1156",
+  "category": "battery-holders",
+  "expectedDimensionsMm": [
+    58,
+    48,
+    29
+  ],
+  "units": "millimeter"
+}

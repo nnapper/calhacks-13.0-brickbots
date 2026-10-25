@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "MinIMU-9 v5 Gyro, Accelerometer, and Compass (LSM6DS33 and LIS3MDL Carrier)",
+    "sku": "pololu-2738",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "X and Y come from the printed 0.8 in x 0.5 in outline (20.32 x 12.7 mm). The mounting hole diameter is the printed 0.086 in (2.18 mm). The hole position is estimated from the pixel layout of the drawing: about 2.1 mm from the left edge and 2.1 mm from the top edge, with the pin row on the +x side and +y toward SCL. The 3 mm height is the unverified catalog value and is not printed in the images, so it covers the board plus the tallest components. The five 2.54 mm-pitch pin holes along the +x edge (SCL, SDA, GND, VIN, VDD) and the SA0 hole are visible, but their diameters are not stated, so they are not listed in the holes array.",
+      "The 3 mm catalog height is unverified. The PCB is assumed to be 1.0 mm thick and the components are modeled up to about 2.1 mm total height.",
+      "The component positions and sizes are approximate and estimated from the photo.",
+      "The five 0.1 in pin holes and the SA0 pad hole are visible, but their diameters are not stated, so they are omitted.",
+      "The mounting hole z position (+4.25) is estimated, and its side of the board is inferred from the photo orientation.",
+      "The board thickness is assumed.",
+      "Silkscreen, solder pads, traces and vias are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -10.16,
+      "xmax": 10.16,
+      "ymin": 0,
+      "ymax": 2.1,
+      "zmin": -6.35,
+      "zmax": 6.35,
+      "xlen": 20.32,
+      "ylen": 2.1,
+      "zlen": 12.7
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [2.1, 12.7, 20.32]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 134096,
+        "sha256": "d842c5c8036ce095fa3cee00d713686869183d4c9fdd628e41af8770f7314eaf"
+      },
+      "model.stl": {
+        "bytes": 24084,
+        "sha256": "70df18a21b81ae5e3050e7ee59246fcbea9234c7799a85f297cedd1e0706be0e"
+      },
+      "model.glb": {
+        "bytes": 9652,
+        "sha256": "205b8edaeb2617ed7dd133a6d690df5efa512df2a91acd73856ced7192a87a44"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "d842c5c8036ce095fa3cee00d713686869183d4c9fdd628e41af8770f7314eaf"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 38
+  },
+  "status": "prototype_unverified"
+}

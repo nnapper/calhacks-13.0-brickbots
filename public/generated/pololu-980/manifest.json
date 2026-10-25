@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Solarbotics GMPW-R RED Wheel with Encoder Stripes, Silicone Tire",
+    "sku": "pololu-980",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "No printed dimensions appear in the images. Diameter uses the stated 2-5/8 in (about 66.7 mm). The metadata value of 69 mm is flagged unverified and conflicts with it. Width 7.62 mm (0.30 in) comes from the metadata and is also unverified. The hub bore is visible but its shape and size are not stated (bore_diameter is null), so no hole diameter is given. The five large spoke windows are visible but their dimensions are not provided, so they are not listed as holes. The 64-stripe encoder pattern is molded in on one face. Tire profile, hub protrusion and rim depth are unknown.",
+      "Diameter taken from 2-5/8 in (66.7 mm); the metadata value of 69 mm conflicts with it and is unverified.",
+      "Width of 7.62 mm is unverified.",
+      "Tire thickness, web thickness and z-position, and hub diameter are estimated from the image.",
+      "Spoke windows are approximated as round holes; the real windows are trapezoidal.",
+      "The hex bore size and shape are uncertain; 5 mm across was estimated from the image.",
+      "The encoder stripes, the small inner hub windows, the hub ribs and the logo are omitted.",
+      "Tire profile and rim depth are unknown and not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -33.35,
+      "xmax": 33.35,
+      "ymin": 0,
+      "ymax": 66.7,
+      "zmin": -3.81,
+      "zmax": 3.8100000000000014,
+      "xlen": 66.7,
+      "ylen": 66.7,
+      "zlen": 7.620000000000001
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 95406,
+        "sha256": "676022bb64fbc8b06b30a10da967c92a0b2215d321ac0eb3deb0c21843593a98"
+      },
+      "model.stl": {
+        "bytes": 163484,
+        "sha256": "762d009c42d8d59328e638d3e0d8cb5488af9ca7947a0e7e1c14c57803d8668f"
+      },
+      "model.glb": {
+        "bytes": 59724,
+        "sha256": "fc6f3267523bed81c747d428cfd4b7bccd5dfa0b2d1a7cbc1925efe586605da0"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "676022bb64fbc8b06b30a10da967c92a0b2215d321ac0eb3deb0c21843593a98"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 18
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Solarbotics GMPW-R RED Wheel with Encoder Stripes, Silicone Tire",
+  "sku": "pololu-980",
+  "category": "wheels",
+  "expectedDimensionsMm": [
+    69,
+    7.62,
+    69
+  ],
+  "units": "millimeter"
+}

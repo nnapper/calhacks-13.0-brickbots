@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Snap-Action Switch with 18.5mm Bump Lever: 3-Pin, SPDT, 5A",
+    "sku": "pololu-1405",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The images show no printed dimensions, and the supplied dimensions are marked unverified. The body size is taken from the product description. The hole diameter (about 2.3 mm) and hole positions were estimated by scaling the side-view image to the 19.8 mm body length. The two holes are about 10.3 mm apart, roughly 2.8 mm below the body's vertical center. The 18.5 mm lever extends beyond the body envelope, and the three pins hang below it. Pin size and spacing are not stated, so they are not modeled. The x axis runs along the body length, y is the height from pins to lever side, and z is the thickness.",
+      "The supplied dimensions are unverified. The body size comes from the product description.",
+      "The hole diameter (2.3 mm) and positions were estimated from the image scale.",
+      "The 18.5 mm bump lever is omitted. Its exact curvature and pivot geometry are uncertain, and it extends beyond the body envelope.",
+      "The three solder pins are omitted because their size and spacing are not stated.",
+      "The 10.2 mm height may include the pins in the real part. It is used here as the body height, following the image analysis bounds.",
+      "Small body details such as the markings, the actuator plunger and the side recesses are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -9.9,
+      "xmax": 9.9,
+      "ymin": 0,
+      "ymax": 10.2,
+      "zmin": -3.2,
+      "zmax": 3.2,
+      "xlen": 19.8,
+      "ylen": 10.2,
+      "zlen": 6.4
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 28821,
+        "sha256": "193f62a6a565b058548b42a1b45382f500882d33e0ee133326811c1441f086e6"
+      },
+      "model.stl": {
+        "bytes": 51484,
+        "sha256": "fd88e56ffc9ce2db42bfa49e60cced611aea2a80c72bb0e52df3e9e5c852e090"
+      },
+      "model.glb": {
+        "bytes": 19496,
+        "sha256": "e2c26c78260999d89bfa86a374ac014bda351cd45a7745a2a5d0fbd748577e25"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "193f62a6a565b058548b42a1b45382f500882d33e0ee133326811c1441f086e6"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 62
+  },
+  "status": "prototype_unverified"
+}

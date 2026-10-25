@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "VL53L1X Time-of-Flight Distance Sensor Carrier with Voltage Regulator, 400cm Max",
+    "sku": "pololu-3415",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Board outline 0.5 in x 0.7 in (12.7 x 17.78 mm) is printed in the drawing. The two mounting holes are printed as 0.086 in (2.18 mm) diameter and 0.5 in (12.7 mm) apart. Hole x offset (about 2.7 mm from the left edge) is estimated from the image scale. Y positions are placed symmetrically about center. The 2 mm total height is the unverified catalog value and covers the board plus the sensor module. PCB thickness is not stated. Seven 0.1 in pitch (2.54 mm) pin holes run along one long edge, about 1.1 mm in from the edge (x ≈ +5.2), but their diameter is not given, so they are not listed in holes.",
+      "PCB thickness (1.0 mm) and sensor module height (1.0 mm) are assumed so the total height matches the unverified 2 mm catalog value.",
+      "Pin hole diameter (1.0 mm) is estimated; the image shows one pin position as a square pad, which is modeled as a round hole.",
+      "Sensor module footprint and position are estimated from the image.",
+      "Small SMD components, the regulator and the level-shifter ICs are omitted.",
+      "The X position of the pin row and the mounting holes, and the side they are on, are estimated from the image."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -6.35,
+      "xmax": 6.35,
+      "ymin": 0,
+      "ymax": 2,
+      "zmin": -8.89,
+      "zmax": 8.89,
+      "xlen": 12.7,
+      "ylen": 2,
+      "zlen": 17.78
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 62811,
+        "sha256": "13ea2aae04d35183b20ccce44c813d48fe222638b8eae5650fa99e2bcc7bc31c"
+      },
+      "model.stl": {
+        "bytes": 154484,
+        "sha256": "caf81d1fd16fbc21d07bfedb53af0f116bb75014a06b5266dabc1237456539cc"
+      },
+      "model.glb": {
+        "bytes": 56408,
+        "sha256": "6acae7a1503d457f005531ca6c0a1bf4d5e6dfcf1fe632de1d2bbcb53dcf189a"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "13ea2aae04d35183b20ccce44c813d48fe222638b8eae5650fa99e2bcc7bc31c"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 35
+  },
+  "status": "prototype_unverified"
+}

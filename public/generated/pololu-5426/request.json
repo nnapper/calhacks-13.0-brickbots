@@ -1,0 +1,11 @@
+{
+  "name": "Pololu Isolated Solid State Relay/Switch, SPST, 100V, 4.5A",
+  "sku": "pololu-5426",
+  "category": "relay-modules",
+  "expectedDimensionsMm": [
+    20.32,
+    8.13,
+    3.3
+  ],
+  "units": "millimeter"
+}

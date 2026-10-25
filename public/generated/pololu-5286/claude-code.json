@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "20.32 x 22.86 mm PCB, 1.6 mm thick, lying in the XZ plane with Y up. It has one 2.18 mm corner mounting hole, a 9-pin header along one long edge (housings plus pins up to Y=11), a 4-position green screw terminal block with shallow screw recesses on one short edge, and a cylindrical can capacitor.",
+  "confidence": "low",
+  "warnings": [
+    "Height of about 11 mm is estimated from the photo, not stated in the specs.",
+    "Dimensions are marked unverified.",
+    "Mounting hole position is approximate.",
+    "The separate 2-pin ISET header is omitted because its position is uncertain.",
+    "Terminal block size and pitch, capacitor size and position, and header pin length are estimated from the photo.",
+    "SMD components, silkscreen and the pin tails below the board are omitted."
+  ],
+  "cadquery": "W=20.32; L=22.86; T=1.6\npcb=cq.Workplane('XZ').rect(W,L).extrude(-T)\npcb=pcb.cut(cq.Workplane('XZ').center(8.1,-8.8).circle(1.09).extrude(-T))\npart=pcb\n# 9-pin header along the long edge\nhx=-8.9\nfor i in range(9):\n    z=(i-4)*2.54\n    hs=cq.Workplane('XY').box(2.54,2.5,2.54,centered=(True,False,True)).translate((hx,T,z))\n    pin=cq.Workplane('XY').box(0.64,11-T,0.64,centered=(True,False,True)).translate((hx,T,z))\n    part=part.union(hs).union(pin)\n# 4-position screw terminal block on one short edge\ntb=cq.Workplane('XY').box(14,8.5,7.6,centered=(True,False,True)).translate((2,T,7.4))\nfor i in range(4):\n    x=2+(i-1.5)*3.5\n    tb=tb.cut(cq.Workplane('XZ').center(x,7.4).circle(1.2).extrude(-0.5).translate((0,T+8.0,0)))\npart=part.union(tb)\n# electrolytic can capacitor\ncap=cq.Workplane('XZ').center(4,0.5).circle(3.15).extrude(-5.5).translate((0,T,0))\npart=part.union(cap)"
+}

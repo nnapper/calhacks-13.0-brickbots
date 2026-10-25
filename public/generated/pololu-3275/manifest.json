@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Scooter/Skate Wheel 84×24mm - Black",
+    "sku": "pololu-3275",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 84 mm diameter and 24 mm width come from the product description, which is flagged as unverified, and no drawing dimensions are visible. The bore is drawn as a through hole of about 22 mm, matching the outer diameter of a standard 608 bearing (the bearing seat). This is an assumption: the bore is not stated, and the actual through-opening is probably smaller (about 8 mm, the 608 bore). Spoke cutouts and the adapter screw holes are not modeled because their dimensions are not given. The tread cross-section is rounded, with a slight parting line at the center.",
+      "The 84 mm diameter and 24 mm width come from the unverified product description.",
+      "The 22 mm bore is an assumption taken from the image analysis. It matches the outside diameter of a 608 bearing, so the real through-opening is probably smaller (about 8 mm).",
+      "The 8 mm tread fillet radius is estimated from the image.",
+      "The recessed hub faces, spoke webbing, central hub boss and adapter screw holes are not modeled because their dimensions are unknown.",
+      "The slight parting line at the tread center is not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -42,
+      "xmax": 42,
+      "ymin": -1e-7,
+      "ymax": 84,
+      "zmin": -12,
+      "zmax": 12,
+      "xlen": 84,
+      "ylen": 84.0000001,
+      "zlen": 24
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 14232,
+        "sha256": "dfc5259dc03b58a8a34bdce16c203d5b842a1e0c6431fe9ee55b04d64db82f39"
+      },
+      "model.stl": {
+        "bytes": 386484,
+        "sha256": "44209c9e93ba3caa3ab9366391fd6f20cd9bcb1de6d1bfcd16fdb9dc07817e12"
+      },
+      "model.glb": {
+        "bytes": 140128,
+        "sha256": "9358e7d5ef68f4af7ea2a475af7531b08fcbe48b719a3d1e23e04994aebb3d45"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "dfc5259dc03b58a8a34bdce16c203d5b842a1e0c6431fe9ee55b04d64db82f39"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 10
+  },
+  "status": "prototype_unverified"
+}

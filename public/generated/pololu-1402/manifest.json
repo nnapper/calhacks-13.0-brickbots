@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Snap-Action Switch with 16.7mm Lever: 3-Pin, SPDT, 5A",
+    "sku": "pololu-1402",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Bounds are the body only: 20 x 6.4 x 10.2 mm from the drawing and product data. The lever (16.7 mm long, about 12 mm tip height from the hole axis line) and the pin tabs extend beyond this envelope and are not included. Hole x-positions come from the 5.25 mm and 9.5 mm dimensions. The hole z-position is estimated from the drawing's hole axis line and is approximate. The Ø2.4 holes are taken as through the 6.4 mm thickness because the drawing shows them in the front and back views.",
+      "Tab lengths below the body (about 4 mm) and lever angle (10°) and width are estimated from the image.",
+      "Hole spacing taken from the analysis (9.5 mm); the image perspective suggests it may be smaller.",
+      "Hole height on the body is approximate.",
+      "Hinge post, body step/notch on the right end, and the actuator pin details are simplified or omitted.",
+      "Dimensions are unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -10,
+      "xmax": 10,
+      "ymin": 0,
+      "ymax": 17.89688611764018,
+      "zmin": -3.2,
+      "zmax": 3.2,
+      "xlen": 20,
+      "ylen": 17.89688611764018,
+      "zlen": 6.4
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 10.200 mm; measured dimensions are [6.4, 17.89688611764018, 20.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 134264,
+        "sha256": "01848c611b60f996029661231d16a366ddaa3238ca7462c400b56d5cdaaa59e2"
+      },
+      "model.stl": {
+        "bytes": 132084,
+        "sha256": "0b1b26326580d7e587dc16949d05f973d4067031f99d6cbf792a965bea25adef"
+      },
+      "model.glb": {
+        "bytes": 48444,
+        "sha256": "502a6ddab7eea2c9bff0eaaf1242c6c3f3e7a8576885f2f046cead28412f5fe6"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "01848c611b60f996029661231d16a366ddaa3238ca7462c400b56d5cdaaa59e2"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

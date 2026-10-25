@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Single 42 mm diameter x 19 mm wide wheel with its axis along Z, centered at X=0 and Z=0 and resting on Y=0 (axis at Y=21). A plain annular tire (R15 to R21) surrounds a white hub. The hub has a recessed flat disc on the -Z side, a central boss, and twelve radial teeth (3 mm wide) on the +Z side. A 3 mm D-shaped bore passes through the hub.",
+  "confidence": "medium",
+  "warnings": [
+    "Dimensions come from unverified listing text, not a dimensioned drawing.",
+    "Tire tread lugs are omitted, so the tire is a plain annulus.",
+    "Hub recess depth, boss diameter, tooth height and tooth radial extent are estimated from the images.",
+    "D-bore flat depth is assumed (about 2.7 mm across the flat) and the bore is assumed to pass fully through.",
+    "Teeth are modeled as rectangular radial blocks, 3 mm wide with roughly 3 mm gaps at the mid radius.",
+    "Only one wheel of the pair is modeled."
+  ],
+  "cadquery": "tire = cq.Workplane('XY').circle(21).circle(15).extrude(19).translate((0,0,-9.5))\ndisc = cq.Workplane('XY').circle(15.5).extrude(2).translate((0,0,-6))\nboss = cq.Workplane('XY').circle(4).extrude(13).translate((0,0,-6))\nbody = tire.union(disc).union(boss)\nfor i in range(12):\n    tooth = (cq.Workplane('XY').box(4.5, 3, 11, centered=(True, True, False))\n             .translate((13.25, 0, -4))\n             .rotate((0, 0, 0), (0, 0, 1), i * 30))\n    body = body.union(tooth)\nd_cut = (cq.Workplane('XY').circle(1.5).extrude(24).translate((0,0,-12))\n         .intersect(cq.Workplane('XY').box(2.7, 4, 24).translate((-0.15,0,0))))\nbody = body.cut(d_cut)\npart = body.translate((0, 21, 0))"
+}

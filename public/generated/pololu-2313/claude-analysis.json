@@ -1,0 +1,37 @@
+{
+  "partType": "other",
+  "summary": "Linear actuator with a long cylindrical aluminum outer tube and extending rod. A gearbox housing sits at the rear, with a cylindrical motor mounted parallel to the tube and a cable exiting the top. The rod end has a cross hole for a clevis pin. Bounds are for the fully extended 12-inch-stroke version.",
+  "boundsMm": {
+    "x": 751,
+    "y": 40,
+    "z": 70
+  },
+  "holes": [
+    {
+      "axis": "y",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          -367,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": -375.5,
+      "description": "Rod-end clevis mounting point at the front of the extending rod; the cross hole is visible in the product image."
+    },
+    {
+      "axis": "x",
+      "offsetMm": 375.5,
+      "description": "Rear gearbox end, a mounting point for the rear bracket or pivot. A rear hole is likely but not clearly visible on this 12-inch model."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 751 mm length is given, and it matches the extended length (about 750 mm) rather than the retracted 450 mm. The width (40 mm), height (70 mm) and rod-end hole diameter (8 mm) are rough estimates from the product photos, not printed dimensions. The hole position is also estimated, assuming it sits about 8 mm from the rod tip. The rod and tube diameters are not stated. Retracted length is 450 mm, so the stroke is 300 mm and the rod travels along x. The feedback potentiometer and limit switches are internal and not modeled."
+}

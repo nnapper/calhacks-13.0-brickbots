@@ -1,0 +1,10 @@
+{
+  "name": "Teensy 4.1 without Ethernet (Headers)",
+  "sku": "sparkfun-DEV-20360",
+  "category": "sparkfun-22",
+  "expectedDimensionsMm": [
+    60.96,
+    17.78
+  ],
+  "units": "millimeter"
+}

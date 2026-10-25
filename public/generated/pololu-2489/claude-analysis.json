@@ -1,0 +1,42 @@
+{
+  "partType": "flat_plate",
+  "summary": "Small rectangular carrier PCB for a time-of-flight distance sensor. It has two mounting holes on one short side and a row of seven 0.1 inch pitch pin pads along one long edge. A few low-profile components sit on the top face.",
+  "boundsMm": {
+    "x": 12.7,
+    "y": 17.78,
+    "z": 2.16
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.18,
+      "positionsMm": [
+        [
+          -3.65,
+          6.35,
+          0
+        ],
+        [
+          -3.65,
+          -6.35,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.08,
+      "description": "Flat underside of the PCB, used to seat the board on standoffs through the two mounting holes."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1.08,
+      "description": "Top face carrying the sensor and components. It is not a flat mounting surface."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The drawing prints 0.5 in width (12.7 mm), 0.7 in length (17.78 mm), a 0.5 in hole spacing (12.7 mm) and a hole diameter of 0.086 in (2.18 mm). The 0.085 in overall height (2.16 mm) comes from the spec text and includes the components, so the bare PCB is thinner. Hole x-offset from the edge (about 2.7 mm) was estimated from the image scale, not printed. The seven pin pads are on the opposite long edge at 2.54 mm pitch, but their hole diameter is not stated, so they are left out of the holes list. Z is centered on the board thickness."
+}

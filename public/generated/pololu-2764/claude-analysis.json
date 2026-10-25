@@ -1,0 +1,52 @@
+{
+  "partType": "other",
+  "summary": "Compact square IMU/AHRS module with a low-profile black enclosure. Mounting tabs with holes project from the base, a wire-lead connector is on one side, and an expansion connector is on the opposite side. The top face carries printed labels and an axis diagram.",
+  "boundsMm": {
+    "x": 28,
+    "y": 28,
+    "z": 9
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2,
+      "positionsMm": [
+        [
+          -11.5,
+          11.5,
+          -3.5
+        ],
+        [
+          11.5,
+          11.5,
+          -3.5
+        ],
+        [
+          -11.5,
+          -11.5,
+          -3.5
+        ],
+        [
+          11.5,
+          -11.5,
+          -3.5
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -4.5,
+      "description": "Flat bottom face with the raised tab plate, used to mount the module to a flat surface. A small central hole and four small fastener heads are visible on it."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 4.5,
+      "description": "Flat top face carrying the printed labels and axis diagram. It is not a mounting surface."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The 28 x 28 x 9 mm bounds come from the supplied listing, which is flagged as unverified. In the coin-scale photo, the overall footprint including the tabs looks about 28 mm, so the listed size probably includes the tabs. The tab hole diameter, tab hole positions and tab thickness are rough visual estimates, and the tab layout is only approximated as four corners. The listing also mentions five threaded mounting holes, but their positions are not visible or stated, so they are left out. The bottom face's small central hole and four fastener heads are also left out. The side connector and wire leads are not modelled."
+}

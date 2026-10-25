@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Glideforce MD122010-P Medium-Duty Linear Actuator with Feedback: 100kgf, 10\" Stroke (9.8\" Usable), 0.58\"/s, 12V",
+    "sku": "pololu-3618",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the length is stated: 392 mm retracted (assumed hole center to hole center), 642 mm extended, 250 mm actual stroke. The 10 mm mounting hole diameter is stated. Overall width (y = 70) and thickness (z = 40) are rough visual estimates from the product photos, not printed dimensions. The x bound of 402 adds about 5 mm of tab material beyond each hole center, also an estimate. The hole axes are assumed perpendicular to the length and to the stroke-comparison view, and hole positions are assumed centered in y and z. The extended length is 642 mm, so the shaft-end hole would move to x = -446 when fully extended, with the bounds growing to about 652 mm.",
+      "Cross-section sizes (40x40 tube, 44 mm housing height, 36 mm motor diameter) are visual estimates, not stated dimensions.",
+      "Hole centers are placed at x=±196 (392 mm retracted length). The end bosses extend 10 mm past each hole, so the overall X length is about 412 mm, not the 402 mm in the analysis, to leave wall material around the 10 mm holes.",
+      "Modeled in the retracted state only; the 250 mm stroke is not represented.",
+      "Cable, strain relief, end-cap screws, seal ring, potentiometer, labels and logos omitted.",
+      "Motor length and position, and the housing shape, are approximate."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -206.0000001,
+      "xmax": 206,
+      "ymin": 0,
+      "ymax": 70,
+      "zmin": -20,
+      "zmax": 20,
+      "xlen": 412.00000009999997,
+      "ylen": 70,
+      "zlen": 40
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 642.000 mm; measured dimensions are [40.0, 70.0, 412.00000009999997]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 120665,
+        "sha256": "b9d6fcbdf60d1b08e498090abce4451bd3aa5fff365a6b7c28504bb0f223c1be"
+      },
+      "model.stl": {
+        "bytes": 83584,
+        "sha256": "5730c2ce3a960e9532a4b60b3e832c558510736ce624bef0ad2c8ece8d14906e"
+      },
+      "model.glb": {
+        "bytes": 31052,
+        "sha256": "1184fe41bed4d6ab98e222941342f9d0bf3cd8a85f946124bf83b7b73cf13a2c"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "b9d6fcbdf60d1b08e498090abce4451bd3aa5fff365a6b7c28504bb0f223c1be"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

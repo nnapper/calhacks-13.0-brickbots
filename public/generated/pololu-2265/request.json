@@ -1,0 +1,11 @@
+{
+  "name": "Vibration Motor 11.6×4.6×4.8mm",
+  "sku": "pololu-2265",
+  "category": "vibration-motors",
+  "expectedDimensionsMm": [
+    11.6,
+    4.6,
+    4.8
+  ],
+  "units": "millimeter"
+}

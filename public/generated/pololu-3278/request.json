@@ -1,0 +1,11 @@
+{
+  "name": "Scooter/Skate Wheel 100×24mm - Black",
+  "sku": "pololu-3278",
+  "category": "scooter-wheels",
+  "expectedDimensionsMm": [
+    100,
+    24,
+    100
+  ],
+  "units": "millimeter"
+}

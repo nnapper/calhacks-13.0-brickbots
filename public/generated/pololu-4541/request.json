@@ -1,0 +1,11 @@
+{
+  "name": "QTRXL-MD-01RC Reflectance Sensor: 1-Channel, 7.5mm Wide, RC Output, Long Range",
+  "sku": "pololu-4541",
+  "category": "reflectance-sensors",
+  "expectedDimensionsMm": [
+    20,
+    7.5,
+    3
+  ],
+  "units": "millimeter"
+}

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Tamiya 72001 Planetary Gearbox Kit",
+    "sku": "pololu-70",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "No overall dimensions are printed in the drawings, and the supplied length, width, height and diameter fields are null and flagged unverified. The bounds are rough visual estimates, with x along the motor and output axis, and should be checked against a datasheet or measurement. The only stated dimension is the 4 mm round output shaft, and the drawing mentions 3 mm tie bolts and nuts. The bracket perforations are visible but their diameters and positions are not given, so no holes are listed. The 3-6 V rating and the gear ratio options are not geometric inputs.",
+      "No overall dimensions were provided, so all sizes are rough estimates from the image and the 95x50x40 bounds.",
+      "The bracket perforations are visible but their sizes and positions are unknown, so they are omitted.",
+      "Screw heads, nuts, motor terminals, wires, motor can details and the end-cap logo are omitted.",
+      "The bracket shapes are simplified to rectangular plates, and the real brackets are likely triangular or gusseted.",
+      "The tie rod positions are approximated at the top and bottom of the housing.",
+      "The shaft length and the housing stage lengths are estimated."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -47.5,
+      "xmax": 47.5,
+      "ymin": 0,
+      "ymax": 47,
+      "zmin": -19,
+      "zmax": 19,
+      "xlen": 95,
+      "ylen": 47,
+      "zlen": 38
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 4.000 mm; measured dimensions are [38.0, 47.0, 95.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 105402,
+        "sha256": "bb8b1d147fd0014bbe2571f0c6a05957fb387181c3502096d20f3913c603b0b5"
+      },
+      "model.stl": {
+        "bytes": 87084,
+        "sha256": "806e2b58364003c7c7b985d6fe51d1c1b9ff358f1f5925c37f86c4553459bc07"
+      },
+      "model.glb": {
+        "bytes": 32360,
+        "sha256": "861a37e78807bfba28aa5a037245e8f0ea94d830ace8d42c730f96268391dbf9"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "bb8b1d147fd0014bbe2571f0c6a05957fb387181c3502096d20f3913c603b0b5"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

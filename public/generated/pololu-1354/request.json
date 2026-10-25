@@ -1,0 +1,10 @@
+{
+  "name": "Mini Maestro 18-Channel USB Servo Controller (Assembled)",
+  "sku": "pololu-1354",
+  "category": "servo-controllers",
+  "expectedDimensionsMm": [
+    45.72,
+    27.94
+  ],
+  "units": "millimeter"
+}

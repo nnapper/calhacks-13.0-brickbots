@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Zumo Chassis Kit (No Motors)",
+    "sku": "pololu-1418",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Bounds are the unverified catalog values (length 98 as x, width 86 as y, height 39 as z) and are not confirmed by any printed dimensions in the images. The top plate clearly has a grid of small holes plus several slots and notches, but hole diameters and positions cannot be measured from the photos, so the holes array is left empty rather than guessed. Fastener hardware is shown loose, and the images give no dimensions for it. The 1/16 in plate thickness is stated in the description, not visible. The plate is described as acrylic, although it looks black in the images.",
+      "The catalog dimensions are unverified. The 98 x 86 x 39 mm envelope was mapped to X length, Z width and Y height to follow the Y-up rule, which differs from the axis labels in the image analysis.",
+      "The body is a plain solid block. The battery compartment cavity, motor sockets and other body details are omitted because their dimensions are uncertain.",
+      "The plate's hole grid, slots and notches are omitted because their positions and sizes cannot be measured from the photo.",
+      "Sprockets, track teeth, battery contacts and loose fasteners are not modeled. The tracks are smooth rings.",
+      "Track width (13 mm), track loop height (30 mm), body height and plate size are estimated from proportions, not measured.",
+      "The plate is modeled at 1.6 mm (1/16 in) from the description."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -49,
+      "xmax": 49,
+      "ymin": -1.7763568394002505e-15,
+      "ymax": 39,
+      "zmin": -43,
+      "zmax": 43,
+      "xlen": 98,
+      "ylen": 39,
+      "zlen": 86
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 122107,
+        "sha256": "e50d9f756e3d506fd67c9de17cdcebaa7cc0f9c61ee34fc30fffdfd850d49db4"
+      },
+      "model.stl": {
+        "bytes": 71884,
+        "sha256": "5c7793d86d1978fe267c8a3889d6668da1073bc7878faa2896c1d543a3dd9a0e"
+      },
+      "model.glb": {
+        "bytes": 26836,
+        "sha256": "f76933f783397d6baa56859489b9ea9a553935466cd0c391aa63daba0af13cc0"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "e50d9f756e3d506fd67c9de17cdcebaa7cc0f9c61ee34fc30fffdfd850d49db4"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

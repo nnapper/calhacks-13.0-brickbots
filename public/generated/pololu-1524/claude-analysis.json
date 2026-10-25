@@ -1,0 +1,37 @@
+{
+  "partType": "other",
+  "summary": "Thin cylindrical disc with a central axial bore. It is a magnetic encoder disc that mounts on a motor shaft. The dimensions come from the product data, which is flagged unverified, and no drawing is shown.",
+  "boundsMm": {
+    "x": 9.7,
+    "y": 9.7,
+    "z": 2
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 1.5,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1,
+      "description": "Flat face on one side of the disc, at the bottom of the 2 mm thickness, around the central bore."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1,
+      "description": "Flat face on the other side of the disc, at the top of the 2 mm thickness, around the central bore. The image shows a shallow recessed circular area on this face."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Outer diameter 9.7 mm, bore 1.5 mm and thickness 2 mm come from the listing text. The part is centered at the origin with its axis along z. The bore is treated as through because the listing calls it an inner diameter. The image also shows a small off-center hole near the rim. Its size and depth are not given, so it is left out of the holes list. The magnetic pole pattern (12 CPR) is not visible and is not modeled."
+}

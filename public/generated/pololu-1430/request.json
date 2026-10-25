@@ -1,0 +1,13 @@
+{
+  "name": "Pololu Wheel 80×10mm Pair - Black",
+  "sku": "pololu-1430",
+  "category": "balboa-robots",
+  "expectedDimensionsMm": [
+    80,
+    10,
+    80,
+    3,
+    3
+  ],
+  "units": "millimeter"
+}

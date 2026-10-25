@@ -1,0 +1,37 @@
+{
+  "partType": "wheel",
+  "summary": "Solid polyurethane scooter/skate wheel with a spoked inner hub and a central bore. The tire profile is rounded. Modeled as a 100 mm diameter, 24 mm wide cylinder with its rotation axis along z.",
+  "boundsMm": {
+    "x": 100,
+    "y": 100,
+    "z": 24
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 22,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 12,
+      "description": "Hub side face on the +z side, around the central bore, for a wheel adapter or bearing."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -12,
+      "description": "Hub side face on the -z side, around the central bore, for a wheel adapter or bearing."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 100 mm diameter and 24 mm width come from the product data, which is marked unverified. No drawing with printed dimensions is shown. The 22 mm bore is not printed anywhere. It is the standard 608 bearing outer diameter, taken from the statement that the wheel works with 608 bearings. The images show a central opening and a spoked hub, but the true bore size and any bearing seat depth are unconfirmed. The spoke cutouts are not modeled. The ±12 mm face offsets assume the hub is flush with the full 24 mm width, which the images do not confirm."
+}

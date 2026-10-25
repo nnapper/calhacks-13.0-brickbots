@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Rectangular 12.7 x 22.86 mm green PCB, 1.6 mm thick, lying in the XZ plane with its bottom at Y=0. It has two 2.18 mm mounting holes, 9 + 5 header through-holes (1.0 mm) on a 2.54 mm pitch along the long edges, and three simple box ICs on the top face (IMU and two small ICs).",
+  "confidence": "low",
+  "warnings": [
+    "PCB thickness (1.6 mm) is assumed; it is not stated.",
+    "Header hole diameter (1.0 mm) is assumed.",
+    "Header hole counts and positions (9 on one edge, 5 on the other) are estimated from the photo. The analysis notes say 10 and 5, which conflicts with the photo.",
+    "IC sizes and positions are approximate. Passive components, pads and silkscreen are omitted.",
+    "The overall height is about 2.7 mm, not the 3 mm listed, because the spec is unverified and may include other features.",
+    "Mounting hole positions are taken from the analysis and are approximate."
+  ],
+  "cadquery": "t = 1.6\nW, L = 12.7, 22.86\npcb = cq.Workplane('XY').box(W, t, L, centered=(True, False, True))\n# mounting holes (2.18 mm), both on the -X side near the short ends\nmount = (cq.Workplane('XZ').workplane(offset=-t - 1)\n         .pushPoints([(-3.9, 8.8), (-3.9, -8.8)]).circle(1.09).extrude(t + 2))\n# 0.1 in pitch header through-holes: 9 on +X edge, 5 on -X edge\npitch = 2.54\nptsA = [(5.08, (i - 4) * pitch) for i in range(9)]\nptsB = [(-5.08, (i - 2) * pitch) for i in range(5)]\npins = (cq.Workplane('XZ').workplane(offset=-t - 1)\n        .pushPoints(ptsA + ptsB).circle(0.5).extrude(t + 2))\npcb = pcb.cut(mount).cut(pins)\n# main components on top face\ndef blk(x, z, sx, sz, h):\n    return cq.Workplane('XY').box(sx, h, sz, centered=(True, False, True)).translate((x, t, z))\nimu = blk(1.5, -1.5, 2.5, 3.0, 0.86)\nic2 = blk(-0.5, 2.5, 1.6, 2.9, 1.0)\nreg = blk(-2.0, 6.5, 1.6, 2.9, 1.1)\npart = pcb.union(imu).union(ic2).union(reg)"
+}

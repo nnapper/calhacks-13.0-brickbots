@@ -1,0 +1,42 @@
+{
+  "partType": "other",
+  "summary": "SPDT snap-action micro switch with a roller lever and three solder tabs on the bottom edge. The body is 20 x 6.4 x 10.2 mm, with two Ø2.4 mounting holes through the body width.",
+  "boundsMm": {
+    "x": 20,
+    "y": 6.4,
+    "z": 10.2
+  },
+  "holes": [
+    {
+      "axis": "y",
+      "diameterMm": 2.4,
+      "positionsMm": [
+        [
+          -2.85,
+          0,
+          -2.2
+        ],
+        [
+          6.65,
+          0,
+          -2.2
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "y",
+      "offsetMm": 3.2,
+      "description": "Flat broad side face of the body (+Y), where the two Ø2.4 mounting holes open. The holes are 9.5 mm apart."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -5.1,
+      "description": "Bottom face of the body, where the three solder tabs exit. Each tab has a Ø1.6 hole and is 3.2 mm wide. The tabs extend roughly 6.4 mm below the body."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Body length 20, width 6.4 and height 10.2 are taken from the drawing and match the listed specs. Hole positions are measured from the left edge: 1.9 + 5.25 = 7.15 mm for the first hole, then 9.5 mm to the second. They are shifted to a body-centered frame. The hole height of about 2.9 mm above the bottom is read from the drawing and is the least certain value. The roller lever (16.3 mm) and the solder tabs are not included in the z bound. The roller may extend slightly beyond the body envelope. The lever's exact travel and pin geometry are not fully specified."
+}

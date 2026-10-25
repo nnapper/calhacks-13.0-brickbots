@@ -1,0 +1,19 @@
+{
+  "partType": "other",
+  "summary": "3-cell AA battery holder, a molded open-top case with three side-by-side cell cavities. Spring and flat contacts sit at the cavity ends, and two flying leads exit from one end. The case is modeled as a rectangular envelope.",
+  "boundsMm": {
+    "x": 58,
+    "y": 48,
+    "z": 15
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -7.5,
+      "description": "Flat underside of the case; the only mounting surface that can be assumed. Its flatness is not directly visible."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Bounds come from the product listing (58 x 48 x 15 mm), which is flagged as unverified. No dimensions are printed in the images. Small round features are visible in the cavity floor and on the end wall, but their sizes and positions can't be determined, so no holes are listed. No mounting holes are visible or stated. The wires (about 152.4 mm long, 24 gauge) are excluded from the bounding box. The bounding box is centered on the part."
+}

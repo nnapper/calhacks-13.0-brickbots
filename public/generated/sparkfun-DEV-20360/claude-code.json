@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Teensy 4.1 board: 60.96 x 17.78 x 1.6 mm PCB with two rows of 24 square pins (2.54 mm pitch, 15.24 mm row spacing) and black plastic header strips beneath, plus box approximations of the processor, microSD socket, micro-USB connector and pushbutton. Total height is about 12 mm, with Y up and the pin tips at Y=0.",
+  "confidence": "low",
+  "warnings": [
+    "Height is not given. The ~12 mm total is an assumed estimate.",
+    "Header pin count (24 per side), row spacing and pin length are assumed from the standard Teensy 4.1 layout, not measured from the image.",
+    "Component sizes and positions (chip, microSD, USB, button) are approximate boxes.",
+    "The black foam in the image is packaging and was excluded.",
+    "Mounting holes, vias, castellations, bottom pads and small SMT parts were omitted because they are not clearly visible.",
+    "Length and width come from unverified metadata."
+  ],
+  "cadquery": "def bx(sx, sy, sz, cx, y0, cz):\n    return cq.Workplane('XY').box(sx, sy, sz, centered=(True, False, True)).translate((cx, y0, cz))\n\nL, W = 60.96, 17.78\npitch = 2.54\nrow = 7.62\nplastic_y0, plastic_h = 6.0, 2.54\npcb_y0 = plastic_y0 + plastic_h\npcb_t = 1.6\ntop = pcb_y0 + pcb_t\n\npart = bx(L, pcb_t, W, 0, pcb_y0, 0)\n\nfor s in (-1, 1):\n    part = part.union(bx(L - 1.0, plastic_h, pitch, 0, plastic_y0, s * row))\n    for i in range(24):\n        x = -29.21 + i * pitch\n        part = part.union(bx(0.64, plastic_y0 + plastic_h, 0.64, x, 0, s * row))\n\n# main processor\npart = part.union(bx(10, 1.0, 10, 4, top, 0))\n# microSD socket at -X end\npart = part.union(bx(14, 1.5, 12, -L / 2 + 5, top, 0))\n# micro-USB connector at +X end\npart = part.union(bx(6, 2.6, 8, L / 2 - 2, top, 0))\n# pushbutton\npart = part.union(bx(3, 1.5, 3, -12, top, 0))"
+}

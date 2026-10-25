@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Basic Sumo Blade for Zumo Chassis",
+    "sku": "pololu-1410",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 0.036 in (0.9144 mm) thickness is stated. Length, width, hole diameter and hole positions are not printed and are estimated from image proportions and the chassis width, so they are unverified. The holes are assumed to be sized for #2-56 screws and are likely small, around 2–2.4 mm. Tab hole positions are approximate. The tabs are assumed to share one bend line parallel to the long edge, with the plate centered at the origin. In the bent state, the hole axes would tilt to match the 70° bend.",
+      "Length, width, notch geometry, tab sizes and hole positions are estimated from the image and unverified.",
+      "Tabs are modeled flat; the ~70° bend is not modeled.",
+      "Only the 0.9144 mm thickness is stated by the source.",
+      "Hole diameter of 2.3 mm is assumed for #2-56 screws.",
+      "Notch layout (same edge, recess sizes) is simplified compared to the photo."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -49,
+      "xmax": 49,
+      "ymin": 0,
+      "ymax": 0.9144000000000001,
+      "zmin": -24,
+      "zmax": 24,
+      "xlen": 98,
+      "ylen": 0.9144000000000001,
+      "zlen": 48
+    },
+    "warnings": [
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 104056,
+        "sha256": "a62c65cfd635871d2314c03770d3248253e65179768f55266374343929b80841"
+      },
+      "model.stl": {
+        "bytes": 38484,
+        "sha256": "475fee83e8081998e4aa8180e5cda6444d9307313b7b3fbaaeddaddf3eee2d6c"
+      },
+      "model.glb": {
+        "bytes": 14840,
+        "sha256": "1d6525bfac5c7a988296ab35b83c0e3c3fe24040e135c4873b526b62a63a46bd"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "a62c65cfd635871d2314c03770d3248253e65179768f55266374343929b80841"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

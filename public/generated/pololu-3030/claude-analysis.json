@@ -1,0 +1,42 @@
+{
+  "partType": "other",
+  "summary": "Track set for a small tracked chassis: two continuous silicone tracks with inner teeth, four sprockets (two drive, two idler) and screws, washers and nuts. For one assembled track loop, the sprockets sit about 48 mm apart and the track wraps around both.",
+  "boundsMm": {
+    "x": 83,
+    "y": 39,
+    "z": 14.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          -24,
+          0,
+          0
+        ],
+        [
+          24,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 7.3,
+      "description": "Outer sprocket face on each side of one track loop; the sprockets mount on axles or shafts spaced about 48 mm apart"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -7.3,
+      "description": "Inner sprocket face and track edge, facing the chassis side"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Bounds describe one assembled track loop centered on the part, with x along the sprocket spacing and z along the track width. x is about 48 mm spacing plus about 35 mm sprocket diameter, roughly 83 mm overall (an estimate). y is the stated ~39 mm diameter with track. z is the stated 14.6 mm track width. The 3 mm hole is for the drive sprocket D-shaft, as stated in the description. It is placed at the sprocket centers, and the through condition is assumed. Idler hole diameter and positions, the screw sizes and the sprocket hub details are not given, so they are not specified. The supplied dimensions are marked unverified, and no drawing with printed dimensions is visible."
+}

@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Round disc, 9.7 mm OD and 2 mm thick, with its axis along Y and its bottom face at Y=0. It has a 2.0 mm central through-bore. The two small circular marks on the face are not modeled.",
+  "confidence": "medium",
+  "warnings": [
+    "Dimensions come from the unverified listing.",
+    "The two small circular marks on one face are uncertain (they may be magnetized pole regions rather than geometry), so they are omitted.",
+    "The through-bore is assumed from the light visible at the bottom of the hole.",
+    "The image suggests the bore may be slightly tapered or stepped, but this is uncertain, so a straight bore is used."
+  ],
+  "cadquery": "d=9.7\nt=2.0\nbore=2.0\npart=(cq.Workplane('XZ').circle(d/2).extrude(-t).faces('>Y').workplane().hole(bore))"
+}

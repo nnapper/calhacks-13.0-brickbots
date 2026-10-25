@@ -1,0 +1,42 @@
+{
+  "partType": "flat_plate",
+  "summary": "Small rectangular carrier PCB for a 3-axis gyro. It has two round mounting holes on one short end of the long edge, a row of 9 header pads along one long edge, and a few surface-mount components and a square chip on the top face.",
+  "boundsMm": {
+    "x": 12.7,
+    "y": 22.86,
+    "z": 3
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.18,
+      "positionsMm": [
+        [
+          -4.2,
+          8.9,
+          0
+        ],
+        [
+          -4.2,
+          -8.9,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.5,
+      "description": "Flat underside of the board, which can sit on standoffs through the two 0.086 in holes"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1.5,
+      "description": "Top face carrying the components, with the 9-pad 0.1 in pitch pin row along one long edge"
+    }
+  ],
+  "confidence": "medium",
+  "notes": "X and Y come from the printed 0.5 in x 0.9 in outline (12.7 x 22.86 mm). The hole diameter comes from the printed 0.086 in (2.18 mm). Hole positions are estimated from pixel measurements in the dimensioned image and are centered on the board. Z = 3 mm is the unverified catalog height, since no thickness is printed. The bounding box is centered at the origin. The 9 header holes at 0.1 in (2.54 mm) pitch lie along one long edge, but their diameter is not stated, so they are left out of the holes list."
+}

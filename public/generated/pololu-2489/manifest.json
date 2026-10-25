@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "VL6180X Time-of-Flight Distance Sensor Carrier with Voltage Regulator, 60cm max",
+    "sku": "pololu-2489",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The drawing prints 0.5 in width (12.7 mm), 0.7 in length (17.78 mm), a 0.5 in hole spacing (12.7 mm) and a hole diameter of 0.086 in (2.18 mm). The 0.085 in overall height (2.16 mm) comes from the spec text and includes the components, so the bare PCB is thinner. Hole x-offset from the edge (about 2.7 mm) was estimated from the image scale, not printed. The seven pin pads are on the opposite long edge at 2.54 mm pitch, but their hole diameter is not stated, so they are left out of the holes list. Z is centered on the board thickness.",
+      "PCB thickness (1.0 mm) is assumed. The 2.16 mm overall height is taken from the spec text and includes the components.",
+      "The sensor block size (2.8 x 4.8 mm) and position are estimated from the image.",
+      "The regulator IC, capacitors, resistors, and the small IC are omitted because their sizes and positions are uncertain.",
+      "Pin hole diameter (1.0 mm) and x-position are estimated; the holes are plated in the image, but the plating is not modeled.",
+      "The mounting hole x-offset is estimated from the image scale.",
+      "Axes are remapped so that Y is the board thickness: X is the 12.7 mm width and Z is the 17.78 mm length."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -6.35,
+      "xmax": 6.35,
+      "ymin": 0,
+      "ymax": 2.16,
+      "zmin": -8.89,
+      "zmax": 8.89,
+      "xlen": 12.7,
+      "ylen": 2.16,
+      "zlen": 17.78
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 2.000 mm; measured dimensions are [2.16, 12.7, 17.78]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 72956,
+        "sha256": "2a3a2ecf5e4b78f4f1e20f77553c22249cf17cf9f6d8adf10b44b9dc89088e12"
+      },
+      "model.stl": {
+        "bytes": 154484,
+        "sha256": "b6344515d4bb42e415dfeb6af8e47f80a5e602eea71953764362b98b4e764430"
+      },
+      "model.glb": {
+        "bytes": 56408,
+        "sha256": "f4ee24689b5d4f6c4396e36af749d43a3b82637dc444d6bab919b57a8d21e500"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "2a3a2ecf5e4b78f4f1e20f77553c22249cf17cf9f6d8adf10b44b9dc89088e12"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 35
+  },
+  "status": "prototype_unverified"
+}

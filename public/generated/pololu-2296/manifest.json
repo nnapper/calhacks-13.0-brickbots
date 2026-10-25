@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Sanyo Pancake Stepper Motor: Bipolar, 200 Steps/Rev, 42×18.6mm, 5.4V, 1 A/Phase",
+    "sku": "pololu-2296",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The z origin is at the bounding-box center, with the body spanning z=-12.8 to 5.8 and the shaft tip at z=12.8. The 42 mm square, 31 mm hole spacing, 5 mm shaft diameter, 22 mm pilot diameter and 7 mm shaft projection come from the drawing. The 18.6 mm body length comes from the product name, and the 25.6 mm overall length from the description. The drawing also shows a 5±1 mm dimension on the opposite side, which I read as a rear stub or pilot, but that is unclear, so I did not model a rear shaft. Hole diameter is the nominal 3 mm from the M3 callout. Hole depth is not given, so the holes are treated as blind. The pilot height is not stated separately. Wire length is 300 mm minimum and is excluded.",
+      "Pilot boss height (2 mm) is assumed; it is not stated.",
+      "Corner chamfer size (4 mm) is estimated from the image.",
+      "Mounting hole depth (4 mm) is assumed, and the holes are modeled as blind.",
+      "The laminated stack grooves and the rear shaft stub or pilot are not modeled.",
+      "The lead wires are omitted.",
+      "The dimensions are unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -21,
+      "xmax": 21,
+      "ymin": 0,
+      "ymax": 25.6,
+      "zmin": -21,
+      "zmax": 21,
+      "xlen": 42,
+      "ylen": 25.6,
+      "zlen": 42
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 18.600 mm; measured dimensions are [25.6, 42.0, 42.0]",
+      "Generated geometry is missing a listed dimension 5.000 mm; measured dimensions are [25.6, 42.0, 42.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 56572,
+        "sha256": "d3b2d194cdafb3fbb0fc1bb835128066f96820d59e56d56a9f0731e7a3cae961"
+      },
+      "model.stl": {
+        "bytes": 102284,
+        "sha256": "08ffd6744b7da9b9c1deadcd74016acf93422784de7129de88ef45589a566985"
+      },
+      "model.glb": {
+        "bytes": 37856,
+        "sha256": "ac5fcc1811480cd8897114e7d8a3aaaf80867aa5b0e8f97168af624cfa5b7199"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "d3b2d194cdafb3fbb0fc1bb835128066f96820d59e56d56a9f0731e7a3cae961"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

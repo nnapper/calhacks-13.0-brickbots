@@ -1,0 +1,11 @@
+{
+  "name": "RoboClaw Solo 60A Motor Controller",
+  "sku": "pololu-3291",
+  "category": "roboclaw-controllers",
+  "expectedDimensionsMm": [
+    99,
+    72.6,
+    30
+  ],
+  "units": "millimeter"
+}

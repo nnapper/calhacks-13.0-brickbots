@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "QTRX-HD-15A Reflectance Sensor Array: 15-Channel, 4mm Pitch, Analog Output, Low Current",
+    "sku": "pololu-4415",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 61 mm length, 20 mm width and 4 mm sensor pitch are printed in the dimension image. The 3 mm height is from the unverified listing data and is only an overall envelope estimate. It is not a measured value, and the board thickness is not stated. Hole positions and diameters were estimated from the dimensioned image scale, with the origin at the board center, +x along the length and +y toward the sensor edge. All hole values are approximate. The two rows of plated header holes at 2.54 mm pitch (about 1 mm holes, one square pad) are visible but not itemized, because their exact count and coordinates were not resolvable.",
+      "The 3 mm height is an unverified envelope. The 1.6 mm board thickness is assumed.",
+      "The sensors are simplified to plain boxes. Their size and Z position are estimated, and the row is shifted inward so it clears the corner holes.",
+      "The two rows of 2.54 mm header holes are omitted because their count and positions are not resolvable.",
+      "SMD components, pads and silkscreen are omitted.",
+      "The hole positions and diameters are approximate."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -30.5,
+      "xmax": 30.5,
+      "ymin": 0,
+      "ymax": 3,
+      "zmin": -10,
+      "zmax": 10,
+      "xlen": 61,
+      "ylen": 3,
+      "zlen": 20
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 250274,
+        "sha256": "7ec997329355f5cebdb06190597584fa20eb26c7d46e9423b57e005f72c710fb"
+      },
+      "model.stl": {
+        "bytes": 80684,
+        "sha256": "204209312e6da96db37241353ed7f9921b70a5759d76c657c08b532cf8c5a858"
+      },
+      "model.glb": {
+        "bytes": 29964,
+        "sha256": "0a268626c7f4f8e7e32a0c7e5b9b297ccd37a7bd58948692567b2bb871d73bfc"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "7ec997329355f5cebdb06190597584fa20eb26c7d46e9423b57e005f72c710fb"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 62
+  },
+  "status": "prototype_unverified"
+}

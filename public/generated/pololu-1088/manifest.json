@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Wheel 32×7mm Pair - White",
+    "sku": "pololu-1088",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The 32 mm diameter and 7 mm width come from the product listing, which is flagged as unverified, and no drawing dimensions are visible in the images. The 3 mm bore comes from the stated shaft size. It is a D-profile, so the 3 mm value is nominal and the flat is not dimensioned. The images show three spokes and a central hub bore. They do not show the hub protrusion, the spoke dimensions, or the tire tread depth, so none of these are modeled. Treat the bore as through, based on the second image where the shaft passes into the wheel.",
+      "Dimensions come from the unverified product listing (32 mm diameter, 7 mm width).",
+      "Tire thickness, rim width, hub size and spoke width are estimated from the image.",
+      "The D-bore flat position is estimated because it is not dimensioned.",
+      "Tire tread pattern and the recessed rim profile are omitted.",
+      "The product is sold as a pair, but only one wheel is modeled.",
+      "The axle is along Z as the analysis states, so the wheel centre sits at Y=16 to keep the bottom at Y=0."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -16,
+      "xmax": 16,
+      "ymin": 0,
+      "ymax": 32,
+      "zmin": -3.5,
+      "zmax": 3.5,
+      "xlen": 32,
+      "ylen": 32,
+      "zlen": 7
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [7.0, 32.0, 32.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 157289,
+        "sha256": "99bfde3bc627184a93f2160b68353f047bad3ef74db3aa6afe9ea6bc8626cda2"
+      },
+      "model.stl": {
+        "bytes": 131484,
+        "sha256": "c7cef59b331ac690beb65677a3e20bbc15c6604539103a7465858f94ea7eda56"
+      },
+      "model.glb": {
+        "bytes": 48252,
+        "sha256": "0e9f28a2031b4acd0af7af8feb13993c9ae8819f8d23247cbfa35e59c123d5fb"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "99bfde3bc627184a93f2160b68353f047bad3ef74db3aa6afe9ea6bc8626cda2"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

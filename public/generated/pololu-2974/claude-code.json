@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "1.4 in x 1.0 in x 1.6 mm PCB lying in the XZ plane (length along X, thickness along Y, bottom at Y=0). It has two 2.2 mm mounting holes, a 7x7x1 mm driver IC block at the center, and two 6.3 mm diameter, 7.7 mm tall electrolytic capacitor cylinders near one short end.",
+  "confidence": "low",
+  "warnings": [
+    "Board thickness of 1.6 mm is assumed because no height was given.",
+    "Mounting hole diameter (2.2 mm) and positions are estimated from the image.",
+    "Edge through-hole rows, the larger power terminal holes, the trimmer potentiometer and the small SMD parts are omitted because their sizes are uncertain.",
+    "IC and capacitor dimensions and positions are approximate.",
+    "Dimensions come from the printed 1.0 in x 1.4 in size and are unverified."
+  ],
+  "cadquery": "L=35.56\nW=25.4\nT=1.6\nboard=cq.Workplane('XY').box(L,T,W,centered=(True,False,True))\nfor x in (-15.5,15.5):\n    h=cq.Solid.makeCylinder(1.1,T+2,cq.Vector(x,-1,10.3),cq.Vector(0,1,0))\n    board=board.cut(cq.Workplane('XY').add(h))\nic=cq.Workplane('XY').box(7,1.0,7,centered=(True,False,True)).translate((3,T,-1))\ncaps=None\nfor z in (-1.0,5.5):\n    c=cq.Workplane('XY').add(cq.Solid.makeCylinder(3.15,7.7,cq.Vector(-8,T,z),cq.Vector(0,1,0)))\n    caps=c if caps is None else caps.union(c)\npart=board.union(ic).union(caps)"
+}

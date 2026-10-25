@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Simplified LIDAR-Lite v3HP: a 53.5 x 33.5 x 3.5 mm base flange plate with four corner mounting holes, a 40 x 24 mm block body rising to a total height of 24.5 mm, and two shallow 12.5 mm circular lens recesses side by side along X on the top face. The cable is not modeled.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions come from the unverified listed unit size (53.5 x 33.5 x 24.5 mm). The 24.5 mm height is placed on Y to follow the bottom-at-Y=0 rule, which differs from the axis assignment in the image analysis.",
+    "The body footprint (40 x 24 mm), flange thickness (3.5 mm), and mounting hole size and positions (3.2 mm holes at the corners) are estimated from the image.",
+    "The mounting holes are visible in the image but their exact positions are not measurable, so these are approximate.",
+    "The lens recess depth and positions are approximate. The lens glass, the body's stepped and sloped contours, and the notch between the lenses are omitted.",
+    "The cable and stripped wires are not modeled.",
+    "The flange ears are simplified into a full rectangular plate."
+  ],
+  "cadquery": "L=53.5; W=33.5; H=24.5; t=3.5\nplate=cq.Workplane('XY').box(L,t,W,centered=(True,False,True))\nbody=cq.Workplane('XY').box(40,H,24,centered=(True,False,True))\npart=plate.union(body)\nlens=cq.Workplane('XZ',origin=(0,H,0)).pushPoints([(-10,0),(10,0)]).circle(6.25).extrude(1.5)\npart=part.cut(lens)\nholes=cq.Workplane('XZ',origin=(0,t,0)).pushPoints([(-23.5,-12.5),(-23.5,12.5),(23.5,-12.5),(23.5,12.5)]).circle(1.6).extrude(t)\npart=part.cut(holes)"
+}

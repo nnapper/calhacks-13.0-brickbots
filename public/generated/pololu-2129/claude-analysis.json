@@ -1,0 +1,37 @@
+{
+  "partType": "flat_plate",
+  "summary": "Small rectangular carrier PCB for a gyro sensor. A single row of 0.1 in pitch pin holes runs along one long edge, and one larger mounting hole sits in the corner at the opposite end from the first pin. Small components sit on the top face.",
+  "boundsMm": {
+    "x": 10.16,
+    "y": 22.86,
+    "z": 3
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.18,
+      "positionsMm": [
+        [
+          -2.8,
+          -9.2,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.5,
+      "description": "Flat underside of the board, usable as the seating face against a mount or standoff"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1.5,
+      "description": "Top face carrying the sensor IC and small components; not a flat mounting face"
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Width 0.4 in (10.16 mm), length 0.9 in (22.86 mm) and mounting hole Ø0.086 in (2.18 mm) are printed on the drawing. They override the unverified metadata width of 13 mm and length of 23 mm. The 3 mm height comes from unverified metadata and is assumed to include the board and its components. The mounting hole position is estimated from the image, with x across the width and y along the length, both measured from the board center. The pin holes have no printed diameter, so they are omitted from the holes list. There are 9 pin holes on a 2.54 mm pitch along one long edge (x ≈ +3.8 mm), plus a 10th unlabeled hole (DEN) at the pin-row end and slightly offset from the row. Pin hole diameters would need to be measured."
+}

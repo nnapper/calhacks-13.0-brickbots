@@ -1,0 +1,9 @@
+{
+  "name": "Tamiya 72001 Planetary Gearbox Kit",
+  "sku": "pololu-70",
+  "category": "tamiya-motor-kits",
+  "expectedDimensionsMm": [
+    4
+  ],
+  "units": "millimeter"
+}

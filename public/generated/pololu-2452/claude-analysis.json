@@ -1,0 +1,74 @@
+{
+  "partType": "flat_plate",
+  "summary": "Small rectangular green PCB carrier for a current-sensor IC. The IC is a small surface-mount package at the centre of the board. A 5-position 0.1 in (2.54 mm) pin header footprint runs along one edge. Two large clustered solder-terminal pads with several plated holes carry the current path (IP+ and IP-) on the opposite side.",
+  "boundsMm": {
+    "x": 20.32,
+    "y": 17.78,
+    "z": 1.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3.4,
+      "positionsMm": [
+        [
+          -5.5,
+          4.4,
+          0
+        ],
+        [
+          -5.5,
+          -4.4,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          8.5,
+          5.08,
+          0
+        ],
+        [
+          8.5,
+          2.54,
+          0
+        ],
+        [
+          8.5,
+          0,
+          0
+        ],
+        [
+          8.5,
+          -2.54,
+          0
+        ],
+        [
+          8.5,
+          -5.08,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -0.8,
+      "description": "Flat bottom face of the PCB, usable as the seating surface."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.8,
+      "description": "Top face carrying the sensor IC, the two small passives, the header pads and the large current-terminal pads. The IC protrudes above it."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Length and width (20.32 x 17.78 mm) come from the supplied unverified metadata; no dimensions are printed on the images. The 1.6 mm thickness is an assumed standard PCB thickness and excludes the IC and component height. Hole positions and diameters are rough estimates from the photos and the pin-label view. The 2.54 mm pin pitch comes from the spec. The pin row is placed on the +x edge, matching the pin-label image, with IP+ and IP- on the -x side. The current terminals also have smaller secondary plated holes and what look like larger corner holes near the pin row. Their sizes and positions are too uncertain to list, so they are omitted. The bounding box is centred on the part."
+}

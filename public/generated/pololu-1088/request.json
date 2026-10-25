@@ -1,0 +1,11 @@
+{
+  "name": "Pololu Wheel 32×7mm Pair - White",
+  "sku": "pololu-1088",
+  "category": "3pi-robots",
+  "expectedDimensionsMm": [
+    7,
+    32,
+    3
+  ],
+  "units": "millimeter"
+}

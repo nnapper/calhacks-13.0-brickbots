@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "One 80 mm diameter, 10 mm wide wheel with its axis along Y and Y spanning 0 to 10. It has a 4 mm thick outer tire band, a thinner inner rim ring, six 3 mm wide spokes at 60° spacing, a 26 mm diameter hub, and a 9 mm central through bore.",
+  "confidence": "low",
+  "warnings": [
+    "The 80 mm diameter and 10 mm width are stated in the listing but marked unverified.",
+    "The 9 mm bore comes from a rough scale estimate of the photo, not a printed value.",
+    "The hub radius, spoke width and thickness, rim and tire thicknesses, and the 6 mm disc thickness are all estimated from the photo.",
+    "The small holes around the hub bore were omitted because their sizes are uncertain.",
+    "The collet inserts, the screws, the metal triangular mounting plates and the tire/rim split were not modeled. The wheel is a single solid.",
+    "The wheel axis is along Y to satisfy the placement rules, although the image analysis gave the axis as Z."
+  ],
+  "cadquery": "tire = cq.Workplane('XY').circle(40).circle(36).extrude(10)\nrim = cq.Workplane('XY').workplane(offset=2).circle(37).circle(33).extrude(6)\nhub = cq.Workplane('XY').circle(13).extrude(10)\nbody = tire.union(rim).union(hub)\nfor a in (0, 60, 120):\n    spoke = cq.Workplane('XY').box(70, 3, 6).translate((0, 0, 5)).rotate((0, 0, 0), (0, 0, 1), a)\n    body = body.union(spoke)\nbody = body.cut(cq.Workplane('XY').circle(4.5).extrude(10))\npart = body.rotate((0, 0, 0), (1, 0, 0), -90)"
+}

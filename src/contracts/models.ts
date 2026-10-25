@@ -43,8 +43,10 @@ const discoverySchema = z.object({
 });
 export function normalizeDiscovery(input: unknown): Product {
   // Generic catalog products are shared across retailers; the offer supplies provenance.
-  const generic = z.object({generic:z.literal(true),sku:z.string(),name:z.string(),category:z.string(),offers:z.array(z.object({url:z.url()})).min(1)}).safeParse(input);
-  const source = generic.success ? {...generic.data,retailer:'generic',url:generic.data.offers[0].url,images:[]} : input;
+  // Freshly looked-up parts only have offer_urls until their live prices are fetched.
+  const generic = z.object({generic:z.literal(true),sku:z.string(),name:z.string(),category:z.string(),offers:z.array(z.object({url:z.url()})).optional(),offer_urls:z.array(z.url()).optional()})
+    .refine(g => (g.offers?.length ?? 0) > 0 || (g.offer_urls?.length ?? 0) > 0).safeParse(input);
+  const source = generic.success ? {...generic.data,retailer:'generic',url:generic.data.offers?.[0]?.url ?? generic.data.offer_urls![0],images:[]} : input;
   const p = discoverySchema.parse(source);
   const canonicalUrl = new URL(p.url); canonicalUrl.hash = ''; canonicalUrl.search = '';
   const id = p.sku ? `${p.retailer.toLowerCase()}:${p.sku}` : canonicalUrl.href.replace(/\/$/, '');

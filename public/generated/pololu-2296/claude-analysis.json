@@ -1,0 +1,52 @@
+{
+  "partType": "motor",
+  "summary": "Pancake-style bipolar stepper motor, 42 mm square frame (NEMA 17 size) with a short 18.6 mm body. A 5 mm diameter output shaft projects about 7 mm from the front face, and the front face has a 22 mm diameter pilot boss. Four mounting holes sit on a 31 mm square pattern. The lead wires are excluded from the bounds.",
+  "boundsMm": {
+    "x": 42,
+    "y": 42,
+    "z": 25.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          15.5,
+          15.5,
+          5.8
+        ],
+        [
+          -15.5,
+          15.5,
+          5.8
+        ],
+        [
+          15.5,
+          -15.5,
+          5.8
+        ],
+        [
+          -15.5,
+          -15.5,
+          5.8
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 5.8,
+      "description": "Front mounting face of the 42 mm square frame. It holds the four mounting holes and the centered 22 mm diameter pilot boss, and the 5 mm output shaft projects from it."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -12.8,
+      "description": "Rear face of the motor body, a flat 42 mm square frame face opposite the shaft side."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The z origin is at the bounding-box center, with the body spanning z=-12.8 to 5.8 and the shaft tip at z=12.8. The 42 mm square, 31 mm hole spacing, 5 mm shaft diameter, 22 mm pilot diameter and 7 mm shaft projection come from the drawing. The 18.6 mm body length comes from the product name, and the 25.6 mm overall length from the description. The drawing also shows a 5±1 mm dimension on the opposite side, which I read as a rear stub or pilot, but that is unclear, so I did not model a rear shaft. Hole diameter is the nominal 3 mm from the M3 callout. Hole depth is not given, so the holes are treated as blind. The pilot height is not stated separately. Wire length is 300 mm minimum and is excluded."
+}

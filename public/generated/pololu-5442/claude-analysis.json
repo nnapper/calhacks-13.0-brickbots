@@ -1,0 +1,64 @@
+{
+  "partType": "other",
+  "summary": "Small rectangular green PCB carrier for a Hall-effect current sensor. A black 5-pin SOT-23 sensor sits at the center. Two large current-terminal pads (IP+ and IP-) are on the left edge, each with a round hole and an elongated slot. Three 0.1-inch-pitch round through-holes (VOUT, VDD, GND) are in a column along the right edge.",
+  "boundsMm": {
+    "x": 10.2,
+    "y": 7.6,
+    "z": 2.7
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          3.8,
+          2.54,
+          0
+        ],
+        [
+          3.8,
+          0,
+          0
+        ],
+        [
+          3.8,
+          -2.54,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 1.8,
+      "positionsMm": [
+        [
+          -3.8,
+          2.3,
+          0
+        ],
+        [
+          -3.8,
+          -2.3,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.35,
+      "description": "Flat underside of the PCB, usable as the seating face when the board is soldered to header pins or wires."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0.25,
+      "description": "Top face of the PCB carrying the SOT-23 sensor and the two current-terminal pads. The pads are about 0.25 mm above the board face in this estimate."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the length (10.2 mm) and width (7.6 mm) come from the supplied data, and that data is flagged unverified. They match the stated 0.4 in x 0.3 in size. The 0.1 in (2.54 mm) pin pitch is stated. Height is not given, so the z value is an estimate: roughly a 1.6 mm PCB plus a SOT-23 body of about 1.1 mm. The hole diameters, the hole positions and the x offset of the pin column are estimated from image proportions. The slot in each current pad is not modeled. The board is centered on the origin, with the IP+/IP- pads on the -x side and the VOUT/VDD/GND pins on the +x side. The mounting-surface offsets assume the PCB is about 1.6 mm thick and centered on z = 0, which is also an estimate."
+}

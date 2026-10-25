@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "4-AA Battery Holder, Back-to-Back",
+    "sku": "pololu-1154",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The images show no printed dimensions. The bounds are the listing's unverified values (length 57 on x, width 32 on y, height 30 on z), centered on the body, and exclude the 6 inch leads. The axis assignment is assumed. The end face has small round openings and two fastener-like features, but their diameters, positions and through-status can't be determined, so no holes are listed. No mounting tabs or screw holes are clearly visible, so no mounting surfaces are listed.",
+      "Dimensions are unverified listing values.",
+      "The axis assignment follows the Y-up rule, so height 30 is on Y and width 32 is on Z. The image analysis assumed a different assignment.",
+      "Wire leads, springs, flat contacts, end-face round openings, fasteners and the side latch/notch details are omitted because their sizes and positions are uncertain.",
+      "Cell channel diameter, wall thickness and slot width are estimated from the image.",
+      "The divider between the upper and lower cell channels is thin (about 0.8 mm) and the real part's internal ribs are not modeled.",
+      "The picture suggests the open side has internal ramps and a partial cutaway, which are simplified here to straight slots."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -28.5,
+      "xmax": 28.5,
+      "ymin": 0,
+      "ymax": 30,
+      "zmin": -16,
+      "zmax": 16,
+      "xlen": 57,
+      "ylen": 30,
+      "zlen": 32
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 76700,
+        "sha256": "4278057ec77281962186639dbc1b073a303c5fe53dbb910253243c727751d270"
+      },
+      "model.stl": {
+        "bytes": 48684,
+        "sha256": "53307c1f6fee95f1f1948dea3d290eee862140ef85042f198d9e00111e31c336"
+      },
+      "model.glb": {
+        "bytes": 18536,
+        "sha256": "3b3210160825f2d07c2fa715f1ef38feabedbd23c2e2fb4c12a08e1c99b90c35"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "4278057ec77281962186639dbc1b073a303c5fe53dbb910253243c727751d270"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

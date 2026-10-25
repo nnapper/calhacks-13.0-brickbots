@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Rectangular 22.1 x 19.9 x 1.6 mm PCB (Z-thin, Y up) with one 3.1 mm through mounting hole at the top-left. A solid 16 mm diameter cylindrical ultrasonic transducer projects 14.8 mm from the front face, giving 16.4 mm total depth. The bottom of the part is at Y=0 and it is centered in X and Z.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are unverified and come from the spec sheet.",
+    "Transducer diameter (16 mm), center position (x=1.5, y=8.5) and length are estimated from the photo.",
+    "Mounting hole position (-7.9, 15.5) and diameter (3.1 mm) are estimated. The analysis coordinates were inconsistent, so the photo location was used.",
+    "PCB thickness of 1.6 mm is assumed.",
+    "The 7 top-edge solder pads, SMD components, and the transducer grille slots and openings were omitted as small or uncertain detail."
+  ],
+  "cadquery": "pcb = cq.Workplane('XY').box(22.1, 19.9, 1.6).translate((0, 9.95, -7.4))\npcb = pcb.cut(cq.Workplane('XY').workplane(offset=-9).center(-7.9, 15.5).circle(1.55).extrude(4))\ntrans = cq.Workplane('XY').workplane(offset=-6.6).center(1.5, 8.5).circle(8.0).extrude(14.8)\npart = pcb.union(trans)"
+}

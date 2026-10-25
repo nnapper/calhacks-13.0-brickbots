@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Simplified retracted linear actuator along X (357 mm long). It has a rectangular gearbox block at the rear, a 38 mm rod tube with a 30 mm rod end at the front, and a 52 mm motor cylinder on the gearbox side along Z. Two 13 mm vertical (Y-axis) cross holes sit near the ends at z=-25. The bottom is at Y=0 and the part is centered in X.",
+  "confidence": "low",
+  "warnings": [
+    "Width, height, tube, motor and gearbox dimensions are estimated from the photo; the listing gives only the lengths and the 13 mm hole.",
+    "Overall length is taken as 357 mm, retracted. The listing's 357 mm may be hole-center to hole-center.",
+    "Cross holes are placed 13.5 mm inside each end to leave material. The listing does not give their positions.",
+    "Hole axis (Y) and through status follow the image analysis and are uncertain. In the photo the rod-end hole may run horizontally.",
+    "Gearbox housing shape, motor placement and offset, cable, limit-switch bumps and the rod-end clevis details are simplified or omitted.",
+    "The model is retracted only; the extended length of 497 mm is not modeled."
+  ],
+  "cadquery": "gb = cq.Workplane('XY').box(70, 80, 60, centered=False).translate((-178.5, 0, -55))\ntube = cq.Workplane('YZ').center(40, -25).circle(19).extrude(250).translate((-108, 0, 0))\nend = cq.Workplane('YZ').center(40, -25).circle(15).extrude(38.5).translate((140, 0, 0))\nmotor = cq.Workplane('XY').center(-140, 40).circle(26).extrude(50).translate((0, 0, 5))\npart = gb.union(tube).union(end).union(motor)\nfor x in (-165, 165):\n    hole = cq.Workplane('XZ').center(x, -25).circle(6.5).extrude(-100)\n    part = part.cut(hole)\n"
+}

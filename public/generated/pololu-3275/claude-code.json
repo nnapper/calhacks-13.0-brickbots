@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "84 mm diameter, 24 mm wide polyurethane wheel with its axis along Z. The tread is rounded by an 8 mm fillet on both outer edges. A 22 mm through bore runs along the axis. The wheel is centered in X and Z, and its lowest point sits at Y=0, so the center is at Y=42.",
+  "confidence": "low",
+  "warnings": [
+    "The 84 mm diameter and 24 mm width come from the unverified product description.",
+    "The 22 mm bore is an assumption taken from the image analysis. It matches the outside diameter of a 608 bearing, so the real through-opening is probably smaller (about 8 mm).",
+    "The 8 mm tread fillet radius is estimated from the image.",
+    "The recessed hub faces, spoke webbing, central hub boss and adapter screw holes are not modeled because their dimensions are unknown.",
+    "The slight parting line at the tread center is not modeled."
+  ],
+  "cadquery": "r=42.0\nw=24.0\nbody=cq.Workplane('XY').workplane(offset=-w/2).circle(r).extrude(w).edges().fillet(8.0)\nbore=cq.Workplane('XY').workplane(offset=-w/2).circle(11.0).extrude(w)\npart=body.cut(bore).translate((0,r,0))"
+}

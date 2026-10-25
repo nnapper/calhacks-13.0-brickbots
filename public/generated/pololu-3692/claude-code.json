@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Rectangular carrier PCB 17.78 x 12.7 mm (X by Z), 1.16 mm thick, with a 1.0 mm tall VL53L4CD sensor block on top for 2.16 mm overall height. It has two 2.18 mm through mounting holes at X=±6.35 along the edge opposite the header, and seven 1.0 mm header holes at 2.54 mm pitch along the +Z edge. Bottom is at Y=0; X and Z are centered.",
+  "confidence": "medium",
+  "warnings": [
+    "PCB thickness (1.16 mm) and sensor height (1.0 mm) are assumed so the total matches the 2.16 mm overall height.",
+    "Header hole diameter (1.0 mm) and inset (1.27 mm from the edge) are estimated, not stated.",
+    "The square pad of the first header position is modeled as a round hole.",
+    "The regulator, capacitors, resistors, and small IC are omitted as small decorative detail.",
+    "Sensor position and size are approximated from the image and the VL53L4CD package.",
+    "The supplied catalog dimensions (18 x 13 x 2 mm) are unverified, so the printed 0.7 x 0.5 in outline was used instead."
+  ],
+  "cadquery": "pcb_t = 1.16\nL = 17.78\nW = 12.7\nboard = cq.Workplane('XY').box(L, pcb_t, W, centered=(True, False, True))\n\ndef cyl(x, z, d, h=pcb_t + 2):\n    return cq.Workplane('XY').add(cq.Solid.makeCylinder(d / 2.0, h, cq.Vector(x, -1, z), cq.Vector(0, 1, 0)))\n\n# mounting holes along the edge opposite the header\nfor x in (-6.35, 6.35):\n    board = board.cut(cyl(x, -3.81, 2.18))\n\n# 7 header pin holes at 0.1 in pitch along +Z edge\nfor i in range(7):\n    x = (i - 3) * 2.54\n    board = board.cut(cyl(x, 5.08, 1.0))\n\n# ToF sensor module on top\nsensor = cq.Workplane('XY').box(2.4, 1.0, 4.4, centered=(True, False, True)).translate((0, pcb_t, -0.5))\n\npart = board.union(sensor)\n"
+}

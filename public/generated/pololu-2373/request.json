@@ -1,0 +1,11 @@
+{
+  "name": "1000:1 Micro Metal Gearmotor HP 6V with Extended Motor Shaft",
+  "sku": "pololu-2373",
+  "category": "micro-metal-gearmotors",
+  "expectedDimensionsMm": [
+    12,
+    10,
+    3
+  ],
+  "units": "millimeter"
+}

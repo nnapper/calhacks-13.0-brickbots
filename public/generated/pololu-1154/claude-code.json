@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Rectangular 57 x 30 x 32 mm (X length, Y height, Z width) block with bottom at Y=0, centered in X and Z. It has four AA cell channels in a 2x2 arrangement along X, each 14 mm in diameter and 54 mm long. The two upper channels open through the top face and the two lower channels open through the bottom face, giving the back-to-back layout. End walls are about 1.5 mm thick.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions are unverified listing values.",
+    "The axis assignment follows the Y-up rule, so height 30 is on Y and width 32 is on Z. The image analysis assumed a different assignment.",
+    "Wire leads, springs, flat contacts, end-face round openings, fasteners and the side latch/notch details are omitted because their sizes and positions are uncertain.",
+    "Cell channel diameter, wall thickness and slot width are estimated from the image.",
+    "The divider between the upper and lower cell channels is thin (about 0.8 mm) and the real part's internal ribs are not modeled.",
+    "The picture suggests the open side has internal ramps and a partial cutaway, which are simplified here to straight slots."
+  ],
+  "cadquery": "L, H, W = 57.0, 30.0, 32.0\nr = 7.0\nzc = 8.0\nyb, yt = 7.6, 22.4\nbody = cq.Workplane('XY').box(L, H, W, centered=(True, False, True))\ncut = None\nfor y in (yb, yt):\n    for z in (-zc, zc):\n        cyl = cq.Workplane('YZ').center(y, z).circle(r).extrude(27.0, both=True)\n        if y > H / 2:\n            slot = cq.Workplane('XY').box(54.0, 8.0, 12.0).translate((0, y + 4.0, z))\n        else:\n            slot = cq.Workplane('XY').box(54.0, 8.0, 12.0).translate((0, y - 4.0, z))\n        c = cyl.union(slot)\n        cut = c if cut is None else cut.union(c)\npart = body.cut(cut)"
+}

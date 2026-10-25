@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Wheel 42×19mm Pair",
+    "sku": "pololu-1090",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Diameter (42 mm), tire width (19 mm), 3 mm D-shaft size and the twelve hub teeth (3 mm wide, 3 mm gaps) come from the unverified listing text, not from a dimensioned drawing. The images show a D-shaped slot in the hub on both sides, so the bore is assumed to pass through, but its depth is not directly visible. Hub recess depth, tooth height, hub diameter and tread geometry are not given and are not modeled. The bounding box is the tire envelope.",
+      "Dimensions come from unverified listing text, not a dimensioned drawing.",
+      "Tire tread lugs are omitted, so the tire is a plain annulus.",
+      "Hub recess depth, boss diameter, tooth height and tooth radial extent are estimated from the images.",
+      "D-bore flat depth is assumed (about 2.7 mm across the flat) and the bore is assumed to pass fully through.",
+      "Teeth are modeled as rectangular radial blocks, 3 mm wide with roughly 3 mm gaps at the mid radius.",
+      "Only one wheel of the pair is modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -21,
+      "xmax": 21,
+      "ymin": 0,
+      "ymax": 42,
+      "zmin": -9.5,
+      "zmax": 9.5,
+      "xlen": 42,
+      "ylen": 42,
+      "zlen": 19
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [19.0, 42.0, 42.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 218772,
+        "sha256": "432c0f66b89e54016ae7aa852571b5e387094940d91d9733b43cac63f99917ca"
+      },
+      "model.stl": {
+        "bytes": 89584,
+        "sha256": "d89612ee071229680b2b8f0cfc962ae29f712fa418910bc0eac67575c14e0e78"
+      },
+      "model.glb": {
+        "bytes": 33240,
+        "sha256": "fac6009f871c9c7484649dc7d0c246ae31a322090b87dbee13e2593c8f53c948"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "432c0f66b89e54016ae7aa852571b5e387094940d91d9733b43cac63f99917ca"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}
