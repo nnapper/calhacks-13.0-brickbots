@@ -16,14 +16,15 @@ function groupRows(rows) {
 }
 
 export default function WorkspacePanel({health, checking, lookupError, metrics, selectedId, onSelect, onRemove, onAdjust, onWhereToBuy, collapsed, onToggle}) {
-  if (collapsed) return <button className="paneltab right" onClick={onToggle}><ChevronIcon/> Your build · {metrics.count} parts</button>;
   const groups = groupRows(metrics.rows);
   const byCategory = {};
   for (const g of groups) (byCategory[g.product?.group ?? 'custom'] ??= []).push(g);
   const totals = buildTotals(metrics.build);
   const check = buildCheck(totals);
 
-  return <aside className="panel right" aria-label="Your build">
+  return <>
+    {collapsed && <button className="paneltab right" type="button" onClick={onToggle}><ChevronIcon/> Your build · {metrics.count} parts</button>}
+    <aside className={`panel right${collapsed ? ' closed' : ''}`} aria-label="Your build" aria-hidden={collapsed}>
     <div className="ph"><div className="lbl">Your build<span className="lblr"><span className="mono">{metrics.count} parts</span><button className="collapse" onClick={onToggle} aria-label="Hide your build"><ChevronIcon dir="right"/></button></span></div></div>
     <div className="scroll"><div className="groups">
       {groups.length ? GROUP_ORDER.filter(c => byCategory[c]).map(c => <div key={c}>
@@ -63,5 +64,6 @@ export default function WorkspacePanel({health, checking, lookupError, metrics, 
       {metrics.unpricedCount > 0 && <p className="workspace-note">{metrics.unpricedCount} model{metrics.unpricedCount === 1 ? '' : 's'} without pricing. Tax and shipping excluded.</p>}
       <button className="cta" disabled={!Object.keys(metrics.build).length} onClick={onWhereToBuy}>Where to buy →</button>
     </div>
-  </aside>;
+    </aside>;
+  </>;
 }

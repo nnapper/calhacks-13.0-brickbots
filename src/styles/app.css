@@ -101,10 +101,19 @@ h1 em { font-style: normal; background: linear-gradient(100deg, var(--cool), var
 .mlabel { font-family: var(--f-mono); font-size: 11.5px; color: var(--ink); background: var(--panel); border: 1px solid color-mix(in srgb, var(--cool) 55%, var(--line)); border-radius: 8px; padding: 3px 8px; white-space: nowrap; backdrop-filter: blur(8px); }
 .mtick { font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); white-space: nowrap; }
 
-.panel { position: absolute; top: 14px; bottom: 14px; z-index: 3; width: 288px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); backdrop-filter: blur(14px) saturate(1.2); display: flex; flex-direction: column; min-height: 0; box-shadow: 0 18px 40px -24px var(--shadow); animation: panel-in 0.25s ease-out; }
+.panel { position: absolute; top: 14px; bottom: 14px; z-index: 3; width: 288px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); backdrop-filter: blur(14px) saturate(1.2); display: flex; flex-direction: column; min-height: 0; box-shadow: 0 18px 40px -24px var(--shadow); animation: panel-in 0.25s ease-out; transition: transform .42s cubic-bezier(.2, .8, .2, 1), opacity .3s ease, visibility 0s; }
 .panel.left { left: 14px; }
 .panel.right { right: 14px; width: 316px; }
 @keyframes panel-in { from { opacity: 0; transform: translateY(6px); } }
+.panel.closed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  box-shadow: none;
+  transition: transform .42s cubic-bezier(.2, .8, .2, 1), opacity .3s ease, visibility 0s;
+}
+.panel.left.closed { transform: translate3d(calc(-100% - 30px), 0, 0); }
+.panel.right.closed { transform: translate3d(calc(100% + 30px), 0, 0); }
 .paneltab { position: absolute; top: 14px; z-index: 3; display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(14px); border-radius: 999px; padding: 8px 14px; font-weight: 600; font-size: 13px; box-shadow: 0 10px 24px -16px var(--shadow); }
 .paneltab.left { left: 14px; }
 .paneltab.right { right: 14px; }
@@ -227,7 +236,8 @@ h1 em { font-style: normal; background: linear-gradient(100deg, var(--cool), var
   .app[data-view="build"] { height: auto; }
   .build { display: flex; flex-direction: column; gap: 12px; padding: 12px; }
   .stagewrap { position: relative; inset: auto; height: 52vh; min-height: 300px; border-radius: 20px; }
-  .panel, .paneltab { position: static; width: auto !important; }
+  .panel, .paneltab { position: static; width: auto !important; transform: none !important; }
+  .panel.closed { display: none; }
   .scroll { max-height: 420px; }
   .topprompt { display: none; }
   .cartpill { margin-left: auto; }

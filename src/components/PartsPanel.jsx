@@ -99,16 +99,15 @@ export default function PartsPanel({ designsHostRef, onAdd, onLive, onRemoveCust
     return () => clearTimeout(t);
   }, [tab, looked, catalog.length, lookup.query]);
 
-  if (collapsed) {
-    return (
+  return (
+    <>
+      {collapsed && (
       <button className="paneltab left" type="button" onClick={onToggle} aria-label="Show parts">
         Parts <ChevronIcon dir="right" />
       </button>
-    );
-  }
+      )}
 
-  return (
-    <aside className="panel left" aria-label="Parts">
+      <aside className={`panel left${collapsed ? ' closed' : ''}`} aria-label="Parts" aria-hidden={collapsed}>
       <div className="ph">
         <div className="lbl">
           Parts
@@ -179,6 +178,7 @@ export default function PartsPanel({ designsHostRef, onAdd, onLive, onRemoveCust
           </>
         )}
       </div>
-    </aside>
+      </aside>
+    </>
   );
 }
