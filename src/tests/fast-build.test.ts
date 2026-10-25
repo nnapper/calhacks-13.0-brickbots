@@ -55,6 +55,19 @@ describe('deadline-safe fallback plans', () => {
   });
 });
 
+describe('round primitives', () => {
+  it('turns a circle into a thin disc and a sphere into a sphere', () => {
+    const disc = primitiveBodyPlan('make a circle');
+    expect(disc.subsystems[0].customBodies).toEqual([expect.objectContaining({ shape: 'cylinder', lengthMm: 20, heightMm: 4 })]);
+    expect(primitiveBodyPlan('a 50 mm sphere').subsystems[0].customBodies[0]).toMatchObject({ shape: 'sphere', lengthMm: 50 });
+    expect(primitiveBodyPlan('a 30 mm cylinder 60 mm tall').subsystems[0].customBodies[0]).toMatchObject({ shape: 'cylinder', lengthMm: 30, heightMm: 60 });
+  });
+  it('leaves robot parts that share a word alone', () => {
+    expect(primitiveBodyPlan('a rover with disc wheels')).toBeNull();
+    expect(primitiveBodyPlan('ball caster for a robot')).toBeNull();
+  });
+});
+
 describe('primitive fallback plans', () => {
   it('keeps one cube as exactly one custom body', () => {
     const plan = primitiveBodyPlan('make one cube');

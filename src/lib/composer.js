@@ -80,6 +80,21 @@ function drive({ wheels, motor, wheel, arm }) {
   return { parts, mates };
 }
 
+// A design from an explicit spec, such as the one Claude returns: { body: "drive" | "duck", wheels, motor, wheel, arm }.
+export function designFromSpec(spec) {
+  if (spec.body === "duck") {
+    const duck = PRESETS.find((p) => p.id === "microduck");
+    return { id: "composed", name: "MicroDuck", parts: duck.parts, mates: duck.mates, notes: [], cost: cost(duck.parts) };
+  }
+  const wheels = Math.min(6, Math.max(2, Math.round(spec.wheels ?? 4) % 2 ? Math.round(spec.wheels ?? 4) + 1 : Math.round(spec.wheels ?? 4)));
+  const motor = spec.motor === "strong" ? "strong" : "small";
+  const wheel = spec.wheel === "large" ? "large" : "small";
+  const arm = !!spec.arm;
+  const { parts, mates } = drive({ wheels, motor, wheel, arm });
+  const name = `${wheels}-wheel ${arm ? "arm rover" : "rover"}`;
+  return { id: "composed", name, parts, mates, notes: [], cost: cost(parts) };
+}
+
 // Answers a description with a design and a plain account of what it did and what it could not do.
 export function compose(text) {
   const want = readDescription(text);
@@ -91,6 +106,9 @@ export function compose(text) {
     return { id: "composed", name: "MicroDuck", parts: duck.parts, mates: duck.mates, notes, cost: cost(duck.parts), want };
   }
 
+  if (!/\b(rovers?|cars?|carts?|vehicles?|wheel\w*|robots?|bots?|drive\w*|tanks?|trucks?|buggy|chassis|mobile|crawler)\b/i.test(String(text ?? ""))) {
+    notes.push(`There is no ready layout for "${String(text ?? "").trim().slice(0, 60)}", so a basic rover was built as a starting point.`);
+  }
   const wheels = Math.min(6, Math.max(2, want.wheels % 2 ? want.wheels + 1 : want.wheels));
   if (wheels !== want.wheels) notes.push(`Used ${wheels} wheels: wheels come in left and right pairs, up to 6.`);
   if (want.mecanum) notes.push("No mecanum wheel model is in the catalog yet, so omni wheels stand in. They roll sideways but cannot strafe on their own.");
@@ -111,3 +129,6 @@ export function compose(text) {
   notes.unshift(`${label}: ${wheels} ${motorName} motors, ${wheels} ${chosen[1] === "small" ? "32 mm" : "48 mm"} wheels, about $${total.toFixed(0)}.`);
   return { id: "composed", name: label, parts: design.parts, mates: design.mates, notes, cost: total, want };
 }
+
+// True when the description is something compose() can lay out properly: a wheeled robot or the walking duck.
+export const knowsHow = (text) => /\b(rovers?|cars?|carts?|vehicles?|wheel\w*|robots?|bots?|drive\w*|tanks?|trucks?|buggy|chassis|mobile|crawler|duck|biped|walker|walking)\b/i.test(String(text ?? ""));

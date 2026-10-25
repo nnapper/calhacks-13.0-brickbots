@@ -12,6 +12,7 @@ import WorkspacePanel from "./components/WorkspacePanel.jsx";
 import {workspaceMetrics} from "./lib/workspace-metrics.js";
 import Receipt from "./components/Receipt.jsx";
 import { compose } from "./lib/composer.js";
+import { unbrand } from "./lib/brand.js";
 
 
 export default function App() {
@@ -86,11 +87,11 @@ export default function App() {
     setAiBusy(true);
     try {
       const result = await cadActions.current?.run?.(text);
-      if (result) recordAi({ query: text, ok: !!result.ok, output: result.output, detail: result.detail });
+      if (result) recordAi({ query: text, ok: !!result.ok, output: unbrand(result.output), detail: unbrand(result.detail) });
       else recordAi({ query: text, ok: false, output: "More Context Required", detail: "Open the build workspace first." });
       showToast(result?.ok ? `Built from plan · ${result.output.split("\n").length} sections` : "More Context Required");
     } catch (e) {
-      recordAi({ query: text, ok: false, output: "More Context Required", detail: e instanceof Error ? e.message : String(e) });
+      recordAi({ query: text, ok: false, output: "More Context Required", detail: unbrand(e instanceof Error ? e.message : String(e)) });
       showToast("More Context Required");
     } finally { setAiBusy(false); }
   }, [aiBusy, recordAi, showToast]);
@@ -105,13 +106,19 @@ export default function App() {
     setView("build");
   };
   const onGoalResult = useCallback((goal, result) => {
-    recordAi({ query: goal, ok: !!result.ok, output: result.output, detail: result.detail });
+    recordAi({ query: goal, ok: !!result.ok, output: unbrand(result.output), detail: unbrand(result.detail) });
     if (homeGoal.current !== goal) return;
     homeGoal.current = null;
-    if (result.ok) { showToast("Built from the AI plan"); return; }
+    if (result.ok) { showToast(result.detail === "rule-based" ? "Brick could not plan this one, so it was built from catalog rules" : "Built by Brick"); return; }
     setPendingPreset(compose(goal));
-    showToast("The AI helper could not build this, so a rule-based design was used instead");
+    showToast("Brick could not build this, so a rule-based design was used instead");
   }, [recordAi, showToast]);
+  // An empty workspace: nothing is loaded, restored or generated, and Undo brings back whatever was there before.
+  const startBlank = () => {
+    setPrompt("");
+    setPendingPreset({ id: "blank", name: "Blank canvas", parts: [], mates: [], notes: ["Blank canvas · add parts from the library or ask Brick to build something."] });
+    setView("build");
+  };
   // A ready-made example from the home screen.
   const startPreset = (preset) => {
     setPrompt(preset.name);
@@ -165,7 +172,7 @@ export default function App() {
       />
 
       {view === "home" ? (
-        <Home build={totals.build} onStart={start} onPreset={startPreset} />
+        <Home build={totals.build} onStart={start} onPreset={startPreset} onBlank={startBlank} />
       ) : (
         <section className="build" data-parts-open={partsOpen} data-build-open={bomOpen}>
           <section className="stagewrap">

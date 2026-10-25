@@ -13,7 +13,7 @@ const CALLOUTS = [
   ["wheel", 130, 90],
 ];
 
-export default function Home({ build, onStart, onPreset }) {
+export default function Home({ build, onStart, onPreset, onBlank }) {
   const [text, setText] = useState("A 4-wheel rover that can carry 2 kg, under $250");
 
   const callouts = useMemo(() => {
@@ -57,6 +57,11 @@ export default function Home({ build, onStart, onPreset }) {
                 <em>{preset.parts.length} parts · {preset.mates.length} connections checked</em>
               </button>
             ))}
+            <button type="button" className="preset blank" onClick={onBlank}>
+              <b>Blank canvas</b>
+              <span>An empty workspace to build from scratch</span>
+              <em>0 parts</em>
+            </button>
           </div>
         </div>
         <div className="examples">

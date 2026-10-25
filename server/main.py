@@ -1,6 +1,7 @@
 """Local analytic STEP connector candidate service. Originals never leave this service."""
 from fastapi import FastAPI, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pathlib import Path
 import tempfile, hashlib, math, json, re, subprocess
 from OCP.STEPControl import STEPControl_Reader
@@ -137,9 +138,17 @@ def generate_model(payload: dict):
     return {
         'sku':sku,
         'name':manifest['product']['name'],
-        'stepUrl':f'/generated/{sku}/model.step',
+        # Served by this service: the dev server only lists public files at startup and would answer with the app's HTML page.
+        'stepUrl':f'/geometry/generated-file/{sku}/model.step',
         'manifest':manifest,
     }
+
+@app.get('/generated-file/{sku}/{filename}')
+def generated_file(sku: str, filename: str):
+    if not re.fullmatch(r'[A-Za-z0-9-]+',sku) or filename not in ('model.step','model.glb','model.stl'):raise HTTPException(404,'Not found')
+    path=Path(__file__).resolve().parents[1]/'public'/'generated'/sku/filename
+    if not path.exists():raise HTTPException(404,'Not found')
+    return FileResponse(path)
 
 @app.post('/custom')
 def generate_custom(payload: dict):
@@ -159,11 +168,17 @@ def generate_custom(payload: dict):
     holes_x=dimension('holesX',0,24)
     holes_y=dimension('holesY',0,24)
     raw_name=payload.get('name')
-    name=raw_name.strip()[:80] if isinstance(raw_name,str) and raw_name.strip() else f'Custom body {length:g} x {width:g} x {height:g} mm'
-    slug=hashlib.sha256(json.dumps([length,width,height,diameter,pitch,holes_x,holes_y,name],sort_keys=True).encode()).hexdigest()[:16]
+    shape=payload.get('shape','box')
+    if shape not in ('box','cylinder','sphere'):raise HTTPException(422,'shape must be box, cylinder or sphere')
+    # A cylinder or sphere is sized by its diameter (lengthMm); a cylinder's thickness is heightMm.
+    label={'box':f'{length:g} x {width:g} x {height:g} mm','cylinder':f'{length:g} mm dia x {height:g} mm','sphere':f'{length:g} mm dia'}[shape]
+    name=raw_name.strip()[:80] if isinstance(raw_name,str) and raw_name.strip() else f'Custom {shape} {label}'
+    slug=hashlib.sha256(json.dumps([shape,length,width,height,diameter,pitch,holes_x,holes_y,name],sort_keys=True).encode()).hexdigest()[:16]
     try:
-        body=cq.Workplane('XY').box(length,width,height)
-        if diameter and holes_x and holes_y and pitch:
+        if shape=='cylinder':body=cq.Workplane('XY').circle(length/2).extrude(height)
+        elif shape=='sphere':body=cq.Workplane('XY').sphere(length/2)
+        else:body=cq.Workplane('XY').box(length,width,height)
+        if shape=='box' and diameter and holes_x and holes_y and pitch:
             body=body.faces('>Z').workplane().rarray(pitch,pitch,int(holes_x),int(holes_y)).hole(diameter)
         out=Path(__file__).resolve().parents[1]/'public'/'generated'/'custom'/slug
         out.mkdir(parents=True,exist_ok=True)
@@ -175,4 +190,13 @@ def generate_custom(payload: dict):
             cq.exporters.export(body,str(mesh_path),exportType='STL')
     except HTTPException:raise
     except Exception as exc:raise HTTPException(422,f'Could not build the body: {str(exc)[:200]}')
-    return {'slug':slug,'name':name,'stepUrl':f'/generated/custom/{slug}/model.step','stlUrl':f'/generated/custom/{slug}/model.stl'}
+    # Served by this service, not from public/: the dev server only lists public files at startup, so a body created now
+    # would come back as the app's HTML page instead of the model.
+    return {'slug':slug,'name':name,'stepUrl':f'/geometry/custom-file/{slug}/model.step','stlUrl':f'/geometry/custom-file/{slug}/model.stl'}
+
+@app.get('/custom-file/{slug}/{filename}')
+def custom_file(slug: str, filename: str):
+    if not re.fullmatch(r'[0-9a-f]{16}',slug) or filename not in ('model.step','model.stl'):raise HTTPException(404,'Not found')
+    path=Path(__file__).resolve().parents[1]/'public'/'generated'/'custom'/slug/filename
+    if not path.exists():raise HTTPException(404,'Not found')
+    return FileResponse(path,media_type='model/stl' if filename.endswith('.stl') else 'application/step')

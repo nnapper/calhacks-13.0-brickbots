@@ -10,12 +10,14 @@ import { disposeModel } from '../cad/geometry';
 import { placeholderFile } from '../cad/placeholder';
 import { clone } from 'three/addons/utils/SkeletonUtils.js';
 import { addPosition, findSnap, alignConnectors, compatible, type PartInstance, type Mate, type Snap } from '../assembly/snapping';
-import { BY_SKU } from '../lib/catalog.js';
+import { BY_SKU, shortName } from '../lib/catalog.js';
 import { PRESET } from '../lib/preset.js';
+import { compose, designFromSpec, knowsHow } from '../lib/composer.js';
+import { unbrand } from '../lib/brand.js';
 import { savedBuilds, toRecord, MAX_SAVED_BUILDS, type BuildSummary } from '../lib/savedBuilds';
 import { analyzeGeometry } from '../cad/analyze';
 import { applySuggestions, type Connector, type PairSuggestion } from '../contracts/connectors';
-import { cloud, api, workspaceSecret, saveWorkspace, suggestNodes, suggestPairings, askPlanner, askArrangement, verifyArrangement, verifyPlan } from '../cloud/client';
+import { cloud, api, workspaceSecret, saveWorkspace, suggestNodes, suggestPairings, askPlanner, askClaudePlan, askClaudeArrangement, askArrangement, verifyArrangement, verifyPlan } from '../cloud/client';
 import '../styles/cad.css';
 
 class ViewerBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
@@ -75,6 +77,20 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
   const [filter, setFilter] = useState('');
   const [dragging, setDragging] = useState(false);
   const [operation, setOperation] = useState('');
+  // Brick's visible reasoning: it reads the request, lists the parts the build needs, then builds. Shown beside the canvas.
+  type PlanItem = { name: string; qty: number; note?: string };
+  const [planCard, setPlanCard] = useState<{ stage: 'thinking' | 'parts' | 'building' | 'done' | 'failed'; goal: string; summary?: string; items?: PlanItem[]; message?: string } | null>(null);
+  const planCardRef = useRef<typeof planCard>(null); planCardRef.current = planCard;
+  const planTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const showPlan = (card: NonNullable<typeof planCard> | null) => { if (planTimer.current) clearTimeout(planTimer.current); setPlanCard(card); if (card && (card.stage === 'done' || card.stage === 'failed')) planTimer.current = setTimeout(() => setPlanCard(null), 14000); };
+  const itemsFromParts = (parts: { sku: string; qty?: number }[], notes: Record<string, string> = {}): PlanItem[] => {
+    const grouped = new Map<string, PlanItem>();
+    for (const p of parts) {
+      const row = grouped.get(p.sku) ?? { name: shortName(BY_SKU[p.sku]?.name ?? p.sku).replace(/^\d{4} Series /, ''), qty: 0, note: notes[p.sku] };
+      row.qty += p.qty ?? 1; grouped.set(p.sku, row);
+    }
+    return [...grouped.values()];
+  };
   const [statusOffset, setStatusOffset] = useState({x: 0, y: 0});
   const [statusDragging, setStatusDragging] = useState(false);
   const [revision, setRevision] = useState(0);
@@ -259,12 +275,12 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
 
   async function recommend() {
     if (!model) return;
-    setOperation('Bitdeer is reviewing nodes');
+    setOperation('Brick is reviewing nodes');
     setError('');
     try {
       const result = await suggestNodes(model);
       updateNodes(model, applySuggestions(model.connectors ?? [], result.result));
-      setNotice(`Bitdeer suggestions ready · ${result.model}`);
+      setNotice('Brick suggestions ready');
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
     } finally {
@@ -404,33 +420,47 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     return next;
   }
 
-  // Replaces the workspace with an example build (Undo brings the previous build back).
+  // Replaces the workspace with a laid-out design: a preset, a composed build or one Claude specified (Undo brings the
+  // previous build back). Every part has a prebuilt model, so this does not depend on a time budget.
+  // With `beside`, the design is added to the right of what is already there instead of replacing it.
+  async function placeDesign(preset: any, beside = false) {
+    const sources = new Map<string, LoadedModel>();
+    for (const sku of new Set<string>(preset.parts.map((p: { sku: string }) => p.sku))) sources.set(sku, await loadProductModel(sku));
+    const ids = new Map<string, string>();
+    const existing = beside ? live.current.parts : [];
+    const left = Math.min(...preset.parts.map((p: { position: number[] }) => p.position[0]), 0) - 150;
+    const right = existing.reduce((x, p) => Math.max(x, worldBox(p).max.x * 1000), Number.NEGATIVE_INFINITY);
+    const shiftMm = Number.isFinite(right) ? right - left + 60 : 0;
+    const instances: PartInstance[] = preset.parts.map((def: { key: string; sku: string; position: number[]; rotY: number }) => {
+      const source = sources.get(def.sku)!;
+      const id = crypto.randomUUID();
+      ids.set(def.key, id);
+      const position = [(def.position[0] + shiftMm) / 1000, def.position[1] / 1000, def.position[2] / 1000] as [number, number, number];
+      const quaternion = new Quaternion().setFromAxisAngle(new Vector3(0, 1, 0), def.rotY * Math.PI / 180).toArray() as [number, number, number, number];
+      const model = { ...source, object: clone(source.object) as LoadedModel['object'] };
+      model.object.position.set(...position);
+      model.object.quaternion.set(...quaternion);
+      return { id, model, position, quaternion };
+    });
+    const nextMates = preset.mates.map((m: { moving: string; target: string; axis: number; side: number }) => ({ movingId: ids.get(m.moving)!, targetId: ids.get(m.target)!, axis: m.axis, side: m.side }));
+    checkpoint();
+    const allParts = beside ? [...existing, ...instances] : instances;
+    const allMates = beside ? [...live.current.mates, ...nextMates] : nextMates;
+    live.current = { parts: allParts, mates: allMates };
+    setParts(allParts);
+    setMates(allMates);
+    setSelectedId(null);
+    setReset(r => r + 1);
+    setNotice(preset.notes?.length ? `${preset.notes.join(' ')} · see Build health` : `${preset.name} loaded · see Build health`);
+  }
+
   async function loadPreset(preset: any = PRESET) {
     // The ref is set synchronously by run(), so it also catches an AI build that has not repainted yet.
     if (busy || building.current) return;
     setError('');
     setBusy(`Loading example ${preset.name}`);
     try {
-      const sources = new Map<string, LoadedModel>();
-      for (const sku of new Set<string>(preset.parts.map((p: { sku: string }) => p.sku))) sources.set(sku, await loadProductModel(sku));
-      const ids = new Map<string, string>();
-      const instances: PartInstance[] = preset.parts.map((def: { key: string; sku: string; position: number[]; rotY: number }) => {
-        const source = sources.get(def.sku)!;
-        const id = crypto.randomUUID();
-        ids.set(def.key, id);
-        const position = def.position.map(v => v / 1000) as [number, number, number];
-        const quaternion = new Quaternion().setFromAxisAngle(new Vector3(0, 1, 0), def.rotY * Math.PI / 180).toArray() as [number, number, number, number];
-        const model = { ...source, object: clone(source.object) as LoadedModel['object'] };
-        model.object.position.set(...position);
-        model.object.quaternion.set(...quaternion);
-        return { id, model, position, quaternion };
-      });
-      checkpoint();
-      setParts(instances);
-      setMates(preset.mates.map((m: { moving: string; target: string; axis: number; side: number }) => ({ movingId: ids.get(m.moving)!, targetId: ids.get(m.target)!, axis: m.axis, side: m.side })));
-      setSelectedId(null);
-      setReset(r => r + 1);
-      setNotice(preset.notes?.length ? `${preset.notes.join(' ')} · see Build health` : `${preset.name} loaded · see Build health`);
+      await placeDesign(preset);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Could not load the example');
     } finally {
@@ -503,6 +533,8 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
         const modelResponse=await fetch(result.stlUrl??result.stepUrl);
         if(!modelResponse.ok)throw new Error('Generated model download failed');
         const bytes=new Uint8Array(await modelResponse.arrayBuffer());
+        // A missing file can come back as the app's own HTML page with a 200 status; fail with a clear message instead of a parser error.
+        if(/^\s*<(!doctype|html)/i.test(new TextDecoder().decode(bytes.slice(0,32))))throw new Error('The generated model was not available from the server. Restart npm run dev and try again.');
         // A mesh is the finalized output for a custom primitive; older geometry services still return STEP.
         if(meshFormat==='step'&&!new TextDecoder().decode(bytes.slice(0,12)).startsWith('ISO-10303'))throw new Error('The generated file did not download correctly.');
         const partId=await open(new File([bytes],`${result.name}.${meshFormat}`),false,new AbortController(),undefined,`generated:${result.slug}`,deadline,analyzeNodes);
@@ -529,16 +561,16 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     const price=(p.prices??p.offers??[]).find((x:any)=>typeof x?.price==='number')?.price;
     return {sku:p.sku,name:p.name,price,dims,weightG:typeof p.weight_g==='number'?p.weight_g:undefined,category:p.category};
   }
-  function planCatalog(goal:string) {
+  function planCatalog(goal:string,limit=48) {
     const all=Object.values(BY_SKU) as any[];
-    if(all.length<=48)return all.map(toPlannerPart);
+    if(all.length<=limit)return all.map(toPlannerPart);
     const words=new Set(goal.toLowerCase().split(/[^a-z0-9.]+/).filter(w=>w.length>2));
     const score=(p:any)=>{
       const hay=`${p.sku} ${p.name} ${p.category}`.toLowerCase();
       return [...words].reduce((n,w)=>n+(hay.includes(w)?2:0),0)+(p.inStock===false?-1:0);
     };
     const selected=new Map<string,any>();
-    const add=(items:any[])=>{for(const p of items)if(selected.size<48)selected.set(p.sku,p);};
+    const add=(items:any[])=>{for(const p of items)if(selected.size<limit)selected.set(p.sku,p);};
     add(all.filter(p=>words.has(p.sku.toLowerCase())||words.has(p.name.toLowerCase())));
     for(const group of ['structure','motors','wheels','electronics','servos','gears']) add(all.filter(p=>p.group===group).slice(0,5));
     add([...all].sort((a,b)=>score(b)-score(a)||a.price-b.price));
@@ -612,12 +644,12 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     let previous:unknown=null;
     let issues='';
     for(let review=0;review<3;review++){
-      setOperation(review?'Gemini is revising the arrangement':'Gemini is arranging the parts');
+      setOperation(review?'Brick is revising the arrangement':'Brick is arranging the parts');
       const proposal=deadline
         ? await raceDeadline(askArrangement({goal,summary:planSummary,parts,previous:previous??undefined,issues:issues||undefined}),deadline)
         : await askArrangement({goal,summary:planSummary,parts,previous:previous??undefined,issues:issues||undefined});
-      if(!proposal){issues='The arrangement AI missed the build deadline.';break;}
-      setOperation(`Anthropic review ${review+1} of 3`);
+      if(!proposal){issues='Brick missed the arrangement deadline.';break;}
+      setOperation(`Brick review ${review+1} of 3`);
       const invalid=layoutIssues(parts,proposal.arrangement.parts);
       if(invalid.length){issues=invalid.join(' · ');previous=proposal.arrangement;continue;}
       const verdict=deadline
@@ -635,7 +667,16 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     return {ok:false,issues:[issues||'The verifier did not approve the arrangement.']};
   }
   // Top search bar entry point: plan the goal with Gemini, build it, and report back.
+  // Runs a build and closes out the plan card with how it ended.
   async function run(goal:string):Promise<{ok:boolean;output:string;detail?:string}> {
+    const result=await runBuild(goal);
+    if(result.output==='A build is already running')return result;
+    const card=planCardRef.current;
+    if(result.ok){if(card)showPlan({...card,goal,stage:'done'});}
+    else showPlan({stage:'failed',goal,summary:card?.summary,items:card?.items,message:result.detail??result.output});
+    return result;
+  }
+  async function runBuild(goal:string):Promise<{ok:boolean;output:string;detail?:string}> {
     if(building.current)return {ok:false,output:'A build is already running'};
     building.current=true;
     try{
@@ -650,65 +691,121 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
           const fallback=shelfArrangement(arrangementParts(ids));
           const applied=applyArrangement(fallback.parts);
           if(applied!==ids.length)throw new Error(result.issues.join(' · '));
-          return {ok:true,output:`${fallback.summary} The AI arrangement missed its deadline, so this compact fallback was applied.`};
+          return {ok:true,output:`${fallback.summary} The arrangement missed its deadline, so this compact fallback was applied.`};
         }
-        return {ok:true,output:result.summary??'Existing parts arranged and reviewed by Anthropic.'};
+        return {ok:true,output:result.summary??'Existing parts arranged by Brick.'};
       }
       const catalog=planCatalog(goal);
       const primitivePlan=primitiveBodyPlan(goal);
       let fastPlan=primitivePlan
         ? {match:{sku:'primitive',name:goal},plan:primitivePlan}
         : localCatalogPlan(goal,catalog);
-      let deterministic=!!fastPlan;
-      setOperation(fastPlan?'Preparing exact requested parts':'Gemini is planning the requested inventory');
-      let plan=fastPlan
-        ? {plan:fastPlan.plan,model:'local-exact-match'}
-        : await raceDeadline(askPlanner(goal,live.current.parts.map(p=>({id:p.id,name:p.model.asset.name,scale:p.scale??1})),catalog),subDeadline(deadline,15_000));
-      if(!plan) {
-        const fullCatalog=(Object.values(BY_SKU) as any[]).map(toPlannerPart);
-        fastPlan={match:{sku:'fallback',name:goal},plan:fallbackPlan(goal,fullCatalog)};
-        plan={plan:fastPlan.plan,model:'local-fallback'};
-        deterministic=true;
-        setOperation('Preparing a deadline-safe fallback design');
-      }
-      let expected=validatePlanCount(goal,plan.plan);
-      if(expected+live.current.parts.length>100)throw new Error('This build would exceed the workspace limit of 100 parts.');
-      stagedBuild.current=[];
-      setOperation('Anthropic is reviewing while models are prepared');
-      let review=deterministic
-        ? {approved:true,issues:[],model:deterministic?'local-exact-match':'local-validation'}
-        : await raceDeadline(verifyPlan(goal,plan.plan),subDeadline(deadline,6000));
-      if(!review) {
-        // Verification missed its budget. Use the local count-safe fallback rather than building an unreviewed plan.
-        const fullCatalog=(Object.values(BY_SKU) as any[]).map(toPlannerPart);
-        fastPlan={match:{sku:'fallback',name:goal},plan:fallbackPlan(goal,fullCatalog)};
-        plan={plan:fastPlan.plan,model:'local-fallback'};
-        deterministic=true;
-        expected=validatePlanCount(goal,plan.plan);
-        review={approved:true,issues:[],model:'local-fallback'};
-        setOperation('Preparing a deadline-safe fallback design');
-      }
-      if(!review.approved)throw new Error(`Inventory review rejected: ${review.issues.join(' · ')}`);
-      const prepared=await applyPlan(plan.plan,deadline,!deterministic);
-      const {report,generated}=prepared;
-      if(generated.length!==expected)throw new Error(`Expected ${expected} models but imported ${generated.length}.`);
+      const hasWork=live.current.parts.length>0;
+      // New parts go beside whatever is already in the workspace, never on top of it.
+      const placeBeside=(placements:any[])=>{
+        const right=live.current.parts.reduce((x,p)=>Math.max(x,worldBox(p).max.x*1000),Number.NEGATIVE_INFINITY);
+        const offset=Number.isFinite(right)?right+60:0;
+        return placements.map(p=>({...p,positionMm:{...p.positionMm,x:p.positionMm.x+offset}}));
+      };
+      // Builds a parts plan and lays the new parts out next to the existing ones. Models load without a time limit.
+      const buildParts=async(plan:any,analyze:boolean,useAiLayout:boolean)=>{
+        const expected=validatePlanCount(goal,plan);
+        if(expected+live.current.parts.length>100)throw new Error('This build would exceed the workspace limit of 100 parts.');
+        stagedBuild.current=[];
+        setOperation('Loading the parts');
+        const {report,generated}=await applyPlan(plan,undefined,analyze);
+        if(generated.length!==expected)throw new Error(`Expected ${expected} models but imported ${generated.length}.`);
+        if(useAiLayout){
+          // Claude proposes where each part goes; a bad layout is sent back once with the problems, then the shelf takes over.
+          setOperation('Brick is arranging the parts');
+          const parts=arrangementParts(generated);
+          let previous:unknown=null,issues='';
+          for(let attempt=0;attempt<2;attempt++){
+            const proposal=await raceDeadline(askClaudeArrangement({goal,summary:plan.summary??'',parts,previous:previous??undefined,issues:issues||undefined}).catch(()=>null),Date.now()+30_000);
+            if(!proposal)break;
+            const invalid=layoutIssues(parts,proposal.parts);
+            if(!invalid.length){
+              if(applyArrangement(placeBeside(proposal.parts))===generated.length)return {report,expected,layout:`Arranged by Brick: ${proposal.summary}`};
+              break;
+            }
+            issues=invalid.join(' · ');previous=proposal.parts;
+          }
+        }
+        const fallback=shelfArrangement(arrangementParts(generated));
+        const applied=applyArrangement(placeBeside(fallback.parts));
+        if(applied!==generated.length)throw new Error('The parts could not be laid out.');
+        return {report,expected,layout:hasWork?'Added beside the existing build.':'Placed in a compact layout.'};
+      };
+
       if(fastPlan){
-        const fallback=shelfArrangement(arrangementParts(generated));
-        const applied=applyArrangement(fallback.parts);
-        if(applied!==generated.length)throw new Error('The exact-request arrangement could not be applied.');
-        return {ok:true,output:`${report}\n\nPlaced ${expected} parts in a compact layout.`};
+        setOperation('Preparing exact requested parts');
+        const built=await buildParts(fastPlan.plan,false,false);
+        return {ok:true,output:`${built.report}\n\nPlaced ${built.expected} parts. ${built.layout}`};
       }
-      const arrangement=await arrangeAndVerify(goal,plan.plan.summary,generated,deadline);
-      if(!arrangement.ok){
-        const fallback=shelfArrangement(arrangementParts(generated));
-        const applied=applyArrangement(fallback.parts);
-        if(applied!==generated.length)throw new Error(`Arrangement not approved: ${arrangement.issues.join(' · ')}`);
-        return {ok:true,output:`${report}\n\nPlaced ${expected} parts in a compact fallback layout. The reviewed AI arrangement missed its 30-second budget.`};
+
+      // 1. Claude plans the build from the catalog. A slow or failing planner moves on to the next option; it never ends the build.
+      let claudeError='';
+      const planCardItems=()=>planCardRef.current?.items;
+      setOperation('Brick is planning the build');
+      showPlan({ stage: 'thinking', goal });
+      const claude=await raceDeadline(
+        askClaudePlan(goal,live.current.parts.map(p=>({name:p.model.asset.name})),planCatalog(goal,120)).catch(e=>{claudeError=unbrand(e instanceof Error?e.message:String(e));return null;}),
+        Date.now()+45_000);
+      if(!claude&&!claudeError)claudeError='Brick did not answer in time.';
+      if(claude){
+        const {spec}=claude;
+        try{
+          if(spec.kind==='drive'||spec.kind==='duck'){
+            setOperation('Laying out verified parts');
+            const design=designFromSpec({body:spec.kind,...(spec.drive??{})});
+            const notes:Record<string,string>={};for(const x of spec.extras)notes[x.sku]=x.reason;
+            showPlan({stage:'parts',goal,summary:spec.summary,items:itemsFromParts([...design.parts,...spec.extras.flatMap(x=>Array.from({length:x.qty},()=>({sku:x.sku})))],notes)});
+            await new Promise(r=>setTimeout(r,1200));
+            showPlan({stage:'building',goal,summary:spec.summary,items:planCardItems()});
+            await placeDesign(design,hasWork);
+            let extra='';
+            if(spec.extras.length){
+              const built=await buildParts({summary:spec.summary,assumptions:[],subsystems:[{name:'Extras',purpose:'Added by the planner.',parts:spec.extras,customBodies:[]}]},true,false);
+              extra=`\n\nExtras: ${spec.extras.map(x=>`${x.qty}× ${BY_SKU[x.sku]?.name??x.sku}`).join(', ')}.`;
+            }
+            return {ok:true,output:`${spec.summary}\n\n${design.name}: ${design.parts.length} parts, every wheel or joint checked in Build health.${extra}`};
+          }
+          const notes:Record<string,string>={};const flat:{sku:string;qty:number}[]=[];
+          for(const sub of spec.subsystems){for(const p of sub.parts){notes[p.sku]=p.reason;flat.push({sku:p.sku,qty:p.qty});}}
+          const bodies:PlanItem[]=spec.subsystems.flatMap((sub:any)=>sub.customBodies.map((b:any)=>({name:`${b.name} (custom ${b.shape??'box'})`,qty:1,note:b.reason})));
+          showPlan({stage:'parts',goal,summary:spec.summary,items:[...itemsFromParts(flat,notes),...bodies]});
+          await new Promise(r=>setTimeout(r,1200));
+          showPlan({stage:'building',goal,summary:spec.summary,items:planCardItems()});
+          const built=await buildParts({summary:spec.summary,assumptions:[],subsystems:spec.subsystems},true,true);
+          return {ok:true,output:`${spec.summary}\n\n${built.report}\n\nPlaced ${built.expected} parts. ${built.layout}`};
+        }catch(e){claudeError=unbrand(e instanceof Error?e.message:String(e));stagedBuild.current=null;}
       }
-      return {ok:true,output:`${report}\n\nPlaced ${expected} parts. Gemini arrangement reviewed by Anthropic: ${arrangement.summary??''}`};
+
+      // 2. The cloud planner, with a short budget.
+      setOperation('Trying the cloud planner');
+      const cloudPlan=await raceDeadline(askPlanner(goal,live.current.parts.map(p=>({id:p.id,name:p.model.asset.name,scale:p.scale??1})),catalog),Date.now()+12_000);
+      if(cloudPlan){
+        try{
+          const built=await buildParts(cloudPlan.plan,true,true);
+          return {ok:true,output:`${cloudPlan.plan.summary}\n\n${built.report}\n\nPlaced ${built.expected} parts. ${built.layout}`};
+        }catch(e){stagedBuild.current=null;}
+      }
+
+      // 3. Always return something that fits the request: a layout composed from the description, or the closest catalog parts.
+      setOperation('Building from catalog rules');
+      if(!hasWork||knowsHow(goal)){
+        const design=compose(goal);
+        showPlan({stage:'building',goal,summary:design.notes[0],items:itemsFromParts(design.parts)});
+        await placeDesign(design,hasWork);
+        return {ok:true,detail:'rule-based',output:`${design.notes.join(' ')}\n\nBrick could not plan this one (${claudeError}), so it was built from catalog rules.`};
+      }
+      // With a build already in progress, a guess would only add unrelated parts to it, so say what happened instead.
+      const detail=`Brick could not plan this one (${claudeError}). Nothing was added to your build; try rephrasing or retry.`;
+      setError(detail);
+      return {ok:false,output:'Build not applied',detail};
     }catch(e){
       const raw=e instanceof Error?e.message:String(e);
-      const detail=/quota|RESOURCE_EXHAUSTED/i.test(raw)?'Gemini has reached its daily quota. Enable billing or wait for reset.':raw;setError(detail);
+      const detail=/quota|RESOURCE_EXHAUSTED/i.test(raw)?'Brick has reached its daily limit. Try again later.':unbrand(raw);setError(detail);
       return {ok:false,output:'Build not applied',detail};
     }finally{stagedBuild.current=null;building.current=false;setBusy('');setOperation('');}
   }
@@ -1058,6 +1155,25 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       )}
 
       {dragging && <div className="cad-drop-overlay">Drop to add a part</div>}
+      {planCard && <aside className="cad-plan" aria-label="Brick's plan" data-stage={planCard.stage}>
+        <header>
+          <b>Brick</b>
+          <button type="button" aria-label="Close" onClick={() => showPlan(null)}>×</button>
+        </header>
+        <ol className="cad-plan-steps">
+          {(['thinking', 'parts', 'building', 'done'] as const).map((step, i) => {
+            const order = ['thinking', 'parts', 'building', 'done'];
+            const at = planCard.stage === 'failed' ? 0 : order.indexOf(planCard.stage);
+            return <li key={step} className={i < at ? 'past' : i === at ? 'now' : ''}>{['Reading your request', 'Choosing parts', 'Building', 'Done'][i]}</li>;
+          })}
+        </ol>
+        <p className="cad-plan-goal">“{planCard.goal}”</p>
+        {planCard.summary && <p className="cad-plan-summary">{planCard.summary}</p>}
+        {!!planCard.items?.length && <ul className="cad-plan-parts">
+          {planCard.items.map((item, i) => <li key={i}><span>{item.qty}×</span> {item.name}{item.note && <small>{item.note}</small>}</li>)}
+        </ul>}
+        {planCard.stage === 'failed' && <p className="cad-plan-error">{planCard.message}</p>}
+      </aside>}
       {error && <div className="cad-error" role="alert"><strong>Action could not finish</strong><p>{error}</p><button onClick={() => setError('')}>Dismiss</button></div>}
 
       {designsHost && createPortal(
@@ -1127,13 +1243,13 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
                 <section className="cad-node-panel">
                   <h5>Attachment nodes</h5>
                   <button disabled={!!operation} onClick={() => void analyze()}>Find geometry nodes</button>
-                  <button disabled={!!operation || !model.connectors?.length} onClick={() => void recommend()}>Recommend with Bitdeer</button>
+                  <button disabled={!!operation || !model.connectors?.length} onClick={() => void recommend()}>Recommend with Brick</button>
                   <p>Click a dot, then a matching dot on another part to approve and connect that pair. Green nodes also snap while dragging. Amber nodes are suggestions.</p>
                   {model.connectors?.map(node => (
                     <div className="cad-node-row" key={node.id}>
                       <strong>{node.id} · {node.label}</strong>
                       <button disabled={node.review === 'rejected'} onClick={() => selectedId && connectFromButton(selectedId, node.id)}>Connect using {node.id}</button>
-                      <small>{node.aiSelected ? 'Bitdeer recommended · ' : ''}{node.kind}{node.diameterM ? ` · Ø${(node.diameterM * 1000 * (selectedPart?.scale??1)).toFixed(2)} mm` : ''}</small>
+                      <small>{node.aiSelected ? 'Brick recommended · ' : ''}{node.kind}{node.diameterM ? ` · Ø${(node.diameterM * 1000 * (selectedPart?.scale??1)).toFixed(2)} mm` : ''}</small>
                       <p>{node.aiReason ?? node.reason}</p>
                       <select
                         aria-label={`Review ${node.id}`}
