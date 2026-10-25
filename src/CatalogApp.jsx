@@ -148,7 +148,7 @@ export default function App() {
       {view === "home" ? (
         <Home build={totals.build} onStart={start} />
       ) : (
-        <section className="build">
+        <section className="build" data-parts-open={partsOpen} data-build-open={bomOpen}>
           <section className="stagewrap">
             <CadWorkspace unit={unit} onUnit={setUnit} measure={measureOn} onMeasure={setMeasureOn} designsHost={designsHost} onWorkspaceChange={setWorkspace} actionsRef={cadActions} pendingGoal={pendingGoal} onPendingGoalConsumed={() => setPendingGoal(null)} />
           </section>
