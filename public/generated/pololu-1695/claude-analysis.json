@@ -1,0 +1,24 @@
+{
+  "partType": "other",
+  "summary": "Thin flexible force-sensing resistor with a circular sensing pad at one end and two parallel flat tail leads ending in male pin contacts. It is a flat film part with no visible holes.",
+  "boundsMm": {
+    "x": 35.56,
+    "y": 7.62,
+    "z": 0.254
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0.127,
+      "description": "Top flat face of the film, with the circular sensing pad as the pressing surface near one end"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -0.127,
+      "description": "Bottom flat face of the film, which could sit against a flat backing surface"
+    }
+  ],
+  "confidence": "low",
+  "notes": "The x length of 35.56 mm comes from the stated 1.4 in lead length, so it is an approximation of the overall length, which is not stated. The y width of 7.62 mm is the 0.3 in pad diameter. The z thickness of 0.254 mm is the stated 0.01 in. The dimensions are marked unverified. The leads are narrower than the pad, with 2.54 mm (0.1 in) pin spacing. The active sensing area is about 5 mm in diameter. The images show no mounting holes and no printed dimensions, so none are given. The origin is at the center of the bounding box. The pad is at one x end and the contacts are at the other."
+}

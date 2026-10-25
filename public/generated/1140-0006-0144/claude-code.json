@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Round plate, 144 mm diameter and 6 mm thick. The bottom face is at Y=0 and the plate is centered on X and Z. It has one 14 mm through hole at the center.",
+  "confidence": "low",
+  "warnings": [
+    "The 144 mm diameter and 6 mm thickness come from unverified specs.",
+    "The 14 mm central hole diameter is a rough visual estimate.",
+    "The four outer hub-pattern clusters (large openings with keyhole slots and counterbored lobes) are omitted because their positions and sizes could not be read reliably.",
+    "The many small M4-class through and threaded holes are omitted for the same reason.",
+    "The scattered counterbored holes are omitted because their sizes and positions are uncertain.",
+    "The central cluster's lobed counterbores and keyhole slots are omitted; only the central round opening is modeled."
+  ],
+  "cadquery": "part = cq.Workplane('XZ').circle(72).extrude(-6)\ncenter_hole = cq.Workplane('XZ').circle(7).extrude(-6)\npart = part.cut(center_hole)"
+}

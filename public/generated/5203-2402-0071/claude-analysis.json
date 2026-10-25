@@ -1,0 +1,24 @@
+{
+  "partType": "motor",
+  "summary": "Cylindrical planetary gear motor with a black gearbox section, a motor can and an encoder cap at the rear. An 8mm REX output shaft, 24mm long, protrudes from the front face. The part is modeled as a cylinder along the X axis, centered at the origin, with the shaft extending toward -X.",
+  "boundsMm": {
+    "x": 142,
+    "y": 37,
+    "z": 37
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": -71,
+      "description": "Front gearbox face, around the output shaft. The drawings show it clamped or screwed to a hub or plate with four M4 screws (12mm length), but the hole pattern and diameters are not dimensioned."
+    },
+    {
+      "axis": "x",
+      "offsetMm": -47,
+      "description": "Face of the 8mm REX output shaft base, where gears, pulleys or collars seat. The shaft is 8mm in diameter and 24mm long, and it extends from the gearbox face toward -X."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The images and spec data give only the 8mm shaft diameter and 24mm shaft length. The 37mm body diameter and 142mm overall length (shaft included) are estimates, not printed values, and should be checked against the vendor's dimensional drawing. The mounting hole pattern is not dimensioned or visible well enough to list holes, so the holes array is empty. The jacket has flat sides that give clearance for nearby components, per the product insight, but their dimensions are not given. The encoder cap has a connector on its rear face."
+}

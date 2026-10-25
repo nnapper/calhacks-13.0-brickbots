@@ -1,0 +1,72 @@
+{
+  "partType": "flat_plate",
+  "summary": "Round-end aluminum pattern plate, 152mm long, 32mm wide and 2.5mm thick. Both ends are fully rounded with a 16mm radius. Six large 14mm through-holes run along the centerline, each surrounded by smaller pattern holes (some slotted).",
+  "boundsMm": {
+    "x": 152,
+    "y": 32,
+    "z": 2.5
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          -60,
+          0,
+          0
+        ],
+        [
+          -36,
+          0,
+          0
+        ],
+        [
+          -12,
+          0,
+          0
+        ],
+        [
+          12,
+          0,
+          0
+        ],
+        [
+          36,
+          0,
+          0
+        ],
+        [
+          60,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 1.25,
+      "description": "Top flat face, usable for bolting parts, hubs or limit-switch targets"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -1.25,
+      "description": "Bottom flat face, usable for mounting against channel, spacers or hubs"
+    },
+    {
+      "axis": "x",
+      "offsetMm": 76,
+      "description": "Rounded end edge (16mm radius), a corner-free surface that can trigger limit switches"
+    },
+    {
+      "axis": "x",
+      "offsetMm": -76,
+      "description": "Rounded end edge (16mm radius), a corner-free surface that can trigger limit switches"
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Length, width and thickness come from the supplied (unverified) spec. The 14mm hole size is stated in the spec, and the six large holes are visible in the images. The 24mm centre pitch is derived from the geometry: 152 − 32 = 120, and 120 / 5 = 24, which also matches the 24mm slotted-across-center note. The smaller 16mm-pattern holes and slots around each large hole are visible but their diameters and exact coordinates are not stated, so they are left out of the holes list instead of being guessed. The part is centered on the origin, with length along x, width along y and thickness along z."
+}

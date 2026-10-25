@@ -1,0 +1,12 @@
+{
+  "name": "3601 Series Rhino Wheel (14mm Bore, 72mm Diameter)",
+  "sku": "3601-0014-0072",
+  "category": "rhino-wheels",
+  "sourceUrl": "https://www.gobilda.com/3601-series-rhino-wheel-14mm-bore-72mm-diameter/",
+  "expectedDimensionsMm": [
+    32,
+    72,
+    14
+  ],
+  "units": "millimeter"
+}

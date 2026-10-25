@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "48mm Omni Wheel (8mm REX® Bore, 50A Durometer)",
+    "sku": "3624-4008-0048",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/48mm-omni-wheel-8mm-rex-bore-50a-durometer/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 48 mm diameter and 8 mm bore come from the listing, which is marked unverified. The 16 mm hole pattern and the 14 mm recess are also stated in the listing specs. The overall width (about 19 mm) and the 3.5 mm pattern-hole diameter are rough estimates from image proportions, scaled against the 48 mm diameter. They are not stated anywhere. The bore is shown with a hex profile in the images, so the 8 mm figure is treated as the across-flats size. The hole pattern appears in the face view as a 16 mm square, with hole centers at about ±8 mm. Two screws are visible on the hub face at about ±11 mm on x. They are not modeled as holes, and the recess depth is not known. The listing says the wheel has two roller rows, and the side view shows this, with the rows staggered. Roller count and exact roller geometry were not measured.",
+      "The 19 mm width, hub radius, and 3.5 mm pattern-hole diameter are estimated from image proportions, not stated.",
+      "The 14 mm recess depth (2 mm) is a guess.",
+      "The roller count (10 per row) and roller size are approximate. Rollers are modeled as straight cylinders clipped to the 48 mm outer diameter rather than true barrel profiles, and they have no axles.",
+      "The two visible hub screws, the hub's scalloped outline, the hex-bore internal ribs, and the logos are omitted.",
+      "The 8 mm bore is treated as hex across-flats, which is unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -24.000000100000275,
+      "xmax": 24.0000001,
+      "ymin": -1.0000027229405e-7,
+      "ymax": 48.00000010000027,
+      "zmin": -9.5000001,
+      "zmax": 9.5000001,
+      "xlen": 48.00000020000027,
+      "ylen": 48.00000020000054,
+      "zlen": 19.0000002
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [19.0000002, 48.00000020000027, 48.00000020000054]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 703034,
+        "sha256": "5ef80b00c42761982b31a9e2ec602e9223c78556a0741a679b48c11ec9471deb"
+      },
+      "model.stl": {
+        "bytes": 406084,
+        "sha256": "d2b19436fde17c988a749a30596051dc622103942b8064ee256d33c4918856e2"
+      },
+      "model.glb": {
+        "bytes": 147088,
+        "sha256": "399b6a2e2d9ffefafba56042f0b06b59464038fda70193ee05071691991e0679"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "5ef80b00c42761982b31a9e2ec602e9223c78556a0741a679b48c11ec9471deb"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

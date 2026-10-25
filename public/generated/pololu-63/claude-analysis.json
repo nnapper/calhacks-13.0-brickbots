@@ -1,0 +1,19 @@
+{
+  "partType": "wheel",
+  "summary": "Narrow solid rubber tire on a light-colored hub, 58 mm in diameter and 16 mm wide. Modeled as a cylinder with its rotation axis along y.",
+  "boundsMm": {
+    "x": 58,
+    "y": 16,
+    "z": 58
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "y",
+      "offsetMm": 8,
+      "description": "Outer hub face, centered on the wheel axis. It is where the hub, screws and shaft attach. The opposite side (offset -8) is the other face."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Diameter (58 mm) and width (16 mm) come from the supplied specs, which are marked unverified. The image shows a central hub opening and three screws or fasteners on the hub face, but no bore or screw-hole diameters or positions are given. The listing mentions interchangeable hubs for 4 mm round shafts and 3 mm hex shafts, but does not say which one is fitted. The holes array is therefore left empty rather than guessing. The axis choice (y) and the ±8 mm face offsets are modeling assumptions for a part centered at the origin."
+}

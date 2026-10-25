@@ -1,0 +1,42 @@
+{
+  "partType": "motor",
+  "summary": "Servo gearbox assembly: a hobby-style servo in a machined bracket with a small pinion driving a large perforated spur gear (3:1). The output gear has a central hex bore. The bracket has rows of holes on its side faces for mounting.",
+  "boundsMm": {
+    "x": 106,
+    "y": 85,
+    "z": 55
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          -13,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "y",
+      "offsetMm": 42,
+      "description": "Side face of the bracket with two rows of mounting holes on a regular grid"
+    },
+    {
+      "axis": "y",
+      "offsetMm": -42,
+      "description": "Opposite side face of the bracket, assumed to carry a matching hole pattern"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 27,
+      "description": "Top bracket face; the exact hole pattern is not visible"
+    }
+  ],
+  "confidence": "low",
+  "notes": "No dimensions are printed in the images, and the supplied dimensions are null and flagged unverified. The only supplied dimension used is the 8 mm shaft size, which I applied to the hex bore. Bounds are estimated from the side-view pixel proportions, assuming the large gear is about 80 mm across, so they are approximate. The gear axis is taken as z. Hole positions on the bracket faces were not extracted; only the central hex bore is listed. The x position of the bore is estimated from its offset relative to the bounding-box center."
+}

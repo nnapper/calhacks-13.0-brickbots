@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Magnetic Encoder Disc for 20D mm Metal Gearmotors, OD 9.7 mm, ID 2.0 mm, 20 CPR (Bulk)",
+    "sku": "pololu-3498",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The dimensions come from the supplied listing (OD 9.7 mm, ID 2.0 mm, 2 mm thick), which is marked unverified. The image proportions match them: the bore is about 0.2 of the diameter and the thickness is about a fifth of it. The through-bore is assumed from the visible light at the bottom of the hole. The two circular marks on the face are not dimensioned, so I did not model them or give their positions or sizes. The bore appears to run along the disc's flat-face normal (z axis).",
+      "Dimensions come from the unverified listing.",
+      "The two small circular marks on one face are uncertain (they may be magnetized pole regions rather than geometry), so they are omitted.",
+      "The through-bore is assumed from the light visible at the bottom of the hole.",
+      "The image suggests the bore may be slightly tapered or stepped, but this is uncertain, so a straight bore is used."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -4.85,
+      "xmax": 4.85,
+      "ymin": 0,
+      "ymax": 2,
+      "zmin": -4.85,
+      "zmax": 4.85,
+      "xlen": 9.7,
+      "ylen": 2,
+      "zlen": 9.7
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 9464,
+        "sha256": "0665dfef95be298c04f5c5c1b771e8d08bf06e101e15411a1241f79d00ff8e03"
+      },
+      "model.stl": {
+        "bytes": 33684,
+        "sha256": "b8cb81dc44e7bb60c989d89b393789cb5da323a1335c361cf40d018ef7e7bc56"
+      },
+      "model.glb": {
+        "bytes": 13108,
+        "sha256": "88500c0102831880d84bfc3a8373f9966f5a268deda5297414928358269b34f0"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "0665dfef95be298c04f5c5c1b771e8d08bf06e101e15411a1241f79d00ff8e03"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 10
+  },
+  "status": "prototype_unverified"
+}

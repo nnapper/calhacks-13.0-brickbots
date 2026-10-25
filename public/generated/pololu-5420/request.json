@@ -1,0 +1,11 @@
+{
+  "name": "Pololu Isolated Solid State Relay/Switch, SPST, 60V, 7A",
+  "sku": "pololu-5420",
+  "category": "relay-modules",
+  "expectedDimensionsMm": [
+    20.32,
+    8.128,
+    3.302
+  ],
+  "units": "millimeter"
+}

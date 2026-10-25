@@ -1,0 +1,9 @@
+{
+  "name": "Pololu Robot Chassis RRC01A",
+  "sku": "pololu-255",
+  "category": "chassis",
+  "expectedDimensionsMm": [
+    127
+  ],
+  "units": "millimeter"
+}

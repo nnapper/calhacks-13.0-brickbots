@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Tamiya 70096 Off-Road Tires (2 tires)",
+    "sku": "pololu-64",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "low",
+    "warnings": [
+      "Diameter (50 mm) and width (30 mm) come from the product text, which is flagged as unverified. No dimensions are printed in the image. The wheel axis is taken as x, so the 30 mm width runs along x and the 50 mm diameter spans y and z. The hub bore is not clearly visible, and its 3 mm hex size comes from the text only. It is not listed under holes because a hex bore has no stated round diameter and no position or depth was measured. Tread lug dimensions and hub geometry are not measured. The two wheels in the image are not modeled separately.",
+      "Diameter and width come from unverified product text.",
+      "Tread lugs are omitted as decorative detail.",
+      "The 3 mm hex shaft bore is not clearly visible in the image, so it is omitted.",
+      "Rim radius (17 mm) and hub width (26 mm) are estimated from the image.",
+      "Hub recesses and the central boss are not modeled.",
+      "Only one of the two wheels shown is modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -15,
+      "xmax": 15,
+      "ymin": 0,
+      "ymax": 50,
+      "zmin": -25,
+      "zmax": 25,
+      "xlen": 30,
+      "ylen": 50,
+      "zlen": 50
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 13735,
+        "sha256": "f092c353394592a431766a0294e15d6c4cafe2393bb3e6adacec1dcd49b0d7d6"
+      },
+      "model.stl": {
+        "bytes": 50284,
+        "sha256": "f0a1693bea180e968272c3e6e51c5a1751e79287efe669d839f89bb53a5081f9"
+      },
+      "model.glb": {
+        "bytes": 19112,
+        "sha256": "e1755490defa67e8962d3c9789ed84ca9071222380bfb83aa73ea90e09e7c3a3"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "f092c353394592a431766a0294e15d6c4cafe2393bb3e6adacec1dcd49b0d7d6"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 20
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Sanyo Pancake Stepper Motor: Bipolar, 200 Steps/Rev, 50×16mm, 5.9V, 1 A/Phase",
+  "sku": "pololu-2299",
+  "category": "stepper-motors",
+  "expectedDimensionsMm": [
+    50,
+    50,
+    16,
+    5
+  ],
+  "units": "millimeter"
+}

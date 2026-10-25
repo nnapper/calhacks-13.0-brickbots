@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1000:1 Micro Metal Gearmotor HP 6V with 12 CPR Encoder, Side Connector",
+    "sku": "pololu-5177",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 12 mm width, 10 mm height, 3 mm shaft diameter and 9 mm shaft length come from the listing. Total length is not given and no dimensioned drawing is visible, so x=50 is a rough placeholder to be checked against the datasheet. The gearbox plates appear to have small mounting holes, but their diameters and positions are not stated or measurable, so they are left out. Mounting surface offsets are also omitted for the same reason. The encoder housing may extend slightly beyond the 10x12 mm gearbox section.",
+      "Total length (~44 mm) and the individual section lengths are estimates; no dimensioned drawing was available.",
+      "Gearbox is modeled as a single solid block; individual plates, gears, and mounting holes are omitted because their sizes are not stated.",
+      "The encoder housing is simplified to a box; its rounded back edge is omitted.",
+      "The connector is a simplified block; its pins and socket cavity are omitted, and it protrudes 2 mm beyond the 10 mm Z width.",
+      "The motor can slots and the rear motor details are omitted.",
+      "Y=12 and Z=10 follow the analysis bounds; the listing calls 12 the width and 10 the height."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -22,
+      "xmax": 22,
+      "ymin": -8.881784197001252e-16,
+      "ymax": 12,
+      "zmin": -5,
+      "zmax": 7,
+      "xlen": 44,
+      "ylen": 12,
+      "zlen": 12
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 10.000 mm; measured dimensions are [12.0, 12.0, 44.0]",
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [12.0, 12.0, 44.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 79104,
+        "sha256": "530cf34df3f65fac11137c548f4ae7e79f574703a9cd33774831118d5bd46756"
+      },
+      "model.stl": {
+        "bytes": 26884,
+        "sha256": "36ad1575cea5ce2dd43e313244609d9585cfc8a32a7bf047344085b761384af2"
+      },
+      "model.glb": {
+        "bytes": 10684,
+        "sha256": "24238b7ecee0639ad4258c3b0712a12d5cc411c1671d205565cbbbdb46519c3e"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "530cf34df3f65fac11137c548f4ae7e79f574703a9cd33774831118d5bd46756"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

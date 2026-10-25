@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Rectangular black motor controller enclosure, 41 mm long (X), 23 mm wide (Z) and 15 mm tall (Y), with its bottom at Y=0. The top 4 mm carries 9 parallel heatsink grooves (1.5 mm wide, 4 mm pitch) that run across the width. The wire leads, connector-end features and LEDs are omitted.",
+  "confidence": "low",
+  "warnings": [
+    "The supplied metadata (99 x 72.6 x 30 mm) is unverified and does not match the photo proportions. The model uses the proportional estimate from the image analysis (41 x 23 x 15 mm), so check the scale against a datasheet.",
+    "Image analysis axes (y = width, z = height) were remapped to the required convention: X is length, Y is height and Z is width.",
+    "The fin grooves are simplified to straight rectangular cuts. The diagonal or sloped fin profile in the photo is uncertain.",
+    "The micro USB port, 10-pin CTRL header and status LEDs are omitted because their sizes and depths are uncertain.",
+    "The four 12 AWG wire leads are omitted.",
+    "The underside is not visible, so no bottom features are modeled."
+  ],
+  "cadquery": "part = cq.Workplane('XY').box(41, 15, 23, centered=(True, False, True))\nfor i in range(9):\n    g = cq.Workplane('XY').box(1.5, 4.5, 25, centered=(True, False, True)).translate((-16 + 4 * i, 11, 0))\n    part = part.cut(g)\n"
+}

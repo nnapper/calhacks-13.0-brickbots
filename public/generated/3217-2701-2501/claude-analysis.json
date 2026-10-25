@@ -1,0 +1,86 @@
+{
+  "partType": "bracket",
+  "summary": "Compact servo mounting block with an integrated bearing and a hub-shaft. It is a rectangular machined plate with a raised bearing boss and a round hub on top, a large oval/round servo-spline clearance opening, and threaded mounting holes on the top face and sides. It holds a standard-size servo and isolates radial loads from the servo output.",
+  "boundsMm": {
+    "x": 56,
+    "y": 27,
+    "z": 28
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -8,
+          -8,
+          0
+        ],
+        [
+          -8,
+          8,
+          0
+        ],
+        [
+          8,
+          -8,
+          0
+        ],
+        [
+          8,
+          8,
+          0
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "z",
+      "diameterMm": 16,
+      "positionsMm": [
+        [
+          14,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "y",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -12,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Top face of the channel plate, with the hub-shaft rising 8mm from it and the bearing boss in the center; threaded holes sit in a 16mm square pattern."
+    },
+    {
+      "axis": "y",
+      "offsetMm": 13.5,
+      "description": "Side faces (27mm apart) with threaded holes for M4 screws."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -10,
+      "description": "Underside, which seats against the standard-size servo body and is secured with four screws through the servo ears."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 27mm width is stated. Length (~56mm) and overall height are estimated from the proportions in the images and a standard servo footprint. The hole diameters and positions, including the 4mm M4 tap size and the ~16mm spline opening, are approximate. The 16mm square pattern and the 8mm hub-shaft rise come from the specs. The 14mm bearing protrusion diameter is not modeled as a hole. Hole positions are relative to the part center and are not verified."
+}

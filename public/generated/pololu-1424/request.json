@@ -1,0 +1,12 @@
+{
+  "name": "Pololu Wheel 60×8mm Pair - White",
+  "sku": "pololu-1424",
+  "category": "d-shaft-wheels",
+  "expectedDimensionsMm": [
+    60,
+    8,
+    60,
+    3
+  ],
+  "units": "millimeter"
+}

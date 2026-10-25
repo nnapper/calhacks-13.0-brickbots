@@ -1,0 +1,24 @@
+{
+  "partType": "motor",
+  "summary": "Shaftless coin-type vibration motor. It is a flat metal cylindrical disc with two thin insulated leads exiting from the side edge. The images show an adhesive backing tab on one flat face.",
+  "boundsMm": {
+    "x": 10,
+    "y": 10,
+    "z": 2
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1,
+      "description": "Flat bottom face with adhesive backing, used to stick the motor to a surface. Its normal is -z."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1,
+      "description": "Flat top face of the disc, which could serve as a secondary contact surface."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 10 mm diameter and 2.0 mm height come from the product description. The description is flagged as unverified, but the coin comparison photo roughly agrees with it. The bounding box is centered on the part with the disc axis along z. The leads (about 1.5 in long) leave the side edge and are left out of the bounds. The small dimple visible on the top face is not treated as a hole because no depth or diameter is shown. The graph shows RPM and current against voltage and gives no geometry."
+}

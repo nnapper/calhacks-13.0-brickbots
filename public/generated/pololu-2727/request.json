@@ -1,0 +1,12 @@
+{
+  "name": "Force-Sensing Resistor: 0.25″-Diameter Circle, Short Tail",
+  "sku": "pololu-2727",
+  "category": "force-sensors",
+  "expectedDimensionsMm": [
+    7.62,
+    7.62,
+    0.254,
+    7.62
+  ],
+  "units": "millimeter"
+}

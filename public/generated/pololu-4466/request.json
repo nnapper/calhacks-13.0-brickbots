@@ -1,0 +1,9 @@
+{
+  "name": "Glideforce GF01-121005-1-66 Micro Linear Actuator with Limit Switches: 12V, 4.3kgf, 17.6mm/s, 50mm Stroke",
+  "sku": "pololu-4466",
+  "category": "linear-actuators",
+  "expectedDimensionsMm": [
+    157
+  ],
+  "units": "millimeter"
+}

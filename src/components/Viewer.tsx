@@ -1,5 +1,6 @@
 import { Canvas, useThree, useFrame, type ThreeEvent } from '@react-three/fiber';
-import { OrbitControls, GizmoHelper, GizmoViewport, Grid, Box, Html, Billboard } from '@react-three/drei';
+import { OrbitControls, GizmoHelper, GizmoViewport, Grid, Box, Html, Billboard, Line } from '@react-three/drei';
+import { formatLength } from '../lib/units.js';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
@@ -7,7 +8,7 @@ import { findSnap, compatible, worldBox, localBox, type PartInstance, type Snap,
 import { playSnapSound } from '../assembly/clickSound';
 export type View = 'Perspective' | 'Front' | 'Top' | 'Side';
 export type ViewerBridge = { chooseNode:(partId:string,nodeId:string)=>void; armed:()=>boolean; dropPoint: (x: number, y: number) => [number, number, number] | undefined };
-type Props = { mates?: Mate[]; parts: PartInstance[]; selectedId: string | null; view: View; reset: number; wireframe: boolean; snapEnabled: boolean; onConnect:(fromId:string,fromNode:string,toId:string,toNode:string)=>void; onNodeMessage:(message:string)=>void; onSelect: (id: string | null) => void; onMove: (id: string, position: [number, number, number], snap: Snap | null, quaternion?: [number, number, number, number]) => void; onPreview: (snap: Snap | null) => void; bridge: React.RefObject<ViewerBridge | null> };
+type Props = { measure?: boolean; unit?: string; mates?: Mate[]; parts: PartInstance[]; selectedId: string | null; view: View; reset: number; wireframe: boolean; snapEnabled: boolean; onConnect:(fromId:string,fromNode:string,toId:string,toNode:string)=>void; onNodeMessage:(message:string)=>void; onSelect: (id: string | null) => void; onMove: (id: string, position: [number, number, number], snap: Snap | null, quaternion?: [number, number, number, number]) => void; onPreview: (snap: Snap | null) => void; bridge: React.RefObject<ViewerBridge | null> };
 // Brief green glow where two parts click together. It expands and fades out completely.
 function SnapGlow({ point, radius, since }: { point: [number, number, number]; radius: number; since: number }) {
   const ring = useRef<THREE.Mesh>(null); const core = useRef<THREE.Mesh>(null); const { invalidate } = useThree();
@@ -22,12 +23,22 @@ function SnapGlow({ point, radius, since }: { point: [number, number, number]; r
     <mesh ref={core} renderOrder={10} raycast={() => {}}><circleGeometry args={[radius * .45, 24]}/><meshBasicMaterial color="#4dff9a" depthTest={false} transparent/></mesh>
   </Billboard>;
 }
+function useDarkTheme() {
+  const read = () => document.documentElement.dataset.theme === 'dark';
+  const [dark, setDark] = useState(read);
+  useEffect(() => {
+    const observer = new MutationObserver(() => setDark(read()));
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => observer.disconnect();
+  }, []);
+  return dark;
+}
 function Scene(props: Props) {
+  const dark = useDarkTheme();
   const { parts, selectedId, view, reset, wireframe, snapEnabled, onSelect, onMove, onPreview, bridge } = props;
   const { camera, size, invalidate, gl } = useThree();
   const [armed,setArmed]=useState<{partId:string;nodeId:string}|null>(null);
   const [glow,setGlow]=useState<{point:[number,number,number];since:number}|null>(null);
-  const [rotating,setRotating]=useState(false);
   const hintKey=useRef<string|null>(null);
   const glowTimer=useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   function flash(point:[number,number,number]){playSnapSound('engage');setGlow({point,since:performance.now()});clearTimeout(glowTimer.current);glowTimer.current=setTimeout(()=>setGlow(null),700);}
@@ -45,8 +56,6 @@ function Scene(props: Props) {
   const controls = useRef<OrbitControlsImpl>(null);
   const drag = useRef<{ id: string; plane: THREE.Plane; offset: THREE.Vector3; start: [number,number,number]; snap: Snap | null; pointerId: number; target: {releasePointerCapture:(id:number)=>void} } | null>(null);
   const latest = useRef(props); latest.current = props;
-  const rotatingRef = useRef(false); rotatingRef.current = rotating;
-  useEffect(() => { setRotating(false); }, [selectedId]);
   const selection = useRef<THREE.Group>(null);
   // Fit only on add/remove, explicit view changes, reset, and resize; never during a drag.
   const ids = parts.map(p => p.id).join(',');
@@ -81,11 +90,11 @@ function Scene(props: Props) {
     }};
     return () => { bridge.current = null; };
   }, [bridge, camera, gl, bounds, span, parts, armed]);
-  // Turn the selected part (30° for A/D, 90° tips for W/S) about the connection it is attached by (or its center if free), then re-snap if it lands on a node.
+  // Turn the selected part (30° per press) about the connection it is attached by (or its center if free), then re-snap if it lands on a node.
   function rotate(axis: 'x' | 'y', direction: 1 | -1) {
     const { parts: all, selectedId: id, mates: joined } = latest.current; const p = all.find(i => i.id === id); if (!p) return;
     const q = new THREE.Quaternion(...(p.quaternion ?? [0, 0, 0, 1]));
-    const delta = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(axis === 'y' ? 0 : 1, axis === 'y' ? 1 : 0, 0), direction * (axis === 'y' ? Math.PI / 6 : Math.PI / 2));
+    const delta = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(axis === 'y' ? 0 : 1, axis === 'y' ? 1 : 0, 0), direction * Math.PI / 6);
     const mate = (joined ?? []).find(m => m.movingId === p.id || m.targetId === p.id);
     const node = mate && p.model.connectors?.find(n => n.id === (mate.movingId === p.id ? mate.movingNodeId : mate.targetNodeId));
     const pivot = node ? new THREE.Vector3(...node.position).multiplyScalar(p.scale??1).applyQuaternion(q).add(new THREE.Vector3(...p.position)) : worldBox(p).getCenter(new THREE.Vector3());
@@ -113,22 +122,57 @@ function Scene(props: Props) {
   useEffect(() => {
     const cancel = () => end(true);
     const key = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { cancel(); setArmed(null); setRotating(false); latest.current.onNodeMessage('Connection selection cancelled'); return; }
+      if (e.key === 'Escape') { cancel(); setArmed(null); latest.current.onNodeMessage('Connection selection cancelled'); return; }
       const target = e.target as HTMLElement | null;
       if (e.metaKey || e.ctrlKey || e.altKey || target?.closest('input,select,textarea,[contenteditable]')) return;
       const k = e.key.toLowerCase();
-      if (k === 'r') { const id = latest.current.selectedId; if (id) { setRotating(v => { latest.current.onNodeMessage(v ? 'Rotate finished' : 'Rotate mode · A/D turn · W/S tip · click outside to finish'); return !v; }); } return; }
-      if (!rotatingRef.current || !'adws'.includes(k) || k.length !== 1) return;
+      if (!latest.current.selectedId || !'adws'.includes(k) || k.length !== 1) return;
       e.preventDefault(); rotate(k === 'a' || k === 'd' ? 'y' : 'x', k === 'a' || k === 'w' ? 1 : -1);
     };
     window.addEventListener('blur', cancel); window.addEventListener('keydown', key);
     gl.domElement.addEventListener('pointercancel', cancel);
     return () => { window.removeEventListener('blur', cancel); window.removeEventListener('keydown', key); gl.domElement.removeEventListener('pointercancel', cancel); if (controls.current) controls.current.enabled = true; };
   }, [gl]);
+  // Axis arrows: drag an arrow to slide the selected part along that world axis only.
+  const gizmo = useRef<THREE.Group>(null);
+  const axisDrag = useRef<{ id: string; axis: THREE.Vector3; t0: number; startPos: THREE.Vector3; startCenter: THREE.Vector3; pointerId: number; target: {releasePointerCapture:(id:number)=>void} } | null>(null);
+  function axisT(ray: THREE.Ray, origin: THREE.Vector3, axis: THREE.Vector3) {
+    const w0 = origin.clone().sub(ray.origin), b = axis.dot(ray.direction), d = axis.dot(w0), e = ray.direction.dot(w0), den = 1 - b * b;
+    return Math.abs(den) < 1e-6 ? null : (b * e - d) / den;
+  }
+  function arrowDown(e: ThreeEvent<PointerEvent>, p: PartInstance, axis: THREE.Vector3) {
+    if (e.button !== 0) return; e.stopPropagation();
+    const startCenter = worldBox(p).getCenter(new THREE.Vector3()); const t0 = axisT(e.ray, startCenter, axis); if (t0 === null) return;
+    const target = e.target as unknown as {setPointerCapture:(id:number)=>void; releasePointerCapture:(id:number)=>void};
+    target.setPointerCapture(e.pointerId);
+    axisDrag.current = { id: p.id, axis, t0, startPos: new THREE.Vector3(...p.position), startCenter, pointerId: e.pointerId, target };
+    if (controls.current) controls.current.enabled = false;
+  }
+  function arrowMove(e: ThreeEvent<PointerEvent>) {
+    const a = axisDrag.current; if (!a) return; e.stopPropagation();
+    const p = parts.find(i => i.id === a.id); if (!p) return;
+    const t = axisT(e.ray, a.startCenter, a.axis); if (t === null) return;
+    const pos = a.startPos.clone().addScaledVector(a.axis, t - a.t0).toArray() as [number, number, number];
+    const lowest = worldBox(p, pos).min.y; if (lowest < 0) pos[1] -= lowest;
+    p.model.object.position.set(...pos);
+    selection.current?.position.set(...pos);
+    gizmo.current?.position.set(...pos);
+    invalidate();
+  }
+  function arrowUp(e: ThreeEvent<PointerEvent>) {
+    const a = axisDrag.current; if (!a) return; e.stopPropagation(); axisDrag.current = null;
+    try { a.target.releasePointerCapture(a.pointerId); } catch { /* capture already released */ }
+    if (controls.current) controls.current.enabled = true;
+    const p = latest.current.parts.find(i => i.id === a.id); if (!p) return;
+    const pos = p.model.object.position.toArray() as [number, number, number];
+    if (new THREE.Vector3(...pos).distanceTo(a.startPos) < 1e-9) return;
+    const snap = snapEnabled && !e.shiftKey ? findSnap(p, pos, latest.current.parts, undefined, 0) : null;
+    if (snap) flash(snap.point);
+    latest.current.onMove(p.id, snap?.position ?? pos, snap);
+  }
   function down(e: ThreeEvent<PointerEvent>, p: PartInstance) {
     if (e.button !== 0) return;
     e.stopPropagation(); onSelect(p.id);
-    if (rotating && p.id === selectedId) return;
     // Parts slide on a horizontal plane at the grabbed height; vertical placement comes from snapping onto other parts.
     const plane = new THREE.Plane().setFromNormalAndCoplanarPoint(new THREE.Vector3(0, 1, 0), e.point);
     const target = e.target as unknown as {setPointerCapture:(id:number)=>void; releasePointerCapture:(id:number)=>void};
@@ -151,20 +195,38 @@ function Scene(props: Props) {
     if (key !== hintKey.current) { hintKey.current = key; if (snap) flash(snap.point); }
     if (selection.current) selection.current.position.copy(p.model.object.position);
     if(selection.current)selection.current.quaternion.copy(p.model.object.quaternion);
+    if (gizmo.current) { gizmo.current.position.copy(p.model.object.position); gizmo.current.quaternion.copy(p.model.object.quaternion); }
     onPreview(snap); invalidate();
   }
   const selectedBox = selected ? localBox(selected) : null;
-  const cell = 10 ** Math.floor(Math.log10(span / 5));
   const ringRadius = Math.max(.003, Math.min(.012, span * .04));
   return <>
     <ambientLight intensity={1.3}/><hemisphereLight args={['#edf5ff','#55535b',1.5]}/><directionalLight position={[3,5,4]} intensity={3}/><directionalLight position={[-3,1,-2]} intensity={2}/>
     {parts.map(p => <primitive key={p.id} object={p.model.object} scale={p.scale??1} position={p.position} quaternion={p.quaternion??[0,0,0,1]} dispose={null} onPointerDown={(e:ThreeEvent<PointerEvent>) => down(e,p)} onPointerMove={move} onPointerUp={(e:ThreeEvent<PointerEvent>) => { if (drag.current) { e.stopPropagation(); end(); } }} />)}
-    {selected && selectedBox && <group ref={selection} scale={selected.scale??1} position={selected.position} quaternion={selected.quaternion??[0,0,0,1]}><Box args={selectedBox.getSize(new THREE.Vector3()).multiplyScalar(1.012).toArray()} position={selectedBox.getCenter(new THREE.Vector3())} raycast={() => {}}><meshBasicMaterial color={rotating ? "#65d9ff" : "#c5e7a8"} wireframe transparent opacity={rotating ? .95 : .55} depthTest={false}/></Box></group>}
+    {selected && selectedBox && <group ref={selection} scale={selected.scale??1} position={selected.position} quaternion={selected.quaternion??[0,0,0,1]}><Box args={selectedBox.getSize(new THREE.Vector3()).multiplyScalar(1.012).toArray()} position={selectedBox.getCenter(new THREE.Vector3())} raycast={() => {}}><meshBasicMaterial color="#c5e7a8" wireframe transparent opacity={.55} depthTest={false}/></Box></group>}
+    {selected && (() => { const sz = worldBox(selected).getSize(new THREE.Vector3()); const len = Math.max(sz.x, sz.y, sz.z) * .32 + span * .03, r = len * .012;
+      const q = new THREE.Quaternion(...(selected.quaternion ?? [0, 0, 0, 1])); const localCenter = localBox(selected).getCenter(new THREE.Vector3()).multiplyScalar(selected.scale ?? 1);
+      return <group ref={gizmo} position={selected.position} quaternion={q}><group position={localCenter}>{([['#ff5d5d',[1,0,0]],['#5dd66a',[0,1,0]],['#5d9bff',[0,0,1]]] as [string,[number,number,number]][]).map(([color, a]) => { const local = new THREE.Vector3(...a); const aim = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,1,0), local);
+        return <group key={color} quaternion={aim} renderOrder={20} onPointerDown={(e:ThreeEvent<PointerEvent>) => arrowDown(e, selected, local.clone().applyQuaternion(q))} onPointerMove={arrowMove} onPointerUp={arrowUp} onPointerOver={() => { gl.domElement.style.cursor = 'grab'; }} onPointerOut={() => { if (!axisDrag.current) gl.domElement.style.cursor = ''; }}>
+          <mesh position={[0, len / 2, 0]} renderOrder={20}><cylinderGeometry args={[r, r, len, 10]}/><meshBasicMaterial color={color} depthTest={false} transparent opacity={.95}/></mesh>
+          <mesh position={[0, len + r * 2, 0]} renderOrder={20}><coneGeometry args={[r * 2.4, r * 4.5, 14]}/><meshBasicMaterial color={color} depthTest={false} transparent opacity={.95}/></mesh>
+        </group>; })}</group></group>; })()}
+    {props.measure && selected && (() => {
+      // Model bounds of the selected part: width, height and depth lines with their sizes in the chosen unit.
+      const { min: lo, max: hi } = worldBox(selected); const dim = (m: number) => formatLength(m * 1000, props.unit ?? 'mm');
+      const x0 = new THREE.Vector3(lo.x, lo.y, hi.z), x1 = new THREE.Vector3(hi.x, lo.y, hi.z), z1 = new THREE.Vector3(hi.x, lo.y, lo.z), y1 = new THREE.Vector3(hi.x, hi.y, hi.z);
+      const tag = (from: THREE.Vector3, to: THREE.Vector3, size: number) => <Html position={from.clone().lerp(to, .5)} center zIndexRange={[5, 0]} style={{pointerEvents:'none'}}><span className="cad-dim">{dim(size)}</span></Html>;
+      const color = dark ? '#9aa8f0' : '#5269bd';
+      return <group>
+        <Line points={[x0, x1]} color={color} lineWidth={1.4} depthTest={false}/>{tag(x0, x1, hi.x - lo.x)}
+        <Line points={[x1, z1]} color={color} lineWidth={1.4} depthTest={false}/>{tag(x1, z1, hi.z - lo.z)}
+        <Line points={[x1, y1]} color={color} lineWidth={1.4} depthTest={false}/>{tag(x1, y1, hi.y - lo.y)}
+      </group>;
+    })()}
     {glow && <SnapGlow key={glow.since} point={glow.point} radius={ringRadius} since={glow.since}/>}
-    {rotating && selected && <Html position={[worldBox(selected).getCenter(new THREE.Vector3()).x, worldBox(selected).max.y, worldBox(selected).getCenter(new THREE.Vector3()).z]} center style={{pointerEvents:'none',transform:'translateY(-34px)',whiteSpace:'nowrap',fontSize:12,fontWeight:600,color:'#04222c',padding:'4px 10px',borderRadius:12,background:'#65d9ff',boxShadow:'0 2px 10px #0007'}}>Rotating · A / D turn · W / S tip · click outside to finish</Html>}
-    <Grid position={[bounds.center.x, -.0001, bounds.center.z]} args={[span*10,span*10]} cellSize={cell} sectionSize={cell*5} cellThickness={.65} sectionThickness={1} cellColor="#202020" sectionColor="#000000" fadeDistance={span*12}/>
+    <Grid position={[0, -.0001, 0]} args={[1, 1]} infiniteGrid cellSize={.01} sectionSize={.1} cellThickness={.65} sectionThickness={1} cellColor={dark?"#4a5278":"#202020"} sectionColor={dark?"#8e9ad0":"#000000"} fadeDistance={2.5} fadeStrength={1.5}/>
     <OrbitControls ref={controls} makeDefault enableDamping minDistance={span*.02} maxDistance={span*100}/>
-    <GizmoHelper alignment="bottom-right" margin={[65,65]}><GizmoViewport axisColors={['#e19090','#b1d2a2','#9cbce5']} labelColor="black"/></GizmoHelper>
+    <GizmoHelper alignment="bottom-right" margin={[44,44]}><GizmoViewport axisScale={[.38,.012,.012]} axisHeadScale={.45} axisColors={['#e19090','#b1d2a2','#9cbce5']} labelColor={dark?"white":"black"}/></GizmoHelper>
   </>;
 }
 export function Viewer(props: Props) {

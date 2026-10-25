@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1123 Series Pattern Plate (1 x 3 Hole, 43 x 96mm)",
+    "sku": "1123-0043-0096",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1123-series-pattern-plate-1-x-3-hole-43-x-96mm/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Length (96 mm) and width (43 mm) come from the supplied data and are marked unverified. Thickness is not stated (height is null), so the 4 mm is only an estimate from the edge-on proportions in the images. The 14 mm diameter and 32 mm pitch of the three large holes are estimated from image proportions, not printed dimensions. The many smaller round holes and the slots are visible, but their diameters and exact coordinates are not given, so they are not listed. The part is symmetric about its centerline, and the box is centered at the origin with the long axis along Y.",
+      "Thickness is not stated, so the 4 mm value is an estimate.",
+      "The 14 mm diameter and 32 mm pitch of the large holes are estimated from image proportions.",
+      "The many small round holes and the slots are omitted because their sizes and positions are not given or measurable.",
+      "The 43 x 96 mm outline comes from unverified supplied data.",
+      "No corner radii or edge fillets are modeled because none are clearly visible."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -21.5,
+      "xmax": 21.5,
+      "ymin": 0,
+      "ymax": 4,
+      "zmin": -48,
+      "zmax": 48,
+      "xlen": 43,
+      "ylen": 4,
+      "zlen": 96
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 29585,
+        "sha256": "ec23483219afd40bbca876135d52237b8d45bfdc55b51ec326ad3f31ac8f24b5"
+      },
+      "model.stl": {
+        "bytes": 51684,
+        "sha256": "46fa965e8e7687bd5b11eb966d89f89b58bb01732c597a933e5611f93f88d6ab"
+      },
+      "model.glb": {
+        "bytes": 19540,
+        "sha256": "4547f5a6e01b08e50b6632adfcaa130f72d89ffc3e8beaa4c03535f7f28ad9a2"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "ec23483219afd40bbca876135d52237b8d45bfdc55b51ec326ad3f31ac8f24b5"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 58
+  },
+  "status": "prototype_unverified"
+}

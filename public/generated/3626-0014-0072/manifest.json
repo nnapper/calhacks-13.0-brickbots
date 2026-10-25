@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Hogback Traction Wheel (72mm Diameter, 50A Durometer)",
+    "sku": "3626-0014-0072",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/hogback-traction-wheel-72mm-diameter-50a-durometer/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 72mm diameter is stated. The 24mm width and the 12mm central bore are visual estimates, not printed values, so verify them against the vendor drawing. The bolt-circle holes are visible, but their diameter and positions are not given, so they are left out. The drawings show the wheel mounted on an 8mm REX shaft through a hub and fastened with M4 screws, which suggests a hub-mounted pattern, but no dimensions are printed.",
+      "Only the 72 mm diameter is stated. The 24 mm width and 12 mm bore are visual estimates and need checking against the vendor drawing.",
+      "The open spoked hub pockets, the recessed hub face and the tread lugs and grooves are omitted because their geometry is uncertain.",
+      "The bolt-circle holes are visible, but their diameter and positions are not given, so they are omitted.",
+      "The rubber tread and plastic core are modeled as a single solid.",
+      "The analysis puts the axis along Z, so the wheel stands on its rim at Y=0. This follows the bounds in the analysis, not the flat orientation in the photo."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -36,
+      "xmax": 36,
+      "ymin": 0,
+      "ymax": 72,
+      "zmin": -12,
+      "zmax": 12,
+      "xlen": 72,
+      "ylen": 72,
+      "zlen": 24
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 9404,
+        "sha256": "58821d0d0e28f4d352531e0c4448559cd14a4c49c66a173a233855780d66c44d"
+      },
+      "model.stl": {
+        "bytes": 33684,
+        "sha256": "559712adb2ffd83dc936afa7e6486a1e7a1e6039dc10d53df00130e0b1566a61"
+      },
+      "model.glb": {
+        "bytes": 13112,
+        "sha256": "a845565c2309d017758adf577c14c9878a3b0935fd6ec0b7f5d4d7c47ed9fa43"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "58821d0d0e28f4d352531e0c4448559cd14a4c49c66a173a233855780d66c44d"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 10
+  },
+  "status": "prototype_unverified"
+}

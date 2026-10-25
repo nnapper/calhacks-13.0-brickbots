@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Simplified RS-555 planetary gear motor with its axis along Z at Y=18, so the bottom sits at Y=0. It is a union of coaxial cylinders: a 36mm diameter encoder cap from z=-50 to -38, a motor can from -38 to -4, a gearbox from -4 to 26, and an 8mm output shaft from z=26 to 50.",
+  "confidence": "low",
+  "warnings": [
+    "Body diameter (36mm) and overall length (100mm) are estimates, because the specs give no body dimensions.",
+    "The output shaft is modeled as a plain 8mm round cylinder. The real 8mm REX profile is not modeled.",
+    "The flat sides on the yellow jacket, the gearbox pilot and mounting holes, the screws, the encoder connector and the wires are omitted because their dimensions are not given.",
+    "The section lengths for cap, can and gearbox are guesses."
+  ],
+  "cadquery": "def cyl(d, z0, z1):\n    return cq.Workplane('XY').workplane(offset=z0).center(0, 18).circle(d / 2).extrude(z1 - z0)\n\ncap = cyl(36, -50, -38)\ncan = cyl(36, -38, -4)\ngearbox = cyl(36, -4, 26)\nshaft = cyl(8, 26, 50)\npart = cap.union(can).union(gearbox).union(shaft)"
+}

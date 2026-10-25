@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Solid rubber tire modeled as a 58 mm diameter, 16 mm wide cylinder with its axis along Y, spanning Y=0 to 16 and centered at X=Z=0. Both outer edges have a 5 mm round, and the front face has a shallow 3 mm deep, 42 mm diameter recess that stands in for the hub face.",
+  "confidence": "medium",
+  "warnings": [
+    "Diameter and width come from unverified specs.",
+    "The hub is simplified to a shallow recess in a single solid; the separate hub part is not modeled.",
+    "The central bore, shaft hole (4 mm round or 3 mm hex), the three screws and the rear standoffs are omitted because their sizes and positions are uncertain.",
+    "The 5 mm edge round and the 21 mm recess radius and 3 mm depth are estimated from the image."
+  ],
+  "cadquery": "R=29.0\nW=16.0\ntire=cq.Workplane('XZ').circle(R).extrude(-W).edges().fillet(5)\nrecess=cq.Workplane('XZ').workplane(offset=-W).circle(21).extrude(3)\npart=tire.cut(recess)"
+}

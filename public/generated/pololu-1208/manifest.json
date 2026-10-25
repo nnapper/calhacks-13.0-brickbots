@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Stepper Motor: Bipolar, 200 Steps/Rev, 35×28mm, 10V, 0.5 A/Phase",
+    "sku": "pololu-1208",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Body is 35.2 mm max square (drawing) by 28 mm long (spec), so the body spans z=-24.5 to 3.5. The shaft is 21 mm long, so total length is 49 mm. The drawing does not clearly show whether the 21 mm shaft length is measured from the pilot face or from the body face. If it is measured from the body face, the pilot boss may add up to 2 mm to the total. The hole diameter of 3 mm is the nominal size from the '4-M3' callout; the drawing gives no separate diameter. The lead wire (300 mm, AWG26) exits the rear at the bottom and is not included in the bounds. The hole positions assume a centered 26 mm square pattern (±13 mm).",
+      "The 0.5 mm flat on the D-shaft is omitted because its length is not given, so the shaft is modeled as a plain cylinder.",
+      "The shaft is measured as 21 mm from the body front face, which gives 49 mm overall. The pilot boss is therefore only 2 mm of the shaft's 21 mm, and the shaft length from the boss face is 19 mm.",
+      "The hole diameter of 3 mm comes from the M3 callout, and the thread is not modeled. The 3 mm depth is assumed.",
+      "The lead wires, connector, label and the body's chamfered corners and lamination grooves are omitted.",
+      "The small center hole in the shaft end is not modeled because it is not clearly confirmed.",
+      "The dimensions are unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -17.6,
+      "xmax": 17.6,
+      "ymin": 0,
+      "ymax": 49,
+      "zmin": -17.6,
+      "zmax": 17.6,
+      "xlen": 35.2,
+      "ylen": 49,
+      "zlen": 35.2
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 28.000 mm; measured dimensions are [35.2, 35.2, 49.0]",
+      "Generated geometry is missing a listed dimension 5.000 mm; measured dimensions are [35.2, 35.2, 49.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 39520,
+        "sha256": "b341e62e091685c7895081e6d671258add2789c44456a7c969110839dce0c4bc"
+      },
+      "model.stl": {
+        "bytes": 101484,
+        "sha256": "c807e87953ffd56db9d26124f06db10020ecdabb1b9f6ede23c680d02a171431"
+      },
+      "model.glb": {
+        "bytes": 37544,
+        "sha256": "343605e7669ac5764ede7c8c50e6e7c4d0d1b95fbe23bf88b149f422fdd0808f"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "b341e62e091685c7895081e6d671258add2789c44456a7c969110839dce0c4bc"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 61
+  },
+  "status": "prototype_unverified"
+}

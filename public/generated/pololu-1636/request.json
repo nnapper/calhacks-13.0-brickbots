@@ -1,0 +1,12 @@
+{
+  "name": "Shaftless Vibration Motor 10x3.4mm",
+  "sku": "pololu-1636",
+  "category": "vibration-motors",
+  "expectedDimensionsMm": [
+    10,
+    10,
+    3.4,
+    10
+  ],
+  "units": "millimeter"
+}

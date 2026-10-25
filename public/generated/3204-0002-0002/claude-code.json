@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Simplified 28-tooth bevel hub gear: a 42 mm diameter, 6.5 mm thick disc with its axis along X, centered at X=0 and Z=0 with its bottom at Y=0. It has a 16 mm through bore and 28 radial rectangular slots around the rim forming straight teeth. The mating pinion is not modeled.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions (42 mm OD, 6.5 mm thickness, 16 mm bore) are estimates scaled from the image and drawing notes, not verified.",
+    "Teeth are simplified as straight rectangular slots cut through the rim, with no bevel or conical tooth geometry or tooth profile.",
+    "The ring of smaller lightening/mounting holes is omitted because its diameter and positions are uncertain.",
+    "The 14-tooth pinion with its clamp hub, 8 mm REX bore, clamp screws and threads is not modeled.",
+    "The 28-tooth gear is modeled as a single part, so the set is not an assembly."
+  ],
+  "cadquery": "r=21.0\nt=6.5\ncy=21.0\npart=cq.Workplane('YZ').center(cy,0).circle(r).extrude(t/2,both=True)\npart=part.cut(cq.Workplane('YZ').center(cy,0).circle(8).extrude(t,both=True))\nn=28\nfor i in range(n):\n    slot=cq.Workplane('XY').box(t+2,5,1.6).translate((0,cy+19.5,0)).rotate((0,cy,0),(1,cy,0),i*360.0/n)\n    part=part.cut(slot)\n"
+}

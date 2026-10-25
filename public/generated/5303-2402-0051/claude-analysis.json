@@ -1,0 +1,24 @@
+{
+  "partType": "motor",
+  "summary": "Cylindrical brushed DC planetary gear motor with a 36 mm diameter gearbox and body, and an 8 mm REX output shaft protruding from the gearbox face. The motor axis is along z, with the shaft at +z.",
+  "boundsMm": {
+    "x": 36,
+    "y": 36,
+    "z": 138
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 45.5,
+      "description": "Gearbox output face, from which the 8 mm REX shaft (about 23.5 mm long) extends in +z. This face is used for direct attachment of goBILDA components. The mounting hole pattern is not dimensioned in the drawings."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "36 mm diameter cylindrical gearbox and body surface, which can be clamped by a 36 mm bore clamping mount (shown in the images). Clamping is on the cylindrical surface, so the offset applies along the motor axis."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 36 mm diameter, the 8 mm shaft and the 23.5 mm shaft length are stated. The listed length of 24 mm appears to be the shaft length, not the body length. The total z length of about 138 mm is an estimate from the image proportions, with a body of about 114.5 mm plus the shaft, and should be verified. The bounding box is centered on the part with the shaft at +z. Hole positions are left empty because no hole pattern dimensions are given. Wires and connectors are excluded from the bounds."
+}

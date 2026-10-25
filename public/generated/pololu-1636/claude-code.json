@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Shaftless coin vibration motor: a 10 mm diameter, 3.4 mm tall solid cylinder with its axis along Y and its bottom at Y=0, centered on X and Z. A small solder tab and two short stub leads (0.5 mm diameter) extend radially along +X from one edge, at the mid-upper height of the disc.",
+  "confidence": "medium",
+  "warnings": [
+    "Dimensions (10 mm diameter, 3.4 mm height) come from the unverified spec text.",
+    "The image analysis describes the axis along Z, but the brief requires the bottom at Y=0, so the disc axis is along Y.",
+    "The lead length and diameter are estimated, and the leads are truncated to short stubs. Real flying leads are much longer.",
+    "The tab size and position are estimated from the image.",
+    "The small central dimple on the top face and the notches along the bottom rim are not modeled because they are too small or uncertain.",
+    "The logo watermark is not modeled.",
+    "The lead insulation colors cannot be represented in the geometry."
+  ],
+  "cadquery": "d=10.0\nh=3.4\n# Coin motor body: disc axis along Y, bottom at Y=0, centered on X and Z\nbody = cq.Workplane('XZ').circle(d/2).extrude(-h)\n# Small solder tab block at one edge, where the leads attach\ntab = cq.Workplane('XY').box(0.8, 1.6, 1.8, centered=(False, False, True)).translate((d/2 - 0.1, h/2 - 0.8, 0))\n# Two short stub leads (red and blue) leaving radially along +X, merged into one solid\nlead1 = cq.Workplane('YZ').center(h/2 + 0.3, 0.5).circle(0.25).extrude(4.0).translate((d/2 + 0.6, 0, 0))\nlead2 = cq.Workplane('YZ').center(h/2 - 0.3, -0.5).circle(0.25).extrude(4.0).translate((d/2 + 0.6, 0, 0))\npart = body.union(tab).union(lead1).union(lead2)"
+}

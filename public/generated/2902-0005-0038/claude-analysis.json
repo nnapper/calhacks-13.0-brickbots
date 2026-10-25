@@ -1,0 +1,87 @@
+{
+  "partType": "other",
+  "summary": "Aluminum hinge with two rectangular leaves joined by a cylindrical barrel along the 38 mm length. Each leaf has a row of 5 tapped holes spaced 8 mm apart. Modeled as a flat, open-style hinge with the leaves roughly coplanar.",
+  "boundsMm": {
+    "x": 32,
+    "y": 38,
+    "z": 8
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -10,
+          -16,
+          0
+        ],
+        [
+          -10,
+          -8,
+          0
+        ],
+        [
+          -10,
+          0,
+          0
+        ],
+        [
+          -10,
+          8,
+          0
+        ],
+        [
+          -10,
+          16,
+          0
+        ],
+        [
+          10,
+          -16,
+          0
+        ],
+        [
+          10,
+          -8,
+          0
+        ],
+        [
+          10,
+          0,
+          0
+        ],
+        [
+          10,
+          8,
+          0
+        ],
+        [
+          10,
+          16,
+          0
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 4,
+      "description": "Top face of the left leaf, with a row of 5 holes at 8 mm pitch"
+    },
+    {
+      "axis": "z",
+      "offsetMm": 4,
+      "description": "Top face of the right leaf, with a row of 5 holes at 8 mm pitch"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -4,
+      "description": "Bottom faces of both leaves, available as flat mating surfaces"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 38 mm length is stated by the source, and it is marked unverified. It fits 5 holes at 8 mm pitch (32 mm span) plus about 3 mm of edge margin at each end. Width (32 mm) and thickness (8 mm) are visual estimates. The 4 mm hole diameter is inferred from the M4 screws shown in the images. Hole depth is not visible, so 'through' is set to false. The hinge rotates 278 degrees about the barrel axis, which runs along y. Leaf positions at x = ±10 mm are approximate."
+}

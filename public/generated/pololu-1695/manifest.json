@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Force-Sensing Resistor: 0.2″-Diameter Circle",
+    "sku": "pololu-1695",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The x length of 35.56 mm comes from the stated 1.4 in lead length, so it is an approximation of the overall length, which is not stated. The y width of 7.62 mm is the 0.3 in pad diameter. The z thickness of 0.254 mm is the stated 0.01 in. The dimensions are marked unverified. The leads are narrower than the pad, with 2.54 mm (0.1 in) pin spacing. The active sensing area is about 5 mm in diameter. The images show no mounting holes and no printed dimensions, so none are given. The origin is at the center of the bounding box. The pad is at one x end and the contacts are at the other.",
+      "Overall length of 35.56 mm is approximated from the 1.4 in lead spec and is unverified.",
+      "Tail width (5.5 mm), pin width (1.2 mm) and pin tab length are estimated from the image.",
+      "The active-area ink layer, the green/gray trace layers and the gold crimp terminals are omitted because they are decorative or uncertain.",
+      "Thickness is placed along Y to satisfy the bottom-at-Y=0 rule, which differs from the Z-thickness in the image analysis.",
+      "The tail is modeled as a straight strip, although the real part appears slightly curved."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -17.78,
+      "xmax": 17.78,
+      "ymin": 0,
+      "ymax": 0.254,
+      "zmin": -3.81,
+      "zmax": 3.81,
+      "xlen": 35.56,
+      "ylen": 0.254,
+      "zlen": 7.62
+    },
+    "warnings": [
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 44404,
+        "sha256": "524863e5ffd577616e35bde8fdfeb2d15179f2c544cb6f3742d9011f21dc875c"
+      },
+      "model.stl": {
+        "bytes": 14684,
+        "sha256": "8f3040503f4b599a0531bd5b8f8d716b623c9bb5c32c5ed163a6eafa3d3a6ef3"
+      },
+      "model.glb": {
+        "bytes": 6296,
+        "sha256": "9bba214e4b05a6f611258fcd0db87edb51079f5f00cf1101ff8b956d06298e8d"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "524863e5ffd577616e35bde8fdfeb2d15179f2c544cb6f3742d9011f21dc875c"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 4
+  },
+  "status": "prototype_unverified"
+}

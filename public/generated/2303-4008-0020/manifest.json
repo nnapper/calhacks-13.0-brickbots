@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "2303 Series Steel, MOD 0.8 Pinion Gear (8mm REX® Bore, 20 Tooth)",
+    "sku": "2303-4008-0020",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/2303-series-steel-mod-0-8-pinion-gear-8mm-rex-bore-20-tooth/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Outside diameter is computed, not printed: MOD 0.8 x 20 teeth gives a 16mm pitch diameter (consistent with the 16mm center-to-center for a 1:1 mesh in the drawing). Adding 2 x module (1.6mm) gives an outside diameter of 17.6mm. Overall length (z = 16mm) is not printed anywhere and is only estimated by eye from the scaled mat photo, so verify it before relying on it. The 8mm bore is a hex across-flats size for the 8mm REX shaft, and the bore is assumed through based on the exploded view. The product text says there are two set screws, but only one radial screw hole is visible. Its diameter, position and axis are not given, so it is left out of the holes list.",
+      "Gear axis placed along Y (bottom at Y=0) per the rules, although the image analysis listed the axis as Z.",
+      "Teeth are simplified trapezoids, not true involute profiles.",
+      "Total length 16 mm, hub diameter 14 mm, and the 8/8 split between teeth and hub are estimated from the image.",
+      "Set-screw hole diameter (3 mm) and position are assumed; only one is visible, though the product text mentions two.",
+      "Hex bore assumed to be 8 mm across flats and through the full length."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -8.787452793851687,
+      "xmax": 8.787452793851687,
+      "ymin": -9.756032419540802e-16,
+      "ymax": 16.0000001,
+      "zmin": -8.787452793851687,
+      "zmax": 8.787452793851688,
+      "xlen": 17.574905587703373,
+      "ylen": 16.0000001,
+      "zlen": 17.574905587703377
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [16.0000001, 17.574905587703373, 17.574905587703377]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 434548,
+        "sha256": "d7457aa869c9d9c7ebe3a11cef547c3ea16e5b73767f1de4b38f9918f0e21b59"
+      },
+      "model.stl": {
+        "bytes": 54584,
+        "sha256": "0845f5317fc4649eff26769f26bdbd0a48867973d16a9bc6df47315cabe13b33"
+      },
+      "model.glb": {
+        "bytes": 20628,
+        "sha256": "871324ad9d46ed7ad46a7865a0bf9c8f057ec1bc58183b2a2c01c907c4c06281"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "d7457aa869c9d9c7ebe3a11cef547c3ea16e5b73767f1de4b38f9918f0e21b59"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

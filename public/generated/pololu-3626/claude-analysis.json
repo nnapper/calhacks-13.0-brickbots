@@ -1,0 +1,49 @@
+{
+  "partType": "other",
+  "summary": "Industrial-duty linear actuator with a long cylindrical extension tube, a gearbox housing at the rear, and a cylindrical motor mounted parallel to the tube on top of the gearbox. The rod end has a cross hole and the rear housing has a pin mounting point. Bounds are shown in the retracted state, with X along the stroke axis.",
+  "boundsMm": {
+    "x": 403.1,
+    "y": 75,
+    "z": 120
+  },
+  "holes": [
+    {
+      "axis": "y",
+      "diameterMm": 13,
+      "positionsMm": [
+        [
+          195,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "y",
+      "diameterMm": 13,
+      "positionsMm": [
+        [
+          -195,
+          0,
+          -35
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "y",
+      "offsetMm": 0,
+      "description": "Clevis-style pin mounts at the rod end (+X) and at the rear gearbox housing (-X). Both use a cross pin of about 13 mm along Y."
+    },
+    {
+      "axis": "x",
+      "offsetMm": 201.55,
+      "description": "Rod-end face. It moves along X by a 121.92 mm usable stroke, which gives an extended length of 525 mm."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The images have no printed dimensions. Retracted length (403.1 mm), extended length (525 mm), stroke and the 13 mm mounting hole diameter come from the supplied specs. The width (Y) and height (Z) of 75 mm and 120 mm are rough estimates from proportions in the photos, because the spec lists no width or height. The hole positions are approximate, since the exact offsets from the ends are not given. The 12.7 mm bore_diameter in the spec data conflicts with the 13 mm mounting hole value, so I used 13 mm. The rear hole is placed on the gearbox ear at an estimated offset. The feedback potentiometer and internal ball screw are not modeled because they are not visible."
+}

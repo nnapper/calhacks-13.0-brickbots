@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Maxbotix LV-MaxSonar-EZ3 Sonar Range Finder MB1030",
+    "sku": "pololu-793",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The bounding box comes from the stated size (0.870 x 0.785 x 0.645 in = 22.1 x 19.9 x 16.4 mm). The image shows the PCB as the 22.1 x 19.9 face, with the transducer extending along z. No drawing in the images gives dimensions, so the mounting-hole diameter and position are rough estimates from image proportions, and the hole being through is assumed from its plated appearance. The 7 pads along the top edge are not modeled as holes because their size and pitch are not given. The beam-pattern charts show detection lobes only and add no mechanical dimensions.",
+      "The PCB thickness (1.0 mm), transducer diameter (16 mm) and transducer center offset (x=1.5, y=8.5) are estimated from image proportions.",
+      "The mounting-hole position was moved to the top-left corner (x=-7.4, y=16.5) because the analysis coordinates were inconsistent with the visible location. Its diameter is estimated.",
+      "The 7 solder pads, SMD components, and the transducer's grille slots and openings are omitted as uncertain or decorative. The transducer is modeled as a solid cylinder.",
+      "The stated dimensions are unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -11.05,
+      "xmax": 11.05,
+      "ymin": 0,
+      "ymax": 19.9,
+      "zmin": -8.2,
+      "zmax": 8.2,
+      "xlen": 22.1,
+      "ylen": 19.9,
+      "zlen": 16.4
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 24207,
+        "sha256": "3a19bea903514c0340429919837133c1368710e87551120a63a8764acb225ff2"
+      },
+      "model.stl": {
+        "bytes": 34484,
+        "sha256": "77b38deb051d5d559a398504ae63103062b70efb5f5944bdf61552864ecc332f"
+      },
+      "model.glb": {
+        "bytes": 13400,
+        "sha256": "fba0d0ee2d33ea1314fd7a98457b89ac333e91be703c73d4cef91894b540de4f"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "3a19bea903514c0340429919837133c1368710e87551120a63a8764acb225ff2"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 42
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "72 mm OD, 32 mm wide wheel with its axis along Z, centered at z=0, with the lowest point at Y=0 (wheel center at Y=36). A 56 mm ID rim ring runs the full width. An 8 mm thick web spans z=-8 to 0, which leaves an 8 mm recess on the -Z side and a 16 mm recess on the +Z side. The web has a 14 mm center bore, sixteen 4 mm holes on the 8 mm grid at ±8 and ±16, and four 4 mm holes at 24 mm on the cross axes.",
+  "confidence": "medium",
+  "warnings": [
+    "The four 4 mm-wide slots on the cross axes are not modelled because their lengths are uncertain.",
+    "The rubber tread, stepped lip and rim inner steps are omitted and the rim is modelled as a single solid ring.",
+    "The 4 mm hole positions were read from the drawing's 8 mm grid and are approximate.",
+    "The orientation follows the rules (bottom at Y=0, X and Z centered), so the wheel axis is along Z with its center at Y=36."
+  ],
+  "cadquery": "ring = cq.Workplane('XY').workplane(offset=-16).circle(36).circle(28).extrude(32)\nweb = cq.Workplane('XY').workplane(offset=-8).circle(28).extrude(8)\npts = [(x, y) for x in (-16, -8, 8, 16) for y in (-16, -8, 8, 16)] + [(0, 24), (0, -24), (24, 0), (-24, 0)]\nholes = cq.Workplane('XY').workplane(offset=-8).pushPoints(pts).circle(2).extrude(8)\nbore = cq.Workplane('XY').workplane(offset=-8).circle(7).extrude(8)\npart = ring.union(web).cut(holes).cut(bore).translate((0, 36, 0))"
+}

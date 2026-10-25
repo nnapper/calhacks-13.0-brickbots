@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Wheel with a 144 mm outer diameter and 52 mm width. The axis runs along Z, the center sits at Y=72, and the bottom rests on Y=0. A solid cylinder has a 120 mm diameter pocket cut 40 mm deep into the +Z face. This leaves a 12 mm rim ring and a 12 mm thick web at the -Z side. A 32 mm diameter hub boss stands inside the pocket. A 14 mm bore passes through the whole wheel.",
+  "confidence": "low",
+  "warnings": [
+    "Pocket depth, web thickness and hub boss size are estimated from the images, not dimensioned.",
+    "The honeycomb pockets in the outer ring and the lugged tread are omitted, so the tread is a plain cylinder.",
+    "The 16 mm and 32 mm square mounting hole patterns are omitted because their diameters and positions are not stated.",
+    "The spoked web detail on the hub face is omitted.",
+    "The 144 mm diameter, 52 mm width and 14 mm bore come from unverified specs."
+  ],
+  "cadquery": "w=52\nR=72\nbody=cq.Workplane('XY').workplane(offset=-w/2).center(0,R).circle(R).extrude(w)\npocket=cq.Workplane('XY').workplane(offset=w/2-40).center(0,R).circle(60).extrude(40)\nhub=cq.Workplane('XY').workplane(offset=-w/2).center(0,R).circle(16).extrude(36)\nbore=cq.Workplane('XY').workplane(offset=-w/2).center(0,R).circle(7).extrude(w)\npart=body.cut(pocket).union(hub).cut(bore)"
+}

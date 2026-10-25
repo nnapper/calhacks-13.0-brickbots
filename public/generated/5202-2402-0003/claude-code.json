@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Cylindrical gear motor with its axis along X and the shaft toward +X. The body is 36 mm in diameter and spans X -62 to 38, made of a 34 mm encoder cap, a 36 mm motor can and a 36 mm gearbox. A 6 mm D-shaft 24 mm long extends from X 38 to 62. The part is centered at Z=0 with its bottom at Y=0, so the axis sits at Y=18.",
+  "confidence": "low",
+  "warnings": [
+    "The overall body length is a placeholder; the source gives no body length, so the 124 mm X extent is assumed.",
+    "The 24 mm shaft length is taken from the product name.",
+    "The split between encoder cap, motor can and gearbox lengths is estimated from the image.",
+    "The D-flat depth is assumed to leave a 5.5 mm across-flats width.",
+    "Gearbox mounting holes, the pilot boss, wires and connectors are omitted because they are not dimensioned.",
+    "The source dimensions are flagged as unverified."
+  ],
+  "cadquery": "def cyl(x0, d, L):\n    return cq.Workplane('YZ').workplane(offset=x0).center(18, 0).circle(d/2).extrude(L)\n\nyc = 18\n# encoder cap, motor can, gearbox\ncap = cyl(-62, 34, 16)\nmotor = cyl(-46, 36, 60)\ngear = cyl(14, 36, 24)\n# output shaft, 6 mm D, 24 mm long\nshaft = cyl(38, 6, 24)\nflat_cut = cq.Workplane('XY').box(24, 3, 8, centered=(False, True, True)).translate((38, yc + 2.5 + 1.5, 0))\nshaft = shaft.cut(flat_cut)\npart = cap.union(motor).union(gear).union(shaft)"
+}

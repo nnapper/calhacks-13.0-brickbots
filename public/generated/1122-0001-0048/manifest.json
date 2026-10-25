@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1122 Series Rail-Channel (1 Hole, 48mm Length)",
+    "sku": "1122-0001-0048",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1122-series-rail-channel-1-hole-48mm-length/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Length 48mm comes from the product data. The 16mm rail-pair spacing (z) is read from the Insight #4 cross-section drawing. The 72mm width, the 64mm rail-to-rail center distance, and the rail positions are scaled from that drawing and assume an 8mm rail diameter, so they are estimates. The 14mm central bore diameter and the 3.3mm end-hole diameter are assumed nominal values that are not printed anywhere. The end-hole count and positions are inferred from the visible rail ends. The web thickness is not given, so the web is not modeled separately from the 16mm envelope. Small grid holes and slots are not individually listed because their sizes and positions are not legible.",
+      "The web thickness of 4mm and the rail section of 8x16mm are assumed. The real I-shaped profile with paired rails and a running groove is simplified to solid rectangular flanges.",
+      "The 14mm center bore diameter is an assumed nominal value.",
+      "The small grid holes and slots in the web are omitted because their sizes and positions are not legible.",
+      "End holes are placed at z=±4 in the rail centers and are 8mm deep. This differs from the analysis positions at z=±8, which lie outside the 16mm envelope. Hole depth and diameter are assumed.",
+      "Overall dimensions other than the 48mm length are scaled estimates."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -24,
+      "xmax": 24,
+      "ymin": 0,
+      "ymax": 72,
+      "zmin": -8,
+      "zmax": 8,
+      "xlen": 48,
+      "ylen": 72,
+      "zlen": 16
+    },
+    "warnings": [
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 78708,
+        "sha256": "7975822dc794eb9edba7e369d33cd129396b04dba9182541b41ace3513422cd3"
+      },
+      "model.stl": {
+        "bytes": 153684,
+        "sha256": "c46acda3e7f4af0c27ce949a5b9b5fa066cad1dd709f79cbb7c290ad2cbbee63"
+      },
+      "model.glb": {
+        "bytes": 56316,
+        "sha256": "fdaee456d18dcdb21239643751713e97e620d297bac21a44377cfebf26fffff3"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "7975822dc794eb9edba7e369d33cd129396b04dba9182541b41ace3513422cd3"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

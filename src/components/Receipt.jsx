@@ -7,7 +7,7 @@ import { CloseIcon } from "./Icons.jsx";
 const STOCK = { true: "In stock", false: "Out of stock", null: "Stock unknown" };
 
 // Where-to-buy receipt: every part in the build with each seller's price, defaulting to the best offer.
-export default function Receipt({ open, build, buildName, onClose, onToast, onLive }) {
+export default function Receipt({ open, build, onAdjust, buildName, onClose, onToast, onLive }) {
   const [choice, setChoice] = useState({}); // sku -> index into part.offers
   const closeRef = useRef(null);
   const [live, refreshLive] = useLive(onLive);
@@ -88,7 +88,11 @@ export default function Receipt({ open, build, buildName, onClose, onToast, onLi
                 <div className="rhead">
                   <span className="no">{n + 1}</span>
                   <span className="rn" title={l.part.name}>{shortName(l.part.name)}</span>
-                  <span className="qty">×{l.qty}</span>
+                  <span className="step" aria-label={`Quantity of ${shortName(l.part.name)}`}>
+                    <button type="button" aria-label={`Remove one ${shortName(l.part.name)}`} onClick={() => onAdjust?.(l.sku, -1)}>−</button>
+                    <span>{l.qty}</span>
+                    <button type="button" aria-label={`Add one ${shortName(l.part.name)}`} onClick={() => onAdjust?.(l.sku, 1)}>+</button>
+                  </span>
                   <span className="amt">{l.part.custom ? "×" : money(l.offer.priceUsd * l.qty)}</span>
                 </div>
                 <ul className="offers">

@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Ball caster without spacers or screws: a 9.525 mm (3/8 in) ball with its lowest point at Y=0, held in a black housing cup (12 mm diameter) that is open at the bottom so the ball protrudes. The housing has a flat top face with two ears (19 mm overall length in X, 6 mm wide in Z) and two 2.4 mm vertical through-holes at X=±6.731 mm (0.53 in spacing). Overall height is 10.16 mm.",
+  "confidence": "low",
+  "warnings": [
+    "The housing footprint, cup diameter, wall thickness, ear thickness and hole diameter are estimated from the image because they are not stated.",
+    "The vertical axis is Y per the rules, so the analysis JSON's Z axis (height) is mapped to Y.",
+    "Spacers, screws, nuts and threads are omitted. The height is set to the 0.4 in (10.16 mm) minimum, not the 15.24 mm maximum with spacers.",
+    "The ball is unioned with the housing as one solid. The real ball is a separate part with clearance.",
+    "The internal ball socket shape is simplified and not modeled in detail."
+  ],
+  "cadquery": "ball_d = 9.525\nr = ball_d / 2\nH = 10.16\nY = cq.Vector(0, 1, 0)\n\ndef cyl(rad, h, y0, x=0):\n    return cq.Workplane(obj=cq.Solid.makeCylinder(rad, h, cq.Vector(x, y0, 0), Y))\n\n# housing cup around the ball, open at the bottom\ncup = cyl(6.0, H - 3.0, 3.0)\ncup = cup.cut(cyl(3.6, 5.5, 0.0))\n\n# mounting ears along X\nears = cq.Workplane('XY').box(19.0, 1.66, 6.0, centered=(True, False, True)).translate((0, H - 1.66, 0))\nhousing = cup.union(ears)\n\n# screw holes through the ears (vertical, along Y)\nfor x in (-6.731, 6.731):\n    housing = housing.cut(cyl(1.2, 4.0, H - 3.0, x))\n\n# plastic ball, bottom at Y=0\nball = cq.Workplane('XY').sphere(r).translate((0, r, 0))\n\npart = housing.union(ball)"
+}

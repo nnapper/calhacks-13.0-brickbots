@@ -1,0 +1,9 @@
+t=1.6
+board=cq.Workplane('XY').box(20.32,t,17.78,centered=(True,False,True))
+big=[(-5.5,4.4),(-5.5,-4.4)]
+pins=[(8.5,5.08),(8.5,2.54),(8.5,0),(8.5,-2.54),(8.5,-5.08)]
+cut_big=cq.Workplane('XZ').pushPoints(big).circle(1.7).extrude(-t)
+cut_pins=cq.Workplane('XZ').pushPoints(pins).circle(0.5).extrude(-t)
+board=board.cut(cut_big).cut(cut_pins)
+ic=cq.Workplane('XY').box(3.0,1.0,3.0,centered=(True,False,True)).translate((0,t,0))
+part=board.union(ic)

@@ -1,0 +1,79 @@
+{
+  "partType": "block",
+  "summary": "Rectangular 8mm square-section beam, 16mm long, with two 4mm holes spaced 8mm apart on each of its four long faces. The holes are described as through-holes and are centered on the faces.",
+  "boundsMm": {
+    "x": 16,
+    "y": 8,
+    "z": 8
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -4,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "y",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -4,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 4,
+      "description": "Top long face with two holes at x = -4 and +4"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -4,
+      "description": "Bottom long face with the same hole pattern"
+    },
+    {
+      "axis": "y",
+      "offsetMm": 4,
+      "description": "Side long face with two holes at x = -4 and +4"
+    },
+    {
+      "axis": "y",
+      "offsetMm": -4,
+      "description": "Opposite side long face with the same hole pattern"
+    },
+    {
+      "axis": "x",
+      "offsetMm": 8,
+      "description": "End face, 8x8mm, with a single centered hole"
+    },
+    {
+      "axis": "x",
+      "offsetMm": -8,
+      "description": "Opposite end face, 8x8mm, with a single centered hole"
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The drawing gives 16 x 8 x 8mm overall, 4mm hole diameter and 8mm hole spacing. Only the side-view drawing is dimensioned. The holes on the other long faces are taken from the renders and the product description, so the 4mm diameter and through condition are assumed for them. The central hole at each end face is not in the holes list because the drawing gives it as a fastener specification, not a plain diameter. The two perpendicular hole sets would cross at their centers if both are fully through. The axis assignment is a modeling choice, with x along the length."
+}

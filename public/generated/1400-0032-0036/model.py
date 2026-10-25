@@ -1,0 +1,8 @@
+ring = cq.Workplane('XZ').circle(24).extrude(-8)
+base = cq.Workplane('XZ').center(1, -16).rect(50, 16).extrude(-8)
+tab = cq.Workplane('XZ').center(13, -5).rect(26, 38).extrude(-8)
+body = ring.union(base).union(tab)
+slit = cq.Workplane('XZ').center(15, 9.75).rect(30, 1.5).extrude(-8)
+body = body.cut(slit)
+bore = cq.Workplane('XZ').circle(18).extrude(-8)
+part = body.cut(bore)

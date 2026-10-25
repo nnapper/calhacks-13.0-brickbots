@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "3601 Series Rhino Wheel (14mm Bore, 72mm Diameter)",
+    "sku": "3601-0014-0072",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/3601-series-rhino-wheel-14mm-bore-72mm-diameter/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Z is centred on the overall 32 mm width, so the edges are at z=-16 and z=+16. The web spans z=-8 to 0, with its midplane at z=-4. The 16 mm side is toward +z. The 4 mm hole positions come from the 8 mm grid in the drawing, with the X/Y origin at the bore centre. They were read from pixel positions and are only approximate; 24 mm is the printed distance from centre to the outermost holes. The 4 mm hole diameter and the through-holes are taken from the drawing. The four 4 mm-wide slots on the cross axes are not listed as round holes. The rim has a stepped lip that is not modelled. The 56 mm dimension in the drawing is the inner recess diameter. The tread is rubber, but that is not a geometric feature.",
+      "The four 4 mm-wide slots on the cross axes are not modelled because their lengths are uncertain.",
+      "The rubber tread, stepped lip and rim inner steps are omitted and the rim is modelled as a single solid ring.",
+      "The 4 mm hole positions were read from the drawing's 8 mm grid and are approximate.",
+      "The orientation follows the rules (bottom at Y=0, X and Z centered), so the wheel axis is along Z with its center at Y=36."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -36,
+      "xmax": 36,
+      "ymin": 0,
+      "ymax": 72,
+      "zmin": -16,
+      "zmax": 16,
+      "xlen": 72,
+      "ylen": 72,
+      "zlen": 32
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 14.000 mm; measured dimensions are [32.0, 72.0, 72.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 91956,
+        "sha256": "f32ea3d43e95aa25e93d823948e4d65966defdba133eb6df6ebfde493319dfa1"
+      },
+      "model.stl": {
+        "bytes": 407284,
+        "sha256": "167feb7f6af2cde955ed19ecb700ce50fd9abb4d6899a4a62221056d783ec4bc"
+      },
+      "model.glb": {
+        "bytes": 147132,
+        "sha256": "3e890d1f9d84072c3336ee821735681e8ea4fe8e6446c3de5940a7320dcdfd7f"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "f32ea3d43e95aa25e93d823948e4d65966defdba133eb6df6ebfde493319dfa1"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 62
+  },
+  "status": "prototype_unverified"
+}

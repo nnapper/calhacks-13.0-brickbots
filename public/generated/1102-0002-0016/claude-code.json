@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Obround (stadium) flat beam, 16 mm long (X) by 8 mm wide (Y, from 0 to 8) by 4 mm thick (Z, centered). Full 4 mm end radii. Two 4 mm through holes along Z at X=±4, on the long centerline (Y=4), 8 mm apart.",
+  "confidence": "high",
+  "warnings": [
+    "The render shows slightly softened edges, but no dimensions are given, so no chamfers or fillets are modeled.",
+    "The drawing does not state that the holes are through, but the render shows them going straight through.",
+    "The product listing dimensions are unverified, but the drawing confirms the 16 mm length.",
+    "The width is placed along Y, with the bottom at Y=0, to follow the stated placement rules. Thickness is along Z."
+  ],
+  "cadquery": "body = cq.Workplane('XY').workplane(offset=-2).center(0, 4).slot2D(16, 8).extrude(4)\nholes = cq.Workplane('XY').workplane(offset=-2).pushPoints([(-4, 4), (4, 4)]).circle(2).extrude(4)\npart = body.cut(holes)"
+}

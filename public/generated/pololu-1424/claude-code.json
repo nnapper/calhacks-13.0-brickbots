@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Single 60 mm diameter, 8 mm wide five-spoke wheel with axis along Z, centered at X=0, Z=0, with its lowest point at Y=0 (axle at Y=30). Black tire ring (OD 60, ID 55), white rim ring, central hub, five radial spokes, a 3 mm D-shaped through bore and two 3 mm through holes at ±6.35 mm along X.",
+  "confidence": "medium",
+  "warnings": [
+    "Tire thickness, rim width, hub diameter and spoke dimensions are estimated from the image, not stated.",
+    "Tire and wheel are fused into one solid.",
+    "D-bore flat depth is estimated.",
+    "Mounting hole diameter is nominal 3 mm for M3/#4 screws.",
+    "Spoke slots for M2/#2 screws, hub recesses, tire tread texture and logo are omitted.",
+    "Only one wheel of the pair is modeled."
+  ],
+  "cadquery": "R=30.0\nW=8.0\ncy=30.0\ntire=(cq.Workplane('XY').circle(R).circle(27.5).extrude(W).translate((0,0,-W/2)))\nrim=(cq.Workplane('XY').circle(27.5).circle(25.5).extrude(7).translate((0,0,-3.5)))\nhub=cq.Workplane('XY').circle(5.5).extrude(W).translate((0,0,-W/2))\nwheel=tire.union(rim).union(hub)\nfor i in range(5):\n    sp=(cq.Workplane('XY').center(13.5,0).rect(27,3).extrude(4).translate((0,0,-2)).rotate((0,0,0),(0,0,1),90+72*i))\n    wheel=wheel.union(sp)\nbore=cq.Workplane('XY').circle(1.5).extrude(12).translate((0,0,-6))\nflat=cq.Workplane('XY').center(0,-0.25).rect(4,2.5).extrude(12).translate((0,0,-6))\nbore=bore.intersect(flat)\nwheel=wheel.cut(bore)\nholes=cq.Workplane('XY').pushPoints([(-6.35,0),(6.35,0)]).circle(1.5).extrude(12).translate((0,0,-6))\nwheel=wheel.cut(holes)\npart=wheel.translate((0,cy,0))"
+}

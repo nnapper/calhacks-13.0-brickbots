@@ -1,0 +1,12 @@
+{
+  "name": "Wasteland Wheel (144mm Diameter, 52mm Width)",
+  "sku": "3616-0014-0144",
+  "category": "all-terrain-wheels-tires",
+  "sourceUrl": "https://www.gobilda.com/wasteland-wheel-144mm-diameter-52mm-width/",
+  "expectedDimensionsMm": [
+    52,
+    144,
+    14
+  ],
+  "units": "millimeter"
+}

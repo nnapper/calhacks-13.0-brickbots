@@ -1,0 +1,10 @@
+{
+  "name": "TB67S279FTG Stepper Motor Driver Carrier - Full Breakout",
+  "sku": "pololu-2974",
+  "category": "stepper-drivers",
+  "expectedDimensionsMm": [
+    35.56,
+    25.4
+  ],
+  "units": "millimeter"
+}

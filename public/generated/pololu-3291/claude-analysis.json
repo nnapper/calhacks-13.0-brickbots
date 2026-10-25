@@ -1,0 +1,24 @@
+{
+  "partType": "block",
+  "summary": "Compact rectangular motor controller in a black enclosure. The top face has diagonal heatsink fins. One short end face carries three status LEDs (ER, S1, S2), a micro USB port and a 10-pin CTRL header. A bundle of four wire leads (green, yellow, black, red) exits the opposite end.",
+  "boundsMm": {
+    "x": 41,
+    "y": 23,
+    "z": 15
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": 20.5,
+      "description": "Connector end face with the LEDs, micro USB port and 10-pin CTRL header. This is an interface face, not a confirmed mounting face."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 7.5,
+      "description": "Top finned heatsink face. It is ribbed, so it is not a flat mounting surface."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The images show no printed dimensions. The supplied metadata (99 x 72.6 x 30 mm) is marked unverified and does not match the part's proportions in the photos, where the top view is about 1.8:1 and the height is roughly 0.6 of the width. The bounds above are therefore a proportional estimate, and the absolute scale must be checked against a datasheet. Axes: x is length, y is width, z is height, centered on the part. No mounting holes, tabs or flanges are visible. The underside is not shown, so no bottom mounting features are stated. Wire leads are excluded from the bounds."
+}

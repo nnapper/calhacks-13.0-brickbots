@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Rectangular 10.2 x 7.6 mm PCB (1.0 mm thick, bottom at Y=0) with two thin copper current-terminal pads on the -X end, each with a 1.8 mm through hole, three 1.0 mm pin holes at 2.54 mm pitch along the +X end, and a black SOT-23 style sensor block (2.9 x 1.1 x 1.6 mm) at the center on top.",
+  "confidence": "low",
+  "warnings": [
+    "Board thickness is not given; 1.0 mm assumed (the image analysis guessed 1.6 mm).",
+    "Hole diameters and positions are estimated from the image and analysis.",
+    "Pad slots, SOT-23 leads, the capacitor, silkscreen, and solder mask are not modeled.",
+    "Pad/pin end orientation follows the analysis JSON, which is ambiguous against the image.",
+    "Length and width are flagged unverified."
+  ],
+  "cadquery": "pcb_t = 1.0\npcb = cq.Workplane('XY').box(10.2, pcb_t, 7.6, centered=(True, False, True))\n# copper current pads on the -X side (thin layer on top)\npad_t = 0.07\npads = (cq.Workplane('XY').workplane(offset=0)\n        .pushPoints([(-3.4, 2.3), (-3.4, -2.3)]).rect(3.0, 3.0).extrude(1))\npads = cq.Workplane('XY').box(3.0, pad_t, 3.0, centered=(True, False, True)).translate((-3.4, pcb_t, 2.3))\npads = pads.union(cq.Workplane('XY').box(3.0, pad_t, 3.0, centered=(True, False, True)).translate((-3.4, pcb_t, -2.3)))\nbody = pcb.union(pads)\n# SOT-23 sensor body at center\nsensor = cq.Workplane('XY').box(2.9, 1.1, 1.6, centered=(True, False, True)).translate((0.3, pcb_t + pad_t, 0))\nbody = body.union(sensor)\n# through holes (axis along Y)\npin_pts = [(3.8, 2.54), (3.8, 0), (3.8, -2.54)]\npin_cut = cq.Workplane('XZ', origin=(0, -1, 0)).pushPoints(pin_pts).circle(0.5).extrude(-4)\nterm_pts = [(-3.8, 2.3), (-3.8, -2.3)]\nterm_cut = cq.Workplane('XZ', origin=(0, -1, 0)).pushPoints(term_pts).circle(0.9).extrude(-4)\npart = body.cut(pin_cut).cut(term_cut)"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Shark-3 Servo Gearbox (0.42 sec/60°, 24 RPM, 1416 oz-in Torque, 840° Rotation)",
+  "sku": "3216-0001-0003",
+  "category": "servo-gearboxes",
+  "sourceUrl": "https://www.gobilda.com/shark-3-servo-gearbox-0-42-sec-60-24-rpm-1416-oz-in-torque-840-rotation/?sku=3216-0001-0003",
+  "expectedDimensionsMm": [
+    8
+  ],
+  "units": "millimeter"
+}

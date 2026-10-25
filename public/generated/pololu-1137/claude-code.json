@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Black rectangular IR distance sensor housing: a 34 x 18.9 mm base block with two square lens towers extending along +Z to the 21.6 mm total depth. Round-ended mounting tabs sit at each end of the 44.5 mm length, each with a 3 mm through hole along Z. One tower has a shallow rectangular pocket for the visible open aperture.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions come from the unverified listed size (44.5 x 18.9 x 21.6 mm).",
+    "Axis assignment is assumed: X is the long axis, Y is the 18.9 mm height from the bottom at Y=0, and Z is the lens axis.",
+    "Tab thickness, hole spacing (38 mm), hole diameter (3 mm), tower size and base block depth are estimated from image proportions.",
+    "The pocket depth is also an estimate.",
+    "The lens dome in the right tower is omitted, so only the left tower aperture is cut.",
+    "The connector and PCB are not modeled."
+  ],
+  "cadquery": "base = cq.Workplane('XY').box(34, 18.9, 8, centered=(True, False, False)).translate((0, 0, -10.8))\ntowers = (cq.Workplane('XY').pushPoints([(-8.5, 1.95), (8.5, 1.95)])\n          .rect(11, 15, centered=(True, False)).extrude(13.8).translate((0, 0, -3)))\ntabs = (cq.Workplane('XY').pushPoints([(-19, 9.45), (19, 9.45)]).circle(3.25).extrude(3)\n        .translate((0, 0, -10.8)))\nbridges = (cq.Workplane('XY').pushPoints([(-17.5, 6.2), (17.5, 6.2)])\n           .rect(5, 6.5, centered=(True, False)).extrude(3).translate((0, 0, -10.8)))\nholes = (cq.Workplane('XY').pushPoints([(-19, 9.45), (19, 9.45)]).circle(1.5).extrude(30)\n         .translate((0, 0, -15)))\npocket = cq.Workplane('XY').box(8, 11.5, 8, centered=(True, True, False)).translate((-8.5, 9.45, 2.8))\npart = base.union(towers).union(tabs).union(bridges).cut(holes).cut(pocket)"
+}

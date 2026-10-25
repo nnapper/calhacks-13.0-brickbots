@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "5303 Series Saturn Planetary Gear Motor (50.9:1 Ratio, 24mm Length 8mm REX™ Shaft, 360 RPM, 3.3 - 5V Encoder)",
+    "sku": "5303-2402-0051",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/5303-series-saturn-planetary-gear-motor-50-9-1-ratio-24mm-length-8mm-rex-shaft-360-rpm-3-3-5v-encoder/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 36 mm diameter, the 8 mm shaft and the 23.5 mm shaft length are stated. The listed length of 24 mm appears to be the shaft length, not the body length. The total z length of about 138 mm is an estimate from the image proportions, with a body of about 114.5 mm plus the shaft, and should be verified. The bounding box is centered on the part with the shaft at +z. Hole positions are left empty because no hole pattern dimensions are given. Wires and connectors are excluded from the bounds.",
+      "The 114.5 mm body length and 138 mm overall length are estimates from the image proportions, not stated dimensions.",
+      "The listed 24 mm length appears to be the shaft length (23.5 mm), not the body length.",
+      "The body is modeled as one uniform 36 mm cylinder. The motor can, gearbox head, clamp groove, and end-cap details are omitted.",
+      "The REX shaft is a plain 8 mm cylinder, with no REX profile or flats.",
+      "The gearbox face mounting holes and pilot boss are omitted because their pattern is not dimensioned.",
+      "Wires, connectors, the encoder, and the label are not modeled.",
+      "The motor-axis-along-Z orientation comes from the image analysis."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -18,
+      "xmax": 18,
+      "ymin": 0,
+      "ymax": 36,
+      "zmin": -69,
+      "zmax": 69,
+      "xlen": 36,
+      "ylen": 36,
+      "zlen": 138
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 24.000 mm; measured dimensions are [36.0, 36.0, 138.0]",
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [36.0, 36.0, 138.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 9666,
+        "sha256": "f223b233dde73da15863c5560cb49ed52e018fd8157892833bbeeeaa95d2afa2"
+      },
+      "model.stl": {
+        "bytes": 33484,
+        "sha256": "4f72256ba0a651a8e7a838f095d9c34fcc264a15ba1464873e7222c747dd6bda"
+      },
+      "model.glb": {
+        "bytes": 13060,
+        "sha256": "7d422ba99bdc8e98db3d94f40616642451b17300bb4c5f1512351e14110e4cab"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "f223b233dde73da15863c5560cb49ed52e018fd8157892833bbeeeaa95d2afa2"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 14
+  },
+  "status": "prototype_unverified"
+}

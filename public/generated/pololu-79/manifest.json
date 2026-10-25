@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Tamiya 70098 Universal Plate Set",
+    "sku": "pololu-79",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 160 x 60 mm outline is vendor data marked unverified, and no drawing shows these dimensions. The 3 mm hole diameter, 5 mm pitch and 11 x 31 grid count come from the spec text, and the image looks consistent with them. Plate thickness is not stated or visible, so z = 2 mm is a placeholder to be checked against the real part. The holes array lists only the four corner holes. The full pattern is every combination of x = -75 to 75 mm and y = -25 to 25 mm in 5 mm steps, which is 341 holes at z = 0. This assumes the grid is centered on the plate, so the edge margin would be 5 mm on all sides. Sprue-attached pegs and tabs visible in the photo are molding artifacts and are ignored.",
+      "The 160 x 60 mm outline comes from unverified vendor data.",
+      "The 2 mm plate thickness is a placeholder. It is neither stated nor visible in the image.",
+      "The grid is assumed to be centered on the plate with a 5 mm edge margin.",
+      "Angle brackets, shaft mounts, hardware and the molding sprue pegs and tabs are omitted.",
+      "Y is treated as the up axis per the rules, so the thickness runs along Y rather than Z as in the image analysis."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -80,
+      "xmax": 80,
+      "ymin": 0,
+      "ymax": 2,
+      "zmin": -30,
+      "zmax": 30,
+      "xlen": 160,
+      "ylen": 2,
+      "zlen": 60
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 1740134,
+        "sha256": "155bb688f10a31be2837037c3e1b6151c96f897a94d19e7bb078ff13795ac01c"
+      },
+      "model.stl": {
+        "bytes": 5797684,
+        "sha256": "c9b72608f0441e2d27397b4710ba8df4968bb22c8e22cd0a465ca4799bdf4f4b"
+      },
+      "model.glb": {
+        "bytes": 2080008,
+        "sha256": "65492a28dd81d43e6530f6112d70036f7a1498519555918eb47d4d22480ed46f"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "155bb688f10a31be2837037c3e1b6151c96f897a94d19e7bb078ff13795ac01c"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

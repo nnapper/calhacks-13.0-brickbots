@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Simplified cylindrical gear motor with its axis along X, centered at X=0 and Z=0 with the bottom at Y=0. It is made of an 8mm round output shaft (24mm long) extending toward -X, a 37mm diameter gearbox section, a 36mm diameter motor can, and a 36mm diameter rear encoder cap. Overall length is 142mm.",
+  "confidence": "low",
+  "warnings": [
+    "The 37mm body diameter and 142mm overall length are estimates, not stated values.",
+    "The section lengths (gearbox 40mm, can 52mm, cap 26mm) are estimated from the image.",
+    "The REX output shaft is modeled as a plain 8mm round cylinder; the REX profile is omitted.",
+    "The front face mounting holes (4x M4) are omitted because their pattern and diameters are not dimensioned.",
+    "The flat clearance sides on the head, the encoder connector, wires, screws, and the yellow jacket step are omitted.",
+    "The motor can and jacket are modeled as one diameter."
+  ],
+  "cadquery": "def cyl(x0, length, d):\n    return cq.Workplane('YZ').workplane(offset=x0).center(18.5, 0).circle(d / 2).extrude(length)\n\nshaft = cyl(-71, 24.5, 8)\ngearbox = cyl(-47, 40, 37)\ncan = cyl(-7, 52, 36)\ncap = cyl(45, 26, 36)\npart = shaft.union(gearbox).union(can).union(cap)"
+}

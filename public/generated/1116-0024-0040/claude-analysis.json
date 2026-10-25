@@ -1,0 +1,107 @@
+{
+  "partType": "flat_plate",
+  "summary": "Rectangular flat grid plate, 40 x 24 mm and 2.5 mm thick, with a 3 x 5 grid of 4 mm through holes on an 8 mm pitch. The holes are inset 4 mm from each edge.",
+  "boundsMm": {
+    "x": 40,
+    "y": 24,
+    "z": 2.5
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -16,
+          8,
+          0
+        ],
+        [
+          -8,
+          8,
+          0
+        ],
+        [
+          0,
+          8,
+          0
+        ],
+        [
+          8,
+          8,
+          0
+        ],
+        [
+          16,
+          8,
+          0
+        ],
+        [
+          -16,
+          0,
+          0
+        ],
+        [
+          -8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          16,
+          0,
+          0
+        ],
+        [
+          -16,
+          -8,
+          0
+        ],
+        [
+          -8,
+          -8,
+          0
+        ],
+        [
+          0,
+          -8,
+          0
+        ],
+        [
+          8,
+          -8,
+          0
+        ],
+        [
+          16,
+          -8,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 1.25,
+      "description": "Top flat face, with the 3 x 5 hole grid on an 8 mm pitch"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -1.25,
+      "description": "Bottom flat face, with the same hole grid"
+    }
+  ],
+  "confidence": "high",
+  "notes": "The drawing prints the 40 mm length, 24 mm width, 2.5 mm thickness, 4 mm hole diameter, 8 mm hole pitch, 32 mm span across the 5 columns and 16 mm span across the 3 rows. Hole positions assume the part is centered at the origin. The 4 mm edge inset follows from (40-32)/2 and (24-16)/2. The render shows the holes passing through the plate. Plate corners appear square, with no visible fillets."
+}

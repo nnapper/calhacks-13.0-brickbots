@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "90 mm diameter, 10 mm wide wheel with its axis along Z, centered at X=0 and Z=0, spanning Y 0 to 90. It has a black outer tire ring (R41 to R45, 10 mm wide), a thinner white rim ring, six spokes made from three crossing bars, a central hub, and a 5.8 mm through bore.",
+  "confidence": "low",
+  "warnings": [
+    "The 90 mm diameter and 10 mm width come from unverified listing data.",
+    "The tire and rim radial thicknesses, spoke width and thickness, and hub size are estimated from the image.",
+    "The 25-tooth spline profile is not modeled; the hub has a plain 5.8 mm round bore.",
+    "The six M3/#4 mounting holes (19.1 mm spacing) and the M2 screw slots are omitted because their exact positions and diameters are unclear.",
+    "The tire and rim are fused into one solid, although they are separate parts in the product.",
+    "The tire tread texture is not modeled."
+  ],
+  "cadquery": "tire = cq.Workplane('XY').circle(45).circle(41).extrude(5, both=True)\nrim = cq.Workplane('XY').circle(41.5).circle(38.5).extrude(4, both=True)\nhub = cq.Workplane('XY').circle(6.5).extrude(3.5, both=True)\nspokes = None\nfor a in (0, 60, 120):\n    s = (cq.Workplane('XY').box(78, 4, 4)\n         .rotate((0, 0, 0), (0, 0, 1), a))\n    spokes = s if spokes is None else spokes.union(s)\nbody = tire.union(rim).union(spokes).union(hub)\nbore = cq.Workplane('XY').circle(2.9).extrude(6, both=True)\npart = body.cut(bore).translate((0, 45, 0))"
+}

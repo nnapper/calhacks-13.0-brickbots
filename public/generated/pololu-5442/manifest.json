@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "ACS37041 Current Sensor Micro Carriers",
+    "sku": "pololu-5442",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the length (10.2 mm) and width (7.6 mm) come from the supplied data, and that data is flagged unverified. They match the stated 0.4 in x 0.3 in size. The 0.1 in (2.54 mm) pin pitch is stated. Height is not given, so the z value is an estimate: roughly a 1.6 mm PCB plus a SOT-23 body of about 1.1 mm. The hole diameters, the hole positions and the x offset of the pin column are estimated from image proportions. The slot in each current pad is not modeled. The board is centered on the origin, with the IP+/IP- pads on the -x side and the VOUT/VDD/GND pins on the +x side. The mounting-surface offsets assume the PCB is about 1.6 mm thick and centered on z = 0, which is also an estimate.",
+      "Board thickness is not given; 1.0 mm assumed (the image analysis guessed 1.6 mm).",
+      "Hole diameters and positions are estimated from the image and analysis.",
+      "Pad slots, SOT-23 leads, the capacitor, silkscreen, and solder mask are not modeled.",
+      "Pad/pin end orientation follows the analysis JSON, which is ambiguous against the image.",
+      "Length and width are flagged unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -5.1,
+      "xmax": 5.1,
+      "ymin": 0,
+      "ymax": 2.17,
+      "zmin": -3.8,
+      "zmax": 3.8,
+      "xlen": 10.2,
+      "ylen": 2.17,
+      "zlen": 7.6
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 84735,
+        "sha256": "13b1a5ba579646b3a1740cb632ae7a109aa582d766374354974bbb23bc223d99"
+      },
+      "model.stl": {
+        "bytes": 87884,
+        "sha256": "80d78a16714859fe5a5247ed06a840d844e5b0291868ca743546476210040e8c"
+      },
+      "model.glb": {
+        "bytes": 32560,
+        "sha256": "13abe0d184455c66c84ea3b22fde39ae5347e5276c087fa2c87fc85939e300ca"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "13b1a5ba579646b3a1740cb632ae7a109aa582d766374354974bbb23bc223d99"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 28
+  },
+  "status": "prototype_unverified"
+}

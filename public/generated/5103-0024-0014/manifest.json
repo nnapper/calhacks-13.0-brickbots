@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "5103 Series Planetary Gearbox (13.7:1 Ratio, 24mm Length 8mm REX™ Shaft)",
+    "sku": "5103-0024-0014",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/5103-series-planetary-gearbox-13-7-1-ratio-24mm-length-8mm-rex-shaft/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The 41.6mm dimension runs from the truncated rear of the housing to the front face and excludes the shaft. Total z of 65.1mm is 41.6 + 23.5 for the shaft. The 25mm dimension on the rear face is read as the diagonal of a square 3mm hole pattern, giving about ±8.84mm offsets. The two 6mm-deep holes are read from the top hole; the bottom one is assumed by symmetry. Hole depths are 10mm and 6mm for the front holes (blind); the rear 3mm hole depth is not given, so through=false is assumed. The drawing's front-face hole positions are approximate readings. The 24mm in the product name matches the shaft length (23.5mm in the drawing). The 13.7:1 ratio does not affect the geometry.",
+      "Front section is modeled as a full 36 mm cylinder; the raised block and clearance cuts are omitted because their shapes are uncertain.",
+      "M4 threads are not modeled; the holes are plain 4 mm diameter.",
+      "Rear 13 mm bore and 3 mm hole depths are not given; 5 mm blind depth is assumed.",
+      "Rear 3 mm hole pattern is read from the 25 mm diagonal, so offsets are ±8.84 mm.",
+      "The part axis is Z with the bottom at Y=0, following the analysis JSON; the drawing is ambiguous about orientation.",
+      "The shaft flats are on the ±X sides; the flat orientation is assumed.",
+      "The overall dimensions are unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -18,
+      "xmax": 18,
+      "ymin": 0,
+      "ymax": 36,
+      "zmin": -32.55,
+      "zmax": 32.550000000000004,
+      "xlen": 36,
+      "ylen": 36,
+      "zlen": 65.1
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 24.000 mm; measured dimensions are [36.0, 36.0, 65.1]",
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [36.0, 36.0, 65.1]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 65629,
+        "sha256": "d75d93f23caf04434626db7ba05dd7221fad2e9781a5cea0a1517b5b507f1a0a"
+      },
+      "model.stl": {
+        "bytes": 213484,
+        "sha256": "d99be89f3d0322139e9a6ed219a1fdd1fc0f6458a32b83005e75d4f8615f5429"
+      },
+      "model.glb": {
+        "bytes": 77868,
+        "sha256": "d43a85185d168ec7b21897b9e2dea37ecff89d1aeaba5641de237258c696da1c"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "d75d93f23caf04434626db7ba05dd7221fad2e9781a5cea0a1517b5b507f1a0a"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 47
+  },
+  "status": "prototype_unverified"
+}

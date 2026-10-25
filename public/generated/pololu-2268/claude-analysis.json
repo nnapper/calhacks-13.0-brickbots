@@ -1,0 +1,47 @@
+{
+  "partType": "motor",
+  "summary": "NEMA 17-size bipolar stepper motor with a square body and an integrated lead screw as the output shaft, with a traveling nut on the screw. It works as a linear actuator. The screw axis is along z. Four holes are visible at the corners of the square front face.",
+  "boundsMm": {
+    "x": 42.3,
+    "y": 42.3,
+    "z": 320
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          15.5,
+          15.5,
+          -122
+        ],
+        [
+          -15.5,
+          15.5,
+          -122
+        ],
+        [
+          15.5,
+          -15.5,
+          -122
+        ],
+        [
+          -15.5,
+          -15.5,
+          -122
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -122,
+      "description": "Square front face of the motor body (42.3 x 42.3 mm), with the lead screw projecting from its center. It carries the four corner mounting holes."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The motor body is 42.3 x 42.3 x 38 mm, as stated in the specs. The z bound is an estimate: 38 mm body plus roughly 280 mm of lead screw, rounded to 320 mm. The listed length of 282 mm is unverified and could be either the screw alone or the overall length, so check it before using this. The hole diameter (3 mm) and spacing (31 mm) are not printed in the images. They come from the NEMA 17 standard and should be verified. The holes are assumed blind and tapped. The brass nut's four holes are not dimensioned and are left out. The motor body is centered in x and y, with its rear face at z = -160."
+}

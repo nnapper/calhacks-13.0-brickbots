@@ -1,0 +1,11 @@
+{
+  "name": "Force-Sensing Resistor: 0.2″-Diameter Circle",
+  "sku": "pololu-1695",
+  "category": "force-sensors",
+  "expectedDimensionsMm": [
+    7.62,
+    0.254,
+    7.62
+  ],
+  "units": "millimeter"
+}

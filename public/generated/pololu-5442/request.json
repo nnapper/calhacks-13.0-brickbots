@@ -1,0 +1,10 @@
+{
+  "name": "ACS37041 Current Sensor Micro Carriers",
+  "sku": "pololu-5442",
+  "category": "current-sensors",
+  "expectedDimensionsMm": [
+    10.2,
+    7.6
+  ],
+  "units": "millimeter"
+}

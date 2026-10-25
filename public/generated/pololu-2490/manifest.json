@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "VL53L0X Time-of-Flight Distance Sensor Carrier with Voltage Regulator, 200cm Max",
+    "sku": "pololu-2490",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "X is the 0.5 in width and Y is the 0.7 in length, both printed in the drawing. The mounting-hole diameter (0.086 in = 2.18 mm) and hole spacing (0.5 in = 12.7 mm) are also printed. The hole x-position (about 2.5 mm from the left edge) is scaled from the drawing, so it is approximate. The 2 mm Z height comes from the unverified catalog value and is not printed, so treat it as approximate. Seven 0.1 in-pitch pin holes run along the edge opposite the mounting holes (labels VDD, VIN, GND, SDA, SCL, XSHUT, GPIO1), centered at about x = +5.35 mm. Their drill diameter is not stated, so they are not listed in holes. The two mounting holes appear as a pair of larger holes in the product photo, but the photo's orientation relative to the drawing is ambiguous. Header pins are included separately and are not part of the board bounds.",
+      "The pin hole diameter (1.0 mm) is assumed because it is not stated.",
+      "The PCB thickness (1.0 mm) and sensor height (1.0 mm) are assumed so that the total is the unverified 2 mm.",
+      "The sensor block size and position are approximate, and its long axis is assumed to run along Z.",
+      "The small passives, regulator IC and other SMD components are omitted.",
+      "The hole x-position is scaled from the drawing and is approximate.",
+      "The header pins are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -6.35,
+      "xmax": 6.35,
+      "ymin": 0,
+      "ymax": 2,
+      "zmin": -8.89,
+      "zmax": 8.89,
+      "xlen": 12.7,
+      "ylen": 2,
+      "zlen": 17.78
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 72912,
+        "sha256": "318cac0da732edb932d9d7401546c40ae3e503a8afc00b1caf3ef87b4d36e2ae"
+      },
+      "model.stl": {
+        "bytes": 154484,
+        "sha256": "162fd503b747e0ac847e5d414a2bb731737abc14c3e822743ba98a64b88bd4e7"
+      },
+      "model.glb": {
+        "bytes": 56408,
+        "sha256": "024666c0a4f11b6d6a9879926334b7c99b35b80818d246346721fa2a3aaa41b4"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "318cac0da732edb932d9d7401546c40ae3e503a8afc00b1caf3ef87b4d36e2ae"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 35
+  },
+  "status": "prototype_unverified"
+}

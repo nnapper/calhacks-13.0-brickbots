@@ -1,0 +1,12 @@
+{
+  "name": "GripForce Gecko™ Wheel (8mm REX® Bore, 32mm Diameter, 30A Durometer)",
+  "sku": "3613-4008-0032",
+  "category": "gripforce-gecko-wheels",
+  "sourceUrl": "https://www.gobilda.com/gripforce-gecko-wheel-8mm-rex-bore-32mm-diameter-30a-durometer/",
+  "expectedDimensionsMm": [
+    32,
+    32,
+    8
+  ],
+  "units": "millimeter"
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Tamiya 70157 Universal Plate Set (2pcs.)",
+    "sku": "pololu-86",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 160 x 60 mm outline, the 3 mm hole diameter, the 5 mm pitch and the 11 x 31 grid come from the unverified product spec, not from a printed drawing. The images show no dimensions for the plate itself. The 2 mm thickness is a placeholder because no thickness is stated. The listed hole positions are only the four corner holes of the grid, which spans 150 x 50 mm. The full pattern is 31 columns along x (-75 to 75 mm) by 11 rows along y (-25 to 25 mm), at 5 mm steps, centered on the plate. The product photo may show a different hole count than the spec. The edge tabs on the plate are not dimensioned, so they are not included in the bounds. The angle brackets, shaft mounts and push rivets in the set are separate parts and are not modeled here.",
+      "The 2 mm thickness is a placeholder because no thickness is stated.",
+      "The 160 x 60 mm outline, 3 mm holes, 5 mm pitch and 11 x 31 grid come from the unverified product spec, not from a drawing.",
+      "The photo may show a different hole count than the spec.",
+      "The edge tabs on the plate sides are not dimensioned, so they are omitted.",
+      "The angle brackets, shaft mounts and push rivets are separate parts and are not modeled.",
+      "The Y-up orientation follows the rules (bottom at Y=0), so the plate thickness lies along Y rather than Z as in the analysis bounds."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -80,
+      "xmax": 80,
+      "ymin": 0,
+      "ymax": 2,
+      "zmin": -30,
+      "zmax": 30,
+      "xlen": 160,
+      "ylen": 2,
+      "zlen": 60
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 1741157,
+        "sha256": "afb03d6013cd1c9169231770f08d3315e30d89bbb72eb42d13fdcc98ff377e0c"
+      },
+      "model.stl": {
+        "bytes": 5797684,
+        "sha256": "3b3ee9c907fb6dbad4f1e5b039ba24950d709c32876f73219505d04657e4ccd0"
+      },
+      "model.glb": {
+        "bytes": 2080008,
+        "sha256": "747926b16dae46848efd6a1667fa8b63298357b855ec465cd57f54a0977f36f0"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "afb03d6013cd1c9169231770f08d3315e30d89bbb72eb42d13fdcc98ff377e0c"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

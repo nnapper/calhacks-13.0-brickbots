@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "5000 Series 12VDC Motor with 8mm REX® Pinion Shaft",
+    "sku": "5000-0002-4008",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/5000-series-12vdc-motor-with-8mm-rex-pinion-shaft/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The only dimension stated in the supplied data is the 32 mm shaft protrusion from the mount face; the 3.175 mm shaft_diameter listed in the metadata conflicts with the 8mm REX shaft and was ignored. The 42 mm mount width, the 100 mm overall length (centered, so z runs -50 to +50 with the mount face at +18), and the 4 mm corner hole size and 16 mm offsets are visual estimates, not printed dimensions. The Coke can mockup in the photo has nonsensical printed dimensions and was not used for scale. The motor body diameter is assumed to be about 36 mm, which falls inside the 42 mm mount footprint. The brass insert holes and the small M3 face-screw holes were not modeled, since their sizes and positions are not given.",
+      "The only stated dimension is the 32 mm shaft protrusion. All other sizes are visual estimates.",
+      "The 3.175 mm shaft_diameter in the metadata conflicts with the 8mm REX shaft and was ignored.",
+      "The Coke can dimensions are nonsensical and were not used for scale.",
+      "The plate is simplified to a square. The four-point star outline, brass inserts, center bore, M3 face-screw holes and the shaft boss were omitted.",
+      "Lead wires, connectors, labels and the encoder cover details were omitted.",
+      "The shaft is a plain hexagon, not the true round REX profile, and the shaft end tapped hole was omitted.",
+      "Body length and cover length are guesses.",
+      "The Z axis is the long axis (from the analysis) and Y is the vertical axis for the bottom-at-Y=0 rule."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -21,
+      "xmax": 21,
+      "ymin": 0,
+      "ymax": 42,
+      "zmin": -50,
+      "zmax": 50,
+      "xlen": 42,
+      "ylen": 42,
+      "zlen": 100
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.175 mm; measured dimensions are [42.0, 42.0, 100.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 64456,
+        "sha256": "66b9dae0ed764f551dfe7fcaeec50f380298f26b6421d92a0a40827250896d7c"
+      },
+      "model.stl": {
+        "bytes": 103484,
+        "sha256": "30febace0495c31ef241855da5bb4cb3644abab6123e80914c8ec0033466f3a5"
+      },
+      "model.glb": {
+        "bytes": 38172,
+        "sha256": "41f26171ac5b2111e004df32a61b1834282c0e72cc8bfbebd988954a24b15a70"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "66b9dae0ed764f551dfe7fcaeec50f380298f26b6421d92a0a40827250896d7c"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

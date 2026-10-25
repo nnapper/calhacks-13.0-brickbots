@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Wasteland Wheel (144mm Diameter, 52mm Width)",
+    "sku": "3616-0014-0144",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/wasteland-wheel-144mm-diameter-52mm-width/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 144mm diameter, 52mm width and 14mm bore come from the supplied specs, which are flagged as unverified, not from a printed drawing. Z is taken as the rotation axis and the wheel is centered on the origin. The small mounting holes are visible in the images, but their diameters and exact positions are not stated, so they are left out of the holes list. The dual-wheel images show 4 M4 screws on a hub bolt pattern and 8 thread-forming screws, but the hole coordinates are not dimensioned.",
+      "Pocket depth, web thickness and hub boss size are estimated from the images, not dimensioned.",
+      "The honeycomb pockets in the outer ring and the lugged tread are omitted, so the tread is a plain cylinder.",
+      "The 16 mm and 32 mm square mounting hole patterns are omitted because their diameters and positions are not stated.",
+      "The spoked web detail on the hub face is omitted.",
+      "The 144 mm diameter, 52 mm width and 14 mm bore come from unverified specs."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -72,
+      "xmax": 72,
+      "ymin": 0,
+      "ymax": 144,
+      "zmin": -26,
+      "zmax": 26,
+      "xlen": 144,
+      "ylen": 144,
+      "zlen": 52
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 14.000 mm; measured dimensions are [52.0, 144.0, 144.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 18405,
+        "sha256": "88d848414901b372cbe71a2f14b7e7413aea41a9cb475c3a8588ae36808b3e1c"
+      },
+      "model.stl": {
+        "bytes": 67284,
+        "sha256": "51916d9cb3fc3df11f27c06e4d4ba2bbac2a59c17812ebfb0258e04766018f6a"
+      },
+      "model.glb": {
+        "bytes": 25208,
+        "sha256": "3bf9bf1e11733127c579eca07cfc4add94b6cbfab7a89bc1a8d72d67b8faa0f3"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "88d848414901b372cbe71a2f14b7e7413aea41a9cb475c3a8588ae36808b3e1c"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 20
+  },
+  "status": "prototype_unverified"
+}

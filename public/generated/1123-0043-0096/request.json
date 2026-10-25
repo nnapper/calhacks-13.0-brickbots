@@ -1,0 +1,11 @@
+{
+  "name": "1123 Series Pattern Plate (1 x 3 Hole, 43 x 96mm)",
+  "sku": "1123-0043-0096",
+  "category": "pattern-plates",
+  "sourceUrl": "https://www.gobilda.com/1123-series-pattern-plate-1-x-3-hole-43-x-96mm/",
+  "expectedDimensionsMm": [
+    96,
+    43
+  ],
+  "units": "millimeter"
+}

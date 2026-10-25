@@ -1,0 +1,32 @@
+{
+  "partType": "wheel",
+  "summary": "Round wheel with a plastic rim, six spokes, a central hub and a tire around the outside. The wheel axis is along z. Stated size is 90 mm diameter by 10 mm wide. The hub is meant to fit a 25-tooth, 5.8 mm servo spline. The images also show the rim and tire as separate pieces.",
+  "boundsMm": {
+    "x": 90,
+    "y": 90,
+    "z": 10
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 5.8,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 5,
+      "description": "Hub side face on the wheel axis, used to attach to a servo spline or horn. The 10 mm width is stated, but the hub's own thickness and recess depth are not given, so this offset is approximate. A matching face sits at -5 mm."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The 90 mm diameter and 10 mm width come from the unverified listing data. The 5.8 mm central hole is the stated servo spline diameter, used here as the hub bore. Its through-hole status is judged from the images, and the spline teeth are not modeled. The listing also gives 6 mounting holes for #4/M3 screws, 19.1 mm hole spacing and M2 screw slots. Their diameters and exact positions are not stated clearly, so they are left out of the holes array rather than guessed."
+}

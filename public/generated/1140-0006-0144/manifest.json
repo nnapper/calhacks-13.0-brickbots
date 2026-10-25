@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1140 Series Aluminum Baseplate (6mm Thickness, 144mm Diameter)",
+    "sku": "1140-0006-0144",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1140-series-aluminum-baseplate-6mm-thickness-144mm-diameter/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The 144 mm diameter and 6 mm thickness come from the supplied specs, which are marked unverified. The images show no printed hole dimensions. Only the central large opening is listed, and its 14 mm diameter is a rough visual estimate. The remaining holes are not listed because their sizes and positions could not be read reliably. They include the four outer hub-pattern clusters, the many small M4-class holes, and the counterbored holes. The plate is centered at the origin, with the z-axis normal to its faces.",
+      "The 144 mm diameter and 6 mm thickness come from unverified specs.",
+      "The 14 mm central hole diameter is a rough visual estimate.",
+      "The four outer hub-pattern clusters (large openings with keyhole slots and counterbored lobes) are omitted because their positions and sizes could not be read reliably.",
+      "The many small M4-class through and threaded holes are omitted for the same reason.",
+      "The scattered counterbored holes are omitted because their sizes and positions are uncertain.",
+      "The central cluster's lobed counterbores and keyhole slots are omitted; only the central round opening is modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -72,
+      "xmax": 72,
+      "ymin": 0,
+      "ymax": 6,
+      "zmin": -72,
+      "zmax": 72,
+      "xlen": 144,
+      "ylen": 6,
+      "zlen": 144
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 9401,
+        "sha256": "2b571a09da5d35a4b83cb3d462c5f7b976b159fb8dcce1ec5e45a1f8e03e70d9"
+      },
+      "model.stl": {
+        "bytes": 33684,
+        "sha256": "45dce474e052c46d01d1e69e090780d8631c6c47897abb699ecf4594dd8d3f18"
+      },
+      "model.glb": {
+        "bytes": 13108,
+        "sha256": "5d1a53c39afe7148753e1709e223f8c9d9a15e364e1abc148a1dd13be5b9b70d"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "2b571a09da5d35a4b83cb3d462c5f7b976b159fb8dcce1ec5e45a1f8e03e70d9"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 10
+  },
+  "status": "prototype_unverified"
+}

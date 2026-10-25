@@ -275,3 +275,10 @@ h1 em { font-style: normal; background: linear-gradient(100deg, var(--cool), var
 .hitadd { border: 1px solid var(--cool); background: none; color: var(--cool); border-radius: 999px; padding: 3px 12px; font-size: 12px; font-weight: 600; }
 .hitadd:hover:not(:disabled) { background: var(--cool); color: var(--on-cool); }
 .hitadd:disabled { opacity: 0.6; cursor: default; }
+
+.rhead .step button { width: 26px; height: 24px; font-size: 15px; cursor: pointer; }
+.rhead .step span { min-width: 24px; font-size: 12px; color: var(--ink); }
+
+.workspace-part-actions .step button { width: 28px; height: 24px; font-size: 15px; cursor: pointer; }
+.workspace-part-actions .step button:disabled { opacity: .35; cursor: default; }
+.workspace-part-actions .step span { min-width: 26px; color: var(--ink); }

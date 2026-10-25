@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "QTRXL-MD-01RC Reflectance Sensor: 1-Channel, 7.5mm Wide, RC Output, Long Range",
+    "sku": "pololu-4541",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The 20 mm length and 7.5 mm width are printed in the dimension image. The 3.0 mm height comes from the spec text and is flagged unverified. The hole diameters and positions are not printed anywhere. I estimated them from pixel scaling of the 20 mm × 7.5 mm outline, and the 2.54 mm pin pitch is a measured estimate that matches standard 0.1 in spacing. The mounting hole is roughly centered across the width. PCB thickness is not stated, so the through-holes are placed at z=0 as a simplification.",
+      "PCB thickness (0.8 mm) is assumed, not stated.",
+      "Sensor block size (5.5 x 3.5 mm) and position are estimated from the image; lens details are omitted.",
+      "Hole diameters and positions are estimated from pixel scaling.",
+      "SMD resistors, capacitors and the IC are omitted as small decorative detail.",
+      "Square pad on one pin hole and the plated annular rings are not modeled.",
+      "Overall dimensions are unverified."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -3.75,
+      "xmax": 3.75,
+      "ymin": 0,
+      "ymax": 3,
+      "zmin": -10,
+      "zmax": 10,
+      "xlen": 7.5,
+      "ylen": 3,
+      "zlen": 20
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 48570,
+        "sha256": "dbe8471aebae3b9afe25a582a773f51f68c8057bc57c38e81643579864504948"
+      },
+      "model.stl": {
+        "bytes": 69484,
+        "sha256": "1d38affa981fa8167d48cffd2522163bcc9e90a8251ec5b0a470dbfac8f1c7b4"
+      },
+      "model.glb": {
+        "bytes": 25932,
+        "sha256": "a37ff93896dd14a8fbf4508dbdf693da19fe68a8a7dc58f51faef33e2db6ea61"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "dbe8471aebae3b9afe25a582a773f51f68c8057bc57c38e81643579864504948"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 25
+  },
+  "status": "prototype_unverified"
+}

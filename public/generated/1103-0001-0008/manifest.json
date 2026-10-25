@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1103 Series L-Beam (1 Hole, 8mm Length) - 2 Pack",
+    "sku": "1103-0001-0008",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1103-series-l-beam-1-hole-8mm-length-2-pack/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The drawing gives 12 mm x 12 mm outer legs, 2.5 mm thickness, 8 mm width, and a 4 mm hole centered across the width and 8 mm above the bottom. The 8 mm length matches the product name. The hole center in x is the midpoint of the 2.5 mm leg (-6 + 1.25). The product render shows a second hole in the horizontal leg, but the dimensioned drawing does not locate or size one, so none is listed. Hole position, thread and any countersink are not specified beyond the 4 mm diameter. Hole depth is assumed through the 2.5 mm leg.",
+      "The axes follow the stated rules (Y is up, bottom at Y=0, 8 mm width along Z). The image analysis used Z as the vertical axis, so its coordinates were remapped.",
+      "The product render may show a second hole in the horizontal leg, but the drawing does not size or locate one, so it is omitted.",
+      "The hole is assumed to be a plain 4 mm through hole with no thread or countersink.",
+      "The hole is assumed to be 8 mm up from the bottom and centered across the 8 mm width, read from the drawing."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -6,
+      "xmax": 6,
+      "ymin": 0,
+      "ymax": 12,
+      "zmin": -4,
+      "zmax": 4,
+      "xlen": 12,
+      "ylen": 12,
+      "zlen": 8
+    },
+    "warnings": [
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 26955,
+        "sha256": "eff2f3faf124078888a444a42339613279d6a4a7e1cdaf2f2cdbabfece49304f"
+      },
+      "model.stl": {
+        "bytes": 18084,
+        "sha256": "203773a562144484b7cfc25978b27bb55d28d5f921641aec28610b9275a39df3"
+      },
+      "model.glb": {
+        "bytes": 7496,
+        "sha256": "4d22b6cefd143ad2358a8b491815df74d8b69fade807f4e09940d3da8571f19c"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "eff2f3faf124078888a444a42339613279d6a4a7e1cdaf2f2cdbabfece49304f"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

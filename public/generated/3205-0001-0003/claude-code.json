@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Stepped solid of revolution along Y, with the bottom at Y=0 and a total height of 22 mm. It has a 6 mm diameter standoff from Y=0 to 8, a 10 mm diameter wheel body from Y=8 to 18 with 1 mm chamfers on both edges, and a 7 mm diameter screw head from Y=18 to 22. A 4 mm diameter, 8 mm deep blind hole is cut into the bottom face.",
+  "confidence": "medium",
+  "warnings": [
+    "Total height of 22 mm is scaled from the drawing and is not printed on it.",
+    "Screw head diameter (about 7 mm) and height above the wheel (about 4 mm) are estimated from the drawing.",
+    "The 3mm hex socket in the screw head is not modeled because its depth is not given.",
+    "Threads are not modeled. The M4 bottom hole is a plain 4 mm nominal diameter blind hole.",
+    "The 13 mm base-to-center height in the listing does not match any dimension in the drawing, so it was not used.",
+    "Chamfer size of 1 mm is estimated from the 10 mm overall height versus the 8 mm flat height.",
+    "The listed kit contains several units, but only one unit is modeled."
+  ],
+  "cadquery": "s = cq.Workplane('XZ').circle(3).extrude(-8)\nw = cq.Workplane('XZ').workplane(offset=-8).circle(5).extrude(-10).edges().chamfer(1)\nh = cq.Workplane('XZ').workplane(offset=-18).circle(3.5).extrude(-4)\nbore = cq.Workplane('XZ').circle(2).extrude(-8)\npart = s.union(w).union(h).cut(bore)"
+}

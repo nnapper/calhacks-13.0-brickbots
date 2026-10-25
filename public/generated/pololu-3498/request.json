@@ -1,0 +1,11 @@
+{
+  "name": "Magnetic Encoder Disc for 20D mm Metal Gearmotors, OD 9.7 mm, ID 2.0 mm, 20 CPR (Bulk)",
+  "sku": "pololu-3498",
+  "category": "encoders",
+  "expectedDimensionsMm": [
+    2,
+    9.7,
+    2
+  ],
+  "units": "millimeter"
+}

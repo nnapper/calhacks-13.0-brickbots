@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "72 mm diameter, 6 mm wide disc wheel with axis along Y (Y=0 to 6). The central web is 3 mm thick, with 62 mm diameter recesses 1.5 mm deep on each face. It has a 14 mm center bore, four 4 mm round holes at (±16, ±16), four 4 mm round holes at (±8, ±8), and four 4 mm wide axial slots with end centers at 11 and 16 mm from center.",
+  "confidence": "medium",
+  "warnings": [
+    "Recess depth (1.5 mm per side) and web centering are inferred from the section view.",
+    "The (±8,±8) holes look slightly elongated in the drawing and are modeled as 4 mm round holes.",
+    "Slot end positions are estimated from the drawing scale.",
+    "The rubber lip and tire material are not modeled separately, so the wheel is a single solid.",
+    "Dimensions are unverified against the vendor CAD."
+  ],
+  "cadquery": "body = cq.Workplane('XY').circle(36).extrude(6)\nbody = body.cut(cq.Workplane('XY').circle(31).extrude(1.5))\nbody = body.cut(cq.Workplane('XY').workplane(offset=4.5).circle(31).extrude(1.5))\nbody = body.cut(cq.Workplane('XY').circle(7).extrude(6))\nround_pts = [(16,16),(-16,16),(16,-16),(-16,-16),(8,8),(-8,8),(8,-8),(-8,-8)]\nbody = body.cut(cq.Workplane('XY').pushPoints(round_pts).circle(2).extrude(6))\nfor sx in (-1, 1):\n    body = body.cut(cq.Workplane('XY').center(sx*13.5, 0).slot2D(9, 4, 0).extrude(6))\n    body = body.cut(cq.Workplane('XY').center(0, sx*13.5).slot2D(9, 4, 90).extrude(6))\npart = body.rotate((0,0,0),(1,0,0),-90)"
+}

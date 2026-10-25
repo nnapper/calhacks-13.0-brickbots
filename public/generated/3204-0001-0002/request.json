@@ -1,0 +1,12 @@
+{
+  "name": "Worm Gear Set (28:1 Ratio, 8mm REX® Bore Worm)",
+  "sku": "3204-0001-0002",
+  "category": "worm-gears",
+  "sourceUrl": "https://www.gobilda.com/worm-gear-set-28-1-ratio-8mm-rex-bore-worm/",
+  "expectedDimensionsMm": [
+    33,
+    8,
+    8
+  ],
+  "units": "millimeter"
+}

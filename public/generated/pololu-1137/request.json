@@ -1,0 +1,11 @@
+{
+  "name": "Sharp/Socle GP2Y0A02YK0F Analog Distance Sensor 20-150cm",
+  "sku": "pololu-1137",
+  "category": "ir-distance-sensors",
+  "expectedDimensionsMm": [
+    44.5,
+    18.9,
+    21.6
+  ],
+  "units": "millimeter"
+}

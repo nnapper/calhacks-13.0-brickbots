@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "5204 Series Yellow Jacket Planetary Gear Motor (19.2:1 Ratio, 80mm Length 8mm REX® Shaft, 312 RPM, 3.3 - 5V Encoder)",
+    "sku": "5204-8002-0019",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/5204-series-yellow-jacket-planetary-gear-motor-19-2-1-ratio-80mm-length-8mm-rex-shaft-312-rpm-3-3-5v-encoder/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The images print no body dimensions. The only stated figures are the 80mm shaft length (Insight #8) and the 8mm REX shaft diameter. The catalog 'length: 80' appears to be the shaft length, not the overall motor length, so z=80 is a placeholder and not a verified body length. The x and y values of 37 are an assumed gearbox diameter and are not printed anywhere. Holes are left empty because no hole diameters or positions are given. The shaft is a protrusion, not a hole. Overall length, body diameter and mounting hole pattern should be checked against the manufacturer drawing before use.",
+      "The drawings give no body dimensions. The 37 mm gearbox diameter, 36 mm motor diameter and the section lengths (16, 28 and 36 mm) are assumed.",
+      "The 80 mm overall length is a placeholder taken from the bounds. The catalog 'length: 80' may actually refer to the shaft.",
+      "The shaft is modeled as a plain 8 mm cylinder. The REX profile, flats and hex are omitted.",
+      "Mounting holes, the encoder cap, the wires and connectors, the gearbox end-face details and the pilot boss are omitted because none are dimensioned.",
+      "Check all dimensions against the manufacturer drawing before use."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -18.5,
+      "xmax": 18.5,
+      "ymin": 0,
+      "ymax": 37,
+      "zmin": -40,
+      "zmax": 40,
+      "xlen": 37,
+      "ylen": 37,
+      "zlen": 80
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 8.000 mm; measured dimensions are [37.0, 37.0, 80.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 13526,
+        "sha256": "eea4bada3088287a311fc19887d786f2141da9168f8deeccebff7fa7489804e1"
+      },
+      "model.stl": {
+        "bytes": 50284,
+        "sha256": "4c111d6e999dce98ae9f86e3c1620f76f49b40b7962fef0f2484b8814a26dac7"
+      },
+      "model.glb": {
+        "bytes": 19108,
+        "sha256": "4680f698d4a2338bfc32062b815837fb895dfcd1bc5c6a4fba9802d17ab617d5"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "eea4bada3088287a311fc19887d786f2141da9168f8deeccebff7fa7489804e1"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 18
+  },
+  "status": "prototype_unverified"
+}

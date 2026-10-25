@@ -1,0 +1,11 @@
+{
+  "name": "5203 Series Yellow Jacket Motor (1:1 Ratio, 24mm Length 8mm REX® Shaft, 6000 RPM, 3.3 - 5V Encoder)",
+  "sku": "5203-2402-0001",
+  "category": "yellow-jacket-planetary-gear-motors",
+  "sourceUrl": "https://www.gobilda.com/5203-series-yellow-jacket-motor-1-1-ratio-24mm-length-8mm-rex-shaft-6000-rpm-3-3-5v-encoder/",
+  "expectedDimensionsMm": [
+    24,
+    8
+  ],
+  "units": "millimeter"
+}

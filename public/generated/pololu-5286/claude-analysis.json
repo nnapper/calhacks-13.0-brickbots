@@ -1,0 +1,32 @@
+{
+  "partType": "other",
+  "summary": "Small rectangular driver PCB (carrier board) with a 4-position screw terminal block on one edge, a 9-pin header plus a separate 2-pin ISET header along the opposite edge, a can capacitor, and one mounting hole in a corner. Dimensions are taken from the stated 0.8 in × 0.9 in board size.",
+  "boundsMm": {
+    "x": 20.32,
+    "y": 22.86,
+    "z": 11
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 2.18,
+      "positionsMm": [
+        [
+          8.1,
+          -8.8,
+          -4.7
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -5.5,
+      "description": "Underside of the PCB, which sits against the mounting surface; secured with one M2 or #2 screw through the corner hole."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Footprint (20.32 × 22.86 mm) and hole diameter (0.086 in = 2.18 mm) come from the stated specs, which are marked unverified. Overall height (about 11 mm, including the PCB, terminal block and header pins) is not stated and is a rough estimate from the photos. The hole position is estimated from the pin-label photo and is approximate. The long axis (y) runs along the header edge, and the origin is at the bounding-box center."
+}

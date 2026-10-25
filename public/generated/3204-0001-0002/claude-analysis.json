@@ -1,0 +1,64 @@
+{
+  "partType": "gear",
+  "summary": "28:1 worm gear set. The model is the hub-mount worm wheel (28 teeth at MOD 1.25, so about 35 mm pitch diameter) with its 8 mm REX bore, centered on the origin with its axis along z. The matching 8mm REX bore worm is 33 mm long and is not included in the bounds.",
+  "boundsMm": {
+    "x": 37.5,
+    "y": 37.5,
+    "z": 10
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 8,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          -8,
+          0,
+          0
+        ],
+        [
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          -8,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 5,
+      "description": "Flat hub-mount face of the worm wheel. Sonic or Hyper Hubs with the 16mm pattern bolt to it with M4 screws."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -5,
+      "description": "Opposite flat face of the worm wheel."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 33 mm worm length, MOD 1.25, 28:1 ratio, 8 mm bore and 43 mm internal channel width are given. The wheel outer diameter (about 37.5 mm) is computed from 28 teeth at MOD 1.25 plus addendum. The wheel thickness (10 mm) is an estimate, not a stated value. The 16mm-pattern hole positions and the 4 mm clearance diameter are assumed from the Sonic Hub pattern, not from a drawing. The images show additional holes between these four that are not modeled. The worm is mounted on its own axis, offset from the wheel axis, and is not modeled here."
+}

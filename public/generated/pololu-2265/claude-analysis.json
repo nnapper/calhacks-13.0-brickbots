@@ -1,0 +1,34 @@
+{
+  "partType": "motor",
+  "summary": "Miniature cylindrical DC vibration motor with an offset-mass weight on the output shaft. It sits in a removable rectangular rubber sleeve that gives it flat mounting faces. Two lead wires exit the end opposite the shaft.",
+  "boundsMm": {
+    "x": 11.6,
+    "y": 4.6,
+    "z": 4.8
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 2.4,
+      "description": "Top flat face of the rubber sleeve"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -2.4,
+      "description": "Bottom flat face of the rubber sleeve"
+    },
+    {
+      "axis": "y",
+      "offsetMm": 2.3,
+      "description": "Side flat face of the rubber sleeve"
+    },
+    {
+      "axis": "y",
+      "offsetMm": -2.3,
+      "description": "Opposite side flat face of the rubber sleeve"
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Bounds come from the listed product dimensions (11.6 x 4.6 x 4.8 mm), which are marked unverified. No dimensions are printed in the images. The long axis is x, with the shaft and eccentric weight at +x and the leads at -x. The weight may extend slightly past the stated length or the sleeve profile, but that is not confirmed. The sleeve has an open bore for the motor body, which is not modeled as a hole because the motor fills it. There are no mounting holes. The shaft diameter is not stated and not inferred. The leads are about 1.5 in (38 mm) long and are excluded from the bounds."
+}

@@ -1,0 +1,32 @@
+{
+  "partType": "wheel",
+  "summary": "Three-spoke plastic wheel with a central hub and a press-on silicone tire, 40 mm in diameter and 7 mm wide. The hub bore is for a 4.8 mm micro servo spline. The wheel axis is along z and the part is centered at the origin.",
+  "boundsMm": {
+    "x": 40,
+    "y": 40,
+    "z": 7
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4.8,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Central hub bore that presses onto the servo spline like a servo horn. The exact hub face offset along z is not stated."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 40 mm diameter, 7 mm width and 4.8 mm bore come from the product listing, which is marked unverified. No drawing with printed dimensions is shown. The images show three spokes and a central hub hole. They also show a separate tire ring that fits over the rim. The hub hole looks open, so 'through' is an assumption. The spline tooth count (21) is stated but not modeled. Small marks near the hub or spokes in one image are not confirmed as holes and are not included. Hub recess depth, spoke dimensions and rim profile are not given."
+}

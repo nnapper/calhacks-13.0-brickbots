@@ -1,0 +1,29 @@
+{
+  "partType": "block",
+  "summary": "Compact rectangular motor controller in a dark finned enclosure. The top face has diagonal heat-sink ridges and three small LED indicators (ER, S1, S2) near one end. The opposite short end face carries a micro USB port and a 2x5 pin control header (CTRL, pins 1-10). A bundle of power and motor wires exits the back short end.",
+  "boundsMm": {
+    "x": 32.5,
+    "y": 60,
+    "z": 23.5
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -11.75,
+      "description": "Flat underside of the enclosure, presumed to be the base mounting surface. It is not directly visible in the images."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 11.75,
+      "description": "Top face with diagonal heat-sink fins, usable as a thermal contact or clearance surface."
+    },
+    {
+      "axis": "y",
+      "offsetMm": 30,
+      "description": "Front short end face with USB port, CTRL header and LED labels. It must stay accessible."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Bounds come from the supplied catalog dimensions (60 x 32.5 x 23.5 mm), which are flagged as unverified. No dimensioned drawing is visible in the images. The images show no mounting holes, so none are listed. Wire exit is on the -Y end. Wire length and the fin depth and pitch are not specified and are not modeled. The bounding box is centered on the part, with X as width, Y as length and Z as height."
+}

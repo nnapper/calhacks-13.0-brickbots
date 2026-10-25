@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { BY_SKU } from "./lib/catalog.js";
+import { BY_SKU, RAW_BY_SKU } from "./lib/catalog.js";
+import { evaluateBuild } from "./compatibility/checks.js";
+import "./styles/compatibility.css";
 import { loadSavedCad, removeCad } from "./lib/custom.js";
 import { useTheme } from "./hooks/useTheme.js";
 import TopBar from "./components/TopBar.jsx";
@@ -26,7 +28,8 @@ export default function App() {
   const [aiHistory, setAiHistory] = useState(() => { try { return JSON.parse(localStorage.getItem("buildflow.aiHistory") ?? "[]"); } catch { return []; } });
   const [pendingGoal, setPendingGoal] = useState(null);
   const [toast, setToast] = useState({ text: "", visible: false });
-  const unit = "mm";
+  const [unit, setUnit] = useState("mm");
+  const [measureOn, setMeasureOn] = useState(true);
 
   const toastTimer = useRef(null);
 
@@ -35,6 +38,34 @@ export default function App() {
   }, []);
 
   const totals = useMemo(() => workspaceMetrics(workspace.parts,workspace.mates,BY_SKU), [workspace, liveVersion]);
+  // Spec facts fetched on demand for connected parts whose saved catalog data is thin (server/compatibility.js).
+  const [online, setOnline] = useState({});
+  const [checking, setChecking] = useState(false);
+  const [lookupError, setLookupError] = useState(false);
+  const askedSkus = useRef(new Set());
+  useEffect(() => {
+    const byId = new Map(workspace.parts.map((p) => [p.id, p]));
+    const wanted = new Set();
+    for (const m of workspace.mates) {
+      for (const id of [m.movingId, m.targetId]) {
+        const sku = byId.get(id)?.model.asset.productId;
+        if (sku && !askedSkus.current.has(sku)) wanted.add(sku);
+      }
+    }
+    if (!wanted.size) return;
+    const batch = [...wanted].slice(0, 16);
+    batch.forEach((sku) => askedSkus.current.add(sku));
+    setChecking(true);
+    fetch("/api/compatibility/specs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ skus: batch }) })
+      .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+      .then(({ records }) => { setOnline((o) => ({ ...o, ...records })); setLookupError(false); })
+      .catch(() => { batch.forEach((sku) => askedSkus.current.delete(sku)); setLookupError(true); })
+      .finally(() => setChecking(false));
+  }, [workspace.parts, workspace.mates]);
+  const health = useMemo(
+    () => evaluateBuild(workspace.parts, workspace.mates, BY_SKU, RAW_BY_SKU, online),
+    [workspace, online, liveVersion]
+  );
   const showToast = useCallback((text) => {
     setToast({ text, visible: true });
     clearTimeout(toastTimer.current);
@@ -71,7 +102,21 @@ export default function App() {
 
   const addPart = (sku) => {
     if(BY_SKU[sku]?.custom){showToast('Import the original STL in My Designs to add it to this workspace.');return;}
-    void cadActions.current?.add(sku);
+    return cadActions.current?.add(sku);
+  };
+
+  // Panel and receipt +/-: plus places more copies in the workspace (one at a time, each must finish loading);
+  // minus removes the most recently placed copy.
+  const adjustPart = async (sku, delta) => {
+    if (delta > 0) {
+      for (let i = 0; i < delta; i++) {
+        await addPart(sku);
+        await new Promise((resolve) => setTimeout(resolve, 60));
+      }
+      return;
+    }
+    const row = [...totals.rows].reverse().find((r) => r.product?.sku === sku);
+    if (row) cadActions.current?.remove(row.id);
   };
 
   const closeReceipt = useCallback(() => setReceiptOpen(false), []);
@@ -105,15 +150,15 @@ export default function App() {
       ) : (
         <section className="build">
           <section className="stagewrap">
-            <CadWorkspace designsHost={designsHost} onWorkspaceChange={setWorkspace} actionsRef={cadActions} pendingGoal={pendingGoal} onPendingGoalConsumed={() => setPendingGoal(null)} />
+            <CadWorkspace unit={unit} onUnit={setUnit} measure={measureOn} onMeasure={setMeasureOn} designsHost={designsHost} onWorkspaceChange={setWorkspace} actionsRef={cadActions} pendingGoal={pendingGoal} onPendingGoalConsumed={() => setPendingGoal(null)} />
           </section>
 
           <PartsPanel designsHostRef={setDesignsHost} onAdd={addPart} onLive={onLive} onRemoveCustom={removeCustom} version={liveVersion} unit={unit} collapsed={!partsOpen} onToggle={() => setPartsOpen((o) => !o)} />
-          <WorkspacePanel metrics={totals} selectedId={workspace.selectedId} onSelect={id=>cadActions.current?.select(id)} onRemove={id=>cadActions.current?.remove(id)} onWhereToBuy={()=>setReceiptOpen(true)} collapsed={!bomOpen} onToggle={()=>setBomOpen(o=>!o)} />
+          <WorkspacePanel health={health} checking={checking} lookupError={lookupError} metrics={totals} onAdjust={adjustPart} selectedId={workspace.selectedId} onSelect={id=>cadActions.current?.select(id)} onRemove={id=>cadActions.current?.remove(id)} onWhereToBuy={()=>setReceiptOpen(true)} collapsed={!bomOpen} onToggle={()=>setBomOpen(o=>!o)} />
         </section>
       )}
 
-      <Receipt open={receiptOpen} build={totals.build} buildName={prompt} onClose={closeReceipt} onToast={showToast} onLive={onLive} />
+      <Receipt open={receiptOpen} build={totals.build} onAdjust={adjustPart} buildName={prompt} onClose={closeReceipt} onToast={showToast} onLive={onLive} />
       <div className={`toast${toast.visible ? " show" : ""}`} role="status">{toast.text}</div>
     </div>
   );

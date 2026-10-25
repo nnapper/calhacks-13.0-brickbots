@@ -1,0 +1,10 @@
+{
+  "name": "Tamiya 70098 Universal Plate Set",
+  "sku": "pololu-79",
+  "category": "chassis",
+  "expectedDimensionsMm": [
+    160,
+    60
+  ],
+  "units": "millimeter"
+}

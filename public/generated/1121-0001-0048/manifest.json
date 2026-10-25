@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1121 Series Low-Side U-Channel (1 Hole, 48mm Length)",
+    "sku": "1121-0001-0048",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1121-series-low-side-u-channel-1-hole-48mm-length/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "The bounding box is centered on the part. The y axis runs along the 48 mm length, x across the U width, and z is height with the base bottom at z = -6. Dimensions come from the printed drawing: 48 mm width, 12 mm height, 2.5 mm walls, 43 mm inner width, 8 mm grid, and 4 mm and 14 mm hole diameters. Flange holes are 8 mm above the base's outer face. The drawing also shows 4 slots of about 4 mm width around the central bore (a 24 mm reference circle and a 16 mm diamond pattern). Their exact dimensions are not given, so they are omitted from the hole list. The base holes sit on the 8 mm grid at x = ±8, ±16 and y = ±8, ±16, with z at mid base thickness (-4.75). The name says '1 Hole', but the drawing shows the 5-hole flange pattern. The 14 mm bore is a through hole in the base. The sourced metadata is flagged unverified, so treat positions as approximate.",
+      "Dimensions are unverified and come from the image analysis and drawing estimates.",
+      "The product name says '1 Hole', but the flange pattern was modeled with 5 holes as the image shows.",
+      "The slots around the central bore were omitted because their dimensions are uncertain.",
+      "The image appears to show additional base holes, for example on the center row and column, which were not modeled because the analysis does not list them.",
+      "Hole diameters of 4 mm and 14 mm are estimates; the flange holes look slightly larger in the image.",
+      "The analysis axes (Z up) were remapped to Y up: length runs along Z and width along X."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -24,
+      "xmax": 24,
+      "ymin": 0,
+      "ymax": 12,
+      "zmin": -24,
+      "zmax": 24,
+      "xlen": 48,
+      "ylen": 12,
+      "zlen": 48
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 162029,
+        "sha256": "ce7dc36269395db2a1d4a7998adaac65ff4247c0544fee497e2d0e3ae97999b1"
+      },
+      "model.stl": {
+        "bytes": 460484,
+        "sha256": "b9ef1f8b5d4edc6cd26093bda044da521db45b3ba831fea77ed7858610babcfc"
+      },
+      "model.glb": {
+        "bytes": 166144,
+        "sha256": "9a0756d5238923ea11ebb0a9301c6d526306560f25e7cabcc192247f2b2c50f2"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "ce7dc36269395db2a1d4a7998adaac65ff4247c0544fee497e2d0e3ae97999b1"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

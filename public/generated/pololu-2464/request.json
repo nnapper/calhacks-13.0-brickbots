@@ -1,0 +1,11 @@
+{
+  "name": "Sharp/Socle GP2Y0A41SK0F Analog Distance Sensor 4-30cm",
+  "sku": "pololu-2464",
+  "category": "ir-distance-sensors",
+  "expectedDimensionsMm": [
+    44.5,
+    18.9,
+    13.5
+  ],
+  "units": "millimeter"
+}

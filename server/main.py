@@ -119,8 +119,15 @@ def generate_model(payload: dict):
     sku=payload.get('sku')
     if not isinstance(sku,str) or not re.fullmatch(r'[a-z0-9-]+',sku):raise HTTPException(400,'A catalog SKU is required')
     root=Path(__file__).resolve().parents[1]
+    # Pre-built models (npm run models:build) are served straight from public/generated.
+    manifest_path=root/'public/generated'/sku/'manifest.json'
+    if manifest_path.exists() and (root/'public/generated'/sku/'model.step').exists():
+        try:
+            manifest=json.loads(manifest_path.read_text())
+            return {'sku':sku,'name':manifest['product']['name'],'stepUrl':f'/generated/{sku}/model.step','manifest':manifest,'cached':True}
+        except Exception:pass
     run=subprocess.run([
-        'node','--env-file-if-exists=.env.local','scripts/generate-model.mjs',sku
+        'node','--env-file-if-exists=.env','--env-file-if-exists=.env.local','scripts/generate-model.mjs',sku
     ],cwd=root,capture_output=True,text=True,timeout=180)
     if run.returncode != 0:
         raise HTTPException(500,(run.stderr or run.stdout or 'Generation failed').strip()[-800:])

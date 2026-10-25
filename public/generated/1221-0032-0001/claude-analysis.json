@@ -1,0 +1,91 @@
+{
+  "partType": "bracket",
+  "summary": "Flat aluminum pattern-mount plate, about 4 mm thick, with a 14 mm center bore and a 16 mm x 1 mm counterbore. It has a 24 mm bolt circle of eight holes: four tapped M4 holes and four slotted clearance holes on the diagonals. Four raised corner posts reach a 38 mm overall width in the side view. Each post has a hole in its outer end face.",
+  "boundsMm": {
+    "x": 38,
+    "y": 32,
+    "z": 8.5
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          -12,
+          0
+        ],
+        [
+          12,
+          0,
+          0
+        ],
+        [
+          -12,
+          0,
+          0
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "y",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          16,
+          16,
+          -1.25
+        ],
+        [
+          -16,
+          16,
+          -1.25
+        ],
+        [
+          16,
+          -16,
+          -1.25
+        ],
+        [
+          -16,
+          -16,
+          -1.25
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 4.25,
+      "description": "Top face of the 4 mm plate. It has the 16 mm x 1 mm deep counterbore around the 14 mm bore and the 24 mm bolt-circle holes."
+    },
+    {
+      "axis": "y",
+      "offsetMm": 16,
+      "description": "Outer end faces of the posts at y = ±16. Each carries one hole at x = ±16, about 5.5 mm below the plate top face. Four posts in total."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Bounds come from the drawing: 38 mm overall width, 32 mm overall height and 8.5 mm overall depth. The vendor text says 43 mm width for two mounts spaced 32 mm apart, which does not apply to a single part. The 4 mm plate thickness and the 5.5 mm hole depth from the plate top are read from the side view. The diagonal slotted holes are at about (±8.5, ±8, 0). Their diameter is not given, so they are not listed above. The 4 mm diameters on the axis-aligned holes and the post holes are nominal M4 values, not measured. Whether the post holes are through is not shown. The vertical position of the post holes is approximate. The z origin is the bounding-box center."
+}

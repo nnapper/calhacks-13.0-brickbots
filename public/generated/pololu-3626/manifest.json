@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Glideforce LACT6-1000BPL Industrial-Duty Linear Actuator with Ball Screw Drive and Feedback: 450kgf, 6\" Stroke (4.8\" Usable), 0.66\"/s, 12V",
+    "sku": "pololu-3626",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The images have no printed dimensions. Retracted length (403.1 mm), extended length (525 mm), stroke and the 13 mm mounting hole diameter come from the supplied specs. The width (Y) and height (Z) of 75 mm and 120 mm are rough estimates from proportions in the photos, because the spec lists no width or height. The hole positions are approximate, since the exact offsets from the ends are not given. The 12.7 mm bore_diameter in the spec data conflicts with the 13 mm mounting hole value, so I used 13 mm. The rear hole is placed on the gearbox ear at an estimated offset. The feedback potentiometer and internal ball screw are not modeled because they are not visible.",
+      "No dimensions are printed; width, height and diameters are estimated from photo proportions.",
+      "The 120 mm Z bound from the analysis seems too wide for the visible housing, so the gearbox is modeled 60 mm wide.",
+      "The rear mounting hole is placed at z=0, x=-186.5, because the analyzed offset (z=-35) would fall at the housing edge. The position is uncertain.",
+      "The rod-end hole is oriented along Y as in the analysis. The photo may show a different orientation.",
+      "The cable, potentiometer, side bosses, end cap, rod/tube steps and internal mechanism are omitted.",
+      "The motor length and position are estimates.",
+      "The rod is modeled in the retracted state only."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -201.55,
+      "xmax": 201.5500001,
+      "ymin": 0,
+      "ymax": 75,
+      "zmin": -30,
+      "zmax": 30,
+      "xlen": 403.1000001,
+      "ylen": 75,
+      "zlen": 60
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 525.000 mm; measured dimensions are [60.0, 75.0, 403.1000001]",
+      "Generated geometry is missing a listed dimension 12.700 mm; measured dimensions are [60.0, 75.0, 403.1000001]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 112112,
+        "sha256": "aa3a1124398d1b8f923c13e1579d04a35d1d70f068f87ede2659c95458ca2268"
+      },
+      "model.stl": {
+        "bytes": 88984,
+        "sha256": "39b26e37635282465d32af3902493410495eac0bdc3e1d87a0553a4ec31832c9"
+      },
+      "model.glb": {
+        "bytes": 32996,
+        "sha256": "7ff0e2380efb9a47624958f6348e9f59b214518365e074fdf8267b9ee589ea3c"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "aa3a1124398d1b8f923c13e1579d04a35d1d70f068f87ede2659c95458ca2268"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

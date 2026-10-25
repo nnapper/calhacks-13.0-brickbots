@@ -1,0 +1,10 @@
+{
+  "name": "Charge Pump Voltage Inverter: 1.8-5.3V, 60mA",
+  "sku": "pololu-2839",
+  "category": "voltage-regulators",
+  "expectedDimensionsMm": [
+    8.89,
+    7.62
+  ],
+  "units": "millimeter"
+}

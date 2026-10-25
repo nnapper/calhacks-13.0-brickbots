@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1221 Series 2-Side, 2-Post Pattern Mount (32-1)",
+    "sku": "1221-0032-0001",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1221-series-2-side-2-post-pattern-mount-32-1/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Bounds come from the drawing: 38 mm overall width, 32 mm overall height and 8.5 mm overall depth. The vendor text says 43 mm width for two mounts spaced 32 mm apart, which does not apply to a single part. The 4 mm plate thickness and the 5.5 mm hole depth from the plate top are read from the side view. The diagonal slotted holes are at about (±8.5, ±8, 0). Their diameter is not given, so they are not listed above. The 4 mm diameters on the axis-aligned holes and the post holes are nominal M4 values, not measured. Whether the post holes are through is not shown. The vertical position of the post holes is approximate. The z origin is the bounding-box center.",
+      "Diagonal slotted holes are modeled as 4.5 mm round holes because the slot size is not dimensioned.",
+      "M4 holes are modeled as 3.3 mm plain holes with no threads.",
+      "Post shape is simplified to rectangular blocks, so the tapered gussets and fillets are omitted.",
+      "Post Y range of 0 to 7 and the plate offset are estimated from the side view.",
+      "Post hole diameter and depth are assumed. They are modeled as 3.3 mm and as passing through the post along Z.",
+      "The vendor's 43 mm width applies to two mounts, so the 38 mm single-part width was used."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -19,
+      "xmax": 19,
+      "ymin": 0,
+      "ymax": 8.5000001,
+      "zmin": -16.0000001,
+      "zmax": 16.0000001,
+      "xlen": 38,
+      "ylen": 8.5000001,
+      "zlen": 32.0000002
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 43.000 mm; measured dimensions are [8.5000001, 32.0000002, 38.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 169616,
+        "sha256": "9b453ab38fbab621c4685ed7799d7e89cab1b91e4fb20cb2d8128f3a73317fb0"
+      },
+      "model.stl": {
+        "bytes": 259884,
+        "sha256": "a49ae3a0df01696b9d68979b1d2e6ca1d9e08324320ea7557f6c04b387e1a2b5"
+      },
+      "model.glb": {
+        "bytes": 94260,
+        "sha256": "00ab785f68b3b50cd1bb4b2aa214dc5ffacd5a155aa9dc56b641ff2acc32f523"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "9b453ab38fbab621c4685ed7799d7e89cab1b91e4fb20cb2d8128f3a73317fb0"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

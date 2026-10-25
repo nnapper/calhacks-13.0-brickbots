@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "A 100 mm diameter, 24 mm wide wheel with its axis along Z. The wheel center is at X=0, Y=50, Z=0, so the bottom sits at Y=0. The tire edges have 8 mm rounds to match the rounded profile. A 22 mm through bore runs along the axis, sized for a 608 bearing.",
+  "confidence": "medium",
+  "warnings": [
+    "The 100 mm diameter and 24 mm width come from unverified product data.",
+    "The 22 mm bore is assumed from the 608 bearing outer diameter. It is not shown in any drawing.",
+    "The 8 mm edge rounding is estimated from the image.",
+    "The spoked hub, recesses and any bearing seat are not modeled because their dimensions are uncertain. The image shows a smaller central opening than 22 mm, which is probably the inner hub or bearing seat.",
+    "The wheel is modeled as one solid body with no separate hub and tire.",
+    "The hub is assumed flush with the full 24 mm width."
+  ],
+  "cadquery": "body = cq.Workplane('XY').workplane(offset=-12).center(0, 50).circle(50).extrude(24).edges().fillet(8)\nbore = cq.Workplane('XY').workplane(offset=-12).center(0, 50).circle(11).extrude(24)\npart = body.cut(bore)"
+}

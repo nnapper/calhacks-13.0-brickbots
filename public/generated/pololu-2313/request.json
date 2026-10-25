@@ -1,0 +1,9 @@
+{
+  "name": "Glideforce LACT12P-12V-20 Light-Duty Linear Actuator with Feedback: 50kgf, 12\" Stroke (11.8\" Usable), 0.57\"/s, 12V",
+  "sku": "pololu-2313",
+  "category": "linear-actuators",
+  "expectedDimensionsMm": [
+    751
+  ],
+  "units": "millimeter"
+}

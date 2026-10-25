@@ -1,0 +1,79 @@
+{
+  "partType": "other",
+  "summary": "Round plastic servo hub, 32 mm in diameter, with a central splined bore for an H25T servo output. It has four through-holes on a 16 mm pattern and four diagonal slots with hex counterbores. The slots span 24 mm across for mounting gears, pulleys, sprockets or beams. The underside is a ribbed, pocketed shape with raised pads and a central boss.",
+  "boundsMm": {
+    "x": 32,
+    "y": 32,
+    "z": 10
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3.4,
+      "positionsMm": [
+        [
+          11.3,
+          0,
+          0
+        ],
+        [
+          -11.3,
+          0,
+          0
+        ],
+        [
+          0,
+          11.3,
+          0
+        ],
+        [
+          0,
+          -11.3,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4.2,
+      "positionsMm": [
+        [
+          8.5,
+          8.5,
+          0
+        ],
+        [
+          -8.5,
+          8.5,
+          0
+        ],
+        [
+          8.5,
+          -8.5,
+          0
+        ],
+        [
+          -8.5,
+          -8.5,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 5,
+      "description": "Flat circular face with the four round holes and four diagonal slots, used to attach 16 mm pattern parts (gears, sprockets, pulleys, beams)."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -5,
+      "description": "Opposite face with the pocketed, ribbed structure and raised pads, plus a central boss around the splined bore."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 32 mm diameter, the 16 mm hole pattern and the 24 mm spacing across the slots come from the provided data. The 10 mm height and the hole and slot diameters are visual estimates, and the source marks its dimensions as unverified. The hole positions assume the 16 mm pattern is a square rotated 45°, which puts the round holes at about 11.3 mm radius on the axes and the slots at 12 mm radius on the diagonals. The central H25T splined bore is on the z axis and is not listed as a hole because its size is not given. The slots are modeled as simple through-holes without their hex counterbores."
+}

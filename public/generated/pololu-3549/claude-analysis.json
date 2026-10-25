@@ -1,0 +1,42 @@
+{
+  "partType": "motor",
+  "summary": "Small brushed DC gearmotor with a plastic gearbox and a 3 mm D-shaft output. A motor with a rear-mounted encoder board sits at the bottom of the gearbox. The board carries a side-entry 6-pin connector. No overall dimensions are printed, so the bounding box is an estimate from typical Pololu Romi-style gearmotor proportions and the given shaft size. Only the shaft diameter (3 mm) and shaft length (9.7 mm) are stated.",
+  "boundsMm": {
+    "x": 23,
+    "y": 20,
+    "z": 42
+  },
+  "holes": [
+    {
+      "axis": "x",
+      "diameterMm": 2,
+      "positionsMm": [
+        [
+          0,
+          0,
+          8
+        ],
+        [
+          0,
+          0,
+          -2
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "x",
+      "offsetMm": 0,
+      "description": "Flat face of the gearbox housing, with small visible holes that suggest mounting points"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -21,
+      "description": "End face of the motor and encoder board, where the side connector is located"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 3 mm shaft diameter and 9.7 mm shaft length come from the supplied data. Bounds are rough estimates that include the shaft and encoder board. The two small holes in the gearbox face are visible, but their diameter, depth and position are guessed, and whether they go through is not known. The connector is a side-entry 6-pin JST SH-type, with pin order M1, M2, VCC, OUTA, OUTB, GND."
+}

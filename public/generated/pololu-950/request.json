@@ -1,0 +1,10 @@
+{
+  "name": "Pololu Ball Caster with 3/8″ Plastic Ball",
+  "sku": "pololu-950",
+  "category": "pololu-ball-casters",
+  "expectedDimensionsMm": [
+    15.24,
+    9.525
+  ],
+  "units": "millimeter"
+}

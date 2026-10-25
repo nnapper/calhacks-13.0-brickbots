@@ -1,0 +1,10 @@
+{
+  "name": "Jrk G2 18v19 USB Motor Controller with Feedback",
+  "sku": "pololu-3146",
+  "category": "jrk-feedback-controllers",
+  "expectedDimensionsMm": [
+    30.48,
+    25.4
+  ],
+  "units": "millimeter"
+}

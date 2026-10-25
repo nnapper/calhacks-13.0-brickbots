@@ -1,0 +1,9 @@
+{
+  "name": "Basic Sumo Blade for Zumo Chassis",
+  "sku": "pololu-1410",
+  "category": "zumo-robots",
+  "expectedDimensionsMm": [
+    0.9144
+  ],
+  "units": "millimeter"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Maxbotix LV-MaxSonar-EZ0 Sonar Range Finder MB1000",
+  "sku": "pololu-723",
+  "category": "sonar-range-finders",
+  "expectedDimensionsMm": [
+    22.098,
+    19.939,
+    16.383
+  ],
+  "units": "millimeter"
+}

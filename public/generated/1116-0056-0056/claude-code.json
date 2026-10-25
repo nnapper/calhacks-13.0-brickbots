@@ -1,0 +1,10 @@
+{
+  "shapeSummary": "56 x 56 mm square plate, 2.5 mm thick (Y from 0 to 2.5), centered in X and Z, with a 7 x 7 grid of 4 mm through holes on an 8 mm pitch (48 mm center span, 4 mm edge margin).",
+  "confidence": "high",
+  "warnings": [
+    "Plate thickness is along Y to satisfy the bottom-at-Y=0 rule, so the drawing's face lies in the XZ plane.",
+    "Dimensions are taken from the drawing and are marked unverified in the source data.",
+    "Anodizing and material are not modeled."
+  ],
+  "cadquery": "part = (cq.Workplane(\"XZ\")\n        .rect(56, 56).extrude(-2.5)\n        .faces(\">Y\").workplane(centerOption=\"CenterOfBoundBox\")\n        .rarray(8, 8, 7, 7).hole(4))"
+}

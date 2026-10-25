@@ -1,0 +1,1 @@
+part = (cq.Workplane('XZ').circle(9.7/2).circle(1.0).extrude(-2))

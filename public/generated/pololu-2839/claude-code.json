@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Small green rectangular PCB (7.62 x 8.89 mm, 0.8 mm thick, thickness along Y, bottom at Y=0) with three 1 mm plated-style through holes in a 2.54 mm pitch row near one short edge, plus a box-shaped SOT-23-6 IC and three box-shaped SMD capacitors on the top face.",
+  "confidence": "low",
+  "warnings": [
+    "The board thickness is not stated; 0.8 mm is assumed, and the analysis suggested about 1.6 mm.",
+    "The component sizes and positions are approximate boxes with no leads or pads.",
+    "The hole row position (z=-3.4) and the 1 mm diameter are estimated. The image appears to show a square pad and corner holes, which are simplified to a straight row of three holes as in the analysis.",
+    "The small corner via or tooling hole is omitted as ambiguous.",
+    "Pad copper, solder fillets, and markings are not modeled.",
+    "The listed dimensions are unverified."
+  ],
+  "cadquery": "pw, pl, pt = 7.62, 8.89, 0.8\nboard = cq.Workplane('XY').box(pw, pt, pl, centered=(True, False, True))\nfor x in (-2.54, 0, 2.54):\n    board = board.cut(cq.Workplane('XY').add(cq.Solid.makeCylinder(0.5, 2.0, cq.Vector(x, -0.5, -3.4), cq.Vector(0, 1, 0))))\nic = cq.Workplane('XY').box(2.9, 1.0, 1.6, centered=(True, False, True)).translate((0, pt, 1.8))\ncap1 = cq.Workplane('XY').box(1.0, 0.9, 2.0, centered=(True, False, True)).translate((-2.7, pt, 1.0))\ncap2 = cq.Workplane('XY').box(1.0, 0.9, 2.0, centered=(True, False, True)).translate((2.7, pt, 1.0))\ncap3 = cq.Workplane('XY').box(2.0, 0.9, 1.0, centered=(True, False, True)).translate((-0.2, pt, -1.0))\npart = board.union(ic).union(cap1).union(cap2).union(cap3)"
+}

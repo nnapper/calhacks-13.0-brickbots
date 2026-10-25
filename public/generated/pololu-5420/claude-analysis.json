@@ -1,0 +1,64 @@
+{
+  "partType": "other",
+  "summary": "Small rectangular solid-state relay PCB module, 20.32 x 8.128 mm. It carries one SOIC-style optocoupler, two 8-pin MOSFET packages and one small 6-pin IC on the top face. Three round through-holes sit along one short edge and two elongated through-slots along the opposite short edge.",
+  "boundsMm": {
+    "x": 20.32,
+    "y": 8.128,
+    "z": 3.302
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 1,
+      "positionsMm": [
+        [
+          8.9,
+          2.54,
+          0
+        ],
+        [
+          8.9,
+          0,
+          0
+        ],
+        [
+          8.9,
+          -2.54,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 1.5,
+      "positionsMm": [
+        [
+          -9.3,
+          2.3,
+          0
+        ],
+        [
+          -9.3,
+          -2.3,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -1.651,
+      "description": "Flat bottom face of the board, with the EN and GND pads and the underside pads of the two slotted terminals."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 1.651,
+      "description": "Top face (the highest component surface is the optocoupler body), with the MOSFETs, optocoupler and control IC."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Length 0.8 in (20.32 mm) and width 0.32 in (8.128 mm) are printed in the bottom-view image. The 3.302 mm height comes from the unverified product data and is probably the board plus tallest component. Hole diameters and positions are estimated from image proportions and are not printed. The three round holes are on the EN/GND input edge, with a 2.54 mm pitch assumed. The two elongated holes on the output edge are approximated as 1.5 mm circles, though they are slots. The board thickness is not stated, so the z offsets are only the bounding-box half-height."
+}

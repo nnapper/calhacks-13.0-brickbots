@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1102 Series Flat Beam (2 Hole, 16mm Length) - 2 Pack",
+    "sku": "1102-0002-0016",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/1102-series-flat-beam-2-hole-16mm-length-2-pack/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "high",
+    "codeConfidence": "high",
+    "warnings": [
+      "Dimensions come from the printed drawing: 16mm overall length, 8mm width, 8mm hole spacing, 4mm hole diameter and 4mm thickness. The ends are full semicircular radii of 4mm, so the hole centers sit at the end-radius centers. The box is centered at the origin with X along the length, Y along the width and Z along the thickness. The 3D render shows the holes go straight through, and the drawing does not state this. The edges look slightly chamfered or softened in the render, but no dimension is given, so it is not modeled. The product listing's dimensionsAreUnverified flag does not affect the values used, because the drawing confirms the 16mm length.",
+      "The render shows slightly softened edges, but no dimensions are given, so no chamfers or fillets are modeled.",
+      "The drawing does not state that the holes are through, but the render shows them going straight through.",
+      "The product listing dimensions are unverified, but the drawing confirms the 16 mm length.",
+      "The width is placed along Y, with the bottom at Y=0, to follow the stated placement rules. Thickness is along Z."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -8,
+      "xmax": 8,
+      "ymin": -4.440892098500626e-16,
+      "ymax": 8,
+      "zmin": -2,
+      "zmax": 2,
+      "xlen": 16,
+      "ylen": 8,
+      "zlen": 4
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 25282,
+        "sha256": "b0ac842545bb1a2893dfb8cde0e28270a1617c222cc5b56dbde4c95a26c98a8b"
+      },
+      "model.stl": {
+        "bytes": 51084,
+        "sha256": "898d4e7d2c373e77667113c47c73a5cb4163c0b40e4dff796376bffde999f9b2"
+      },
+      "model.glb": {
+        "bytes": 19352,
+        "sha256": "15eb70af4a0007f862ec1fae496153c9e6ddaae345664c5aae8b11da56a53f16"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "b0ac842545bb1a2893dfb8cde0e28270a1617c222cc5b56dbde4c95a26c98a8b"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 32
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,37 @@
+{
+  "partType": "wheel",
+  "summary": "Wasteland Wheel, a 192mm diameter all-terrain wheel with a 72mm width. It has an aggressive tread, a hollow cellular sidewall ring, and a spoked hub with a central bore and square hole patterns. The rotation axis is modeled along z, centered on the part.",
+  "boundsMm": {
+    "x": 192,
+    "y": 192,
+    "z": 72
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Hub face with a central 14mm bore and the 16mm and 32mm square hole patterns, used to mount a hub on the axle. The mounting plane is near the wheel's inner hub region; its exact offset from center is not stated."
+    },
+    {
+      "axis": "x",
+      "offsetMm": 96,
+      "description": "Outer cylindrical tread surface at 96mm radius, which contacts the ground."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 192mm diameter, 72mm width and 14mm center hole come from the supplied listing, which is marked unverified. Pattern hole positions and diameters are visible in the images but not dimensioned, so they are left out of the holes list. The Product Insight drawings show the wheel mounted on a Hyper Hub with a 12mm REX shaft, and they show the wheel can be flipped. The hub recess depth and the exact hub plane offset are not stated."
+}

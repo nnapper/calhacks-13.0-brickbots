@@ -1,0 +1,24 @@
+{
+  "partType": "other",
+  "summary": "Small tracked robot chassis kit made up of a battery-compartment chassis body, two tracks, four sprocket wheels (two drive, two idler), a perforated top mounting plate, and small fasteners and battery contacts. The assembled unit is a low, roughly rectangular platform with a track on each side.",
+  "boundsMm": {
+    "x": 98,
+    "y": 86,
+    "z": 39
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 19.5,
+      "description": "Top mounting plate: flat surface with a grid of small holes and some slots, used for mounting electronics or accessories. It sits on top of the chassis body."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -19.5,
+      "description": "Bottom of the assembled chassis, with the tracks as the ground-contact surfaces."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Bounds are the unverified catalog values (length 98 as x, width 86 as y, height 39 as z) and are not confirmed by any printed dimensions in the images. The top plate clearly has a grid of small holes plus several slots and notches, but hole diameters and positions cannot be measured from the photos, so the holes array is left empty rather than guessed. Fastener hardware is shown loose, and the images give no dimensions for it. The 1/16 in plate thickness is stated in the description, not visible. The plate is described as acrylic, although it looks black in the images."
+}

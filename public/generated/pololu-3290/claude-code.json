@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Rectangular black motor-controller block 32.5 (X) x 23.5 (Y, height) x 60 (Z, length) mm. Bottom at Y=0, centered in X and Z. Ten shallow cooling grooves cut across the top face. Shallow USB and 2x5 header pockets on the +Z end face. Wires, LEDs and labels are not modeled.",
+  "confidence": "medium",
+  "warnings": [
+    "Dimensions come from unverified catalog values (60 x 32.5 x 23.5 mm).",
+    "Y is treated as vertical per the rules, so the 60 mm length lies along Z. This differs from the image-analysis bounds, which list Y as 60.",
+    "Fin count, depth, pitch and orientation are estimated from the photo. The diagonal look of the ridges is perspective, so straight transverse grooves were used.",
+    "The wire bundle on the -Z end is omitted because its length and routing are unknown.",
+    "The three LEDs and all text are omitted.",
+    "The USB and header pockets are approximate in size and position, and the stepped end-face profile is simplified."
+  ],
+  "cadquery": "W=32.5\nH=23.5\nL=60\nbody=cq.Workplane('XY').box(W,H,L,centered=(True,False,True))\n# cooling grooves across the top (run through the full width)\ngd=4.0\ngw=1.6\npitch=3.6\nn=10\nz0=-24\nfor i in range(n):\n    z=z0+i*pitch\n    cutter=cq.Workplane('XY').box(W+2,gd+1,gw,centered=(True,False,True)).translate((0,H-gd,z))\n    body=body.cut(cutter)\n# front-face USB port recess and 2x5 CTRL header recess (+Z end)\nusb=cq.Workplane('XY').box(7.5,2.6,6,centered=(True,True,True)).translate((-9,6,L/2-1.5))\nhdr=cq.Workplane('XY').box(10,4.5,6,centered=(True,True,True)).translate((5,6.5,L/2-1.5))\npart=body.cut(usb).cut(hdr)"
+}

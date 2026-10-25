@@ -1,0 +1,103 @@
+{
+  "partType": "other",
+  "summary": "Cylindrical planetary gearbox with a Ø36mm body on the z axis, a stepped front housing with a hole pattern, and an 8mm REX output shaft (7mm flat to flat). The rear face has a Ø13mm central opening and four Ø3mm holes on a 25mm pattern.",
+  "boundsMm": {
+    "x": 36,
+    "y": 36,
+    "z": 56.2
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          -8,
+          8,
+          4.6
+        ],
+        [
+          8,
+          8,
+          4.6
+        ],
+        [
+          -8,
+          -8,
+          4.6
+        ],
+        [
+          8,
+          -8,
+          4.6
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          12,
+          4.6
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          -8.84,
+          8.84,
+          -28.1
+        ],
+        [
+          8.84,
+          8.84,
+          -28.1
+        ],
+        [
+          -8.84,
+          -8.84,
+          -28.1
+        ],
+        [
+          8.84,
+          -8.84,
+          -28.1
+        ]
+      ],
+      "through": false
+    },
+    {
+      "axis": "z",
+      "diameterMm": 13,
+      "positionsMm": [
+        [
+          0,
+          0,
+          -28.1
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 4.6,
+      "description": "Front gearbox face with the 4mm-hole pattern. Four holes at (±8, ±8) are 10mm deep and the top-center hole at (0, +12) is 6mm deep. The 8mm REX shaft projects 23.5mm from this face."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -28.1,
+      "description": "Rear face of the Ø36mm body, with four Ø3mm holes on a 25mm pattern and a Ø13mm central opening."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Dimensions come from the printed drawing. The 32.7mm body length (including the 11.6mm front housing) plus the 23.5mm shaft gives a 56.2mm total z length. The bounding box is centered on the part, so the rear face is at z=-28.1, the front face at z=4.6 and the shaft tip at z=+28.1. The vendor's 24mm length is not used for the bounds because it conflicts with the 32.7mm drawing dimension. The front-face hole positions were scaled from the drawing: the 24mm and 16mm callouts indicate rows at y=±12 and y=±8, and the ±8 x-offset was estimated from the image. The bottom-center hole at (0, -12) is visible, but its depth is not stated, so it is not listed. The rear Ø3mm holes sit on a 25mm pattern at roughly 45°, which is assumed from the view. Whether the rear holes and the Ø13mm opening are through is not stated, so both are marked false."
+}

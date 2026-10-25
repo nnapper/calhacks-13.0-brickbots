@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "1000:1 Micro Metal Gearmotor HP 6V with Extended Motor Shaft",
+    "sku": "pololu-2373",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Stated: 12 x 10 mm gearbox cross-section, 3 mm D-shaft 9 mm long, extended motor shaft 1 mm diameter and 4.5 mm long. The total X length of about 42.5 mm is an estimate from image proportions (9 mm output shaft + gearbox about 14 mm + motor can about 15 mm + 4.5 mm rear shaft). The two front-plate screw holes are visible, but their 1.6 mm diameter and 9 mm spacing are assumed, not stated or measured. The rear cap also shows small holes and terminal tabs that are not dimensioned, so they are not modeled. The bounding box is centered on the part with the shaft axis at y=0, z=0.",
+      "The gearbox length of 14 mm and can length of 15 mm are estimated from image proportions.",
+      "Internal gears and gear stack are omitted.",
+      "The front-plate screw holes (1.6 mm dia, 9 mm spacing) are assumed and not clearly visible in the image, so they were not cut.",
+      "The rear cap terminals, tabs, small holes and black end cap detail are omitted.",
+      "The motor can is modeled as a plain 12x10 rectangle, without the rounded or flat-sided profile.",
+      "The plate thickness (1 mm) and the spacer block size (7x6 mm) are assumed.",
+      "The D-flat depth (flat 1.2 mm from the axis) is assumed."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -21.25,
+      "xmax": 21.25,
+      "ymin": 0,
+      "ymax": 12,
+      "zmin": -5,
+      "zmax": 5,
+      "xlen": 42.5,
+      "ylen": 12,
+      "zlen": 10
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [10.0, 12.0, 42.5]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 85671,
+        "sha256": "fb31b21ca0a7d8dab3c2d6d480b28fc3db8205a16bd963f0f0f67d8ec7dff7b2"
+      },
+      "model.stl": {
+        "bytes": 34284,
+        "sha256": "702ecbea9e09f6a77138db2264de000a45484c9102b3d46c88777e1dd25bdbd3"
+      },
+      "model.glb": {
+        "bytes": 13352,
+        "sha256": "d7d33596058131cc619561b8327469b883d4d913f708cfeff428c6cf65667371"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "fb31b21ca0a7d8dab3c2d6d480b28fc3db8205a16bd963f0f0f67d8ec7dff7b2"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

@@ -6,9 +6,11 @@ import { Component, useEffect, useRef, useState, type PointerEvent as ReactPoint
 import { Viewer, type View, type ViewerBridge } from './Viewer';
 import { loadModel, type LoadedModel } from '../cad/import';
 import { disposeModel } from '../cad/geometry';
+import { placeholderFile } from '../cad/placeholder';
 import { clone } from 'three/addons/utils/SkeletonUtils.js';
 import { addPosition, findSnap, alignConnectors, compatible, type PartInstance, type Mate, type Snap } from '../assembly/snapping';
 import { BY_SKU } from '../lib/catalog.js';
+import { PRESET } from '../lib/preset.js';
 import { analyzeGeometry } from '../cad/analyze';
 import { applySuggestions, type Connector, type PairSuggestion } from '../contracts/connectors';
 import { cloud, api, workspaceSecret, saveWorkspace, suggestNodes, suggestPairings, askPlanner, askArrangement, verifyArrangement, verifyPlan } from '../cloud/client';
@@ -31,7 +33,7 @@ const fixtures = [
   { name: 'L-bracket', file: 'l-bracket.step', subtitle: '24 × 26.5 × 24 mm · 15 Ø4 holes on two legs', tag: 'BUILD', icon: '∟' },
 ];
 
-export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef, pendingGoal, onPendingGoalConsumed}: {designsHost: HTMLElement | null; onWorkspaceChange?: (state: {parts:PartInstance[];mates:Mate[];selectedId:string|null})=>void; actionsRef?: {current:any}; pendingGoal?: string|null; onPendingGoalConsumed?: () => void}) {
+export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef, pendingGoal, onPendingGoalConsumed, unit='mm', onUnit, measure=true, onMeasure}: {designsHost: HTMLElement | null; onWorkspaceChange?: (state: {parts:PartInstance[];mates:Mate[];selectedId:string|null})=>void; actionsRef?: {current:any}; pendingGoal?: string|null; onPendingGoalConsumed?: () => void; unit?: string; onUnit?: (unit: string)=>void; measure?: boolean; onMeasure?: (on: boolean)=>void}) {
   const solidBoxes=useRef(new Set<string>());
   const stagedBuild=useRef<PartInstance[]|null>(null);
   const building=useRef(false);
@@ -80,8 +82,8 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     cache.current.forEach(model => disposeModel(model.object));
   }, []);
 
-  async function restore() {
-    if (!cloud) { setCloudStatus('Local only'); setReady(true); return; }
+  async function restore(): Promise<number> {
+    if (!cloud) { setCloudStatus('Local only'); setReady(true); return 0; }
     setOperation('Loading workspace');
     try {
       const secret = workspaceSecret();
@@ -109,6 +111,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       }
       setRevision(saved?.revision ?? 0);
       setCloudStatus('Convex connected · save to sync');
+      return saved?.snapshot?.parts?.length ?? 0;
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Restore failed');
       setCloudStatus('Restore failed');
@@ -116,9 +119,19 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       setReady(true);
       setOperation('');
     }
+    return 0;
   }
 
-  useEffect(() => { void restore(); }, []);
+  // First visit with nothing saved: start from the example rover so the workspace is never an empty grid.
+  useEffect(() => {
+    void restore().then(restored => {
+      let seen = false;
+      try { seen = !!localStorage.getItem('brickbots.example-seen'); } catch { /* storage unavailable */ }
+      if (restored || seen) return;
+      try { localStorage.setItem('brickbots.example-seen', '1'); } catch { /* storage unavailable */ }
+      void loadPreset();
+    });
+  }, []);
 
   async function save() {
     setOperation('Saving workspace');
@@ -198,6 +211,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       if (abort.signal.aborted) { disposeModel(next.object); return; }
       const sourceKey = key ?? next.asset.id;
       if (sourceKey.startsWith('generated:')) next.asset.productId = sourceKey.slice('generated:'.length);
+      if (sourceKey.startsWith('placeholder:')) next.asset.productId = sourceKey.slice('placeholder:'.length);
       cache.current.set(sourceKey, next);
       if (!fixture) setLibrary(l => [...l, { key: sourceKey, name: file.name, file, generated: sourceKey.startsWith('generated:') }]);
       await findNodes(next);
@@ -214,7 +228,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
     const cachedSource = [...cache.current.values()].find(source => source.asset.productId === sku);
     if (cachedSource) { const id=place(cachedSource, drop); setNotice('Generated CAD prototype reused · inspect before assembly'); return id; }
     setError('');
-    setBusy('Generating CAD prototype');
+    setBusy('Generating');
     try {
       const response = await fetch('/geometry/generate', {
         method: 'POST',
@@ -233,7 +247,76 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       setNotice('Generated CAD prototype added to model library · inspect before assembly');
       return partId ?? null;
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Generation failed');
+      // No generated model for this part: stand in with its category shape so it still counts in the build.
+      try {
+        const product = BY_SKU[sku];
+        if (!product) throw e;
+        const partId = await open(await placeholderFile(product), false, new AbortController(), drop, `placeholder:${sku}`);
+        setNotice('No 3D model for this part yet · showing a placeholder shape');
+        return partId ?? null;
+      } catch {
+        setError(e instanceof Error ? e.message : 'Generation failed');
+        setBusy('');
+      }
+      return null;
+    }
+  }
+
+  // Loads a catalog product's generated model (pre-built ones return instantly) and its attachment nodes without placing it.
+  async function loadProductModel(sku: string): Promise<LoadedModel> {
+    const cached = [...cache.current.values()].find(source => source.asset.productId === sku);
+    if (cached) return cached;
+    const response = await fetch('/geometry/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sku }),
+      signal: AbortSignal.timeout(180_000),
+    });
+    if (!response.ok) {
+      const detail = await response.json().catch(() => ({}));
+      throw new Error(detail.detail ?? `Model for ${sku} failed (HTTP ${response.status})`);
+    }
+    const result = await response.json();
+    const modelResponse = await fetch(result.stepUrl);
+    if (!modelResponse.ok) throw new Error('Generated model download failed');
+    const file = new File([await modelResponse.arrayBuffer()], `${result.name}.step`);
+    const next = await loadModel(file, new AbortController().signal, false);
+    next.asset.productId = sku;
+    cache.current.set(`generated:${sku}`, next);
+    setLibrary(l => [...l, { key: `generated:${sku}`, name: file.name, file, generated: true }]);
+    await findNodes(next);
+    return next;
+  }
+
+  // Replaces the workspace with the example rover (Undo brings the previous build back).
+  async function loadPreset() {
+    if (busy) return;
+    setError('');
+    setBusy(`Loading example ${PRESET.name}`);
+    try {
+      const sources = new Map<string, LoadedModel>();
+      for (const sku of new Set<string>(PRESET.parts.map((p: { sku: string }) => p.sku))) sources.set(sku, await loadProductModel(sku));
+      const ids = new Map<string, string>();
+      const instances: PartInstance[] = PRESET.parts.map((def: { key: string; sku: string; position: number[]; rotY: number }) => {
+        const source = sources.get(def.sku)!;
+        const id = crypto.randomUUID();
+        ids.set(def.key, id);
+        const position = def.position.map(v => v / 1000) as [number, number, number];
+        const quaternion = new Quaternion().setFromAxisAngle(new Vector3(0, 1, 0), def.rotY * Math.PI / 180).toArray() as [number, number, number, number];
+        const model = { ...source, object: clone(source.object) as LoadedModel['object'] };
+        model.object.position.set(...position);
+        model.object.quaternion.set(...quaternion);
+        return { id, model, position, quaternion };
+      });
+      checkpoint();
+      setParts(instances);
+      setMates(PRESET.mates.map((m: { moving: string; target: string; axis: number; side: number }) => ({ movingId: ids.get(m.moving)!, targetId: ids.get(m.target)!, axis: m.axis, side: m.side })));
+      setSelectedId(null);
+      setReset(r => r + 1);
+      setNotice(`Example ${PRESET.name} loaded · each motor shaft fits its wheel bore · see Build health`);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Could not load the example');
+    } finally {
       setBusy('');
     }
     return null;
@@ -278,6 +361,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
   useEffect(()=>{setScalePercent(String((selectedPart?.scale??1)*100));},[selectedId,selectedPart?.scale]);
   function transform(scale?:number,axis?:'x'|'y'|'z',targetId?:string,degreesArg?:number) {
     const p=live.current.parts.find(p=>p.id===(targetId??selectedId));if(!p)return;
+    if(p.model.asset.productId&&scale!==undefined){setNotice('Real products keep their true size · only custom models can be scaled.');return;}
     if(scale!==undefined&&(!Number.isFinite(scale)||scale<.001||scale>1000)){setNotice('Enter a scale from 0.1% to 100000%.');return;}
     const degrees=degreesArg??Number(turnDegrees);if(axis&&!Number.isFinite(degrees)){setNotice('Enter a valid angle.');return;}
     const q=new Quaternion(...(p.quaternion??[0,0,0,1]));
@@ -423,10 +507,17 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
   }
 
   useEffect(()=>{if(pendingGoal){onPendingGoalConsumed?.();void run(pendingGoal);}},[pendingGoal]);
+  useEffect(()=>{
+    if(!selectedId)return;
+    const done=(e:KeyboardEvent)=>{if(e.key==='Escape')setSelectedId(null);};
+    window.addEventListener('keydown',done);
+    return ()=>window.removeEventListener('keydown',done);
+  },[selectedId]);
   function copyPart(){const p=live.current.parts.find(p=>p.id===selectedId);if(p){clipboard.current={...p,position:[...p.position],quaternion:[...(p.quaternion??[0,0,0,1])]};setNotice('Model copied · Ctrl/Cmd+V to paste');}}
   function pastePart(){const p=clipboard.current;if(!p)return;const width=worldBox(p).getSize(new Vector3()).x;const instance={...p,id:crypto.randomUUID(),model:{...p.model,object:clone(p.model.object) as LoadedModel['object']},position:[p.position[0]+width+.01,p.position[1],p.position[2]] as [number,number,number]};checkpoint();setParts(items=>[...items,instance]);setSelectedId(instance.id);clipboard.current=instance;setNotice('Model pasted · scale and rotation preserved');}
-  const shortcuts=useRef({copyPart,pastePart});shortcuts.current={copyPart,pastePart};
-  useEffect(()=>{const key=(e:KeyboardEvent)=>{const target=e.target as HTMLElement;if(target.closest('input,textarea,select,[contenteditable="true"]')||!(e.ctrlKey||e.metaKey)||e.altKey||e.repeat)return;if(e.key.toLowerCase()==='c'){if(live.current.parts.length){e.preventDefault();shortcuts.current.copyPart();}}if(e.key.toLowerCase()==='v'&&clipboard.current){e.preventDefault();shortcuts.current.pastePart();}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[]);
+  function cutPart(){if(!selectedId)return;copyPart();remove();setNotice('Model cut · Ctrl/Cmd+V to paste');}
+  const shortcuts=useRef({copyPart,pastePart,cutPart});shortcuts.current={copyPart,pastePart,cutPart};
+  useEffect(()=>{const key=(e:KeyboardEvent)=>{const target=e.target as HTMLElement;if(target.closest('input,textarea,select,[contenteditable="true"]')||!(e.ctrlKey||e.metaKey)||e.altKey||e.repeat)return;if(window.getSelection()?.toString())return;if(e.key.toLowerCase()==='c'){if(live.current.parts.length){e.preventDefault();shortcuts.current.copyPart();}}if(e.key.toLowerCase()==='x'){if(live.current.parts.length){e.preventDefault();shortcuts.current.cutPart();}}if(e.key.toLowerCase()==='v'&&clipboard.current){e.preventDefault();shortcuts.current.pastePart();}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[]);
 
   function move(id: string, position: [number, number, number], snap: Snap | null, quaternion?: [number, number, number, number]) {
     checkpoint();
@@ -613,6 +704,8 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
             view={view}
             reset={reset}
             wireframe={wireframe}
+            measure={measure}
+            unit={unit}
             snapEnabled={snapEnabled}
             mates={mates}
             onSelect={setSelectedId}
@@ -625,6 +718,17 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
         </ViewerBoundary>
       </div>
 
+      {selectedId && <aside className="cad-keys" aria-label="Keyboard controls for the selected part">
+        <strong>Selected part</strong>
+        <div><span><kbd>A</kbd><kbd>D</kbd></span>Turn 30°</div>
+        <div><span><kbd>W</kbd><kbd>S</kbd></span>Tip 30°</div>
+        <div><span>Drag arrows</span>Slide along an axis</div>
+        <div><span><kbd>{navigator.platform.includes('Mac')?'⌘':'Ctrl'}</kbd><kbd>C</kbd></span>Copy</div>
+        <div><span><kbd>{navigator.platform.includes('Mac')?'⌘':'Ctrl'}</kbd><kbd>X</kbd></span>Cut</div>
+        <div><span><kbd>{navigator.platform.includes('Mac')?'⌘':'Ctrl'}</kbd><kbd>V</kbd></span>Paste</div>
+        <div><span><kbd>Esc</kbd></span>Deselect</div>
+      </aside>}
+
       <div className="cad-toolbar">
         <div className="cad-viewbar" aria-label="Camera views">
           {(['Perspective', 'Front', 'Top', 'Side'] as View[]).map(v => (
@@ -633,6 +737,13 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
           <span />
           <button title="Fit model in view" onClick={() => setReset(r => r + 1)}>Reset</button>
           <button aria-pressed={wireframe} className={wireframe ? 'active' : ''} onClick={() => setWireframe(v => !v)}>Wireframe</button>
+          <button title="Load the example 4-wheel-drive rover" disabled={!!busy} onClick={() => void loadPreset()}>Example</button>
+        </div>
+        <div className="cad-measure" role="group" aria-label="Measurement guide">
+          <button className="pillbtn" type="button" aria-pressed={measure} onClick={() => onMeasure?.(!measure)}>Measure</button>
+          {measure && <div className="unitswitch">
+            {['mm', 'in'].map(u => <button key={u} type="button" aria-pressed={unit === u} onClick={() => onUnit?.(u)}>{u}</button>)}
+          </div>}
         </div>
 
       </div>
@@ -640,7 +751,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       <div className="cad-actions">
         <button disabled={!model || !!busy} onClick={()=>{copyPart();pastePart();}}>+ Duplicate</button>
         <button disabled={!model||!!busy} onClick={copyPart}>Copy</button><button disabled={!!busy} onClick={pastePart}>Paste</button>
-        {selectedPart&&<div className="cad-transform-controls"><label>Scale % <input aria-label="Uniform scale percent" type="number" min="0.1" max="100000" step="any" value={scalePercent} onChange={e=>setScalePercent(e.target.value)}/></label><button disabled={!!busy} onClick={()=>transform(Number(scalePercent)/100)}>Apply scale</button><label>Rotate ° <input aria-label="Rotation angle degrees" type="number" value={turnDegrees} onChange={e=>setTurnDegrees(e.target.value)}/></label>{(['x','y','z'] as const).map(axis=><button disabled={!!busy} key={axis} onClick={()=>transform(undefined,axis)}>Rotate {axis.toUpperCase()}</button>)}</div>}
+        {selectedPart&&!selectedPart.model.asset.productId&&<div className="cad-transform-controls"><label>Scale % <input aria-label="Uniform scale percent" type="number" min="0.1" max="100000" step="any" value={scalePercent} onChange={e=>setScalePercent(e.target.value)}/></label><button disabled={!!busy} onClick={()=>transform(Number(scalePercent)/100)}>Apply scale</button><label>Rotate ° <input aria-label="Rotation angle degrees" type="number" value={turnDegrees} onChange={e=>setTurnDegrees(e.target.value)}/></label>{(['x','y','z'] as const).map(axis=><button disabled={!!busy} key={axis} onClick={()=>transform(undefined,axis)}>Rotate {axis.toUpperCase()}</button>)}</div>}
         <button disabled={!model || !!busy} onClick={remove}>Remove</button>
         <button disabled={!history.length || !!busy} onClick={undo}>Undo</button>
         <span className={preview ? 'cad-snap-message ready' : 'cad-snap-message'} role="status">{preview ? 'Nodes aligned' : notice}</span>
@@ -779,7 +890,7 @@ export default function CadWorkspace({designsHost, onWorkspaceChange, actionsRef
       <input ref={input} type="file" accept=".step,.stp,.stl,.glb" hidden onChange={e => { if (e.target.files?.[0]) void open(e.target.files[0]); e.target.value = ''; }} />
       <div className="cad-bottom">
         <span><i className="cad-status-dot" />{parts.length ? `${parts.length} parts · ${mates.length} snaps` : 'Ready to assemble'}</span>
-        <span>Drag a part to move it <b>·</b> Click a part then <b>R</b> to rotate (A/D turn, W/S tip) <b>·</b> Shift skips snapping</span>
+        <span>Drag a part to move it <b>·</b> Select a part, then <b>A/D</b> turn it <b>·</b> <b>W/S</b> tip it <b>·</b> Shift skips snapping</span>
       </div>
     </section>
   );

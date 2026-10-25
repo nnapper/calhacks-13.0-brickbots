@@ -1,0 +1,10 @@
+{
+  "name": "Micro Maestro 6-Channel USB Servo Controller (Partial Kit)",
+  "sku": "pololu-1351",
+  "category": "servo-controllers",
+  "expectedDimensionsMm": [
+    30.48,
+    21.59
+  ],
+  "units": "millimeter"
+}

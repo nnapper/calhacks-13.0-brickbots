@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Rectangular 12.7 x 22.86 mm PCB, 1.6 mm thick, lying in the XZ plane with its bottom at Y=0 and thickness along +Y. It has two 2.18 mm through mounting holes along the long edge opposite the header, a row of 9 through holes at 2.54 mm pitch along the other long edge, and a 4x4 mm gyro chip block on top. The chip top sits at Y=3.0 mm, matching the catalog height.",
+  "confidence": "medium",
+  "warnings": [
+    "The 3 mm overall height is the unverified catalog value. The 1.6 mm board thickness and 1.4 mm chip height are assumed so the total matches it.",
+    "The header hole diameter (1.0 mm) is estimated. The square first pad is modeled as a round hole.",
+    "The chip position and 4x4 mm size are estimated from the photo.",
+    "The regulator, resistors, capacitors and other small SMD parts are omitted.",
+    "The mounting hole positions come from the analysis JSON and are mapped to X and Z, with Y as the vertical axis. The header side is assumed to be +X.",
+    "Logos and silkscreen are not modeled."
+  ],
+  "cadquery": "pcb_t = 1.6\nchip_h = 1.4\nboard = cq.Workplane('XY').box(12.7, pcb_t, 22.86, centered=(True, False, True))\nmount_pts = [(-4.2, 8.9), (-4.2, -8.9)]\nheader_pts = [(5.08, (i - 4) * 2.54) for i in range(9)]\nboard = board.cut(cq.Workplane('XZ').pushPoints(mount_pts).circle(2.18 / 2).extrude(-3))\nboard = board.cut(cq.Workplane('XZ').pushPoints(header_pts).circle(0.5).extrude(-3))\nchip = cq.Workplane('XY').box(4, chip_h, 4, centered=(True, False, True)).translate((-2.5, pcb_t, -2))\npart = board.union(chip)"
+}

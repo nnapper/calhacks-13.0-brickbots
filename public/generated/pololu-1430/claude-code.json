@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Single 80 mm diameter, 10 mm wide six-spoke wheel with its axle along Z. It has a combined tire and rim ring (R34 to R40, 10 mm wide) and three crossing 5 mm wide, 4 mm thick bars that form six spokes. A 9 mm radius, 6 mm thick central hub has a 3 mm round bore and six 3 mm holes on a 6.35 mm radius circle. The wheel center is at Y=40, so the bottom sits at Y=0, and it is centered at X=0 and Z=0.",
+  "confidence": "medium",
+  "warnings": [
+    "The bore is modeled as a round 3 mm hole because the D-flat geometry is not visible.",
+    "The tire and rim are merged into one ring, and the tire thickness, rim depth and rim profile are estimated.",
+    "The spoke slots for M2 screws are visible but their dimensions are not given, so they are omitted.",
+    "The spoke width and thickness, the hub radius and thickness, and the 6.35 mm mounting-hole circle radius are estimated from the images.",
+    "The 80 mm diameter, 10 mm width and 3 mm bore come from the vendor listing, which is flagged as unverified.",
+    "The model is a single wheel, not the pair."
+  ],
+  "cadquery": "R = 40\nring = cq.Workplane('XY').circle(R).circle(34).extrude(10).translate((0, 0, -5))\nhub = cq.Workplane('XY').circle(9).extrude(6).translate((0, 0, -3))\nbody = ring.union(hub)\nfor a in (0, 60, 120):\n    spoke = cq.Workplane('XY').box(70, 5, 4).rotate((0, 0, 0), (0, 0, 1), a)\n    body = body.union(spoke)\npts = [(6.35 * math.cos(math.radians(60 * i)), 6.35 * math.sin(math.radians(60 * i))) for i in range(6)]\nholes = cq.Workplane('XY').pushPoints(pts).circle(1.5).extrude(20).translate((0, 0, -10))\nbore = cq.Workplane('XY').circle(1.5).extrude(20).translate((0, 0, -10))\nbody = body.cut(holes).cut(bore)\npart = body.translate((0, 40, 0))"
+}

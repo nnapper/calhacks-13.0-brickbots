@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Green PCB 25.4 x 30.48 x 1.6 mm lying in the XZ plane with its bottom at Y=0. It has two 2.3 mm corner mounting holes, a 6 mm square driver IC at the center, a 6.3 mm x 5.4 mm electrolytic capacitor, and two small SMD blocks. Overall height is about 7 mm.",
+  "confidence": "low",
+  "warnings": [
+    "Board height and component heights are estimated; the product data gives no height.",
+    "The many edge through-hole pads for the logic pins and power/motor terminals are omitted because their positions are uncertain.",
+    "The mounting-hole positions and 2.3 mm diameter were scaled from the image.",
+    "Resistors, small capacitors and the exposed ground pad on the bottom are omitted.",
+    "The component positions are approximate."
+  ],
+  "cadquery": "bw, bl, bt = 25.4, 30.48, 1.6\nboard = cq.Workplane('XY').box(bw, bt, bl).translate((0, bt/2, 0))\n# two mounting holes along the Y axis\nholes = [cq.Solid.makeCylinder(1.15, bt + 2, cq.Vector(x, -1, 13.1), cq.Vector(0, 1, 0)) for x in (-10, 10)]\nfor h in holes:\n    board = board.cut(cq.Workplane('XY').add(h))\n# driver IC\nic = cq.Workplane('XY').box(6, 0.9, 6).translate((3, bt + 0.45, 0))\n# electrolytic capacitor\ncap = cq.Workplane('XY').add(cq.Solid.makeCylinder(3.15, 5.4, cq.Vector(-6, bt, 9), cq.Vector(0, 1, 0)))\n# small SMD tantalum capacitor and MOSFET\ntan = cq.Workplane('XY').box(3.2, 1.6, 1.6).translate((-1.5, bt + 0.8, 8))\nfet = cq.Workplane('XY').box(4.5, 1.0, 3.5).translate((4, bt + 0.5, 11))\npart = board.union(ic).union(cap).union(tan).union(fet)"
+}

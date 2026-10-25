@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Flat 0.254 mm thick force-sensing resistor laminate, with thickness along Y and the bottom at Y=0. A 7.62 mm diameter round pad at one end joins a 6 mm wide rectangular tail. Two flat 0.8 mm wide pins at 2.54 mm spacing extend from the tail end. Overall length is about 20 mm along Z, centered at Z=0. No holes.",
+  "confidence": "low",
+  "warnings": [
+    "Overall length of about 20 mm is estimated from the photo and is unverified.",
+    "Tail width (6 mm), pin width (0.8 mm) and pin length are estimated.",
+    "Pins are modeled as flat strips with the same thickness as the laminate.",
+    "The pad narrows into the tail in the photo; this is simplified to a circle plus a rectangle.",
+    "Thickness is placed along Y to satisfy the bottom-at-Y=0 rule, which differs from the Z thickness axis in the image analysis.",
+    "The printed traces, active-area graphics, logos and the solder-clip detail on the pins are omitted."
+  ],
+  "cadquery": "t=0.254\ncz=10-3.81\nbody=(cq.Workplane('XZ').center(0,cz).circle(3.81).extrude(-t))\ntail=(cq.Workplane('XZ').center(0,(cz-5)/2).rect(6.0,cz+5).extrude(-t))\npins=(cq.Workplane('XZ').pushPoints([(-1.27,-6.5),(1.27,-6.5)]).rect(0.8,7).extrude(-t))\npart=body.union(tail).union(pins)"
+}

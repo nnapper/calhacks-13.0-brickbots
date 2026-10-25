@@ -1,0 +1,12 @@
+{
+  "name": "Pololu Wheel 42×19mm Pair",
+  "sku": "pololu-1090",
+  "category": "d-shaft-wheels",
+  "expectedDimensionsMm": [
+    42,
+    19,
+    42,
+    3
+  ],
+  "units": "millimeter"
+}

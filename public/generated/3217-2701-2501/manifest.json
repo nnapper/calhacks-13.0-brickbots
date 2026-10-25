@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Compact ServoBlock® (27mm Width, For Standard Size H25T Spline Servo, Hub-Shaft)",
+    "sku": "3217-2701-2501",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/compact-servoblock-27mm-width-for-standard-size-h25t-spline-servo-hub-shaft/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 27mm width is stated. Length (~56mm) and overall height are estimated from the proportions in the images and a standard servo footprint. The hole diameters and positions, including the 4mm M4 tap size and the ~16mm spline opening, are approximate. The 16mm square pattern and the 8mm hub-shaft rise come from the specs. The 14mm bearing protrusion diameter is not modeled as a hole. Hole positions are relative to the part center and are not verified.",
+      "Only the 27mm width and 8mm hub rise are stated; length (56), plate height (12), hub flange size (20mm dia, 3mm) are estimated.",
+      "Hub-shaft modeled as a plain stepped cylinder; the spline, center screw, and six-hole hub pattern were omitted.",
+      "Window position and diameter (16mm at x=+14) are estimated from the image.",
+      "Threads omitted; tapped holes modeled as 3.4mm blind holes with estimated depth and positions.",
+      "Servo, bearing internals, servo mounting hardware, and underside/end-face details omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -28,
+      "xmax": 28,
+      "ymin": 0,
+      "ymax": 20,
+      "zmin": -13.5000001,
+      "zmax": 13.5000001,
+      "xlen": 56,
+      "ylen": 20,
+      "zlen": 27.0000002
+    },
+    "warnings": [
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 147222,
+        "sha256": "6c5ff20fa110a24358d7d826cc3a81ea19aad49f2386174d4f27f5b66b5bdced"
+      },
+      "model.stl": {
+        "bytes": 219884,
+        "sha256": "073564e3b578e22a706392530456d54fb1eb30990ed8883ddb83a3ea38a78b27"
+      },
+      "model.glb": {
+        "bytes": 80100,
+        "sha256": "f16ee6dd0ad47d5386f0f820ceb0263caee26ec253514adf833e20902e72b8f0"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "6c5ff20fa110a24358d7d826cc3a81ea19aad49f2386174d4f27f5b66b5bdced"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

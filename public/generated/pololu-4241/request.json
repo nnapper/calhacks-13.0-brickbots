@@ -1,0 +1,11 @@
+{
+  "name": "QTR-MD-01A Reflectance Sensor: 1-Channel, 7.5mm Wide, Analog Output",
+  "sku": "pololu-4241",
+  "category": "reflectance-sensors",
+  "expectedDimensionsMm": [
+    20,
+    7.5,
+    2.5
+  ],
+  "units": "millimeter"
+}

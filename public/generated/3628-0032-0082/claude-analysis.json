@@ -1,0 +1,99 @@
+{
+  "partType": "flat_plate",
+  "summary": "Flat circular steel flywheel ring, 82 mm in diameter, with a large central cutout of multiple lobes and arms. It has eight countersunk or counterbored mounting holes on an outer bolt circle and four hex-shaped pockets with small through holes on an inner circle. Thickness is estimated from mass, not stated.",
+  "boundsMm": {
+    "x": 82,
+    "y": 82,
+    "z": 6.4
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 4.2,
+      "positionsMm": [
+        [
+          35,
+          0,
+          0
+        ],
+        [
+          24.75,
+          24.75,
+          0
+        ],
+        [
+          0,
+          35,
+          0
+        ],
+        [
+          -24.75,
+          24.75,
+          0
+        ],
+        [
+          -35,
+          0,
+          0
+        ],
+        [
+          -24.75,
+          -24.75,
+          0
+        ],
+        [
+          0,
+          -35,
+          0
+        ],
+        [
+          24.75,
+          -24.75,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4.2,
+      "positionsMm": [
+        [
+          14.14,
+          14.14,
+          0
+        ],
+        [
+          -14.14,
+          14.14,
+          0
+        ],
+        [
+          -14.14,
+          -14.14,
+          0
+        ],
+        [
+          14.14,
+          -14.14,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 3.2,
+      "description": "Front flat face with the counterbored outer holes; it sits against the traction wheel face."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -3.2,
+      "description": "Back flat face, parallel to the front face."
+    }
+  ],
+  "confidence": "low",
+  "notes": "Only the 82 mm diameter is given. Thickness (~6.4 mm) is estimated from the 152 g steel mass and the visible cutout area. Hole diameters (~4.2 mm, M4 clearance), bolt-circle radii (~35 mm outer, ~20 mm inner hex pockets) and angular positions are estimated from the photos and the product-insight drawings. The central cutout (roughly 45–50 mm across, with lobes) is not modelled as a hole. Counterbores and hex pocket details are not captured in the hole list."
+}

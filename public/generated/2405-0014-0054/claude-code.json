@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Plain round wheel blank, 54 mm outside diameter and 9 mm thick, with a 14 mm through bore. The wheel axis is Z, centered at X=0 and Z=0. The part is shifted in Y so its lowest point sits at Y=0, with the wheel center at Y=27.",
+  "confidence": "low",
+  "warnings": [
+    "The 9 mm thickness is a rough estimate from the photos and is not a listed dimension.",
+    "The 54 mm diameter and 14 mm bore come from the unverified specs.",
+    "The recessed hub step, lightening slots, small holes and screw bosses are omitted because their sizes and positions are unknown.",
+    "The wheel axis is Z, following the image analysis. The Y=0 bottom rule is met by shifting the wheel center up by 27 mm, so Y spans 0 to 54."
+  ],
+  "cadquery": "part = cq.Workplane('XY').circle(27).circle(7).extrude(9).translate((0, 27, -4.5))"
+}

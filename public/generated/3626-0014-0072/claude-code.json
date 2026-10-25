@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Simplified 72 mm diameter, 24 mm wide wheel with a 12 mm central through-bore. The axis of rotation is along Z, centered at X=0 and Z=0. The wheel is shifted so its lowest point is at Y=0, with its center at Y=36. It is a solid disc with the bore only, because the spoked hub, tread grooves and bolt holes are omitted.",
+  "confidence": "low",
+  "warnings": [
+    "Only the 72 mm diameter is stated. The 24 mm width and 12 mm bore are visual estimates and need checking against the vendor drawing.",
+    "The open spoked hub pockets, the recessed hub face and the tread lugs and grooves are omitted because their geometry is uncertain.",
+    "The bolt-circle holes are visible, but their diameter and positions are not given, so they are omitted.",
+    "The rubber tread and plastic core are modeled as a single solid.",
+    "The analysis puts the axis along Z, so the wheel stands on its rim at Y=0. This follows the bounds in the analysis, not the flat orientation in the photo."
+  ],
+  "cadquery": "part = (cq.Workplane('XY').circle(36).circle(6).extrude(24).translate((0, 36, -12)))"
+}

@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Rectangular 20.32 x 8.13 mm PCB, 1.0 mm thick, lying in the XZ plane with Y up and bottom at Y=0. Two 1.6 x 3 mm slots at the left end and three 1 mm through-holes at the right end. Top-side components are simple boxes: a large optocoupler (reaching 3.3 mm total height), two MOSFETs, a small IC and a resistor.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions come from the unverified spec.",
+    "PCB thickness (1.0 mm) is assumed.",
+    "Component positions and sizes are estimated from the image.",
+    "Hole and slot positions follow the estimated analysis; the real right-end holes may be larger and not collinear, and the slot orientation is uncertain.",
+    "The central board slot and the underside pads are omitted because they are not measurable.",
+    "Optocoupler leads and component details are omitted."
+  ],
+  "cadquery": "t=1.0\nboard=cq.Workplane('XY').box(20.32,t,8.13,centered=(True,False,True))\nholes=cq.Workplane('XZ').pushPoints([(9,-2.54),(9,0),(9,2.54)]).circle(0.5).extrude(-t)\nslots=cq.Workplane('XZ').pushPoints([(-9.1,-1.6),(-9.1,1.6)]).slot2D(3,1.6,90).extrude(-t)\nboard=board.cut(holes).cut(slots)\ndef blk(x,z,l,w,h,y0=t):\n    return cq.Workplane('XY').box(l,h,w,centered=(True,False,True)).translate((x,y0,z))\nopto=blk(2.5,0,6.5,4.4,2.3)\nm1=blk(-5.5,-1.8,3.3,3.3,1.0)\nm2=blk(-2.0,1.8,3.3,3.3,1.0)\nchip=blk(7.0,-1.8,2.5,2.5,0.9)\nres=blk(3.5,-3.3,2.0,1.2,0.5)\npart=board.union(opto).union(m1).union(m2).union(chip).union(res)"
+}

@@ -1,0 +1,50 @@
+/* Build health lives at the bottom of the "Your build" panel and follows the light/dark theme. */
+.compat-health {
+  display: flex;
+  flex-direction: column;
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 12px;
+  overflow: hidden;
+}
+.compat-health-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 13px 8px;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  font-weight: 600;
+  cursor: pointer;
+}
+.compat-health-title { letter-spacing: .03em; }
+.compat-health-header-end { display: inline-flex; gap: 9px; align-items: center; color: var(--muted); font-weight: 400; }
+.compat-health-totals { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 12px 10px; }
+.compat-number { border-radius: 6px; padding: 4px 6px; font-size: 10px; font-weight: 600; white-space: nowrap; }
+.compat-number.is-good { background: color-mix(in srgb, var(--ok) 18%, transparent); color: var(--ok); }
+.compat-number.is-bad { background: color-mix(in srgb, #e5484d 18%, transparent); color: #e5484d; }
+.compat-number.is-unknown { background: color-mix(in srgb, var(--muted) 16%, transparent); color: var(--muted); }
+.compat-health-body { overflow-y: auto; max-height: 280px; min-height: 0; border-top: 1px solid var(--line); padding: 8px 12px 10px; }
+.compat-empty { color: var(--muted); line-height: 1.5; margin: 4px 0; }
+.compat-pair-list { list-style: none; padding: 0; margin: 0; }
+.compat-pair { padding: 9px 0 10px; border-bottom: 1px solid var(--line); }
+.compat-pair:last-child { border-bottom: 0; }
+.compat-pair-head { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.compat-status { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.compat-pair.is-compatible .compat-status { color: var(--ok); }
+.compat-pair.is-incompatible .compat-status { color: #e5484d; }
+.compat-pair.is-unknown .compat-status { color: var(--muted); }
+.compat-pair-target { padding: 0; border: 0; background: transparent; color: var(--ink); text-align: left; font-size: 11px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; cursor: pointer; }
+.compat-pair-target:hover, .compat-pair-target:focus-visible { color: var(--cool); text-decoration: underline; }
+.compat-pair p { margin: 5px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.compat-sources { display: flex; flex-wrap: wrap; gap: 4px 9px; margin-top: 5px; }
+.compat-sources a { color: var(--cool); font-size: 10px; }
+.compat-meta { font-size: 10px; color: var(--warm); margin: 9px 0 0; }
+.compat-disclaimer { font-size: 10px; line-height: 1.5; margin: 10px 0 0; color: var(--muted); }

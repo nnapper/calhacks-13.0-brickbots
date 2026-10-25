@@ -1,0 +1,5 @@
+pcb = cq.Workplane('XY').box(22.1, 19.9, 1.0).translate((0, 9.95, -7.7))
+hole = cq.Workplane('XY').workplane(offset=-8.3).center(-7.4, 16.5).circle(1.55).extrude(1.2)
+pcb = pcb.cut(hole)
+tx = cq.Workplane('XY').workplane(offset=-7.2).center(1.5, 8.5).circle(8.0).extrude(15.4)
+part = pcb.union(tx)

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "ACS711 Current Sensor Carriers",
+    "sku": "pololu-2452",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Length and width (20.32 x 17.78 mm) come from the supplied unverified metadata; no dimensions are printed on the images. The 1.6 mm thickness is an assumed standard PCB thickness and excludes the IC and component height. Hole positions and diameters are rough estimates from the photos and the pin-label view. The 2.54 mm pin pitch comes from the spec. The pin row is placed on the +x edge, matching the pin-label image, with IP+ and IP- on the -x side. The current terminals also have smaller secondary plated holes and what look like larger corner holes near the pin row. Their sizes and positions are too uncertain to list, so they are omitted. The bounding box is centred on the part.",
+      "Board length/width come from unverified metadata; the 1.6 mm thickness is assumed.",
+      "Hole positions and diameters are rough estimates from the analysis JSON. In the photo the large holes appear near the ends of the pin row, so their placement may be wrong.",
+      "Clustered current-terminal holes, secondary plated holes, and copper pads are omitted because their sizes and positions are uncertain.",
+      "The IC is a simplified 3x3x1 mm block; the small passives, pins, and markings are omitted."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -10.16,
+      "xmax": 10.16,
+      "ymin": 0,
+      "ymax": 2.6,
+      "zmin": -8.89,
+      "zmax": 8.89,
+      "xlen": 20.32,
+      "ylen": 2.6,
+      "zlen": 17.78
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 63110,
+        "sha256": "abfcaf97c23306153a3cdce04aa5758ba8f420d36a223c3263a72d45811c4129"
+      },
+      "model.stl": {
+        "bytes": 120484,
+        "sha256": "379c3b1740912b0c8fa78e3c56f7cff2fa2177628eb263c4674a8bf808c04981"
+      },
+      "model.glb": {
+        "bytes": 44220,
+        "sha256": "c0847597a092cf71cb4756aff83359ba6ee071f6a232c242ad5b1a72e1585945"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "abfcaf97c23306153a3cdce04aa5758ba8f420d36a223c3263a72d45811c4129"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

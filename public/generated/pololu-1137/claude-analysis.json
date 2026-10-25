@@ -1,0 +1,37 @@
+{
+  "partType": "other",
+  "summary": "Compact optical distance sensor in a black rectangular plastic housing. Two square lens towers (emitter and receiver) sit side by side along the long axis. A flat mounting flange with a round-ended tab at each end carries a through hole. A small connector sits on the side of the board, with the PCB visible on the back.",
+  "boundsMm": {
+    "x": 44.5,
+    "y": 18.9,
+    "z": 21.6
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          -19,
+          0,
+          -8.8
+        ],
+        [
+          19,
+          0,
+          -8.8
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -10.8,
+      "description": "Flat back face of the housing and mounting tabs, which seats against a panel or bracket. The two tab holes pass through it along the lens axis."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No printed dimensions appear in the images. The bounding box uses the listed size (44.5 × 18.9 × 21.6 mm), which is flagged as unverified. I assigned the axes myself: x is the long axis through the mounting tabs, z is the lens direction, and y is the remaining dimension. The hole diameter (about 3 mm), hole spacing (about 38 mm) and hole z position are rough estimates from image proportions, not stated values. The back face offset assumes the box is centered on the part. The connector and PCB details are not modeled."
+}

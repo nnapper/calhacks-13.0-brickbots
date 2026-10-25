@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu 22T Track Set - Black",
+    "sku": "pololu-3030",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Bounds describe one assembled track loop centered on the part, with x along the sprocket spacing and z along the track width. x is about 48 mm spacing plus about 35 mm sprocket diameter, roughly 83 mm overall (an estimate). y is the stated ~39 mm diameter with track. z is the stated 14.6 mm track width. The 3 mm hole is for the drive sprocket D-shaft, as stated in the description. It is placed at the sprocket centers, and the through condition is assumed. Idler hole diameter and positions, the screw sizes and the sprocket hub details are not given, so they are not specified. The supplied dimensions are marked unverified, and no drawing with printed dimensions is visible.",
+      "Dimensions are unverified and the image gives no drawing dimensions.",
+      "Modeled as a single assembled loop (track + 2 sprockets), not the full kit; the second track, extra sprockets, screws, washers and nuts are omitted.",
+      "Track inner teeth, sprocket teeth, spokes, hub details and the D-shaft profile are omitted; the 3 mm holes are plain round.",
+      "The idler sprocket hole size is not specified; the same 3 mm hole is used on both sprockets.",
+      "The overall X length is 87 mm (48 mm spacing + 39 mm track diameter), not the 83 mm estimate in the analysis bounds (48 mm spacing + 35 mm sprocket).",
+      "The track wall thickness (about 2.5 mm) is estimated.",
+      "The track is modeled as a stadium shape, not the slightly oval shape seen in the image."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -43.5,
+      "xmax": 43.5,
+      "ymin": 0,
+      "ymax": 39,
+      "zmin": -7.3,
+      "zmax": 7.3,
+      "xlen": 87,
+      "ylen": 39,
+      "zlen": 14.6
+    },
+    "warnings": [
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 72884,
+        "sha256": "ea032bdb3185b3d325e73dafd9b0deee966fbc17d3819585a65b989779e2c22d"
+      },
+      "model.stl": {
+        "bytes": 100484,
+        "sha256": "ea24293671c0a00d6091e87577e85fe8e75afbd91d2c34bd5406a6122d503542"
+      },
+      "model.glb": {
+        "bytes": 37116,
+        "sha256": "3041288e994da73416b466de9cc3b2f39e33d3a6b1cf5006220162c68c735692"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "ea032bdb3185b3d325e73dafd9b0deee966fbc17d3819585a65b989779e2c22d"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

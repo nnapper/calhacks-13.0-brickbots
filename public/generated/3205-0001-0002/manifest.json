@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "V-Wheel Standoff Kit (24mm Center Height)",
+    "sku": "3205-0001-0002",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/v-wheel-standoff-kit-24mm-center-height/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Drawing values: shaft 6 mm diameter x 19 mm long, roller section 10 mm diameter x 10 mm tall (8 mm straight band between chamfers), base hole 8 mm deep, cap hex drive 3 mm. Total height of about 33 mm is estimated from the drawing scale: the cap protrudes roughly 4 mm above the roller section, and this value is not printed. The 24 mm base-to-center height from the listing agrees with 19 + 10/2. The hole diameter of 4 mm is taken from the nominal size in the callout. The bounding box is centered on the part, with z running from -16.5 to +16.5. The hex socket in the cap is a small recess and is not listed as a hole.",
+      "Cap diameter (about 7 mm) and cap height (about 4 mm) are estimated from the drawing scale and are not printed on it.",
+      "Chamfer size (1 mm) is estimated from the drawing scale.",
+      "The 3 mm hex drive socket in the cap is omitted because its depth is not shown.",
+      "Threads are not modeled. The M4 base hole is a plain 4 mm nominal-diameter blind hole, 8 mm deep.",
+      "The 4 mm base hole diameter is the nominal M4 size rather than a tap-drill size."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -5,
+      "xmax": 5,
+      "ymin": -3.3306690738754696e-16,
+      "ymax": 33,
+      "zmin": -4.999999999999997,
+      "zmax": 5.0000000000000036,
+      "xlen": 10,
+      "ylen": 33,
+      "zlen": 10
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 24.000 mm; measured dimensions are [10.0, 10.0, 33.0]",
+      "Generated part is larger than the largest listed dimension."
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 23178,
+        "sha256": "780af171a77500f1526ad0a368076842635fc410511191d9fd4f8233b1f45d9c"
+      },
+      "model.stl": {
+        "bytes": 92284,
+        "sha256": "ef259e7ee27580677a7964ac27ebbc0cc86f339a968a2eb07c72a7995c9b49a8"
+      },
+      "model.glb": {
+        "bytes": 34256,
+        "sha256": "e9d28a2e5003f97229e9cf1a85a2625b414a94d1823e4b2b0dfebdc5b92650a3"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "780af171a77500f1526ad0a368076842635fc410511191d9fd4f8233b1f45d9c"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 10
+  },
+  "status": "prototype_unverified"
+}

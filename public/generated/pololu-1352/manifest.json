@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Mini Maestro 12-Channel USB Servo Controller (Assembled)",
+    "sku": "pololu-1352",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The printed drawing gives 1.10 in x 1.42 in, which is 27.94 x 36.07 mm and matches the supplied specs. The 0.086 in hole diameter (2.18 mm) comes from the spec text. The two hole positions are estimated by eye from the back-view drawing, so treat them as approximate. No height or thickness is printed, so z = 1.6 mm is an assumed standard PCB thickness. It excludes the header pins, USB connector, and components, which protrude above the board and were not measured. Orientation is assumed with the USB connector toward the -x short edge and the long axis along y.",
+      "PCB thickness 1.6 mm is assumed; no height was given.",
+      "Mounting hole positions are estimated and approximate.",
+      "Header block layout, pin lengths, USB connector size and position are approximated from the photo.",
+      "The microcontroller, LEDs, jumper, SMD components and other small parts are omitted.",
+      "Orientation assumed: USB toward -X, long axis along X, Y up."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -18.5,
+      "xmax": 18.035,
+      "ymin": -3,
+      "ymax": 10.1,
+      "zmin": -13.97,
+      "zmax": 13.97,
+      "xlen": 36.535,
+      "ylen": 13.1,
+      "zlen": 27.94
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 1194389,
+        "sha256": "06dd6abf685166cbec80a4723dc29a8025edb200bf1b4391420618f85af18c25"
+      },
+      "model.stl": {
+        "bytes": 94884,
+        "sha256": "bb1891207354005629ad90c0e362e83973ae14b3beb659516cb959aef6bbbc12"
+      },
+      "model.glb": {
+        "bytes": 35140,
+        "sha256": "bd9208f51fe90cc507d71569d69e48ab8260647f03e24e87ecaf8543a6996bea"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "06dd6abf685166cbec80a4723dc29a8025edb200bf1b4391420618f85af18c25"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

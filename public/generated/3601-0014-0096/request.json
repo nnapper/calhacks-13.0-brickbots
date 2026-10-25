@@ -1,0 +1,12 @@
+{
+  "name": "3601 Series Rhino Wheel (14mm Bore, 96mm Diameter)",
+  "sku": "3601-0014-0096",
+  "category": "rhino-wheels",
+  "sourceUrl": "https://www.gobilda.com/3601-series-rhino-wheel-14mm-bore-96mm-diameter/",
+  "expectedDimensionsMm": [
+    32,
+    96,
+    14
+  ],
+  "units": "millimeter"
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "3607 Series Disc Wheel (14mm Bore, 48mm Diameter, Black) - 2 Pack",
+    "sku": "3607-0014-0048",
+    "retailer": "goBILDA",
+    "url": "https://www.gobilda.com/3607-series-disc-wheel-14mm-bore-48mm-diameter-black-2-pack/"
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "medium",
+    "codeConfidence": "medium",
+    "warnings": [
+      "Dimensions come from the drawing: 48mm OD, 14mm bore, 4mm holes, 24mm across the horizontal hole centers, 16mm across the lower diagonal holes, 38mm recess diameter, 3mm web and 6mm overall thickness. The 4mm holes look slightly oval or slotted, but only a 4mm size is given. The diagonal hole coordinates are estimated from the 24mm bolt circle and the 16mm spacing. Which face carries the recess is ambiguous in the side view, so the z offsets are approximate.",
+      "The 4 mm holes look slightly oval or slotted in the drawing, so they are modeled as round 4 mm holes.",
+      "The diagonal hole positions are estimated from the 24 mm and 16 mm dimensions.",
+      "Which face carries the recess is ambiguous, so it is placed on the top face (Y=3 to 6).",
+      "The rubber lip is not modeled separately and is treated as part of the single solid.",
+      "The disc axis is along Y to match the bottom-at-Y=0 rule, while the source analysis described it along Z."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -24,
+      "xmax": 24,
+      "ymin": 0,
+      "ymax": 6,
+      "zmin": -24,
+      "zmax": 24,
+      "xlen": 48,
+      "ylen": 6,
+      "zlen": 48
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 14.000 mm; measured dimensions are [6.0, 48.0, 48.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 42358,
+        "sha256": "91659d5a040acbad689f7e61892e8582341f8b615abd77ce08b79dd0ad5ff947"
+      },
+      "model.stl": {
+        "bytes": 186484,
+        "sha256": "60b842e9794e361b9bcb686bada66be5117d1be2618a35b9fad8f787c78c1b8b"
+      },
+      "model.glb": {
+        "bytes": 67936,
+        "sha256": "52973a22c7322f228a533cafc41f660e2f4c3c98c8bf2bf7201fcb01428631d2"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "91659d5a040acbad689f7e61892e8582341f8b615abd77ce08b79dd0ad5ff947"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 32
+  },
+  "status": "prototype_unverified"
+}

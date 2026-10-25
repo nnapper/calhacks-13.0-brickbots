@@ -1,0 +1,47 @@
+{
+  "partType": "flat_plate",
+  "summary": "Rectangular aluminum pattern plate, 43 x 96 mm, thin. Three large round through-holes sit on the centerline along the long axis. They are surrounded by a patterned field of many smaller round holes and several elongated slots, in mirrored columns on both sides of the large holes.",
+  "boundsMm": {
+    "x": 43,
+    "y": 96,
+    "z": 4
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          -32,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          32,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 2,
+      "description": "Top flat face (+Z), brushed, carries the hole/slot pattern; usable as a mounting surface"
+    },
+    {
+      "axis": "z",
+      "offsetMm": -2,
+      "description": "Bottom flat face (-Z), parallel to the top face; usable as a mounting surface"
+    }
+  ],
+  "confidence": "low",
+  "notes": "Length (96 mm) and width (43 mm) come from the supplied data and are marked unverified. Thickness is not stated (height is null), so the 4 mm is only an estimate from the edge-on proportions in the images. The 14 mm diameter and 32 mm pitch of the three large holes are estimated from image proportions, not printed dimensions. The many smaller round holes and the slots are visible, but their diameters and exact coordinates are not given, so they are not listed. The part is symmetric about its centerline, and the box is centered at the origin with the long axis along Y."
+}

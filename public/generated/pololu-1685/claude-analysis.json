@@ -1,0 +1,32 @@
+{
+  "partType": "wheel",
+  "summary": "Small slick-tire wheel with a three-spoke hub and a central hex bore for a 3 mm hex shaft. The tire is arched. The part is modeled as a single wheel with its rotation axis along z.",
+  "boundsMm": {
+    "x": 31,
+    "y": 31,
+    "z": 10
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Central hub with a hex bore along the rotation axis. It mounts on a 3 mm hex shaft."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "The 31 mm diameter and 10 mm width come from the supplied listing, which is marked unverified. No dimensions are printed on the images. The 3 mm hex bore size is taken from the stated shaft compatibility. The images do not show whether the bore goes all the way through, so 'through' is set to false. The hub recess depth, spoke geometry, and tread pattern are not modeled. The listing describes the set as 4 wheels plus a 60 mm shaft, and this entry covers one wheel only."
+}

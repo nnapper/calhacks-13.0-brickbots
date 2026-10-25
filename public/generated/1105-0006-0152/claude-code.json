@@ -1,0 +1,10 @@
+{
+  "shapeSummary": "Flat aluminum round-end plate, 152 x 32 x 2.5 mm. Length is along X, width along Z, and thickness runs along Y from 0 to 2.5. Both ends are full 16 mm radius. Six 14 mm through-holes sit on the centerline at a 24 mm pitch (x = ±12, ±36, ±60).",
+  "confidence": "medium",
+  "warnings": [
+    "The small 16mm-pattern holes and slots around each 14mm hole are visible, but their diameters and coordinates are not stated, so they were omitted.",
+    "Dimensions come from the unverified spec. The 24mm pitch is derived as (152-32)/5.",
+    "Axes follow the prompt rules: thickness along Y with the bottom at Y=0, X and Z centered. This differs from the analysis JSON, which put thickness along Z."
+  ],
+  "cadquery": "part = cq.Workplane('XZ').slot2D(152, 32).extrude(-2.5)\nholes = cq.Workplane('XZ').pushPoints([(x, 0) for x in (-60, -36, -12, 12, 36, 60)]).circle(7).extrude(-2.5)\npart = part.cut(holes)"
+}

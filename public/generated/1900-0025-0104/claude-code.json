@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Flat aluminum servo arm: 8 mm wide bar with a rounded end (R4) and a Ø10 mm hub at the other end. Four Ø4 mm through holes at 8 mm pitch (centers 13, 21, 29, 37 mm along Y). The hub center is at Y=5, 32 mm from the farthest hole. The plate is 4 mm thick and the hub is 7.6 mm thick, spanning Z -3.8 to 3.8. A Ø3 mm hole passes through the hub, with a Ø7 mm x 3.5 mm recess on the plate side. Overall bounds are about 10 x 41 x 7.6 mm.",
+  "confidence": "medium",
+  "warnings": [
+    "The 25-tooth spline is not modeled; the Ø3 mm hole runs straight through the hub in its place.",
+    "The Ø7 mm recess depth of 3.5 mm is inferred from the section view dimension.",
+    "The 3.1 mm dimension is not tied clearly to a feature and is omitted.",
+    "The plate sits on the -Z side, with the hub projecting to +Z.",
+    "The Ø10 mm hub end is modeled as a full circle; the small notch where the hub meets the bar in the right view is omitted."
+  ],
+  "cadquery": "t=7.6\nplate_t=4.0\nhub_y=5.0\nz0=-t/2\nbar=cq.Workplane('XY').workplane(offset=z0).center(0,21).rect(8,32).extrude(plate_t)\ntop=cq.Workplane('XY').workplane(offset=z0).center(0,37).circle(4).extrude(plate_t)\nhub=cq.Workplane('XY').workplane(offset=z0).center(0,hub_y).circle(5).extrude(t)\npart=bar.union(top).union(hub)\nholes=cq.Workplane('XY').workplane(offset=z0).pushPoints([(0,13),(0,21),(0,29),(0,37)]).circle(2).extrude(plate_t)\npart=part.cut(holes)\nrecess=cq.Workplane('XY').workplane(offset=z0).center(0,hub_y).circle(3.5).extrude(3.5)\npart=part.cut(recess)\nbore=cq.Workplane('XY').workplane(offset=z0).center(0,hub_y).circle(1.5).extrude(t)\npart=part.cut(bore)"
+}

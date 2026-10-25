@@ -1,0 +1,14 @@
+t=7.6
+plate_t=4.0
+hub_y=5.0
+z0=-t/2
+bar=cq.Workplane('XY').workplane(offset=z0).center(0,21).rect(8,32).extrude(plate_t)
+top=cq.Workplane('XY').workplane(offset=z0).center(0,37).circle(4).extrude(plate_t)
+hub=cq.Workplane('XY').workplane(offset=z0).center(0,hub_y).circle(5).extrude(t)
+part=bar.union(top).union(hub)
+holes=cq.Workplane('XY').workplane(offset=z0).pushPoints([(0,13),(0,21),(0,29),(0,37)]).circle(2).extrude(plate_t)
+part=part.cut(holes)
+recess=cq.Workplane('XY').workplane(offset=z0).center(0,hub_y).circle(3.5).extrude(3.5)
+part=part.cut(recess)
+bore=cq.Workplane('XY').workplane(offset=z0).center(0,hub_y).circle(1.5).extrude(t)
+part=part.cut(bore)

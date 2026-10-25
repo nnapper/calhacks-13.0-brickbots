@@ -1,0 +1,42 @@
+{
+  "partType": "other",
+  "summary": "Compact IR distance sensor module with a black plastic body. Two mounting ears extend from the ends of the long axis, each with a round hole. The emitter and detector lens windows are on one face. A small PCB with a 3-pin connector protrudes from the opposite edge. Axes: x is the long dimension including the ears, y is the width including the connector tab, and z is the thickness along the sensing direction.",
+  "boundsMm": {
+    "x": 44.5,
+    "y": 18.9,
+    "z": 13.5
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          -19.2,
+          3,
+          0
+        ],
+        [
+          19.2,
+          3,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -6.75,
+      "description": "Rear face on the PCB side. The ears are flush against a panel here, and the mounting holes pass through them along z."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 6.75,
+      "description": "Front sensing face with the emitter and detector windows. It must stay unobstructed and face the target."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The overall size of 44.5 x 18.9 x 13.5 mm comes from the listed specs and is flagged unverified. No drawing with printed dimensions is visible. The hole diameter (about 3 mm) and the hole positions are estimated from pixel proportions in the rear-view image, not stated, so they should be checked against the datasheet. The axis assignment is an interpretation of the views. The connector and PCB are included in the y extent."
+}

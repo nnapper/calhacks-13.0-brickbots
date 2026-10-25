@@ -1,0 +1,52 @@
+{
+  "partType": "motor",
+  "summary": "NEMA 17-size hybrid bipolar stepper motor with a square body and an integrated lead-screw output shaft that extends from the front face. A traveling nut with four mounting holes sits on the screw. The model is centered on the overall envelope, with the motor body at the -z end and the screw running along +z.",
+  "boundsMm": {
+    "x": 42.3,
+    "y": 42.3,
+    "z": 220
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          15.5,
+          15.5,
+          -72
+        ],
+        [
+          -15.5,
+          15.5,
+          -72
+        ],
+        [
+          15.5,
+          -15.5,
+          -72
+        ],
+        [
+          -15.5,
+          -15.5,
+          -72
+        ]
+      ],
+      "through": false
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -72,
+      "description": "Front flange face of the motor body, where the screw exits. It has four visible corner mounting holes."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -110,
+      "description": "Rear face of the motor body, where the cable exits."
+    }
+  ],
+  "confidence": "low",
+  "notes": "The 42.3 mm square footprint and 38 mm body length come from the listed dimensions, which are marked unverified. The z extent of 220 mm assumes the 182 mm listed length is the screw protruding beyond the 38 mm body (38 + 182). If 182 mm is the overall length, z would be 182. The four front-face holes are visible in the images, but their 31 mm spacing and 3 mm diameter are standard NEMA 17 values, not printed on the product. Their depth is not shown, so they are marked blind. The nut's four holes are visible, but their size and pattern are not given, so they are omitted. The screw diameter is not listed here (the Tr 8 × 8 spec suggests about 8 mm) and is not modeled."
+}

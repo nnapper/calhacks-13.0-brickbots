@@ -1,0 +1,144 @@
+{
+  "partType": "wheel",
+  "summary": "Round wheel, 72 mm diameter and 32 mm wide, with its axis along Z. The hub is a recessed web with a central 14 mm bore and an 8 mm-grid pattern of 4 mm holes. The web sits off-centre: 8 mm from one edge and 16 mm from the other. The drawing's section shows it as 8 mm thick. The rim is open on the 16 mm side and recessed on the 8 mm side.",
+  "boundsMm": {
+    "x": 72,
+    "y": 72,
+    "z": 32
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 14,
+      "positionsMm": [
+        [
+          0,
+          0,
+          -4
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 4,
+      "positionsMm": [
+        [
+          0,
+          24,
+          -4
+        ],
+        [
+          0,
+          -24,
+          -4
+        ],
+        [
+          24,
+          0,
+          -4
+        ],
+        [
+          -24,
+          0,
+          -4
+        ],
+        [
+          -16,
+          16,
+          -4
+        ],
+        [
+          -8,
+          16,
+          -4
+        ],
+        [
+          8,
+          16,
+          -4
+        ],
+        [
+          16,
+          16,
+          -4
+        ],
+        [
+          -16,
+          8,
+          -4
+        ],
+        [
+          -8,
+          8,
+          -4
+        ],
+        [
+          8,
+          8,
+          -4
+        ],
+        [
+          16,
+          8,
+          -4
+        ],
+        [
+          -16,
+          -8,
+          -4
+        ],
+        [
+          -8,
+          -8,
+          -4
+        ],
+        [
+          8,
+          -8,
+          -4
+        ],
+        [
+          16,
+          -8,
+          -4
+        ],
+        [
+          -16,
+          -16,
+          -4
+        ],
+        [
+          -8,
+          -16,
+          -4
+        ],
+        [
+          8,
+          -16,
+          -4
+        ],
+        [
+          16,
+          -16,
+          -4
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Hub web face on the 16 mm side, measured from the web face to the wheel edge (z=+16). This is the open side of the rim."
+    },
+    {
+      "axis": "z",
+      "offsetMm": -8,
+      "description": "Opposite web face on the 8 mm side, measured to the wheel edge (z=-16). Flipping the wheel swaps the two sides to change track width."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Z is centred on the overall 32 mm width, so the edges are at z=-16 and z=+16. The web spans z=-8 to 0, with its midplane at z=-4. The 16 mm side is toward +z. The 4 mm hole positions come from the 8 mm grid in the drawing, with the X/Y origin at the bore centre. They were read from pixel positions and are only approximate; 24 mm is the printed distance from centre to the outermost holes. The 4 mm hole diameter and the through-holes are taken from the drawing. The four 4 mm-wide slots on the cross axes are not listed as round holes. The rim has a stepped lip that is not modelled. The 56 mm dimension in the drawing is the inner recess diameter. The tread is rubber, but that is not a geometric feature."
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Glideforce MD122010-P Medium-Duty Linear Actuator with Feedback: 100kgf, 10\" Stroke (9.8\" Usable), 0.58\"/s, 12V",
+  "sku": "pololu-3618",
+  "category": "linear-actuators",
+  "expectedDimensionsMm": [
+    642
+  ],
+  "units": "millimeter"
+}

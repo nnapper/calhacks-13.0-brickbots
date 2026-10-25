@@ -1,0 +1,11 @@
+{
+  "shapeSummary": "Flat cylindrical disc, OD 9.7 mm, 2 mm thick, with a centered 2.0 mm through bore. The axis runs along Y, the bottom face sits at Y=0, and the disc is centered on X and Z. The two circular patches on the top face are not modeled.",
+  "confidence": "medium",
+  "warnings": [
+    "Dimensions come from unverified listing metadata (OD 9.7, ID 2.0, thickness 2).",
+    "The two circular patches on the top face are omitted because their depth and positions are uncertain, and they may be only magnetization poles or surface marks.",
+    "The bore looks slightly tapered or D-shaped in the image, but it is modeled as a plain round through hole.",
+    "The XZ workplane normal points toward -Y, so extrude(-2) builds the disc from Y=0 to Y=2."
+  ],
+  "cadquery": "part = (cq.Workplane('XZ').circle(9.7/2).circle(1.0).extrude(-2))"
+}

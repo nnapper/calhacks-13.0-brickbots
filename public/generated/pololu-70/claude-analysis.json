@@ -1,0 +1,19 @@
+{
+  "partType": "motor",
+  "summary": "Cylindrical planetary gearbox with a small DC motor mounted coaxially at one end. The stacked housing stages sit between the motor and a round output end case. A single round output shaft extends from the output end on the motor axis. Two tie rods run along the housing, and the bracket feet are flat, L-shaped and perforated, attached at the output end and the motor end.",
+  "boundsMm": {
+    "x": 95,
+    "y": 50,
+    "z": 40
+  },
+  "holes": [],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": -20,
+      "description": "Underside of the flat bracket feet at the output end and the motor end, used to mount the unit on a flat surface. The feet have a row of small perforations."
+    }
+  ],
+  "confidence": "low",
+  "notes": "No overall dimensions are printed in the drawings, and the supplied length, width, height and diameter fields are null and flagged unverified. The bounds are rough visual estimates, with x along the motor and output axis, and should be checked against a datasheet or measurement. The only stated dimension is the 4 mm round output shaft, and the drawing mentions 3 mm tie bolts and nuts. The bracket perforations are visible but their diameters and positions are not given, so no holes are listed. The 3-6 V rating and the gear ratio options are not geometric inputs."
+}

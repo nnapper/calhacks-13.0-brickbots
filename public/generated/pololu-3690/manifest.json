@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Pololu Multi-Hub Wheel w/Inserts for 3mm and 4mm Shafts - 80×10mm, Black, 2-Pack",
+    "sku": "pololu-3690",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 80 mm diameter and 10 mm width are stated, and the listing marks them as unverified. The central bore diameter (9 mm) is a rough scale estimate from the photo, not a printed value. The hub has additional small holes around the bore, and the images show no printed dimensions for them, so I left them out. The 3 mm and 4 mm collet inserts (round and D-shaped) fit into the hub. The images give no collet dimensions, and the listing gives no shaft or bore dimensions. The wheel's overall z extent assumes the 10 mm width covers the whole tire and hub.",
+      "The 80 mm diameter and 10 mm width are stated in the listing but marked unverified.",
+      "The 9 mm bore comes from a rough scale estimate of the photo, not a printed value.",
+      "The hub radius, spoke width and thickness, rim and tire thicknesses, and the 6 mm disc thickness are all estimated from the photo.",
+      "The small holes around the hub bore were omitted because their sizes are uncertain.",
+      "The collet inserts, the screws, the metal triangular mounting plates and the tire/rim split were not modeled. The wheel is a single solid.",
+      "The wheel axis is along Y to satisfy the placement rules, although the image analysis gave the axis as Z."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -40,
+      "xmax": 40,
+      "ymin": -4.440892098500626e-15,
+      "ymax": 10.000000000000004,
+      "zmin": -40,
+      "zmax": 40,
+      "xlen": 80,
+      "ylen": 10.000000000000007,
+      "zlen": 80
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 125791,
+        "sha256": "fc8182bdcc69fe8820b6f4c2c8956ed200647ccfa5fc484420cf924c5c87b295"
+      },
+      "model.stl": {
+        "bytes": 108484,
+        "sha256": "c690b9304e39d2c6e7d5b2d1131d1b97059447db69a6e7f649a6fd95765627b2"
+      },
+      "model.glb": {
+        "bytes": 39916,
+        "sha256": "45def08bb6f2a0319b6fd58eaa5303d18164552698608af371734d5514abbe69"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "fc8182bdcc69fe8820b6f4c2c8956ed200647ccfa5fc484420cf924c5c87b295"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

@@ -1,0 +1,8 @@
+body = cq.Workplane('XY').box(22, 9, 22, centered=(True, False, True))
+tabs = (cq.Workplane('XY').pushPoints([(-11.5, -11.5), (11.5, -11.5), (-11.5, 11.5), (11.5, 11.5)])
+        .rect(5, 5).extrude(2.5))
+tabs = cq.Workplane('XZ').pushPoints([(-11.5, -11.5), (11.5, -11.5), (-11.5, 11.5), (11.5, 11.5)]).rect(5, 5).extrude(-2.5)
+holes = (cq.Workplane('XZ', origin=(0, -1, 0))
+         .pushPoints([(-12, -12), (12, -12), (-12, 12), (12, 12)])
+         .circle(1.0).extrude(-4))
+part = body.union(tabs).cut(holes)

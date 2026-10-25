@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Glideforce LACT6-500APL Industrial-Duty Linear Actuator with Acme Drive and Feedback: 250kgf, 6\" Stroke (5.5\" Usable), 0.66\"/s, 12V",
+    "sku": "pololu-3602",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Only the 13 mm mounting hole diameter and the 357 mm retracted and 497 mm extended lengths come from the listing. The 357 mm length is probably measured between mounting-hole centers, so the true overall envelope may be slightly longer. Width (y) and height (z) are rough estimates from the photos, because the listing gives no values. The hole centers along x and the z offset are also estimated, and the through-hole status is assumed. The 6 in stroke has 5.5 in usable travel.",
+      "Width, height, tube, motor and gearbox dimensions are estimated from the photo; the listing gives only the lengths and the 13 mm hole.",
+      "Overall length is taken as 357 mm, retracted. The listing's 357 mm may be hole-center to hole-center.",
+      "Cross holes are placed 13.5 mm inside each end to leave material. The listing does not give their positions.",
+      "Hole axis (Y) and through status follow the image analysis and are uncertain. In the photo the rod-end hole may run horizontally.",
+      "Gearbox housing shape, motor placement and offset, cable, limit-switch bumps and the rod-end clevis details are simplified or omitted.",
+      "The model is retracted only; the extended length of 497 mm is not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -178.5,
+      "xmax": 178.5000001,
+      "ymin": 0,
+      "ymax": 80,
+      "zmin": -55,
+      "zmax": 55,
+      "xlen": 357.00000009999997,
+      "ylen": 80,
+      "zlen": 110
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 497.000 mm; measured dimensions are [80.0, 110.0, 357.00000009999997]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 99837,
+        "sha256": "0f9be2d8cb354abb4ffb8a7fdd1e799d4bdd63a1c83741f98746d132b756a9e5"
+      },
+      "model.stl": {
+        "bytes": 90784,
+        "sha256": "5a4da745dfee327c25ffbf598c380871f4f7c6dae92df7ef7c3fea0e15a527a5"
+      },
+      "model.glb": {
+        "bytes": 33668,
+        "sha256": "79321674528272ee94dc6a112b5b49165393b2c21cc9749ba80fa004d1e0f751"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "0f9be2d8cb354abb4ffb8a7fdd1e799d4bdd63a1c83741f98746d132b756a9e5"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

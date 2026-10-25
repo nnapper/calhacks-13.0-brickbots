@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Thin rectangular PCB plate, 30.48 mm (X) by 21.59 mm (Z) by 1.6 mm thick (Y from 0 to 1.6), centered in X and Z with its bottom at Y=0. It has two 2.18 mm through mounting holes along Y. The mini-USB connector, IC, SMD parts, pads and loose header pins are not modeled.",
+  "confidence": "medium",
+  "warnings": [
+    "The 1.6 mm PCB thickness is assumed and not stated.",
+    "The mounting hole positions come from the image analysis, are accurate to about ±0.3 mm, and may need mirroring in X depending on the view.",
+    "The USB connector, IC, SMD components, through-hole pads and loose header pins are omitted because their heights are unknown and the pins are not attached.",
+    "The overall height is not given, so only the bare board is modeled.",
+    "The board dimensions are marked as unverified."
+  ],
+  "cadquery": "pts = [(-2.03, 8.51), (12.57, -8.0)]\nplate = cq.Workplane('XZ').rect(30.48, 21.59).extrude(-1.6)\nholes = cq.Workplane('XZ').pushPoints(pts).circle(1.09).extrude(-1.6)\npart = plate.cut(holes)"
+}

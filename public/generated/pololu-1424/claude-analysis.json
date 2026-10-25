@@ -1,0 +1,54 @@
+{
+  "partType": "wheel",
+  "summary": "Single 60 mm diameter, 8 mm wide spoked wheel with a five-spoke hub and a separate tire around the rim. It has a central D-shaft bore and two small mounting holes on opposite sides of the hub. The product is sold as a pair, and this describes one wheel with its axis along z.",
+  "boundsMm": {
+    "x": 60,
+    "y": 60,
+    "z": 8
+  },
+  "holes": [
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    },
+    {
+      "axis": "z",
+      "diameterMm": 3,
+      "positionsMm": [
+        [
+          -6.35,
+          0,
+          0
+        ],
+        [
+          6.35,
+          0,
+          0
+        ]
+      ],
+      "through": true
+    }
+  ],
+  "mountingSurfaces": [
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Central hub with D-shaft bore, press-fits onto a 3 mm D shaft. The hub faces sit at about z = ±4 mm or slightly recessed; the exact recess is not stated."
+    },
+    {
+      "axis": "z",
+      "offsetMm": 0,
+      "description": "Hub face with two mounting holes spaced 12.7 mm apart, centered on the axis, for #4 or M3 screws to attach a universal mounting hub."
+    }
+  ],
+  "confidence": "medium",
+  "notes": "Dimensions come from the listing text, which is marked unverified; no drawing is visible. The 60 mm diameter, 8 mm width, 3 mm shaft and 12.7 mm hole spacing are stated. The mounting-hole diameter is only given as sized for #4 or M3 screws, so 3 mm is a nominal value. The hole orientation (along x) and the through/depth status of the bore and holes are assumed from the images. The five spoke slots for #2 or M2 screws are not modeled because their dimensions are not given. The tire is included in the 60 mm outer diameter."
+}

@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Round wheel with its axis along Z, 66.7 mm diameter and 7.62 mm wide, centered at X=0 and Z=0 with the lowest point at Y=0 (wheel center at Y=33.35). It has a 3 mm thick ring tire, a thin 2 mm central web with five round spoke windows spaced at 72°, a solid 31 mm diameter hub the full width, and a hexagonal center bore of about 5 mm.",
+  "confidence": "low",
+  "warnings": [
+    "Diameter taken from 2-5/8 in (66.7 mm); the metadata value of 69 mm conflicts with it and is unverified.",
+    "Width of 7.62 mm is unverified.",
+    "Tire thickness, web thickness and z-position, and hub diameter are estimated from the image.",
+    "Spoke windows are approximated as round holes; the real windows are trapezoidal.",
+    "The hex bore size and shape are uncertain; 5 mm across was estimated from the image.",
+    "The encoder stripes, the small inner hub windows, the hub ribs and the logo are omitted.",
+    "Tire profile and rim depth are unknown and not modeled."
+  ],
+  "cadquery": "R=33.35\nw=7.62\nc=(0,R,0)\ntire=cq.Workplane('XY',origin=(0,R,-w/2)).circle(R).circle(R-3).extrude(w)\nplate=cq.Workplane('XY',origin=(0,R,-1.0)).circle(R-2.9).extrude(2.0)\npts=[(23.5*math.cos(math.radians(90+72*i)),R+23.5*math.sin(math.radians(90+72*i))) for i in range(5)]\nwin=cq.Workplane('XY',origin=(0,0,-5)).pushPoints(pts).circle(7).extrude(10)\nplate=plate.cut(win)\nhub=cq.Workplane('XY',origin=(0,R,-w/2)).circle(15.5).extrude(w)\npart=tire.union(plate).union(hub)\nbore=cq.Workplane('XY',origin=(0,R,-5)).polygon(6,5).extrude(10)\npart=part.cut(bore)"
+}

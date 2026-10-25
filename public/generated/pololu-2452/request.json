@@ -1,0 +1,10 @@
+{
+  "name": "ACS711 Current Sensor Carriers",
+  "sku": "pololu-2452",
+  "category": "current-sensors",
+  "expectedDimensionsMm": [
+    20.32,
+    17.78
+  ],
+  "units": "millimeter"
+}

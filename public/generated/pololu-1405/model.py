@@ -1,0 +1,6 @@
+body = cq.Workplane('XY').box(19.8, 10.2, 6.4, centered=(True, False, True))
+holes = (cq.Workplane('XY')
+    .pushPoints([(-5.15, 2.3), (5.15, 2.3)])
+    .circle(1.15)
+    .extrude(5, both=True))
+part = body.cut(holes)

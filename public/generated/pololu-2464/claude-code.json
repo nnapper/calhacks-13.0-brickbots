@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "Simplified Sharp IR distance sensor: a 34 x 13 x 13.5 mm black body block, a thin 2.5 mm mounting ear plate along the rear face (z=-6.75) with rounded ends reaching 44.5 mm overall, two 3 mm through holes along z at x=±19.2, y=3, and a box standing in for the connector on the +Y side bringing the Y extent to 18.9 mm. Bottom is at Y=0, centered in X and Z.",
+  "confidence": "low",
+  "warnings": [
+    "Dimensions come from unverified specs; there is no dimensioned drawing.",
+    "Hole diameter and positions are estimated from pixel proportions.",
+    "Axis assignment follows the image analysis (y = width including connector), so Y is not necessarily the physical up direction.",
+    "Emitter and detector lens windows, the rectangular recess, and the small round feature on the front face are omitted because their sizes are uncertain.",
+    "The connector is a plain box with no pins or slot, and the PCB is not modeled separately.",
+    "The body block depth of 13 mm and the connector placement are estimates."
+  ],
+  "cadquery": "body = cq.Workplane('XY').box(34, 13, 13.5, centered=(True, False, True))\near = (cq.Workplane('XY').workplane(offset=-6.75).center(0, 3).rect(38.4, 6).extrude(2.5))\nfor sx in (-1, 1):\n    ear = ear.union(cq.Workplane('XY').workplane(offset=-6.75).center(sx * 19.2, 3).circle(3.05).extrude(2.5))\nconn = cq.Workplane('XY').box(10, 5.9, 5.75, centered=(True, False, True)).translate((0, 13, -3.875))\npart = body.union(ear).union(conn)\npart = part.cut(cq.Workplane('XY').workplane(offset=-8).pushPoints([(-19.2, 3), (19.2, 3)]).circle(1.5).extrude(6))"
+}

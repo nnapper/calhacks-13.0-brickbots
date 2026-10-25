@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Teensy 4.1 without Ethernet (Headers)",
+    "sku": "sparkfun-DEV-20360",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "Length (60.96) and width (17.78) come from the supplied metadata, which is marked unverified. The product images show no printed dimensions. Height is not given, so z=12 is an assumed estimate for the PCB plus components plus the header pins, not a measured value. Individual mounting holes are not clearly visible, so none are listed. Header pins run along both long edges, but their exact positions and count are not resolved from the images. The black foam in the image is packaging and is excluded from the part bounds.",
+      "Height is not given. The ~12 mm total is an assumed estimate.",
+      "Header pin count (24 per side), row spacing and pin length are assumed from the standard Teensy 4.1 layout, not measured from the image.",
+      "Component sizes and positions (chip, microSD, USB, button) are approximate boxes.",
+      "The black foam in the image is packaging and was excluded.",
+      "Mounting holes, vias, castellations, bottom pads and small SMT parts were omitted because they are not clearly visible.",
+      "Length and width come from unverified metadata."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -32.480000000000004,
+      "xmax": 31.48,
+      "ymin": 0,
+      "ymax": 12.739999999999998,
+      "zmin": -8.89,
+      "zmax": 8.89,
+      "xlen": 63.96000000000001,
+      "ylen": 12.739999999999998,
+      "zlen": 17.78
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 848289,
+        "sha256": "27ed6250cde536a0e2357c9721438e0b5420f9a4808cf755f97cefca1927e283"
+      },
+      "model.stl": {
+        "bytes": 44284,
+        "sha256": "9f2abead0e485cdaa31ed91a6ca83e4be89cc807c57ca129e230cddee0553e23"
+      },
+      "model.glb": {
+        "bytes": 16948,
+        "sha256": "c7d636c973255ea511fb2575c30b732c32f9ee6644495ce514721bf2be908891"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "27ed6250cde536a0e2357c9721438e0b5420f9a4808cf755f97cefca1927e283"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}

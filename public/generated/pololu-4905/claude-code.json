@@ -1,0 +1,13 @@
+{
+  "shapeSummary": "40 mm diameter, 7 mm wide three-spoke wheel with the axis along Z. It has an outer tire ring, a thinner inner plastic rim ring, three radial spokes at 120° spacing, and a central hub with a 4.8 mm through bore. It is centered at X=0 and Z=0, with the bottom at Y=0, so the wheel center sits at Y=20.",
+  "confidence": "medium",
+  "warnings": [
+    "Dimensions come from the product listing, which is marked unverified.",
+    "The bore is assumed to be a through hole.",
+    "The 21-tooth spline is not modeled; the bore is a plain 4.8 mm cylinder.",
+    "Spoke width and thickness, hub diameter and length, rim width, and tire cross-section are estimated from the image.",
+    "The tire and rim are fused into one solid, and the tire's rounded profile is simplified to a flat-sided ring.",
+    "The small marks near the hub or spokes are omitted because they are not confirmed as holes."
+  ],
+  "cadquery": "tire = cq.Workplane('XY').circle(20).circle(17.5).extrude(7).translate((0,0,-3.5))\nrim = cq.Workplane('XY').circle(17.6).circle(15.5).extrude(5).translate((0,0,-2.5))\nhub = cq.Workplane('XY').circle(4.5).extrude(6).translate((0,0,-3))\nbody = tire.union(rim).union(hub)\nfor a in (90, 210, 330):\n    spoke = cq.Workplane('XY').box(15, 3, 4).translate((9, 0, 0)).rotate((0,0,0),(0,0,1),a)\n    body = body.union(spoke)\nbore = cq.Workplane('XY').circle(2.4).extrude(10).translate((0,0,-5))\npart = body.cut(bore).translate((0,20,0))"
+}

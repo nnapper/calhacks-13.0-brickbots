@@ -1,0 +1,14 @@
+{
+  "shapeSummary": "Solid cylindrical wheel, 32 mm diameter and 16 mm wide. The axis runs along Z, centered at X=0 and Z=0, with the wheel center at Y=16 so the bottom sits at Y=0. A hexagonal through-bore with 8 mm across flats runs along the axis.",
+  "confidence": "medium",
+  "warnings": [
+    "The 16 mm width is inferred from image proportions, not stated in the product data.",
+    "The 32 mm diameter and 8 mm bore come from unverified product data.",
+    "The 8 mm bore is modeled as a hexagon with 8 mm across flats, treating 8 mm as the nominal size.",
+    "The spoke cutouts on the faces are omitted because their geometry is uncertain.",
+    "The raised tread pips are omitted, so the tread is a plain cylinder.",
+    "The plastic core and silicone rim are merged into one solid.",
+    "The text on the wheel (goBILDA.com) is not modeled."
+  ],
+  "cadquery": "part = (cq.Workplane('XY').center(0, 16).circle(16).extrude(8, both=True)\n        .cut(cq.Workplane('XY').center(0, 16).polygon(6, 8 / math.cos(math.pi / 6)).extrude(10, both=True)))"
+}

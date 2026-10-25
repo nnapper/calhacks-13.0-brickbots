@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Tamiya 70190 Mini Motor Multi-Ratio Gearbox (12-Speed) Kit",
+    "sku": "pololu-1683",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The images show no printed dimensions for the housing. The bounds are the unverified length, width and height from the product data (30 x 17 x 31 mm), assigned to x, y and z in that order. The axis assignment is a guess, and the 31 mm height looks large relative to the photos. The 3 mm hex output shaft is a shaft, not a hole. The product text says the mounting holes fit Tamiya universal plates, but the images give no hole diameters or positions, so I left holes and mounting surfaces empty rather than invent values. Verify all dimensions against a Tamiya drawing or a physical measurement.",
+      "Dimensions come from unverified product data. The assignment of length, width and height to X, Y and Z is a guess.",
+      "The housing/motor split (20 mm block plus 11 mm cylinder) and the 15 mm motor diameter are estimated from the photo, not measured.",
+      "The 3 mm hex output shaft is omitted. Its position and protrusion are uncertain, and any protrusion would exceed the stated bounds.",
+      "Mounting holes, gears, the plastic mounting bosses and the wires are omitted because the images give no hole sizes or positions.",
+      "The internal gear train and the 12 selectable ratio configurations are not modeled."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -15,
+      "xmax": 15,
+      "ymin": 0,
+      "ymax": 17,
+      "zmin": -15.5,
+      "zmax": 15.5,
+      "xlen": 30,
+      "ylen": 17,
+      "zlen": 31
+    },
+    "warnings": [
+      "Generated geometry is missing a listed dimension 3.000 mm; measured dimensions are [17.0, 30.0, 31.0]"
+    ],
+    "files": {
+      "model.step": {
+        "bytes": 19368,
+        "sha256": "7a012f80702c3abe7ba97b545108e56582ca0d5e7a583efece55fba2a751d340"
+      },
+      "model.stl": {
+        "bytes": 17484,
+        "sha256": "13d6490bf8941abf1940192ae6bd0da19cb26d5f94eb51049af0f4dc5ea4b9bb"
+      },
+      "model.glb": {
+        "bytes": 7300,
+        "sha256": "4e83bdd2248813689108c717c31a7c5fe6e36ef67ea6bb7a7001bf9533e9ebfd"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "7a012f80702c3abe7ba97b545108e56582ca0d5e7a583efece55fba2a751d340"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 58
+  },
+  "status": "prototype_unverified"
+}

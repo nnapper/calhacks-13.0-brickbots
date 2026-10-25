@@ -1,0 +1,12 @@
+{
+  "shapeSummary": "Simplified aluminum hinge, 38 mm long along Y (Y 0 to 38), about 32 mm wide in X, 8 mm thick in Z. Two rectangular leaves sit either side of a central 8 mm diameter barrel running along Y. Each leaf has a row of 5 blind holes (3.4 mm diameter, 6 mm deep) at 8 mm pitch, entering from the +Z face at x = ±10.",
+  "confidence": "low",
+  "warnings": [
+    "Width (32 mm), thickness (8 mm) and barrel diameter (8 mm) are visual estimates; only the 38 mm length is stated, and it is unverified.",
+    "The leaves are merged with the barrel into one solid. The real hinge has separate leaves, a stainless steel pin and a 278° rotation range, and the knuckle split is not modeled.",
+    "Hole diameter is approximated at 3.4 mm, an M4 tap-drill size inferred from the screws shown. Threads are not modeled, and hole depth is a guess.",
+    "The Y axis is the 38 mm hinge length, following the image analysis. The bottom of the part is at Y=0, with X and Z centered.",
+    "The leaf and barrel profiles are simplified. The stepped knuckles, the end pin and any chamfers are omitted."
+  ],
+  "cadquery": "leaf_w, L, T = 13.0, 38.0, 8.0\nleft = cq.Workplane('XY').box(leaf_w, L, T, centered=(True, False, True)).translate((-9.5, 0, 0))\nright = cq.Workplane('XY').box(leaf_w, L, T, centered=(True, False, True)).translate((9.5, 0, 0))\nbarrel = cq.Workplane('XZ').circle(4.0).extrude(-L)\nbody = left.union(right).union(barrel)\npts = [(x, 3 + 8 * i) for x in (-10, 10) for i in range(5)]\nholes = cq.Workplane('XY', origin=(0, 0, T / 2)).pushPoints(pts).circle(1.7).extrude(-6)\npart = body.cut(holes)"
+}

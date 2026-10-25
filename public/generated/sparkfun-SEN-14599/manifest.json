@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "LIDAR-Lite v3HP",
+    "sku": "sparkfun-SEN-14599",
+    "retailer": null
+  },
+  "generation": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "analysisConfidence": "low",
+    "codeConfidence": "low",
+    "warnings": [
+      "The bounds come from the listed unit dimensions (53.5 x 33.5 x 24.5 mm), which are flagged as unverified. No drawing with printed dimensions is visible. The axis assignment is assumed: x is the long side along the lens pair, y is the width, and z is the height. The mounting ears show holes, but their diameters and positions are not stated or measurable, so the holes list is left empty rather than guessed. The cable length and the lens and housing details are not modeled.",
+      "Dimensions come from the unverified listed unit size (53.5 x 33.5 x 24.5 mm). The 24.5 mm height is placed on Y to follow the bottom-at-Y=0 rule, which differs from the axis assignment in the image analysis.",
+      "The body footprint (40 x 24 mm), flange thickness (3.5 mm), and mounting hole size and positions (3.2 mm holes at the corners) are estimated from the image.",
+      "The mounting holes are visible in the image but their exact positions are not measurable, so these are approximate.",
+      "The lens recess depth and positions are approximate. The lens glass, the body's stepped and sloped contours, and the notch between the lenses are omitted.",
+      "The cable and stripped wires are not modeled.",
+      "The flange ears are simplified into a full rectangular plate."
+    ]
+  },
+  "geometry": {
+    "engine": "CadQuery 2.8.0 + OpenCascade 7.9",
+    "boundsMm": {
+      "xmin": -26.75,
+      "xmax": 26.75,
+      "ymin": 0,
+      "ymax": 24.5,
+      "zmin": -16.75,
+      "zmax": 16.75,
+      "xlen": 53.5,
+      "ylen": 24.5,
+      "zlen": 33.5
+    },
+    "warnings": [],
+    "files": {
+      "model.step": {
+        "bytes": 58381,
+        "sha256": "18c70347969bb073b5281f530143e06fb242ab9e5919a0d27baf52e3d04bcfe2"
+      },
+      "model.stl": {
+        "bytes": 103084,
+        "sha256": "2a786d1fea6950133ce731104d391798837477dea9a477985901dc60826aa55f"
+      },
+      "model.glb": {
+        "bytes": 38028,
+        "sha256": "67baa9b815fd24bb5e9c6080a52fc37405c63037b25ea73726dbb0c968672150"
+      }
+    }
+  },
+  "artifacts": {
+    "step": "model.step",
+    "glb": "model.glb",
+    "stepSha256": "18c70347969bb073b5281f530143e06fb242ab9e5919a0d27baf52e3d04bcfe2"
+  },
+  "verification": {
+    "service": "http://127.0.0.1:8001",
+    "candidateCount": 64
+  },
+  "status": "prototype_unverified"
+}
